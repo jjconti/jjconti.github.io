@@ -1,0 +1,27 @@
+<p><html><body><p>Palabras claves: planet-planet exception KeyError</p>
+<p>Antes de venirme para Pellegrini recibí algunos avisos de que los planetas de <a title="PyAr" href="http://pyar.firebirds.com.ar/" target="_blank">PyAr</a> y <a title="TecnoFe" href="http://blogs.firebirds.com.ar/" target="_blank">TecnoFe</a> no se estaban actualizando. Estos dos sitios corren sobre dos instalacions de <a title="PP" href="http://www.planetplanet.org/" target="_blank">planet-planet</a>, un agregador de feeds escrito en Python. El programa consiste en un script que cada vez que se ejecuta genera páginas html, actualizando su contenido entre corrida y corrida si corresponde.</p>
+<p>Mediante reglas de <a title="Cron" href="http://es.wikipedia.org/wiki/Cron_(unix)" target="_blank">cron</a> hago que estos scripts corran cada 15 minutos, buscando novedades en los blogs agregados.</p>
+<p>Mi primer intento de saber qué estaba pasando fue revisar crontab, pero no encontré nada raro allí. Lo siguiente fue ejecutar a manos los scripts en cuestión. Ambos tiraban exepciones similares:</p>
+<!--more-->
+
+<p><code>Traceback (most recent call last):</p>
+<p>File "planet.py", line 167, in ?</p>
+<p>main()</p>
+<p>File "planet.py", line 160, in main</p>
+<p>my_planet.run(planet_name, planet_link, template_files, offline)</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 240, in run</p>
+<p>channel = Channel(self, feed_url)</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 527, in <strong>init</strong></p>
+<p>self.cache_read_entries()</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 569, in cache_read_entries</p>
+<p>item = NewsItem(self, key)</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 845, in <strong>init</strong></p>
+<p>self.cache_read()</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/cache.py", line 74, in cache_read</p>
+<p>self._type[key] = self._cache[cache_key + " type"]</p>
+<p>File "/usr/lib/python2.3/bsddb/<strong>init</strong>.py", line 116, in <strong>getitem</strong></p>
+<p>return self.db[key]</p>
+<p>KeyError: 'tag:www.taniquetil.com.ar,2007-08-31:285 author type'</p>
+<p></code></p>
+<p>Este software tiene un cache de informacion para guardar los feeds que parsea. Basicamente es un directorio llamado cache con un archivo por cada feed agregado.</p>
+<p>Solucioné el problema -más por instinto que por pericia- borrando, para ambos sitios, el archivo correspondiente al blog con problemas. Les dejo el tip por si les sucede en alguna instalación de planet-planet. Prometo que si me vuelve a pasar voy a investigar un poquito más para descubrir la razón del problema :)</p></body></html></p>

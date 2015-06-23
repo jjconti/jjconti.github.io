@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (links)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/links.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:15 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lo que todo programdor debería saber sobre...</title><link>http://www.juanjoconti.com.ar/posts/2010/08/15/lo-que-todo-programdor-deberia-saber-sobre.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un par de días hablábamos con una compañera sobre NO USAR el tipo de datos float para manejar dinero:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; 0.1 + 0.3
+&lt;p&gt;0.40000000000000002&lt;/p&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;A no alarmarse, lo anterior sucede en todos los lenguajes de programación; aunque algunos lo ocultan más que otros. La charla terminó con la recomendación de revisar un sitio web que explica el tema de forma muy consisa:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://floating-point-gui.de/" target="_blank"&gt;&lt;strong&gt;What Every Programmer Should Know About Floating-Point Arithmetic&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Además de explicar &lt;a href="http://floating-point-gui.de/formats/fp/" target="_blank"&gt;cómo funciona el tipo de datos float&lt;/a&gt; y &lt;a href="http://floating-point-gui.de/formats/exact/" target="_blank"&gt;cómo solucionar el problema&lt;/a&gt;, da machetes para varios lenguajes de programación (C#, Java, JavaScript, PHP y SQL).&lt;/p&gt;
+&lt;p&gt;Me sorprendió que no haya una para Python, por lo que seguí el mandato del autor del sitio web, &lt;a href="http://github.com/brazzy/floating-point-gui.de" target="_blank"&gt;fork me on github&lt;/a&gt;, y envié mis cambios. &lt;strong&gt;update:&lt;/strong&gt; &lt;a href="http://floating-point-gui.de/languages/python/" target="_blank"&gt;ya está disponible&lt;/a&gt; en el sitio web.&lt;/p&gt;
+&lt;p&gt;Siguiendo con el título del posts, me puse a buscar otros artículos con el formato: &lt;em&gt;Lo que todo programador debería saber sobre...&lt;/em&gt; y encontré estos:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://www.joelonsoftware.com/articles/Unicode.html" target="_blank"&gt;The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://lwn.net/Articles/250967/" target="_blank"&gt;What every programmer should know about memory&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://www.skorks.com/2010/05/what-every-developer-should-know-about-urls/" target="_blank"&gt;What Every Developer Should Know About URLs&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que leo</category><category>decimal</category><category>float</category><category>links</category><category>memory</category><category>programación</category><category>unicode</category><category>URLs</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/15/lo-que-todo-programdor-deberia-saber-sobre.html</guid><pubDate>Sun, 15 Aug 2010 21:46:54 GMT</pubDate></item></channel></rss>

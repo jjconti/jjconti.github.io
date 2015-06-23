@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La historia de Python: El problema con la división entre enteros | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2009/07/09/la-historia-de-python-el-problema-con-la-division-entre-enteros.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../02/gane-una-de-las-becas-del-programa-bicentenario-de-investigacion-y-posgrado-de-la-utn.html" title="Gané una de las becas del Programa Bicentenario de Investigación y Posgrado de la UTN!" type="text/html">
+        <link rel="next" href="../12/9-de-julio-en-el-parque-garay.html" title="9 de Julio en el Parque Garay" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="La historia de Python: El problema con la división entre enteros">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2009/07/09/la-historia-de-python-el-problema-con-la-division-entre-enteros.html">
+    <meta property="og:description" content="El siguiente texto es una traducción del artículo The Problem with Integer Division de Guido van Rossum publicado en http://python-history.blogspot.com/.
+
+
+
+
+ El problema con la división entre enteros">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2009-07-09T13:15:29+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="Historia">
+           <meta property="article:tag" content="Python">
+           <meta property="article:tag" content="traducciones">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="la-historia-de-python-el-problema-con-la-division-entre-enteros.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">La historia de Python: El problema con la división entre enteros</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2009-07-09T13:15:29+00:00" itemprop="datePublished" title="2009-07-09 13:15">2009-07-09 13:15</time></a></p>
+                <p class="commentline">
+        
+    <a href="la-historia-de-python-el-problema-con-la-division-entre-enteros.html#disqus_thread" data-disqus-identifier="cache/posts/2009/07/09/la-historia-de-python-el-problema-con-la-division-entre-enteros.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="la-historia-de-python-el-problema-con-la-division-entre-enteros.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p><em>El siguiente texto es una traducción del artículo The Problem with Integer Division de Guido van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em><br></p>
+<!--more-->
+
+
+
+<h3> El problema con la división entre enteros</h3>
+
+<p>La forma en que Python maneja la división entre enteros es un ejemplo de errores iniciales con enormes consecuencias. Como se mencionó anteriormente, cuando Python fue creado abandoné el enfoque con el que ABC abordaba los números. Por ejemplo, en ABC, cuando dividías dos enteros, el resultado era un número racional exacto que representaba el resultado. En Python, sin embargo, la división entre enteros trunca el resultado a un entero.</p>
+
+<p>En mi experiencia, los números racionales no son tan buenos como los diseñadores de ABC esperaban. Una experiencia típica podría ser escribir un programa simple con alguna aplicación comercial (digamos, calcular tus impuestos) y encontrar que corre más lento de lo esperado. Luego de depurar se encuentra la causa: internamente el programa usa números racionales con miles de dígitos de precisión para representar valores que serán truncados a dos o tres dígitos al ser impresos. Esto podía ser fácilmente solucionado empezando una suma con un cero inexacto, pero esto era a menudo no intuitivo y difícil de depurar para los principiantes.</p>
+
+<p>Entonces en Python utilicé el otro modelo numérico que me era familiar, C. C tiene enteros y números de punto flotante de varios tamaños. Entonces elegí representar los enteros de Python con <em>longs</em> de C (garantizando por lo menos 32 bits de precisión) y los números de punto flotante con <em>doubles</em> de C. Luego añadí un tipo entero con precisión arbitraria que llamé "<em>long</em>".</p>
+
+<p>El mayor error fue que también tomé prestada una regla que tenía sentido en C pero no en un lenguaje de tan alto nivel. Para las operaciones aritméticas estándares, incluyendo la división, el resultado siempre sería del mismo tipo que los operandos. Para empeorar las cosas, inicialmente usé otra regla equivocada que prohibía usar aritmética mixta, con la idea de hacer que las implementaciones de los distintos tipos sean independientes entre sí. Entonces, en un principio no se podía sumar un <em>int</em> con un <em>float</em>, o incluso un <em>int</em> con un <em>long</em>. Luego de que Python se distribuyera públicamente, Time Peters rápidamente me convenció de que esto era realmente una mala idea e introdujo una aritmética mixta con las reglas de coerción típicas. Por ejemplo, mezclar un operando <em>int</em> y uno <em>long</em> convertiría el argumento de tipo <em>int</em> a <em>long</em> y retornaría un <em>long</em> como resultado y la mezcla con un <em>float</em> convertiría al argumento <em>int</em> o <em>long</em> en un <em>float</em> y retornaría un resultado <em>float</em>.</p>
+
+<p>Desafortunadamente, el daño estaba hecho: la división entre enteros daba un resultado entero. Estarás pensando "¿por qué era esto tan malo?". ¿Estaba haciendo escándalo por nada? Históricamente, la propuesta para cambiar esto ha tenido algunas oposiciones duras por parte de quienes pensaban que aprender división entre enteros era una de los más útiles "ritos de iniciación" para todos los programadores. Así que déjenme explicarles las razones por la cual considero esto un error de diseño.</p>
+
+<p>Cuando escribes una función para implementar un algoritmo numérico (por ejemplo, calcular las fases de la luna) esperas que los argumentos sean números de punto flotante. Sin embargo, ya que Python no tiene declaración de tipos, nada evita que la función sea llamada con argumentos enteros. En un lenguaje estáticamente tipado, como C, el compilador convertiría los argumentos a <em>floats</em>, pero Python no sabe nada de eso; el algoritmo corre con valores enteros hasta que las maravillas de la aritmética mixta produzca resultados intermedios que sean <em>floats</em>.</p>
+
+<p>Para todo excepto para la división, los enteros se comportan de la misma forma que sus números de punto flotante correspondiente. Por ejemplo, 1+1 es igual a 2 de la misma forma que 1.0+1.0 es igual a 2.0, y así. Por lo tanto uno puede fácilmente confundirse y esperar que los algoritmos numéricos funcionen independientemente de si son ejecutados con argumentos enteros o de punto flotante. Sin embargo, cuando hay una división, y existe la posibilidad de que los dos operandos sean enteros, el resultado numérico es truncado silenciosamente, esencialmente introduciendo un gran error potencial en el cómputo. Aunque uno puede escribir código defensivo que convierta todos los argumentos a <em>float</em> apenas se introducen, esto es tedioso, y no mejora la legibilidad o mantenibilidad del código. Adicionalmente, evita que el algoritmo sea usado con números complejos (aunque eso sería en casos muy especiales).</p>
+
+<p>Nuevamente, todo esto es un problema porque Python no convierte argumentos automáticamente a algún tipo declarado. Pasar un argumento inválido, por ejemplo un <em>string</em>, es generalmente atrapado rápido por que muy pocas operaciones aceptan mezclar operados strings/números (siendo la excepción la multiplicación). Sin embargo, pasar un entero puede causar una respuesta cercana a la correcta, pero con error; difícil de depurar o incluso advertir (esto me pasó recientemente en un programa que dibuja un reloj analógico; las posiciones de las manecillas eran calculadas incorrectamente debido al truncamiento, pero el error era apenas detectable excepto en ciertas horas del día).</p>
+
+<p>Arreglar la división entre enteros no fue una tarea fácil debido a los programas que dependían de este truncamiento. Se añadió al lenguaje un operador de división truncada (//) que provee la misma funcionalidad. Además, se introduzco un mecanismo ("from __future__ import division") para habilitar fácilmente la nueva semántica para la división entre enteros. Finalmente, se agregó una bandera para la línea de comando (-Qxxx) para cambiar el comportamiento y para asistir la conversión de programas. Afortunadamente, el comportamiento correcto se convirtió en el comportamiento por defecto en Python 3000.</p>
+
+<p><em>Traducido por Juan José Conti.<br>
+
+Revisado por César Portela.<br>
+
+Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</em><br>
+
+Todas las traducciones de esta serie pueden encontrarse en <a href="../../../../categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+
+<p></p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/historia.html" rel="tag">Historia</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/traducciones.html" rel="tag">traducciones</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../02/gane-una-de-las-becas-del-programa-bicentenario-de-investigacion-y-posgrado-de-la-utn.html" rel="prev" title="Gané una de las becas del Programa Bicentenario de Investigación y Posgrado de la UTN!">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../12/9-de-julio-en-el-parque-garay.html" rel="next" title="9 de Julio en el Parque Garay">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2009/07/09/la-historia-de-python-el-problema-con-la-division-entre-enteros.html",
+        disqus_title="La historia de Python: El problema con la divisi\u00f3n entre enteros",
+        disqus_identifier="cache/posts/2009/07/09/la-historia-de-python-el-problema-con-la-division-entre-enteros.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

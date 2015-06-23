@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (vi)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/vi.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Corrección ortográfica en Vim</title><link>http://www.juanjoconti.com.ar/posts/2010/10/02/correccion-ortografica-en-vim.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Esta porción de comandos para vi/vim me vino muy cómodo más de una vez y siempre vuelvo a buscarlo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="vim"&gt;
+&lt;p&gt;:setlocal spell spelllang=es_AR&lt;/p&gt;
+&lt;p&gt;]s //avanza a la próxima palabra&lt;/p&gt;
+&lt;p&gt;z= //muestra la lista de sugerencias&lt;/p&gt;
+&lt;p&gt;zg //agrega la palabra como &lt;em&gt;buena&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;:help spell //listado completo&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>General</category><category>vi</category><category>vim</category><guid>http://www.juanjoconti.com.ar/posts/2010/10/02/correccion-ortografica-en-vim.html</guid><pubDate>Sat, 02 Oct 2010 22:18:08 GMT</pubDate></item></channel></rss>

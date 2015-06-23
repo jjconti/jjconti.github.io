@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Haskell)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/haskell.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lista circular en Python</title><link>http://www.juanjoconti.com.ar/posts/2007/02/28/lista-circular-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Estoy haciendo un juego inspirado en el &lt;a href="http://es.wikipedia.org/wiki/Juego_de_la_vida"&gt;Juego de la Vida&lt;/a&gt;. A modo de bonus-track también se podrán ver algunos patrones del tradicional juego de cero jugadores. Algunos patrones se cargarán de archivos en la computadora y se pondrán a disposición de usuario para que los examine. Para una mayor comodidad va a haber un botón "atrás" (&amp;gt;).&lt;/p&gt;
+&lt;p&gt;Si lo anterior fuera un enunciado en un examen de Algoritmos y Estructuras de Datos, ¿cual sería la estructura de datos más adecuada para mantener esa información? Sin dudas una lista circular. No sería muy agradable llegar al último patrón, apreatar "siguiente" y que no pase nada. Quiere que cuando esté parado en el último elemento y apriete "siguiente", me muestre el primero.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;Una lista circular es una lista lineal en la que el último nodo a punta al primero.&lt;/p&gt;
+&lt;p&gt;Las listas circulares evitan excepciones en la operaciones que se realicen sobre ellas. No existen casos especiales, cada nodo siempre tiene uno anterior y uno siguiente.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;El artículo va a ser un poco largo, va apasar por algunos lenguajes de programación y va a evaluar distintos enfoques. Pero adelanto que va a terminar en una implementación de una &lt;strong&gt;lista circular en Python basada en el manejo de índice&lt;/strong&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;h3&gt;Enfoque C&lt;/h3&gt;
+
+&lt;p&gt;Conocí este tipo de estructura en la materia que mensioné más arriba. Usabamos C como lenguaje de programación, así que fué el primer lenguaje dónde implementé una. A esta estructura de datos se la llama &lt;em&gt;dinámica&lt;/em&gt; por que puede crecer indefinidamente alocando porciones de memoria de la computadora, sin necesidad de que estas estén físicamente contiguas.&lt;/p&gt;
+&lt;p&gt;Supongamos que la lista circular va a ser de enteros (por simplicidad). Se necesitarán 1) una estructura Nodo más o menos así:&lt;/p&gt;
+&lt;pre lang="c"&gt;
+
+typedef struct nodo {
+
+   int dato;
+
+   struct nodo *next;
+
+} nodo;
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/02/next.jpg" alt="Node with next pointer"&gt;&lt;/center&gt;
+&lt;p&gt;o así:&lt;/p&gt;
+&lt;pre lang="c"&gt;
+
+typedef struct nodo {
+
+   int dato;
+
+   struct nodo *next;
+
+   struct nodo * prev;
+
+} nodo;
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/02/nextprev.jpg" alt="Node with next and prev pointers"&gt;&lt;/center&gt;
+&lt;p&gt;Las flechas de los dibujos son punteros (direcciones en memoria) a otros nodos, mediante los cuales estos se van a ir uniendo, bien para formar una lista lineal o para formar una lista como las que nos interesan, cuando el último nodo con su puntero next apunte al primero.&lt;/p&gt;
+&lt;p&gt;2) una forma de solicitar memoria para un nuevo nodo:&lt;/p&gt;
+&lt;pre lang="c"&gt;
+
+nodo * pnodo = (nodo *)malloc(sizeof(nodo));
+
+&lt;/pre&gt;
+
+&lt;p&gt;y 3) manejar punteros; un puntero a la lista, uno  a la posición actual, uno a la anterior a la actual.&lt;/p&gt;
+&lt;p&gt;Si bien usar estos elementos de la forma correcta &lt;em&gt;is not rocket science&lt;/em&gt;, requiere cierto conocimiento de un nivel más bajo (por más cercano al hardware) de lo que los modernos lenguajes dinámicos nos tiene acostumbrado (de hecho en los lenguajes de más alto nivel, este problema ya viene solucionado).&lt;/p&gt;
+&lt;p&gt;Para solucionar mi problema voy a preferir una solución con un poquito más de nivel de abstracción, pero creo que este enfoque a modo de introducción sirve para ir poniendo las piezas en el tablero.&lt;/p&gt;
+&lt;h3&gt;Enfoque Haskell&lt;/h3&gt;
+
+&lt;p&gt;En la pasada &lt;a href="http://www.cafeconf.org/"&gt;CafeConf&lt;/a&gt; fuí a una charla de mi amigo &lt;a href="http://www.pupeno.com"&gt;Pupeno&lt;/a&gt; sobre lenguajes de programación, allí vi algo que no conocía. En &lt;a href="http://www.haskell.org/haskellwiki/Haskell"&gt;Haskell&lt;/a&gt;, nos mostro este concepto: Listas infinitas. Lenguajes como este tiene una propiedad llamada &lt;em&gt;Lazyness&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;En programación, &lt;em&gt;lazy evaluation&lt;/em&gt;, también llamada &lt;em&gt;delayed evaluation&lt;/em&gt;, es la técnica que consiste en retrasar un cálculo computacional hasta el momento en que su resultado se necesite.&lt;/p&gt;
+&lt;p&gt;Por ejemplo:&lt;/p&gt;
+&lt;pre&gt;
+
+x = calculo_intensivo(1000)
+
+&lt;/pre&gt;
+
+&lt;p&gt;no necesita ser evaluado hasta que por ejemplo se haga:&lt;/p&gt;
+&lt;pre&gt;
+
+print x + 1
+
+&lt;/pre&gt;
+
+&lt;p&gt;Esta propiedad permite entre otras cosas crear listas infinitas (de nuevo un un pseudo código muy parecido a Python):&lt;/p&gt;
+&lt;pre&gt;
+
+miListaInfinita = ListaInfinita(arg)
+
+&lt;/pre&gt;
+
+&lt;p&gt;Claro que no vamos a poder hacer:&lt;/p&gt;
+&lt;pre&gt;
+
+print miListaInfinita
+
+&lt;/pre&gt;
+
+&lt;p&gt;O podríamos pero la operación no terminaría nunca, pero si prodríamos hacer:&lt;/p&gt;
+&lt;pre&gt;
+
+print miListaInfinita[100004]
+
+&lt;/pre&gt;
+
+&lt;p&gt;Y dependiendo de la clase de lista infinita que sea se necesitarán calcular los anteriores términos (en el caso de por ejemplo la lista de &lt;a href="http://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci"&gt;Fibonacci&lt;/a&gt;) o no (en una lista de todos 0).&lt;/p&gt;
+&lt;p&gt;Bien. A dónde estamos yendo con todo esto? Al fin de cuentas yo estaba buscando una lista circular y me encontré con listas infinitas. La conclusión es que una lista circular puede verse como una lista infinita ya que:&lt;/p&gt;
+&lt;p&gt;a) Siempre puedo pedirle un elemento siguiente sin que se agoten.&lt;/p&gt;
+&lt;p&gt;b) Puedo pedir el elemento 100004º y también obtenerlo (luego de algunas vueltas, por su puesto).&lt;/p&gt;
+&lt;p&gt;Así sería una lista crcular (infinita) en Haskell:&lt;/p&gt;
+&lt;pre lang="haskell"&gt;
+
+cycle [1,2,3]
+
+&lt;/pre&gt;
+
+&lt;p&gt;o&lt;/p&gt;
+&lt;pre lang="haskell"&gt;
+
+a = [1,2,3|a]  
+
+&lt;/pre&gt;
+
+&lt;p&gt;Bien, puedo hacer esto en Python? Con poco esfuerzo, con mis conocimientos y en una tade de lluvia,  &lt;strong&gt;yo no&lt;/strong&gt;. Salvo en algunas excepciones, la evaluación en Python no es &lt;em&gt;Lazy&lt;/em&gt;, sino &lt;em&gt;Eager&lt;/em&gt; o estricta. De todas formas algunos links por si alguien quiere seguir investigado en esa línea:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Streams&lt;/li&gt;
+
+    &lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5"&gt;http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://docs.python.org/lib/stream-reader-objects.html"&gt;http://docs.python.org/lib/stream-reader-objects.html&lt;/a&gt;&lt;/li&gt;
+
+    &lt;/ul&gt;
+
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Generator expressions&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://gnosis.cx/publish/programming/charming_python_b13.html"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://gnosis.cx/publish/programming/charming_python_b13.html&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.python.org/dev/peps/pep-0289/"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://www.python.org/dev/peps/pep-0289/&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://docs.python.org/ref/genexpr.html"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://docs.python.org/ref/genexpr.html&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;blockquote&gt;
+
+Juanjo-ar-stafe&amp;gt; is python lazy?
+
+Habbie&amp;gt; python allows programmers to be lazy
+
+Habbie&amp;gt; and that's what matters
+
+itchi&amp;gt; Juanjo-ar-stafe: Are you not lazy?? :-)
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ya que agoté esta rama, backtracking y adelante!&lt;/p&gt;
+&lt;h3&gt;De todas formas esto se trataba de Python, no?&lt;/h3&gt;
+
+&lt;p&gt;Yo estaba cometiendo el error en pensar en el término Lista circular doblemente enlazada, lo cual tiene sentido en C, pero no en Python. Yo no se como están implementadas las estrcturas de datos que provee el lenguaje y sin embargo puedo usarlas sin problemas. La diferencia en que la lista en cuestión sea doble o simplemente enlazada es solo una cuestión de optimización y no de funcionalidad. Cito una parte de uno de los mails que intercambiamos con Pupeno al respecto y que me ayudó mucho a encarar mejor el problema:&lt;/p&gt;
+&lt;blockquote&gt;
+
+El hacer una lista doblemente enlazada nos permite agregar funciones sobre la lista que la simplemente no nos permite y/o hacer que ciertas funciones sean mas rapido.
+
+En una lista podes hacer l.next() y tambien podes hacer l.prev() la diferencia es que prev() en una lista doblemente enlazada es constante en el tiempo O(1) y en una simple seria O(n) donde n es la cantidad de items en la lista (probablemente tenga un promedio de O(n/2)).
+
+Ahora, me parece que lo que vos necesitas realmente es que sea circular, no es cierto?
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ahora que ya se lo que necesito, puedo poner manos a la obra. ¿Qué necesito? Un objeto que sea una secuencia mutable de elementos al que siempre que quiera pueda decirle next() o prev() y me de el elemento siguiente o anterior al actual.&lt;/p&gt;
+&lt;p&gt;Lo primero en lo que podría pensar es en crear objetos Nodo y hacer una implementación C-like, usando referencias a objetos en lugar de punteros a estructuras pero.. creo que esto sería:&lt;/p&gt;
+&lt;p&gt;a) relativamente complicado, casi tanto como sería hacerlo en C. Más si mis objetivos de eficiencia, robustez y usabilidad son altos.&lt;/p&gt;
+&lt;p&gt;y b) un desapovechamiento de lo que ya está hecho (si llegó hasta aca, por favor siga leyendo).&lt;/p&gt;
+&lt;p&gt;Una de las estructuras de datos más poderosas que vienen con Python es &lt;em&gt;list&lt;/em&gt;, algunos ejemplos rápidos:&lt;/p&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; li = [1, "hola", 5, 8.5]
+
+&amp;gt;&amp;gt;&amp;gt; li[3]
+
+8.5
+
+&amp;gt;&amp;gt;&amp;gt; li[:3]
+
+[1, 'hola', 5]
+
+&amp;gt;&amp;gt;&amp;gt; li[:]
+
+[1, 'hola', 5, 8.5]
+
+&amp;gt;&amp;gt;&amp;gt; li[-2]
+
+5
+
+&amp;gt;&amp;gt;&amp;gt; li[-2:]
+
+[5, 8.5]
+
+&amp;gt;&amp;gt;&amp;gt; li + ["muy bien"]
+
+[1, 'hola', 5, 8.5, 'muy bien']
+
+&lt;/pre&gt;
+
+&lt;p&gt;Robusta, eficiente y muy usable.&lt;/p&gt;
+&lt;p&gt;Como pueden ver el manejo de índices le da mucha flexibilidad y es uno de los elementos más usados que constituyen el lenguaje. ¿Cuanto tiempo me tomaría hacer una implementación desde cero así solo por encapricharme con usar referencia circular? Paso.. voy a extender &lt;em&gt;list&lt;/em&gt; y a agregar la funcionalidad que requiero mediante el manejo de índices.&lt;/p&gt;
+&lt;h4&gt;Primer implementación&lt;/h4&gt;
+
+&lt;p&gt;Esta fue la priemr implementación que hice: &lt;a href="http://juanjoconti.com.ar/files/python/circular.py.html"&gt;circular.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Enseguida mandé un mail a mi &lt;a href="http://python.com.ar/moin/ListaDeCorreo"&gt;lista preferida de Python&lt;/a&gt; para pedir opiniones, de seguro tenía muchas cosas por mejorar.&lt;/p&gt;
+&lt;h4&gt;Review 1&lt;/h4&gt;
+
+&lt;p&gt;Enseguida Manuel Quiñones me mandó algunas optimizaciones (antes hacía llamadas recursivas de los métodos) + pruebas hechas con &lt;a href="http://docs.python.org/lib/module-doctest.html"&gt;DocTest&lt;/a&gt;: &lt;a href="http://juanjoconti.com.ar/files/python/circularDocTest.py.html"&gt;circularDocTest.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mezclé sus optimizaciones con mi código original (seguí sin usar una forma automatizada de testeo) para seguir discutiendo en base a este: &lt;a href="http://juanjoconti.com.ar/files/python/circular-r1.py.html"&gt;circular-r1.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 2&lt;/h4&gt;
+
+&lt;p&gt;Lucio Torre me apuntó este comportamiento no previsto:&lt;/p&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt; Circular([]).prev() == Circular([None]).prev()
+
+True
+
+&lt;/pre&gt;
+
+&lt;p&gt;Estaba retornando None cuando se solicitaba un elemento de una lista vacía. Decidí que sería mejor lanzar una excepción en ese caso: &lt;a href="http://juanjoconti.com.ar/files/python/circular-r2.py.html"&gt;circular-r2.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 3&lt;/h4&gt;
+
+&lt;p&gt;John Lenton se tomó el trabajo de reescribir la clase en una foma mucho más compacta (gacias!). Yo estaba considerando como especiales casos que en realidad no lo eran. Además me mostró como usar &lt;a href="http://docs.python.org/lib/module-unittest.html"&gt;test de unidad&lt;/a&gt; en Python, cosa que nunca había hecho: &lt;a href="http://juanjoconti.com.ar/files/python/circular-r3Tested.py.html"&gt;circular-r3Tested.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 4&lt;/h4&gt;
+
+&lt;p&gt;Luego de unas sugerencias de &lt;em&gt;estilo&lt;/em&gt; decidí hacer un mejor uso de los nombres de las variables (y métodos). También agregué una sugerencia muy interesante de Gabriel Genellina, en lugar de hacer:&lt;/p&gt;
+&lt;pre&gt;
+
+if self == []:
+
+&lt;/pre&gt;
+
+&lt;p&gt;para saber si la lista está vacía, usar:&lt;/p&gt;
+&lt;pre&gt;
+
+if not self:
+
+&lt;/pre&gt;
+
+&lt;p&gt;que es más rápido.&lt;/p&gt;
+&lt;p&gt;También permito que se contruya lal ista circular sin parámetros (lo que da una list circular vacía): &lt;a href="http://juanjoconti.com.ar/files/python/circular-r4Tested.py.html"&gt;circular-r4Tested.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 5&lt;/h4&gt;
+
+&lt;p&gt;Me deshago de la burocracia que tiene la clase y confío más en el programador (chau verificación de rango, chau set/get inncecesarios): &lt;a href="http://juanjoconti.com.ar/files/python/circular-r5Tested.py.html"&gt;circular-r5Tested.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Este es el hilo en la lista de PyAr: &lt;a href="http://mx.grulic.org.ar/lurker/message/20070221.033607.fd125b8e.es.html"&gt;http://mx.grulic.org.ar/lurker/message/20070221.033607.fd125b8e.es.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Algunas referencias&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Lazy_evaluation"&gt;http://www.haskell.org/haskellwiki/Performance/Laziness&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;
+
+&lt;a href="http://en.wikipedia.org/wiki/Lazy_evaluation"&gt;http://en.wikipedia.org/wiki/Lazy_evaluation&lt;/a&gt;
+
+&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics"&gt;http://en.wikipedia.org/wiki/Eager_evaluation&lt;/a&gt;
+
+&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics"&gt;http://en.wikipedia.org/wiki/Python_syntax_and_semantics&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>C</category><category>Haskell</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2007/02/28/lista-circular-en-python.html</guid><pubDate>Wed, 28 Feb 2007 12:41:51 GMT</pubDate></item></channel></rss>

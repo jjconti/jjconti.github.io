@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 25) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-25.html">
+
+
+
+        <link rel="prev" href="index-26.html" type="text/html">
+        <link rel="next" href="index-24.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/20/asociacion-de-metodos-en-tiempo-de-ejecucion-en-python.html" class="u-url">Asociación de métodos en tiempo de ejecución en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/20/asociacion-de-metodos-en-tiempo-de-ejecucion-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-20T21:00:53+00:00" title="2009-01-20 21:00">2009-01-20 21:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/20/asociacion-de-metodos-en-tiempo-de-ejecucion-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/20/asociacion-de-metodos-en-tiempo-de-ejecucion-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En el <a href="http://python-history.blogspot.com/2009/01/introduction-and-overview.html" target="_blank">primer artículo de La Historia de Python (en)</a> se menciona, entre las cualidades que hacen a Python un lenguaje que permite la programación orientada a objetos, la posibilidad de "asociación de métodos en tiempo de ejecución" ("run-time binding of methods"). Hoy en <a href="http://neopythonic.blogspot.com/2008/10/why-explicit-self-has-to-stay.html" target="_blank">otro artículo del autor</a>, vuelvo a leer sobre el tema:</p>
+<p></p>
+<blockquote>Now instances of C have a method with one argument named 'meth' that works exactly as before. It even works for instances of C that were created before the method was poked into the class.</blockquote>
+<p>Vamos a ver un ejemplo de esto:</p>
+<pre>&gt;&gt;&gt; class C:
+
+...     pass
+
+...
+
+&gt;&gt;&gt; c1 = C()
+
+&gt;&gt;&gt; c1.hello()
+
+Traceback (most recent call last):
+
+  File "", line 1, in 
+
+AttributeError: C instance has no attribute 'hello'
+
+&gt;&gt;&gt; def hello(myself, name):
+
+...     myself.lasthello = name
+
+...     print "Hello %s" % name
+
+...
+
+&gt;&gt;&gt; C.hello = hello
+
+&gt;&gt;&gt; c2 = C()
+
+&gt;&gt;&gt; c2.hello("mary")
+
+Hello mary
+
+&gt;&gt;&gt; c1.hello("juanjo")
+
+Hello juanjo</pre>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html" class="u-url">La historia de Python: Introducción y repaso</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-20T15:22:22+00:00" title="2009-01-20 15:22">2009-01-20 15:22</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo <a href="http://python-history.blogspot.com/2009/01/introduction-and-overview.html" target="_blank">Introduction and Overview</a> de Guido  van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>. Mi objetivo es traducir todos los artículos que se publiquen en ese blog.</em><!--more-->
+<h3>Introducción</h3>
+
+<p>Python es en la actualidad uno de los lenguajes de programación dinámicos más populares, junto con Perl, Tcl, PHP y ahora Ruby. A pesar de ser a menudo visto como un lenguaje de "scripting", es en realidad un lenguaje de programación de propósito general como Lisp o Smalltalk. Hoy, Python es usado para todo, desde scripts que luego se tiran hasta servidores web de alta escalabilidad que proveen servicio ininterrumpido 24x7. Permite crear interfaces de usuario, programar con bases de datos, realizar programación web tanto del lado del servidor como del cliente y testear aplicaciones. Es usado por científicos que escriben aplicaciones para las más rápidas supercomputadoras del mundo y por niños que están aprendiendo a programar.</p>
+<p>En este blog, voy a concentrarme en la historia de Python. En particular, cómo Python fue desarrollado, las principales influencias en su diseño, errores cometidos, lecciones aprendidas y futuras direcciones para el lenguaje.</p>
+<p><strong>Reconocimiento:</strong> Estoy en deuda con <a href="http://www.dabeaz.com/">Dave Beazley</a> por muchas de las mejores oraciones en este blog. (Para saber más sobre los orígenes de este blog, vea <a href="http://neopythonic.blogspot.com/2009/01/history-of-python-introduction.html">mi otro blog</a>.)</p>
+<h3>Un repaso rápido a Python</h3>
+
+<p>Cuando uno se encuentra con Python por primera vez, a menudo se sorprende de que el código Python se vea, por lo menos superficialmente, similar a código escrito en otros lenguajes de programación convencionales como C o Pascal. Esto no es un accidente; la sintaxis de Python toma mucho prestado de C. Por ejemplo, muchas de las palabras claves de Python (if, else, while, for, etc.) son las mismas que en C, los identificadores en Python tienen las mismas reglas que los de C, y muchos de los operadores estándares tienen el mismo significado que en C. Por supuesto, Python no es C y una de las principales áreas dónde difiere es que en lugar de usar llaves para agrupar sentencias, usa indentación. Por ejemplo, en lugar de escribir sentencias en C como:</p>
+<pre lang="c" escaped="true">if (a &lt; B) {
+
+    max = b:
+
+} else {
+
+    max = a;
+
+}</pre>
+
+<p>Python simplemente se deshace de todas las llaves (y de los punto y coma finales) y usa la siguiente estructura</p>
+<pre>if a &lt; b:
+
+    max = b
+
+else:
+
+    max = a</pre>
+
+<p>Otra área importante en la que Python se diferencia de los lenguajes del estilo de C es en su uso de tipado dinámico. En C, las variables siempre deben ser declaradas explícitamente y se les debe dar un tipo específico como int o double. Esta información es luego usada para hacer verificaciones estáticas en tiempo de compilación del programa y para reservar memoria para almacenar el valor de las variables. En Python, las variables son simplemente nombres que hacen referencia a objetos. No se necesita declarar las variables antes de que sean asignadas e incluso pueden cambiar de tipo en el medio de un programa. Como otros lenguajes de programación dinámicos, todas las verificaciones de tipo se hacen en tiempo de ejecución por un intérprete en lugar de en un paso de compilación separado.</p>
+<p>Los tipos de datos primitivos que vienen con Python incluyen booleanos, números (enteros de máquina, enteros de precisión arbitraria, y números de coma flotante reales y complejos), y cadenas de texto (de 8 bits y Unicode). Estos son todos tipos de datos inmutables, esto significa que los valores son representados por objetos que no pueden ser modificados después de su creación. Los tipos de datos compuestos que viene con el lenguaje incluyen tuplas (arrays inmutables), listas (arrays que pueden cambiar de tamaño) y diccionarios (tablas hash).</p>
+<p>Para organizar los programas, Python soporta paquetes (grupos de módulos y/o paquetes), módulos (código relacionado agrupado en un solo archivo fuente), clases, métodos o funciones. Para control de flujo, provee if/else, while y una sentencia for de alto nivel que itera sobre cualquier objeto "iterable". Para el manejo de errores, Python usa excepciones. Una sentencia raise lanza una excepción, y las sentencias try/except/finally especifican manejadores para las excepciones. Las operaciones que vienen con el lenguaje lanzan excepciones cuando se encuentran condiciones de error.</p>
+<p>En Python, todos los objetos que pueden ser nombrados son llamados "de primera clase". Esto significa que funciones, clases, métodos, módulos y todos los otros objetos nombrados pueden ser libremente pasados como parámetros, inspeccionados y almacenados en distintas estructuras de datos (por ejemplo, listas o diccionarios) en tiempo de ejecución. Y hablando de objetos, Python también tiene soporte completo para programación orientada a objetos; incluyendo clases definidas por el usuario, herencia y asociación de métodos en tiempo de ejecución.</p>
+<p>Python tiene una extensa librería estándar, la cual es una de las razones de su popularidad. La librería estándar tiene más de 100 módulos y siempre está evolucionando. Alguno de estos módulos incluyen expresiones regulares, funciones matemáticas típicas, hilos, interfaces con sistemas operativos, redes, protocolos estándares de Internet (HTTP, FTP, SMTP, etc.), manejo de email, procesamiento de XML, procesamiento de HTML y toolkits para GUI (Tcl/Tk).</p>
+<p>Además, hay una gran cantidad de módulos y paquetes provistos por terceros, muchos de los cuales también son open source. Aquí uno puede encontrar frameworks web (¡muchos como para listarlos!), más toolkits para GUI, librerías numéricas eficientes (incluyendo wrappers para muchos paquetes populares escritos en Fortran), interfaces con bases de datos relacionales (Oracle, MySQL y otras), SWIG (una herramienta para hacer que librerías C++ estén disponibles como módulos Python), y mucho más.</p>
+<p>Un atractivo principal de Python (y de otros lenguajes de programación dinámicos en ese aspecto) es que tareas que parecen complicadas a menudo pueden ser expresadas con muy poco código. Por ejemplo, aquí hay un script en Python simple que obtiene una página web, la revisa buscando referencias a URLs, e imprime las primeras 10.</p>
+<pre># Scan the web looking for references
+
+
+
+import re
+
+import urllib
+
+
+
+regex = re.compile(r'href="([^"]+)"')
+
+
+
+def matcher(url, max=10):
+
+    "Print the first several URL references in a given url."
+
+    data = urllib.urlopen(url).read()
+
+    hits = regex.findall(data)
+
+    for hit in hits[:max]:
+
+        print urllib.basejoin(url, hit)
+
+
+
+matcher("http://python.org")</pre>
+
+<p>Este programa puede ser modificado fácilmente para hacer un web crawler, y en efecto Scott Hassan me ha dicho que escribió el primer web crawler de Google en Python. Hoy, Google emplea millones de líneas de código Python para manejar muchos aspectos de sus operaciones, desde automatización a manejo de avisos (Descargo: en la actualidad soy un empleado de Google.)</p>
+<p>Por debajo, Python es implementado como una combinación de intérprete y compilador a bytecode. La compilación es llevada a cabo implícitamente cuando los módulos son cargados, y muchas primitivas del lenguaje necesitan que el compilador esté disponible en tiempo de ejecución. A pesar de que la implementación de referencia de Python está escrita en C, y está disponible para cada plataforma de hardware/software existente, muchas otras implementaciones se han vuelto populares. Jython es una versión que corre sobre la JVM y tiene integración con Java. IronPython es una versión para la plataforma .NET de Microsoft que tiene una integración similar con otros lenguajes que corren sobre la plataforma .NET. PyPy es un compilador/intérprete de Python escrito en Python (aún un proyecto de investigación, financiado con fondos de la UE). También está Stackless Python, una variante de la implementación en C que reduce la dependencia del stack de C para llamadas a funciones/métodos, para permitir co-rutinas, continuations y micro hilos.</p>
+<p><em>Traducido por Juan José Conti.</em></p>
+<p>Revisado por César Portela.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/14/un-fin-de-semana-en-upg.html" class="u-url">Un fin de semana en UPG</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/14/un-fin-de-semana-en-upg.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-14T19:28:28+00:00" title="2009-01-14 19:28">2009-01-14 19:28</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/14/un-fin-de-semana-en-upg.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/14/un-fin-de-semana-en-upg.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>Unidad de Producción Guadalupe es el nombre del pequeño campo que tiene mi familia en Carlos Pellegrini. Allí, además de la producción tradicional de la zona, tenemos algunos elementos no tan comunes; principalmente una huerta grande y distintos animales de granja. Hace unos fines de semanas estuvimos comiendo un asado con motivo del regreso de mi hermana de Brasil acompañados por la familia amiga Los Perotti (aproveché la ocasión para sacar algunas fotos), también estuvimos ahí el 25 de diciembre con mi primos y tíos, y muchos otros fines de semana. En la siguiente galería intercalo estas fotos con otras tomadas en los últimos meses para presentarles el lugar.</em><!--more-->
+<p>[gallery]</p>
+<p>El título original del post quedó corto; terminé incluyendo fotos de muchos fines de semana!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/11/por-que-nos-gusta-python.html" class="u-url">Por qué nos gusta Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/11/por-que-nos-gusta-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-11T22:49:00+00:00" title="2009-01-11 22:49">2009-01-11 22:49</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/11/por-que-nos-gusta-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/11/por-que-nos-gusta-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>El siguiente texto era parte del informe del proyecto final de carrera de Juan José Conti y Cecilia Lorena Puccinelli, titulado <strong>Desarrollo Ágil de un Sistema de Gestión de Negocios Inmobiliarios con Software Libre</strong>. Finalmente no fue incluido en la versión definitiva del mismo por lo que lo rescatamos en este blog.</em>
+<!--more-->
+
+<h3>Python</h3>
+
+<p>Python es un lenguaje de programación de propósito general de alto nivel. Su filosofía de diseño hace énfasis en lograr productividad para los programadores y legibilidad del código.</p>
+<p>Fue creado en el año 1990 por Guido Van Rossum y desde entonces ha sido desarrollado como un proyecto del Software Libre por desarrolladores alrededor del mundo.</p>
+<p>A menudo es comparado con lenguajes como C, Java, Perl y Lisp, pero tiene muchas características distintivas que marcan su identidad propia:</p>
+<h4>Intérprete interactivo</h4>
+
+<p>Python viene acompañado de un intérprete interactivo o read-eval-print-loop que permite agilizar el desarrollo de programas ya que se pueden probar ideas y rápidamete ver como resultan sin necesidad de escribir un programa entero en el cual envolverla. Otros lenguajes como Smalltalk, Haskell o Scheme también tienen esta herramienta.</p>
+<p>El siguiente es un ejemplo sencillo de uso del intérprete interactivo, los comandos ingresados por el usuario están precedidos por &gt;&gt;&gt;:</p>
+<p><code>&gt;&gt;&gt; 1 + 2</code></p>
+<p><code>3</code></p>
+<p><code>&gt;&gt;&gt; "hola"</code></p>
+<p><code>'hola'</code></p>
+<p><code>&gt;&gt;&gt; nombre = "fabio"</code></p>
+<p><code>&gt;&gt;&gt; "hola " + nombre</code></p>
+<p><code>'hola fabio'</code></p>
+<h4>Tipos de datos poderosos</h4>
+
+<p>Python incluye de forma nativa tipos de datos poderosos muy útiles a la hora de programar. Las listas y tuplas son secuencias de objetos:</p>
+<p><code>lista = [1,2,3, “cuatro”, Cliente()]</code></p>
+<p><code>tupla = ('u', 1, 3)</code></p>
+<p>Ambos tipos de datos pueden almacenar cualquier tipo de objetos en orden. La principal diferencia entre estos dos tipos de datos es que las listas pueden cambiar en forma dinámica su tamaño mientras que las tuplas son de tamaño fijo (se dice que es un objeto inmutable, como los números o cadenas de texto).</p>
+<p>Los diccionarios son una estructura de datos sin orden que permite almacenar valores asociados a una clave para luego poder recuperarlos a partir de esta. Solo objetos inmutables pueden ser clave de un diccionario.</p>
+<p><code>dicc = {'a': 1, 'b': 10}</code></p>
+<p><code>dicc['a']</code> obtiene el objeto 1</p>
+<p><code>dicc[3] = ‘tres’</code> agrega al diccionario el objeto ‘tres’ asociado a la clave 3 .</p>
+<h4>Espacios en blanco con significado</h4>
+
+<p>En Python los bloques se delimitan mediante el uso de indentación en lugar de utilizar llaves:</p>
+<pre class="code">if carteles == 0:
+
+    print “No hay carteles disponibles.”
+
+else:
+
+    print “Hay %d carteles disponibles.” % carteles</pre>
+
+<p>Esto tiene como objetivo forzar una correcta indentación que redunde en una mayor legibilidad del código escrito.</p>
+<pre>i = 20
+
+while i &gt; 0:
+
+    print i
+
+    i -= 1
+
+</pre>
+
+<h4>Tipado de pato</h4>
+
+<p>El nombre <a href="http://en.wikipedia.org/wiki/Duck_typing" target="_blank">tipado de pato</a> surge de la idea: “si un objeto camina como pato y come como pato, entonces debe ser un pato”.</p>
+<p>Las restricciones de tipo no son checkeadas en tiempo de compilación, sino que las operaciones sobre los objetos siempre se intentan llevar a cabo y fallan en tiempo de ejecución si el objeto no puede responder al mensaje que se le envió.</p>
+<p>Supongamos que definimos la función saludar como sigue:</p>
+<pre>def saludar(o):
+
+    print “hola %s“ % o.nombre</pre>
+
+<p>A esta función no lo interesa el tipo del objeto o, recibido como parámetro, lo único que le importa es que tenga el atributo nombre.</p>
+<p>Así, si la variable m referencia un objeto de la clase Mujer y la variable h referencia un objeto de la clase Hombre y ambas clases tienen un atributo llamado nombre, entonces las siguientes llamadas se ejecutarán sin problemas:</p>
+<p><code>saludar(m)</code></p>
+<p><code>saludar(h)</code></p>
+<p>Si la variable ‘a’ referencia a un objeto de la clase Anonimo y ésta no tiene un atributo llamado nombre, la llamada a:</p>
+<p><code>saludar(a)</code> lanzará una excepción.</p>
+<h4>Librería estándar amplia</h4>
+
+<p><img class="size-medium wp-image-1117" title="python_batteries_included" src="wp-content/uploads/2009/01/python_batteries_included-300x128.jpg" alt="Python viene con las baerías incluidas!" width="300" height="128"></p>
+<p>Al igual que Java, Python cuenta con una amplia librería estándar que acompaña al lenguaje. Ésta incluye módulos para manejar expresiones regulares, crear interfaces gráficas, conectarse a bases de datos entre muchos otros.</p>
+<p>Ésta es una de sus mayores ventajas y a esto se debe la popular expresión “Python viene con las baterías incluidas”.</p>
+<h4>Librerías externas</h4>
+
+<p>Además de los muchos componentes incluidos en la librería estándar de Python, hemos utilizando algunas librerías externas:</p>
+<ul>
+
+    <li>PIL: librería   para manejo de imágenes.</li>
+
+    <li>Pysicopg: conector  para el motor de bases de datos PostgreSQL.</li>
+
+    <li>ReportLab: librería     para generar documentos PDF.</li>
+
+    <li>BeautifulSoap: librería para procesar documentos HTML. Su uso es descrito en la sección 1.1.37.</li>
+
+    <li>Pynum2word: módulo  que convierte números en palabras.</li>
+
+</ul>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/07/automoviles-y-programas.html" class="u-url">Automóviles y programas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/07/automoviles-y-programas.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-07T12:00:08+00:00" title="2009-01-07 12:00">2009-01-07 12:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/07/automoviles-y-programas.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/07/automoviles-y-programas.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"Si la industria automovilística hubiera seguido el mismo desarrollo que las computadoras, un Rolls-Royce costaría hoy 100 dólares, circularía un millón de millas con 3,7 litros y explotaría una vez al año, eliminando a todo el que estuviera dentro en ese momento"
+<p><em> -- Robert X. Cringely</em></p>
+</blockquote>
+<p><em></em></p>
+<p style="text-align: left;"><a href="wp-content/uploads/2009/01/250px-rollsroyce1905.jpg"><img class="size-medium wp-image-1084 aligncenter" title="250px-rollsroyce1905" src="wp-content/uploads/2009/01/250px-rollsroyce1905.jpg" alt="" width="250" height="193"></a>Un clásico que mi amigo Joel me leyó hace muchos años cuando estábamos en la secundaria.</p>
+
+<p><a class="extiw" title="w:Robert X. Cringely" href="http://es.wikipedia.org/wiki/Robert_X._Cringely">Robert X. Cringely</a>, es el seudónimo de <strong>Mark Stephens</strong>, periodista <a title="Estados Unidos" href="http://es.wikiquote.org/wiki/Estados_Unidos">estadounidense</a> de temas informáticos, así como un seudónimo utilizado por varios columnistas de la revista <em>Infoworld</em>.</p>
+<p>Este post es parte de <a href="http://www.juanjoconti.com.ar/2009/01/01/citas-sobre-programacion/" target="_self">Citas sobre programación</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/06/diseno-de-lenguajes.html" class="u-url">Diseño de lenguajes</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/06/diseno-de-lenguajes.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-06T12:00:45+00:00" title="2009-01-06 12:00">2009-01-06 12:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/06/diseno-de-lenguajes.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/06/diseno-de-lenguajes.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>
+<p style="text-align: center;">"El diseño de lenguajes de programación es como pasear en el parque. Bueno, en parque jurásico"
+
+<em> -- Larry Wall</em></p>
+
+</blockquote>
+
+<p><a href="wp-content/uploads/2009/01/200px-jurassic_park_poster.jpg"><img class="size-medium wp-image-1075 aligncenter" title="200px-jurassic_park_poster" src="wp-content/uploads/2009/01/200px-jurassic_park_poster.jpg" alt="" width="200" height="297"></a></p>
+<p>Una pequeña biografía de Larry Wall puede encontrarse en el post <a href="http://www.juanjoconti.com.ar/2009/01/02/nosotros-los-programadores/" target="_self">Nosotros, los programadores</a>.</p>
+<p>Este post es parte de <a href="http://www.juanjoconti.com.ar/2009/01/01/citas-sobre-programacion/" target="_self">Citas sobre programación</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/05/codigo-re-editable.html" class="u-url">Código re-editable</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/05/codigo-re-editable.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-05T12:00:44+00:00" title="2009-01-05 12:00">2009-01-05 12:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/05/codigo-re-editable.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/05/codigo-re-editable.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"Debo confesar un fuerte prejuicio en contra de la moda del código reusable. Para mí, "el código re-editable" es mucho, mucho mejor que una caja negra intocable."
+<p><em> -- <span class="Apple-style-span">Donald E. Knuth</span></em></p>
+</blockquote>
+<p><a href="wp-content/uploads/2009/01/225px-knuthatopencontentalliance.jpg"><img class="alignright size-medium wp-image-1078" title="225px-knuthatopencontentalliance" src="wp-content/uploads/2009/01/225px-knuthatopencontentalliance.jpg" alt="" width="225" height="266"></a><strong>Donald Ervin Knuth</strong>, es uno de los más reconocidos expertos en <a title="Ciencias de la computación" href="http://es.wikipedia.org/wiki/Ciencias_de_la_computaci%C3%B3n">ciencias de la computación</a> por su seminal investigación dentro del análisis de algoritmos y compiladores. Es Profesor Emérito de la <a title="Universidad de Stanford" href="http://es.wikipedia.org/wiki/Universidad_de_Stanford">Universidad de Stanford</a>.</p>
+<p>Se le conoce principalmente por ser el autor de la obra <a title="TAOCP" href="http://www-cs-faculty.stanford.edu/~knuth/taocp.html" target="_blank"><em></em></a><em><a class="new" title="The art of computer programming (aún no redactado)">The art of computer programming</a></em> (<em>El arte de programar computadoras</em>), una de las más respetadas referencias en el campo de las ciencias de la computación. Sentó las bases de y dio nombre al <a title="Análisis de algoritmos" href="http://es.wikipedia.org/wiki/An%C3%A1lisis_de_algoritmos">análisis de algoritmos</a> y ha realizado numerosos aportes a varias ramas teóricas de la <a title="Informática" href="http://es.wikipedia.org/wiki/Inform%C3%A1tica">informática</a>. Es el creador de <a title="TeX" href="http://es.wikipedia.org/wiki/TeX">T<sub>E</sub>X</a>, del sistema de diseño de tipos <a title="METAFONT" href="http://es.wikipedia.org/wiki/METAFONT">METAFONT</a> y del estilo de programación conocido como <a class="new" title="Programación literaria (aún no redactado)" href="http://es.wikipedia.org/w/index.php?title=Programaci%C3%B3n_literaria&amp;action=edit&amp;redlink=1">programación literaria</a> (<em>Literate programming</em>).</p>
+<p><strong>Fuente:</strong> <a href="http://es.wikipedia.org/wiki/Donald_Knuth" target="_blank">Wikipedia</a></p>
+<p>Página web del autor: <a href="http://www-cs-faculty.stanford.edu/~knuth/" target="_blank">http://www-cs-faculty.stanford.edu/~knuth/</a></p>
+<p>Este post es parte de <a href="http://www.juanjoconti.com.ar/2009/01/01/citas-sobre-programacion/" target="_self">Citas sobre programación</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/04/aprender-a-programar.html" class="u-url">Aprender a programar</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/04/aprender-a-programar.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-04T12:00:26+00:00" title="2009-01-04 12:00">2009-01-04 12:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/04/aprender-a-programar.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/04/aprender-a-programar.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"La formación en informática no puede convertir a nadie en experto programador, de la misma forma que estudiar pinceles y pigmentos puede hacer a alguien un experto pintor"
+<p><em> -- Eric S. Raymond</em></p>
+</blockquote>
+<p><a href="wp-content/uploads/2009/01/eric_steven_raymondcut.png"><img class="alignright size-medium wp-image-1091" title="eric_steven_raymondcut" src="wp-content/uploads/2009/01/eric_steven_raymondcut-239x300.png" alt="" width="239" height="300"></a>Lo que se necesita es practicar, practicar y practicar. Juntar horas de vuelo. <a href="http://en.wikipedia.org/wiki/Malcolm_Gladwell" target="_blank">Malcolm Gladwell</a> publicó hace poco <a title="Outliers" href="http://en.wikipedia.org/wiki/Outliers_(book)" target="_blank">un libro</a> en el que expone (junto con muchos otros ejemplos de otros ámbitos) que genios como Bill Gates y Bill Joy lograron sus éxitos como programadores gracias a las miles de horas que le dedicaron a esta actividad durante sus años en la universidad.</p>
+<p><strong>Eric Steven Raymond</strong>, también conocido como ESR, es el autor de <em><a class="mw-redirect" title="La Catedral y el Bazar" href="http://es.wikipedia.org/wiki/La_Catedral_y_el_Bazar">The Catedral and the Bazar</a></em> (<em>La Catedral y el Bazar</em>) y el responsable actual del <em>Jargon File</em> (<em><a class="new" title="The New Hacker's Dictionary (aún no redactado)" href="http://es.wikipedia.org/w/index.php?title=The_New_Hacker%27s_Dictionary&amp;action=edit&amp;redlink=1">The New Hacker's Dictionary</a></em>). Si bien con el <em><a title="Archivo de la jerga" href="http://es.wikipedia.org/wiki/Archivo_de_la_jerga">Jargon File</a></em> obtuvo fama como historiador de la cultura <a title="Hacker" href="http://es.wikipedia.org/wiki/Hacker">hacker</a>, se convirtió después de 1997 en una figura líder en el <a href="http://es.wikipedia.org/wiki/Open_source#Movimiento_del_open_source" target="_blank">Movimiento del Open Source</a> y el <a title="Código abierto" href="http://es.wikipedia.org/wiki/C%C3%B3digo_abierto">Código abierto</a>. Hoy día es uno de sus personajes más famosos y controvertidos.</p>
+<p>Fue el coordinador del cliente de correo electrónico <a title="Fetchmail" href="http://es.wikipedia.org/wiki/Fetchmail">Fetchmail</a>. También colaboró con los modos de edición de <a title="Emacs" href="http://es.wikipedia.org/wiki/Emacs">Emacs</a> y coescribió porciones de la biblioteca GNU <a title="Ncurses" href="http://es.wikipedia.org/wiki/Ncurses">ncurses</a>.</p>
+<p><strong>Fuente:</strong> <a title="ESR" href="http://es.wikipedia.org/wiki/Eric_S._Raymond" target="_blank">Wikipedia</a></p>
+<p>Página web del autor: <a title="esr at catb" href="http://catb.org/~esr/" target="_blank">http://catb.org/~esr/</a></p>
+<p>Este post es parte de <a href="http://www.juanjoconti.com.ar/2009/01/01/citas-sobre-programacion/" target="_self">Citas sobre programación</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/03/los-chicos-malos.html" class="u-url">Los chicos malos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/03/los-chicos-malos.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-03T12:00:08+00:00" title="2009-01-03 12:00">2009-01-03 12:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/03/los-chicos-malos.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/03/los-chicos-malos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"Esto es lo que ocurre con la gente que piensa que odia las computadoras. Lo que realmente odia es a los malditos programadores"
+<p><em> -- Larry Niven</em></p>
+</blockquote>
+<p>Por suerte muchos mortales aún no saben de nuestra existencia :-).</p>
+<p><a href="wp-content/uploads/2008/12/165px-larryniven.jpg"><img class="alignright size-medium wp-image-1046" title="165px-larryniven" src="wp-content/uploads/2008/12/165px-larryniven.jpg" alt="" width="165" height="213"></a><strong>Larry Niven</strong>, nacido en la ciudad de <a class="mw-redirect" title="Los Angeles" href="http://es.wikipedia.org/wiki/Los_Angeles">Los Angeles</a> (<a class="mw-redirect" title="EE. UU." href="http://es.wikipedia.org/wiki/EE._UU.">EE. UU.</a>) en 1938, es un escritor de <a title="Ciencia ficción" href="http://es.wikipedia.org/wiki/Ciencia_ficci%C3%B3n">ciencia ficción</a> estadounidense. Conocido sobre todo como el autor de la serie <a title="Mundo Anillo" href="http://es.wikipedia.org/wiki/Mundo_Anillo">Mundo Anillo</a> y también por el universo creado bajo el nombre de Espacio Conocido (<em>Known Space</em>), el éxito de su carrera como escritor de ciencia ficción lo acreditan sus varios premios <a title="Premio Hugo" href="http://es.wikipedia.org/wiki/Premio_Hugo">Hugo</a> y <a title="Premio Nébula" href="http://es.wikipedia.org/wiki/Premio_N%C3%A9bula">Nébula</a>. Se ha dedicado a la escritura profesionalmente desde 1963.</p>
+<p>La mayoría de las historias de Niven tienen lugar en un universo de ficción denominado "Espacio conocido", que presenta un escenario futuro en el que la una humanidad ultratecnificada comparte los mundos de diversos sistemas cercanos al Sol con más de una docena de razas alienígenas entre las que se incluyen especies como los agresivos kzin o los cobardes titerotes de Pierson, los subyugados kdatlyno o los pulpoides Jotoki. Muchos alienígenas son encarnados en personajes que, con frecuencia, acompañan a los protagonistas o son los propios protagonistas de las novelas de Niven.</p>
+<p style="text-align: right;"></p>
+
+<p style="text-align: right;"></p>
+
+<p style="text-align: right;"></p>
+
+<p style="text-align: left;"><strong>Fuente:</strong> <a href="http://es.wikipedia.org/wiki/Larry_Niven" target="_blank">Wikipedia</a></p>
+
+<p style="text-align: left;">Fans club del autor: <a href="http://www.larryniven.org/" target="_blank">http://www.larryniven.org</a></p>
+
+<p style="text-align: left;">Este post es parte de <a href="http://www.juanjoconti.com.ar/2009/01/01/citas-sobre-programacion/" target="_self">Citas sobre programación</a>.</p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/01/02/nosotros-los-programadores.html" class="u-url">Nosotros, los programadores</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/01/02/nosotros-los-programadores.html" rel="bookmark"><time class="published dt-published" datetime="2009-01-02T12:00:14+00:00" title="2009-01-02 12:00">2009-01-02 12:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/01/02/nosotros-los-programadores.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/02/nosotros-los-programadores.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"La mayoría de ustedes están familiarizados con las virtudes del programador. Son tres, por supuesto: pereza, impaciencia y orgullo desmedido"
+<p><em> -- Larry Wall</em></p>
+</blockquote>
+<p>De las tres, la pereza es la más importante. Nos impulsa a resolver problemas. Muchas veces me encuentro escribiendo programas con el objetivo de evitar hacer tareas repetitivas, difíciles de hacer "a mano" o aburridas.</p>
+<p><a href="wp-content/uploads/2008/12/180px-larry_wall_yapc_20071.jpg"><img class="size-medium wp-image-1037 alignright" title="180px-larry_wall_yapc_20071" src="wp-content/uploads/2008/12/180px-larry_wall_yapc_20071.jpg" alt="" width="180" height="253"></a><strong>Larry Wall</strong> (nacido el 27 de septiembre de 1954) es un programador, lingüista y autor, más conocido por haber creado el lenguaje de programación <a title="Perl" href="http://es.wikipedia.org/wiki/Perl">Perl</a> en 1987.</p>
+<p>Wall es el autor del programa <em>rn</em> (lector de artículos de <a title="Usenet" href="http://es.wikipedia.org/wiki/Usenet">Usenet</a>) y del casi universal <em>patch</em>. Ha ganado el <span class="new">IOCCC</span> (concurso internacional de código C ofuscado) dos veces y recibió el primer premio de la <a title="Free Software Foundation" href="http://es.wikipedia.org/wiki/Free_Software_Foundation">Free Software Foundation</a> para el avance del <a title="Software libre" href="http://es.wikipedia.org/wiki/Software_libre">software libre</a> en 1998.</p>
+<p>Más allá de sus habilidades técnicas, Wall es conocido por su irónico sentido del humor, que manifiesta en sus comentarios en el código fuente o en Usenet. Por ejemplo (traducción libre): "No me gusta hacer cosas estúpidas, excepto si son a propósito".</p>
+<p style="text-align: right;"></p>
+
+<p style="text-align: left;"><strong>Fuente:</strong> <a href="http://es.wikipedia.org/wiki/Larry_Wall" target="_blank">Wikipedia</a></p>
+
+<p style="text-align: left;">Este post es parte de <a href="http://www.juanjoconti.com.ar/2009/01/01/citas-sobre-programacion/" target="_self">Citas sobre programación</a>.</p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-26.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-24.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (GIMP)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/gimp.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Manipulación de pixels con Python-Fu</title><link>http://www.juanjoconti.com.ar/posts/2007/12/29/manipulacion-de-pixels-con-python-fu.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Usando &lt;a title="The GNU Image Manipulation Program" href="http://www.gimp.org" target="_blank"&gt;GIMP&lt;/a&gt; y el complemento que permite crear &lt;a title="Python-Fu doc" href="http://www.gimp.org/docs/python/index.html" target="_blank"&gt;plug-ins en Python&lt;/a&gt; podemos hacer manipulación a bajo nivel de los pixels de una imagen.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;PixelRegion&lt;/h3&gt;
+&lt;p&gt;PixelRegion permite realizar una abstracción sobre una imagen de forma tal de verla como una región de pixeles. Cada posición x,y de la región corresponde a un pixel de la imagen. En el caso de las imágenes &lt;a title="Red, Green, Blue" href="http://es.wikipedia.org/wiki/Modelo_de_color_RGB" target="_blank"&gt;RGB&lt;/a&gt;, cada pixel tiene 3 valores. En Python-Fu estos valores son representados con un string de 3 caracteres en el que cada caracter es uno de aquellos que tiene su número de orden (función &lt;code&gt;ord&lt;/code&gt;) entre  y 255.&lt;/p&gt;
+&lt;p&gt;Los siguientes ejemplos son una demostración sencilla de como trabajar con PixelPerfect para manipular imágenes. En el primer ejemplo  se leen los valores de algunos de los pixeles de la imagen y en el segundo se escriben otros.&lt;!--more--&gt;&lt;/p&gt;
+&lt;h4&gt;Ejemplo 1 (lectura)&lt;/h4&gt;
+
+&lt;p&gt;La siguiente imagen de 5x5 pixeles (ampliada) será usada para este ejemplo:&lt;/p&gt;
+&lt;p align="center"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/12/5-big.jpg" alt="5×5 pixel image"&gt;&lt;/p&gt;
+
+&lt;p align="center"&gt;&lt;em&gt;Imagen original&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La función &lt;code&gt;pixel&lt;/code&gt; es la que se ejecutará cuando ejecutemos el plug-in creado para este ejemplo. No se ingresan parámetros desde la interfaz gráfica del mismo, pero la función recibe 2 argumentos. Objetos que representan la imagen y la capa (layer) a procesar.&lt;/p&gt;
+&lt;pre&gt;def pixels(img, layer):
+
+
+
+    w = layer.width
+
+    h = layer.height
+
+
+
+    pr = layer.get_pixel_rgn(0, 0, w, h)
+
+
+
+    print "Valores de los pixeles de las esquinas de la imagen"
+
+
+
+    r,g,b = pr[0,0]
+
+    print [ord(x) for x in r,g,b]
+
+
+
+    r,g,b = pr[0,4]
+
+    print [ord(x) for x in r,g,b]
+
+
+
+    r,g,b = pr[4,0]
+
+    print [ord(x) for x in r,g,b]
+
+
+
+    r,g,b = pr[4,4]
+
+    print [ord(x) for x in r,g,b]
+
+
+
+    layer.update(0, 0, w, h)
+
+    layer.flush()
+
+    gimp.displays_flush()&lt;/pre&gt;
+
+&lt;p&gt;El ejemplo es sencillo y lo que hace es instanciar una PixelRegion tan grande como la capa (layer). Luego los diferentes pixeles de la misma pueden accederse mediante sus coordenadas: &lt;code&gt;pr[x,y]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Se muestran los valores RGB de cada uno de los puntos del ejemplo.&lt;/p&gt;
+&lt;p&gt;Código fuente: &lt;a title="read" href="http://www.juanjoconti.com.ar/files/python/fu/pixels/pixels-read.py.html" target="_blank"&gt;pixels-read.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Ejemplo 2 (escritura)&lt;/h4&gt;
+
+&lt;p&gt;En una porción de código que empieza de forma similar a la del ejemplo anterior podemos ver que una vez que hemos obtenido la PixelRegion que nos interesa, podemos escribir pixeles en ella.&lt;/p&gt;
+&lt;p&gt;El siguiente ejemplo aplicado sobre la imagen del ejemplo anterior dibuja una equis amarilla:&lt;/p&gt;
+&lt;pre&gt;def pixels_write(img, layer):
+
+
+
+    w = layer.width
+
+    h = layer.height
+
+    pr = layer.get_pixel_rgn(0, 0, w, h)
+
+
+
+    yellow_rgb = (255,255,0)
+
+    yellow_str = chr(yellow_rgb[0]) + chr(yellow_rgb[1]) + chr(yellow_rgb[2])
+
+
+
+    for i in xrange(5):
+
+        pr[i,i] = yellow_str
+
+        pr[4-i,i] = yellow_str
+
+
+
+    layer.update(0, 0, w, h)
+
+    layer.flush()
+
+    gimp.displays_flush()&lt;/pre&gt;
+
+&lt;p align="center"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/12/5-big-yellow.jpg" alt="5×5 image with yellow pixels"&gt;&lt;/p&gt;
+
+&lt;p align="center"&gt;&lt;em&gt;Imagen procesada con el código del ejemplo 2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p align="left"&gt;Código fuente: &lt;a title="write" href="http://www.juanjoconti.com.ar/files/python/fu/pixels/pixels-write.py.html" target="_blank"&gt;pixels-write.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a title="Mis artículos sobre plug-ins para GIMP en Python" href="http://www.juanjoconti.com.ar/categoria/aprendiendo-python/python-fu/" target="_blank"&gt;Más artículos&lt;/a&gt; relacionados con Python-Fu.&lt;/li&gt;
+
+    &lt;li&gt;Experimentos con PixelRegion.&lt;/li&gt;
+
+    &lt;li&gt;&lt;a title="API" href="http://developer.gimp.org/api/2.0/app/app-pixel-region.html" target="_blank"&gt;API en C&lt;/a&gt; de PixelRegion.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>GIMP</category><category>Python</category><category>Python Fu</category><guid>http://www.juanjoconti.com.ar/posts/2007/12/29/manipulacion-de-pixels-con-python-fu.html</guid><pubDate>Sat, 29 Dec 2007 21:55:56 GMT</pubDate></item><item><title>Creando plug-ins para GIMP con Python (charla)</title><link>http://www.juanjoconti.com.ar/posts/2006/08/22/creando-plug-ins-para-gimp-con-python-charla.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Este es el material de la charla que dí el sábado pasado (19 de agosto) en el &lt;a href="http://www.grulic.org.ar/eventos/pythonday1/"&gt;1º Python Day del Grulic&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.juanjoconti.com.ar/files/python/fu/charla-cordoba/index.html"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Presentación (navegable y link al formato original)&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Código fuente&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+
+
+
+    &lt;li&gt;&lt;a href="http://www.juanjoconti.com.ar/files/python/fu/colorFrame.py.html"&gt;colorFrame.py&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://www.juanjoconti.com.ar/files/python/fu/sky.py.html"&gt;sky.py&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+
+
+&lt;p&gt;También tengo un texto que escribí para ordenar mis ideas, pero está muy desprolijo como para publicarlo. SI alguien lo quiere (es buena ayuda para seguir la presentación) pídamelo por mail y se lo mando.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>GIMP</category><category>Python</category><category>Python Fu</category><guid>http://www.juanjoconti.com.ar/posts/2006/08/22/creando-plug-ins-para-gimp-con-python-charla.html</guid><pubDate>Tue, 22 Aug 2006 23:24:16 GMT</pubDate></item><item><title>Diagramas de Constelaciones QAM y PSK</title><link>http://www.juanjoconti.com.ar/posts/2006/04/24/diagramas-de-constelaciones-qam-y-psk.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un tiempo que estoy colaborando con la cátedra de &lt;a target="_blank" title="Comunicaciones" href="http://capas1y2news.blogspot.com"&gt;Comunicaciones&lt;/a&gt; de la &lt;a title="FRSF UTN" href="http://www.frsf.utn.edu.ar"&gt;FRSF UTN&lt;/a&gt;, en el marco de esta, hoy se &lt;a target="_blank" title="Constealciones en capas1y2" href="http://capas1y2news.blogspot.com/2006/04/graficador-de-constelaciones.html"&gt;pueblicó&lt;/a&gt; una herramienta web para graficar diagramas de constelación de distintas m-arias PSK y QAM y para ver el impacto de la relación S/N en la tasa binaria obtenida. Se encuentra en &lt;a href="http://www.firebirds.com.ar/constelaciones"&gt;http://www.firebirds.com.ar/constelaciones&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Comunicaciones</category><category>Facultad</category><category>GIMP</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2006/04/24/diagramas-de-constelaciones-qam-y-psk.html</guid><pubDate>Mon, 24 Apr 2006 00:10:06 GMT</pubDate></item><item><title>kit de plug-ins para generar diagramas de constelaciones con GIMP</title><link>http://www.juanjoconti.com.ar/posts/2006/04/03/kit-de-plug-ins-para-generar-diagramas-de-constelaciones-con-gimp.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Más información sobre este proyecto en la &lt;a href="http://firebirds.com.ar/~juanjo/wordpress/proyectos/kit-de-plug-ins-para-gimp-generador-de-diagramas-de-constelaciones-psk-y-qam/"&gt;sección Constelaciones&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Comunicaciones</category><category>Facultad</category><category>General</category><category>GIMP</category><category>Python</category><category>Python Fu</category><guid>http://www.juanjoconti.com.ar/posts/2006/04/03/kit-de-plug-ins-para-generar-diagramas-de-constelaciones-con-gimp.html</guid><pubDate>Mon, 03 Apr 2006 14:04:25 GMT</pubDate></item><item><title>Plug-in para gimp que genera constelaciones PSK</title><link>http://www.juanjoconti.com.ar/posts/2006/03/17/plug-in-para-gimp-que-genera-constelaciones-psk.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Este es mi primer plug-in para gimp. Es un plug-in para &lt;a title="GIMP web site" target="_blank" href="http://www.gimp.org"&gt;gimp&lt;/a&gt; escrito en &lt;a title="Python web site" target="_blank" href="http://www.python.org"&gt;Python&lt;/a&gt; de 150 líneas:&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;p align="center"&gt;&lt;img alt="PSK Plug-in" id="image41" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/03/psk-menu.jpg"&gt;&lt;/p&gt;
+&lt;p align="left"&gt;Si en la opción numérica de la ventana anterior se elije 3 se obtiene esta imange:&lt;/p&gt;
+
+&lt;p align="center"&gt;&lt;img alt="8-PSK" id="image42" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/03/8-psk.jpg"&gt;&lt;/p&gt;
+
+&lt;p align="left"&gt;Y si se elije 4 esta:&lt;/p&gt;
+
+&lt;p align="center"&gt;&lt;img alt="16-PSK" id="image43" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/03/16-psk.jpg"&gt;&lt;/p&gt;
+
+&lt;p align="center"&gt;&lt;/p&gt;
+
+&lt;p&gt;El código fuente puede obtenerse &lt;a href="http://www.juanjoconti.com.ar/files/python/generator-psk.py.html"&gt;aquí&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Facultad</category><category>GIMP</category><category>Python</category><category>Python Fu</category><category>Software Libre</category><guid>http://www.juanjoconti.com.ar/posts/2006/03/17/plug-in-para-gimp-que-genera-constelaciones-psk.html</guid><pubDate>Fri, 17 Mar 2006 05:02:30 GMT</pubDate></item><item><title>El arte de Python-Fu (cinturón blanco)</title><link>http://www.juanjoconti.com.ar/posts/2006/03/16/el-arte-de-python-fu-cinturon-blanco.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Como parte de mi aprendizaje del lenguaje de programación &lt;a title="Aprendiendo Python" href="http://firebirds.com.ar/~juanjo/wordpress/?cat=7"&gt;Python&lt;/a&gt; y por la necesidad de generar automáticamente algunos dibujos, incurcioné en el milenario arte del Python-Fu.&lt;/p&gt;
+&lt;p&gt;Si querés conocer más sobre este acestral arte, seguí leyendo..&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Script-Fu (un dialecto de Scheme) es el lenguaje original (además de C) utilizado para escribir plug-ins para &lt;a target="_blank" title="Gimp web site" href="http://www.gimp.org"&gt;Gimp&lt;/a&gt; (The GNU Image Manipulation Program). Actualmente se pueden escribir plug-ins en otros lenguajes como Perl, Tcl y.. Python&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;¿qué hay que tener instalado?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;python (&lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;apt-get install python&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; en Debian GNU/Linux)&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;gimp (&lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;apt-get install gimp&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;)&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;pygimp (&lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;apt-get install gimp-python&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;)&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;Los dos primeros programas suelen estar instalados en la mayoría de las instalaciones de GNU/Linux, el último no. Una verificación rápida puede hacerse ejecutando gimp y buscando la opción Python-Fu en el menú Exts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Script-Fu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;En &lt;a title="Estructura de un python-fu (en)" target="_blank" href="http://www.jamesh.id.au/software/pygimp/structure-of-plugin.html"&gt;http://www.jamesh.id.au/software/pygimp/structure-of-plugin.html&lt;/a&gt; se puede ver la estructura de un Script-Fu.&lt;/p&gt;
+&lt;p&gt;Cuando gimp es ejecutado, busca los archivos ejecutables que se encuentran en &lt;code&gt;$HOME/.gimp-x-y/plug-ins/&lt;/code&gt;. En el caso de los scripts en python, la función register() es ejecutada y cuando se acceda al plug-in mediante el menú especificado se ejecutará su función principal. Antención a esto: los archivos deben ser tener encendido el bit de ejecución (&lt;code&gt;chmod +x hello-world.py&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Otro tip: si algo no funciona como se espera, una forma de enterarse que pasó es ejecutar gimp desde una terminal (&lt;code&gt;gimp --verbose&lt;/code&gt;) y leer en esta las distintas salidas que produce el programa (allí se van a escribir los errores que se produzcan en tiempo de ejecución).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Links útiles&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://www.jamesh.id.au/software/pygimp/"&gt;http://www.jamesh.id.au/software/pygimp/&lt;/a&gt;: documentación sobre gimp-python.&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://carol.gimp.org"&gt;Carol at Gimp.org&lt;/a&gt;: muchos scripts que pueden servir de ejemplo, a mi me sirvió leer algunos antes de lanzarme a escribir el mío.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;[update: a pedido del público: hello-world.py]&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Pueden bajar &lt;a title="Hello-World.py" href="http://www.juanjoconti.com.ar/files/python/hello-world.py.html"&gt;hello-world.py&lt;/a&gt; para ver un ejemplo sencillo. Debería generar una imagen como esta:&lt;img align="top" alt="Hello World" id="image46" title="Hello World" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/03/hello.jpg"&gt;salvo que cambien los parámetros ;-)&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>GIMP</category><category>Python</category><category>Python Fu</category><category>Software Libre</category><guid>http://www.juanjoconti.com.ar/posts/2006/03/16/el-arte-de-python-fu-cinturon-blanco.html</guid><pubDate>Thu, 16 Mar 2006 15:36:03 GMT</pubDate></item></channel></rss>

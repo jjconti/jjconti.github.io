@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 9) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-9.html">
+
+
+
+        <link rel="prev" href="index-10.html" type="text/html">
+        <link rel="next" href="index-8.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/02/28/lista-circular-en-python.html" class="u-url">Lista circular en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/02/28/lista-circular-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2007-02-28T12:41:51+00:00" title="2007-02-28 12:41">2007-02-28 12:41</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/02/28/lista-circular-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2007/02/28/lista-circular-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Estoy haciendo un juego inspirado en el <a href="http://es.wikipedia.org/wiki/Juego_de_la_vida">Juego de la Vida</a>. A modo de bonus-track también se podrán ver algunos patrones del tradicional juego de cero jugadores. Algunos patrones se cargarán de archivos en la computadora y se pondrán a disposición de usuario para que los examine. Para una mayor comodidad va a haber un botón "atrás" (&gt;).</p>
+<p>Si lo anterior fuera un enunciado en un examen de Algoritmos y Estructuras de Datos, ¿cual sería la estructura de datos más adecuada para mantener esa información? Sin dudas una lista circular. No sería muy agradable llegar al último patrón, apreatar "siguiente" y que no pase nada. Quiere que cuando esté parado en el último elemento y apriete "siguiente", me muestre el primero.</p>
+<p></p>
+<blockquote>
+<p>Una lista circular es una lista lineal en la que el último nodo a punta al primero.</p>
+<p>Las listas circulares evitan excepciones en la operaciones que se realicen sobre ellas. No existen casos especiales, cada nodo siempre tiene uno anterior y uno siguiente.</p>
+</blockquote>
+
+<p>El artículo va a ser un poco largo, va apasar por algunos lenguajes de programación y va a evaluar distintos enfoques. Pero adelanto que va a terminar en una implementación de una <strong>lista circular en Python basada en el manejo de índice</strong>.</p>
+<!--more-->
+
+<h3>Enfoque C</h3>
+
+<p>Conocí este tipo de estructura en la materia que mensioné más arriba. Usabamos C como lenguaje de programación, así que fué el primer lenguaje dónde implementé una. A esta estructura de datos se la llama <em>dinámica</em> por que puede crecer indefinidamente alocando porciones de memoria de la computadora, sin necesidad de que estas estén físicamente contiguas.</p>
+<p>Supongamos que la lista circular va a ser de enteros (por simplicidad). Se necesitarán 1) una estructura Nodo más o menos así:</p>
+<pre lang="c">
+
+typedef struct nodo {
+
+   int dato;
+
+   struct nodo *next;
+
+} nodo;
+
+</pre>
+
+<p></p>
+<center><img src="wp-content/uploads/2007/02/next.jpg" alt="Node with next pointer"></center>
+<p>o así:</p>
+<pre lang="c">
+
+typedef struct nodo {
+
+   int dato;
+
+   struct nodo *next;
+
+   struct nodo * prev;
+
+} nodo;
+
+</pre>
+
+<p></p>
+<center><img src="wp-content/uploads/2007/02/nextprev.jpg" alt="Node with next and prev pointers"></center>
+<p>Las flechas de los dibujos son punteros (direcciones en memoria) a otros nodos, mediante los cuales estos se van a ir uniendo, bien para formar una lista lineal o para formar una lista como las que nos interesan, cuando el último nodo con su puntero next apunte al primero.</p>
+<p>2) una forma de solicitar memoria para un nuevo nodo:</p>
+<pre lang="c">
+
+nodo * pnodo = (nodo *)malloc(sizeof(nodo));
+
+</pre>
+
+<p>y 3) manejar punteros; un puntero a la lista, uno  a la posición actual, uno a la anterior a la actual.</p>
+<p>Si bien usar estos elementos de la forma correcta <em>is not rocket science</em>, requiere cierto conocimiento de un nivel más bajo (por más cercano al hardware) de lo que los modernos lenguajes dinámicos nos tiene acostumbrado (de hecho en los lenguajes de más alto nivel, este problema ya viene solucionado).</p>
+<p>Para solucionar mi problema voy a preferir una solución con un poquito más de nivel de abstracción, pero creo que este enfoque a modo de introducción sirve para ir poniendo las piezas en el tablero.</p>
+<h3>Enfoque Haskell</h3>
+
+<p>En la pasada <a href="http://www.cafeconf.org/">CafeConf</a> fuí a una charla de mi amigo <a href="http://www.pupeno.com">Pupeno</a> sobre lenguajes de programación, allí vi algo que no conocía. En <a href="http://www.haskell.org/haskellwiki/Haskell">Haskell</a>, nos mostro este concepto: Listas infinitas. Lenguajes como este tiene una propiedad llamada <em>Lazyness</em></p>
+<p>En programación, <em>lazy evaluation</em>, también llamada <em>delayed evaluation</em>, es la técnica que consiste en retrasar un cálculo computacional hasta el momento en que su resultado se necesite.</p>
+<p>Por ejemplo:</p>
+<pre>
+
+x = calculo_intensivo(1000)
+
+</pre>
+
+<p>no necesita ser evaluado hasta que por ejemplo se haga:</p>
+<pre>
+
+print x + 1
+
+</pre>
+
+<p>Esta propiedad permite entre otras cosas crear listas infinitas (de nuevo un un pseudo código muy parecido a Python):</p>
+<pre>
+
+miListaInfinita = ListaInfinita(arg)
+
+</pre>
+
+<p>Claro que no vamos a poder hacer:</p>
+<pre>
+
+print miListaInfinita
+
+</pre>
+
+<p>O podríamos pero la operación no terminaría nunca, pero si prodríamos hacer:</p>
+<pre>
+
+print miListaInfinita[100004]
+
+</pre>
+
+<p>Y dependiendo de la clase de lista infinita que sea se necesitarán calcular los anteriores términos (en el caso de por ejemplo la lista de <a href="http://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci">Fibonacci</a>) o no (en una lista de todos 0).</p>
+<p>Bien. A dónde estamos yendo con todo esto? Al fin de cuentas yo estaba buscando una lista circular y me encontré con listas infinitas. La conclusión es que una lista circular puede verse como una lista infinita ya que:</p>
+<p>a) Siempre puedo pedirle un elemento siguiente sin que se agoten.</p>
+<p>b) Puedo pedir el elemento 100004º y también obtenerlo (luego de algunas vueltas, por su puesto).</p>
+<p>Así sería una lista crcular (infinita) en Haskell:</p>
+<pre lang="haskell">
+
+cycle [1,2,3]
+
+</pre>
+
+<p>o</p>
+<pre lang="haskell">
+
+a = [1,2,3|a]  
+
+</pre>
+
+<p>Bien, puedo hacer esto en Python? Con poco esfuerzo, con mis conocimientos y en una tade de lluvia,  <strong>yo no</strong>. Salvo en algunas excepciones, la evaluación en Python no es <em>Lazy</em>, sino <em>Eager</em> o estricta. De todas formas algunos links por si alguien quiere seguir investigado en esa línea:</p>
+<ul>
+
+    <li>Streams</li>
+
+    <ul>
+
+    <li><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5">http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5</a></li>
+
+    <li><a href="http://docs.python.org/lib/stream-reader-objects.html">http://docs.python.org/lib/stream-reader-objects.html</a></li>
+
+    </ul>
+
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>Generator expressions<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+
+<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://gnosis.cx/publish/programming/charming_python_b13.html"</span><span class="nt">&gt;</span>http://gnosis.cx/publish/programming/charming_python_b13.html<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.python.org/dev/peps/pep-0289/"</span><span class="nt">&gt;</span>http://www.python.org/dev/peps/pep-0289/<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://docs.python.org/ref/genexpr.html"</span><span class="nt">&gt;</span>http://docs.python.org/ref/genexpr.html<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+
+<span class="nt">&lt;/ul&gt;</span>
+</pre>
+
+
+
+
+<blockquote>
+
+Juanjo-ar-stafe&gt; is python lazy?
+
+Habbie&gt; python allows programmers to be lazy
+
+Habbie&gt; and that's what matters
+
+itchi&gt; Juanjo-ar-stafe: Are you not lazy?? :-)
+
+</blockquote>
+
+<p>Ya que agoté esta rama, backtracking y adelante!</p>
+<h3>De todas formas esto se trataba de Python, no?</h3>
+
+<p>Yo estaba cometiendo el error en pensar en el término Lista circular doblemente enlazada, lo cual tiene sentido en C, pero no en Python. Yo no se como están implementadas las estrcturas de datos que provee el lenguaje y sin embargo puedo usarlas sin problemas. La diferencia en que la lista en cuestión sea doble o simplemente enlazada es solo una cuestión de optimización y no de funcionalidad. Cito una parte de uno de los mails que intercambiamos con Pupeno al respecto y que me ayudó mucho a encarar mejor el problema:</p>
+<blockquote>
+
+El hacer una lista doblemente enlazada nos permite agregar funciones sobre la lista que la simplemente no nos permite y/o hacer que ciertas funciones sean mas rapido.
+
+En una lista podes hacer l.next() y tambien podes hacer l.prev() la diferencia es que prev() en una lista doblemente enlazada es constante en el tiempo O(1) y en una simple seria O(n) donde n es la cantidad de items en la lista (probablemente tenga un promedio de O(n/2)).
+
+Ahora, me parece que lo que vos necesitas realmente es que sea circular, no es cierto?
+
+</blockquote>
+
+<p>Ahora que ya se lo que necesito, puedo poner manos a la obra. ¿Qué necesito? Un objeto que sea una secuencia mutable de elementos al que siempre que quiera pueda decirle next() o prev() y me de el elemento siguiente o anterior al actual.</p>
+<p>Lo primero en lo que podría pensar es en crear objetos Nodo y hacer una implementación C-like, usando referencias a objetos en lugar de punteros a estructuras pero.. creo que esto sería:</p>
+<p>a) relativamente complicado, casi tanto como sería hacerlo en C. Más si mis objetivos de eficiencia, robustez y usabilidad son altos.</p>
+<p>y b) un desapovechamiento de lo que ya está hecho (si llegó hasta aca, por favor siga leyendo).</p>
+<p>Una de las estructuras de datos más poderosas que vienen con Python es <em>list</em>, algunos ejemplos rápidos:</p>
+<pre>
+
+&gt;&gt;&gt; li = [1, "hola", 5, 8.5]
+
+&gt;&gt;&gt; li[3]
+
+8.5
+
+&gt;&gt;&gt; li[:3]
+
+[1, 'hola', 5]
+
+&gt;&gt;&gt; li[:]
+
+[1, 'hola', 5, 8.5]
+
+&gt;&gt;&gt; li[-2]
+
+5
+
+&gt;&gt;&gt; li[-2:]
+
+[5, 8.5]
+
+&gt;&gt;&gt; li + ["muy bien"]
+
+[1, 'hola', 5, 8.5, 'muy bien']
+
+</pre>
+
+<p>Robusta, eficiente y muy usable.</p>
+<p>Como pueden ver el manejo de índices le da mucha flexibilidad y es uno de los elementos más usados que constituyen el lenguaje. ¿Cuanto tiempo me tomaría hacer una implementación desde cero así solo por encapricharme con usar referencia circular? Paso.. voy a extender <em>list</em> y a agregar la funcionalidad que requiero mediante el manejo de índices.</p>
+<h4>Primer implementación</h4>
+
+<p>Esta fue la priemr implementación que hice: <a href="http://juanjoconti.com.ar/files/python/circular.py.html">circular.py</a></p>
+<p>Enseguida mandé un mail a mi <a href="http://python.com.ar/moin/ListaDeCorreo">lista preferida de Python</a> para pedir opiniones, de seguro tenía muchas cosas por mejorar.</p>
+<h4>Review 1</h4>
+
+<p>Enseguida Manuel Quiñones me mandó algunas optimizaciones (antes hacía llamadas recursivas de los métodos) + pruebas hechas con <a href="http://docs.python.org/lib/module-doctest.html">DocTest</a>: <a href="http://juanjoconti.com.ar/files/python/circularDocTest.py.html">circularDocTest.py</a></p>
+<p>Mezclé sus optimizaciones con mi código original (seguí sin usar una forma automatizada de testeo) para seguir discutiendo en base a este: <a href="http://juanjoconti.com.ar/files/python/circular-r1.py.html">circular-r1.py</a></p>
+<h4>Review 2</h4>
+
+<p>Lucio Torre me apuntó este comportamiento no previsto:</p>
+<pre>
+
+&gt;&gt; Circular([]).prev() == Circular([None]).prev()
+
+True
+
+</pre>
+
+<p>Estaba retornando None cuando se solicitaba un elemento de una lista vacía. Decidí que sería mejor lanzar una excepción en ese caso: <a href="http://juanjoconti.com.ar/files/python/circular-r2.py.html">circular-r2.py</a></p>
+<h4>Review 3</h4>
+
+<p>John Lenton se tomó el trabajo de reescribir la clase en una foma mucho más compacta (gacias!). Yo estaba considerando como especiales casos que en realidad no lo eran. Además me mostró como usar <a href="http://docs.python.org/lib/module-unittest.html">test de unidad</a> en Python, cosa que nunca había hecho: <a href="http://juanjoconti.com.ar/files/python/circular-r3Tested.py.html">circular-r3Tested.py</a></p>
+<h4>Review 4</h4>
+
+<p>Luego de unas sugerencias de <em>estilo</em> decidí hacer un mejor uso de los nombres de las variables (y métodos). También agregué una sugerencia muy interesante de Gabriel Genellina, en lugar de hacer:</p>
+<pre>
+
+if self == []:
+
+</pre>
+
+<p>para saber si la lista está vacía, usar:</p>
+<pre>
+
+if not self:
+
+</pre>
+
+<p>que es más rápido.</p>
+<p>También permito que se contruya lal ista circular sin parámetros (lo que da una list circular vacía): <a href="http://juanjoconti.com.ar/files/python/circular-r4Tested.py.html">circular-r4Tested.py</a></p>
+<h4>Review 5</h4>
+
+<p>Me deshago de la burocracia que tiene la clase y confío más en el programador (chau verificación de rango, chau set/get inncecesarios): <a href="http://juanjoconti.com.ar/files/python/circular-r5Tested.py.html">circular-r5Tested.py</a></p>
+<p>Este es el hilo en la lista de PyAr: <a href="http://mx.grulic.org.ar/lurker/message/20070221.033607.fd125b8e.es.html">http://mx.grulic.org.ar/lurker/message/20070221.033607.fd125b8e.es.html</a></p>
+<h3>Algunas referencias</h3>
+
+<ul>
+
+    <li><a href="http://en.wikipedia.org/wiki/Lazy_evaluation">http://www.haskell.org/haskellwiki/Performance/Laziness</a></li>
+
+    <li>
+
+<a href="http://en.wikipedia.org/wiki/Lazy_evaluation">http://en.wikipedia.org/wiki/Lazy_evaluation</a>
+
+</li>
+
+    <li>
+<a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics">http://en.wikipedia.org/wiki/Eager_evaluation</a>
+
+</li>
+
+    <li><a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics">http://en.wikipedia.org/wiki/Python_syntax_and_semantics</a></li>
+
+</ul>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/02/24/el-estilo-hp.html" class="u-url">El estilo HP</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/02/24/el-estilo-hp.html" rel="bookmark"><time class="published dt-published" datetime="2007-02-24T13:25:31+00:00" title="2007-02-24 13:25">2007-02-24 13:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/02/24/el-estilo-hp.html#disqus_thread" data-disqus-identifier="cache/posts/2007/02/24/el-estilo-hp.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<strong>Cómo Bill Hewlett y yo creamos nuestra empresa</strong> es el subtítulo de este libro. Es uno de los que estuvo saliendo en la colección Grandes Casos Empresariales de <a href="http://www.lanacion.com.ar/">La Nación</a> y fué escrito por David Packard.
+<p>Lleno de anécdotas, es un libro lindo de leer. Empieza con recuerdos de Pueblo, en Stanford, la ciudad natal de David Packard y sigue con su paso por la universidad dónde conoce a Bill Hewlett. Cuenta los inicios de la empresa, el apoyo de un profesor, el primer garaje, experiencias laborales previas y como de apoco la empresa fue creciendo.</p>
+<p>En la página 96, dentro del capítulo 5 se listas los objetivos que se plantearon como empresa. Recordemes que la empresa nació a finales de la década del 30, algunos de los objetivos son totalmente vanguardistas para la época como darles a los empleados la oportunidad de compartir los beneficios de la empresa, o la responsabilidad con la sociedad.</p>
+<p>Se los listo a continuación (esta es una versión más pulida publicada en 1966):</p>
+<!--more-->
+
+<ol>
+<li>
+<p><em>El Beneficio</em>: Reconocer que el beneficio es la mejor medida individual de nuestra contribución a la sociedad y la fuente última de nuestra fuerza corporativa. Debemos intentar obtener el máximo beneficio posible sin dejar de lado los demás objetivos.</p>
+</li>
+<li>
+<p><em>Los clientes</em>: Luchar por la mejora continua en términos de calidad, utilidad, y valor de los productos y servicios que ofrecemos a nuestros clientes.</p>
+</li>
+<li>
+<p><em>El campo de interés</em>: Concentrar nuestros esfuerzos en buscar continuamente nuevas oportunidades de crecimiento pero limitando nuestra participación a campos en los que tengamos aptitudes y a los que podamos contribuir.</p>
+</li>
+<li>
+<p><em>El crecimiento</em>: Impulsar el crecimiento como medida del fuerza y requicito para la supervivencia.</p>
+</li>
+<li>
+<p><em>Los empleados</em>: Darles oportunidades laborales a los empleados de HP que incluyan la oportunidad de compartir el éxito de la empresa que ellos han hecho posible. Darles seguridad laboral basada en la actividad y hacer que se puedan sentir personalmente satisfechos por el cumplimiento de su trabajo.</p>
+</li>
+<li>
+<p><em>La organización</em>: Crear un ambiente organizacional que fomente la moticavión personal, la iniciativa y la creatividad, y un amplio grado de libertad para trabajar hacia los objetivos y metas establecidas.</p>
+</li>
+<li>
+<p><em>La ciudadanía</em>: Satisfacer nuestra obligación como buenos ciudadanos haciendo aportaciones a la comunidad y a las instituciones de nuestra sociedad que crean el entorno en el que operamos.</p>
+</li>
+</ol>
+<p>Ahora voy a intentar encontrar pasajes en el libro que reflejen cada uno de esos objetivos:</p>
+<p><strong>El Beneficio</strong></p>
+<blockquote> En HP (como en otras empresas), las personas, los materiales, las instalaciones, el dinero y el tiempo son los recursos disponibles para llevar a nuestro negocio. Aplicando nuestras habilidades, convertimos dichos <em>inputs</em> en productos y servicios útiles. Si hacemos un buen trabajo, los clientes pagan más por nuestros productos que la suma de los costes de producción y distribución. Esta diferencia, nuestro beneficio, representa el valor que añadimos a los recursos que utilizamos.</blockquote>
+
+<p><strong>Los clientes</strong></p>
+<blockquote> La principal clave del éxito de las operaciones de HP es el trabajo que hacemos para satisfacer las necesidades del cliente. Alentamos a cada persona que forma parte del organización para que piense constantemente en cómo  afecta lo que hace en el servicio al cliente.</blockquote>
+
+<p><strong>El capo de interés</strong></p>
+<blockquote> A veces nos encontrábamos con oportunidades de desarrollar productos que incluían nueva tecnología en áreas dónde no teníamos potencial comercial. Se los vendíamos a empresas que sí lo tuvieran.</blockquote>
+
+<p><strong>El crecimiento</strong></p>
+<blockquote> A lo largo de los años Bill y yo hemos especulado muchas veces sobre el tamaño ideal de la empresa. No creemos que el crecimiento sea importante por sí mismo. Sin embargo, el crecimiento continuo era esencial para nosotros para poder alcanzar nuestros objetivos, y para mantenernos competitivos.</blockquote>
+
+<p><strong>Los empleados</strong></p>
+<blockquote> El principio subyacente de las políticas de personal de HP es compartir, compartir las responsabilidades de definir y conseguir las metas, compartir la propiedad de la empresa a través de planes de adquisición de acciones, compartir los beneficios, compartir las oportunidades de desarrollo tanto personal como profesional e, incluso, compartir el peso creado por las ocasionales crisis en el negocio.</blockquote>
+
+<p><strong>La organización</strong></p>
+<blockquote> La política puertas abiertas apunta a construir confianza mutua y comprensión, y a crear un ambiente en el que las gente se sienta libre para expresar sus ideas, opiniones, problemas y preocupaciones.
+
+Esta política anima a los empleados que tengan problemas, ya sean tanto de tipo profesional como personal, a que lo hablen con el directivo pertinente.
+
+Todo el personal de HP, incluido el director general, trabajan en oficinas abiertas. Esta disponibilidad tiene el inconveniente de que siempre te pueden interrumpir, pero en HP creemos que las ventajas de la accesibilidad superan con creces sus inconvenientes.</blockquote>
+
+<p><strong>La ciudadanía</strong></p>
+<blockquote> Actualmente HP opera en muchas conunidades distintas de todo el mundo. Inculcamos a nuestra gente que cada una de estas comunidades debería estar mejor con nuestra presencia. Esto quiere decir ser sensible a las necesidades e intereses de la comunidad.</blockquote>
+
+<p>Hay varias anédotas en libro lindas de leer, se las dejo como comentarios más tarde.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/01/31/python-multiplataforma-ospathjoin.html" class="u-url">Python multiplataforma: os.path.join()</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/01/31/python-multiplataforma-ospathjoin.html" rel="bookmark"><time class="published dt-published" datetime="2007-01-31T13:08:55+00:00" title="2007-01-31 13:08">2007-01-31 13:08</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/01/31/python-multiplataforma-ospathjoin.html#disqus_thread" data-disqus-identifier="cache/posts/2007/01/31/python-multiplataforma-ospathjoin.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Por lo general cuando se habla de <strong>multiplataforma</strong> se hace sólo referencia al hecho de que cierto <em>código</em> pueda <em>ser ejecutado</em> en diferentes plataformas (léase en la mayoría de los casos hardware + SO) sin tener que ser <em>portado</em>, es decir que se realicen cambios importantes en este. </p>
+<p>En el caso de los programas escritos en un lenguaje compilado es necesario <em>construir</em> un archivo ejecutable (un archivo que contiene código binario) específico para cada plataforma en la que se lo quiera correr. Esto no sucede con los lenguajes interpretados, dónde la cuestión es más simple. Un programa escrito en un lenguaje interpretado será multiplataforma si el intérprete del lenguaje en el que está escrito lo es (siempre y cuando no se haga uso de alguna característica específica de alguna plataforma). Al fin de cuentas, el <em>archivo ejecutable</em> de un programa interpretado no será más que un archivo de texto plano.</p>
+<p>Pero puede haber algo más...</p>
+<!--more-->
+
+<p>Hace poco, usando Python, descubrí algo que me hizo pensar un poco más sobre las características que debe brindar un lenguaje de programación para que lo consideremos multiplataforma. Piensen lo siguiente: archivos. Un programa suele hacer un uso intenso de archivos (de configuración, imágenes, para guardar datos y luego recuperarlos, etc..). Lo que nos lleva a pesar: ¿cómo encuentra un programa esos archivos? Probablemente el lenguaje de programación que estemos utilizando nos proveerá de una función para abrir archivos[1] que recibiera como parámetros el nombre del archivo y la forma (modo) en que queremos abrirlo (para lectura, para escritura, crearlo si no existe, en modo binario, etc..). Dejemos de lado el modo y pensemos en lo que significa el nombre del archivo, ¿sería <code>config.php</code> un nombre válido? ¿Lo sería <code>files/config.php</code>? ¿Y que tal <code>/var/www/prog/files/config.php</code>? Me animo a darles una alternativa más en la que pensar: <code>C:\wamp\www\prog\files\config.php</code>.</p>
+<p>Con esto quiero expresar que el parámetro <em>nombre</em> puede ser tanto un nombre absoluto para el archivo como uno relativo. <code>config.php</code> y <code>files/config.php</code> son ejemplos de nombre relativo mientras que <code>/var/www/prog/files/config.php</code> y <code>C:\wamp\www\prog\files\config.php</code> lo son de nombres absolutos. En mi opinión lo más cómodo es utilizar nombres relativos al directorio dónde se encuentra el archivo ejecutable, pero tenerlos todos juntos en el primer nivel de este sería engorroso y poco elegante.</p>
+<p>Uno puede pensar en tener una organización de directorios que le permita trabajar cómodo a la vez que les permite a otros encontrar fácilmente lo que esta buscando. Por ejemplo:</p>
+<p><code>data/</code> : para guardar los datos usados por el programa.</p>
+<p><code>data/imgs/</code> : para las imágenes</p>
+<p><code>data/sounds/</code> : para los sonidos</p>
+<p><code>config/</code> : para los archivos de configuración</p>
+<p>etc..</p>
+<p>Y aquí es justamente dónde surge el problema cuya solución quería comentar.</p>
+<p>Habrán notado en los ejemplos de más arriba hay una sutil diferencia. En los primeros se separa los nombres de los directorios con la barra "/" y en otros con "\". El primero es el separador de directorios utilizado en GNU/Linux (y en UNIX en general), mientras que el segundo es el utilizado en MS Windows. Y este es solo un ejemplo, pero pueden existir muchas diferencias (en este punto) de plataforma en plataforma, algunas que incluso no conozcamos u otras que ni siquiera han surgido aún!!</p>
+<p>Usando la función os.path.join, un <em>pathname</em> que funcione correctamente en la plataforma dónde el programa sea ejecutado será creado[2].</p>
+<p>La forma de usarla que he siembre visto es importando el módulo os:</p>
+<p></p>
+<pre>import os
+<p>os.path.join("data", "sounds", "wrong.wav")</p></pre>
+<p>Yo conocí esta función leyendo un <a href="http://www.pygame.org/docs/tut/chimp/ChimpLineByLine.html">tutorial de PyGame</a>. ¿Conocen algo parecido en otro lenguaje?</p>
+<p>[1] Cuando hablo de abrir un archivo lo hago para ejemplificar la necesidad de encontrar un archivo, lo siguiente es igualmente válido para una función que por ejemplo reciba como parámetro el nombre de archivo de una imagen y la cargue en memoria para que luego podamos disponer de esta.</p>
+<p>[2] Las versiones modernas de MS Windows se las arreglan para manejar pathnames que utilizan la barra "/" en lugar de la barra "\", pero esto es solo una parte de las plataformas dónde potencialmente ejecutaremos nuestro programa.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/01/29/el-yotivenco.html" class="u-url">El Yotivenco</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/01/29/el-yotivenco.html" rel="bookmark"><time class="published dt-published" datetime="2007-01-29T00:47:10+00:00" title="2007-01-29 00:47">2007-01-29 00:47</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/01/29/el-yotivenco.html#disqus_thread" data-disqus-identifier="cache/posts/2007/01/29/el-yotivenco.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>De atrás para adelante y con mucho cariño: El Conventillo. Es un grupo musical liderado por el actor (<a href="http://es.wikipedia.org/wiki/Diarios_de_motocicleta">Diarios de motocicleta</a> y <a href="http://es.wikipedia.org/wiki/Hermanos_y_detectives">Hermanos y Detectives</a>) <a href="http://es.wikipedia.org/wiki/Rodrigo_de_la_Serna">Rodrigo de la Serna</a>, que interpreta candombes, milongas y tangos. En sus palabras, el folclore del Río de la Plata (de las dos orillas, sin papeleras que nos dividan), una mezcla de culturas. El negro con el tambor, el gaucho con la guitarra y el tano con el bandoneón (resumiendo la cosa).</p>
+<p>Anoche vi un show suyo en el Parador Cultural de <a href="http://www.vgb.org.ar/">Villa General Belgrano</a> (Córdoba) y a pesar de que nunca posteo sobre shows que voy a ver, y ya que hace poco estrené una sección <em>Música</em> en este blog, lo hago. Su actuación merece la excepción.</p>
+<!--more-->
+
+<p>Antes de que la música inunde la sala, una pareja gay sentada atrás mío:</p>
+<p>-- Epa.. esta lleno, mira vos, he? Lo deben haber llenado a lo último.</p>
+<p>-- Si.</p>
+<p>-- Está lindo armado, sencillo pero lindo.</p>
+<p>-- Si.</p>
+<p>-- Mucha percusión para tango, no?</p>
+<p>-- Si.. La guitarra es lindo, tocarla.</p>
+<p>-- Si. No es fácil. Podés rasguear, pero el punteo es trabajoso.</p>
+<p>-- Si?</p>
+<p>-- Si.</p>
+<p>-- Ha, mira vos. Cantará de la Serna?</p>
+<p>-- Nooo, que va a cantar. Leerá alguna poesía. Bah.. que se yo capaz que algo canta.</p>
+<p>-- Che, grabaron un CD estos, no?</p>
+<p>-- Nooo, que van a grabar.. Bah.. a lo mejor grabaron.. No, no grabaron.</p>
+<p>-- Che, que es eso?</p>
+<p>-- Debe ser una bandera, de Bolivia o algo así. Pero no, la de Bolivia tiene que tener más colores..</p>
+<p>Estos dos personajes charlaban como si quisiesen que todos nos enterásemos de lo que decían. La verdad, era demasiado molesto. Algunas aclaraciones:</p>
+<p>Una menor: el grupo si tiene un CD grabado (homónimo al grupo)</p>
+<p>Uno mayor: de la Serna no es un adorno para el grupo, es el líder (y se nota en el escenario), es la vos principal de todos los temas cantados (la mayoría son cantados, pero también hacen temas instrumentales) y también toca la guitarra (hay 3 en el grupo, también hay un contrabajo y dos personas más en percusión).</p>
+<p>Después de deleitar al público con su música y recibiendo tras cada pieza la ovación del público siempre agradecidas por palabras de Rodrigo en nombre de sus compañeros (decoradas con alguna pincelada de su profesión, la de actor) todos los integrantes su hicieron de algún instrumento de percusión, bajaron del escenario y tocando caminaron hasta la calle. Toda la sala los siguió hasta una calle de la Villa en la que sorprendidos caminantes recibían a los músicos siguiendo el ritmo con sus palmas.</p>
+<p>Algo cómico para terminar.</p>
+<p>En una parte del show, Rodrigo de la Serna, con mucho esmero, presenta a cada uno de sus músicos. Cuando termina, una vos desde el fondo grita "¿y vos quien sos?". Risas en el público. El actor (a quien me parece no lo cayó muy bien el chiste) contesta "Pequeño detalle. Me olvidaba. En guitarra y vos Rodrigo de la Serna."</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/01/23/canciones-de-soledad.html" class="u-url">Canciones de Soledad</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/01/23/canciones-de-soledad.html" rel="bookmark"><time class="published dt-published" datetime="2007-01-23T12:48:06+00:00" title="2007-01-23 12:48">2007-01-23 12:48</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/01/23/canciones-de-soledad.html#disqus_thread" data-disqus-identifier="cache/posts/2007/01/23/canciones-de-soledad.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hace unos días mi amigo Juan Manuel (fan Nº 1 de <a href="http://es.wikipedia.org/wiki/Soledad_Pastorutti">La Sole</a> en Carlos Pellegrini y zona aledañas, eterno buscador y coleccionista de los más raros elementos musicales de esta artista) me pidió que rastree en Internet las letras de algunos temas para él.</p>
+<p>En un papelito arrugado tenía anotado:</p>
+<p><strong>Sorpresa</strong> (con Luciano Pereyra): no la pude conseguir :-(</p>
+<p><strong>Me salgo de la vaina </strong>(canta Romina, letra Sole): esa si! :-)</p>
+<p>del otro lado del papelito:</p>
+<p><strong>Sembrador de tapera</strong> (Carabajal): no me entiendo la letra así que no estoy seguro de que ese sea el título, de todas formas no la encontre :-(</p>
+<p><strong>Los rastros de Juan Vagual</strong>: esa si!</p>
+<p>Juan tenía grabadas las canciones que no conseguimos así que ayer, <em>notebook </em>en falda, nos las escuchamos una y otra vez para tipearlas. Los versos los organizamos a nuestro criterio y pueden faltar (o sobrar) signos de puntuación. Esero que alguien que busque estas canciones en Internet las encuentre.</p>
+<!--more-->
+
+<p></p>
+<h3>Sorpresa</h3>
+<p><strong>(Luciano Pereyra y Soledad)</strong></p>
+<p>La oportunidad de mi vida está, </p>
+<p>se que no la dejaré escapar.</p>
+<p>Con fuerza y con fe se que lograre </p>
+<p>alcanzar la meta que jure.</p>
+<p>Mi vos es un himno</p>
+<p>que no callará, </p>
+<p>encendiendo estrellas  </p>
+<p>entre tanta oscuridad.</p>
+<p>Debo seguir, debo pelear. </p>
+<p>Hoy tengo una oportunidad.</p>
+<p>Cantando una canción podrá mi vos</p>
+<p>llegar hasta tu corazón.</p>
+<p>Debo seguir, debo pelear. </p>
+<p>Hoy tengo un sueño que alcanzar </p>
+<p>Y de mi la ilusión de libertad</p>
+<p>que el mundo entero escuchará.</p>
+<p>Cuando en mi interior pierdo dirección, </p>
+<p>cuando ya no encuentro una razón</p>
+<p>para continuar y no abandonar </p>
+<p>a pesar de tanta adversidad.</p>
+<p>Tras la tormenta</p>
+<p>siempre sale el sol. </p>
+<p>Brilla la esperanza </p>
+<p>de un mañana que es mejor.</p>
+<p>Debo seguir, debo pelear. </p>
+<p>Hoy tengo una oportunidad.</p>
+<p>Cantando una canción podrá mi vos</p>
+<p>llegar hasta tu corazón.</p>
+<p>Debo seguir, debo pelear. </p>
+<p>Hoy tengo un sueño que alcanzar </p>
+<p>Y de mi la ilusión de libertad</p>
+<p>que el mundo entero escuchará.</p>
+<h3>Sembrador de taperas</h3>
+
+<p><strong>(Cuti y Roberto Carabajal con Soledad)</strong></p>
+<p>Si acaso otra vez naciera,</p>
+<p>que el mismo vientre me geste.</p>
+<p>Y de la misma cimiente brote cantando a la vida.</p>
+<p>Y sea América Latina el lugar donde despierte.</p>
+<p>Haría los mismos caminos que hasta el amor me arrimaron,</p>
+<p>pero esos que me alejaron de mis asombros de niño</p>
+<p>y de mis muertos queridos no volvería a trajinarlos.</p>
+<p>La tierra de mis nostalgias es fértil hembra morena,</p>
+<p>pero las almas pequeñas, semillas del enanismo,</p>
+<p>las usuras y egoísmo la sembraron de taperas.</p>
+<p>Hermano pueblo emigrante de la orfandad sin frontera,</p>
+<p>buscame una chacarera cuando se achica el consuelo. </p>
+<p>Pa’ cantar que nuestro suelo, nuestra raíz, nos espera.</p>
+<p>Por eso ando rebenqueando la servidumbre extranjera,</p>
+<p>fabricantes de quimera que desarraigan mis changos.</p>
+<p>Arrancándolos de cuajo como quitando malezas.</p>
+<p>Si acaso otra vez naciera más te amaría semejante.</p>
+<p>Si mi semejante de antes el que robara mi infancia</p>
+<p>No me echarían la perrada cuando mi sangre reclame. </p>
+<p>Si acaso otra vez naciera, Señor, si a tu valle vuelvo, </p>
+<p>mi libertad y derecho que a todo el mundo le toca,</p>
+<p>como mi sangre y mi sombra no morirían de destierro.</p>
+<p>Hermano pueblo emigrante de la orfandad sin fronter,</p>
+<p>buscame una chacarera cuando se achica el consuelo. </p>
+<p>Pa’ cantar que nuestro suelo, nuestra raíz, nos espera.</p>
+<hr>
+
+<p>Por último, esto termina de convencerme e que necesito una sección llamada <em>Música </em>en este blog.</p>
+<p><strong>[UPDATE]</strong> 11 de febrero de 2007. Veo que muchas personas están llegando al blog dsepués de buscar en algún buscador estos temas de Soledad. Hola visitantes :) Encontraron lo que buscaban? Espero que si. Los invito a que dejen un comentario contando de de dónde son. Saludos!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/01/16/la-orden-del-fenix.html" class="u-url">La orden del fenix</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/01/16/la-orden-del-fenix.html" rel="bookmark"><time class="published dt-published" datetime="2007-01-16T16:20:59+00:00" title="2007-01-16 16:20">2007-01-16 16:20</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/01/16/la-orden-del-fenix.html#disqus_thread" data-disqus-identifier="cache/posts/2007/01/16/la-orden-del-fenix.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Algunos de uds por el título del post ya sabrán de que se trata. Es sorprendente la cantidad de Harrypotteros que hay ahí afuera. Desde chicos y chicas de la secundaria hasta adultos con gusto por la <a href="http://es.wikipedia.org/wiki/Literatura_fant%C3%A1stica">Fantasía</a>.</p>
+<p>Hace unas (pocas) semanas al rededor del cambio de año estuve leyendo el <a href="http://es.wikipedia.org/wiki/Harry_Potter_y_la_Orden_del_F%C3%A9nix">5º libro de saga de Harry Potter</a>. La historia se pone cada vez más atrapante, cuando abra la biblioteca de mi pueblo voy a sacar el 6º libro para leerlo.</p>
+<p>La primer vez que oí hablar de este mago huérfano fué en el año 2000 (+/- 1,5 años, la exactitud de todas formas no es muy importante) cuando mis primos de Santa Fe emepezaron a leer sus aventuras. Me acuerdo también que por esos años salía mucho en los noticieros, la Harrymanía como la llamaban. Yo estaba leyendo <a href="http://es.wikipedia.org/wiki/El_Se%C3%B1or_de_los_Anillos">El Señor de los Anillos de JRR Tolkien</a> y sin sustento concideré a esta saga que se estaba publicando una fantasía bizarra, creo que incluso lo desacredité en algunas ocaciones. Este post es una sincera disculpa.</p>
+<!--more-->
+
+<p>Hace menos de un año estaba esperando. En el lugar había un libro amarillo con un chico volando en una escoba en la tapa: Harry Potter y la Piedra Filosofal. Sin nada mejor que hacer, me puse a leerlo. Me enganchó la historia, lo pedí prestado y lo deboré en pocos días. Cuando ese fin de semana volví a mi pueblo alquilé la película homónima (no la conseguí en dvd por lo que tuve que desempolvar mi videocasetera) y la disfruté mucho. El resto del año continué pidiéndo prestado los libros y alquilando la película cada vez que terminaba de leer uno. Ahora que terminé el quito libro voy a tener que esperar hasta julio de este año para ver la <a href="http://es.wikipedia.org/wiki/Harry_Potter_y_la_orden_del_f%C3%A9nix_%28pel%C3%ADcula%29">5ª película en el cine</a>.</p>
+<p>Hace unos días había empezado a escribir este post pero me colgé leyendo sobre esta historia y <a href="http://es.wikipedia.org/wiki/J._K._Rowling">su autora</a> en Internet. Lean esto:</p>
+<p></p>
+<blockquote> En 1990, J.K. Rowling estaba viajando en un tren lleno de Manchester a Londres cuando la idea de Harry “simplemente pasó” por su cabeza. Rowling da cuenta de la experiencia en su sitio web diciendo: Yo había estado escribiendo casi continuamente desde que tenía seis años, pero nunca había estado tan emocionada sobre una idea así antes. [...] <em>Yo simplemente me senté y pensé, durante cuatro horas (el tren se había retrasado), y todos los detalles burbujearon hacia mi cabeza, y este chico desarreglado y de pelo negro que no sabía que era un mago comenzó a ser cada vez más y más real para mí.</em> Esa tarde, la autora comenzó la pre-escritura para su primera novela, Harry Potter y la Piedra Filosofal, un plan semi-detallado que incluiría los diagramas de cada uno de sus siete libros previstos, además de una cantidad enorme de información biográfica e histórica sobre sus personajes y el mundo mágico.
+<p>En el transcurso de los siguientes seis años que incluyeron su traslado a Portugal el nacimiento de su primera hija, el divorcio de su primer marido, y el regreso a Escocia, Rowling continuó la escritura de su libro. Viviendo en Edimburgo, Rowling escribió buena parte del mismo en cafés locales, con la ayuda de una beca del Consejo de las Artes escocés. Incapaz de afrontar el gasto de un jardín de niños, su hija sería una compañera constante en su trabajo.</p>
+<p>En 1996, Harry Potter y la Piedra Filosofal fue terminado y el manuscrito fue enviado a diversos agentes. El segundo al que acudió, Christopher Little, ofreció representarla y envió el manuscrito a Bloomsbury. Después de que ocho editoriales lo hubieran rechazado, Bloomsbury ofreció a Rowling un adelanto de £3,000 por su publicación.</p>
+<p>A pesar de que Rowling no había tenido en mente una categoría de edad particular para sus potenciales lectores cuando comenzó a escribir, los editores apuntaron inicialmente a niños de entre nueve y once años. En la víspera de la publicación, los editores pidieron a Joanne Rowling adoptar un nombre de autor con un género más neutral, para abordar a los chicos varones de esta edad, temiendo que no estarían interesados en leer una novela escrita por una mujer. Ella eligió utilizar J.K. Rowling (Joanne Kathleen Rowling), omitiendo su nombre y usando el de su abuela como segundo.</p>
+</blockquote>
+<p>Que me dicen uds? Leyeron algún libro de la saga? les gustó?</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/12/26/nuevamente-en-linea.html" class="u-url">Nuevamente en línea</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/12/26/nuevamente-en-linea.html" rel="bookmark"><time class="published dt-published" datetime="2006-12-26T15:24:54+00:00" title="2006-12-26 15:24">2006-12-26 15:24</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/12/26/nuevamente-en-linea.html#disqus_thread" data-disqus-identifier="cache/posts/2006/12/26/nuevamente-en-linea.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Amigos, una nota rápida. Aproveché una hora de conexión esta siesta para volver a poner en línea mi blog. No se preocupen, el tema es temporal :) </p>
+<p>Mantenganse sintonizados para futuras novedades.</p>
+<p>Saludos a todos</p>
+<p>Juanjo, desde Carlos Pellegrini.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/29/cargar-programas-graficos-como-un-usuario-distinto-al-que-que-se-ha-logueado.html" class="u-url">Cargar programas gráficos como un usuario distinto al que está logueado</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/29/cargar-programas-graficos-como-un-usuario-distinto-al-que-que-se-ha-logueado.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-29T11:07:53+00:00" title="2006-11-29 11:07">2006-11-29 11:07</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/29/cargar-programas-graficos-como-un-usuario-distinto-al-que-que-se-ha-logueado.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/29/cargar-programas-graficos-como-un-usuario-distinto-al-que-que-se-ha-logueado.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<h3>Escenario</h3>
+<p>Te despertás en la mañana. El zumbido de la computadora se entremezcla con el canto de los pájaritos. Tu hermana la debe haber encendido temprano. Una ducha para terminar de despertarte. Café, masitas de agua (típico desayuno del día que te das cuenta que hay que ir al super a hacer las compras de la semana). La computadora está encendida, pensás en iniciar el cliente de correo para leer algunos mails. Usás Thunderbird (no necesariamente, pero si algún cliente gráfico). Encendés el monitor que está apagado y rápidamente reconocés el  wallpaper que tu hermana se hizo con la foto del novio. En la barra de tareas hay un programa minimizado: lees aMule 2.0.3. Click. Decenas de barritas de colores, algunas ya se completaron de verde (hoy es un buen día para compartir música).</p>
+<p>Abris una terminal:</p>
+<p><code></code></p>
+<p>marisu@sarge:~$ su juanjo</p>
+<p>Password:</p>
+<p>juanjo@sarge:/home/marisu$ thunderbird</p>
+<p>Xlib: connection to ":0.0" refused by server</p>
+<p>Xlib: No protocol specified</p>
+<p><br></p>
+<p>(thunderbird-bin:15655): Gtk-WARNING **: cannot open display:</p>
+<p>juanjo@sarge:/home/marisu$</p>
+<p></p>
+<p>Oops!</p>
+<p>Sos un buen hermano, así que no querés cortarle la descarga de música a tu hermana. Pero querés aprovechar mientras el café está aún caliente para leer tus mails. ¿Solución?</p>
+<!--more-->
+
+<h3>Solución</h3>
+
+<p><code></code></p>
+<p>juanjo@sarge:~$ exit</p>
+<p>exit</p>
+<p>marisu@sarge:~$ xhost +local:juanjo</p>
+<p>non-network local connections being added to access control list</p>
+<p>marisu@sarge:~$ su juanjo</p>
+<p>Password:</p>
+<p>juanjo@sarge:/home/marisu$ thunderbird</p>
+<p></p>
+<p>Dejo este post por que hoy a la mañana no recordaba el comando y estuve unos 10 minutos en google hasta encontrarlo, espero a alguien le sirva! ¿Alguna otra forma de solucionar el problema?</p>
+<p>Saludos!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/28/1aa-experiencia-xp.html" class="u-url">1ª experiencia XP</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/28/1aa-experiencia-xp.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-28T00:49:11+00:00" title="2006-11-28 00:49">2006-11-28 00:49</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/28/1aa-experiencia-xp.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/28/1aa-experiencia-xp.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<h3>Métodos Ágiles</h3>
+<p>Métodos Ágiles para el Desarrollo de Software es una materia electiva del segundo cuatrimestre de 4º año de Ingeniería en Sistemas de Información en la la facultad dónde estudio (<a href="http://www.frsf.utn.edu.ar">UTN-FRSF</a>). Yendo al grano: estudia los llamados <a href="http://www.agile-spain.com/agilev2/manifiesto_agil">Métodos Ágiles</a>, en particular <a href="http://www.extremeprogramming.org/">eXtreme Programming</a>.</p>
+<p>La idea de estas metodologías, a diferencia de las tradicionales es evitar la tortuosa y burocrática documentación, a la vez que se enfocan en las personas y en los resultados.</p>
+<h3>XP: Programación eXtrema</h3>
+
+<p>Dentro de este contexto, la Programación eXtrema (una de las metodologías más exitosas del rubro) se presenta como una diciplina de desarrollo de software basada en valores como <em>simplicidad</em>, <em>comunicación</em>, <em>retroalimentación</em> y <em>valor.</em> Trabaja poniendo a todo el equipo ante práctica simples, con suficiente retroalimentación para permitirle ver dónde está y cómo encarar un problema particular.</p>
+<p>En XP, cada contribuidor al proyecto es una parte integral del <em>Equipo.</em> El equipo se forma al rededor de un representante del negocio, llamado <em>El Cliente</em>, el cual se sienta y trabaja con el equipo diariamente (cliente <em>in-situ</em>).</p>
+<!--more-->
+
+<p>Nuestro trabajo práctico consistía en desarrollar la primer versión de un sistema de gestión de socios de un club en base a una lista de <em>historias</em> provistas por la prfesora. Las <a href="http://www.extremeprogramming.org/rules/userstories.html">historias</a> son la forma en la que XP define los requisitos para el sistema.</p>
+<p>Para realizarlo llevamos a cabo algunas de las prácticas que XP propone (las escribo sin un orden específico), <strong>bold</strong> significa que aplicamos conscientemente la práctica:</p>
+<ul>
+
+    <li>Cliente in-situ</li>
+
+    <li><strong>Juego de la planificación</strong></li>
+
+    <li>Metáfora</li>
+
+    <li>40 hs semanales</li>
+
+    <li><strong>Diseño sencillo</strong></li>
+
+    <li><strong>Recodificación</strong></li>
+
+    <li><strong>Programación en parejas</strong></li>
+
+    <li><strong>Pruebas</strong></li>
+
+    <li>Versiones cortas</li>
+
+    <li><strong>Propiedad colectiva</strong></li>
+
+    <li><strong>Estándares de codificación</strong></li>
+
+    <li><strong>Integración continua</strong></li>
+
+</ul>
+
+<p>Puede ser que el listado de prácticas no sea novedoso para algunos, de hecho son todas prácticas existentes. XP lleva su nombre por llevar todas estas prácticas al extremo. Si hacer  pruebas es bueno, se escribirán pruebas para todos los métodos que lo ameriten y luego se escribirá el código que pase esas pruebas. Si integrar es bueno, se integrará continuamente. Si la retroalimentación del cliente es buena, se sumará este al equipo de desarrollo.</p>
+<p>Se puede leer más sobre XP en:</p>
+<ul>
+
+    <li><a href="http://www.xprogramming.com">xprogramming.com</a></li>
+
+    <li><a href="http://www.extremeprogramming.org">www.extremeprogramming.org</a></li>
+
+</ul>
+
+<h3>Programación en parejas</h3>
+
+<p>Una de las prácticas que conscientemente llevamos a cabo fue la de programar en parejas. En el grupo eramos 4 y tuvimos la suerte de trabajar siempre en una casa con dos computadoras, por lo que las parejas podían ir rotando y hacerse consultas entre ellas. A mi parecer es una de las prácticas más importantes de XP, y es un tema tan amplio que hasta tiene su <a href="http://www.pairprogramming.com/">propio sitio web</a>:</p>
+<p><img id="image183" src="wp-content/uploads/2006/11/parproglogo.gif" alt="pair programming"></p>
+<p><img id="image184" src="wp-content/uploads/2006/11/pairprogrammers.gif" alt="pair programmers"></p>
+<h3>Pruebas (de unidad)</h3>
+
+<p>El lenguaje de programación utilizado fue <a href="http://java.sun.com">Java</a>. También usamos un framework para mapear objetos en memoria a una base de datos relacional (<a href="http://www.hibernate.org/">Hibernate</a>) y uno para generar reportes (<a href="http://jasperreports.sourceforge.net/">JasperReports</a>). Elegimos estas herramientas por que ya las habíamos usado para un trabajo práctico previo, lo que nos permitió poner foco en la metodología y no en la herramienta.</p>
+<p>Para trabajar con pruebas, también utilizamos un framework (<a href="http://www.junit.org/">JUnit</a>), desarrollado originalmente por Erich Gamma y Kent Beck (creador de XP). Trabajar de esta forma nos gustó muchos a todos los miembros de grupo, saber que luego de ese cambio el software sigue pasando las pruebas es alentador y refuerza uno de los valores de XP, la valentía.</p>
+<p>Básicamente lo que hacíamos era:</p>
+<p>1) Pensar en un método que se necesitaba.</p>
+<p>2) Crear una prueba para ese método.</p>
+<p>3) Correr la prueba. Fallaba.</p>
+<p>4) Escribir código que haga pasar la prueba.</p>
+<p>5) Correr la prueba. Si fallaba volvíamos al punto 4.</p>
+<p>JUnit te provee de métodos parecidos a:</p>
+<p><code></code></p>
+<p>assertEquals(valorEsperado, valorCalculado);</p>
+<p></p>
+<p>Esa última línea puede fallar o puede pasar. A la vez se crea un árbol de pruebas con todas las que hallamos escrito y cuando lo ejecutamos, a medida que las pruebas van pasando una barra verde se va completando.  Si la barra se completa de color verde significa que todas las pruebas pasaron. Si alguna prueba falla, la barra se vuelve roja.</p>
+<p>Una de las prácticas es la <strong>recodificación</strong> (esta nos ayuda a mantener un <strong>diseño simple</strong>), pero.. como recodificar y saber que no hemos cometidos errores? Luego de realizar un cambio corremos nuevamente las pruebas. Si obtenemos una barra verde estamos listos para el siguiente cambio. Rigurosamente la barra verde nos indica que el sistema sigue pasando las pruebas que antes pasaba, no que no tenga errores, pero en la práctica parece ser una buena aproximación.</p>
+<p><img id="image185" src="wp-content/uploads/2006/11/junitlogo.gif" alt="JUnit"></p>
+<p><img id="image186" src="wp-content/uploads/2006/11/keep.gif" alt="keep de bar green"></p>
+<p><img id="image187" src="wp-content/uploads/2006/11/frogmov.gif" alt="Frog"></p>
+<h3>ClubXP</h3>
+
+<p>Además, como refuerzo para la <strong>Integración continua</strong> utilizamos <a href="http://subversion.tigris.org/">Subversion</a> para mantener ordenas las revisiones que ibamos haciendo del código: <a href="http://code.google.com/p/clubxp/">clubxp en code.Google</a>.</p>
+<h3>Saludo</h3>
+
+<p>Bueno, fue algo de lo que quería contar. En estas fechas de finalización de cursado no escribo casi nada en el blog, así que les dejo un saludo y <strong>Hasta la próxima!</strong></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/16/pueblos-originarios-y-software-libre.html" class="u-url">Pueblos originarios y Software Libre</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/16/pueblos-originarios-y-software-libre.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-16T23:58:33+00:00" title="2006-11-16 23:58">2006-11-16 23:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/16/pueblos-originarios-y-software-libre.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/16/pueblos-originarios-y-software-libre.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En las pasadas CafeConf, <a href="http://www.cayu.com.ar">Sergio Cayuqueo</a> dió una charla titulada <a href="http://www.cafeconf.org/modules/myconference/viewspeech.php?sid=70&amp;cid=1">Pueblos Originarios y el Software Libre</a>. No puede oirla, pero al finalizar me lo encontré a él y me dió entre otras cosas una copia del texto en el que se basó su presentación. Es muy lindo, así que se lo pedí para compartirlo con uds en el blog.</p>
+<!--more-->
+
+<p></p>
+<h3>Los pueblos originarios en la era de la información y las telecomunicaciones</h3>
+<p><em>Seminario “Los Pueblos Originarios y la Integración Regional: Un aporte para el debate”</em></p>
+<pre class="code literal-block">Hoy en día nuestra sociedad se ve influida por las telecomunicaciones, las cuales cumplen un rol fundamental para el desarrollo social de la era en que vivimos. Los pueblos originarios no deben quedar al margen de las telecomunicaciones, ya que esto genera un freno para la inclusión de los mismos.
+
+
+
+Desde tiempos inmemorables los pueblos originarios han vivido en sociedad basándose en cooperación, y reciprocidad.
+
+
+
+        Actualmente la evolución de las telecomunicaciones y la industria del software, no han adoptado estos conceptos, y han optado por no compartir la información sin una contraprestación, y aunque se dé el caso, no somos capaces de compartir dicha información con nuestros pares.
+
+
+
+Luego de un tiempo surgió un movimiento dentro del desarrollo del software, el denominado Software Libre, el cual aplica el concepto de comunidad que destaca a grandes culturas como  la Andina, tanto en su filosofía, como en sus métodos de producción; en la base de ambas culturas es importante la cooperación entre individuos.
+
+
+
+Tanto los pueblos originarios como la comunidad del Software Libre, pueden aprender uno del otro respetando cada uno su identidad, pero reconociendo sus raíces en la búsqueda humana de lograr un bienestar común.
+
+
+
+Por ejemplo la cultura Andina es un sistema de valores y principios que florecieron en los Andes hace ya 5000 años y que en su apogeo territorial, con los Incas, llegó a  expandirse abarcando lo que ahora se conoce como Perú, Bolivia, Ecuador, Colombia y parte de Argentina y Chile. Esta cultura comunitaria, era de un gran respeto a la diversidad tanto social como ecológica y  a la naturaleza.
+
+
+
+Esta cultura mantenía un núcleo social básico: el ayllu (comunidad en quechua), ésta era la base de su organización, y su mayor fuerza. En ella se buscada lograr el desarrollo y el bienestar de sus miembros mediante la reciprocidad en las labores. El principio de reciprocidad o Ayni (en quechua) implicaba el compartir las labores colectivas en beneficio de todos. Este trabajo colectivo era denominado Minka y buscaba resolver los problemas socio-económicos comunes además de ser llevado a cabo sin la imposición o control del Estado.
+
+
+
+Y es que en una cultura con fuerte arraigo en la naturaleza, recibiendo mucho de ella y devolviendo su agradecimiento y conservación, el principio mas grande que parece haber guiado su desarrollo sería “para recibir primero hay que dar”, una relación de mutuo beneficio entre ellos y la naturaleza,  y entre ellos mismos.
+
+
+
+Por otro lado, en la actualidad, en medio de un gran desarrollo de tecnologías de comunicación, la Fundación para el Software Libre promueve mayores libertades para los miembros de una nueva comunidad: “la de usuarios de software del planeta”, principalmente la libertad de compartir el software. Y de allí surgieron infinidad de proyectos  que permitían esa libertad y gracias a Internet evolucionaron aún mas, demostrando así que esos valores de las culturas originarias aún están vigentes, sólo que se han modernizado y  ahora la comunidad tiene a sus disposición otras herramientas más actuales para lograr su bienestar en conjunto.
+
+
+
+“Para recibir primero hay que dar” y siendo Internet el Ayllu (la comunidad), el Software Libre es nuestra Minka y podemos elegir (o sea tenemos libertad de elección) contribuir o no a ella. En definitiva podemos utilizar un programa libremente y beneficiarnos con él, podemos compartirlo gratuitamente con nuestros amigos y hermanos sin tener que rendirle cuentas a nadie, podemos venderlo, y además,  tenemos la libertad de agregarle mejoras al programa, en caso que optemos por colaborar con el desarrollo del mismo, o también tenemos la oportunidad de establecer contacto con el creador del mismo para solicitar características y aditivos nuevos que se necesiten.
+
+
+
+Así, en etnias con una fuerte herencia cultural comunitaria, el Software Libre no es sino un recordatorio de la fuerza que surge de la unión de intereses diversos con un objetivo: el bienestar común. Adaptar las tradiciones culturales ancestrales a la "modernidad", sin que ello implique perder nuestra identidad, es el reto de los tiempos venideros y opciones como el Software Libre nos muestran que ello es posible. Nuestro legado a la humanidad: el ayllu, nos marcara el camino.
+</pre>
+
+
+<p><strong>Sergio Daniel Cayuqueo</strong></p>
+<p>sergio@linuxv.com.ar</p>
+<p><strong>Bibliografía</strong></p>
+<ul>
+
+    <li>Katari: centro de documentación Quechua y Aymara <a href="http://www.katari.org">http://www.katari.org</a>
+</li>
+
+    <li>La fundación para el software libre y el proyecto GNU <a href="http://www.gnu.org">http://www.gnu.org</a>
+
+</li>
+
+    <li>La Catedral y El Bazar, escrita por Eric Raymond es un documento que analiza desde la perspectiva de un participante-observador un proyecto de software libre y extrae lecciones a partir de el. Esta en <a href="http://es.tldp.org/Otros/catedral-bazar/">http://es.tldp.org/Otros/catedral-bazar/</a>
+</li>
+
+    <li>Observaciones personales de proyectos de software libre.</li>
+
+</ul>
+
+<h4>Futa Traw – Gran Parlamento Indígena
+
+Comisión Pueblos Originarios del Consejo Consultivo de la Sociedad Civil de la Cancillería Argentina</h4>
+
+<p><a href="http://www.futatraw.org.ar">http://www.futatraw.org.ar</a></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-10.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-8.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

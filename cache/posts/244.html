@@ -1,0 +1,76 @@
+<p><html><body><p>El 17/04/07 recibí un mail preguntando sobre la resolución en Python del siguiente problema:</p>
+<!--more-->
+
+<p><strong>Encontrar la esquina</strong></p>
+<p></p><pre>En los caminos de una cuadrícula se mueve un agente.</p>
+<p>Su objetivo es encontrar y detenerse en una de las</p>
+<p>esquinas del laberinto.</p>
+<p>El escenario es una cuadrícula de NxM casillas cuadradas.</p>
+<p>El contenido de cada casilla se codifica mediante las</p>
+<p>siguientes letras:</p>
+<p>H: punto intermedio de un pasillo</p>
+<p>T: cruce en T de pasillos</p>
+<p>X: cruce en X de pasillos</p>
+<p>E: esquina</p>
+<p>M: vía muerta.</p>
+<p>P: pared</p>
+<p>espacio en blanco: pared</p>
+<p>Ejemplo:</p>
+<pre class="code literal-block">  M   EHHE    7 renglones x 10 columnas
+
+  H   H  H
+
+  THHHXHHT    (adyacente de cada letra (H,T,X,E,M)
+
+  H   H  H     hay una pared implícita)
+
+  EHHHTHHE
+</pre>
+
+
+<p>Las acciones son:</p>
+<p>AVANZAR</p>
+<p>IZQUIERDA</p>
+<p>DERECHA</p>
+<p>NIL</p>
+<p>Las percepciones tienen la forma de un par (A,S) donde:</p>
+<p>A: percepción de la codificación de la casilla actual</p>
+<p>S: percepción de la codificación de la casilla siguiente</p>
+<p>y además se cumple que:</p>
+<p>A in { H, T, X, E, M }</p>
+<p>S in { H, T, X, E, M, P }</p>
+<p>(in es el símbolo de "pertenece" en notación de conjuntos)</pre></p>
+<p><strong>Ejercicio</strong></p>
+<pre>Escriba en su lenguaje de programación preferido un
+
+programa de agente que corresponde al siguiente seudocódigo:
+
+
+
+  if A = E then
+
+    NIL
+
+  else
+
+    if A != B and S != M then
+
+      AVANZAR
+
+    else
+
+      IZQUIERDA
+
+    end if
+
+  end if
+
+
+
+Escriba además un programa driver que permita ingresar
+
+percepciones por el teclado, y muestre en pantalla la
+
+acción seleccionada por el programa de agente.</pre>
+
+<p><strong>Mi solución</strong></body></html></p>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (SPE)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/spe.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:25 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Problemas con la versión de wxPython al intentar iniciar SPE</title><link>http://www.juanjoconti.com.ar/posts/2007/03/02/problemas-con-la-version-de-wxpython-al-intentar-iniciar-spe.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://pythonide.stani.be/"&gt;SPE&lt;/a&gt; (Stani's Python Editor) es un Entorno de Desarrollo Integrado (IDE leyendo las siglas de atrás para adelante :-) ) libre (licenciado bajo GPL) para Python. Estaba con ganas de probarlo así que hoy lo instalé. En Debian:
+&lt;pre lang="bash"&gt;
+
+apt-get install spe
+
+&lt;/pre&gt;
+
+&lt;p&gt;Cuando intenté ejecutarlo, hubo un problema:&lt;/p&gt;
+&lt;pre lang="bash"&gt;
+
+juanjo@sarge:~$ spe
+
+You need to install at least wxPython v2.5.4.1 to run SPE.
+
+Get it from http://www.wxpython.org
+
+&lt;/pre&gt;
+
+&lt;p&gt;Pero mi versión instalada de wxPython era la 2.6.x.. en el resto del artículo: 2 formas de solucionar el problema.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Además de saber que el paquete que tenía instalado era wxpython2.6 y no wxpython2.4 (que también era un candidato), comprobé la versión que tenía instalada desde el intérprete interactivo de Python:&lt;/p&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; import wxPython
+
+&amp;gt;&amp;gt;&amp;gt; dir(wxPython)
+
+['__builtins__', '__doc__', '__file__', '__name__', '__path__', '__version__', '_controls', '_core', '_gdi', '_misc', '_windows', '_wx', 'wx']
+
+&amp;gt;&amp;gt;&amp;gt; wxPython.__version__
+
+'2.6.3.2'
+
+&lt;/pre&gt;
+
+&lt;p&gt;Entré al canal &lt;code&gt;#python&lt;/code&gt; de &lt;code&gt;irc.freenode.org&lt;/code&gt; donde alguien me dijo que en las versiones viejas de SPE había un bug con el chequeo de versiones y me me convenía instalar manualmente la última versión.&lt;/p&gt;
+&lt;pre lang="bash"&gt;
+
+svn checkout svn://svn.berlios.de/python/spe/trunk/_spe
+
+python _spe/SPE.py&lt;/pre&gt;
+
+&lt;p&gt;me daba el mismo error.&lt;/p&gt;
+&lt;p&gt;Cundo revisé el código de &lt;code&gt;_spe/SPE.py&lt;/code&gt;, estas eran las primeas líneas:&lt;/p&gt;
+&lt;pre&gt;
+
+import sys
+
+try:
+
+    WX_VERSION  = '2.5.4.1'
+
+    import wxversion
+
+    wxversion.ensureMinimal(WX_VERSION)
+
+except ImportError:
+
+    print 'You need to install at least wxPython v%s to run SPE.\nGet it from http://www.wxpython.org'%WX_VERSION
+
+    sys.exit()
+
+&lt;/pre&gt;
+
+&lt;h3&gt;Solución 1&lt;/h3&gt;
+
+&lt;p&gt;Probé importar &lt;code&gt;wxversion&lt;/code&gt; desde un interprete de Python, no tenía el módulo y eso producía una excepción, lo que producía que se muestre ese error y se termine el programa. Comentando las líneas:&lt;/p&gt;
+&lt;pre&gt;
+
+    #import wxversion
+
+    #wxversion.ensureMinimal(WX_VERSION)
+
+&lt;/pre&gt;
+
+&lt;p&gt;pude correr el programa sin problemas.&lt;/p&gt;
+&lt;h3&gt;Solución 2&lt;/h3&gt;
+
+&lt;p&gt;En realidad el problema es que el módulo &lt;code&gt;wxversion&lt;/code&gt; no está instalado. En un momento había pasado por la página de &lt;a href="http://www.wxpython.org/"&gt;wxPython&lt;/a&gt; y entre sus nuevas &lt;em&gt;features&lt;/em&gt; había leido:&lt;/p&gt;
+&lt;blockquote&gt;
+
+..wxPython now supports having more than one wxPython runtime installed at the same time, and provides a mechanism for choosing a non-default version at runtime if the app needs to.
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;El módulo &lt;code&gt;wxversion&lt;/code&gt; sirve para hacer la selección de versión de wxPython. Por lo que la otra solución es instalar este módulo:&lt;/p&gt;
+&lt;pre lang="bash"&gt;
+
+apt-get install python-wxversion
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>SPE</category><category>wxPython</category><guid>http://www.juanjoconti.com.ar/posts/2007/03/02/problemas-con-la-version-de-wxpython-al-intentar-iniciar-spe.html</guid><pubDate>Fri, 02 Mar 2007 13:42:06 GMT</pubDate></item></channel></rss>

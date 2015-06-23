@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Destapando las cañerías de planet-planet | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../12/twisted-zombie-en-uptodown.html" title="Twisted Zombie en UpToDown" type="text/html">
+        <link rel="next" href="../../04/09/pyweek-6.html" title="PyWeek 6" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Destapando las cañerías de planet-planet">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html">
+    <meta property="og:description" content="Palabras claves: planet-planet exception KeyError
+Antes de venirme para Pellegrini recibí algunos avisos de que los planetas de PyAr y TecnoFe no se estaban actualizando. Estos dos sitios corren sobre">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2008-03-17T22:45:26+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="planet-planet">
+           <meta property="article:tag" content="PyAr">
+           <meta property="article:tag" content="Web">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="destapando-las-canerias-de-planet-planet.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Destapando las cañerías de planet-planet</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2008-03-17T22:45:26+00:00" itemprop="datePublished" title="2008-03-17 22:45">2008-03-17 22:45</time></a></p>
+                <p class="commentline">
+        
+    <a href="destapando-las-canerias-de-planet-planet.html#disqus_thread" data-disqus-identifier="cache/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="destapando-las-canerias-de-planet-planet.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Palabras claves: planet-planet exception KeyError</p>
+<p>Antes de venirme para Pellegrini recibí algunos avisos de que los planetas de <a title="PyAr" href="http://pyar.firebirds.com.ar/" target="_blank">PyAr</a> y <a title="TecnoFe" href="http://blogs.firebirds.com.ar/" target="_blank">TecnoFe</a> no se estaban actualizando. Estos dos sitios corren sobre dos instalacions de <a title="PP" href="http://www.planetplanet.org/" target="_blank">planet-planet</a>, un agregador de feeds escrito en Python. El programa consiste en un script que cada vez que se ejecuta genera páginas html, actualizando su contenido entre corrida y corrida si corresponde.</p>
+<p>Mediante reglas de <a title="Cron" href="http://es.wikipedia.org/wiki/Cron_(unix)" target="_blank">cron</a> hago que estos scripts corran cada 15 minutos, buscando novedades en los blogs agregados.</p>
+<p>Mi primer intento de saber qué estaba pasando fue revisar crontab, pero no encontré nada raro allí. Lo siguiente fue ejecutar a manos los scripts en cuestión. Ambos tiraban exepciones similares:</p>
+<!--more-->
+
+<p><code>Traceback (most recent call last):</code></p>
+<p>File "planet.py", line 167, in ?</p>
+<p>main()</p>
+<p>File "planet.py", line 160, in main</p>
+<p>my_planet.run(planet_name, planet_link, template_files, offline)</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 240, in run</p>
+<p>channel = Channel(self, feed_url)</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 527, in <strong>init</strong></p>
+<p>self.cache_read_entries()</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 569, in cache_read_entries</p>
+<p>item = NewsItem(self, key)</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/<strong>init</strong>.py", line 845, in <strong>init</strong></p>
+<p>self.cache_read()</p>
+<p>File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/cache.py", line 74, in cache_read</p>
+<p>self._type[key] = self._cache[cache_key + " type"]</p>
+<p>File "/usr/lib/python2.3/bsddb/<strong>init</strong>.py", line 116, in <strong>getitem</strong></p>
+<p>return self.db[key]</p>
+<p>KeyError: 'tag:www.taniquetil.com.ar,2007-08-31:285 author type'</p>
+<p></p>
+<p>Este software tiene un cache de informacion para guardar los feeds que parsea. Basicamente es un directorio llamado cache con un archivo por cada feed agregado.</p>
+<p>Solucioné el problema -más por instinto que por pericia- borrando, para ambos sitios, el archivo correspondiente al blog con problemas. Les dejo el tip por si les sucede en alguna instalación de planet-planet. Prometo que si me vuelve a pasar voy a investigar un poquito más para descubrir la razón del problema :)</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/planet-planet.html" rel="tag">planet-planet</a></li>
+           <li><a class="tag p-category" href="../../../../categories/pyar.html" rel="tag">PyAr</a></li>
+           <li><a class="tag p-category" href="../../../../categories/web.html" rel="tag">Web</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../12/twisted-zombie-en-uptodown.html" rel="prev" title="Twisted Zombie en UpToDown">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../../04/09/pyweek-6.html" rel="next" title="PyWeek 6">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html",
+        disqus_title="Destapando las ca\u00f1er\u00edas de planet-planet",
+        disqus_identifier="cache/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (WordPress)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/wordpress.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Limpiar Wordpress infectado</title><link>http://www.juanjoconti.com.ar/posts/2012/04/26/limpiar-wordpress-infectado.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Si tenés un blog con Wordpress y te atrasás con las actualizaciones (o no) tarde o temprano te embocan (no es la primera vez que me pasa). Alguna herramienta automática detecta que estás corriendo una versión vulnerable a cierto fallo de seguridad reciente y otra inserta código malicioso en todos los archivos de tu sistema de blogging en los que pueda escribir.&lt;/p&gt;
+&lt;p&gt;Las consecuencias son que cuando tus visitantes intenta entrar al blog son redirigidos a un sitio porno o de venta de Viagra. Si se accede con Chrome a uno de estos sitios infectados, un enorme cartel rojo de avisa que el sitio incluye contenido de una web rumana reportada como distribuidora de malware.&lt;/p&gt;
+&lt;p&gt;Tu hosting te manda un mail diciéndote que no te sientas solo por que no lo estás, pero en realidad si lo estás. Te recomiendan cosas poco prácticas como actualizar, cambiar claves o restaurar un back-up previo a la infección. Tengo casi 1000 archivos .php llenos de código malicioso y me decís que cambié mis claves (?). Necesito una forma de arreglar esto.&lt;/p&gt;
+&lt;p&gt;Dejo aquí unos tips en base a mi experiencia personal, con la certeza de que en cualquier momento voy a volver a buscarlos por necesidad.&lt;/p&gt;
+&lt;p&gt;Muchas de las herramientas que agregan código malicioso (las más simples) agregan una línea al principio de todos los .php en los que pueden escribir. En mi caso esta línea tenía esta forma:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt; &amp;lt;?php /**/ eval(base64_decode("aWYoZnVuY3...oZnVu"));?&amp;gt;&amp;lt;?php&lt;/pre&gt;
+&lt;p&gt;(código codificado que es decodificado y evaluado al ejecutar el archivo).&lt;/p&gt;
+&lt;p&gt;¿Qué archivos están infectados?&lt;/p&gt;
+&lt;pre lang="bash"&gt;grep -l eval\(base64_decode -R *&lt;/pre&gt;
+
+&lt;p&gt;¿Cuantos archivos hay infectados? (aprox.)&lt;/p&gt;
+&lt;pre lang="bash"&gt;grep -l eval\(base64_decode -R * | wc -l&lt;/pre&gt;
+
+&lt;p&gt;Limpiar todos los archivos:&lt;/p&gt;
+&lt;pre lang="bash"&gt;for x in `grep -l eval\(base64_decode -R * | grep -v .back`; do sed -i.back '1d' $x ; sed -i '1 i &lt;?php ' $x; done&lt;/pre&gt;
+
+&lt;p&gt;El anterior comando busca todos los archivos infectados (excepto los que tienen extensión .back), les borra la primer línea y luego les agrega una primer línea "&lt;/p&gt;
+&lt;p&gt;Mejoras, sugerencias y correcciones bienvenidas!&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>General</category><category>GNU/Linux</category><category>hack</category><category>PHP</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2012/04/26/limpiar-wordpress-infectado.html</guid><pubDate>Thu, 26 Apr 2012 02:17:59 GMT</pubDate></item><item><title>Coloreando código fuente en WordPress</title><link>http://www.juanjoconti.com.ar/posts/2010/08/05/coloreando-codigo-fuente-en-wordpress.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Tengo este blog hace unos 5 años y en él tengo muchos posts con código fuente, pero nunca usé un plug-in para hacer &lt;strong&gt;syntax highlight&lt;/strong&gt; o resaltado de sintáxis, es decir que las distintas partes del código fuente se pinten de distintos colores según su significado. Mi idea es solucionarlo.&lt;/p&gt;
+&lt;p&gt;El escenario es bastante complicado. Hay bloques de código en los que uso la etiqueta HTML &amp;lt;pre&amp;gt; y otros en los que uso la etiqueda &amp;lt;code&amp;gt;. También tengo código in-line (es decir líeas de código que forman parte de una oración) arcadas con la etiqueta &amp;lt;code&amp;gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;¿Qué busco?&lt;/h3&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;No quiero posts con código coloreado de ahora en adelante y que los anteriores
+
+sigan en blanco y negro.&lt;/li&gt;
+
+    &lt;li&gt;No quiero tener que editar cada posts para agregar algún atributo en las
+
+etiquetas pre o code. Por ejemplo, muchos plug-ins te piden que marques el código
+
+con algo como &amp;lt;pre lang="python"&amp;gt; o similar.&lt;/li&gt;
+
+    &lt;li&gt;Quiero que los bloques de código &amp;lt;pre&amp;gt; y &amp;lt;code&amp;gt; se vean igual.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Luego de buscar un poco, decidí instalar y probar estos plug-ins:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/wp-synhighlight/" target="_blank"&gt;WP-SynHighlight&lt;/a&gt; (lo descarté enseguida, tiene una GUI pesada con muchas opciones y las marcas que introduce en el post son bastante poco estándar e intrusivas)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/wp-syntax/" target="_self"&gt;WP-Syntax&lt;/a&gt; (usa &lt;a href="http://qbnz.com/highlighter/" target="_blank"&gt;GeSHI&lt;/a&gt;, por lo que el coloreado se realiza en el lado del servidor)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/jquery-syntax/" target="_blank"&gt;JQuery.Syntax&lt;/a&gt; (hecho con la popular librería de JavaScript)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/google-code-prettify-for-wordpress/" target="_self"&gt;Google Code Prettify&lt;/a&gt; (está basado en tecnología de Google y posiblemente lo hayan visto en acción en &lt;a href="http://stackoverflow.com/" target="_blank"&gt;StackOverflow&lt;/a&gt;. Su principal ventaja es que &lt;strong&gt;no requiere decirle en qué lenguaje está escrita la porción de código&lt;/strong&gt;, sino que este lo adivina)&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Intentar empezar a usar uno de estos plug-ins ahora, me genera un gran problema&lt;/p&gt;
+&lt;p&gt;de compatibilidad hacia atrás :)&lt;/p&gt;
+&lt;p&gt;Veamos... &lt;strong&gt;WP-SynHighlight&lt;/strong&gt; no me gustó de arranque. Modifica la GUI del editor WYSIWYG the WordPress, uno selecciona una porción de código, aprieta el botón y te da unas 10 opciones para elegir (desde lenguaje hasta el número de espacios para los tabs). Puede funcionar para algún tipo de usuario, pero no para un programador. Además agrega bastante código sucio al HTML del post. Paso.&lt;/p&gt;
+&lt;p&gt;El segundo que probé fue &lt;strong&gt;WP-Syntax&lt;/strong&gt;. Me gustó mucho, entre otras cosas:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt; Usa CSS in-line para que el código coloreado se mantenga incluso si el posts no es leído en el blog; por ejemplo en un planeta o por RSS.&lt;/li&gt;
+
+    &lt;li&gt;Si el texto es más ancho que la página, agrega una barra de desplazamiento en la cajita de código.&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/wpsyntax.jpg"&gt;&lt;img class="aligncenter size-full wp-image-2581" title="wpsyntax" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/wpsyntax.jpg" alt="" width="235" height="250"&gt;&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Luego probé JQuery.Syntax y Google Code Prettify. Estos funcionan de la siguiente forma: luego de que se carga el HTML del sitio, corre código JavaScript que se encarga del coloreado. Esto hace que la carga de la página sea más lenta.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/jquery.jpg"&gt;&lt;img class="aligncenter size-full wp-image-2582" title="jquery" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/jquery.jpg" alt="" width="244" height="230"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;¿Qué hice?&lt;/h3&gt;
+
+&lt;p&gt;Me decidí a usar WP-Syntax y para no editar todos los bloques de código, creé un pequeño plug-in para WordPress que cambia todos los &amp;lt;pre&amp;gt; por &amp;lt;pre lang="python" escaped="true"&amp;gt;, cambié a mano los pocos bloques code que tenía por bloques pre y agregué a mano la especificación para los bloques de código que no son Python (no eran muchos).&lt;/p&gt;
+&lt;p&gt;Tampoco tengo coloreado del código in-line. De las opciones que probé solo el plug-in que usa tecnología de Google, tenía esta característica.&lt;/p&gt;
+&lt;p&gt;Si ven algún post en el que algo no quedó del todo bien, avisen!&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>syntax highlight</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/05/coloreando-codigo-fuente-en-wordpress.html</guid><pubDate>Thu, 05 Aug 2010 00:54:15 GMT</pubDate></item><item><title>Cómo agregar Menéame a Bookmarkify</title><link>http://www.juanjoconti.com.ar/posts/2009/12/29/como-agregar-meneame-a-bookmarkify.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://www.gara.com/projects/bookmarkify/" target="_blank"&gt;Bookmarkify&lt;/a&gt; es un popular plugin para Wordpress y script PHP que permite agregar a un sitio web una botonera que posibilite a un visitánte rápidamente compartir el contenido que está leyendo mediante las redes sociales más pupulares (Twitter, Facebook, Digg, Reddit, ...).
+&lt;p&gt;Lamentablemente no posee la posibilidad de incluir a &lt;a href="http://meneame.net" target="_blank"&gt;Menéame&lt;/a&gt;, el sitio web para compartir contenidos más popular en español.&lt;/p&gt;
+&lt;p&gt;Para añadirlo, se debe editar la función get getBookmarkifyLinks en el archivo bookmarkify.php de la distribución del plugin para añadir, en algún lugar entre &lt;code&gt;$i=0;&lt;/code&gt; y return $links; la siguiente línea:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$links[$i++] = array("Meneame!", "Publicar en Meneame!", "http://meneame.net/submit.php?url=$u&amp;amp;title=$t", "meneame.ico", 0, 0);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y guardar el archivo http://meneame.net/favicon.ico como meneame.ico en la carpeta del plugin.&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2009/12/29/como-agregar-meneame-a-bookmarkify.html</guid><pubDate>Tue, 29 Dec 2009 21:03:50 GMT</pubDate></item><item><title>Una clase para usuarios no informáticos de WordPress</title><link>http://www.juanjoconti.com.ar/posts/2009/03/25/una-clase-para-usuarios-no-informaticos-de-wordpress.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;img class="size-thumbnail wp-image-1362 alignright" title="wordpress-logo" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/03/wordpress-logo-150x150.png" alt="" width="150" height="150"&gt;&lt;em&gt;El siguiente artículo no está pensado para ser leído por informáticos sino por no-informáticos. De todas formas, se agradece la lectura por parte de informáticos y sus comentarios para mejorarlo. El texto es una adaptación de un correo electrónico que le envié a un amigo luego de solucionar un problema que tenía con su blog alojado en &lt;a href="http://www.wordpress.com" target="_blank"&gt;wordpress.com&lt;/a&gt;.&lt;/em&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Suele pasar, y esto lo se de leer tantas veces consultas en foros especializados, que sin aparente causa algunos blogs hechos con WordPress de repente se ven mal: la disposición (layout) de los elementos se rompe, cambia el color de fondo, la barra lateral aparece abajo de todo. ¿Cuál es la razón? Este "efecto indeseable" puede ser provocado de distintas maneras, pero una suele ser la causa en la mayoría de los casos: un error al crear entradas (o posts) para el sitio. Otro dato a tener en cuenta es que el error se suele manifestar cuando se utiliza la etiqueta especial 'more' (seguir leyendo).&lt;/p&gt;
+&lt;p&gt;En forma particular el problema se suele dar cuando el código HTML que conforma una entrada no es correcto; hay etiquetas (o 'tags') que abren pero no cierra o que están mal anidados. Se dice que un tag "abre" cuando es de la forma &amp;lt;NOMBRE&amp;gt; y "cierra" cuando es de la forma &amp;lt;/NOMBRE&amp;gt;. Lo que está en el medio de esas marcas es su contenido.&lt;/p&gt;
+&lt;p&gt;&amp;lt;NOMBRE&amp;gt;Contenido&amp;lt;/NOMBRE&amp;gt;&lt;/p&gt;
+&lt;p&gt;Estas etiquetas se utilizan para definir todo lo que se ve (y no se ve) en una página web. Un ejemplo sencillo: la etiqueta 'b' sirve para mostrar un texto (el contenido) en negrita (o bold). &amp;lt;b&amp;gt;esto aparece en negrita&amp;lt;/b&amp;gt; es mostrado por un navegador así: &lt;strong&gt;esto aparece en negrita&lt;/strong&gt;. De la misma forma existen etiquetas para mostrar texto en itálica, poner colores, insertar imágenes y muchísimas cosas más.&lt;/p&gt;
+&lt;p&gt;Si te interesa aprender HTML podés leer &lt;a href="http://www.w3schools.com/html/DEFAULT.asp" target="_blank"&gt;este tutorial&lt;/a&gt;. Seguimos.&lt;/p&gt;
+&lt;p&gt;El siguiente es un ejemplo de tags mal anidados:&lt;/p&gt;
+&lt;p&gt;&amp;lt;div&amp;gt;&lt;/p&gt;
+&lt;p&gt;texto&lt;/p&gt;
+&lt;p&gt;&amp;lt;p&amp;gt;&lt;/p&gt;
+&lt;p&gt;texto&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;texto&lt;/p&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;En uno de los posts del sitio que revisé había un párrafo de esta forma:&lt;/p&gt;
+&lt;p&gt;&amp;lt;div&amp;gt;&lt;/p&gt;
+&lt;p&gt;palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras&lt;/p&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;Se abría un tag 'div' y se cerraba uno 'p'. Este error era el que causaba el problema en este sitio en particular. Fue solucionado cambiando &amp;lt;div&amp;gt; por &amp;lt;p&amp;gt;. Puede ocurrir que el error no sea tan trivial, pero en la mayoría de los casos será de la misma familia, aunque esté más oculto.&lt;/p&gt;
+&lt;p&gt;La siguiente lista enumera 3 reglas para tener en cuenta como forma de prevensión de estos errores.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reglas prácticas para no tener problemas al publicar en WordPress:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1) Antes de publicar, pasar de la vista Visual a la vista HTML y ver que no haya problemas como el que describí arriba con las etiquetas.&lt;/p&gt;
+&lt;p&gt;2) Insertar la etiqueta 'more' la vista HTML para asegurarse de que no sea insertada dentro de otras etiquetas:&lt;/p&gt;
+&lt;p&gt;&amp;lt;div&amp;gt;&lt;/p&gt;
+&lt;p&gt;texto&lt;/p&gt;
+&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;está mal.&lt;/p&gt;
+&lt;p&gt;&amp;lt;div&amp;gt;&lt;/p&gt;
+&lt;p&gt;texto&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
+&lt;p&gt;está bien.&lt;/p&gt;
+&lt;p&gt;3) Es una fuente de errores de este estilo copiar y pegar texto desde otras páginas web o documentos de Word (ya que traen atachadas muchas etiquetas de formato). Una práctica para estar seguros de que no traemos de esas marcas es pasar el texto por el bloc de notas antes de pegarlo en el editor de WordPress. Luego en el editor mismo podemos darle formato (negrita, itálica, etc...)&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2009/03/25/una-clase-para-usuarios-no-informaticos-de-wordpress.html</guid><pubDate>Wed, 25 Mar 2009 09:45:28 GMT</pubDate></item><item><title>WP en español</title><link>http://www.juanjoconti.com.ar/posts/2007/07/28/wp-en-espanol.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;New feauture! Después de algunos años de tener un blog a medio inglés.. este es un link que no quiero perder: &lt;a href="http://carrero.es/wordpress-en-castellano/" title="WP es" target="_blank"&gt;http://carrero.es/wordpress-en-castellano/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;El punto de inicio para la búsqueda fue: &lt;a href="http://codex.wordpress.org/WordPress_in_Your_Language#Spanish_-_Espa.C3.B1ol" title="codex" target="_blank"&gt;http://codex.wordpress.org/WordPress_in_Your_Language#Spanish_-_Espa.C3.B1ol&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Oops! Partes del blog siguen en inglés!&lt;/p&gt;
+&lt;p&gt;Lamentablemente por más que el sistema este funcionando en español hay textos que estan &lt;em&gt;hardcodeados&lt;/em&gt; en los temas.. un intento es traducir algunas palabras.. y cansarse (pueden ver en este blog un ejemplo de eso). A mi en particular no me molesta mucho que haya algunas palabras en inglés y creo que tampoco a la mayoría de mis visitantes.&lt;/p&gt;
+&lt;p&gt;Pero si queremos usar WP para un sitio &lt;em&gt;no-geek-personal&lt;/em&gt; nos van a pedir que esté todo en español. La mejor solución es instalar un tema también en español.&lt;/p&gt;
+&lt;p&gt;Aquí hay muchos listados:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.anieto2k.com/wiki/index.php?title=Themes_castellano#Themes_para_Wordpress_en_Espa.C3.B1ol" title="Temas en español" target="_blank"&gt;http://www.anieto2k.com/wiki/index.php?title=Themes_castellano#Themes_para_Wordpress_en_Espa.C3.B1ol&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Este es un lindo:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://carrero.es/coolblue-tema-gratis-en-castellano-para-wordpress/" title="Coolblue es" target="_blank"&gt;http://carrero.es/coolblue-tema-gratis-en-castellano-para-wordpress/&lt;/a&gt; (&lt;a href="http://carrero.es/wp-content/uploads/2007/06/coolblue-es.zip" title="download Coolblue" target="_blank"&gt;download&lt;/a&gt;)&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2007/07/28/wp-en-espanol.html</guid><pubDate>Sat, 28 Jul 2007 01:54:25 GMT</pubDate></item><item><title>wp-print en español</title><link>http://www.juanjoconti.com.ar/posts/2006/11/15/wp-print-en-espanol.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Acabo de instalar el plug-in &lt;a href="http://dev.wp-plugins.org/wiki/wp-print"&gt;wp-print&lt;/a&gt; para wordpress. Permite presentar una versión &lt;em&gt;imprimible&lt;/em&gt; (sin colores, sin estrafalarios encabezados, pies o barras) de los artículos que uno tiene en el blog.&lt;/p&gt;
+&lt;p&gt;Le hice algunos pequeños cambios para que se vea en español. &lt;strong&gt;Contra:&lt;/strong&gt; el plug-in no está preparado para ser traducido, hay que cambiar varias archivos y el texto en inglés aparece de heterogéneas formas :). &lt;strong&gt;Pro:&lt;/strong&gt; yo ya hice algo de esto, así que se los dejo por si les sirve: &lt;a href="http://firebirds.com.ar/~juanjo/wordpress/files/wp-print-es-2.06.tgz"&gt;wp-print-es-2.06&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para instalarlo, además de descomprimirlo en la carpeta &lt;code&gt;plugins&lt;/code&gt; y habilitarlo, hay que llamar a print_link() o print_link_image() o ambas desde el código del template del blog, yo agregué:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;?php if(function_exists('wp_print')) {&lt;/p&gt;
+&lt;p&gt;echo "&amp;lt;div align='right'&amp;gt;"; print_link_image(); echo " "; print_link(); echo "&amp;lt;/div&amp;gt;"; } ?&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;en &lt;code&gt;index.php&lt;/code&gt;, &lt;code&gt;page.php&lt;/code&gt;, &lt;code&gt;single.php&lt;/code&gt; y &lt;code&gt;archive.php&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2006/11/15/wp-print-en-espanol.html</guid><pubDate>Wed, 15 Nov 2006 14:18:44 GMT</pubDate></item><item><title>2 nuevos plug-ins en mi WP!</title><link>http://www.juanjoconti.com.ar/posts/2006/07/29/2-nuevos-plug-ins-en-mi-wp.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy agregé dos plug-ins en mi instación de &lt;a href="http://www.wordpress.org"&gt;WordPress&lt;/a&gt; (el sistema que uso como blog).&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h4&gt;Estadísticas de visitantes&lt;/h4&gt;
+&lt;p&gt;Hace un tiempo tenía instalado un sistema de estadísticas llamado.. bueno no recuerdo como se llamaba, pero no importa por que era bastante malo. Hoy leyendo en el &lt;a href="http://www.cesarsandrigo.com.ar/"&gt;blog de César M. Sandrigo&lt;/a&gt; descubrí otro y tal vez mi búsqueda (casi abandonada) de una buena forma de conocer sobre mis visitantes haya llegado por fin a Ítaca. El plug-in se llama &lt;a href="http://www.deltablog.com/2005/10/05/wordpress-plugin-popstats/"&gt;PopStats&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Votar los artículos&lt;/h4&gt;
+
+&lt;p&gt;Desde hoy, abajo de cada artículo, hay 5 estrellitas con las que los visitantes pueden rankear los &lt;em&gt;posts&lt;/em&gt; publicados. La verdad, está muy lindo: &lt;a href="http://blog.abusemagazine.com/index.php/2006/01/28/wordpress-plugin-post-star-rating/"&gt;Post Star Rating&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando dejé mi primer voto me pareció gracioso leer "1 votos" :) Luego pensé que no debería ser difícil de corregir, acá está la receta:&lt;/p&gt;
+&lt;p&gt;Hay que hacer un pequeño cambio en dos métodos de la clase PSR (&lt;a href="http://dev.wp-plugins.org/file/post-star-rating/trunk/psr.class.php"&gt;psr.class.php&lt;/a&gt;). Tanto en &lt;code&gt;_drawStars($votes, $points)&lt;/code&gt; como en &lt;code&gt;_drawVotingStars($votes, $points)&lt;/code&gt; cambiar &lt;code&gt;&lt;strong&gt;('votos')&lt;/strong&gt;&lt;/code&gt; por &lt;code&gt;($votes == 1 ? 'voto' : 'votos')&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;En la misma clase también se puede cambir el texto que se muestra.&lt;/p&gt;
+&lt;p&gt;Otro detallecito que encontré fué que el texto que acompaña a las estrellitas, por ejemplo "2 votos" se veía cortado abajo, revisando el código fuente de la clase anterior encontré el método &lt;code&gt;css()&lt;/code&gt; que le da el estilo; en una parte decía:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;           &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&amp;lt;pre&amp;gt;&lt;/span&gt; .PSR_stars {
+
+              height: 15px;
+
+              overflow: hidden;
+
+              padding: 0;
+
+              margin: 0;
+
+            }&lt;span class="nt"&gt;&amp;lt;/pre&amp;gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;PSR_starts es la clase del div que contiene a las estrellitas y el texto. Simplemente comenté el límite impuesto a la altura:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;           &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&amp;lt;pre&amp;gt;&lt;/span&gt; .PSR_stars {
+
+              /*height: 15px;*/
+
+              overflow: hidden;
+
+              padding: 0;
+
+              margin: 0;
+
+            }&lt;span class="nt"&gt;&amp;lt;/pre&amp;gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Seguro que a más de uno le sirve!&lt;/p&gt;
+&lt;p&gt;Saludos!&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2006/07/29/2-nuevos-plug-ins-en-mi-wp.html</guid><pubDate>Sat, 29 Jul 2006 15:33:48 GMT</pubDate></item><item><title>Actualizando a WP 2.0.1</title><link>http://www.juanjoconti.com.ar/posts/2006/02/10/actualizando-a-wp-201.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El primero de enero fué liberada la versión 2.0 de &lt;a title="Word Press web site" target="_blank" href="http://www.wordpress.org"&gt;WordPress&lt;/a&gt;, el &lt;a title="definición de CMS en Wikipedia" target="_blank" href="http://es.wikipedia.org/wiki/CMS"&gt;CMS&lt;/a&gt; que uso en mi sitio web. Hace dos posts decidí actualizarme y ví que la última versión estable era la 2.0.1 Bienvenida sea! :-D&lt;img align="right" title="WP logo" alt="WP logo" src="http://firebirds.com.ar/~juanjo/wordpress/wp-admin/images/wordpress-logo.png"&gt;&lt;/p&gt;
+&lt;p&gt;Temas para WP:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://themes.wordpress.net"&gt;http://themes.wordpress.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.alexking.org/software/wordpress/theme_browser.php"&gt;http://www.alexking.org/software/wordpress/theme_browser.php&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Plug-ins para WP:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://wp-plugins.net/"&gt;http://wp-plugins.net/&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>Software Libre</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2006/02/10/actualizando-a-wp-201.html</guid><pubDate>Fri, 10 Feb 2006 17:40:50 GMT</pubDate></item></channel></rss>

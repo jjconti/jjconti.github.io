@@ -1,0 +1,14 @@
+<p><html><body><p>Acabo de crear <a target="_blank" title="PLY examples" href="http://www.juanjoconti.com.ar/files/python/ply-examples/">un sitio web</a> con todos los ejemplos de PLY que acompañan su distribución.</p>
+<p>En distribuciones derivadas de Debian los pueden encontrar en:</p>
+<p><code>/usr/share/doc/python-ply-doc/examples/</p>
+<p></code></p>
+<p>luego de haber instalado python-ply y su documentación:</p>
+<p><code>apt-get install python-ply python-ply-doc</code></p>
+<p><a target="_blank" title="PLY examples" href="http://www.juanjoconti.com.ar/files/python/ply-examples/"><strong>PLY Examples</strong></a></p>
+<!--more-->
+
+<p>Los archivos .py de los ejemplos se encuentran en una versión html con su sintaxis coloreada. Esto lo hice con el comando <code>pygmentize</code>. Para poder usarlo, en Debian y similares, debemos instalarlo el paquete <code>python-pygments</code>. <a target="_blank" title="Pygments" href="http://pygments.org/">Más información</a>.</p>
+<p>En particular utilicé OpenOffice para editar el README que acompaña la distribución de los ejemplos y crear una página html y este oneliner para crear todos los .py.html de una pasada:</p>
+<p><code></p>
+<p>for d in <code>ls -d * | grep -v index.html</code>; do cd $d; for f in <code>ls *.py</code>; do pygmentize -f html -O full -o $f.html $f; done; cd ..; done</code></p>
+<p>Espero sea útil, cree el sitio a partir de una sugerencia en la lista de correos de PLY.</p></body></html></p>

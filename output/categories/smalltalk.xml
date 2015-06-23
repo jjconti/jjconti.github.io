@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (smalltalk)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/smalltalk.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:15 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Smalltalks 2007</title><link>http://www.juanjoconti.com.ar/posts/2007/10/10/smalltalks-2007.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p align="center"&gt;&lt;strong&gt;Primer Conferencia Argentina de Smalltalk&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt; La Facultad de Ciencias Exactas y Naturales de la UBA, tiene el agrado de invitarlo a &lt;strong&gt;Smalltalks 2007&lt;/strong&gt;, la &lt;strong&gt;Primer Conferencia&lt;/strong&gt;&lt;strong&gt; Argentina de Smalltalk&lt;/strong&gt;, que se llevará a cabo el Lunes 10 de Diciembre de 2007, desde las 9:30 hasta las 18:00 horas en el Aula Magna del Pabellón de Industria de Ciudad Universitaria.
+
+
+
+Todas aquellas personas que estén relacionadas con &lt;strong&gt;Smalltalk&lt;/strong&gt;, sean docentes, alumnos, investigadores, desarrolladores o empresarios, están invitados a participar como oyentes o expositores de manera gratuita inscribiéndose enviando un e-mail a &lt;strong&gt;smalltalks2007@gmail.com&lt;/strong&gt; con el nombre, apellido y datos laborales.
+
+Los esperamos a todos!
+
+Comité Organizador de Smalltalks 2007&lt;/blockquote&gt;
+
+&lt;p&gt;Más información en &lt;a href="http://www.dc.uba.ar/events/smalltalks/2007/" title="ST2007" target="_blank"&gt;http://www.dc.uba.ar/events/smalltalks/2007/ &lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>smalltalk</category><guid>http://www.juanjoconti.com.ar/posts/2007/10/10/smalltalks-2007.html</guid><pubDate>Wed, 10 Oct 2007 23:58:33 GMT</pubDate></item><item><title>Paradigmas de Programación</title><link>http://www.juanjoconti.com.ar/posts/2005/09/14/paradigmas-de-programacion.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El año pasado, con mis compañeros cursamos la materia &lt;a href="http://170.210.78.2/matero/visitante/novedades.php?id_catedra=88"&gt;paradigmas de programación&lt;/a&gt; en la &lt;a href="http://www.frsf.utn.edu.ar"&gt;facultad&lt;/a&gt;. Mientras estudiabamos para rendir preparamos bibliotecas de referenciay algunas tablas útiles, todo se puede encontrar en &lt;a href="http://www.firebirds.com.ar/paradigmas"&gt;http://www.firebirds.com.ar/paradigmas&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Paradigmas abordados:&lt;/p&gt;
+&lt;p&gt;Orientado a Objetos (&lt;a href="http://www.smalltalk.org/"&gt;SmallTalk&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Lógico (&lt;a href="http://www.swi-prolog.org/"&gt;Prolog&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Funcional (&lt;a href="http://www.drscheme.org"&gt;Dr Scheme&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Facultad</category><category>programación</category><category>prolog</category><category>scheme</category><category>smalltalk</category><guid>http://www.juanjoconti.com.ar/posts/2005/09/14/paradigmas-de-programacion.html</guid><pubDate>Wed, 14 Sep 2005 00:40:59 GMT</pubDate></item></channel></rss>

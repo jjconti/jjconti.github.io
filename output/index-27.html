@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 27) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-27.html">
+
+
+
+        <link rel="prev" href="index-28.html" type="text/html">
+        <link rel="next" href="index-26.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/04/04/la-historia-de-python-el-uso-de-tipado-dinamico.html" class="u-url">La historia de Python: El uso de tipado dinámico</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/04/04/la-historia-de-python-el-uso-de-tipado-dinamico.html" rel="bookmark"><time class="published dt-published" datetime="2009-04-04T13:33:52+00:00" title="2009-04-04 13:33">2009-04-04 13:33</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/04/04/la-historia-de-python-el-uso-de-tipado-dinamico.html#disqus_thread" data-disqus-identifier="cache/posts/2009/04/04/la-historia-de-python-el-uso-de-tipado-dinamico.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo Python's Use of Dynamic Typing de Guido van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em>
+<!--more-->
+
+<h3>El uso de tipado dinámico en Python</h3>
+
+<p>Una diferencia importante entre ABC y Python es el estilo general del sistema de tipos. ABC es estáticamente tipado, lo cual significa que el compilador de ABC analiza el uso de tipos en un programa y decide si están siendo usados consistentemente. Si no, el programa es rechazado y su ejecución no puede comenzar. A diferencia de la mayoría de los lenguajes con tipado estático de esos días, ABC usaba inferencia de tipos (no distinto que Haskell) en lugar de declaraciones explícitas de tipos como en C. En contraste, Python es dinámicamente tipado. El compilador de Python ignora felizmente los tipos usados en un programa y todo el control de tipos es hecho en tiempo de ejecución.</p>
+<p>Aunque esto pueda parecer muy distinto de ABC, no es tan diferente como uno imaginaría. A diferencia de otros lenguajes de tipado estático, ABC no depende (¿dependía? es prácticamente histórico hoy : - ) exclusivamente de controles de tipado estático para evitar que el programa termine abruptamente, también tiene una librería en tiempo de ejecución que controla los tipos de los argumentos en todas las operaciones nuevamente cada vez que son ejecutadas. Esta verificación no estaba de más para los algoritmos de control de tipos del compilador, que no estaban totalmente implementados en el primer prototipo del lenguaje. La librería en tiempo de ejecución también servía como una ayuda para la depuración, ya que el control de tipos explícito en tiempo de ejecución puede producir lindos mensajes de error (algo requerido por los implementadores), en lugar de los vuelcos de memoria que sucederían si el intérprete siguiera ciegamente con una operación sin controlar si los argumentos tienen sentido.</p>
+<p>Sin embargo, la razón más importante por la que ABC tenía control de tipos en tiempo de ejecución, además de control de tipado estático, es su naturaleza interactiva. En una sesión interactiva, el usuario tipea sentencias de ABC y definiciones que son ejecutadas tan pronto como son completadas. En una sesión interactiva, es posible crear una variable y asignarle un número, borrarla y luego volver a crearla (en otras palabras, crear otra variable con el mismo nombre) y asignarle un string. Dentro de un solo procedimiento, sería un error de tipado estático usar el mismo nombre de variable primero como un número y luego como un string, pero no sería razonable forzar ese control entre diferentes sentencias entradas en una sesión interactiva, mientras que la creación accidental de una variable llamada x a la que se le asigna un número, !prohiba para siempre la creación de una variable x con otro tipo!. El compromiso de ABC es usar control de tipos dinámico para las variables globales, pero estático para las locales. Para simplificar la implementación, las variables locales obtienen control de tipo dinámico también.</p>
+<p>Así, hay solo un pequeño paso desde el enfoque usado en la implementación de ABC para el control de tipos al de Python; Python simplemente deja todo el control de tipos en tiempo de compilación. Esto se alinea completamente con la filosofía de Python de "tomar atajos", ya que simplifica la implementación y no afecta la eventual seguridad, ya que todos los errores de tipo son atrapados en tiempo de ejecución antes de que causen un mal funcionamiento del intérprete de Python.</p>
+<p>Sin embargo, una vez que te decides por el tipado dinámico no hay vuelta atrás. Las operaciones de ABC fueron cuidadosamente diseñadas para que el tipo de los argumentos pueda ser deducido de la forma de los operadores. Por ejemplo, de la expresión "x^y" el compilador deduciría que las variables x e y son strings, así como el resultado. En Python, esa deducción no se puede generalizar. Por ejemplo, la expresión "x+y" puede ser una concatenación de strings, una suma entre números, o una operación sobrecargada sobre tipos definidos por el usuarios.</p>
+<p><em>Traducido por Juan José Conti.</em></p>
+<p>Revisado por César Portela.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/27/fpdf-en-django.html" class="u-url">FPDF en Django</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/27/fpdf-en-django.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-27T16:53:01+00:00" title="2009-03-27 16:53">2009-03-27 16:53</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/27/fpdf-en-django.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/27/fpdf-en-django.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Si intentás usar FPDF en Django hay algunas cosas que necesitás saber:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>(ya sabés qué) <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.fpdf.org/"</span><span class="nt">&gt;</span>FPDF<span class="nt">&lt;/a&gt;</span> está originalmente escrita en PHP y permite generar documentos PDF sin usar PDFLib (C).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>(ya sabés qué) hay más de un port de esta librería a Python. Todos son incompletos.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Usá este <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.nsis.com.ar/svn/pyfpdf/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>http://www.nsis.com.ar/svn/pyfpdf/<span class="nt">&lt;/a&gt;</span> (parcheado en Argentina para utilizar unicode).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>FPDF <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.fpdf.org/en/FAQ.php#q7"</span><span class="nt">&gt;</span>trabaja con la codificación ISO-8859-1<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Mi código fuente Django usa la cotificación UTF-8 y en los documentos resultantes aparecían caracteres raros en lugar de vocales con tilde o eñes.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Lo soluciné haciendo una modificacicón en el método Output:<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+
+
+<p><code>self.buffer = buffer.encode('iso-8859-1')</code></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/26/el-segundo-color-predominante-pil.html" class="u-url">El segundo color predominante: PIL</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/26/el-segundo-color-predominante-pil.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-26T09:00:49+00:00" title="2009-03-26 09:00">2009-03-26 09:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/26/el-segundo-color-predominante-pil.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/26/el-segundo-color-predominante-pil.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hace unas semanas necesité hacer un script en Python que genere algunas decenas de imágenes. Básicamente, se tiene como entrada imágenes como estas:</p>
+<p><a href="wp-content/uploads/2009/03/die4side.png"><img class="aligncenter size-full wp-image-1354" title="die4side" src="wp-content/uploads/2009/03/die4side.png" alt="" width="100" height="100"></a></p>
+<p><a href="wp-content/uploads/2009/03/die8side.png"><img class="aligncenter size-medium wp-image-1355" title="die8side" src="wp-content/uploads/2009/03/die8side.png" alt="" width="100" height="100"></a></p>
+<p>(un borde con alguna forma y un color en un fondo blanco)</p>
+<p>Las imágenes generadas tienen que tener ciertos números en el centro, pintados en cada caso del mismo color que el borde:</p>
+<p><a href="wp-content/uploads/2009/03/d20_12.png"><img class="aligncenter size-full wp-image-1357" title="d20_12" src="wp-content/uploads/2009/03/d20_12.png" alt="" width="100" height="100"></a></p>
+<p><a href="wp-content/uploads/2009/03/d8_1.png"><img class="aligncenter size-full wp-image-1356" title="d8_1" src="wp-content/uploads/2009/03/d8_1.png" alt="" width="100" height="100"></a></p>
+<p>La primer parte del script tiene que determinar el segundo color predominante de la imagen (el primero es el blanco), esta es la forma en que lo hice usando <a title="Python Imaging Library (PIL)" href="http://www.pythonware.com/products/pil/" target="_blank">PIL</a>:</p>
+<p></p>
+<pre>def get_color(image):
+<pre class="code literal-block">colors = image.getcolors()  # colors is a list of (count, color)
+
+colors.sort(lambda y,x: cmp(x[0], y[0])) # bigger count first
+
+c = colors.pop(0)
+
+while white(c): # find the non-white color most used in the image
+
+    c = colors.pop(0)
+
+return c[1]
+</pre>
+
+
+<p>def white(color):</p>
+<pre class="code literal-block">color = color[1]
+
+return color[0] == 255 and color[1] == 255 and color[2] == 255<span class="nt">&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</span>
+</pre></pre>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/25/una-clase-para-usuarios-no-informaticos-de-wordpress.html" class="u-url">Una clase para usuarios no informáticos de WordPress</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/25/una-clase-para-usuarios-no-informaticos-de-wordpress.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-25T09:45:28+00:00" title="2009-03-25 09:45">2009-03-25 09:45</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/25/una-clase-para-usuarios-no-informaticos-de-wordpress.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/25/una-clase-para-usuarios-no-informaticos-de-wordpress.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<img class="size-thumbnail wp-image-1362 alignright" title="wordpress-logo" src="wp-content/uploads/2009/03/wordpress-logo-150x150.png" alt="" width="150" height="150"><em>El siguiente artículo no está pensado para ser leído por informáticos sino por no-informáticos. De todas formas, se agradece la lectura por parte de informáticos y sus comentarios para mejorarlo. El texto es una adaptación de un correo electrónico que le envié a un amigo luego de solucionar un problema que tenía con su blog alojado en <a href="http://www.wordpress.com" target="_blank">wordpress.com</a>.</em>
+<!--more-->
+
+<p>Suele pasar, y esto lo se de leer tantas veces consultas en foros especializados, que sin aparente causa algunos blogs hechos con WordPress de repente se ven mal: la disposición (layout) de los elementos se rompe, cambia el color de fondo, la barra lateral aparece abajo de todo. ¿Cuál es la razón? Este "efecto indeseable" puede ser provocado de distintas maneras, pero una suele ser la causa en la mayoría de los casos: un error al crear entradas (o posts) para el sitio. Otro dato a tener en cuenta es que el error se suele manifestar cuando se utiliza la etiqueta especial 'more' (seguir leyendo).</p>
+<p>En forma particular el problema se suele dar cuando el código HTML que conforma una entrada no es correcto; hay etiquetas (o 'tags') que abren pero no cierra o que están mal anidados. Se dice que un tag "abre" cuando es de la forma &lt;NOMBRE&gt; y "cierra" cuando es de la forma &lt;/NOMBRE&gt;. Lo que está en el medio de esas marcas es su contenido.</p>
+<p>&lt;NOMBRE&gt;Contenido&lt;/NOMBRE&gt;</p>
+<p>Estas etiquetas se utilizan para definir todo lo que se ve (y no se ve) en una página web. Un ejemplo sencillo: la etiqueta 'b' sirve para mostrar un texto (el contenido) en negrita (o bold). &lt;b&gt;esto aparece en negrita&lt;/b&gt; es mostrado por un navegador así: <strong>esto aparece en negrita</strong>. De la misma forma existen etiquetas para mostrar texto en itálica, poner colores, insertar imágenes y muchísimas cosas más.</p>
+<p>Si te interesa aprender HTML podés leer <a href="http://www.w3schools.com/html/DEFAULT.asp" target="_blank">este tutorial</a>. Seguimos.</p>
+<p>El siguiente es un ejemplo de tags mal anidados:</p>
+<p>&lt;div&gt;</p>
+<p>texto</p>
+<p>&lt;p&gt;</p>
+<p>texto</p>
+<p>&lt;/div&gt;</p>
+<p>texto</p>
+<p>&lt;/p&gt;</p>
+<p>En uno de los posts del sitio que revisé había un párrafo de esta forma:</p>
+<p>&lt;div&gt;</p>
+<p>palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras palabras</p>
+<p>&lt;/p&gt;</p>
+<p>Se abría un tag 'div' y se cerraba uno 'p'. Este error era el que causaba el problema en este sitio en particular. Fue solucionado cambiando &lt;div&gt; por &lt;p&gt;. Puede ocurrir que el error no sea tan trivial, pero en la mayoría de los casos será de la misma familia, aunque esté más oculto.</p>
+<p>La siguiente lista enumera 3 reglas para tener en cuenta como forma de prevensión de estos errores.</p>
+<p><strong>Reglas prácticas para no tener problemas al publicar en WordPress:</strong></p>
+<p>1) Antes de publicar, pasar de la vista Visual a la vista HTML y ver que no haya problemas como el que describí arriba con las etiquetas.</p>
+<p>2) Insertar la etiqueta 'more' la vista HTML para asegurarse de que no sea insertada dentro de otras etiquetas:</p>
+<p>&lt;div&gt;</p>
+<p>texto</p>
+<p>&lt;!--more--&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>está mal.</p>
+<p>&lt;div&gt;</p>
+<p>texto</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;!--more--&gt;</p>
+<p>está bien.</p>
+<p>3) Es una fuente de errores de este estilo copiar y pegar texto desde otras páginas web o documentos de Word (ya que traen atachadas muchas etiquetas de formato). Una práctica para estar seguros de que no traemos de esas marcas es pasar el texto por el bloc de notas antes de pegarlo en el editor de WordPress. Luego en el editor mismo podemos darle formato (negrita, itálica, etc...)</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/24/zinnia.html" class="u-url">Zinnia</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/24/zinnia.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-24T15:42:23+00:00" title="2009-03-24 15:42">2009-03-24 15:42</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/24/zinnia.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/24/zinnia.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>Planta anual vistosa. Necesita suelo fértil y un buen verano. Las flores, tipo margaritas, pueden ser simples, semidobles o dobles. Las más grandes de 15 cm de diámetro. Los tallos robustos no necesitan soporte y las flores cortadas y puestas en agua duran mucho.
+<p>Crece mejor a pleno sol y en suelo enriquecido con compost.</p>
+<p>Comienza a florecer en principio de verano-otoño.</p>
+<p>Se siembra en almácigo y se trasplanta al exterior cuando pasa el período de heladas.</p>
+</blockquote>
+<p>Cuando estaba volviendo de mi semana de vacaciones tomé estas fotografías en la casa de Juanita. Salieron lindas, así que no quería dejar de compartirlas:</p>
+<p>[gallery]</p>
+<p>El texto con el que abrí el post es cortesía de la Ing. Susana de Conti, mi madre.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/18/la-historia-de-python-el-principio-del-diseno-y-desarrollo-del-lenguaje.html" class="u-url">La historia de Python: El principio del diseño y desarrollo del lenguaje</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/18/la-historia-de-python-el-principio-del-diseno-y-desarrollo-del-lenguaje.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-18T19:01:25+00:00" title="2009-03-18 19:01">2009-03-18 19:01</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/18/la-historia-de-python-el-principio-del-diseno-y-desarrollo-del-lenguaje.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/18/la-historia-de-python-el-principio-del-diseno-y-desarrollo-del-lenguaje.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo Early Language Design and Development Guido van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em>
+<!--more-->
+
+<h3>El principio del diseño y desarrollo del lenguaje</h3>
+
+<h4>De ABC a Python</h4>
+
+<p>La primera y principal influencia de Python fue <a href="http://homepages.cwi.nl/%7Esteven/abc/" target="_blank">ABC</a>, un lenguaje diseñado a principios de los 80 por Lamber Meertens, Leo Geurts y otros en CWI. El objetivo de ABC era ser un lenguaje de enseñanza, un reemplazo para BASIC, y un lenguaje y entorno para computación personal. Fue diseñado en un principio haciendo un análisis de la tarea de programar y luego haciendo varias iteraciones que incluían pruebas de usuario a conciencia. Mi rol en el grupo de ABC era principalmente implementar el lenguaje y su entorno integrado de edición.</p>
+<p>El uso que Python hace de la identación viene directamente de ABC, pero esta idea no se originó con ABC (ya había sido promovida por Donald Knuth y era un concepto bien conocido de estilo de programación). (El lenguaje de programación <a href="http://en.wikipedia.org/wiki/Occam_programming_language" target="_blank">occam</a> también lo usaba). Si embargo, los autores de ABC sí inventaron el uso de los dos puntos que separa la cláusula inicial del bloque identado. Luego de las primeras pruebas con usuarios sin los dos puntos, se descubrió que el significado de la identación no le quedaba claro a los principiantes que tomaban sus primeras lecciones de programación. Agregar los dos puntos clarificó su significado: los dos puntos de alguna formar guiaban la atención a lo que seguía y unía lo anterior con lo siguiente de forma correcta.</p>
+<p>Los principales tipos de datos de Python también vienen de ABC, aunque con algunas modificaciones. Las listas en ABC eran en realidad bags o multisets, que siempre se mantenían ordenadas utilizando una implementación modificada de árboles B. Sus tablas eran arrays asociativos que se mantenían ordenados en forma similar mediante claves. Encontré que ningún tipo de dato era preciso para representar, por ejemplo, la secuencia de líneas leídas de un archivo, el cual anticipé que sería un caso de uso común (en ABC tenías que usar una tabla con el número de línea como clave, pero eso complicaba las inserciones y los borrados). Entonces convertí el tipo lista en un array flexible con operaciones de inserción y borrado, dándole a los usuarios control total sobre el orden de los elementos en una lista. Un método sort soportaba la necesidad ocasional de resultados ordenados.</p>
+<p>También reemplacé las tablas ordenadas implementando una tabla hash. Elegí una tabla hash porque creía que sería más rápida y fácil de implementar que el árbol B de ABC. Estaba teóricamente probado que los árboles B eran asintóticamente óptimos en tiempo y espacio para una gran variedad de operaciones, pero en la práctica se volvieron difíciles de implementar correctamente debido a la complejidad de sus algoritmos. Por la misma razón, la performance tampoco era óptima para tablas pequeñas.</p>
+<p>Mantuve el tipo de dato inmutable de ABC llamado tupla (las operaciones de empaquetado y desempaquetado en Python vienen directamente de ABC). Ya que las tuplas son implementadas mediante arrays, decidí agregarles indexación y rebanado.</p>
+<p>Una consecuencia de añadirle una interfaz de tipo array a las tuplas fue que tuve que pensar en una forma de resolver los casos límites de tuplas de longitud 0 ó 1. Una de las reglas que tomé de ABC fue que cada tipo de datos, al ser impreso o convertido a string, debía ser representado por una expresión que sea una entrada válida para el parser del lenguaje. De esto siguió que necesitaba notaciones para las tuplas de longitud 0 y 1. Al mismo tiempo no quería perder la distinción entre una tupla y una expresión entre paréntesis, entonces utilicé un enfoque feo pero pragmático en el cual una coma final convertiría una expresión en una tupla de un elemento y "()" representaría a una tupla de cero elementos. Vale la pena mencionar que los paréntesis por lo general no son necesarios en la sintaxis de Python, excepto aquí (representar la tupla vacía con "nada" podría fácilmente enmascarar errores genuinos).</p>
+<p>Los strings de Python empezaron con una semántica (inmutable) muy parecida a los strings de ABC, pero con una notación diferente e indexación basada en 0. Ya que ahora tenía tres tipos indexables -listas, tuplas y strings- decidí generalizar todo en un concepto común, la secuencia. Esta generalización hizo que ciertas operaciones básicas como obtener la longitud (len(s)), indexar (s[i]), rebanar (s[i:j]) e iterar (for i in s) funcionen de la misma forma en cualquier tipo que sea una secuencia.</p>
+<p>Los números son uno de los puntos en los que más en desacuerdo estuve con ABC. ABC tenía dos tipos de números en tiempo de ejecución; los números <em>exactos</em> que eran representados como números racionales de precisión arbitraria y los números <em>aproximados</em> que eran representados mediante punto flotante binario con un rango de exponente extendido. Los números racionales no encajaban en mi visión del tema (anécdota: una vez intenté computar mis impuestos usando ABC. El programa, que parecía bastante directo, estaba demorando mucho en computar unos pocos números. Luego de investigar descubrí que estaba haciendo aritmética con números con miles de dígitos de precisión, que tenían que ser redondeados a florines -pie 100 centavos holandeses - y centavos para ser impresos). Es por esto que para Python elegí un modelo más tradicional con enteros de máquina y punto flotante binario de máquina. En la implementación de Python, estos números son representados simplemente con los tipos de datos de C long y double respectivamente.</p>
+<p>Creyendo que también había un caso de uso importante para números exactos sin límite, agregué un tipo de dato <em>bignum</em>, que llamé <em>long</em>. Ya tenía una implementación de bignum que había sido el resultado de un intento inconcluso por mejorar la implementación de ABC unos años antes (la implementación original de ABC, una de mis primeras contribuciones, usaba una representación decimal internamente). Sonaba lógico usar este código en Python.</p>
+<p>A pesar de haber agregado bignums a Python, es importante enfatizar que no quería usar bignums para todas las operaciones entre enteros. De extrapolar lo que veía en programas escritos por mí y por colegas en CWI, sabía que las operaciones entre enteros representaban una porción significativa del total del tiempo que la mayoría de los programas corrían. El uso más común de los enteros es indexar secuencias que entran en memoria. Así, decidí usar enteros de máquina para los casos de uso más comunes y el rango extra de bignums solo para hacer "matemática seria" o calcular la deuda externa de Estados Unidos en peniques.</p>
+<h4>El problema con los números</h4>
+
+<p>La implementación de números, especialmente enteros, es un área en la que cometí varios errores de diseño serios, pero también aprendí lecciones importantes sobre el diseño de Python.</p>
+<p>Ya que Python tiene dos tipos diferentes de enteros, necesitaba una forma de distinguir entre los dos tipos en un programa. Mi solución era pedirle a los usuarios que explícitamente digan cuando querían usarlos agregando una L al final de los números (por ejemplo 1234L). Esta es un área en la que Python violaba la filosofía inspirada en ABC de no necesitar que los usuarios se encargar de detalles de implementación que no les importaban.</p>
+<p>Lamentablemente, este era solo el menor detalle de un problema mayor. Un error más ilustre fue que mi implementación de enteros y longs ¡tenía una ligera diferencia semántica en algunos casos! Ya que el tipo int era representado como un entero de máquina, las operaciones que desbordaban silenciosamente recortaban el resultado a 32 bits o a la precisión que el tipo long de C tuviera. Además, el tipo int, que normalmente se considera tiene signo, era tratado como sin signo por las operaciones bitwise y shift y en la conversión desde/hacia octales o hexadecimales representados como int o long. Los longs, por otro lado, siempre se consideraban con signo. Por lo tanto, algunas operaciones producían un resultado diferente, dependiendo de si un argumento era representado como int o como long. Por ejemplo, en una aritmética de 32 bits, 1&lt;&lt;31 (1 shift a izquierda 31 bits) produciría el entero negativo más grande de 32 bits y 1&lt;&lt;32 produciría cero, mientras que 1L&lt;&lt;31 (1 representado como long shift a izquierda 31 bits) produciría un entero enorme igual a 2<strong>31 y 1L&lt;&lt;32 produciría 2</strong>32.</p>
+<p>Para resolver algunos de estos asuntos hice un arreglo simple. En lugar de tener operaciones entre enteros que recorten silenciosamente el resultado, cambié la mayoría de las operaciones aritméticas para que lancen una excepción OverflowError cuando el resultado no encaje. (La única excepción a este control eran las operaciones de "bit-wise" mencionadas anteriormente, ya que asumí que los usuarios esperarían que estas operaciones se comporten como en C). Si no hubiese añadido este control, los usuarios de Python indudablemente hubiesen empezado a escribir código dependiente de la semántica de la aritmética binaria con signo de módulo 2**32 (como hacen los usuarios de C), y arreglar el error hubiese sido una transición mucho más dolorosa para la comunidad.</p>
+<p>A pesar de que la inclusión del control de desborde pueda parecer un detalle de implementación menor, una dolorosa experiencia de debugging me hizo dar cuenta que era una característica útil. Como uno de mis primeros experimentos en Python, intenté implementar un algoritmo matemático simple, el computo de los "Números de Meertens", un poco de matemática recreativa inventada por Richard Bird al celebrar los 25 añosen WCI del principal autor de ABC. Los primeros números de Meertens son pequeños, pero al traducir el algoritmo en código no me había dado cuenta de que los resultados intermedios del computo eran mucho más grandes que 32 bits. Me llevó una larga y dolorosa sesión de debugging descubrir esto, y decidí entonces manejar el asunto controlando todas las operaciones entre enteros y lanzando una excepción siempre que el resultado no pueda ser representado como un long de C. El costo extra del control de desborde no se notaría junto a la sobrecarga que ya tenía con la decisión de implementación de crear un nuevo objeto para el resultado.</p>
+<p>Lamentablemente, siento decir que lanzar una excepción por desborde ¡tampoco era la solución correcta! En ese entonces, estaba trabado por la regla de C "las operaciones con tipos numéricos T retornan un resultado de tipo T". Esta regla también era la razón de mi otro gran error en la semántica de los enteros: truncar el resultado de la división entre enteros, que discutiré en una de las próximas entradas. En retrospectiva, debí hacer que las operaciones entre enteros que desbordaban cambien el tipo de su resultado a long. Esta es la forma en que Python funciona hoy, pero completar esta transición llevó mucho tiempo.</p>
+<p>A pesar del problema con los números, una cosa muy positiva salió de esta experiencia. Decidí que no debía haber valores de retorno no definidos en Python, en lugar de esto, siempre se lanzarían excepciones cuando un valor de retorno no correcto podía ser computado. Así, los programas escritos en Python nunca fallarían debido a que valores no definidos se estén pasando silenciosamente por detrás. Este es aún un principio importante del lenguaje, tanto en el lenguaje propiamente dicho como en las librerías.</p>
+<p><em>Traducido por Juan José Conti.</em></p>
+<p>Revisado por César Portela.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/16/me-recomendas-un-libro-para-leer.html" class="u-url">¿Me recomendás un libro para leer?</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/16/me-recomendas-un-libro-para-leer.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-16T09:20:38+00:00" title="2009-03-16 09:20">2009-03-16 09:20</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/16/me-recomendas-un-libro-para-leer.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/16/me-recomendas-un-libro-para-leer.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Me gustaría recibir recomendaciones de libros para leer.</p>
+<p>Hace unos días que en realidad fueron semanas abandoné Los miserables de Victor Hugo, me resultó muy pesado y no pude continuar leyendo la historia. Pero no me gusta estar sin nada sobre la mesita de luz, por lo que me propongo encontrar un buen libro para que sea el siguiente.</p>
+<p>En la sección <a href="http://www.juanjoconti.com.ar/categoria/leo/" target="_blank">Cosas que leo</a>, de este blog, podés darte una idea del tipo de lectura que me gustó. Así mismo, sé algunas cosas que creo tiene que tener el próximo libro que lea:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>puede ser una novela, pero no es necesariamente una novela.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>me gustaría aprender algo de él y no especificamente algo técnico.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>los capítulos no tienen que ser muy largos.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>preferiría un autor latinoamericano o español contemporáneo.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>me gustaría conseguir una edición por menos de $50.<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+
+
+<p>Ojo! lo anterior es solo una guía, espero recomendaciones que no encajen en la lista de items. Si pensás en uno que puede gustarme, no dejes de comentarlo.</p>
+<p>Muchas personas pasan a diario por este blog, pero pocos se animan a comentar una entrada. Si leíste hasta acá te agradezco mucho que me dejes una recomendación.</p>
+<p>Gracias,</p>
+<p>PS: el viernes me decido por uno y lo compro en la librería.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/11/la-historia-de-python-microsoft-distribuye-codigo-python-en-1996.html" class="u-url">La historia de Python: Microsoft distribuye código Python... en 1996</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/11/la-historia-de-python-microsoft-distribuye-codigo-python-en-1996.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-11T22:57:48+00:00" title="2009-03-11 22:57">2009-03-11 22:57</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/11/la-historia-de-python-microsoft-distribuye-codigo-python-en-1996.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/11/la-historia-de-python-microsoft-distribuye-codigo-python-en-1996.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo Microsoft Ships Python Code... in 1996 de Greg Stein publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em>
+<!--more-->
+
+<h3>Microsoft distribuye código Python... en 1996</h3>
+
+<p>¡Muchas gracias a Guido por permitirme compartir mi propia historia de Python!</p>
+<p>Me guardo mi iniciación en Python para otro post, pero el resultado final fue su introducción en un emprendimiento que co-fundé en 1991 con otras personas. Estábamos trabajando en un gran sistema cliente/servidor de comercio electrónico entre empresas y consumidores. Protocolos TCP propios operando sobre la vieja red X.25 y todo eso. Vieja escuela.</p>
+<p>En 1995 nos dimos cuenta, contrariamente a nuestra primera impresión, que la mayoría de los consumidores no estaban en Internet, y que necesitábamos un sistema para nuestros clientes (los vendedores) para que lleguen a sus clientes basados en Internet. Tuve la tarea de definir nuestro enfoque y elegí Python como mi herramienta de prototipado.</p>
+<p>Nuestro primer problema fue cambiar a una solución basada totalmente en el navegador. Nuestro cliente a medida ya no era viable, necesitamos una experiencia de compra nueva para los clientes e infraestructura de servidores para soportarla. En ese entonces, hablarle a un navegador significaba escribir scripts de CGI para los servidoes Apache o Netscape HTTP. Usando CGI, me conectaba a nuestro servidor existente para procesar las ordenes, mantener el carrito de compras y obtener información de los productos. Estos scripts producían HTML plano (¡no había AJAX en 1995!).</p>
+<p>Este enfoque era menos que ideal ya que cada petición tomaba tiempo y creaba un nuevo proceso CGI. La velocidad de respuesta era muy pobre. Luego, en diciembre de 1995, mientras asistía al Python Workshop en Washington DC, me introdujeron a algunos módulos para Apache y Netscape (de Digital Creations, mejor conocidos como Zope) que corrían en forma persistente en el proceso del servidor. Estos módulos usaban un sistema RPC llamado ILU para comunicarse contra otros procesos por detrás. Con este sistema funcionando, la sobrecarga del CGI desapareció y la experiencia de compra ¡se podía disfrutar bastante! Empezamos a convertir el prototipo en código real. Mientras más lejos íbamos, mejor lucía y más personas se unían al proyecto. El desarrollo se movió <b>muy</b> rápido durante los siguientes meses (¡gracias Python!).</p>
+<p>En enero de 1996 Microsoft llamó a nuestra puerta. Su esfuerzo interno por crear un sistema de comercio electrónico no tenía éxito y necesitaban personas que conocieran la industria (nosotros habíamos estado haciendo comercio electrónico ya por varios años en ese momento) y que fueran ágiles. Continuamos desarrollando el software durante la primavera mientras las negociaciones se llevaban a cabo y luego la adquisición finalizó en junio de 1996.</p>
+<p>Una vez que llegamos a Microsoft con nuestra pequeña pila de código Pyhon, tuvimos que resolver como distribuir el producto en Windows NT. El equipo al que nos unimos tenía mucha experiencia y creó un plug-in para IIS que permitía comunicarse mediante tuberías nombradas al servidor que estaba por detrás, un servicio de NT con el código de nuestro servidor Python embebido. Con una primavera loca empezando en julio, distribuimos Microsoft Merchant Server 1.0 en octubre de 1996.</p>
+<p>Y si... si mirabas bajo la alfombra, en algún lugar escondido, había un intérprete de Python, algunas DLLs y un montón de archivos .pyc. Ciertamente Microsoft no se dio cuenta de este hecho, pero estaba ahí si sabías dónde mirar.</p>
+<p><em>Traducido por Juan José Conti.</em></p>
+<p>Revisado por César Portela.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/09/3-features-de-sqlite-que-no-conocia.html" class="u-url">3 features de SQLite que no conocía</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/09/3-features-de-sqlite-que-no-conocia.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-09T21:17:03+00:00" title="2009-03-09 21:17">2009-03-09 21:17</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/09/3-features-de-sqlite-que-no-conocia.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/09/3-features-de-sqlite-que-no-conocia.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="http://www.sqlite.org/" target="_blank">SQLite</a> es (o se debate entre si es o no) un motor de base de datos liviano. No requiere configuración, no usa un servidor, su código ocupa poco espacio y una base de datos ocupa un solo archivo. Tal vez por estas características es usado no solo en aplicaciones de escritorio y sitios web, sino también dentro de: el lenguaje de programación PHP, el navegador web Firefox y muchos dispositivos móviles (<a href="http://www.sqlite.org/famous.html" target="_blank">más</a>). Hace unos días lo estoy usando para una aplicación Django mono-usuario. Hoy leyendo su página web, descubrí 4 características que no conocía, me llamaron la atención y me gustaron mucho.<!--more-->
+<p>La siguiente es una traducción libre de la página web de la herramienta.</p>
+<h3>El archivo de la base de datos se mantiene en distintas plataformas</h3>
+
+<p>El formato de archivo de SQLite es cross-platform. Un archivo de base de datos escrito en una máquina puede ser copiado a y usado en una máquina diferente con una arquitectura diferente. Big-endian o little-endian, 32-bit o 64-bit, no importa. Todas las máquinas usan el mismo formato de archivo. Más aún, los desarrolladores han mantenido el formato estabe y compatible hacia atrás, entonces versiones nuevas de SQLite pueden leer y escribir archivos de base de datos más viejos</p>
+<p>La mayoría de los otros motores SQL requieren que bajes y restaures la base de datos al cambiar de una plataforma a otra y a menudo al actualizar a una nueva versión del software.</p>
+<h3>Tipado manifesto</h3>
+
+<p>La mayoría de los motores SQL usan tipado estático. Un tipo de dato es asociado con cada columna en una tabla y solo valores de ese tipo en particular se pueden guardar en esa columna. SQLite relaja esta restricción usando tipado manifiesto. En este tipo de tipado, el tipo de dato es una propiedad del valor en si mismo, no de la columna en el que el valor es almacenado. SQLite así permite que el usuario almacene cualquier valor de cualquier tipo de dato en una columna sin importar el tipo declarado de esa columna. (Hay algunas excepciones a esta regla: una columna de tipo INTEGER PRIMARY KEY solo almacenará enteros. Y SQLite intentará acomodar los valores al tipo de dato declarado en la columna cuando pueda).</p>
+<p>Creemos que la especificación del lenguaje SQL permite el uso de tipado manifiesto. De todas formas, la mayoría de los otros motores SQL son estáticamente tipados y por eso algunas personas creen que el uso de tipado manifiesto es un bug en SQLite. Pero los autores de SQLite están convencidos de que esto es una característica valiosa. El uso de tipado manifiesto en SQLite es una decisión de diseño deliberada que ha probado en la práctica hacer que SQLite sea más confiable y fácil de usar, especialmente cuando se usa en combinación con lenguajes de programación dinámicamente tipados como Tcl y Python.</p>
+<h3>Registros de tamaño variable</h3>
+
+<p>La mayoría de los otros motores de base de datos SQL reservan una cantidad fija de espacio en disco por cada fila en la mayoría de las tablas. Hacen algunos trucos para manejar BLOBs y CLOBs que pueden tener un tamaño muy variable. Pero para la mayoría de las tablas, si declarás una columna de tipo VARCHAR(100), entonces el motor de base de datos reservará 100 bytes de espacio en disco sin importar cuanta información realmente guardes en esa columna.</p>
+<p>SQLite, en contraste, usa dolo la cantidad de espacio en disco que realmente se necesita para almacenar la información en la fila. Si guardás un solo carácter en un columna de tipo VARCHAR(100), solo un byte de espacio en disco será consumido. (En realidad 2 bytes - hay cierta sobrecarga el principio de cada columna para guardar su tipo de dato y longitud).</p>
+<p>El uso de registros de tamaño variable en SQLite tiene varias ventajas. Resulta en archivos de base de datos más pequeños, obviamente. También hace que la base de datos corra más rápido, ya que hay menos información que mover desde y hacia el disco. Y, el uso de registros de tamaño variable hace posible que SQLite use tipado manifiesto en lugar de tipado estático.</p>
+<h3>Más características</h3>
+
+<p>Una lista de todas las características de SQLite puede encontrarse en <a title="Características" href="http://www.sqlite.org/different.html" target="_blank">http://www.sqlite.org/different.html</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/03/09/cocarroy.html" class="u-url">Cocarroy</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/03/09/cocarroy.html" rel="bookmark"><time class="published dt-published" datetime="2009-03-09T19:54:06+00:00" title="2009-03-09 19:54">2009-03-09 19:54</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/03/09/cocarroy.html#disqus_thread" data-disqus-identifier="cache/posts/2009/03/09/cocarroy.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>Los cocarroy son un plato de origen <a title="Mallorca" href="http://es.wikipedia.org/wiki/Mallorca" target="_blank">mallorquí</a> que lleva muchos años en mi familia. Como usamos nuestros propios repollos,  la preparación del plato constituye una tradición que empieza en la huerta eligiendo un repollo que esté en el punto justo para utilizar. El texto de esta receta es parte del archivo personal de la Ing. Susana Garaü de Conti (mi mamá).</em><!--more-->
+<h3>Ingredientes</h3>
+
+<ul>
+
+    <li> Para la masa: 3 tazas de harina, 1 chorrito de aceite, sal y  agua</li>
+
+    <li> 1 repollo</li>
+
+    <li> 2 cucharitas de pimentón</li>
+
+    <li> Sal</li>
+
+    <li> Aceite</li>
+
+    <li> Pimienta</li>
+
+    <li> 1 chorizo parrillero</li>
+
+    <li> Una rodaja de panceta</li>
+
+</ul>
+
+<h3>Preparación</h3>
+
+<ul>
+
+    <li> Sacar el nervio central de cada hoja, lavarlas y cortarlas en cuadradito. Colocar en ensaladera y condimentar con sal, aceite, pimentón y algo de pimienta si se desea.</li>
+
+    <li> Preparar la masa mezclando los 3 elementos. Cuando la masa está suave, armar bollos y estirar hasta tener el tamaño de un plato.</li>
+
+    <li>Colocar en la mitad de la masa un poco de la ensalada y agregar cubitos de chorizo y de la panceta.</li>
+
+    <li>Tapar con la otra mitad armando empanadas grandes con el repulgue.</li>
+
+    <li> Pinchar y humectar con un poco de  agua y al HORNO !!!</li>
+
+</ul>
+
+<p>[gallery]</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-28.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-26.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

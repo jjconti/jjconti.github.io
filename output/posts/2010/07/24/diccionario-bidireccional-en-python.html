@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diccionario bidireccional en Python | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/07/24/diccionario-bidireccional-en-python.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../23/talk-taint-mode-for-python-via-a-library-video.html" title="Talk: Taint Mode for Python via a Library (video)" type="text/html">
+        <link rel="next" href="../../08/05/coloreando-codigo-fuente-en-wordpress.html" title="Coloreando código fuente en WordPress" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Diccionario bidireccional en Python">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/07/24/diccionario-bidireccional-en-python.html">
+    <meta property="og:description" content="Bidirectional dict o Injective mapping es una estructura de datos muy útil.
+Por lo general cuando usamos un diccionario o tabla hash, tenemos un valor asociado a una clave:
+&gt;&gt;&gt; d = {1:'uno', 2:'dos'}
+">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-07-24T18:59:50+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="Python">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="diccionario-bidireccional-en-python.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Diccionario bidireccional en Python</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-07-24T18:59:50+00:00" itemprop="datePublished" title="2010-07-24 18:59">2010-07-24 18:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="diccionario-bidireccional-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2010/07/24/diccionario-bidireccional-en-python.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="diccionario-bidireccional-en-python.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Bidirectional dict o <a href="http://en.wikipedia.org/wiki/Injective_mapping" target="_blank">Injective mapping</a> es una estructura de datos muy útil.</p>
+<p>Por lo general cuando usamos un diccionario o tabla hash, tenemos un valor asociado a una clave:</p>
+<p></p>
+<pre>&gt;&gt;&gt; d = {1:'uno', 2:'dos'}
+<p>&gt;&gt;&gt; d[1]</p>
+<p>'uno'</p></pre>
+<p>Pero algunas veces también resulta útil indexar por el valor y obtener la clave.</p>
+<pre lang="python" escaped="true">&gt;&gt;&gt; d['uno']
+
+1</pre>
+
+<p>Por ejemplo, en un programa tengo un archivo de configuración que contiene un diccionario dónde las claves son strings de 3 caracteres representando un edificio ('SFE', 'GDP', ...) y las claves números de puerto (5007, 5008, ...). En algunas partes el programa requiere conocer el edificio a partir del número de puerto y en otras el puerto a partir del edificio.</p>
+<h3>¿Cómo obtenemos este comportamiento?</h3>
+
+<p>Pregunté en <a href="http://stackoverflow.com/questions/3318625/efficient-bidirectional-hash-table-in-python" target="_blank">StackOverflow</a> y si bien me apuntaron a una <a href="http://pypi.python.org/pypi/bidict/" target="_blank">implementación</a>, la solución que más me gustó fue esta:</p>
+<pre>&gt;&gt;&gt; d.update( dict((d[k], k) for k in d))</pre>
+
+<p>Así se ve <code>d</code> ahora: </p>
+<pre>{1: 'uno', 2: 'dos', 'uno': 1, 'dos': 2}</pre>
+<p>Y podemos efectivamente indexar por clave o por valor:</p>
+<pre>&gt;&gt;&gt; d[1]
+
+'uno'
+
+&gt;&gt;&gt; d['uno']
+
+1
+
+</pre>
+
+<h3>Advertencias</h3>
+
+<h4>No se pueden usar objetos mutables</h4>
+
+<p>En los diccionarios de Python <a href="http://www.python.org/doc/faq/es/general/#por-qu-las-claves-de-los-diccionarios-deben-ser-inmutables" target="_blank">solo objetos inmutables pueden ser clave de diccionarios</a>, por lo tanto, en nuestro diccionario bidireccional, tanto las claves como los valores deberán serlo.</p>
+<h4>Actualizaciones</h4>
+
+<p>Otra limitación de este enfoque son las desincronizaciones que puede sufrir al modificar el <em>bidict</em> luego de realizar la transformación; hay que tener cuidado!</p>
+<ul>
+
+    <li>Luego de agregar un nuevo elemento debemos volver a ejecutar la línea mágica para que cree la entrada inversa.</li>
+
+    <li>No podemos agregar un par que tenga como clave algo que ya existía como valor o que tenga como valor algo que ya existía como clave.</li>
+
+    <li>Si borramos una entrada, hay que también borrar su inversa.</li>
+
+</ul>
+
+<h3>Conclusión personal</h3>
+
+<p>Como les contaba antes, yo estaba usando el diccionario original en un archivo de configuración, por lo que no toco la estructura de datos durante la ejecución del programa, así que esta solución compacta y elegante... como dijo el filósofo: <strong>me viene al pelo!</strong></p>
+<p>Espero a alguien más le sirva.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../23/talk-taint-mode-for-python-via-a-library-video.html" rel="prev" title="Talk: Taint Mode for Python via a Library (video)">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../../08/05/coloreando-codigo-fuente-en-wordpress.html" rel="next" title="Coloreando código fuente en WordPress">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/07/24/diccionario-bidireccional-en-python.html",
+        disqus_title="Diccionario bidireccional en Python",
+        disqus_identifier="cache/posts/2010/07/24/diccionario-bidireccional-en-python.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

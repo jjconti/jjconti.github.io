@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (legacy db)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/legacy-db.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Algunos problemas y soluciones al levantar bases de datos legacy con Django</title><link>http://www.juanjoconti.com.ar/posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://docs.djangoproject.com/en/dev/howto/legacy-databases/" target="_blank"&gt;Con Django&lt;/a&gt; podemos levantar una &lt;a href="http://stackoverflow.com/questions/939465/what-does-the-term-legacy-database-mean" target="_blank"&gt;base de datos &lt;em&gt;legacy&lt;/em&gt;&lt;/a&gt; en lugar de definir nuestro modelo de datos y arrancar una aplicación desde cero. No es necesariamente una base de datos vieja, sino una base de datos heredada de otro sistema; puede ser de un sistema anterior que se está reemplazando o incluso de otro sistema que queremos usar de forma paralela.
+&lt;p&gt;Luego de configurar nuestra base de datos y ejecutar:&lt;/p&gt;
+&lt;pre&gt;python manage.py inspectdb &amp;gt; models.py&lt;/pre&gt;
+
+&lt;p&gt;obtenemos una definición de modelos basada en en las tablas de la base de datos. Lo siguiente es ver si anda.&lt;/p&gt;
+&lt;p&gt;Lo más probable es que obtengamos un &lt;a href="http://docs.python.org/library/exceptions.html#exceptions.NameError" target="_blank"&gt;NameError&lt;/a&gt;. Esto pasa cuando en la definición de alguno de los modelos se hace referencia a otro modelo aún no definido! La solución indicada es empezar a reordernar los modelos, pero una forma más fácil es cambiar los nombres por strings. Un ejemplo:&lt;/p&gt;
+&lt;pre&gt;jefe = models.ForeingKey(Empleado)
+
+&lt;/pre&gt;
+
+&lt;p&gt;por&lt;/p&gt;
+&lt;pre&gt;jefe = models.ForeingKey('Empleado')
+
+&lt;/pre&gt;
+
+&lt;p&gt;Otra queja que nos puede hacer Django es que tengamos atributos llamados &lt;strong&gt;id&lt;/strong&gt; que no sean &lt;em&gt;primary key&lt;/em&gt;. Solución: les cambiamos el nombre.&lt;/p&gt;
+&lt;p&gt;Eventualmente vamos a necesitar habilitar la aplicación &lt;a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/" target="_blank"&gt;&lt;strong&gt;admin&lt;/strong&gt;&lt;/a&gt; (ya que estamos usando Django para levantar datos, nada mejor que usar su ABM estrella para ahorrarnos mucho trbajo). Los pasos para hacer con éxito son:&lt;/p&gt;
+&lt;ol&gt;
+
+    &lt;li&gt;Habilitar la aplicaccion admin en &lt;code&gt;settings.py&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Ejecutar &lt;code&gt;syncdb&lt;/code&gt; para que se creen las tablas de esta aplicación.&lt;/li&gt;
+
+    &lt;li&gt;Agregar los modelos de la base de datos heredada al archivo &lt;code&gt;admin.py&lt;/code&gt; de la aplicación.&lt;/li&gt;
+
+&lt;/ol&gt;
+
+&lt;p&gt;Por supuesto, si los nuevos modelos son cientos, es bastante engorroso hacer esto a mano. Les paso un hack; así luce mi &lt;code&gt;admin.py&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;from django.contrib import admin
+
+from django.db.models import base
+
+from my_app.models import *
+
+
+
+for k,v in locals().items():
+
+    if isinstance(v, base.ModelBase):
+
+        admin.site.register(v)&lt;/pre&gt;
+
+&lt;p&gt;Tip final. Si obtenemos un error de este tipo:&lt;/p&gt;
+&lt;pre lang="bash"&gt;OperationalError at /admin/mango/datapointusers/
+
+(1054, "Unknown column 'dataPointUsers.id' in 'field list'")
+
+&lt;/pre&gt;
+
+&lt;p&gt;es por que alguna de las tablas levantadas no tenía una columna que sea clave primaria. Django necesita esto para poder distinguir los objetos entre si. Para cada tabla dónde tengamos este problema, podemos ejecutar el siguiente comando SQL para agregarle una columna llamada id; clave primaria y auto numérico.&lt;/p&gt;
+&lt;pre lang="sql"&gt;ALTER TABLE `dataPointUsers` ADD `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Django</category><category>legacy db</category><guid>http://www.juanjoconti.com.ar/posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html</guid><pubDate>Wed, 27 Oct 2010 00:28:54 GMT</pubDate></item></channel></rss>

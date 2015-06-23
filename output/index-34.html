@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 34) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-34.html">
+
+
+
+        <link rel="prev" href="index-35.html" type="text/html">
+        <link rel="next" href="index-33.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html" class="u-url">Aplicar un decorador a todas las funciones de un módulo en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2010-02-06T12:35:28+00:00" title="2010-02-06 12:35">2010-02-06 12:35</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En la lista de PyAr <a href="http://www.grulic.org.ar/lurker/message/20100204.020622.c24e333b.en.html" target="_blank">preguntaron</a> si había alguna forma de aplicar un decorador a todos las funciones de un módulo. Envié una solución sin probarla, que al verla unos días más tarde parece bastante buena :)</p>
+<p>La comento aquí con un ejemplo. modulo.py contiene definiciones de funciones:</p>
+<p></p>
+<pre>def a():
+<pre class="code literal-block">pass
+</pre>
+
+
+<p>def b():</p>
+<pre class="code literal-block">print 42
+</pre>
+
+
+<p>def c():</p>
+<pre class="code literal-block">a()
+
+b()&lt;/pre&gt;
+</pre>
+
+
+<p>y decoradores.py un decorador que imprime el nombre de la función llamada:</p>
+<pre>def nombrador(f):
+
+    def inner(*a, **kw):
+
+        print "Ejecutando %s" % f.__name__
+
+        return f(*a, **kw)
+
+    return inner</pre>
+
+<p>(Si no sabés lo que es un decorador, podés leer mi post <a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank">Decoradores en Python I: Introducción</a>)</p>
+<p>En lugar de modificar las definiciones de funciones en modulo.py para aplicar el decorador a cada una de las funciones, ya sea usando el azúcar sintáctica de Python:</p>
+<pre>@nombrador
+
+def a():
+
+    ...</pre>
+
+<p>o mediante una llamada a la función:</p>
+<pre>a = nombrador(a)</pre>
+
+<p>podemos agregar el siguiente código al final de modulo.py:</p>
+<pre>for n,v in locals().items():
+
+   if inspect.isfunction(v) and n != 'nombrador':
+
+       locals()[n] = nombrador(v)</pre>
+
+<p>Vamos a explicarlo:</p>
+<p>la llamada a la función built-in locals retorna un diccionario representando el espacio de nombres local: cada clave es un string representando el nombre de un objeto y cada valor es el objeto en si. Iteramos sobre la lista de pares (key, value) del mencionado dict y por cada uno verificamos si:</p>
+<p>a) es una función (inspect.isfunction es apropiado para esto)</p>
+<p>b) el nombre no es el del decorador que queremos aplicar (para no aplicar el decorador sobre si mismo!)</p>
+<p>Si las condiciones a y b se cumplen, podemos guardar en el diccionario del espacio de nombres, bajo el nombre de la función que cumplió las condiciones, una versión decorada de la misma.</p>
+<p>Agregamos algo más de código a modulo.py para que se llame a las funciones cuando lo ejecutemos:</p>
+<pre>if __name__ == '__main__':
+
+    a()
+
+    b()
+
+    c()</pre>
+
+<p>Esta es la salida obtenida:</p>
+<pre lang="bash">juanjo@fenix:~/python/muchosdecos$ python modulo.py
+
+Ejecutando a
+
+Ejecutando b
+
+42
+
+Ejecutando c
+
+Ejecutando a
+
+Ejecutando b
+
+42</pre>
+
+<p>¿Querés probarlo? Bajá <a href="wp-content/uploads/2010/02/muchos.zip">muchos.zip</a></p>
+<p><strong>Nota:</strong> para acceder a locals() no se puede utilizar iteritems por que el diccionario cambia durante la ejecución.</p></pre>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/02/01/novelas-que-lei-en-enero2010.html" class="u-url">Novelas que leí en Enero/2010</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/02/01/novelas-que-lei-en-enero2010.html" rel="bookmark"><time class="published dt-published" datetime="2010-02-01T23:59:33+00:00" title="2010-02-01 23:59">2010-02-01 23:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/02/01/novelas-que-lei-en-enero2010.html#disqus_thread" data-disqus-identifier="cache/posts/2010/02/01/novelas-que-lei-en-enero2010.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Durante el año realmente siento que me falta tiempo para leer. No para leer el diario o material de estudio, sino para leer por el placer de hacerlo. Leer literatura. A parte de algunos cuentos de Asimov, este enero pude leer 4 novelas. Las 4 muy distintas entre si, pero igualmente entretenidas. Se las paso a comentar, por si alguno tiene ganas de leer y sacó sus vacaciones en febrero (enero ya se fue). Si a alguien le interesa leer alguno, los tengo para prestar:</p>
+<p></p>
+<h3>El enigma de Copérnico</h3>
+<p><a href="wp-content/uploads/2010/01/el-enigma-de-coopernico.jpg"><img class="alignright size-medium wp-image-2133" title="el-enigma-de-coopernico" src="wp-content/uploads/2010/01/el-enigma-de-coopernico-188x300.jpg" alt="el-enigma-de-coopernico" width="188" height="300"></a><strong>Autor:</strong> Juan-Pierre Luminet</p>
+<p><strong>Género:</strong> Novela histórica</p>
+<p><strong>Páginas:</strong> 365 (incluyendo notas del autor)</p>
+<p><strong>Editorial:</strong> Ediciones B/Zeta<strong></strong></p>
+<p></p>
+<p><strong>ISBN:</strong> 978-84-9872-040-2</p>
+<p>El primer libro que leí me lo regaló mi tía Lupe para Navidad. Es una versión novelada de la vida de <a href="http://es.wikipedia.org/wiki/Nicol%C3%A1s_Cop%C3%A9rnico" target="_blank">Nicolás Copérnico</a> (si, el que dijo que los planetas se movían al rededor del son y  no TODO al rededor de la tierra como se venía creyendo) escrita por un científico francés y es la primera de una serie de 4 entregas titulada Los constructores del cielo.</p>
+<p>Me gustó mucho, los capítulos son un poco largos (me gustan más cortos, así uno puede dejar el libro en cualquier momento) pero la trama es atrapante. Desconocía los detalles de la vida de Copérnico, por lo que no se cuanto hay de verdad y cuanto de ficción. Pero sin duda es una buena aproximación para conocer un poco más sobre la historia del mundo.</p>
+<p>Los otros libros de la serie son sobre Brahe, Kepler y Newton (el último aún no ha sido escrito).</p>
+<h3>En la arena estelar</h3>
+
+<p><a href="wp-content/uploads/2010/02/en-la-arena-estelar.jpg"><img class="alignright size-medium wp-image-2134" title="en-la-arena-estelar" src="wp-content/uploads/2010/02/en-la-arena-estelar-198x300.jpg" alt="en-la-arena-estelar" width="198" height="300"></a><strong>Autor:</strong> Isaac asimov</p>
+<p><strong>Género:</strong> Ciencia ficción</p>
+<p><strong>Páginas: </strong>200</p>
+<p><strong>Editorial: </strong>Ediciones Martinez Roca <strong></strong></p>
+<p></p>
+<p><strong>ISBN:</strong> 84-270-0516-4</p>
+<p>La segunda novela la leí durante <a href="http://www.juanjoconti.com.ar/2010/01/21/vacaciones-en-villa-gesell/" target="_blank">mis vacaciones</a> y <a href="http://www.juanjoconti.com.ar/2008/01/14/el-sol-desnudo/#comment-30128847">la compré en una casa de usados en Pinamar</a>. Es una entrega más de Asimov, una especia de aventura de Cowboys por el espacio. En este caso se intenta encontrar un misterioso documento perdido hace muchos años a la vez que el último planeta conquistado por los humanos intenta conquistarlos a los demás para formar un Imperio Galáctico. Por supuesto, la resistencia se levanta para evitar que esto suceda. Aventura, romance (del pícaro que hace Asimov), conspiraciones y un final bien Asimoviano (era MUY norteamericano el tipo... para ser ruso).</p>
+<h3>Las grietas de Jara</h3>
+
+<p><strong><a href="wp-content/uploads/2010/02/las-grietas-de-jara.jpg"><img class="alignright size-medium wp-image-2135" title="las-grietas-de-jara" src="wp-content/uploads/2010/02/las-grietas-de-jara-187x300.jpg" alt="las-grietas-de-jara" width="187" height="300"></a>Autor:</strong> Claudia Piñeiro</p>
+<p><strong>Género:</strong> Policial</p>
+<p><strong>Páginas: </strong>250</p>
+<p><strong>Editorial: </strong>Alfaguara <strong></strong></p>
+<p></p>
+<p><strong>ISBN:</strong> 978-987-04-1296-0</p>
+<p>La tercer novela la compré para leer a la vuelta (16 horas en colectivo no se digieren fácil). Compré una edición "económica" 15 pesos más barata que en todas las otras librerías. La verdad, no pude notar la diferencia.</p>
+<p>Las grietas de Jara está escrita con <a href="http://www.juanjoconti.com.ar/2009/03/05/tuya-de-claudia-pineiro/" target="_blank">esa forma característica de Claudia Piñeiro</a>, un policial urbano, con personajes bien humanos, donde mucha parte de la historia pasa dentro de sus cabezas.</p>
+<p>Me gustó más que Las viudas de los jueves, pero menos que Tuya.</p>
+<h3>El principe de la nieble</h3>
+
+<p><strong><a href="wp-content/uploads/2010/02/el-principe-de-la-niebla.jpg"><img class="alignright size-medium wp-image-2136" title="el-principe-de-la-niebla" src="wp-content/uploads/2010/02/el-principe-de-la-niebla-198x300.jpg" alt="el-principe-de-la-niebla" width="198" height="300"></a>Autor:</strong> Carlos Ruiz Zafón</p>
+<p><strong>Género:</strong> Fantasía/Juvenil</p>
+<p><strong>Páginas: </strong>230</p>
+<p><strong>Editorial: </strong>Booket<strong></strong></p>
+<p></p>
+<p><strong>ISBN:</strong> 978-987-580-321-3</p>
+<p>El escritor, Carlos Ruiz Zafón, se hizo famoso hace unos años con su novela La sombra del viento, y a continuación El juego del angel (que transcurre una generación antes que La sombra del viento). Sin embargo, estas no son sus primeras novelas. Zafón cuenta también con una trilogía del género que algunos denominan "Novela juvenil"; personajes sub 18, más fantasía que en sus novelas para "adultos", pero como aclara el autor en el prologo, pueden disfrutarla tanto jovenes como lectores con más años</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/01/29/cabanas-cayasta.html" class="u-url">Cabañas Cayastá</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/01/29/cabanas-cayasta.html" rel="bookmark"><time class="published dt-published" datetime="2010-01-29T22:11:52+00:00" title="2010-01-29 22:11">2010-01-29 22:11</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/01/29/cabanas-cayasta.html#disqus_thread" data-disqus-identifier="cache/posts/2010/01/29/cabanas-cayasta.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El fin de semana mi familia estuvo de paseo en las <a href="http://www.cayasta.com/" target="_blank">Cabañas Cayastá</a>. Yo iba a unirme desde el viernes, pero como estuve un poco enfermo solo pude pasar en las cabañas una sola una noche. Ya conocíamos el lugar, puesto que habíamos pasado un fin de semana allí hace dos años. Es un predio parquizado muy grande (5 hectareas) con 26 cabañas, salida al <a href="http://es.wikipedia.org/wiki/R%C3%ADo_San_Javier" target="_blank">río</a> y mucha infraestructura.</p>
+<p>Las cabañas tiene hasta 6 camas, baño, aire acondicionado, 2 pisos, una cocina equipada con todos los cubiertos y trastos, heladera, mesa y sillas, parrillas y tele (alguien lo necesita?). Se puede cocinar en la cabaña, pedir comida a la habitación o comer en el comedor del lugar (los sábados a la noche suele haber Cena Show). A la tardecita te dejan en la puerta de la cabaña una canasta con el desayuno para el otro día.</p>
+<p>El lugar está muy bueno para descansar, tiene muchas comodidades y se puede hacer de todo:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span> Pescar<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span> Cabalgar<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span> Andar en bicicleta<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span> Pileta<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span> Juegos (muy buenos para chicos, desde los típicos de plaza a otros como una casa en el árbol o un laberinto)<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span> Hacer asado<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+
+
+<p>Está a unos minutos del pueblo (<a href="http://es.wikipedia.org/wiki/Cayast%C3%A1" target="_blank">Cayastá</a>), por lo que podés comprar ahí lo que te olvides, y a menos de 100 km de Santa Fe, por lo que llegás en una hora.</p>
+<p>También tengo entendido que se suele utilizar para organizar convenciones (tiene un salón para 300 personas).</p>
+<p>Dejo algunas fotos del lugar para entusiasmar:</p>
+<p>[gallery link="file" orderby="title"]</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/01/25/celular-cuento.html" class="u-url">Celular - cuento</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/01/25/celular-cuento.html" rel="bookmark"><time class="published dt-published" datetime="2010-01-25T17:43:30+00:00" title="2010-01-25 17:43">2010-01-25 17:43</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/01/25/celular-cuento.html#disqus_thread" data-disqus-identifier="cache/posts/2010/01/25/celular-cuento.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Siendo un ávido lector, hace un par de años me llegó el momento, como a todo lector, de creer que también puedo ser un escritor. Fue así que me entregué con furia a la escritura de cuentos, uno tras otros, solo para darme cuenta de que el siguiente era peor que el anterior :(</p>
+<p>De todas formas, como soy cabeza dura, y tengo ganas de volver a intentarlo, les dejo el primero que escribí, y como los subsiguientes fueron cada vez peores, el mejor que tengo.</p>
+<p>Se titula Celular, y lo escribí una noche en el verano 2007-2008 en mi pieza, en <a href="http://es.wikipedia.org/wiki/Carlos_Pellegrini_%28Santa_Fe%29" target="_blank">Carlos Pellegrini</a>. La idea del cuento me había llegado como un rayo, al mirar por la ventanilla cuando me tomaba el 16 en la esquina de mi departamento, bolso en mano, camino a la terminal de ómnibus de la ciudad de Santa Fe.</p>
+<p><a href="wp-content/uploads/2010/01/Celular_jjconti.pdf">Celular_jjconti</a></p>
+<p>Como ya les dije, tengo ganas de retomar, así que sean alentadores en sus comentarios ;-)</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/01/21/alarmas-en-gnome.html" class="u-url">Alarmas en GNOME</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/01/21/alarmas-en-gnome.html" rel="bookmark"><time class="published dt-published" datetime="2010-01-21T22:25:47+00:00" title="2010-01-21 22:25">2010-01-21 22:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/01/21/alarmas-en-gnome.html#disqus_thread" data-disqus-identifier="cache/posts/2010/01/21/alarmas-en-gnome.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Nunca había usado esta aplicación hasta hoy. Estoy muy concentrado trabajando en la computadora, mensaje por IM: "llamame en 15 minutos". "Mmmm", pienso. "Me voy a olvidar". Debe haber alguna herramienta en <a href="http://www.gnome.org/" target="_blank">mi escritorio</a> que me permita resolver esto, es algo realmente sencillo. Busco: GNOME + alarma, encuentro: <a href="http://gnome-alarm.sourceforge.net/" target="_blank">Gnome Alarm</a> (el paquete se llama alarm-clock).</p>
+<p></p>
+<p style="text-align: center;"><a href="wp-content/uploads/2010/01/Pantallazo-Alarma.png"><img class="size-medium wp-image-2101 aligncenter" title="Pantallazo-Alarma" src="wp-content/uploads/2010/01/Pantallazo-Alarma-300x161.png" alt="Pantallazo-Alarma" width="300" height="161"></a></p>
+<p>Cargo una alamar para dentro de 14 minutos. Si, la búsqueda llevo solo 1. ¡Genial! No solo por la herramienta (es sencilla pero extremadamente útil) sino por el ecosistema de software que es el Software Libre; no creo que en otro ámbito puedas tener una necesidad, pensar en un programar y que exista para solucionar tu problema solo por que antes ya alguien tuvo el problema y lo solucionó. Allí estaba la herramienta, lista para usar.</p>
+<p>Llevo media hora, y ya la usé dos veces :)</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/01/21/vacaciones-en-villa-gesell.html" class="u-url">Vacaciones en Villa Gesell</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/01/21/vacaciones-en-villa-gesell.html" rel="bookmark"><time class="published dt-published" datetime="2010-01-21T01:25:54+00:00" title="2010-01-21 01:25">2010-01-21 01:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/01/21/vacaciones-en-villa-gesell.html#disqus_thread" data-disqus-identifier="cache/posts/2010/01/21/vacaciones-en-villa-gesell.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p style="text-align: center;"><a href="wp-content/uploads/2010/01/los4_.JPG"><img class="alignnone size-medium wp-image-2091" title="los4_" src="wp-content/uploads/2010/01/los4_-300x165.jpg" alt="los4_" width="300" height="165"></a></p>
+<p>La semana pasada estuvimos de vacaciones en Villa Gesell Ceci, Meli, Barby y yo. Fuimos en cole (largo) y paramos en el <a href="http://www.hotelcitymar.com.ar/" target="_blank">hotel CityMar</a> (nos gustó que estaba a 1.5 cuadras de la playa, la comida y la pileta). Mientras volvía, medio dormido y contento, se me había ocurrido la idea de escribir un relato detallado de todo el viaje. Ya no se si voy a hacerlo, pero hay algunas cosas que quiero comentar:</p>
+<h3>Pinar del Norte</h3>
+
+<p>Uno de los mejores lugares para visitar, no-playa, es el Pinar del Norte: al norte de la ciudad, junto al mar, se levanta una enorme arbolera de, en su mayoría, pinos. En el interior está:</p>
+<ul>
+
+    <li>la sede del Museo y Archivo Histórico Municipal de Villa Gesell (en el edificio de lo que fue la primer casa de su fundador).</li>
+
+    <li>otros museos, como el de los Pioneros, en honor a los primeros habitantes y otros edificios con historia.</li>
+
+    <li>el vivero municipal.</li>
+
+    <li>un viejo tinglado convertido en cafetería.</li>
+
+    <li>caminos para recorrer y sombra para descansar (muy lindo para pasar la tarde tomando mates o jugando a las cartas).</li>
+
+    <li>un centro cultural dónde se puede encontrar a un maestro tocando el piano en vivo (en el edificio de la segunda casa del fundador).</li>
+
+</ul>
+
+<p>Por el simbólico valor de 3 pesos[0] se puede realizar una visita guiada a los distintos edificios que se encuetran en el lugar. Si van de vacaciones a Gesell, no dejen de realizar esta visita por que es de verdad muy buena. La guía le ponía tanta pasión a su trabajo que la historia realmente te atrabapa.</p>
+<p style="text-align: center;"><a href="wp-content/uploads/2010/01/100_6038.JPG"><img class="size-medium wp-image-2079 aligncenter" title="100_6038" src="wp-content/uploads/2010/01/100_6038-225x300.jpg" alt="100_6038" width="225" height="300"></a></p>
+
+<p style="text-align: center;"><a href="wp-content/uploads/2010/01/100_6041.JPG"><img class="size-medium wp-image-2080 aligncenter" title="100_6041" src="wp-content/uploads/2010/01/100_6041-300x225.jpg" alt="100_6041" width="300" height="225"></a></p>
+
+<h3>Don Carlos Idaho Gesell</h3>
+
+<p>El fundador de Villa Gesell se llamó Carlos Idaho Gesell y nació en Buenos Aires en 1891, aunque sus padres eran alemanes. Su padre, Silvio Gesell, quién luego fuera conocido por <a href="http://www.silvio-gesell.de/" target="_blank">sus trabajos en economía</a>, era un comerciante que vino desde Europa, primero vendiendo herramientas para odontólogos y más tarde elementos para bebés; Casa Gesell fue el nombre de la empresa familiar en la que Carlos también trabajo.</p>
+<p>El hijo heredó de su padre el hobby por los inventos. Carlos Gesell registró más de 200 patentes en Argentina y en Estados Unidos, dónde pasó 10 años estudiando en las grandes bibliotecas; pasaba allí horas, desde que abrían hasta que cerraban.</p>
+<p style="text-align: center;"><a href="posts/2010/01/wp-content/uploads/2010/01/100_5968.JPG"></a><a href="wp-content/uploads/2010/01/100_59681.JPG"><img class="alignnone size-medium wp-image-2097" title="100_5968" src="wp-content/uploads/2010/01/100_59681-225x300.jpg" alt="100_5968" width="225" height="300"></a></p>
+
+<p>De regreso en Argentina, se dedicaba al diseño y rediseño de productos en Casa Gesell, como cochecitos todo terreno para bebes y muebles. En sus vacaciones de 1931, en Mar del Plata, conoce a Hector Manuel Guerrero, dueño de campos en la zona de General Maradiaga, quien le informa de un terreno lleno de <a href="http://es.wikipedia.org/wiki/Duna" target="_blank">dunas</a> que se vende. Llegar al lugar, requiere un largo viaje en tren hasta la Estación Juancho, atravesar campos haciendo uso del permiso de servidumbre, y atravezar extensiones de arena en sulky. Luego de hacer algunas pruebas y encontrar que el agua es potable, don Carlos, como se lo empieza a llamar a partir de cierta edad, decide comprar las tierras para sembrar pinos que sirvan para suministrar madera a su empresa.</p>
+<p>Muchos miembros de su familia le recriminan haber gastado tanto dinero en un montón de arena, se termina separando y volviendo a casar para en ese mismo año construir la primer casa en su nueva propiedad. Algo particular del lugar es la presencia de dunas, masas vivas de arena que por acción del viento pueden cambiar de lugar de un día para el otro. Usando su ingenio, diseñó su casa con 4 puertas, una por cada punto cardinal y así poder salir si durante la noche se acumulaba arena en alguna de las entradas. Al principio viajaba los fines de semana y la casa servía de veraneo para el resto de la familia.</p>
+<p>Pasó 10 años intentando sembrar pinos y otras especies que conseguía en viveros de Buenos Aires y otros lugares del mundo; incluso invitó a un ingeniero agrónomo alemán a instalarse a trabajar junto a él. Luego de dos años, se fue enojado, diciéndole a don Carlos que nada crecería en ese lugar. Finalmente, a fuerza de perseverancia e ingenio logro su objetivo.</p>
+<p style="text-align: center;"><a href="posts/2010/01/wp-content/uploads/2010/01/100_5984.JPG"></a><a href="wp-content/uploads/2010/01/100_59841.JPG"><img class="alignnone size-medium wp-image-2096" title="100_5984" src="wp-content/uploads/2010/01/100_59841-300x225.jpg" alt="100_5984" width="300" height="225"></a></p>
+
+<p>Como una idea para obtener recursos para continuar su labor, se le ocurre construir una casa en la que personas de Capital Federal puedan pasar sus vacaciones, la llama La Golondria, por el caracter pasajeron que tendrían sus visitantes. Rápidamente tiene éxito y el boca a boca hace que cada año sean más las personas que llegan a pasar sus vacaciones en aquel lugar, algunos les compran tierras a Don Carlos y construyen sus propias casas. Don Carlos, hasta su muerte, ayuda en la construcción de la ciudad: siendo benefactor de instituciones, estableciendo caminos y construyéndolos, sembrando más árboles; y así un pinar productor de madera, terminó convertido en uno de los balneareos más visitados de Argentina.</p>
+<p style="text-align: center;"><a href="wp-content/uploads/2010/01/100_5985.JPG"><img class="size-medium wp-image-2083 aligncenter" title="100_5985" src="wp-content/uploads/2010/01/100_5985-225x300.jpg" alt="100_5985" width="225" height="300"></a></p>
+
+<h3>Libros</h3>
+
+<p>Como sabrás, si seguís este blog, me gustan bastante los libros: comprar, oler, descubrir, recomendar, leer. En Villa Gesell hay muchas librerías, sobre todo en el centro. De usados hay dos o tres sobre la avenida 3[1] pero no encontré nada de valor allí. De todas las que visité, la que realmente es un hayazgo digno de compartir es una que se encuentra en la parte baja del Paseo España, casi al fondo (el Paseo España es una calle peatonal que corta la avenida 3): venden libros muy baratos (casi un 50% menos que en las otras librerías). Según la vendedora, los precios se deben a que son ediciones económicas y a que los impuestos son distintos por estar en una feria. No dejen de visitarlo; yo compré 3 libros por 70 $ que en una librería tradicional me hubiesen costado 130 $.</p>
+<p>Otro hallazgo literario lo hice en Pinamar. No fuimos en excursión o algo por el estilo (no se cuando te pueden cobrar); por 11 pesos una persona puede ir y volver en colectivo (pasan cada media hora) y pasear por le centro y la playa. No me gustó mucho la ciudad, y es cara (una bochita de helado por 13 $ no es negocio). Pero en una especie de peatonal en el centro hay una casa de usados con muy buen material. Allí compre En la arena estelar, el siguiente libro de libro de Isaac Asimov en mi <a href="http://www.juanjoconti.com.ar/2008/01/14/el-sol-desnudo/" target="_blank">lista de libros a leer para completar La Saga de la fundación</a>.</p>
+<p style="text-align: center;"><a href="wp-content/uploads/2010/01/100_1500.JPG"><img class="alignnone size-medium wp-image-2089" title="100_1500" src="wp-content/uploads/2010/01/100_1500-225x300.jpg" alt="100_1500" width="225" height="300"></a></p>
+
+<h3>Seguir navegando</h3>
+
+<p>Cree un album en mi galería con <a href="http://galeria.juanjoconti.com.ar/index.php?album=villa-gesell%2Fpinar-del-norte" target="_blank">fotos del Pinar del Norte</a> y los museos y otro con <a href="http://galeria.juanjoconti.com.ar/index.php?album=villa-gesell%2Fplayas" target="_blank">fotos de las playas</a>.</p>
+<p>Empecé la entrada en Wikipedia en Español para <a href="http://es.wikipedia.org/wiki/Carlos_Idaho_Gesell" target="_blank">Carlos Idaho Gesell</a>.</p>
+<p>[0] De verdad, es muy poco para pagar una recorrida guiada de tan buena calidad y los lugares a los que se tiene acceso. El dinero se utiliza par el mantenimiento del lugar, así que si visitás el parque y querés hacer una contribución mayor, podés comprar alguna de las publicaciones que tiene el museo.</p>
+<p>[1] En Villa Gesell las calles paralelas a la costa se numeran: 1, 2, 3, 4... y las perpendiculares con números mayores a 100.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/01/08/generacion-espontanea-de-codigo.html" class="u-url">Generación espontanea de código</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/01/08/generacion-espontanea-de-codigo.html" rel="bookmark"><time class="published dt-published" datetime="2010-01-08T13:20:49+00:00" title="2010-01-08 13:20">2010-01-08 13:20</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/01/08/generacion-espontanea-de-codigo.html#disqus_thread" data-disqus-identifier="cache/posts/2010/01/08/generacion-espontanea-de-codigo.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>Software does not make itself. Code does not spontaneously come from the ether of the universe.</blockquote>
+<p><a href="http://commons.wikimedia.org/wiki/File:Big_bang.jpg"><img class="aligncenter size-medium wp-image-2068" title="800px-Big_bang" src="wp-content/uploads/2010/01/800px-Big_bang-300x148.jpg" alt="800px-Big_bang" width="300" height="148"></a></p>
+<p>El párrafo completo:</p>
+<blockquote>
+
+<p style="text-align: left;">Software does not make itself.  Code does not spontaneously come from the ether of the universe.  <a href="http://www.python.org/">Python</a> is no exception to this rule. Since Python made its public debut back in 1991 many people beyond the BDFL (Benevolent Dictator For Life, <a href="http://www.python.org/%7Eguido/">Guido van Rossum</a>) have helped contribute time and energy to making Python what it is today; a powerful, simple programming language available to all.</p>
+
+</blockquote>
+
+<p style="text-align: right;">Fuente: <a href="http://python.org/dev/intro/" target="_blank">http://python.org/dev/intro/</a></p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/01/08/big-refactoring-en-dyntaint-py.html" class="u-url">Big refactoring en dyntaint.py</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/01/08/big-refactoring-en-dyntaint-py.html" rel="bookmark"><time class="published dt-published" datetime="2010-01-08T13:07:56+00:00" title="2010-01-08 13:07">2010-01-08 13:07</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/01/08/big-refactoring-en-dyntaint-py.html#disqus_thread" data-disqus-identifier="cache/posts/2010/01/08/big-refactoring-en-dyntaint-py.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Ayer llevé acabo un <a href="http://en.wikipedia.org/wiki/Code_refactoring" target="_blank">refactoring</a> importante en mi proyecto <a href="http://svn.juanjoconti.com.ar/dyntaint/" target="_blank">Taint Mode para Python</a>.</p>
+<p>En resumen: <a href="http://svn.juanjoconti.com.ar/dyntaint/dyntaint.py" target="_blank">dyntaint.py</a> es un módulo que permite seguirle la huella a datos que ingresan a un programa con el objetivo de evitar que lleguen a ciertas áreas sensibles. Por ejemplo, <strong>que "42 or 1=1" no llegue a una consulta SQL que se ejecutará contra una base de datos</strong>.</p>
+<p>Si lo anterior no te dice nada, te recomiendo que leas mi <a title="Taint Mode en Python: cómo encontrar vulnerabilidades mediante el uso de variables manchadas" href="http://www.juanjoconti.com.ar/2009/09/07/charla-taint-mode-en-python/" target="_blank">presentación sobre el tema</a>.</p>
+<p>Hasta hoy, el registro de qué variables estaban manchas con qué tipo de manchas en una corrida del programa se llevaba en una estructura de datos auxiliar llamada TAINTED. Básicamente un <a href="http://docs.python.org/tutorial/datastructures.html#dictionaries" target="_blank">diccionario</a> en el cual cada clave se corresponde con un tipo de mancha (o vulnerabilidad), y cada valor es un <a href="http://docs.python.org/tutorial/datastructures.html#sets" target="_blank">conjunto</a> de variables manchadas con el tipo de mancha de la clave correspondiente.</p>
+<p>El refactoring consistió en cambiar de este esquema a uno en el cual cada variable manchada tiene un atributo (taints) que es un conjunto de identificadores de manchas. Entonces si antes tenía algo como:</p>
+<p></p>
+<pre>{XSS: set(['manchado1', 'manchado2']),
+<p>SQLI: set(['manchado1'])}</p></pre>
+<p>ahora tengo:</p>
+<pre>&gt;&gt;&gt; manchado1.taints
+
+set([XSS, SQLI])</pre>
+
+<pre>&gt;&gt;&gt; manchado2.taints
+
+set([XSS])</pre>
+
+<p>La revisión 59 también incluye algunas otras limpiezas. Para ver los cambios:</p>
+<pre>svn diff -r 58:59 http://svn.juanjoconti.com.ar/dyntaint/</pre>
+
+<p>Después de hacer las modificaciones necesarias, y corregir errores, las pruebas corren ok:</p>
+<pre>Ran 84 tests in 0.006s
+
+
+
+OK</pre>
+
+<p>Podemos discutir los cambios en los comentarios.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/12/30/decoradores-en-python-iii.html" class="u-url">Decoradores en Python (III) - Clases decoradoras</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/12/30/decoradores-en-python-iii.html" rel="bookmark"><time class="published dt-published" datetime="2009-12-30T23:23:55+00:00" title="2009-12-30 23:23">2009-12-30 23:23</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/12/30/decoradores-en-python-iii.html#disqus_thread" data-disqus-identifier="cache/posts/2009/12/30/decoradores-en-python-iii.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Siguiendo con la serie de posts sobre decoradores en Python, y fiel al espíritu que los originó (ir mostrando lo que voy aprendido a medida que necesito resolver problemas específicos o descubro aplicaciones concretas) hoy les traigo un nuevo uso para los decoradores en Python: <strong>funciones caché</strong>.</p>
+<!--more-->
+
+<p>Anteriormente: <a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank">Decoradores I</a>, <a href="http://www.juanjoconti.com.ar/2009/07/16/decoradores-en-python-ii/" target="_blank">Decoradores II</a>.</p>
+<p></p>
+<h3>Funciones caché</h3>
+<p>Una función caché[0], es aquella que siempre que se le pide que compute un resultado para un grupo de parámetros dado, primero se fija en una memoria interna si no realizó ya el cálculo. Si ya lo hizo, retorna el valor computado anteriormente. Si aún no lo hizo, computa el valor, lo guarda en una memoria interna y luego lo retorna.</p>
+<p>Esta técnica es muy útil en funciones que requieren un cómputo intensivo y obtener un resultado lleva mucho tiempo. Permita acelerar sustancialmente los tiempos de ejecución a cambio de utilizar más memoria.</p>
+<p>La siguiente es una forma de implementarlo en Python para un computo en particular:</p>
+<pre>cache = {}
+
+def fmem(arg):
+
+    if arg in cache:
+
+        print "Recuperando valor de la memoria"
+
+        return cache[arg]
+
+    else:
+
+        r = (arg ** 10) * (arg ** -5)
+
+        cache[arg] = r
+
+        return r</pre>
+
+<p>Como memoria se utiliza un diccionario y el argumento de la función fmem es la clave del diccionario[1].</p>
+<p>Este es el resultado de utilizarla en el intérprete interactivo:</p>
+<pre>&gt;&gt;&gt; fmem(1)
+
+1.0
+
+&gt;&gt;&gt; fmem(2)
+
+32.0
+
+&gt;&gt;&gt; fmem(2)
+
+Recuperando valor de la memoria
+
+32.0</pre>
+
+<h3>Decoradores con estado</h3>
+
+<p>En esta implementación, la técnica de memorización se mezcla con el cálculo que era el objetivo original de la función. Si queremos aplicar la técnica sobre distintas funciones vamos a tener que entrometer la implementación de la caché en todas las funciones. Peor aún, si en el futuro se quiere realizar un cambio en la forma de almacenar y recuperar los valores almacenados, ¡tendríamos que modificar todas las funciones! La forma de resolver estos problemas es implementando un decorador que agregue esta funcionalidad a las funciones decoradas: resolvemos ambos problemas, el de intrución y el de mantenibilidad. Todo el código que provee esta funcionalidad extra es encapsulado en el decorador.</p>
+<p>Las funciones decoradoras, como las que vimos en los anteriores artículos, no nos sirven para esta tarea. Necesitamos un decorador que pueda almacenar un estado. Ya que cualquier <em>callable</em> puede ser un decorador, <strong>implementaremos el decorador mediante una clase</strong>.</p>
+<h3>Funciones caché con clases decoradoras</h3>
+
+<p>La definición de la clase decoradora consiste en dos métodos:</p>
+<ul>
+
+    <li> un método de inicialización, dónde se inicializa el atributo cache con un diccionario vacío y se guarda una referencia a la función decorada.</li>
+
+    <li>un método __call__ que será ejecutado cuando se llame a la función decorada.</li>
+
+</ul>
+
+<pre>class mem(object):
+
+
+
+    def __init__(self, g):
+
+        self.cache = {}
+
+        self.g = g
+
+
+
+    def __call__(self, arg):
+
+        if arg in self.cache:
+
+            print "Recuperando valor de la memoria"
+
+            return self.cache[arg]
+
+        else:
+
+            r = self.g(arg)
+
+            self.cache[arg] = r
+
+            return r</pre>
+
+<p>Luego, lo único que resta es decorar todas las funciones que querramos "dotar de memoria" para obtener mejoras de performance en su ejecución:</p>
+<pre>@mem
+
+def f(arg):
+
+    return (arg ** 10) * (arg ** -5)</pre>
+
+<p>La salida obtenida al ejecutar la función decorada en el intérprete interactivo es la misma qué en el ejemplo anterior:</p>
+<pre>&gt;&gt;&gt; fmem(1)
+
+1.0
+
+&gt;&gt;&gt; fmem(2)
+
+32.0
+
+&gt;&gt;&gt; fmem(2)
+
+Recuperando valor de la memoria
+
+32.0</pre>
+
+<h3>Más</h3>
+
+<p>La implementación del decorador mem solo sirve para decorar funciones que reciben un único argumento. Podemos mejorar su definición para que pueda decorar funciones con cualquier número de argumentos:</p>
+<pre>class mem2(object):
+
+
+
+    def __init__(self, g):
+
+        self.cache = {}
+
+        self.g = g
+
+
+
+    def __call__(self, *args):
+
+        if args in self.cache:
+
+            print "Recuperando valor de la memoria"
+
+            return self.cache[args]
+
+        else:
+
+            r = self.g(*args)
+
+            self.cache[args] = r
+
+            return r</pre>
+
+<pre>@mem2
+
+def f2(arg1, arg2):
+
+    return (arg1 ** 10) * (arg2 ** -5)</pre>
+
+<h3>Notas</h3>
+
+<p>[0] Se puede leer más sobre este concepto en Caching Function Results:Faster Arithmetic by Avoiding Unnecessary Computation de Stephen E. Richardson [SMLI TR-92-1]</p>
+<p>[1] Esta implementación tiene la limitación de que si el argumento de la función es un objeto mutable, no podrá ser usado como clave de un diccionario y se lanzará una excepción.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/12/29/como-agregar-meneame-a-bookmarkify.html" class="u-url">Cómo agregar Menéame a Bookmarkify</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/12/29/como-agregar-meneame-a-bookmarkify.html" rel="bookmark"><time class="published dt-published" datetime="2009-12-29T21:03:50+00:00" title="2009-12-29 21:03">2009-12-29 21:03</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/12/29/como-agregar-meneame-a-bookmarkify.html#disqus_thread" data-disqus-identifier="cache/posts/2009/12/29/como-agregar-meneame-a-bookmarkify.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="http://www.gara.com/projects/bookmarkify/" target="_blank">Bookmarkify</a> es un popular plugin para Wordpress y script PHP que permite agregar a un sitio web una botonera que posibilite a un visitánte rápidamente compartir el contenido que está leyendo mediante las redes sociales más pupulares (Twitter, Facebook, Digg, Reddit, ...).
+<p>Lamentablemente no posee la posibilidad de incluir a <a href="http://meneame.net" target="_blank">Menéame</a>, el sitio web para compartir contenidos más popular en español.</p>
+<p>Para añadirlo, se debe editar la función get getBookmarkifyLinks en el archivo bookmarkify.php de la distribución del plugin para añadir, en algún lugar entre <code>$i=0;</code> y return $links; la siguiente línea:</p>
+<p><code>$links[$i++] = array("Meneame!", "Publicar en Meneame!", "http://meneame.net/submit.php?url=$u&amp;title=$t", "meneame.ico", 0, 0);</code></p>
+<p>y guardar el archivo http://meneame.net/favicon.ico como meneame.ico en la carpeta del plugin.</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-35.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-33.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

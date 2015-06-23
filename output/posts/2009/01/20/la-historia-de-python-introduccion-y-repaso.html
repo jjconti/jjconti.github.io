@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La historia de Python: Introducción y repaso | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../14/un-fin-de-semana-en-upg.html" title="Un fin de semana en UPG" type="text/html">
+        <link rel="next" href="asociacion-de-metodos-en-tiempo-de-ejecucion-en-python.html" title="Asociación de métodos en tiempo de ejecución en Python" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="La historia de Python: Introducción y repaso">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html">
+    <meta property="og:description" content="El siguiente texto es una traducción del artículo Introduction and Overview de Guido  van Rossum publicado en http://python-history.blogspot.com/. Mi objetivo es traducir todos los artículos que se pu">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2009-01-20T15:22:22+00:00">
+           <meta property="article:tag" content="Historia">
+           <meta property="article:tag" content="Python">
+           <meta property="article:tag" content="traducciones">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="la-historia-de-python-introduccion-y-repaso.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">La historia de Python: Introducción y repaso</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2009-01-20T15:22:22+00:00" itemprop="datePublished" title="2009-01-20 15:22">2009-01-20 15:22</time></a></p>
+                <p class="commentline">
+        
+    <a href="la-historia-de-python-introduccion-y-repaso.html#disqus_thread" data-disqus-identifier="cache/posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="la-historia-de-python-introduccion-y-repaso.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo <a href="http://python-history.blogspot.com/2009/01/introduction-and-overview.html" target="_blank">Introduction and Overview</a> de Guido  van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>. Mi objetivo es traducir todos los artículos que se publiquen en ese blog.</em><!--more-->
+<h3>Introducción</h3>
+
+<p>Python es en la actualidad uno de los lenguajes de programación dinámicos más populares, junto con Perl, Tcl, PHP y ahora Ruby. A pesar de ser a menudo visto como un lenguaje de "scripting", es en realidad un lenguaje de programación de propósito general como Lisp o Smalltalk. Hoy, Python es usado para todo, desde scripts que luego se tiran hasta servidores web de alta escalabilidad que proveen servicio ininterrumpido 24x7. Permite crear interfaces de usuario, programar con bases de datos, realizar programación web tanto del lado del servidor como del cliente y testear aplicaciones. Es usado por científicos que escriben aplicaciones para las más rápidas supercomputadoras del mundo y por niños que están aprendiendo a programar.</p>
+<p>En este blog, voy a concentrarme en la historia de Python. En particular, cómo Python fue desarrollado, las principales influencias en su diseño, errores cometidos, lecciones aprendidas y futuras direcciones para el lenguaje.</p>
+<p><strong>Reconocimiento:</strong> Estoy en deuda con <a href="http://www.dabeaz.com/">Dave Beazley</a> por muchas de las mejores oraciones en este blog. (Para saber más sobre los orígenes de este blog, vea <a href="http://neopythonic.blogspot.com/2009/01/history-of-python-introduction.html">mi otro blog</a>.)</p>
+<h3>Un repaso rápido a Python</h3>
+
+<p>Cuando uno se encuentra con Python por primera vez, a menudo se sorprende de que el código Python se vea, por lo menos superficialmente, similar a código escrito en otros lenguajes de programación convencionales como C o Pascal. Esto no es un accidente; la sintaxis de Python toma mucho prestado de C. Por ejemplo, muchas de las palabras claves de Python (if, else, while, for, etc.) son las mismas que en C, los identificadores en Python tienen las mismas reglas que los de C, y muchos de los operadores estándares tienen el mismo significado que en C. Por supuesto, Python no es C y una de las principales áreas dónde difiere es que en lugar de usar llaves para agrupar sentencias, usa indentación. Por ejemplo, en lugar de escribir sentencias en C como:</p>
+<pre lang="c" escaped="true">if (a &lt; B) {
+
+    max = b:
+
+} else {
+
+    max = a;
+
+}</pre>
+
+<p>Python simplemente se deshace de todas las llaves (y de los punto y coma finales) y usa la siguiente estructura</p>
+<pre>if a &lt; b:
+
+    max = b
+
+else:
+
+    max = a</pre>
+
+<p>Otra área importante en la que Python se diferencia de los lenguajes del estilo de C es en su uso de tipado dinámico. En C, las variables siempre deben ser declaradas explícitamente y se les debe dar un tipo específico como int o double. Esta información es luego usada para hacer verificaciones estáticas en tiempo de compilación del programa y para reservar memoria para almacenar el valor de las variables. En Python, las variables son simplemente nombres que hacen referencia a objetos. No se necesita declarar las variables antes de que sean asignadas e incluso pueden cambiar de tipo en el medio de un programa. Como otros lenguajes de programación dinámicos, todas las verificaciones de tipo se hacen en tiempo de ejecución por un intérprete en lugar de en un paso de compilación separado.</p>
+<p>Los tipos de datos primitivos que vienen con Python incluyen booleanos, números (enteros de máquina, enteros de precisión arbitraria, y números de coma flotante reales y complejos), y cadenas de texto (de 8 bits y Unicode). Estos son todos tipos de datos inmutables, esto significa que los valores son representados por objetos que no pueden ser modificados después de su creación. Los tipos de datos compuestos que viene con el lenguaje incluyen tuplas (arrays inmutables), listas (arrays que pueden cambiar de tamaño) y diccionarios (tablas hash).</p>
+<p>Para organizar los programas, Python soporta paquetes (grupos de módulos y/o paquetes), módulos (código relacionado agrupado en un solo archivo fuente), clases, métodos o funciones. Para control de flujo, provee if/else, while y una sentencia for de alto nivel que itera sobre cualquier objeto "iterable". Para el manejo de errores, Python usa excepciones. Una sentencia raise lanza una excepción, y las sentencias try/except/finally especifican manejadores para las excepciones. Las operaciones que vienen con el lenguaje lanzan excepciones cuando se encuentran condiciones de error.</p>
+<p>En Python, todos los objetos que pueden ser nombrados son llamados "de primera clase". Esto significa que funciones, clases, métodos, módulos y todos los otros objetos nombrados pueden ser libremente pasados como parámetros, inspeccionados y almacenados en distintas estructuras de datos (por ejemplo, listas o diccionarios) en tiempo de ejecución. Y hablando de objetos, Python también tiene soporte completo para programación orientada a objetos; incluyendo clases definidas por el usuario, herencia y asociación de métodos en tiempo de ejecución.</p>
+<p>Python tiene una extensa librería estándar, la cual es una de las razones de su popularidad. La librería estándar tiene más de 100 módulos y siempre está evolucionando. Alguno de estos módulos incluyen expresiones regulares, funciones matemáticas típicas, hilos, interfaces con sistemas operativos, redes, protocolos estándares de Internet (HTTP, FTP, SMTP, etc.), manejo de email, procesamiento de XML, procesamiento de HTML y toolkits para GUI (Tcl/Tk).</p>
+<p>Además, hay una gran cantidad de módulos y paquetes provistos por terceros, muchos de los cuales también son open source. Aquí uno puede encontrar frameworks web (¡muchos como para listarlos!), más toolkits para GUI, librerías numéricas eficientes (incluyendo wrappers para muchos paquetes populares escritos en Fortran), interfaces con bases de datos relacionales (Oracle, MySQL y otras), SWIG (una herramienta para hacer que librerías C++ estén disponibles como módulos Python), y mucho más.</p>
+<p>Un atractivo principal de Python (y de otros lenguajes de programación dinámicos en ese aspecto) es que tareas que parecen complicadas a menudo pueden ser expresadas con muy poco código. Por ejemplo, aquí hay un script en Python simple que obtiene una página web, la revisa buscando referencias a URLs, e imprime las primeras 10.</p>
+<pre># Scan the web looking for references
+
+
+
+import re
+
+import urllib
+
+
+
+regex = re.compile(r'href="([^"]+)"')
+
+
+
+def matcher(url, max=10):
+
+    "Print the first several URL references in a given url."
+
+    data = urllib.urlopen(url).read()
+
+    hits = regex.findall(data)
+
+    for hit in hits[:max]:
+
+        print urllib.basejoin(url, hit)
+
+
+
+matcher("http://python.org")</pre>
+
+<p>Este programa puede ser modificado fácilmente para hacer un web crawler, y en efecto Scott Hassan me ha dicho que escribió el primer web crawler de Google en Python. Hoy, Google emplea millones de líneas de código Python para manejar muchos aspectos de sus operaciones, desde automatización a manejo de avisos (Descargo: en la actualidad soy un empleado de Google.)</p>
+<p>Por debajo, Python es implementado como una combinación de intérprete y compilador a bytecode. La compilación es llevada a cabo implícitamente cuando los módulos son cargados, y muchas primitivas del lenguaje necesitan que el compilador esté disponible en tiempo de ejecución. A pesar de que la implementación de referencia de Python está escrita en C, y está disponible para cada plataforma de hardware/software existente, muchas otras implementaciones se han vuelto populares. Jython es una versión que corre sobre la JVM y tiene integración con Java. IronPython es una versión para la plataforma .NET de Microsoft que tiene una integración similar con otros lenguajes que corren sobre la plataforma .NET. PyPy es un compilador/intérprete de Python escrito en Python (aún un proyecto de investigación, financiado con fondos de la UE). También está Stackless Python, una variante de la implementación en C que reduce la dependencia del stack de C para llamadas a funciones/métodos, para permitir co-rutinas, continuations y micro hilos.</p>
+<p><em>Traducido por Juan José Conti.</em></p>
+<p>Revisado por César Portela.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="../../../../categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/historia.html" rel="tag">Historia</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/traducciones.html" rel="tag">traducciones</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../14/un-fin-de-semana-en-upg.html" rel="prev" title="Un fin de semana en UPG">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="asociacion-de-metodos-en-tiempo-de-ejecucion-en-python.html" rel="next" title="Asociación de métodos en tiempo de ejecución en Python">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html",
+        disqus_title="La historia de Python: Introducci\u00f3n y repaso",
+        disqus_identifier="cache/posts/2009/01/20/la-historia-de-python-introduccion-y-repaso.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

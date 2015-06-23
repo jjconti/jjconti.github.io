@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Twisted)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/twisted.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:20 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Videos de las charlas en Junín</title><link>http://www.juanjoconti.com.ar/posts/2010/12/01/videos-de-las-charlas-en-junin.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Los amigos del LugJU han publicado los videos de todas las charlas realizadas en su último evento de Software Libre. Se pasaron!&lt;/p&gt;
+&lt;p&gt;Este es el video de mi charla &lt;a href="http://www.juanjoconti.com.ar/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted/" target="_blank"&gt;Desarrollando aplicaciones de red con Twisted&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;p&gt;&lt;embed src="http://blip.tv/play/AYKQ%2BksC" type="application/x-shockwave-flash" width="480" height="414" allowscriptaccess="always" allowfullscreen="true"&gt;&lt;/embed&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;Y también están &lt;a href="http://unnoba.blip.tv/posts?view=archive&amp;amp;nsfw=dc" target="_blank"&gt;el resto de las charlas&lt;/a&gt;!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>Aprendiendo Python</category><category>Eventos</category><category>Twisted</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2010/12/01/videos-de-las-charlas-en-junin.html</guid><pubDate>Wed, 01 Dec 2010 21:07:49 GMT</pubDate></item><item><title>Charla: Desarrollando aplicaciones de red con Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy di en &lt;a href="http://jornadassl.agora.unnoba.edu.ar/" target="_blank"&gt;Junín&lt;/a&gt; una charla introductoria &lt;a href="http://twistedmatrix.com/" target="_blank"&gt;Twisted&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando los organizadores me contactaron hace un para de meses para invitarme a venir, me preguntaron sobre qué podía hablar. Mi primera idea era una charla titulada algo así como &lt;strong&gt;Python para diversión, trabajo y estudio&lt;/strong&gt;. Mandé un guión con los temas que incluiría, en en el track trabajo mensioné Twisted, el framework que venía usando hacía un tiempo ya. La respuesta que recibí fue.&lt;/p&gt;
+&lt;p&gt;"Dale, date una charla de Twisted"&lt;/p&gt;
+&lt;p&gt;:)&lt;/p&gt;
+&lt;p&gt;Si bien venía usándolo hacía casi dos años, mi forma de aprenderlo no fue la más pedagógica, sino que fue la forma dura. Empecé a desarrollar y fui conociendo lo puntudo de sus aristas a medida que iba necesitando agregar nuevas funcionalidades.&lt;/p&gt;
+&lt;p&gt;Preparar la charla mi vino muy bien para organizar lo que sabía y aprender algunas que había venido evitando. Hoy &lt;a href="http://twitpic.com/34efyo" target="_blank"&gt;di la charla en Junín&lt;/a&gt; y creo que salió bastante bien.&lt;/p&gt;
+&lt;p&gt;Introducción a Twisted, un framework escrito en Python que permite&lt;/p&gt;
+&lt;p&gt;crear aplicaciones de red (clientes y servidores) asincrónicas.&lt;/p&gt;
+&lt;p&gt;Veremos sus conceptos principales y ejemplos que permitirán al&lt;/p&gt;
+&lt;p&gt;auditorio volver a su casa con las herramientas básicas para empezar a programar utilizándolo.&lt;/p&gt;
+&lt;p&gt;Dejo el material de la charla:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/files/charlas/aplicaciones_de_red.pdf" target="_blank"&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/files/charlas/ejemplos_intro_twisted.zip" target="_blank"&gt;Ejemplos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Y una propaganda que fue mi última slide. PyAr, el grupo de usuarios de Python de Argentina está dando charlas abiertas (de 2hs c/u) en La Tribu todos los sábados. El próximo sábado tenemos justamenet una clase de Twisted!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://python.org.ar/pyar/CharlasAbiertas2010#Twisted" target="_blank"&gt;http://python.org.ar/pyar/CharlasAbiertas2010#Twisted&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sábado 13 de Noviembre - Charlas Abiertas de Python en La Tribu (Lambaré 873, Capital Federal)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Twisted&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Vamos a ver porque el modelo de twisted es necesario, como se programa en modo asyncronico usando deferreds y conocer el api de red de twisted para hacer servicios.&lt;/blockquote&gt;
+&lt;p&gt;Disertante: Lucio Torre&lt;/p&gt;
+&lt;p&gt;13 a 15 horas&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>General</category><category>PyAr</category><category>Python</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted.html</guid><pubDate>Sat, 06 Nov 2010 11:49:33 GMT</pubDate></item><item><title>Twitter updates desde Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;em&gt;Este artículo es una re-edición del publicado el 24/08/2010 ya que cuando lo publiqué, Twitter estaba terminando su proceso apagar el sistema de autenticación básica para pasar al &lt;a href="http://dev.twitter.com/pages/auth_overview" target="_blank"&gt;más complejo sistema de la danza oAuth;&lt;/a&gt; lo cual convirtió al artículo en inservible. El artículo anterior no está más disponible. Gracias a &lt;a href="http://www.pupeno.com" target="_blank"&gt;Pupeno&lt;/a&gt; por revisar esta versión.
+&lt;p&gt;&lt;/p&gt;&lt;/em&gt;
+&lt;p&gt;¿Tenés un servidor escrito en &lt;a href="http://twistedmatrix.com" target="_blank"&gt;Twisted&lt;/a&gt;? ¿Tenés eventos críticos o importantes que mandás por mail o a celulares? ¿Qué tal publicarlos en &lt;a href="http://www.twitter.com" target="_blank"&gt;Twitter&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;La versión original de este artículo utilizaba la biblioteca &lt;a href="http://github.com/dustin/twitty-twister" target="_blank"&gt;Twitty Twister&lt;/a&gt;, la única pensada para usar Twitter desde Twisted. Lamentablemente no funciona bien con el nuevo sistema de autenticación de Twitter por lo que voy a usar &lt;a href="http://github.com/joshthecoder/tweepy" target="_blank"&gt;Tweepy&lt;/a&gt;, una librería con la cual hacer la danza de oAuth es muy sencillo.&lt;/p&gt;
+&lt;p&gt;1) &lt;a href="https://twitter.com/signup" target="_blank"&gt;Registrar&lt;/a&gt; un usuario dónde publicar las notificaciones.&lt;/p&gt;
+&lt;p&gt;2) Con ese usuario, &lt;a href="http://dev.twitter.com/apps/new" target="_blank"&gt;registrar una aplicación&lt;/a&gt;. Es muy importante usar el mismo usuario para ahorrarnos algunos pasos en la danza oAuth.&lt;/p&gt;
+&lt;p&gt;3) De la página de la aplicación creada, tomar la siguiente información: consumer key, consumer secret (desde la home de la aplicación), access token y access token secret (de la página My Access Token).&lt;/p&gt;
+&lt;p&gt;4) Código:&lt;/p&gt;
+&lt;p&gt;Con los datos del punto 3, creamos el módulo &lt;strong&gt;twitterupdates.py&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;import tweepy
+
+
+
+TWITTER_KEY = 'xxxxxxxxxxxxxxxx'
+
+TWITTER_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+
+
+auth = tweepy.OAuthHandler(TWITTER_KEY, TWITTER_SECRET)
+
+auth.set_access_token(MY_KEY, MY_SECRET)
+
+twitter = tweepy.API(auth)&lt;/pre&gt;
+
+&lt;p&gt;y desde nuestra aplicación Twisted lo importamos:&lt;/p&gt;
+&lt;pre&gt;from twitterupdates import twitter&lt;/pre&gt;
+
+&lt;p&gt;Postear una actualización en Twitter o cualquier otra petición a un servidor externo tiene una naturaleza bloqueante y en un framework de concurrencia colaborativa, como es Twisted, no podemos darnos ese lujo. Para solucionar esto, utilizamos &lt;a href="http://twistedmatrix.com/documents/10.1.0/api/twisted.internet.threads.deferToThread.html" target="_blank"&gt;deferToThread&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;deferToThread(twitter.update_status, "Mensaje a postear en Twitter")&lt;/pre&gt;
+
+&lt;p&gt;Esta llamada retorna un objeto &lt;a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank"&gt;Deferred&lt;/a&gt; al cual se le pueden añadir callbacks o errbacks. La llamada bloqueante es corrida en un hilo aparte.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Twisted</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</guid><pubDate>Sun, 26 Sep 2010 16:00:47 GMT</pubDate></item><item><title>Cambiando el formato de los logs en Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En Twisted &lt;a href="http://twistedmatrix.com/documents/current/core/howto/logging.html" target="_blank"&gt;se puede tener un log&lt;/a&gt; de todo lo que pasa en un programa de forma bastante fácil:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="python"&gt;from twisted.python import log
+&lt;p&gt;from twisted.python.logfile import DailyLogFile&lt;/p&gt;
+&lt;p&gt;log.startLogging(DailyLogFile('log.txt', LOGDIR))&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;Todos los &lt;strong&gt;prints&lt;/strong&gt; que anden dando vuelta ahora son entradas en el log y de yapa estoy usando DailyLogFile en lugar de un archivo común y corriente para que al final del día rote a un nuevo archivo en disco. Hay varias opciones, esta es la que me sirve a mí.&lt;/p&gt;
+&lt;p&gt;Por defecto los logs se ven algo así:&lt;/p&gt;
+&lt;pre lang="bash"&gt;2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Total: 1
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] SITIO SFE
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Total: 2
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SITIO SFE
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51-0500 [TModBus,1,190.136.29.16] Nuevo sitio registrado en MBProxy SFE&lt;/pre&gt;
+
+&lt;p&gt;¿Cómo podemos cambiar el formato de salida? Algunos tips.&lt;/p&gt;
+&lt;p&gt;Para cambiar el formato de la fecha y hora:&lt;/p&gt;
+&lt;pre lang="python"&gt;log.FileLogObserver.timeFormat = '%Y-%m-%d %H:%M:%S'&lt;/pre&gt;
+
+&lt;p&gt;Para cambiar lo que aparece entre corchetes: utilizar log.msg y el keyword system:&lt;/p&gt;
+&lt;pre lang="python"&gt;log.msg("Nuevo cliente: %s:%d" % (self.peer.host, self.peer.port), system=' - ')&lt;/pre&gt;
+
+&lt;p&gt;Con estos dos cambios se puede tener un log como este:&lt;/p&gt;
+&lt;pre lang="bash"&gt;2010-05-28 07:41:00 [ - ] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00 [ - ] Total: 1
+
+2010-05-28 07:41:01 [SFE] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01 [SFE] SITIO SFE
+
+2010-05-28 07:41:01 [SFE] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49 [ - ] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49 [ - ] Total: 2
+
+2010-05-28 07:45:49 [ - ] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49 [SFE] SITIO SFE
+
+2010-05-28 07:45:49 [SFE] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51 [SFE] Nuevo sitio registrado en MBProxy SFE&lt;/pre&gt;
+
+&lt;p&gt;Para cambiar aún más el formato de la salida, la única forma que encontré es extender &lt;strong&gt;FileLogObserver&lt;/strong&gt; y sobreescribir su método &lt;strong&gt;emit&lt;/strong&gt;. Discutimos un poco esto &lt;a href="http://stackoverflow.com/questions/3700955/how-to-format-twisted-logs" target="_blank"&gt;en StackOverflow.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;nota:&lt;/strong&gt; En Twisted también podemos usar el &lt;a href="http://docs.python.org/library/logging.html" target="_blank"&gt;sistema de logging de Python&lt;/a&gt;, esto tiene la ventaja de que podemos trabajar con niveles de log y controlar mejor el formato y la forma en que se generan los logs, pero el problema de que no está preparado para funcionar en forma asincrónica y esto puede traer algunos problemas con Twisted.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>logging</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html</guid><pubDate>Tue, 14 Sep 2010 12:25:05 GMT</pubDate></item><item><title>Puedo disfrazar cualquier cosa de Modbus</title><link>http://www.juanjoconti.com.ar/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace más de un año participo en un proyecto de desarrollo de un sistema &lt;a href="http://es.wikipedia.org/wiki/SCADA" target="_blank"&gt;SCADA&lt;/a&gt;, específicamente en la capa de comunicación. La distribución física es algo como esto:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/esquema_kimera.jpg"&gt;&lt;img class="aligncenter size-large wp-image-2589" title="esquema_kimera" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/esquema_kimera-1024x595.jpg" alt="" width="640" height="371"&gt;&lt;/a&gt;En cada edificio hay una &lt;a href="http://es.wikipedia.org/wiki/RS-485" target="_blank"&gt;red 485&lt;/a&gt; con dispositivos de hardware propio (aka Robot) y un módulo celular (Motorolla G24) con salida a Internet vía GPRS. Esos módulos se registran en un servidor (escrito con &lt;a href="http://twistedmatrix.com/" target="_blank"&gt;Twisted&lt;/a&gt;) para ser luego sondeados: se registran sus mediciones, hay gráficos en tiempo real, se puede hacer telecomando y encender un equipo a la distancia o cambiar un set point; entre otras cosas.&lt;/p&gt;
+&lt;p&gt;Nuestra primera implementación estaba inspirada en el protocolo Modbus ASCII, pero bastante alejada del estándar. Nos sirvió por bastante tiempo y no apegarnos a una especificación nos permitió acelerar el desarrollo; especialmente del hardware.&lt;/p&gt;
+&lt;p&gt;Modbus es un protocolo de línea maestro/esclavo en donde el maestro realiza peticiones de lectura o escritura sobre algún o algunos registros en un esclavo. El protocolo define 4 tipos de registros (analógicos o digitales, de solo lectura o lectura-escritura) y fue pensado para funcionar sobre una línea serie; existen dos sabores: RTU, dónde los datos viajan en forma binaria y la ocupación del canal es optimizada y ASCII, menos eficiente pero legible por humanos. Se puedo leer más al respecto en &lt;a href="http://es.wikipedia.org/wiki/Modbus" target="_blank"&gt;Wikipedia&lt;/a&gt; o en la &lt;a href="http://www.modbus.org/" target="_blank"&gt;página oficial del protocolo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hace algunos meses empezamos a utilizar &lt;a href="http://mango.serotoninsoftware.com/" target="_blank"&gt;Mango m2m&lt;/a&gt;. Mango tiene todos los componentes de interfaz de usuario que se pueden necesitar en un SCADA en adición a la posibilidad de conectarle distintas fuentes de datos (desde Modbus Serie a un motor de base de datos); las más interesante para nosotros es Modbus TCP.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/mango.jpg"&gt;&lt;/a&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/mango.jpg"&gt;&lt;img class="aligncenter size-full wp-image-2603" title="mango" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/mango.jpg" alt="" width="572" height="413"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Modbus TCP extiende el protocolo original para poder utilizarlo sobre la red de redes en lugar de sobre una línea serie. Por ejemplo, una de las cosas que hace es agregar al paquete enviado un número consecutivo para solucionar el problema de paquetes perdidos o duplicados.&lt;/p&gt;
+&lt;p&gt;Teníamos entonces, por un lado Mango que sabe hablar Modbus TCP y por el otro los robotitos hablando un dialecto de Modbus ASCII. En el medio, el servidor de comunicaciones. La pregunta en este punto era cómo unir ambos extremos, de manera de aprovechar esta herramienta que soluciona muchos de nuestros requerimientos.&lt;/p&gt;
+&lt;p&gt;Allí es donde entra en acción &lt;a href="http://code.google.com/p/pymodbus/" target="_blank"&gt;pymodbus&lt;/a&gt;, una implementación en Python del stack Modbus. No solo está escrita en Python, sino que está implementada utilizando el framework Twisted, el mismo que venía usando para el servidor de comunicaciones. Utilizando pymodbus pude engañar a Mango y hacerle creer que hablaba contar dispositivos Modbus TCP cuando en realidad interceptaba sus peticiones, enviaba los comandos necesarios a los robots y contestaba con la respuesta correcta.&lt;/p&gt;
+&lt;p&gt;En el camino encontré varios problemas en la librería, los fui reportando y enviando parches para solucionarlos. A lo último eran tanto los cambios que enviaba y empecé a modificar el core de la librería para que funcione con &lt;a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank"&gt;deferrers&lt;/a&gt; (es decir, siguiendo la filosofía de Twisted) que &lt;a href="http://code.google.com/p/pymodbus/people/list" target="_blank"&gt;recibí permiso de commit&lt;/a&gt; en la rama &lt;a href="http://code.google.com/p/pymodbus/source/browse/#svn/branches/devel" target="_blank"&gt;devel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Nota: el esquema descripto funcionó bastante tiempo. Actualmente seguimos avanzando y los robots ya hablan Modbus ASCII estándar a la vez que el componente intermedio adelgazó para convertirse en un traductor o gateway.&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Modbus</category><category>pymodbus</category><category>Python</category><category>SCADA</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html</guid><pubDate>Fri, 06 Aug 2010 00:05:49 GMT</pubDate></item><item><title>Charla relámpago: Comet en Twisted</title><link>http://www.juanjoconti.com.ar/posts/2009/09/06/charla-relampago-comet-en-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Ayer en las &lt;a href="http://ar.pycon.org/2009/conference/lightning/" target="_blank"&gt;charlas relámpago&lt;/a&gt; de &lt;a href="http://ar.pycon.org/2009/about/" target="_self"&gt;PyCon Argentina 2009&lt;/a&gt; mostré cómo utilizar &lt;a href="http://es.wikipedia.org/wiki/Comet" target="_blank"&gt;Comet&lt;/a&gt; desde &lt;a href="http://twistedmatrix.com/" target="_blank"&gt;Twisted&lt;/a&gt;. Tenía &lt;em&gt;un&lt;/em&gt; slide disparador que no pude mostrar por que OpenOffice no se abrió y como las charlas relámpago duran 5 minutos, no podía darme el lujo de investigar que pasaba.&lt;/p&gt;
+&lt;p&gt;"No importa", dije, "de todas formas el slide tenía solo cuatro palabras". Y para hacer justicia sobre las &lt;a href="http://es.wikipedia.org/wiki/Ley_de_Murphy" target="_blank"&gt;Leyes de Murphy&lt;/a&gt; publico aquí ese slide:&lt;/p&gt;
+&lt;p&gt;&lt;img class="aligncenter size-medium wp-image-1764" title="comet" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/09/comet-300x225.jpg" alt="comet" width="300" height="225"&gt;&lt;a href="http://www.divmod.org/trac/browser/trunk/Nevow/doc/howto/chattutorial/part01" target="_blank"&gt;El ejemplo que mostré en vivo puede bajarse del sitio web de Nevow/Athena.&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>pyconar09</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2009/09/06/charla-relampago-comet-en-twisted.html</guid><pubDate>Sun, 06 Sep 2009 00:16:39 GMT</pubDate></item><item><title>Shell Python administrativo sobre SSH para tu servidor Twisted en 10 líneas</title><link>http://www.juanjoconti.com.ar/posts/2009/04/09/shell-python-administrativo-sobre-ssh-para-tu-servidor-twisted-en-10-lineas.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;entre tu reactor.listeTCP(puerto, factory) y reactor.run():&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;from twisted.conch import manhole, manhole_ssh
+&lt;p&gt;from twisted.cred import portal, checkers &lt;/p&gt;
+&lt;p&gt;def getManholeFactory(namespace, **passwords):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;realm = manhole_ssh.TerminalRealm()
+
+def getManhole(_): return manhole.Manhole(namespace)
+
+realm.chainedProtocolFactory.protocolFactory = getManhole
+
+p = portal.Portal(realm)
+
+p.registerChecker(
+
+checkers.InMemoryUsernamePasswordDatabaseDontUse(**passwords))
+
+f = manhole_ssh.ConchFactory(p)
+
+return f
+&lt;/pre&gt;
+
+
+&lt;p&gt;reactor.listenTCP(2222, getManholeFactory(globals(), admin='aaa'))&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;Los aplausos para &lt;a href="http://www.devshed.com/c/a/Python/SSH-with-Twisted/3/" target="_blank"&gt;este tutorial&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>ssh</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2009/04/09/shell-python-administrativo-sobre-ssh-para-tu-servidor-twisted-en-10-lineas.html</guid><pubDate>Thu, 09 Apr 2009 03:30:10 GMT</pubDate></item><item><title>Servidor SSH con Twisted</title><link>http://www.juanjoconti.com.ar/posts/2009/04/08/servidor-ssh-con-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Actualicé &lt;a href="http://www.devshed.com/c/a/Python/SSH-with-Twisted/" target="_blank"&gt;este ejemplo&lt;/a&gt;, tamibién incluido en el &lt;a href="http://books.google.com/books?id=Fm5kw3lZ7zEC&amp;amp;printsec=frontcover&amp;amp;hl=es&amp;amp;source=gbs_summary_r&amp;amp;cad=0" target="_blank"&gt;libro de Twisted&lt;/a&gt; para que no tire Deprecation Warnings:&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;from twisted.cred import portal, checkers, credentials
+&lt;p&gt;from twisted.conch import error, avatar, recvline, interfaces as conchinterfaces&lt;/p&gt;
+&lt;p&gt;from twisted.conch.ssh import factory, userauth, connection, keys, session, common&lt;/p&gt;
+&lt;p&gt;from twisted.conch.insults import insults&lt;/p&gt;
+&lt;p&gt;from twisted.application import service, internet&lt;/p&gt;
+&lt;p&gt;from zope.interface import implements&lt;/p&gt;
+&lt;p&gt;import os&lt;/p&gt;
+&lt;p&gt;class SSHDemoProtocol(recvline.HistoricRecvLine):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;def __init__(self, user):
+
+    self.user = user
+
+
+
+def connectionMade(self) :
+
+    recvline.HistoricRecvLine.connectionMade(self)
+
+    self.terminal.write("Welcome to my test SSH server.")
+
+    self.terminal.nextLine()
+
+    self.do_help()
+
+    self.showPrompt()
+
+
+
+def showPrompt(self):
+
+    self.terminal.write("$ ")
+
+
+
+def getCommandFunc(self, cmd):
+
+    return getattr(self, 'do_' + cmd, None)
+
+
+
+def lineReceived(self, line):
+
+    line = line.strip()
+
+    if line:
+
+        cmdAndArgs = line.split()
+
+        cmd = cmdAndArgs[0]
+
+        args = cmdAndArgs[1:]
+
+        func = self.getCommandFunc(cmd)
+
+        if func:
+
+           try:
+
+               func(*args)
+
+           except Exception, e:
+
+               self.terminal.write("Error: %s" % e)
+
+               self.terminal.nextLine()
+
+        else:
+
+           self.terminal.write("No such command.")
+
+           self.terminal.nextLine()
+
+    self.showPrompt()
+
+
+
+def do_help(self, cmd=''):
+
+    "Get help on a command. Usage: help command"
+
+    if cmd:
+
+        func = self.getCommandFunc(cmd)
+
+        if func:
+
+            self.terminal.write(func.__doc__)
+
+            self.terminal.nextLine()
+
+            return
+
+
+
+    publicMethods = filter(
+
+        lambda funcname: funcname.startswith('do_'), dir(self))
+
+    commands = [cmd.replace('do_', '', 1) for cmd in publicMethods]
+
+    self.terminal.write("Commands: " + " ".join(commands))
+
+    self.terminal.nextLine()
+
+
+
+def do_echo(self, *args):
+
+    "Echo a string. Usage: echo my line of text"
+
+    self.terminal.write(" ".join(args))
+
+    self.terminal.nextLine()
+
+
+
+def do_whoami(self):
+
+    "Prints your user name. Usage: whoami"
+
+    self.terminal.write(self.user.username)
+
+    self.terminal.nextLine()
+
+
+
+def do_quit(self):
+
+    "Ends your session. Usage: quit"
+
+    self.terminal.write("Thanks for playing!")
+
+    self.terminal.nextLine()
+
+    self.terminal.loseConnection()
+
+
+
+def do_clear(self):
+
+    "Clears the screen. Usage: clear"
+
+    self.terminal.reset()
+&lt;/pre&gt;
+
+
+&lt;p&gt;class SSHDemoAvatar(avatar.ConchUser):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;implements(conchinterfaces.ISession)
+
+
+
+def __init__(self, username):
+
+    avatar.ConchUser.__init__(self)
+
+    self.username = username
+
+    self.channelLookup.update({'session':session.SSHSession})
+
+
+
+def openShell(self, protocol):
+
+    serverProtocol = insults.ServerProtocol(SSHDemoProtocol, self)
+
+    serverProtocol.makeConnection(protocol)
+
+    protocol.makeConnection(session.wrapProtocol(serverProtocol))
+
+
+
+def getPty(self, terminal, windowSize, attrs):
+
+    return None
+
+
+
+def execCommand(self, protocol, cmd):
+
+    raise NotImplementedError
+
+
+
+def closed(self):
+
+    pass
+&lt;/pre&gt;
+
+
+&lt;p&gt;class SSHDemoRealm:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;implements(portal.IRealm)
+
+
+
+def requestAvatar(self, avatarId, mind, *interfaces):
+
+    if conchinterfaces.IConchUser in interfaces:
+
+        return interfaces[0], SSHDemoAvatar(avatarId), lambda: None
+
+    else:
+
+        raise Exception, "No supported interfaces found."
+&lt;/pre&gt;
+
+
+&lt;p&gt;def getRSAKeys():&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'public.key'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'private.key'&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+
+    &lt;span class="c"&gt;# generate a RSA keypair&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"Generating RSA keypair..."&lt;/span&gt;
+
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Crypto.PublicKey&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RSA&lt;/span&gt;
+
+    &lt;span class="n"&gt;KEY_LENGTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;
+
+    &lt;span class="n"&gt;rsaKey&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RSA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;KEY_LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;entropy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_bytes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;publicKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rsaKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="n"&gt;privateKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;makePrivateKeyString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rsaKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# save keys for next time&lt;/span&gt;
+
+    &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'public.key'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'w+b'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;publicKeyString&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'private.key'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'w+b'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;privateKeyString&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"done."&lt;/span&gt;
+
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;publicKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'public.key'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="n"&gt;privateKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'private.key'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;publicKeyString&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;privateKeyString&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;if &lt;strong&gt;name&lt;/strong&gt; == "&lt;strong&gt;main&lt;/strong&gt;":&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;sshFactory = factory.SSHFactory()
+
+sshFactory.portal = portal.Portal(SSHDemoRealm())
+
+users = {'admin': 'aaa', 'guest': 'bbb'}
+
+sshFactory.portal.registerChecker(
+&lt;/pre&gt;
+
+
+&lt;p&gt;checkers.InMemoryUsernamePasswordDatabaseDontUse(**users))&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;pubKeyString&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;privKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getRSAKeys&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;sshFactory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;publicKeys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="s"&gt;'ssh-rsa'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pubKeyString&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+
+&lt;span class="n"&gt;sshFactory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;privateKeys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="s"&gt;'ssh-rsa'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;privKeyString&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+
+
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reactor&lt;/span&gt;
+
+&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listenTCP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2222&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sshFactory&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;pre&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>ssh</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2009/04/08/servidor-ssh-con-twisted.html</guid><pubDate>Wed, 08 Apr 2009 19:54:35 GMT</pubDate></item></channel></rss>

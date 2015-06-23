@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (ruby)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/ruby.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:17 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Video de mi charla Ruby para programadores Python</title><link>http://www.juanjoconti.com.ar/posts/2015/05/25/video-de-mi-charla-ruby-para-programadores-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy encontré que los organizadores de &lt;a href="https://twitter.com/pyconar" target="_blank"&gt;PyConAr&lt;/a&gt; 2014 habían subido el video de mi charla Ruby para programadores Python. Se que subir todos los videos de una conferencia lleva tiempo y es mucho trabajo. Muchas gracias!&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=NdvTsh_eYe8&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Aprendiendo Ruby</category><category>Eventos</category><category>Python</category><category>ruby</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2015/05/25/video-de-mi-charla-ruby-para-programadores-python.html</guid><pubDate>Mon, 25 May 2015 19:40:51 GMT</pubDate></item><item><title>Última reunion de RubyLit del 2014</title><link>http://www.juanjoconti.com.ar/posts/2014/12/12/ultima-reunion-de-rubylit-del-2014.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Anoche fue la última reunión/juntada/meetup del grupo local de usuarios del lenguaje de programación Ruby. Hubo asado y pileta. También una charla a cargo de Eloy (que estaría bueno postee en algún lado así no queda solo en nuestro recuerdo).&lt;/p&gt;
+&lt;p&gt;A continuación, las fotos de rigor. Como el que toca nunca baila, el que saca fotos no es retratado (al menos que usemos el modo automático).&lt;/p&gt;
+&lt;p&gt;[gallery ids="5236,5235,5234,5233,5232,5231,5212,5213,5230,5229,5228,5227,5226,5225,5224,5223,5222,5221,5220,5219,5218,5217,5215,5214,5211,5210,5209,5208,5237"]&lt;/p&gt;
+&lt;p&gt;[embed]https://www.youtube.com/watch?v=x9cF9kqbWKc[/embed]&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Ruby</category><category>ruby</category><category>RubyLit</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2014/12/12/ultima-reunion-de-rubylit-del-2014.html</guid><pubDate>Fri, 12 Dec 2014 12:51:42 GMT</pubDate></item><item><title>Aprendiendo Ruby: desde Python</title><link>http://www.juanjoconti.com.ar/posts/2014/08/18/aprendiendo-ruby-desde-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un mes y medio estoy estudiando y trabajando con el lenguaje de programación &lt;a href="https://www.ruby-lang.org" target="_blank"&gt;Ruby&lt;/a&gt;. Después de unos cuatro años con Python y luego más de tres con PHP/JS, el cambio se sintió como una ráfaga de aire fresco y en esa ráfaga reconocí aromas del pasado.&lt;/p&gt;
+&lt;p&gt;El primer día que use Ruby, leí este artículo:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/to-ruby-from-python/" target="_blank"&gt;https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/to-ruby-from-python/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Es bastante incompleto.&lt;/p&gt;
+&lt;p&gt;Ruby es muy parecido a Python. Pero hay muchos detalles que te pueden morder. Mientras iba estudiando, fui haciendo una lista de los que me mordían. Esa lista se convirtió en mi primer charla de Ruby.&lt;/p&gt;
+&lt;p&gt;El &lt;a href="https://groups.google.com/forum/#!topic/rubylit/CJKM2RZNj94" target="_blank"&gt;jueves 7 de agostó &lt;/a&gt;se llevó a cabo la tercera meetup del año de RubyLit (el grupo de usuarios de Ruby local). En esta presenté una charla titulada &lt;strong&gt;Aprendiendo Ruby: desde Python&lt;/strong&gt;. Las &lt;em&gt;slides&lt;/em&gt; de la presentación fueron generadas en base a un &lt;a href="http://ipython.org/notebook.html" target="_blank"&gt;notebook&lt;/a&gt; &lt;a href="http://ipython.org" target="_blank"&gt;IPython&lt;/a&gt; usando el kernel &lt;a href="https://github.com/minad/iruby" target="_blank"&gt;IRuby&lt;/a&gt; y me permitieron mostrar &lt;a href="https://www.youtube.com/watch?v=aE1_4in5w5w" target="_blank"&gt;código vivo&lt;/a&gt; dentro de cada &lt;em&gt;slide&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Este es el notebook que usé el día de la charla: &lt;a href="http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/rubylit_meetup/RubyDesdePython.ipynb" target="_blank"&gt;http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/rubylit_meetup/RubyDesdePython.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Y esta la versión actualizada con los comentarios que surgieron durante la charla y que voy mejorando con el tiempo: &lt;a href="http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/master/RubyDesdePython.ipynb" target="_blank"&gt;http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/master/RubyDesdePython.ipynb&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Ruby</category><category>Python</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2014/08/18/aprendiendo-ruby-desde-python.html</guid><pubDate>Mon, 18 Aug 2014 01:51:27 GMT</pubDate></item><item><title>Video de la charla sobre Sysadmins de cballard en act_as_rubylit 2010</title><link>http://www.juanjoconti.com.ar/posts/2010/11/28/video-de-la-charla-sobre-sysadmins-de-cballard-en-act_as_rubylit-2010.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La semana pasada me enteré que viernes y sábado era &lt;a href="http://eventioz.com/events/actsasrubylit-2010" target="_blank"&gt;act_as_rubylit 2010&lt;/a&gt;, la segunda edición de un evento sobre Ruby organizado por amigos aca en Santa Fe. Conozco muy poco de Ruby, por lo que varias de las charlas del programa no me iba a servir realmente, pero una me llamó la atención: &lt;strong&gt;"Sysadmin: a la sombra del desarrollo"&lt;/strong&gt;, por &lt;a href="http://ballardini.com.ar/" target="_blank"&gt;César Ballardini&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/11/76ce4b0.jpeg"&gt;&lt;img class="alignright size-full wp-image-2954" title="César antes de empezar" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/11/76ce4b0.jpeg" alt="" width="640" height="480"&gt;&lt;/a&gt;César es un gurú local, nos inició en GNU/Linux a la mayoría de los sub 30 que conozco de la comunidad santafesina y es un gran tipo. Me hice un hueco entre el trabajo y un curso de maestría para llegar. 3:50 estaba manejando hasta la FICH, lugar dónde se realizaba el evento. Encontré el Aula Magna a eso de las 4:05 cuando la charla recién empezaba.&lt;/p&gt;
+&lt;p&gt;Algo que realmente envidio de las universidades de otros países es que todas las &lt;em&gt;lectures&lt;/em&gt; se graban en video. Aca no. No tenemos la infraestructura y organizarse para hacerlo siempre es un inconveniente. Antes de salir había leído en la lista de Ruby Litoral que iban a filmar las charlas, pero más adelante en el mismo hilo el camarógrafo se arepentía.&lt;/p&gt;
+&lt;p&gt;Llegué con la secreta intensión de filmar la charla con mi celular. La verdad, se la banca. Tiene muy buena calidad y memoria para almacenar, pero falla la batería. Puedo grabar a lo sumo una charla antes de que se termine. Tengo que pensar en algún esquema en el que tenga el celu enchufado a la vez que filmo; y por supuesto, comprarme urgente un brazo robótico (ok, un porta GPS para el auto) que pueda poner a sostener la cámara al grabar. El brazo humano se me acalambró :)&lt;/p&gt;
+&lt;p&gt;Sin más preámbulos, les dejo la filmación y las &lt;a href="http://www.juanjoconti.com.ar/files/charlas/Sysadmin_a_la_sombra_del_desarrollo.pdf" target="_blank"&gt;slides&lt;/a&gt; que me envió César.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;iframe src="http://player.vimeo.com/video/17263651" width="400" height="300" frameborder="0"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="http://vimeo.com/17263651"&gt;acts_as_rubylit 2010 - Sysadmin: a la sombra del desarrollo - César Ballardini&lt;/a&gt; from &lt;a href="http://vimeo.com/user5262473"&gt;Orfx Sch&lt;/a&gt; on &lt;a href="http://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;Gracias Orfi por encargarte de editarlo y subirlo.&lt;/p&gt;&lt;/div&gt;</description><category>act_as_rubylit</category><category>Eventos</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/28/video-de-la-charla-sobre-sysadmins-de-cballard-en-act_as_rubylit-2010.html</guid><pubDate>Sun, 28 Nov 2010 23:34:15 GMT</pubDate></item><item><title>Primera vez con Ruby</title><link>http://www.juanjoconti.com.ar/posts/2009/12/06/primera-vez-con-ruby.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El viernes por la tarde salí del trabajo y me fuí a escuchar la charla de &lt;a href="http://ballardini.com.ar/blog/" target="_blank"&gt;César Ballardini&lt;/a&gt;, &lt;em&gt;El modelo de objetos de Ruby, reflexiones sobre la reflexión&lt;/em&gt;. La daba en el marco del evento &lt;strong&gt;acts_as_rubylit&lt;/strong&gt;, el cual se llevó a cabo en la &lt;a title="FICH" href="http://fich.unl.edu.ar/" target="_blank"&gt;Facultad de Ingeniería y Ciencias Hídricas, Universidad Nacional del Litoral&lt;/a&gt; de la ciudad de Santa Fe.&lt;/p&gt;
+&lt;p&gt;Nunca antes vi nada de Ruby. Bueno, &lt;a href="http://www.juanjoconti.com.ar/2008/11/30/primer-experiencia-con-ruby/" target="_blank"&gt;casi&lt;/a&gt;, pero la última vez no pasé &lt;a href="http://www.holamundo.es/lenguaje/ruby/"&gt;del Hola Mundo&lt;/a&gt;!&lt;img class="alignright size-medium wp-image-1965" title="juanjo_ruby_800" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/12/juanjo_ruby_800-300x225.jpg" alt="juanjo_ruby_800" width="300" height="225"&gt;&lt;/p&gt;
+&lt;p&gt;César empezó su charla explicando la &lt;a href="http://c2.com/cgi/wiki?BlubParadox" target="_blank"&gt;Paradoja de Blub&lt;/a&gt;, de &lt;a href="http://www.paulgraham.com/avg.html" target="_blank"&gt;Paul Graham&lt;/a&gt;. Blub es un lenguaje de programación hipotético. No es el lenguaje de programación más poderoso, pero tampoco es Cobol o lenguaje de máquina. Un programador Blub está parado más o menos en el medio de la ladera de una montaña; hacia abajo están los lenguajes menos poderosos que Blub, él se da cuenta de esto, por supuesto, a todos esos lenguajes le faltan distintas características que nuestro programador usa en Blub para resolver sus problemas. En cambio, cuando mira para arriba (y ve lenguajes más poderosos que Blub), en realidad no se da cuenta que está mirando &lt;em&gt;hacia arriba&lt;/em&gt;, simplemente piensa que está mirando a unos locos, hippies de pelos parados haciendo cosas raras. Cuando los programadores que están más arriba en la montaña miran hacia Blub se pregunta, ¿cómo puede alguien estar usando Blub? Ni siquiera tiene la funcionalidad X tan útil para resolver Y!&lt;/p&gt;
+&lt;p&gt;Por inducción se concluye que solo el programador que esté en la punta de la montaña, es decir el que conoce el lenguaje más poderoso, es capaz de distinguir las distintas posibilidades que se tienen con diferentes lenguajes. El programador Blub no puede verlo, por lo que solo sabe pensar en Blub, no se a enfrentado a problemas que le permitan pensar diferente.&lt;/p&gt;
+&lt;p&gt;La moraleja de la historia es que uno debería aprender lenguajes que lo obliguen a cambiar su forma de pensar y de resolver problemas (&lt;a title="Epigram 19" href="http://www-pu.informatik.uni-tuebingen.de/users/klaeren/epigrams.html" target="_blank"&gt;Alan J. Perlis&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Con esto terminó la primera parte de la charla, luego César hizo una explicación de pizarrón sobre qué es la&lt;a href="http://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank"&gt; Programación Orientada a Objetos&lt;/a&gt; ( y escribió con su fibrón: un objeto tiene Identidad, encapsula Estado y define Comportamiento). Según César, es un error que en la enseñanza de la POO se empiece por las Clases. ¿En qué parte de "Programación Orientada a Objetos" dice "Clase"? Las clases son &lt;strong&gt;solo una forma&lt;/strong&gt; de crear objetos, pero hay muchas otras. Por ejemplo, &lt;a href="http://en.wikipedia.org/wiki/Prototype-based_programming#Languages" target="_blank"&gt;existen muchos lenguajes OO basados en prototipos&lt;/a&gt;, como JavaScript.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Después de haber shockeado a la audiencia desarrollando estas dos ideas en un tono casi de declaración de principios, estábamos listos para ver cómo el Modelo de Objetos de Ruby podía cambiar nuestra forma de pensar.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Lo que sigue no son los ejemplos exactos que desrrolló César con su notebook, solo los que recuerdo. Mezclo los recuerdos de su sesión interactiva de Ruby con mi propio camino de aprendizaje, que arranca ni siquiera teniendo el intérprete instalado :)&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Para empezar los ejemplos, tipeó en la terminal&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="bash"&gt;irb&lt;/pre&gt;
+&lt;p&gt;. Hice lo mismo, pero no estaba instalado, por lo que instalé ese paquete y presté atención a sus dependencias:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;juanjo@fenix:~$ irb&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El programa «irb» no está instalado actualmente&lt;/strong&gt;.  Puede instalarlo escribiendo:&lt;/p&gt;
+&lt;p&gt;sudo apt-get install irb&lt;/p&gt;
+&lt;p&gt;bash: irb: orden no encontrada&lt;/p&gt;
+&lt;p&gt;juanjo@fenix:~$ &lt;strong&gt;sudo apt-get install irb&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[sudo] password for juanjo:&lt;/p&gt;
+&lt;p&gt;Leyendo lista de paquetes... Hecho&lt;/p&gt;
+&lt;p&gt;Creando árbol de dependencias&lt;/p&gt;
+&lt;p&gt;Leyendo la información de estado... Hecho&lt;/p&gt;
+&lt;p&gt;Se instalarán los siguientes paquetes extras:&lt;/p&gt;
+&lt;p&gt;irb1.8 libreadline-ruby1.8 &lt;strong&gt;ruby1.8&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Paquetes sugeridos:&lt;/p&gt;
+&lt;p&gt;ruby1.8-examples rdoc1.8 ri1.8&lt;/p&gt;
+&lt;p&gt;Se instalarán los siguientes paquetes NUEVOS:&lt;/p&gt;
+&lt;p&gt;irb irb1.8 libreadline-ruby1.8 ruby1.8&lt;/p&gt;
+&lt;p&gt;0 actualizados, 4 se instalarán, 0 para eliminar y 0 no actualizados.&lt;/p&gt;
+&lt;p&gt;Necesito descargar 119kB de archivos.&lt;/p&gt;
+&lt;p&gt;Se utilizarán 664kB de espacio de disco adicional después de esta operación.&lt;/p&gt;
+&lt;p&gt;¿Desea continuar [S/n]?&lt;/p&gt;
+&lt;p&gt;Des:1 http://ar.archive.ubuntu.com jaunty-updates/main ruby1.8 1.8.7.72-3ubuntu0.1 [24,0kB]&lt;/p&gt;
+&lt;p&gt;Des:2 http://ar.archive.ubuntu.com jaunty-updates/universe libreadline-ruby1.8 1.8.7.72-3ubuntu0.1 [10,4kB]&lt;/p&gt;
+&lt;p&gt;Des:3 http://ar.archive.ubuntu.com jaunty-updates/universe irb1.8 1.8.7.72-3ubuntu0.1 [79,1kB]&lt;/p&gt;
+&lt;p&gt;Des:4 http://ar.archive.ubuntu.com jaunty/universe irb 4.2 [5138B]&lt;/p&gt;
+&lt;p&gt;Descargados 119kB en 2s (58,0kB/s)&lt;/p&gt;
+&lt;p&gt;Seleccionando el paquete ruby1.8 previamente no seleccionado.&lt;/p&gt;
+&lt;p&gt;(Leyendo la base de datos ...&lt;/p&gt;
+&lt;p&gt;248649 ficheros y directorios instalados actualmente.)&lt;/p&gt;
+&lt;p&gt;Desempaquetando ruby1.8 (de .../ruby1.8_1.8.7.72-3ubuntu0.1_i386.deb) ...&lt;/p&gt;
+&lt;p&gt;Seleccionando el paquete libreadline-ruby1.8 previamente no seleccionado.&lt;/p&gt;
+&lt;p&gt;Desempaquetando libreadline-ruby1.8 (de .../libreadline-ruby1.8_1.8.7.72-3ubuntu0.1_i386.deb) ...&lt;/p&gt;
+&lt;p&gt;Seleccionando el paquete irb1.8 previamente no seleccionado.&lt;/p&gt;
+&lt;p&gt;Desempaquetando irb1.8 (de .../irb1.8_1.8.7.72-3ubuntu0.1_all.deb) ...&lt;/p&gt;
+&lt;p&gt;Seleccionando el paquete irb previamente no seleccionado.&lt;/p&gt;
+&lt;p&gt;Desempaquetando irb (de .../apt/archives/irb_4.2_all.deb) ...&lt;/p&gt;
+&lt;p&gt;Procesando disparadores para man-db ...&lt;/p&gt;
+&lt;p&gt;Procesando disparadores para menu ...&lt;/p&gt;
+&lt;p&gt;Configurando ruby1.8 (1.8.7.72-3ubuntu0.1) ...&lt;/p&gt;
+&lt;p&gt;Configurando libreadline-ruby1.8 (1.8.7.72-3ubuntu0.1) ...&lt;/p&gt;
+&lt;p&gt;Configurando irb1.8 (1.8.7.72-3ubuntu0.1) ...&lt;/p&gt;
+&lt;p&gt;Configurando irb (4.2) ...&lt;/p&gt;
+&lt;p&gt;Procesando disparadores para menu ...NAME&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;   irb1.8 - interactive ruby
+&lt;/pre&gt;
+
+
+&lt;p&gt;SYNOPSIS&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;   irb [options]
+&lt;/pre&gt;
+
+
+&lt;p&gt;DESCRIPTION&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;       irb stands for ‘interactive ruby’. irb is a tool to execute interactively ruby expressions read from stdin.  Use of irb is easy if&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;   you know ruby.  Executing irb, prompts are displayed as follows. Then, enter expression of ruby. A input is executed  when  it  is
+
+   syntacticaly completed&amp;lt;/strong&amp;gt;.
+&lt;/pre&gt;
+
+
+&lt;p&gt;Ahora si puedo empezar!&lt;/p&gt;
+&lt;h3&gt;Objetos y mensajes&lt;/h3&gt;
+
+&lt;p&gt;Un lenguaje OO consta de objetos y mensajes entre objetos. Algunas veces los mensajes están un poco camuflados, pero siempre están ahí:&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;irb(main):001:0&amp;gt; 1 + 2
+
+=&amp;gt; 3
+
+irb(main):002:0&amp;gt; 1.+ 2
+
+=&amp;gt; 3
+
+irb(main):003:0&amp;gt; 1.+(2) # para los lisperos que extrañan los paréntesis
+
+=&amp;gt; 3&lt;/pre&gt;
+
+&lt;h3&gt;Identidad&lt;/h3&gt;
+
+&lt;p&gt;Enviando el mensaje&lt;/p&gt;
+&lt;pre&gt;object_id&lt;/pre&gt;
+
+&lt;p&gt;, podemos preguntarle su identidad a un objeto:&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;irb(main):001:0&amp;gt; 1.object_id
+
+=&amp;gt; 3
+
+irb(main):002:0&amp;gt; "hola".object_id
+
+=&amp;gt; -605926728&lt;/pre&gt;
+
+&lt;h3&gt;Clases&lt;/h3&gt;
+
+&lt;p&gt;Enviando el mensaje&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;class&lt;/pre&gt;
+
+&lt;p&gt;a un objeto, podemos preguntarle quién es su clase:&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;irb(main):005:0&amp;gt; 1.class
+
+=&amp;gt; Fixnum
+
+irb(main):006:0&amp;gt; 1.class.class
+
+=&amp;gt; Class
+
+irb(main):007:0&amp;gt; 1.class.class.class
+
+=&amp;gt; Class&lt;/pre&gt;
+
+&lt;p&gt;Podemos ver que la clase Fixnum es una instancia de la clase Class; y la clase Class también es instancia de la clase Class.&lt;/p&gt;
+&lt;p&gt;Enviando el mensaje&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;superclass&lt;/pre&gt;
+
+&lt;p&gt;a una clase, podemos saber cual es su superclase, es decir, qué clase extiende.&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;irb(main):010:0&amp;gt; 1.class.superclass
+
+=&amp;gt; Integer
+
+irb(main):011:0&amp;gt; 1.class.superclass.superclass
+
+=&amp;gt; Numeric
+
+irb(main):012:0&amp;gt; 1.class.superclass.superclass.superclass
+
+=&amp;gt; Object&lt;/pre&gt;
+
+&lt;p&gt;Luego, la clase de Object es obviamente Class, pero... ¿cuál es su superclase?&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;irb(main):019:0&amp;gt; 1.class.superclass.superclass.superclass
+
+=&amp;gt; Object
+
+irb(main):020:0&amp;gt; 1.class.superclass.superclass.superclass.superclass
+
+=&amp;gt; nil&lt;/pre&gt;
+
+&lt;p&gt;Creo recordar que en SmallTalk también era así. Parece un chiste de los diseñadores :) nil ni siquiera es una clase:&lt;/p&gt;
+&lt;pre lang="ruby" escaped="true"&gt;irb(main):021:0&amp;gt; 1.class.superclass.superclass.superclass.superclass.superclass
+
+NoMethodError: undefined method `superclass' for nil:NilClass
+
+    from (irb):21
+
+    from :0
+
+irb(main):022:0&amp;gt; 1.class.superclass.superclass.superclass.superclass.class
+
+=&amp;gt; NilClass
+
+irb(main):023:0&amp;gt; 1.class.superclass.superclass.superclass.superclass.class.superclass
+
+=&amp;gt; Object
+
+irb(main):024:0&amp;gt; 1.class.superclass.superclass.superclass.superclass.class.class
+
+=&amp;gt; Class&lt;/pre&gt;
+
+&lt;p&gt;y la jerarquía de clases se cierra. Es para leer tranquilo y pensarlo.&lt;/p&gt;
+&lt;p&gt;El resto de la charla abarcó varias cosas más, pero creo que sería demasiado para desarrollarlo en un post y lo que mostré ya es suficiente para abrirle el apetito a los que estén buscando algún lenguaje para aprender y les produzca un cambio en su forma de pensar :). Si César postea sus ejemplos, los voy a estar referenciando desde aquí o voy a intentar hacer uno o dos posts más.&lt;/p&gt;
+&lt;p&gt;Gracias al &lt;a href="http://www.rubylit.com.ar" target="_blank"&gt;Grupo de Usuarios de Ruby del Litoral&lt;/a&gt; por organizar el evento!&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2009/12/06/primera-vez-con-ruby.html</guid><pubDate>Sun, 06 Dec 2009 17:17:38 GMT</pubDate></item><item><title>Herramientas</title><link>http://www.juanjoconti.com.ar/posts/2009/02/15/herramientas.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Los programadores que usamos Python, no dependemos de herramientas externas al lenguaje en la forma que se depende de ellas cuando se usa un lenguaje como Java.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;I can't tell you how many times I've heard people say they wouldn't use Ruby because it lacks automated refactoring tools. Ruby doesn't actually need them in the way Java does; it's like refusing to switch to an electric car because there's no place to put the gasoline. But programmers are a stubborn bunch, and to win them over you have to give them what they think they want.
+&lt;p&gt;&lt;a title="The Next Big Languaje" href="http://steve-yegge.blogspot.com/2007/02/next-big-language.html" target="_blank"&gt;http://steve-yegge.blogspot.com/2007/02/next-big-language.html&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;</description><category>citas</category><category>Java</category><category>programación</category><category>Python</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2009/02/15/herramientas.html</guid><pubDate>Sun, 15 Feb 2009 13:07:49 GMT</pubDate></item><item><title>Primer experiencia con Ruby</title><link>http://www.juanjoconti.com.ar/posts/2008/11/30/primer-experiencia-con-ruby.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El jueves a la noche, bolso en mano ya que partía para Córdoba al día siguiente, participé de una reunión de &lt;a href="http://rubylit.com.ar/"&gt;RubyLit&lt;/a&gt;, el grupo de usuarios de Ruby del Litoral. Muchos ya eran cocidos y a otros los conocí ahí, la pasamos bárbaro, comimos pizza y charlamos mucho. Mi problema radicaba en que nunca había escrito un programa en este lenguaje de programación, por lo que media hora antes de salir para el evento seguí este tutorial on line que te enseña lo básico en 15 minutos (digamos que lo suficiente como para no pasar verguenza :D), les dejo el link para los que quieran empezar a probar este lenguaje:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;&lt;strong&gt;&lt;a href="http://tryruby.hobix.com/"&gt;http://tryruby.hobix.com/&lt;/a&gt;&lt;/strong&gt;&lt;/center&gt;
+&lt;p&gt;Y, por supuesto, la foto de rigor:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/11/rubylit.jpg"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/11/rubylit.jpg" alt="" title="rubylit" width="500" height="375" class="aligncenter size-full wp-image-908"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>Fotos</category><category>litoral</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2008/11/30/primer-experiencia-con-ruby.html</guid><pubDate>Sun, 30 Nov 2008 20:12:10 GMT</pubDate></item><item><title>Serpientes y rubíes</title><link>http://www.juanjoconti.com.ar/posts/2008/04/19/serpientes-y-rubies.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Ja! Levanto el guante del desafío que &lt;a href="http://gastonramos.wordpress.com/2008/04/19/snakes-and-rubies/" title="Gastón Ramos" target="_blank"&gt;plantea Gastón en su blog&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;
+&lt;p&gt;juanjo@albus:~$ python&lt;/p&gt;
+&lt;p&gt;Python 2.5.1 (r251:54863, Mar  7 2008, 03:41:45)&lt;/p&gt;
+&lt;p&gt;[GCC 4.1.2 (Ubuntu 4.1.2-0ubuntu4)] on linux2&lt;/p&gt;
+&lt;p&gt;Type "help", "copyright", "credits" or "license" for more information.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;!--more--&gt;1. Dado un array con nombres de persona eliminar los nombre que comienzan con “Pe”:
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; nombres = ['Pablo', 'Raul', 'Pedro', 'Pepe', 'Ariel', 'TerePe']
+
+&amp;gt;&amp;gt;&amp;gt; [n for n in nombres if not n.startswith("Pe")]
+
+['Pablo', 'Raul', 'Ariel', 'TerePe']
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Verificar si el mismo array contiene el nombre “Raul”:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; "Raul" in nombres
+
+True
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Generar un string con todos los nombres unidos por “-”:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; "-".join(nombres)
+
+'Pablo-Raul-Pedro-Pepe-Ariel-TerePe'
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Generar un segundo array con los nombres todos en minúsculas ordenado alfabéticamente:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt; sorted([n.lower() for n in nombres])
+
+['ariel', 'pablo', 'pedro', 'pepe', 'raul', 'terepe']
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Desordenar el array:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; from random import shuffle
+
+&amp;gt;&amp;gt;&amp;gt; shuffle(nombres)
+
+&amp;gt;&amp;gt;&amp;gt; nombres
+
+['Pepe', 'Pedro', 'Ariel', 'Raul', 'Pablo', 'TerePe']
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Averiguar si la lista siguiente tiene números pares:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; bool([n for n in numeros if n % 2 == 0])
+
+True
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Averiguar si toda la lista son números pares:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; len(numeros) == len([n for n in numeros if n % 2 == 0])
+
+False
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Obtener el producto de una lista de números:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; f = lambda x,y: x*y
+
+&amp;gt;&amp;gt;&amp;gt; reduce(f, numeros)
+
+120
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Obtener el factorial de 9999:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; reduce(f, xrange(1, 10000))
+
+# la respuesta tiene 35656 caracteres.
+
+&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Averiguar si dos arrays son iguales:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; [1,2,3,4] == [1,2,3,4]
+
+True
+
+&lt;/pre&gt;
+
+&lt;p&gt;¿Conclusiones? Creo que las listas por comprensión de la serpiente le gana a los .metodos del rubí. Pero en 6 y 7 perdemos feo :-/ ¿Algún pythonista que reescriba esos ejercicios?&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2008/04/19/serpientes-y-rubies.html</guid><pubDate>Sat, 19 Apr 2008 22:58:26 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,16 @@
+<p><html><body><p>A veces me pasa que en un proyecto tengo un archivo X que empezó siendo un archivo común, pero en un momento dado, cada desarrollador necesita taner su propia copia y no revisionarlo más.</p>
+<p>Cómo dejar de revisionarlo sin borrarlo?</p>
+<p>La primer vez que me topé con el problema hice:</p>
+<p></p><pre lang="bash">cp X Y</p>
+<p>svn rm X</p>
+<p>svn ci -m "chau X"</p>
+<p>mv Y X</p>
+</pre>
+
+<p>Ugly.</p>
+<p>La forma correcta de hacerlo es:</p>
+<pre lang="bash">svn rm --keep-local X
+
+</pre>
+
+<p></body></html></p>

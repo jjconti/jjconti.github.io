@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Python3)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/python3.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Unicode en el código fuente</title><link>http://www.juanjoconti.com.ar/posts/2011/02/08/unicode-en-el-codigo-fuente.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy &lt;a href="http://twitter.com/pedroprez/status/34967078767169536" target="_blank"&gt;Pedro preguntó en Twitter&lt;/a&gt; "Que lenguajes de programación permiten a día de hoy soporte full unicode para codear?". Algunos contestaron que Java o C#. No los conozco, &lt;span style="text-decoration: line-through;"&gt;pero creo que no&lt;/span&gt;. Creo que respondieron que el lenguaje puede trabajar con strings unicode, lo cual es bastante común hoy en día. Mi respuesta fue: Python 3. Con Python 3 podemos tener caracteres unicode en el código fuente, en el nombre de las variables por ejemplo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; á = 1
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; print(á)&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; 大家好 = range(10)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; for ä in 大家好:&lt;/p&gt;
+&lt;p&gt;...     print(ä)&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;7&lt;/p&gt;
+&lt;p&gt;8&lt;/p&gt;
+&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; año = 2027&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; año += 1&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; print(año)&lt;/p&gt;
+&lt;p&gt;2028&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Python3</category><category>unicode</category><guid>http://www.juanjoconti.com.ar/posts/2011/02/08/unicode-en-el-codigo-fuente.html</guid><pubDate>Tue, 08 Feb 2011 11:46:45 GMT</pubDate></item></channel></rss>

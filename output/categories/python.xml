@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Python)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/python.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:17 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Video de mi charla Ruby para programadores Python</title><link>http://www.juanjoconti.com.ar/posts/2015/05/25/video-de-mi-charla-ruby-para-programadores-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy encontré que los organizadores de &lt;a href="https://twitter.com/pyconar" target="_blank"&gt;PyConAr&lt;/a&gt; 2014 habían subido el video de mi charla Ruby para programadores Python. Se que subir todos los videos de una conferencia lleva tiempo y es mucho trabajo. Muchas gracias!&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=NdvTsh_eYe8&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Aprendiendo Ruby</category><category>Eventos</category><category>Python</category><category>ruby</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2015/05/25/video-de-mi-charla-ruby-para-programadores-python.html</guid><pubDate>Mon, 25 May 2015 19:40:51 GMT</pubDate></item><item><title>Aprendiendo Ruby: desde Python</title><link>http://www.juanjoconti.com.ar/posts/2014/08/18/aprendiendo-ruby-desde-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un mes y medio estoy estudiando y trabajando con el lenguaje de programación &lt;a href="https://www.ruby-lang.org" target="_blank"&gt;Ruby&lt;/a&gt;. Después de unos cuatro años con Python y luego más de tres con PHP/JS, el cambio se sintió como una ráfaga de aire fresco y en esa ráfaga reconocí aromas del pasado.&lt;/p&gt;
+&lt;p&gt;El primer día que use Ruby, leí este artículo:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/to-ruby-from-python/" target="_blank"&gt;https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/to-ruby-from-python/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Es bastante incompleto.&lt;/p&gt;
+&lt;p&gt;Ruby es muy parecido a Python. Pero hay muchos detalles que te pueden morder. Mientras iba estudiando, fui haciendo una lista de los que me mordían. Esa lista se convirtió en mi primer charla de Ruby.&lt;/p&gt;
+&lt;p&gt;El &lt;a href="https://groups.google.com/forum/#!topic/rubylit/CJKM2RZNj94" target="_blank"&gt;jueves 7 de agostó &lt;/a&gt;se llevó a cabo la tercera meetup del año de RubyLit (el grupo de usuarios de Ruby local). En esta presenté una charla titulada &lt;strong&gt;Aprendiendo Ruby: desde Python&lt;/strong&gt;. Las &lt;em&gt;slides&lt;/em&gt; de la presentación fueron generadas en base a un &lt;a href="http://ipython.org/notebook.html" target="_blank"&gt;notebook&lt;/a&gt; &lt;a href="http://ipython.org" target="_blank"&gt;IPython&lt;/a&gt; usando el kernel &lt;a href="https://github.com/minad/iruby" target="_blank"&gt;IRuby&lt;/a&gt; y me permitieron mostrar &lt;a href="https://www.youtube.com/watch?v=aE1_4in5w5w" target="_blank"&gt;código vivo&lt;/a&gt; dentro de cada &lt;em&gt;slide&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Este es el notebook que usé el día de la charla: &lt;a href="http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/rubylit_meetup/RubyDesdePython.ipynb" target="_blank"&gt;http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/rubylit_meetup/RubyDesdePython.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Y esta la versión actualizada con los comentarios que surgieron durante la charla y que voy mejorando con el tiempo: &lt;a href="http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/master/RubyDesdePython.ipynb" target="_blank"&gt;http://nbviewer.ipython.org/github/jjconti/aprendiendo-ruby/blob/master/RubyDesdePython.ipynb&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Ruby</category><category>Python</category><category>ruby</category><guid>http://www.juanjoconti.com.ar/posts/2014/08/18/aprendiendo-ruby-desde-python.html</guid><pubDate>Mon, 18 Aug 2014 01:51:27 GMT</pubDate></item><item><title>Razones para ir a PyConAr 2011</title><link>http://www.juanjoconti.com.ar/posts/2011/09/18/razones-para-ir-a-pyconar-2011.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://ar.pycon.org/" target="_blank"&gt;PyConAr&lt;/a&gt; es la conferencia de Python en habla hispana más grande del mundo y la edición 2011 se va a llevar a cabo en Junín, Buenos Aires, el próximo viernes y sábado. Vas?
+&lt;p&gt;&lt;a href="http://ar.pycon.org/2011/"&gt;&lt;img class="aligncenter size-full wp-image-3373" title="pyconar2011" src="http://www.juanjoconti.com.ar/wp-content/uploads/2011/09/pyconar2011.png" alt="" width="760" height="134"&gt;&lt;/a&gt;Para convencerse a ir, además de mirar en el sitio oficial el &lt;a href="http://ar.pycon.org/2011/activity/accepted" target="_blank"&gt;listado de charlas&lt;/a&gt; (que incluye 5 &lt;em&gt;speakers&lt;/em&gt; internacionales) y el &lt;a href="http://ar.pycon.org/2011/stats/maps" target="_blank"&gt;mapa donde se ve de todos los lugares que vamos&lt;/a&gt;, no dejes de pasar por el &lt;a href="http://pyconar.blogspot.com/" target="_blank"&gt;blog oficial de la organización&lt;/a&gt;: en especial los posts en los que cada verso del &lt;a href="http://www.juanjoconti.com.ar/2006/06/04/el-zen-de-python/" target="_blank"&gt;Zen de Python&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;En este detalle se refleja todo lo que han trabajado para organizar este evento. No dudo que va a estar muy bueno.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>PyConAr</category><category>PyConAr2011</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2011/09/18/razones-para-ir-a-pyconar-2011.html</guid><pubDate>Sun, 18 Sep 2011 10:09:45 GMT</pubDate></item><item><title>Charla: Entendiendo Decoradores en Python [actualizada]</title><link>http://www.juanjoconti.com.ar/posts/2011/05/06/charla-entendiendo-decoradores-en-python-actualizada.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La primer vez que di esta charla fue en el &lt;a href="http://www.juanjoconti.com.ar/2010/05/09/charla-entendiendo-decoradores-en-python/" target="_blank"&gt;PyDay de Rafala en 2010&lt;/a&gt;. De las charlas que tengo en la gatera, es la que más me gusta de momento. Está bien armada y es muy útil para quienes empiezan con Python. Por eso cuando me invitaron a dar una charla en el &lt;a href="http://www.pyday.com.ar/cordoba2011/" target="_blank"&gt;PyDay de Córdoba&lt;/a&gt;, no dude en presentarla.&lt;/p&gt;
+&lt;p&gt;Dejo on line la &lt;a href="http://www.juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti-2.pdf" target="_blank"&gt;versión actualizada&lt;/a&gt; (y &lt;a href="http://www.juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti.txt" target="_blank"&gt;sus fuentes&lt;/a&gt;) ya que los estuve buscando antes de dar la charla y me costó encontrarlos en mi computadora. Subiéndolas a Internet aumento su disponibilidad.&lt;/p&gt;
+&lt;p&gt;Esta charla también fue dada en PyCon Argentina 2010.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img class="aligncenter" title="Entendiendo decoradores en Python - Córdoba 2011" src="http://juanjoconti.com.ar/wp-content/uploads/2011/05/juanjoEnPyDayCba2011.jpg" alt="" width="640" height="480"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>pyday</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2011/05/06/charla-entendiendo-decoradores-en-python-actualizada.html</guid><pubDate>Fri, 06 May 2011 20:59:08 GMT</pubDate></item><item><title>Python: guardar imagenes en una base de datos Sqlite</title><link>http://www.juanjoconti.com.ar/posts/2011/03/15/python-guardar-imagenes-en-una-base-de-datos-sqlite.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un par de días Walter de Nicaragua me consultaba:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Estoy trabajando en una aplicacion para niños en las xo´s , estoy usando sqlite3 para guardar la informacion, y tambien necesito guardar fotos dentro de la base de datos.
+&lt;p&gt;Como la fotos seran tomadas con la camara de las propias XO's, asumo no son tan grande en resolucion y tamaño.&lt;/p&gt;
+&lt;p&gt;Tambien, estuve revizando la lista de correo, pero no hay nada concreto, y  a decir verdad recomiendan que guarde una referencia de la imagen en la base de datos, y luego haga una consulta, para recuperarla, pero tambien he visto que tiene sus pro y sus contras.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Esta es la respuesta. Primero necesitamos una tabla con un campo de tipo BLOB donde guardar la imagen:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; import sqlite3
+
+&amp;gt;&amp;gt;&amp;gt; conn = sqlite3.connect('/tmp/example')
+
+&amp;gt;&amp;gt;&amp;gt; c = conn.cursor()
+
+&amp;gt;&amp;gt;&amp;gt; c.execute('''create table imagenes (imagen BLOB);''')
+
+&lt;/pre&gt;
+
+&lt;p&gt;Abro una imagen que tengo en disco, mismo directorio que donde ejecute&lt;/p&gt;
+&lt;p&gt;el intérprete de Python, la cargo en memoria y la guardo en la base.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; imgdata = open('tomyNarnia.jpg', 'r').read()
+
+&amp;gt;&amp;gt;&amp;gt; len(imgdata)
+
+1613949
+
+&amp;gt;&amp;gt;&amp;gt; buff = sqlite3.Binary(imgdata)
+
+&amp;gt;&amp;gt;&amp;gt; c.execute('insert into imagenes values(?);', (buff,))
+
+&amp;gt;&amp;gt;&amp;gt; conn.commit()
+
+&amp;gt;&amp;gt;&amp;gt; conn.close()
+
+&lt;/pre&gt;
+
+&lt;p&gt;Luego podemos cerrar el intérprete. Con sqlite3 importado, recuperamos&lt;/p&gt;
+&lt;p&gt;la imagen.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; conn = sqlite3.connect('/tmp/example')
+
+&amp;gt;&amp;gt;&amp;gt; c = conn.cursor()
+
+&amp;gt;&amp;gt;&amp;gt; a = c.execute('select imagen from imagenes')
+
+&amp;gt;&amp;gt;&amp;gt; img = a.fetchone()
+
+&amp;gt;&amp;gt;&amp;gt; len(img)
+
+1
+
+&amp;gt;&amp;gt;&amp;gt; img
+
+(&amp;lt;read-write buffer ptr 0x1c75d60, size 1613949 at 0x1c75d20&amp;gt;,)
+
+&lt;/pre&gt;
+
+&lt;p&gt;El resultado es una tupla, pero como seleccionamos un solo campo de la&lt;/p&gt;
+&lt;p&gt;tabla, hay un solo elemento.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; img = img[0]
+
+&amp;gt;&amp;gt;&amp;gt; len(img)
+
+1613949
+
+&lt;/pre&gt;
+
+&lt;p&gt;Finalmente lo escribimos en una imagen.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; f = open('newimage.jpg', 'w')
+
+&amp;gt;&amp;gt;&amp;gt; f.write(img)
+
+&amp;gt;&amp;gt;&amp;gt; f.close()
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>SQLite</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2011/03/15/python-guardar-imagenes-en-una-base-de-datos-sqlite.html</guid><pubDate>Tue, 15 Mar 2011 09:49:36 GMT</pubDate></item><item><title>Unicode en el código fuente</title><link>http://www.juanjoconti.com.ar/posts/2011/02/08/unicode-en-el-codigo-fuente.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy &lt;a href="http://twitter.com/pedroprez/status/34967078767169536" target="_blank"&gt;Pedro preguntó en Twitter&lt;/a&gt; "Que lenguajes de programación permiten a día de hoy soporte full unicode para codear?". Algunos contestaron que Java o C#. No los conozco, &lt;span style="text-decoration: line-through;"&gt;pero creo que no&lt;/span&gt;. Creo que respondieron que el lenguaje puede trabajar con strings unicode, lo cual es bastante común hoy en día. Mi respuesta fue: Python 3. Con Python 3 podemos tener caracteres unicode en el código fuente, en el nombre de las variables por ejemplo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; á = 1
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; print(á)&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; 大家好 = range(10)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; for ä in 大家好:&lt;/p&gt;
+&lt;p&gt;...     print(ä)&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;7&lt;/p&gt;
+&lt;p&gt;8&lt;/p&gt;
+&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; año = 2027&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; año += 1&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; print(año)&lt;/p&gt;
+&lt;p&gt;2028&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Python3</category><category>unicode</category><guid>http://www.juanjoconti.com.ar/posts/2011/02/08/unicode-en-el-codigo-fuente.html</guid><pubDate>Tue, 08 Feb 2011 11:46:45 GMT</pubDate></item><item><title>Video de la charla Entendiendo decoradores en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/11/22/video-de-la-charla-entendiendo-decoradores-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://twitter.com/Orfx" target="_blank"&gt;Orfi&lt;/a&gt; se tomó el trabajo de editar una filmación de mi charla en el &lt;a href="http://www.juanjoconti.com.ar/2010/05/09/charla-entendiendo-decoradores-en-python/" target="_blank"&gt;PyDay de Rafaela&lt;/a&gt; con mis slides para armar este video. Muchas gracias!
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;iframe src="http://player.vimeo.com/video/16976108" width="400" height="300" frameborder="0"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="http://vimeo.com/16976108"&gt;entendiendo decoradores&lt;/a&gt; from &lt;a href="http://vimeo.com/user5262473"&gt;Orfx Sch&lt;/a&gt; on &lt;a href="http://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;Al final, durante las preguntas, escribo algo de código Python en la terminal. Lo siguiente es una reproducción:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(a, b):
+
+...     print a, b
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2)
+
+1 2
+
+&amp;gt;&amp;gt;&amp;gt; def f(*a, **kw):
+
+...     print a
+
+...     print kw
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1)
+
+(1,)
+
+{}
+
+&amp;gt;&amp;gt;&amp;gt; f(1, parametro=2)
+
+(1,)
+
+{'parametro': 2}
+
+&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(p1, *a, **kw):
+
+...     print kw['param']
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f()
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() takes at least 1 argument (0 given)
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2, 3, param=0)
+
+0
+
+&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):
+
+...     def _deco(*a, **kw):
+
+...             if kw.get('p'):
+
+...                     return f(*a, **kw)
+
+...             else:
+
+...                     print "No ejecuto."
+
+...     return _deco
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; @deco
+
+... def saludo(*a, **kw):
+
+...     print "hola"
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; saludo()
+
+No ejecuto.
+
+&amp;gt;&amp;gt;&amp;gt; saludo(p=0)
+
+No ejecuto.
+
+&amp;gt;&amp;gt;&amp;gt; saludo(p=1)
+
+hola
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Eventos</category><category>pyday</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/22/video-de-la-charla-entendiendo-decoradores-en-python.html</guid><pubDate>Mon, 22 Nov 2010 03:59:30 GMT</pubDate></item><item><title>Charla: Desarrollando aplicaciones de red con Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy di en &lt;a href="http://jornadassl.agora.unnoba.edu.ar/" target="_blank"&gt;Junín&lt;/a&gt; una charla introductoria &lt;a href="http://twistedmatrix.com/" target="_blank"&gt;Twisted&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando los organizadores me contactaron hace un para de meses para invitarme a venir, me preguntaron sobre qué podía hablar. Mi primera idea era una charla titulada algo así como &lt;strong&gt;Python para diversión, trabajo y estudio&lt;/strong&gt;. Mandé un guión con los temas que incluiría, en en el track trabajo mensioné Twisted, el framework que venía usando hacía un tiempo ya. La respuesta que recibí fue.&lt;/p&gt;
+&lt;p&gt;"Dale, date una charla de Twisted"&lt;/p&gt;
+&lt;p&gt;:)&lt;/p&gt;
+&lt;p&gt;Si bien venía usándolo hacía casi dos años, mi forma de aprenderlo no fue la más pedagógica, sino que fue la forma dura. Empecé a desarrollar y fui conociendo lo puntudo de sus aristas a medida que iba necesitando agregar nuevas funcionalidades.&lt;/p&gt;
+&lt;p&gt;Preparar la charla mi vino muy bien para organizar lo que sabía y aprender algunas que había venido evitando. Hoy &lt;a href="http://twitpic.com/34efyo" target="_blank"&gt;di la charla en Junín&lt;/a&gt; y creo que salió bastante bien.&lt;/p&gt;
+&lt;p&gt;Introducción a Twisted, un framework escrito en Python que permite&lt;/p&gt;
+&lt;p&gt;crear aplicaciones de red (clientes y servidores) asincrónicas.&lt;/p&gt;
+&lt;p&gt;Veremos sus conceptos principales y ejemplos que permitirán al&lt;/p&gt;
+&lt;p&gt;auditorio volver a su casa con las herramientas básicas para empezar a programar utilizándolo.&lt;/p&gt;
+&lt;p&gt;Dejo el material de la charla:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/files/charlas/aplicaciones_de_red.pdf" target="_blank"&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/files/charlas/ejemplos_intro_twisted.zip" target="_blank"&gt;Ejemplos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Y una propaganda que fue mi última slide. PyAr, el grupo de usuarios de Python de Argentina está dando charlas abiertas (de 2hs c/u) en La Tribu todos los sábados. El próximo sábado tenemos justamenet una clase de Twisted!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://python.org.ar/pyar/CharlasAbiertas2010#Twisted" target="_blank"&gt;http://python.org.ar/pyar/CharlasAbiertas2010#Twisted&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sábado 13 de Noviembre - Charlas Abiertas de Python en La Tribu (Lambaré 873, Capital Federal)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Twisted&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Vamos a ver porque el modelo de twisted es necesario, como se programa en modo asyncronico usando deferreds y conocer el api de red de twisted para hacer servicios.&lt;/blockquote&gt;
+&lt;p&gt;Disertante: Lucio Torre&lt;/p&gt;
+&lt;p&gt;13 a 15 horas&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>General</category><category>PyAr</category><category>Python</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted.html</guid><pubDate>Sat, 06 Nov 2010 11:49:33 GMT</pubDate></item><item><title>Entendiendo *args y **kwargs en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/10/13/entendiendo-args-y-kwargs-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Me llegó un mail consultando sobre &lt;code&gt;&lt;em&gt;args&lt;/em&gt;&lt;/code&gt; y &lt;code&gt;*kwargs&lt;/code&gt; en Python. ¿Qué es eso? Vamos por partes.&lt;/p&gt;
+&lt;p&gt;En Python existen varias formas de llamar a una función. Por ejemplo, en su definición &lt;a href="http://docs.python.org.ar/tutorial/controlflow.html#argumentos-con-valores-por-omision" target="_blank"&gt;puede tener valores por defecto&lt;/a&gt;, entonces no es necesario utilizarlos todos al llamarla:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(a, b, c=3):
+&lt;p&gt;...     print a, b, c&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; f(1,2)&lt;/p&gt;
+&lt;p&gt;1 2 3&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href="http://docs.python.org.ar/tutorial/controlflow.html#palabras-claves-como-argumentos" target="_blank"&gt;Se pueden utilizar palabras claves como argumento&lt;/a&gt;, por supuesto, respetando algunas reglas:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(a, b, c):
+
+...     print a, b, c
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(a=1, b=2, c=3)
+
+1 2 3
+
+&amp;gt;&amp;gt;&amp;gt; f(a=1, 2, 3)
+
+  File "", line 1
+
+SyntaxError: non-keyword arg after keyword arg
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2, b=3)
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() got multiple values for keyword argument 'b'
+
+&amp;gt;&amp;gt;&amp;gt; f(1, b=2, c=3)
+
+1 2 3&lt;/pre&gt;
+
+&lt;p&gt;Y finalmente, &lt;a href="http://docs.python.org.ar/tutorial/controlflow.html#listas-de-argumentos-arbitrarios" target="_blank"&gt;se puede llamar con listas arbitrarias de argumentos&lt;/a&gt;. Como en los casos anteriores, poder hacerlo depende de cómo hayamos definido la función:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(*args, **kwargs):
+
+...     print "args:", args
+
+...     print "kwargs:", kwargs
+
+...&lt;/pre&gt;
+
+&lt;p&gt;Con &lt;code&gt;&lt;em&gt;args&lt;/em&gt;&lt;/code&gt; se indica, mapear todos los argumentos posicionales a una tupla llamada &lt;code&gt;args&lt;/code&gt;. Y con &lt;code&gt;*kwargs&lt;/code&gt; se indica, mapear todos los argumentos de palabra clave a un diccionario llamado &lt;code&gt;kwargs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; f(1,2,3)
+
+args: (1, 2, 3)
+
+kwargs: {}
+
+&amp;gt;&amp;gt;&amp;gt; f(1,2,3, cuatro=4)
+
+args: (1, 2, 3)
+
+kwargs: {'cuatro': 4}
+
+&amp;gt;&amp;gt;&amp;gt; f(cuatro=4)
+
+args: ()
+
+kwargs: {'cuatro': 4}&lt;/pre&gt;
+
+&lt;p&gt;Notemos que se pueden definir argumentos con nombre propio antes de los argumentos &lt;em&gt;agrupados&lt;/em&gt; y que no es necesario usar exactamente los nombres &lt;code&gt;args&lt;/code&gt; y &lt;code&gt;kwargs&lt;/code&gt;. También puede usarse solo uno de los dos:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(p, *a, **kw):
+
+...     print "p:", p
+
+...     print "a:", a
+
+...     print "kw:", kw
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1,2,3)
+
+p: 1
+
+a: (2, 3)
+
+kw: {}
+
+&amp;gt;&amp;gt;&amp;gt; f(1,2,3, cuatro=4)
+
+p: 1
+
+a: (2, 3)
+
+kw: {'cuatro': 4}
+
+&amp;gt;&amp;gt;&amp;gt; f(cuatro=4)
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() takes at least 1 non-keyword argument (0 given)&lt;/pre&gt;
+
+&lt;p&gt;Espero que los ejemplos sirvan. Para más detalle, se pueden consultar las secciones del &lt;a href="http://tutorial.python.org.ar/" target="_blank"&gt;Tutorial de Python&lt;/a&gt; que enlacé.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/10/13/entendiendo-args-y-kwargs-en-python.html</guid><pubDate>Wed, 13 Oct 2010 16:59:11 GMT</pubDate></item><item><title>Twitter updates desde Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;em&gt;Este artículo es una re-edición del publicado el 24/08/2010 ya que cuando lo publiqué, Twitter estaba terminando su proceso apagar el sistema de autenticación básica para pasar al &lt;a href="http://dev.twitter.com/pages/auth_overview" target="_blank"&gt;más complejo sistema de la danza oAuth;&lt;/a&gt; lo cual convirtió al artículo en inservible. El artículo anterior no está más disponible. Gracias a &lt;a href="http://www.pupeno.com" target="_blank"&gt;Pupeno&lt;/a&gt; por revisar esta versión.
+&lt;p&gt;&lt;/p&gt;&lt;/em&gt;
+&lt;p&gt;¿Tenés un servidor escrito en &lt;a href="http://twistedmatrix.com" target="_blank"&gt;Twisted&lt;/a&gt;? ¿Tenés eventos críticos o importantes que mandás por mail o a celulares? ¿Qué tal publicarlos en &lt;a href="http://www.twitter.com" target="_blank"&gt;Twitter&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;La versión original de este artículo utilizaba la biblioteca &lt;a href="http://github.com/dustin/twitty-twister" target="_blank"&gt;Twitty Twister&lt;/a&gt;, la única pensada para usar Twitter desde Twisted. Lamentablemente no funciona bien con el nuevo sistema de autenticación de Twitter por lo que voy a usar &lt;a href="http://github.com/joshthecoder/tweepy" target="_blank"&gt;Tweepy&lt;/a&gt;, una librería con la cual hacer la danza de oAuth es muy sencillo.&lt;/p&gt;
+&lt;p&gt;1) &lt;a href="https://twitter.com/signup" target="_blank"&gt;Registrar&lt;/a&gt; un usuario dónde publicar las notificaciones.&lt;/p&gt;
+&lt;p&gt;2) Con ese usuario, &lt;a href="http://dev.twitter.com/apps/new" target="_blank"&gt;registrar una aplicación&lt;/a&gt;. Es muy importante usar el mismo usuario para ahorrarnos algunos pasos en la danza oAuth.&lt;/p&gt;
+&lt;p&gt;3) De la página de la aplicación creada, tomar la siguiente información: consumer key, consumer secret (desde la home de la aplicación), access token y access token secret (de la página My Access Token).&lt;/p&gt;
+&lt;p&gt;4) Código:&lt;/p&gt;
+&lt;p&gt;Con los datos del punto 3, creamos el módulo &lt;strong&gt;twitterupdates.py&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;import tweepy
+
+
+
+TWITTER_KEY = 'xxxxxxxxxxxxxxxx'
+
+TWITTER_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+
+
+auth = tweepy.OAuthHandler(TWITTER_KEY, TWITTER_SECRET)
+
+auth.set_access_token(MY_KEY, MY_SECRET)
+
+twitter = tweepy.API(auth)&lt;/pre&gt;
+
+&lt;p&gt;y desde nuestra aplicación Twisted lo importamos:&lt;/p&gt;
+&lt;pre&gt;from twitterupdates import twitter&lt;/pre&gt;
+
+&lt;p&gt;Postear una actualización en Twitter o cualquier otra petición a un servidor externo tiene una naturaleza bloqueante y en un framework de concurrencia colaborativa, como es Twisted, no podemos darnos ese lujo. Para solucionar esto, utilizamos &lt;a href="http://twistedmatrix.com/documents/10.1.0/api/twisted.internet.threads.deferToThread.html" target="_blank"&gt;deferToThread&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;deferToThread(twitter.update_status, "Mensaje a postear en Twitter")&lt;/pre&gt;
+
+&lt;p&gt;Esta llamada retorna un objeto &lt;a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank"&gt;Deferred&lt;/a&gt; al cual se le pueden añadir callbacks o errbacks. La llamada bloqueante es corrida en un hilo aparte.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Twisted</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</guid><pubDate>Sun, 26 Sep 2010 16:00:47 GMT</pubDate></item></channel></rss>

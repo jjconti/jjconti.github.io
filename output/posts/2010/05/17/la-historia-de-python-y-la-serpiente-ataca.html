@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La historia de Python: Y la serpiente ataca | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/05/17/la-historia-de-python-y-la-serpiente-ataca.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../10/borrar-todos-los-archivos-de-un-directorio-menos-los-que.html" title="Borrar todos los archivos de un directorio menos los que..." type="text/html">
+        <link rel="next" href="../24/es-dificil-escribir-las-reglas-de-un-juego.html" title="Es dificil escribir las reglas de un juego!" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="La historia de Python: Y la serpiente ataca">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/05/17/la-historia-de-python-y-la-serpiente-ataca.html">
+    <meta property="og:description" content="El siguiente texto es una traducción del artículo And the Snake Attacks de Greg Stein publicado en http://python-history.blogspot.com/.
+
+
+Y la serpiente ataca
+
+Esta bien. Bueno. En 1995, cuando tuve m">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-05-17T23:52:44+00:00">
+           <meta property="article:tag" content="General">
+           <meta property="article:tag" content="Python">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="la-historia-de-python-y-la-serpiente-ataca.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">La historia de Python: Y la serpiente ataca</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-05-17T23:52:44+00:00" itemprop="datePublished" title="2010-05-17 23:52">2010-05-17 23:52</time></a></p>
+                <p class="commentline">
+        
+    <a href="la-historia-de-python-y-la-serpiente-ataca.html#disqus_thread" data-disqus-identifier="cache/posts/2010/05/17/la-historia-de-python-y-la-serpiente-ataca.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="la-historia-de-python-y-la-serpiente-ataca.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo And the Snake Attacks de Greg Stein publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em>
+<!--more-->
+
+<h3>Y la serpiente ataca</h3>
+
+<p>Esta bien. Bueno. En 1995, cuando tuve mi  primer contacto con Python, cualquier referencia a una "serpiente" estaba prohibida. Python tomaba el nombre de <a href="http://en.wikipedia.org/wiki/Monty_Python" target="_blank">Monty Python</a>, no del reptil. Si alguien estaba atacando, eran <a href="http://en.wikipedia.org/wiki/Knights_who_say_Ni" target="_blank">Los Caballeros que dicen Ni</a> o posiblemente el <a href="http://en.wikipedia.org/wiki/Rabbit_of_Caerbannog" target="_blank">Conejo de Caerbannog</a>.</p>
+<p>De cualquier manera, volviendo a 1994, yo estaba combatiendo con villanos ficticios en la escena LPMUD. La Web apenas estaba presente, y la banda ancha era algo inaduito. El entretenimiento de bajo ancho de banda estaba a la orden del día.</p>
+<p>Esperá. Demos un paso atrás. 1979. Mi primera computadora fue una Apple ][, y uno de mis juegos favoritos era <a href="http://en.wikipedia.org/wiki/Colossal_Cave" target="_blank">Colossal Cave</a>. Inmediatamente después, conocí y jugué Zork. Yo estaba enamorado del concepto de ficción interactiva y de como una computadora podía llevarte a través de esas historias. Esos juegos me engancharon, y me llevaron a una vida de computadoras.<em> (Y si, ¡te podes imaginar la emoción de reunirme con Don Woods casi 25 años mas tarde!)</em></p>
+<p>Por eso la escena MUD me intereso bastante. Pero yo quería ayudar a <em>hacer</em> esos juegos. Conocí a <a href="http://viega.org/" target="_blank">John Viega</a>, un compañero <a href="http://en.wikipedia.org/wiki/Lima_Mudlib" target="_blank">creador de LPMUD</a>, programador y diseñador. Al mismo tiempo, el estaba trabajando en el Laboratorio de Graficos por Computadora de la Universidad de Virgina, en un  sistema llamado Alice. Este sistema estaba pensado para gente poco conocedora, y querian un lenguaje facil de aprender para crear animaciones. Elijieron Python por su claridad, poder y simplicidad.</p>
+<p>John era un fanático tremendo, y me encamino a Python. "Tenes que aprender esto!" "Bueno, bueno" decía yo. El lenguaje era fácil, pero poderoso. Podía hacer de todo, sin mucho fastidio.</p>
+<p>Era febrero de 1995, y no volví atras.</p>
+<p>No sabía en ese momento cuan trascendental seria Python en mi carrera y en mi vida. Gracias, Guido, por tu creación.</p>
+<p><em>Traducido por <a href="http://www.joaclandia.com.ar/" target="_blank">Joaquín Sorianello</a>.</em></p>
+<p>Revisado por Juan José Conti.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="../../../../categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/general.html" rel="tag">General</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../10/borrar-todos-los-archivos-de-un-directorio-menos-los-que.html" rel="prev" title="Borrar todos los archivos de un directorio menos los que...">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../24/es-dificil-escribir-las-reglas-de-un-juego.html" rel="next" title="Es dificil escribir las reglas de un juego!">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/05/17/la-historia-de-python-y-la-serpiente-ataca.html",
+        disqus_title="La historia de Python: Y la serpiente ataca",
+        disqus_identifier="cache/posts/2010/05/17/la-historia-de-python-y-la-serpiente-ataca.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (C)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/c.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:17 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Intercambio de valores rápido en Python</title><link>http://www.juanjoconti.com.ar/posts/2009/05/04/intercambio-de-valores-rapido-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Cuando empecé a cursar Ingeniería en Sistemas en el año 2003, tuvimos una materia llamada Algoritmos y Estructuras de Datos. La semana del curso estaba compuesta por una clase teórica, una clase práctica y una clase "especial" dictada por un docente de apellido Marina que tenía como objetivo hacernos pensar resolviendo problemas; en las primeras clases ni siquiera programábamos.&lt;/p&gt;
+&lt;p&gt;El lenguaje de programación de la materia era C y en una de las clases, este docente recordaba risueño que un alumno había querido intercambiar el valor de dos variables&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="c"&gt;int a = 1;
+&lt;p&gt;int b = 2;&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;haciendo:&lt;/p&gt;
+&lt;pre lang="c"&gt;a = b;
+
+b = a;&lt;/pre&gt;
+
+&lt;p&gt;El error es evidente; en a se copia el valor contenido en b (2) pisando el valor original (1) y al ejecutarse la segunda sentencia, el nuevo valor de a (2) es copiado en b.&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;La siguiente tabla muestra los valores que van tomando las variables a y b:
+
+&lt;img class="aligncenter size-full wp-image-1547" title="ej1f" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/05/ej1f.jpg" alt="" width="389" height="185"&gt;
+
+La forma correcta de intercambiar los valores habría sido utilizando una variable auxiliar en la cual mantener uno de los valores:
+
+&lt;/p&gt;
+
+&lt;pre lang="c"&gt;int aux;
+
+int a = 1;
+
+int b = 2;
+
+aux = a;
+
+a = b;
+
+b = aux;&lt;/pre&gt;
+
+&lt;p&gt;La siguiente tabla muestra los valores que van tomando las variables aux, a y b:&lt;/p&gt;
+&lt;p&gt;&lt;img class="aligncenter size-full wp-image-1552" title="ej2ff" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/05/ej2ff.jpg" alt="" width="500" height="233"&gt;&lt;/p&gt;
+&lt;p&gt;Lo gracioso del asunto es que unos años más tarde conocí otro lenguaje de programación, &lt;a href="http://www.python.org/" target="_blank"&gt;Python&lt;/a&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;En Python un tipo de dato que viene con el lenguaje es la tupla. Una tupla es una secuencia (sus elementos tienen orden) inmutable (no se puede cambiar su tamaño o contenido) que puede tener dentro objetos de distinto tipo. Un ejemplo de tupla en Python (contiene tres números y dos cadenas de texto):&lt;/p&gt;
+&lt;pre&gt;(1, 2, "tres", 4, "Juan")&lt;/pre&gt;
+
+&lt;p&gt;La forma de apuntar a ese objeto desde una variable es simplemente:&lt;/p&gt;
+&lt;pre&gt;a = (1, 2, "tres", 4, "Juan")&lt;/pre&gt;
+
+&lt;p&gt;Aunque podemos obviar los paréntesis y de todas formas funcionará. Decimos que la tupla es &lt;em&gt;empaquetada&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;a = 1, 2, "tres", 4, "Juan"&lt;/pre&gt;
+
+&lt;p&gt;De forma similar, podemos &lt;em&gt;desempaquetar&lt;/em&gt; la tupla en nuevas variables:&lt;/p&gt;
+&lt;pre&gt;b, c, d, e, f = a&lt;/pre&gt;
+
+&lt;p&gt;La condición es que el número de variables en el lado izquierdo del operador = coincida con el número de elementos en la tupla.&lt;/p&gt;
+&lt;p&gt;La siguiente sentencia, empaqueta y desempaqueta:&lt;/p&gt;
+&lt;pre&gt;x, y, z = "Juan", 100, 1&lt;/pre&gt;
+
+&lt;p&gt;Y es equivalente a:&lt;/p&gt;
+&lt;pre&gt;x = "Juan"
+
+y = 100
+
+z = 1&lt;/pre&gt;
+
+&lt;p&gt;Finalmente, esta propiedad del lenguaje nos permite intercambiar rápidamente los valores de 2 (o n) variables:&lt;/p&gt;
+&lt;pre&gt;a = 1
+
+b = 2
+
+a, b = b, a&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2009/05/ej31.jpg"&gt;&lt;img class="aligncenter size-full wp-image-1544" title="ej31" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/05/ej31.jpg" alt="" width="389" height="159"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Así, lo que un alumno despistado quiso hacer en 2 sentencias y Marina mostró que se hacía correctamente en 3, yo lo hago en 1 :)&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>C</category><category>humor</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/05/04/intercambio-de-valores-rapido-en-python.html</guid><pubDate>Mon, 04 May 2009 00:25:39 GMT</pubDate></item><item><title>La historia de Python: Clases definidas por los usuarios</title><link>http://www.juanjoconti.com.ar/posts/2009/04/20/la-historia-de-python-clases-definidas-por-los-usuarios.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;em&gt;El siguiente texto es una traducción del artículo Adding Support for User-defined Classes de Guido van Rossum publicado en &lt;a href="http://python-history.blogspot.com/" target="_blank"&gt;http://python-history.blogspot.com/&lt;/a&gt;.&lt;/em&gt;
+&lt;!--more--&gt;
+
+&lt;h3&gt;﻿Añadir clases definidas por los usuarios&lt;/h3&gt;
+
+&lt;p&gt;Crease o no, las clases fueron un añadido tardío durante el primer año del desarrollo de Python, todavía en el CWI, aunque bastante antes de la primera versión pública. En cualquier caso, para entender como se añadieron las clases, ayuda saber un poco más sobre los detalles de implementación de Python.&lt;/p&gt;
+&lt;p&gt;Python está escrito en C en forma de un intérprete de código intermedio o pseudo-binario (bytecode), usando la clásica estructura de pila, junto con una colección de tipos primitivos, también implementados en C. La arquitectura subyacente usa "objetos", pero como C no soporta objetos directamente, se implementan usando estructuras de objetos y punteros a funciones. La máquina virtual Python define docenas de operaciones estándar que cada objeto debe o puede implementar (por ejemplo, &lt;i&gt;get_attribute&lt;/i&gt;, &lt;i&gt;add&lt;/i&gt; y &lt;i&gt;call&lt;/i&gt;). &lt;/p&gt;
+&lt;p&gt;Un objeto se representa mediante una estructura estática que contiene una serie de punteros a funciones, uno para cada operación estándar. Estos punteros son inicializados normalmente con referencias a funciones estáticas. Pero algunas operaciones son opcionales y un objeto puede dejar esas entradas apuntando a &lt;em&gt;NULL&lt;/em&gt; si decide no implementar la función. En este caso, la máquina virtual o bien genera un error en tiempo de ejecución o, en determinadas circunstancias, puede que proporcione una implementación por defecto de la operación. La estructura C contiene también varios campos de datos, uno de los cuales es una referencia a la lista de métodos adicionales que son únicos para ese tipo de datos, representada como una matriz de estructuras que constan de un texto (el nombre del método) y un puntero a una función (la implementación). El enfoque a la introspección de&lt;/p&gt;
+&lt;p&gt;Python deriva de esta habilidad de hacer que la propia estructura del tipo sea accesible en tiempo de ejecución, como cualquier otro objeto.  &lt;/p&gt;
+&lt;p&gt;Un aspecto importante de esta implementación es que está completamente centrada en el lenguaje C. De hecho, todas las operaciones y los métodos estándar están implementados por funciones en C. En un principio, el interprete de &lt;em&gt;bytecode&lt;/em&gt; solo soportaba llamadas a funciones escritas en Python puro y funciones o métodos implementados en C. Creo que fue mi colega Siebren van der Zee el primero en sugerir que Python debería permitir definiciones de clases similares a las de C++, que permitieran al programador crear objetos propios.&lt;/p&gt;
+&lt;p&gt;Para poder implementar estos objetos de usuario, me ceñí al diseño más simple que pude imaginar: un esquema donde los objetos de usuario se representarían por nuevos objetos que almacenarían una referencia de clase que apuntaría a un "objeto clase" compartido por todas las instancias de la misma clase, y un diccionario, bautizado "diccionario de instancia", que contendría las variables particulares de cada instancia.&lt;/p&gt;
+&lt;p&gt;En esta implementación, el diccionario de la instancia contendría los valores de las variables de cada instancia, mientras que el objeto clase contendría la información que fuera compartida entre todas las instancias de la misma clase, especialmente, los métodos. Al implementar la clase objeto opté de nuevo por el diseño más sencillo posible; el conjunto de métodos de la clase se almacenaría en un diccionario, cuyas claves serían los nombres de los métodos, con lo que se creó el diccionario de la clase. Para implementar la herencia, los objetos clase almacenarían opcionalmente una referencia a los objetos clase correspondientes a las clases base. En esa época era bastante ingenuo en lo que se refería a las clases, pero sabía que existía la herencia múltiple, que C++ había incorporado recientemente. Decidí que si iba a implementar la herencia, bien podría implementar una versión simplificada de la herencia múltiple, de forma que una clase pudiera derivar de más de una clase base.&lt;/p&gt;
+&lt;p&gt;En esta implementación, los mecanismos subyacentes que gestionaban los objetos eran en realidad muy simples. Cualquier cambio hecho a las variables, ya sea de clase o de instancia, se verían reflejados en el objeto diccionario respectivo.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, asignar un valor a una variable de una instancia actualizaría su diccionario local. De igual forma, cuando buscáramos el valor de una variable de instancia de un objeto, simplemente miramos en el diccionario subyacente. Si la variable no se encuentra allí, las cosas se ponen un poco más interesantes. En ese caso, las búsquedas deben realizarse en el diccionario asociado a la clase, y si tampoco se encontrara allí, en los diccionarios de cada clase de la que derive.&lt;/p&gt;
+&lt;p&gt;Es más habitual ver este mecanismo de búsqueda de atributos en la clase del objeto, así como en sus clases antecesoras, en el caso de la búsqueda de métodos. Como se ha mencionado anteriormente, los métodos se almacenan en el diccionario de la clase, por lo que son compartidos por todas las instancias de objetos pertenecientes a dicha clase. Así, cuando se invoca un método, lo normal es que no lo encuentres en el diccionario local del objeto. En vez de eso, se busca el método en la clase del objeto, y de no encontrarse, su busca sistemáticamente por todas las clases de las que deriva hasta encontrarlo. Cada una de las clases básicas implementa el mismo algoritmo recursivo. Esto se conoce habitualmente como la regla de primero en profundidad, luego de derecha a izquierda, y ha sido el método de ordenación y selección de métodos (MRO - &lt;em&gt;Method Resolution Order&lt;/em&gt;) usado por Python en la mayoría de sus versiones.&lt;/p&gt;
+&lt;p&gt;Las versiones más modernas han adoptado un MRO más sofisticado, que se discutirá en un futuro artículo de esta serie.&lt;/p&gt;
+&lt;p&gt;Al implementar las clases, uno de mis objetivos fue mantener las cosas sencillas. Así, Python no realiza comprobaciones de errores ni comprueba inconsistencias a la hora de localizar métodos. Por ejemplo, si una clase sobreescribe un método definido en una clase antecesora, no se realiza ninguna comprobación para verificar que el método redefinido tenga el mismo número de argumentos, ni que puede ser llamada de la misma manera que el método original. El algoritmo de resolución y localización de métodos se limita a devolver el primer método que encuentre, y lo ejecuta con cualesquiera argumentos que haya indicado el usuario.&lt;/p&gt;
+&lt;p&gt;A partir de este diseño emergieron otras características. Por ejemplo, aunque el diccionario de clase se pensó inicialmente como un repositorio de métodos, no existía ninguna razón que le impidiera contener también otros tipos de objetos.&lt;/p&gt;
+&lt;p&gt;Así, objetos como números enteros o cadenas de texto podían ser almacenados en el diccionario de la clase, lo que los convertía a todos los efectos en variables de clase; variables que son compartidas por todas las instancias de una determinada clase, en vez de estar almacenadas localmente.&lt;/p&gt;
+&lt;p&gt;Aunque la implementación era sencilla, también proporcionaba un alto grado de flexibilidad. Por ejemplo, la implementación hacía que las propias clases fueran objetos, en pie de igualdad con cualquier otro objeto (objetos de primera clase, o &lt;em&gt;first-class objects&lt;/em&gt;, como se les suele describir en la documentación), lo que significaba que podían ser inspeccionadas de forma introspectiva en tiempo de ejecución, e incluso ser modificadas inámicamente. Se podían añadir o modificar métodos simplemente actualizando el diccionario de la clase, una vez que la clase hubiera sido creada (*). La naturaleza dinámica de Python significaba que esos cambios tendrían un efecto inmediato en todas las instancias de esa clase o de sus clases derivadas. De igual manera, se podía modificar dinámicamente objetos individuales añadiendo, modificando o borrando variables de instancia (una característica que, como comprendí posteriormente, hacía que la implementación de clases y objetos de Python fuera más permisiva que la de Smalltalk, que restringía el conjunto de atributos a aquellos especificados en el momento de la creación).&lt;/p&gt;
+&lt;h4&gt;Desarrollo de la sintaxis de clases&lt;/h4&gt;
+
+&lt;p&gt;Habiendo diseñado las representaciones en tiempo de ejecución para las clases definidas por el usuario, mi siguiente tarea era diseñar la sintaxis para las definiciones de clases, y en particular, para las definiciones de métodos dentro de la clase. Había una restricción fuerte y era que yo no quería que la sintaxis para definir métodos fuera distinta de la sintaxis para definir funciones.&lt;/p&gt;
+&lt;p&gt;Reconstruir la gramática y el generador de &lt;em&gt;bytecode&lt;/em&gt; para manejar estos dos casos tan similares de forma diferente fue una tarea ardua. Aun así, aunque conseguí mantener la gramática igual, aún tenía que encontrar la manera de tratar con las variables de instancia. Inicialmente había esperado emular las variables de instancia implícitas que podemos ver, por ejemplo, en C++. En ese lenguaje, las clases se definen con un código como el siguiente:&lt;/p&gt;
+&lt;pre lang="cpp"&gt;
+
+    class A {
+
+    public:
+
+       int x;
+
+       void spam(int y) {
+
+            printf("%d %d\n", x, y);
+
+       }
+
+    };
+
+&lt;/pre&gt;
+
+&lt;p&gt;En esta clase se ha declarado la variable de instancia &lt;i&gt;x&lt;/i&gt;. En los métodos, las referencias a &lt;i&gt;x&lt;/i&gt; se refieren implícitamente a la variable de instancia.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, en el método &lt;i&gt;spam()&lt;/i&gt;, no se declara la variable &lt;i&gt;x&lt;/i&gt; ni como parámetro, ni como variable local, pero como la clase ha declarado una variable de instancia del mismo nombre, se asume que las referencias a &lt;i&gt;x&lt;/i&gt; se refieren a dicha variable. Aunque deseaba proporcionar a Python algo similar, pronto me di cuenta de que esta aproximación sería imposible, ya que, en un lenguaje que carece de declaración de variables, no habría una manera elegante de distinguir las variables de instancia de las variables locales.&lt;/p&gt;
+&lt;p&gt;En teoría, obtener el valor de las variables de instancia debería ser bastante fácil. Python ya disponía de un orden de búsqueda predefinido para nombres de variables no cualificados: locales, globales e internas (&lt;em&gt;built-ins&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Cada una de estas áreas estaba representada por un diccionario que mapeaba los nombres de las variables con sus valores. Cada referencia a una variable se convertía, así, en una serie de búsquedas en diccionarios que concluía cuando se encontrada el nombre de la variable. Por ejemplo, durante la ejecución de una función con una variable local &lt;i&gt;p&lt;/i&gt; y una variable global &lt;i&gt;q&lt;/i&gt;, en una sentencia como, por ejemplo, &lt;i&gt;print p, q&lt;/i&gt; buscaría &lt;i&gt;p&lt;/i&gt; en el primer diccionario, el de las variables locales, y lo encontraría. Luego buscaría &lt;i&gt;q&lt;/i&gt; en ese mismo diccionario y no lo encontraría, por lo que continuaría la búsqueda por el segundo diccionario, el de las variables globales, hasta encontrarlo.&lt;/p&gt;
+&lt;p&gt;Habría sido muy fácil añadir el diccionario de instancia del objeto actual al principio de esta lista de diccionarios a la hora de ejecutar un método. De esa forma, en un método de un objeto con una variable de instancia &lt;i&gt;x&lt;/i&gt; y una variable local &lt;i&gt;y&lt;/i&gt;, una sentencia como &lt;i&gt;print x,y&lt;/i&gt; encontraría &lt;i&gt;x&lt;/i&gt; en el diccionario de la instancia (el primer diccionario según la nueva ordenación), e &lt;i&gt;y&lt;/i&gt; en el diccionario de variables locales (el segundo&lt;/p&gt;
+&lt;p&gt;diccionario).&lt;/p&gt;
+&lt;p&gt;El problema con esta estrategia es que fracasa al intentar declarar los valores de las variables de instancia. La asignación en Python no busca el nombre de la variable en los diccionarios, sino que se limita a añadir o reemplazar la variable en el primer diccionario de la lista, normalmente el de variables locales. Esto provoca que las variables siempre se creen en el ámbito local, si no se especifica nada (aunque hay que hacer notar que existe una “declaración global" que invalida este comportamiento para una variable dentro de una función).&lt;/p&gt;
+&lt;p&gt;Si no cambiamos esta aproximación minimalista a la asignación, el que el diccionario de la instancia fuera el primero en la lista de búsqueda haría &lt;/p&gt;
+&lt;p&gt;imposible asignar valores a las variables locales dentro de un método. Porejemplo, si tuviéramos un método así:&lt;/p&gt;
+&lt;pre&gt;
+
+    def spam(y):
+
+        x = 1       
+
+        y = 2       
+
+&lt;/pre&gt;
+
+&lt;p&gt;Las asignaciones a &lt;i&gt;x&lt;/i&gt; e &lt;i&gt;y&lt;/i&gt; sobreescribirían el valor de la variable de instacia &lt;i&gt;x&lt;/i&gt; y crearían una nueva variable de instancia &lt;i&gt;y&lt;/i&gt;, que impediría acceder al valor de la variable local &lt;i&gt;y&lt;/i&gt;. Cambiar el orden de los diccionarios (pasar el de instacia al segundo lugar y que el diccionario &lt;/p&gt;
+&lt;p&gt;local se convirtiera en el primero) simplemente la daría la vuelta al problema, haciendo imposible realizar asignaciones a variables de instancia.&lt;/p&gt;
+&lt;p&gt;Tampoco funcionaría cambiar la semántica de las asignaciones para usar una variable de instancia, si existe alguna, o usar una variable local en caso contrario, porque esto nos crearía un problema de auto-referencias: ¿cómo crearíamos una variable de instancia, en primer lugar? Una posible solución  podría ser obligar a declarar explícitamente las variables de instancia, de forma similar a la usada para declarar variables globales, pero no quería añadir una característica como esta, habiendo llegado tan lejos como había llegado sin requerir ninguna declaración de variables. Además, la especificación extra para indicar una variable global era un caso especial que apenas se usaba en la mayoría del código. La declaración explícita de variables de instancia, por otro lado, tendría que ser usada en prácticamente cualquier definición de clase. Otra posible solución era distinguir lexicamente las variables de instancia. Por ejemplo, usando un símbolo especial como el caracter @ (una aproximación tomada por ruby) o usando alguna convención de nombres que implicara prefijos o un uso particular de mayúsculas y minúsculas. Ninguna de estas opciones me agradaba (y sigue sin hacerlo).&lt;/p&gt;
+&lt;p&gt;En vez de esto, decidí abandonar la idea de referencias implícitas a las variables de instancia. Los lenguajes como C++ permiten escribir cosas como &lt;i&gt;this-&amp;gt;foo&lt;/i&gt;, para señalar explícitamente que la variable &lt;i&gt;foo&lt;/i&gt; es de instancia, distinguiéndola así de una posible variable local &lt;i&gt;foo&lt;/i&gt;. Decidí,&lt;/p&gt;
+&lt;p&gt;por tanto, hacer que la única manera de acceder a las variables de instancia fueran estas referencias explícitas. Además, tomé la decisión de que &lt;i&gt;this&lt;/i&gt;, la variable que representaba al objeto actual, no fuera una palabra clave, simplemente haría que &lt;i&gt;this&lt;/i&gt; (o su equivalente) fuera un primer argumento de cada método. Las variables de instancia sería siempre atributos de ese argumento.&lt;/p&gt;
+&lt;p&gt;Usando referencias explícitas, no había ninguna necesidad de tener una sintaxis especial para la definición de métodos, ni tenía uno que complicarse con semánticas adicionales para la búsqueda de variables. En vez de eso, simplemente se definía una función, sabiendo que el primer argumento correspondería con el objeto instanciado. Por convención, se suele dar a este primer argumento el nombre de &lt;i&gt;self&lt;/i&gt;. Por ejemplo:&lt;/p&gt;
+&lt;pre&gt;
+
+    def spam(self,y):
+
+        print self.x, y
+
+&lt;/pre&gt;
+
+&lt;p&gt;Esta aproximación recuerda algo a Modula-3, que ya me había proporcionado la sintaxis para las importaciones y para el manejo de excepciones. Modula-3 no tenía clases, pero permitía definir tipos estructurados que podían contener punteros a funciones, que eran inicializadas por defecto con funciones definidas previamente y añadía azúcar sintáctico para que, si &lt;i&gt;x&lt;/i&gt; era una estructura de ese tipo y &lt;i&gt;m&lt;/i&gt; un puntero a una función almacenada en dicho registro, inicializado a una función &lt;i&gt;f&lt;/i&gt;, entonces llamar a &lt;i&gt;x.m(args)&lt;/i&gt; equivalía a llamar a &lt;i&gt;f(x, args)&lt;/i&gt;. Esto se ajusta a la implementación de objetos y métodos, y hace posible equiparar las variables de instancia con atributos del primer argumento.&lt;/p&gt;
+&lt;p&gt;El resto de los detalles de la sintaxis de Python para clases se derivan de este diseño o de las demás restricciones impuestas por la implementación. Siguiendo con mis aspiraciones de sencillez, imaginaba la sentencia &lt;i&gt;class&lt;/i&gt; como una serie de definiciones de métodos, que son sintácticamente iguales a las definiciones de funciones, aun cuando se estableciera por convención que todas deberían tener un primer argumento llamado &lt;i&gt;self&lt;/i&gt;. Además, en vez de desarrollar una nueva sintaxis para los métodos especiales (como los constructores y los destructores), tomé la decisión de que estos casos se resolverían obligando al usuario a utilizar nombres especiales, como &lt;i&gt;&lt;strong&gt;init&lt;/strong&gt;&lt;/i&gt;, &lt;i&gt;&lt;strong&gt;del&lt;/strong&gt;&lt;/i&gt; y demás. Esta convención de nombres se tomó del lenguaje C, en el que los identificadores que empezaban con el caracter guión bajo estaban reservados para el compilador y tenían, a menudo, significados especiales (por ejemplo, macros como &lt;strong&gt;FILE&lt;/strong&gt; en el preprocesador de C).&lt;/p&gt;
+&lt;p&gt;Así, la visión que tenía del código para definir una clase era esta:&lt;/p&gt;
+&lt;pre&gt;
+
+    class A:
+
+         def __init__(self,x):
+
+             self.x = x
+
+         def spam(self,y):
+
+            print self.x, y
+
+&lt;/pre&gt;
+
+&lt;pre class="code literal-block"&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;También quería seguir reutilizando la máxima cantidad posible de código.&lt;/p&gt;
+&lt;p&gt;Normalmente, una definición de una función es una sentencia ejecutable que, simplemente, realiza una asignación; asigna a una variable, en el espacio de nombres local, el objeto función (el nombre de la variable será, por tanto, el nombre de la función). Se me ocurrió que, en vez de inventar una solución distinta, era razonable hacer la misma interpretación para las definiciones de métodos dentro del cuerpo de la clase, simplemente usando como espacio de&lt;/p&gt;
+&lt;p&gt;nombres un nuevo diccionario. Este nuevo diccionario sería entonces tratado y usado para inicializar el diccionario de la clase, creando de esa forma una nueva clase. Detrás de escena, la estrategia que se implementó fue convertir el cuerpo de la clase en una función anónima, que ejecutaba todas las sentencias de definición de métodos que encontrara en el cuerpo de la clase, y que terminaba devolviendo un diccionario con todas las variables/métodos definidas. Este diccionario se pasaba a una función auxiliar, que creaba la clase en sí. Finalmente, el objeto que definía la propia clase se almacenaba en una variable en el entorno local, siendo su nombre el mismo que el de la clase. &lt;/p&gt;
+&lt;p&gt;Los usuarios de Python a menudo se sorprenden al comprender que cualquier sentencia válida de Python puede aparecer en el cuerpo de una clase. Esta característica era en realidad una extensión de mi deseo de mantener la sintaxis lo más limpia posible, a la vez que trataba de no limitar artificialmente aquellas cosas que pudieran resultar útiles.&lt;/p&gt;
+&lt;p&gt;Un detalle final acerca de la sintaxis usada para instanciar objetos de una clase. Otros lenguajes, como C++ o Java, usan para crear objetos un operador&lt;/p&gt;
+&lt;p&gt;especial, &lt;i&gt;new&lt;/i&gt;. En C++ esta opción es defendible, porque los nombres de las clases tienen un estatus especial para el analizador, pero en Python eso no era así. Como el analizador de Python no se preocupa en absoluto por el tipo de objeto que esta llamando, hacer que la propia clase fuera ejecutable era la solución correcta, "mínima" en el sentido de que no requería una nueva sintaxis.&lt;/p&gt;
+&lt;p&gt;Creo que me adelanté un poco a los tiempos aquí; a día de hoy, el “patrón de diseño Factory” es a menudo el sistema más empleado para la creación de instancias y lo que yo hice fue simplemente convertir cada clase en su propia fábrica (Factory).&lt;/p&gt;
+&lt;h4&gt;Métodos especiales&lt;/h4&gt;
+
+&lt;p&gt;Como decía en la última sección, uno de los objetivos que perseguía era que la implementación de las clases fuera sencilla. En los demás lenguajes orientados a objetos, normalmente existe una diversidad de métodos y operadores especiales que sólo se aplican a las clases. Por ejemplo, en C++, hay una sintaxis especial para definir constructores y destructores, diferente de la usada para definir funciones o métodos normales.&lt;/p&gt;
+&lt;p&gt;En realidad, no quería introducir una nueva sintaxis para manejar las operaciones especiales con los objetos. Así que me las arreglé para mapear los&lt;/p&gt;
+&lt;p&gt;operadores específicos con un conjunto de nombres especiales de métodos, como &lt;i&gt;&lt;strong&gt;init&lt;/strong&gt;&lt;/i&gt; y &lt;i&gt;&lt;strong&gt;del&lt;/strong&gt;&lt;/i&gt;. Los usuarios podrían definir su propio código asociado a la creación y destrucción de objetos, simplemente definiendo métodos con estos nombres especiales.&lt;/p&gt;
+&lt;p&gt;Usé la misma técnica para permitir a los usuarios redefinir el comportamiento de los operadores de Python. Como ya se ha dicho, Python está escrito en C y usa tablas que contienen punteros a funciones para implementar diferentes capacidades de los objetos internos (por ejemplo, &lt;i&gt;get attribute&lt;/i&gt;, &lt;i&gt;add&lt;/i&gt; y &lt;i&gt;call&lt;/i&gt;). Para permitir que el usuario pudiera definir estas mismas  capacidades en sus clases, mapeé los punteros a diferentes funciones con nombres especiales como &lt;i&gt;&lt;strong&gt;getattr&lt;/strong&gt;&lt;/i&gt;, &lt;i&gt;&lt;strong&gt;add&lt;/strong&gt;&lt;/i&gt; y &lt;i&gt;&lt;strong&gt;call&lt;/strong&gt;&lt;/i&gt;. &lt;/p&gt;
+&lt;p&gt;Existe una correspondencia directa entre estos nombres y las tablas de punteros de funciones que uno tiene que definir cuando se implemente un nuevo tipo de objeto en C.&lt;/p&gt;
+&lt;p&gt;(*) Eventualmente, el nuevo estilo de clases hace que sea necesario controlar los cambios en el &lt;strong&gt;dict&lt;/strong&gt; de la clase; aún se puede modificar dinámicamente las clases, pero se debe utilizar asignación de atributos en lugar de la  variable &lt;strong&gt;dict&lt;/strong&gt; directamente.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Traducido por Juan I. Rodriguez.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Revisado por Juan José Conti y César Portela.&lt;/p&gt;
+&lt;p&gt;Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.&lt;/p&gt;
+&lt;p&gt;Todas las traducciones de esta serie pueden encontrarse en &lt;a href="http://www.juanjoconti.com.ar/categoria/aprendiendo-python/historia/" target="_self"&gt;La historia de Python&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>C</category><category>Historia</category><category>Python</category><category>traducciones</category><guid>http://www.juanjoconti.com.ar/posts/2009/04/20/la-historia-de-python-clases-definidas-por-los-usuarios.html</guid><pubDate>Mon, 20 Apr 2009 09:00:48 GMT</pubDate></item><item><title>Lista circular en Python</title><link>http://www.juanjoconti.com.ar/posts/2007/02/28/lista-circular-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Estoy haciendo un juego inspirado en el &lt;a href="http://es.wikipedia.org/wiki/Juego_de_la_vida"&gt;Juego de la Vida&lt;/a&gt;. A modo de bonus-track también se podrán ver algunos patrones del tradicional juego de cero jugadores. Algunos patrones se cargarán de archivos en la computadora y se pondrán a disposición de usuario para que los examine. Para una mayor comodidad va a haber un botón "atrás" (&amp;gt;).&lt;/p&gt;
+&lt;p&gt;Si lo anterior fuera un enunciado en un examen de Algoritmos y Estructuras de Datos, ¿cual sería la estructura de datos más adecuada para mantener esa información? Sin dudas una lista circular. No sería muy agradable llegar al último patrón, apreatar "siguiente" y que no pase nada. Quiere que cuando esté parado en el último elemento y apriete "siguiente", me muestre el primero.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;Una lista circular es una lista lineal en la que el último nodo a punta al primero.&lt;/p&gt;
+&lt;p&gt;Las listas circulares evitan excepciones en la operaciones que se realicen sobre ellas. No existen casos especiales, cada nodo siempre tiene uno anterior y uno siguiente.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;El artículo va a ser un poco largo, va apasar por algunos lenguajes de programación y va a evaluar distintos enfoques. Pero adelanto que va a terminar en una implementación de una &lt;strong&gt;lista circular en Python basada en el manejo de índice&lt;/strong&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;h3&gt;Enfoque C&lt;/h3&gt;
+
+&lt;p&gt;Conocí este tipo de estructura en la materia que mensioné más arriba. Usabamos C como lenguaje de programación, así que fué el primer lenguaje dónde implementé una. A esta estructura de datos se la llama &lt;em&gt;dinámica&lt;/em&gt; por que puede crecer indefinidamente alocando porciones de memoria de la computadora, sin necesidad de que estas estén físicamente contiguas.&lt;/p&gt;
+&lt;p&gt;Supongamos que la lista circular va a ser de enteros (por simplicidad). Se necesitarán 1) una estructura Nodo más o menos así:&lt;/p&gt;
+&lt;pre lang="c"&gt;
+
+typedef struct nodo {
+
+   int dato;
+
+   struct nodo *next;
+
+} nodo;
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/02/next.jpg" alt="Node with next pointer"&gt;&lt;/center&gt;
+&lt;p&gt;o así:&lt;/p&gt;
+&lt;pre lang="c"&gt;
+
+typedef struct nodo {
+
+   int dato;
+
+   struct nodo *next;
+
+   struct nodo * prev;
+
+} nodo;
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/02/nextprev.jpg" alt="Node with next and prev pointers"&gt;&lt;/center&gt;
+&lt;p&gt;Las flechas de los dibujos son punteros (direcciones en memoria) a otros nodos, mediante los cuales estos se van a ir uniendo, bien para formar una lista lineal o para formar una lista como las que nos interesan, cuando el último nodo con su puntero next apunte al primero.&lt;/p&gt;
+&lt;p&gt;2) una forma de solicitar memoria para un nuevo nodo:&lt;/p&gt;
+&lt;pre lang="c"&gt;
+
+nodo * pnodo = (nodo *)malloc(sizeof(nodo));
+
+&lt;/pre&gt;
+
+&lt;p&gt;y 3) manejar punteros; un puntero a la lista, uno  a la posición actual, uno a la anterior a la actual.&lt;/p&gt;
+&lt;p&gt;Si bien usar estos elementos de la forma correcta &lt;em&gt;is not rocket science&lt;/em&gt;, requiere cierto conocimiento de un nivel más bajo (por más cercano al hardware) de lo que los modernos lenguajes dinámicos nos tiene acostumbrado (de hecho en los lenguajes de más alto nivel, este problema ya viene solucionado).&lt;/p&gt;
+&lt;p&gt;Para solucionar mi problema voy a preferir una solución con un poquito más de nivel de abstracción, pero creo que este enfoque a modo de introducción sirve para ir poniendo las piezas en el tablero.&lt;/p&gt;
+&lt;h3&gt;Enfoque Haskell&lt;/h3&gt;
+
+&lt;p&gt;En la pasada &lt;a href="http://www.cafeconf.org/"&gt;CafeConf&lt;/a&gt; fuí a una charla de mi amigo &lt;a href="http://www.pupeno.com"&gt;Pupeno&lt;/a&gt; sobre lenguajes de programación, allí vi algo que no conocía. En &lt;a href="http://www.haskell.org/haskellwiki/Haskell"&gt;Haskell&lt;/a&gt;, nos mostro este concepto: Listas infinitas. Lenguajes como este tiene una propiedad llamada &lt;em&gt;Lazyness&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;En programación, &lt;em&gt;lazy evaluation&lt;/em&gt;, también llamada &lt;em&gt;delayed evaluation&lt;/em&gt;, es la técnica que consiste en retrasar un cálculo computacional hasta el momento en que su resultado se necesite.&lt;/p&gt;
+&lt;p&gt;Por ejemplo:&lt;/p&gt;
+&lt;pre&gt;
+
+x = calculo_intensivo(1000)
+
+&lt;/pre&gt;
+
+&lt;p&gt;no necesita ser evaluado hasta que por ejemplo se haga:&lt;/p&gt;
+&lt;pre&gt;
+
+print x + 1
+
+&lt;/pre&gt;
+
+&lt;p&gt;Esta propiedad permite entre otras cosas crear listas infinitas (de nuevo un un pseudo código muy parecido a Python):&lt;/p&gt;
+&lt;pre&gt;
+
+miListaInfinita = ListaInfinita(arg)
+
+&lt;/pre&gt;
+
+&lt;p&gt;Claro que no vamos a poder hacer:&lt;/p&gt;
+&lt;pre&gt;
+
+print miListaInfinita
+
+&lt;/pre&gt;
+
+&lt;p&gt;O podríamos pero la operación no terminaría nunca, pero si prodríamos hacer:&lt;/p&gt;
+&lt;pre&gt;
+
+print miListaInfinita[100004]
+
+&lt;/pre&gt;
+
+&lt;p&gt;Y dependiendo de la clase de lista infinita que sea se necesitarán calcular los anteriores términos (en el caso de por ejemplo la lista de &lt;a href="http://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci"&gt;Fibonacci&lt;/a&gt;) o no (en una lista de todos 0).&lt;/p&gt;
+&lt;p&gt;Bien. A dónde estamos yendo con todo esto? Al fin de cuentas yo estaba buscando una lista circular y me encontré con listas infinitas. La conclusión es que una lista circular puede verse como una lista infinita ya que:&lt;/p&gt;
+&lt;p&gt;a) Siempre puedo pedirle un elemento siguiente sin que se agoten.&lt;/p&gt;
+&lt;p&gt;b) Puedo pedir el elemento 100004º y también obtenerlo (luego de algunas vueltas, por su puesto).&lt;/p&gt;
+&lt;p&gt;Así sería una lista crcular (infinita) en Haskell:&lt;/p&gt;
+&lt;pre lang="haskell"&gt;
+
+cycle [1,2,3]
+
+&lt;/pre&gt;
+
+&lt;p&gt;o&lt;/p&gt;
+&lt;pre lang="haskell"&gt;
+
+a = [1,2,3|a]  
+
+&lt;/pre&gt;
+
+&lt;p&gt;Bien, puedo hacer esto en Python? Con poco esfuerzo, con mis conocimientos y en una tade de lluvia,  &lt;strong&gt;yo no&lt;/strong&gt;. Salvo en algunas excepciones, la evaluación en Python no es &lt;em&gt;Lazy&lt;/em&gt;, sino &lt;em&gt;Eager&lt;/em&gt; o estricta. De todas formas algunos links por si alguien quiere seguir investigado en esa línea:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Streams&lt;/li&gt;
+
+    &lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5"&gt;http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://docs.python.org/lib/stream-reader-objects.html"&gt;http://docs.python.org/lib/stream-reader-objects.html&lt;/a&gt;&lt;/li&gt;
+
+    &lt;/ul&gt;
+
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Generator expressions&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://gnosis.cx/publish/programming/charming_python_b13.html"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://gnosis.cx/publish/programming/charming_python_b13.html&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.python.org/dev/peps/pep-0289/"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://www.python.org/dev/peps/pep-0289/&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://docs.python.org/ref/genexpr.html"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://docs.python.org/ref/genexpr.html&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;blockquote&gt;
+
+Juanjo-ar-stafe&amp;gt; is python lazy?
+
+Habbie&amp;gt; python allows programmers to be lazy
+
+Habbie&amp;gt; and that's what matters
+
+itchi&amp;gt; Juanjo-ar-stafe: Are you not lazy?? :-)
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ya que agoté esta rama, backtracking y adelante!&lt;/p&gt;
+&lt;h3&gt;De todas formas esto se trataba de Python, no?&lt;/h3&gt;
+
+&lt;p&gt;Yo estaba cometiendo el error en pensar en el término Lista circular doblemente enlazada, lo cual tiene sentido en C, pero no en Python. Yo no se como están implementadas las estrcturas de datos que provee el lenguaje y sin embargo puedo usarlas sin problemas. La diferencia en que la lista en cuestión sea doble o simplemente enlazada es solo una cuestión de optimización y no de funcionalidad. Cito una parte de uno de los mails que intercambiamos con Pupeno al respecto y que me ayudó mucho a encarar mejor el problema:&lt;/p&gt;
+&lt;blockquote&gt;
+
+El hacer una lista doblemente enlazada nos permite agregar funciones sobre la lista que la simplemente no nos permite y/o hacer que ciertas funciones sean mas rapido.
+
+En una lista podes hacer l.next() y tambien podes hacer l.prev() la diferencia es que prev() en una lista doblemente enlazada es constante en el tiempo O(1) y en una simple seria O(n) donde n es la cantidad de items en la lista (probablemente tenga un promedio de O(n/2)).
+
+Ahora, me parece que lo que vos necesitas realmente es que sea circular, no es cierto?
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ahora que ya se lo que necesito, puedo poner manos a la obra. ¿Qué necesito? Un objeto que sea una secuencia mutable de elementos al que siempre que quiera pueda decirle next() o prev() y me de el elemento siguiente o anterior al actual.&lt;/p&gt;
+&lt;p&gt;Lo primero en lo que podría pensar es en crear objetos Nodo y hacer una implementación C-like, usando referencias a objetos en lugar de punteros a estructuras pero.. creo que esto sería:&lt;/p&gt;
+&lt;p&gt;a) relativamente complicado, casi tanto como sería hacerlo en C. Más si mis objetivos de eficiencia, robustez y usabilidad son altos.&lt;/p&gt;
+&lt;p&gt;y b) un desapovechamiento de lo que ya está hecho (si llegó hasta aca, por favor siga leyendo).&lt;/p&gt;
+&lt;p&gt;Una de las estructuras de datos más poderosas que vienen con Python es &lt;em&gt;list&lt;/em&gt;, algunos ejemplos rápidos:&lt;/p&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; li = [1, "hola", 5, 8.5]
+
+&amp;gt;&amp;gt;&amp;gt; li[3]
+
+8.5
+
+&amp;gt;&amp;gt;&amp;gt; li[:3]
+
+[1, 'hola', 5]
+
+&amp;gt;&amp;gt;&amp;gt; li[:]
+
+[1, 'hola', 5, 8.5]
+
+&amp;gt;&amp;gt;&amp;gt; li[-2]
+
+5
+
+&amp;gt;&amp;gt;&amp;gt; li[-2:]
+
+[5, 8.5]
+
+&amp;gt;&amp;gt;&amp;gt; li + ["muy bien"]
+
+[1, 'hola', 5, 8.5, 'muy bien']
+
+&lt;/pre&gt;
+
+&lt;p&gt;Robusta, eficiente y muy usable.&lt;/p&gt;
+&lt;p&gt;Como pueden ver el manejo de índices le da mucha flexibilidad y es uno de los elementos más usados que constituyen el lenguaje. ¿Cuanto tiempo me tomaría hacer una implementación desde cero así solo por encapricharme con usar referencia circular? Paso.. voy a extender &lt;em&gt;list&lt;/em&gt; y a agregar la funcionalidad que requiero mediante el manejo de índices.&lt;/p&gt;
+&lt;h4&gt;Primer implementación&lt;/h4&gt;
+
+&lt;p&gt;Esta fue la priemr implementación que hice: &lt;a href="http://juanjoconti.com.ar/files/python/circular.py.html"&gt;circular.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Enseguida mandé un mail a mi &lt;a href="http://python.com.ar/moin/ListaDeCorreo"&gt;lista preferida de Python&lt;/a&gt; para pedir opiniones, de seguro tenía muchas cosas por mejorar.&lt;/p&gt;
+&lt;h4&gt;Review 1&lt;/h4&gt;
+
+&lt;p&gt;Enseguida Manuel Quiñones me mandó algunas optimizaciones (antes hacía llamadas recursivas de los métodos) + pruebas hechas con &lt;a href="http://docs.python.org/lib/module-doctest.html"&gt;DocTest&lt;/a&gt;: &lt;a href="http://juanjoconti.com.ar/files/python/circularDocTest.py.html"&gt;circularDocTest.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mezclé sus optimizaciones con mi código original (seguí sin usar una forma automatizada de testeo) para seguir discutiendo en base a este: &lt;a href="http://juanjoconti.com.ar/files/python/circular-r1.py.html"&gt;circular-r1.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 2&lt;/h4&gt;
+
+&lt;p&gt;Lucio Torre me apuntó este comportamiento no previsto:&lt;/p&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt; Circular([]).prev() == Circular([None]).prev()
+
+True
+
+&lt;/pre&gt;
+
+&lt;p&gt;Estaba retornando None cuando se solicitaba un elemento de una lista vacía. Decidí que sería mejor lanzar una excepción en ese caso: &lt;a href="http://juanjoconti.com.ar/files/python/circular-r2.py.html"&gt;circular-r2.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 3&lt;/h4&gt;
+
+&lt;p&gt;John Lenton se tomó el trabajo de reescribir la clase en una foma mucho más compacta (gacias!). Yo estaba considerando como especiales casos que en realidad no lo eran. Además me mostró como usar &lt;a href="http://docs.python.org/lib/module-unittest.html"&gt;test de unidad&lt;/a&gt; en Python, cosa que nunca había hecho: &lt;a href="http://juanjoconti.com.ar/files/python/circular-r3Tested.py.html"&gt;circular-r3Tested.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 4&lt;/h4&gt;
+
+&lt;p&gt;Luego de unas sugerencias de &lt;em&gt;estilo&lt;/em&gt; decidí hacer un mejor uso de los nombres de las variables (y métodos). También agregué una sugerencia muy interesante de Gabriel Genellina, en lugar de hacer:&lt;/p&gt;
+&lt;pre&gt;
+
+if self == []:
+
+&lt;/pre&gt;
+
+&lt;p&gt;para saber si la lista está vacía, usar:&lt;/p&gt;
+&lt;pre&gt;
+
+if not self:
+
+&lt;/pre&gt;
+
+&lt;p&gt;que es más rápido.&lt;/p&gt;
+&lt;p&gt;También permito que se contruya lal ista circular sin parámetros (lo que da una list circular vacía): &lt;a href="http://juanjoconti.com.ar/files/python/circular-r4Tested.py.html"&gt;circular-r4Tested.py&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Review 5&lt;/h4&gt;
+
+&lt;p&gt;Me deshago de la burocracia que tiene la clase y confío más en el programador (chau verificación de rango, chau set/get inncecesarios): &lt;a href="http://juanjoconti.com.ar/files/python/circular-r5Tested.py.html"&gt;circular-r5Tested.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Este es el hilo en la lista de PyAr: &lt;a href="http://mx.grulic.org.ar/lurker/message/20070221.033607.fd125b8e.es.html"&gt;http://mx.grulic.org.ar/lurker/message/20070221.033607.fd125b8e.es.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Algunas referencias&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Lazy_evaluation"&gt;http://www.haskell.org/haskellwiki/Performance/Laziness&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;
+
+&lt;a href="http://en.wikipedia.org/wiki/Lazy_evaluation"&gt;http://en.wikipedia.org/wiki/Lazy_evaluation&lt;/a&gt;
+
+&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics"&gt;http://en.wikipedia.org/wiki/Eager_evaluation&lt;/a&gt;
+
+&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics"&gt;http://en.wikipedia.org/wiki/Python_syntax_and_semantics&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>C</category><category>Haskell</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2007/02/28/lista-circular-en-python.html</guid><pubDate>Wed, 28 Feb 2007 12:41:51 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (stdlib)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/stdlib.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:22 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Python: guardar imagenes en una base de datos Sqlite</title><link>http://www.juanjoconti.com.ar/posts/2011/03/15/python-guardar-imagenes-en-una-base-de-datos-sqlite.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un par de días Walter de Nicaragua me consultaba:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Estoy trabajando en una aplicacion para niños en las xo´s , estoy usando sqlite3 para guardar la informacion, y tambien necesito guardar fotos dentro de la base de datos.
+&lt;p&gt;Como la fotos seran tomadas con la camara de las propias XO's, asumo no son tan grande en resolucion y tamaño.&lt;/p&gt;
+&lt;p&gt;Tambien, estuve revizando la lista de correo, pero no hay nada concreto, y  a decir verdad recomiendan que guarde una referencia de la imagen en la base de datos, y luego haga una consulta, para recuperarla, pero tambien he visto que tiene sus pro y sus contras.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Esta es la respuesta. Primero necesitamos una tabla con un campo de tipo BLOB donde guardar la imagen:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; import sqlite3
+
+&amp;gt;&amp;gt;&amp;gt; conn = sqlite3.connect('/tmp/example')
+
+&amp;gt;&amp;gt;&amp;gt; c = conn.cursor()
+
+&amp;gt;&amp;gt;&amp;gt; c.execute('''create table imagenes (imagen BLOB);''')
+
+&lt;/pre&gt;
+
+&lt;p&gt;Abro una imagen que tengo en disco, mismo directorio que donde ejecute&lt;/p&gt;
+&lt;p&gt;el intérprete de Python, la cargo en memoria y la guardo en la base.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; imgdata = open('tomyNarnia.jpg', 'r').read()
+
+&amp;gt;&amp;gt;&amp;gt; len(imgdata)
+
+1613949
+
+&amp;gt;&amp;gt;&amp;gt; buff = sqlite3.Binary(imgdata)
+
+&amp;gt;&amp;gt;&amp;gt; c.execute('insert into imagenes values(?);', (buff,))
+
+&amp;gt;&amp;gt;&amp;gt; conn.commit()
+
+&amp;gt;&amp;gt;&amp;gt; conn.close()
+
+&lt;/pre&gt;
+
+&lt;p&gt;Luego podemos cerrar el intérprete. Con sqlite3 importado, recuperamos&lt;/p&gt;
+&lt;p&gt;la imagen.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; conn = sqlite3.connect('/tmp/example')
+
+&amp;gt;&amp;gt;&amp;gt; c = conn.cursor()
+
+&amp;gt;&amp;gt;&amp;gt; a = c.execute('select imagen from imagenes')
+
+&amp;gt;&amp;gt;&amp;gt; img = a.fetchone()
+
+&amp;gt;&amp;gt;&amp;gt; len(img)
+
+1
+
+&amp;gt;&amp;gt;&amp;gt; img
+
+(&amp;lt;read-write buffer ptr 0x1c75d60, size 1613949 at 0x1c75d20&amp;gt;,)
+
+&lt;/pre&gt;
+
+&lt;p&gt;El resultado es una tupla, pero como seleccionamos un solo campo de la&lt;/p&gt;
+&lt;p&gt;tabla, hay un solo elemento.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; img = img[0]
+
+&amp;gt;&amp;gt;&amp;gt; len(img)
+
+1613949
+
+&lt;/pre&gt;
+
+&lt;p&gt;Finalmente lo escribimos en una imagen.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; f = open('newimage.jpg', 'w')
+
+&amp;gt;&amp;gt;&amp;gt; f.write(img)
+
+&amp;gt;&amp;gt;&amp;gt; f.close()
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>SQLite</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2011/03/15/python-guardar-imagenes-en-una-base-de-datos-sqlite.html</guid><pubDate>Tue, 15 Mar 2011 09:49:36 GMT</pubDate></item><item><title>Un servidor web con pocas líneas de Python</title><link>http://www.juanjoconti.com.ar/posts/2010/08/24/un-servidor-web-con-pocas-lineas-de-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy un amigo necesitaba un servidor web para engañar a un programa. Cada vez que el programa iniciaba, se conectaba con un servidor web para verificar si había actualizaciones disponibles.&lt;/p&gt;
+&lt;p&gt;El nombre del host a dónde se hacía la petición era leído de un archivo de configuración, por lo que lo podíamos cambiar. El resto solo era levantar un servidor web que responda con la información apropiada.&lt;/p&gt;
+&lt;p&gt;En la librería estándar de &lt;strong&gt;Python&lt;/strong&gt; tenemos todos los elementos necesarios para realizar la tarea. Luego de probar un poco, el resultado final fue algo como esto:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;
+&lt;p&gt;PORT = 8090&lt;/p&gt;
+&lt;p&gt;from BaseHTTPServer import BaseHTTPRequestHandler&lt;/p&gt;
+&lt;p&gt;import SocketServer&lt;/p&gt;
+&lt;p&gt;import cgi&lt;/p&gt;
+&lt;p&gt;class MyHandler(BaseHTTPRequestHandler):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;def do_GET(self):
+
+    self.send_response(200)
+
+    self.end_headers()
+
+        self.wfile.write('1.9.1')
+
+
+
+def do_POST(self):
+
+    form = cgi.FieldStorage(
+
+        fp=self.rfile,
+
+        headers=self.headers,
+
+        environ={'REQUEST_METHOD':'POST',
+
+        'CONTENT_TYPE':self.headers['Content-Type'],
+
+        })
+
+    print form
+
+    self.send_response(200)
+
+    self.end_headers()
+
+    self.wfile.write('1.9.1')
+&lt;/pre&gt;
+
+
+&lt;p&gt;httpd = SocketServer.TCPServer(("", PORT), MyHandler)&lt;/p&gt;
+&lt;p&gt;print "serving at port", PORT&lt;/p&gt;
+&lt;p&gt;httpd.serve_forever()&lt;/p&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Levanta en &lt;strong&gt;localhost&lt;/strong&gt; y responde la cadena '1.9.1' al ser consultado tanto por &lt;strong&gt;GET&lt;/strong&gt; como por &lt;strong&gt;POST&lt;/strong&gt; y en el caso de POST, también imprime los valores recibidos.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/24/un-servidor-web-con-pocas-lineas-de-python.html</guid><pubDate>Tue, 24 Aug 2010 23:00:39 GMT</pubDate></item><item><title>argparse - Command line option and argument parsing</title><link>http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy recibí la &lt;a href="http://blog.doughellmann.com/2010/08/pymotw-argparse-command-line-option-and.html" target="_blank"&gt;última edición&lt;/a&gt; de &lt;a href="http://www.doughellmann.com/PyMOTW/" target="_blank"&gt;Python Module of the Week&lt;/a&gt;, un semanal de Doug Hellmann sobre módulos de Python. Leo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;The &lt;code&gt;argparse&lt;/code&gt; module was added to Python 2.7 as a replacement
+&lt;p&gt;for &lt;code&gt;optparse&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nunca había usando &lt;code&gt;optparse&lt;/code&gt; hasta hace un par de meses y estaba contento de haberlo empezado a usar, ordenaba mis programas de línea de comando con bonitos parámetros. ¿Tengo que aprender otro sistema totalmente nuevo? Veamos.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Esta es una parte de mi programa original:&lt;/p&gt;
+&lt;pre&gt;from optparse import OptionParser
+
+parser = OptionParser(usage="rpcping ip [-p port] [-r rep] [-s size]", version="rpcping 1.0")
+
+
+
+parser.add_option("-p", type="int", dest="port", default=PORT)
+
+parser.add_option("-r", type="int", dest="rep", default=REP)
+
+parser.add_option("-s", type="int", dest="size", default=SIZE)
+
+(options, args) = parser.parse_args()
+
+
+
+if not args:
+
+    parser.error("se necesita la direccion ip del servidor como argumento posicional.")
+
+else:
+
+    ip = args[0]
+
+
+
+if not 1024 &amp;lt; options.port &amp;lt; 65535:
+
+    parser.error("el puerto debe ser mayor a 1024 y menor a 65535.")
+
+else:
+
+    port = options.port
+
+
+
+if not 0 &amp;lt; options.rep &amp;lt; 101:
+
+    parser.error("las repeticiones deben ser mayores a 0 y menores a 101.")
+
+else:
+
+    rep = options.rep
+
+
+
+if not 0 &amp;lt; options.size &amp;lt; 10001:
+
+    parser.error("el tamaño deben ser mayores a 0 y menores a 10001.")
+
+else:
+
+    size = options.size
+
+&lt;/pre&gt;
+
+&lt;p&gt;Qué tuve que cambiar para que funcione con &lt;code&gt;argparse&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Cambiar nombres; &lt;code&gt;optparse&lt;/code&gt; por &lt;code&gt;argparse&lt;/code&gt;, &lt;code&gt;OptionParser&lt;/code&gt; por &lt;code&gt;ArgumentParser&lt;/code&gt;,&lt;code&gt; add_option&lt;/code&gt; por &lt;code&gt;add_argument&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Cambiar el valor del agumento &lt;code&gt;type&lt;/code&gt; de string a un tipo de verdad. En mi caso &lt;code&gt;type="int&lt;/code&gt;" por &lt;code&gt;type=int&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Si tratamos de obtener el resultado del parsing así &lt;code&gt;(options, args) = parser.parse_args()&lt;/code&gt;, vamos a tener un error &lt;code&gt;TypeError: 'Namespace' object is not iterable&lt;/code&gt;. El nombre &lt;code&gt;result&lt;/code&gt; en el nuevo código está asociado a un objeto del tipo &lt;code&gt;Namespace&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;&lt;code&gt;optparse&lt;/code&gt; no trabaja con argumentos obligatorios, por lo que para el argumento ip había tenido que escribir código extra por mi cuenta. En &lt;code&gt;argparse&lt;/code&gt; es más simple.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;El resultado es:&lt;/p&gt;
+&lt;pre&gt;from argparse import ArgumentParser
+
+parser = ArgumentParser(description="Realiza ping via RPC contra un servidor", version="rpcping 1.0")
+
+
+
+parser.add_argument("ip")
+
+parser.add_argument("-p", type=int, dest="port", default=PORT)
+
+parser.add_argument("-r", type=int, dest="rep", default=REP)
+
+parser.add_argument("-s", type=int, dest="size", default=SIZE)
+
+result = parser.parse_args()
+
+
+
+ip = result.ip
+
+
+
+if not 1024 &amp;lt; result.port &amp;lt; 65535:
+
+    parser.error("el puerto debe ser mayor a 1024 y menor a 65535.")
+
+else:
+
+    port = result.port
+
+
+
+if not 0 &amp;lt; result.rep &amp;lt; 101:
+
+    result.error("las repeticiones deben ser mayores a 0 y menores a 101.")
+
+else:
+
+    rep = result.rep
+
+
+
+if not 0 &amp;lt; result.size &amp;lt; 10001:
+
+    parser.error("el tamaño deben ser mayores a 0 y menores a 10001.")
+
+else:
+
+    size = result.size
+
+&lt;/pre&gt;
+
+&lt;p&gt;Parece que con poco esfuerzo se puede migrar de &lt;code&gt;optparse&lt;/code&gt; a &lt;code&gt;argparse&lt;/code&gt; y luego empezar a estudiar las nuevas funcionalidades que incorpora.&lt;/p&gt;
+&lt;blockquote&gt;The implementation of &lt;code&gt;argparse&lt;/code&gt; supports features that would not have been easy to add to &lt;code&gt;optparse&lt;/code&gt;, and that would have required backwards-incompatible API changes, so a new module was brought into the library instead. &lt;code&gt;optparse&lt;/code&gt; is still supported, but is not likely to receive new features.&lt;/blockquote&gt;
+
+&lt;p&gt;Más en: &lt;a href="http://www.doughellmann.com/PyMOTW/argparse/" target="_blank"&gt;PyMOTW: argparse - Command line option and argument parsing&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>argparse</category><category>optparse</category><category>Python</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html</guid><pubDate>Sun, 08 Aug 2010 12:30:03 GMT</pubDate></item><item><title>functools.update_wrapper</title><link>http://www.juanjoconti.com.ar/posts/2010/08/07/functools-update_wrapper.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Este post se alinea con la serie Decoradores en Python (&lt;a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank"&gt;I&lt;/a&gt;, &lt;a href="http://www.juanjoconti.com.ar/2009/07/16/decoradores-en-python-ii/" target="_blank"&gt;II&lt;/a&gt;, &lt;a href="http://www.juanjoconti.com.ar/2009/12/30/decoradores-en-python-iii/" target="_blank"&gt;III&lt;/a&gt;) pero no es tan elaborado como para ser Decoradores en Python (IV) :)&lt;/p&gt;
+&lt;p&gt;Desde Python 2.5, al crear un decorador, se puede utilizar &lt;a href="http://docs.python.org/library/functools.html" target="_blank"&gt;functools.update_wrapper&lt;/a&gt; para quela versión decorada de la función, tenga los atributos  &lt;strong&gt;name&lt;/strong&gt;, &lt;strong&gt;doc&lt;/strong&gt;, &lt;strong&gt;module&lt;/strong&gt; y &lt;strong&gt;dict&lt;/strong&gt; de la función original.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; import functools
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):&lt;/p&gt;
+&lt;p&gt;...     def inner(&lt;em&gt;a, &lt;/em&gt;*kw):&lt;/p&gt;
+&lt;p&gt;...             print "Este decorador no hace nada"&lt;/p&gt;
+&lt;p&gt;...             return f(&lt;em&gt;a, &lt;/em&gt;*kw)&lt;/p&gt;
+&lt;p&gt;...     return inner&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; def saludo():&lt;/p&gt;
+&lt;p&gt;...     print "hola"&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo2 = deco(saludo)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo2()&lt;/p&gt;
+&lt;p&gt;Este decorador no hace nada&lt;/p&gt;
+&lt;p&gt;hola&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo2.&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;'inner'&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):&lt;/p&gt;
+&lt;p&gt;...     def inner(&lt;em&gt;a, &lt;/em&gt;*kw):&lt;/p&gt;
+&lt;p&gt;...             print "Este decorador no hace nada"&lt;/p&gt;
+&lt;p&gt;...             return f(&lt;em&gt;a, &lt;/em&gt;*kw)&lt;/p&gt;
+&lt;p&gt;...     return functools.update_wrapper(inner, f)&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo3 = deco(saludo)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo3()&lt;/p&gt;
+&lt;p&gt;Este decorador no hace nada&lt;/p&gt;
+&lt;p&gt;hola&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo3.&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;'saludo'&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo = saludo3&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Python</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/07/functools-update_wrapper.html</guid><pubDate>Sat, 07 Aug 2010 15:17:30 GMT</pubDate></item><item><title>Pilas y colas en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/07/22/pilas-y-cola-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La forma más directa de tener pilas y colas en Python es usando listas, una de las poderosas estructuras de datos que vienen con el lenguaje.&lt;/p&gt;
+&lt;p&gt;Una pila es una estructura de datos secuencial en la que el último elemento insertado es el primero en retirarse (&lt;a href="http://es.wikipedia.org/wiki/Pila_%28estructura_de_datos%29" target="_blank"&gt;LIFO&lt;/a&gt;) y puede implementarse directamente con los métodos &lt;code&gt;append&lt;/code&gt; y &lt;code&gt;pop&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Una operación común en las pilas es top, que devuelve el elemento en el tope de la pila, pero sin quitarlo; esta operación se puede emular indexando por -1.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; pila = [6,7,8]
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; pila.append(9)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; pila&lt;/p&gt;
+&lt;p&gt;[6, 7, 8, 9]&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; pila.pop()&lt;/p&gt;
+&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; pila.pop()&lt;/p&gt;
+&lt;p&gt;8&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; pila[-1]&lt;/p&gt;
+&lt;p&gt;7&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;Implementar una cola requiere algo más. En las colas, a diferencia de las pilas, el primer valor insertado es el primero en quitarse (&lt;a href="http://es.wikipedia.org/wiki/Cola_%28estructura_de_datos%29" target="_blank"&gt;FIFO&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Un primer intento es implementarla con &lt;code&gt;append&lt;/code&gt; y &lt;code&gt;pop(0)&lt;/code&gt; que obtiene el primer elemento (o con &lt;code&gt;insert&lt;/code&gt; insertando al principio y &lt;code&gt;pop&lt;/code&gt;). Pero las listas de Python, si bien están optimizadas para insertar al final y quitar del final, no lo están para insertar al principio o quitar del principio. La solución es utilizar &lt;a href="http://docs.python.org/library/collections.html#collections.deque" target="_blank"&gt;&lt;code&gt;collections.deque&lt;/code&gt;&lt;/a&gt; que si está implementada con estas operaciones optimizadas.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; from collections import deque
+
+&amp;gt;&amp;gt;&amp;gt; cola = deque([1,2,3])
+
+&amp;gt;&amp;gt;&amp;gt; cola.append(4)
+
+&amp;gt;&amp;gt;&amp;gt; cola
+
+deque([1, 2, 3, 4])
+
+&amp;gt;&amp;gt;&amp;gt; cola.popleft()
+
+1
+
+&amp;gt;&amp;gt;&amp;gt; cola.popleft()
+
+2
+
+&amp;gt;&amp;gt;&amp;gt; cola
+
+deque([3, 4])
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2010/07/22/pilas-y-cola-en-python.html</guid><pubDate>Thu, 22 Jul 2010 13:07:51 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,173 @@
+<p><html><body><p>Implementado detección de vulnerabilidades en Python mediante Tain Analysis</p>
+<hr />
+<p>Este artículo está basado en el paper <em>A Taint Mode for Python via a Library</em></p>
+<p>que escribí junto al Dr. Alejandro Russo de la universidad de tecnología de</p>
+<p>Chalmers en Suecia y que fue presentado el 24 de junio en la conferencia OWASP</p>
+<p>App Sec Research 2010.</p>
+<p>Escenario</p>
+<p>=========</p>
+<p>Hoy en día muchas vulnerabilidades en aplicaciones web presentan</p>
+<p>una amenaza para los sistemas on line; ataques de SQL injection y XSS son de </p>
+<p>los más comunes en la actualidad. Por lo general, estos ataques son el resultado de</p>
+<p>un manejo inapropiado de los datos de entrada. </p>
+<p>Para ayudar a descubrir estas </p>
+<p>vulnerabilidades, una herramienta útil es Taint Analysis. Algunos lenguajes </p>
+<p>como Perl o Ruby traen este modo de ejecución incorporado en su intérprete;</p>
+<p>para Python no hay algo así "de fábrica" pero existen forks de CPython que</p>
+<p>intentan proveer esta característica. La realidad marca que modificar el</p>
+<p>intérprete es un trabajo bastante grande y estas ramificaciones no han tenido</p>
+<p>adopción popular.</p>
+<p>Como una forma de tratar de solucionar este problema, taintmode.py provee Taint</p>
+<p>Analysis para Python mediante un módulo de usuario; no se requiere modificación </p>
+<p>del intérprete. Algunas características del lenguaje, como la posibilidad de </p>
+<p>crear clases en tiempo de ejecución, los decoradores y el duck typing, </p>
+<p>permitieron implementar una librería en pocas líneas de código con </p>
+<p>características más avanzadas que en enfoques previos.</p>
+<p>Conceptos de Taint Analysis</p>
+<p>===========================</p>
+<p>Para arrancar vamos a hablar de algunos conceptos:</p>
+<p><strong>Fuentes no confiables</strong>. Cualquier dato no confiable es marcado como manchado. </p>
+<p>En particular cualquier dato proveniente de parámetros GET y POST, encabezados </p>
+<p>HTTP y solicitudes AJAX. También pueden marcarse como manchados datos </p>
+<p>provenientes de fuentes de almacenamiento externo, como una base de datos; esta </p>
+<p>podría haber sido alterada por una aplicación externa o sus datos alterados sin </p>
+<p>autorización.</p>
+<p>Los <strong>sumideros sensibles</strong> son aquellos puntos del sistema a los que no </p>
+<p>queremos que lleguen datos no validados ya que en ellos puede venir enmascarado </p>
+<p>un ataque. Algunos ejemplos son: en navegador o un engine que renderiza HTML, </p>
+<p>motores de base de datos, el sistema operativo o el propio intérprete de Python.</p>
+<p>El tercer elemento en juego son los métodos de sanitización; permiten escapar, </p>
+<p>codificar o validar los datos de entrada para dejarlos en un formato apto para </p>
+<p>ser enviados a alguno de los sumideros. Por ejemplo, en Python, cgi.escape</p>
+<p>es un método de sanitización:</p>
+<p>.. code-block:: pyar</p>
+<pre class="code literal-block"><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">cgi</span>
+
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">cgi</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s">&quot;&lt;script&gt;alert(&#39;esto es un ataque&#39;)&lt;/script&gt;&quot;</span><span class="p">)</span>
+
+<span class="s">&quot;&amp;lt;script&amp;gt;alert(&#39;esto es un ataque&#39;)&amp;lt;/script&amp;gt;&quot;</span>
+</pre>
+
+
+<p>¿Cómo usarlo?</p>
+<p>=============</p>
+<p>El siguiente ejemplo es sencillo a propósito. Permite entender los conceptos, </p>
+<p>sin preocuparnos mucho por el problema:</p>
+<p>.. code-block:: python</p>
+<pre class="code literal-block"><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_datos</span><span class="p">(</span><span class="n">argumentos</span><span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">argumentos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">argumentos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+
+
+<span class="n">usermai</span><span class="p">,</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">get_datos</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+
+
+<span class="n">cmd</span> <span class="o">=</span> <span class="s">&#39;mail -s &quot;Requested file&quot; &#39;</span> <span class="o">+</span> <span class="n">usermail</span> <span class="o">+</span> <span class="s">&#39;  os.system(cmd)</span>
+
+
+
+<span class="o">===============================================================================</span>
+</pre>
+
+
+<p>La librería intercepta la ejecución justo antes de que el dato no confiable</p>
+<p>alcance al sumidero sensible y lo informa. El paso siguiente es agregar una </p>
+<p>función limpiadora para sanitizar los datos de entrada:</p>
+<p>.. code-block:: python</p>
+<pre class="code literal-block"><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">taintmode</span> <span class="kn">import</span> <span class="n">untrusted</span><span class="p">,</span> <span class="n">ssink</span><span class="p">,</span> <span class="n">OSI</span>
+
+<span class="kn">from</span> <span class="nn">cleaners</span> <span class="kn">import</span> <span class="n">clean_osi</span>
+
+<span class="n">clean_osi</span> <span class="o">=</span> <span class="n">cleaner</span><span class="p">(</span><span class="n">OSI</span><span class="p">)(</span><span class="n">clean_osi</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">ssink</span><span class="p">(</span><span class="n">OSI</span><span class="p">)(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">)</span>
+
+
+
+<span class="nd">@untrusted</span>
+
+<span class="k">def</span> <span class="nf">get_datos</span><span class="p">(</span><span class="n">argumentos</span><span class="p">):</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">argumentos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">argumentos</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+
+
+
+<span class="n">usermail</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">get_datos</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="n">usermail</span> <span class="o">=</span> <span class="n">clean_osi</span><span class="p">(</span><span class="n">usermail</span><span class="p">)</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="n">clean_osi</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+
+
+<span class="n">cmd</span> <span class="o">=</span> <span class="s">&#39;mail -s &quot;Requested file&quot; &#39;</span> <span class="o">+</span> <span class="n">usermail</span> <span class="o">+</span> <span class="s">&#39; &amp;gt;&amp;gt; texto_plano(&quot;Esto es &lt;b&gt;negrita&lt;/b&gt;&quot;)</span>
+
+<span class="s">&#39;Esto es negrita&#39;</span>
+
+
+
+<span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">texto_plano</span><span class="p">(</span><span class="s">&quot;Click &lt;a href=&quot;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">ar</span><span class="s">&quot;&gt;here&lt;/a&gt;&quot;</span><span class="p">)</span>
+
+<span class="s">&#39;Click here&#39;</span>
+</pre>
+
+
+<p>Este tipo de funciones están asociadas a un tipo de vulnerabilidad; por lo</p>
+<p>tanto la forma de utilizar el decorador cleaner es especificando un tipo de</p>
+<p>mancha. Nuevamente hay dos formas de hacerlo. En la definición:</p>
+<p>.. code-block:: python</p>
+<pre class="code literal-block">@cleaner(XSS)
+
+def texto_plano(input):
+
+    ...
+</pre>
+
+
+<p>o antes de empezar a utilizar la función en nuestro programa:</p>
+<p>.. code-block:: python</p>
+<pre class="code literal-block">texto_plano = cleaner(XSS)(texto_plano)
+</pre>
+
+
+<p>Taint aware</p>
+<hr />
+<p>Una de las partes principales de la librería se encarga de mantener el rastro</p>
+<p>de la información de las manchas para las clases built-in (como int o str).</p>
+<p>La librería define en forma dinámica subclases de estas para agregar un atributo</p>
+<p>que permita realizar esta trazabilidad; para cada objeto el atributo consiste</p>
+<p>en un set de etiquetas representando las manchas que tiene en un momento dado de la</p>
+<p>ejecución. Los objetos son considerados sin manchas cuando el set de etiquetas</p>
+<p>está vacío. En el contexto de la librería, estas subclases son llamadas</p>
+<p><em>taint-aware classes</em>. Los métodos heredados de las clases built-in son</p>
+<p>redefinidos para que sean capaces de propagar la información de las manchas.</p>
+<p>Por ejemplo, si a y b son objetos manchados, c tendrá la unión de las manchas</p>
+<p>de ambos:</p>
+<p>.. code-block:: python</p>
+<pre class="code literal-block">c = a.action(b)
+</pre>
+
+
+<p>Estado actual</p>
+<p>=============</p>
+<p>En este breve artículo se expusieron las características principales de la</p>
+<p>librería; para conocer algunas características más avanzadas y otros detalles</p>
+<p>de su implementación pueden visitar su sitio web en http://www.juanjoconti.com.ar/taint/</p>
+<p>Más información &amp; links</p>
+<p>=======================</p>
+<p>OWASP App Sec 2010: http://alturl.com/5u94e</p>
+<p>OWASP: http://www.owasp.org</p>
+<p>Seguridad en Python: http://www.pythonsecurity.org</p>
+<p></p></body></html></p>

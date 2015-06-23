@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programación Temporal de Eventos con Python | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2006/09/11/programacion-temporal-de-eventos-con-python.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../04/gnulinux-en-oro-verde.html" title="GNU/Linux en Oro Verde" type="text/html">
+        <link rel="next" href="../19/alfabeto-calculadora.html" title="Alfabeto Calculadora" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Programación Temporal de Eventos con Python">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2006/09/11/programacion-temporal-de-eventos-con-python.html">
+    <meta property="og:description" content="Este artículo estuvo en mi lista de borradores (draft posts) por mucho tiempo ya. Evidente mente no cumplí con la consigna release early del desarrollo tipo bazar. Enough!
+Este artículo va a hablar un">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2006-09-11T01:13:54+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="Facultad">
+           <meta property="article:tag" content="Python">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="programacion-temporal-de-eventos-con-python.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Programación Temporal de Eventos con Python</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2006-09-11T01:13:54+00:00" itemprop="datePublished" title="2006-09-11 01:13">2006-09-11 01:13</time></a></p>
+                <p class="commentline">
+        
+    <a href="programacion-temporal-de-eventos-con-python.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/11/programacion-temporal-de-eventos-con-python.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="programacion-temporal-de-eventos-con-python.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Este artículo estuvo en mi lista de borradores (<em>draft posts</em>) por mucho tiempo ya. Evidente mente no cumplí con la consigna <em><a href="http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html">release early</a></em> del desarrollo tipo bazar. <em>Enough!</em></p>
+<p>Este artículo va a hablar un poco de simulación de sistemas discretos, va a presentar un módulo que escribí como prueba de que se podía hacer y me va a servir para contarles algunas cosas uq e aprendí en el camino.</p>
+<p>Sigo <a href="http://firebirds.com.ar/~juanjo/wordpress/category/aprendiendo-python/">Aprendiendo Python</a> y esta es una clase más.</p>
+<!--more-->
+
+<p></p>
+<h3>Programación temporal de eventos</h3>
+<p>En el primer cuatrimestre de este año cursé una materia llamada <a href="http://www.frsf.utn.edu.ar/matero/visitante/index.php?id_catedra=150">Simulación</a>. Estudiamos principalmente como simular sistemas discretos (como un grupo de pasajeros subiendo a un avión. Suben de a uno, en un momento hay 7 pasajeros a bordo y en otro momento hay 8, nunca hay 7.5) en contraposición a los sistemas continuos (como el tanque de nafta del avión dónde su nivel baja instante a instante cuando el avión está volando).</p>
+<p>Básicamente existen dos tipos de técnicas que se pueden utilizar para simular sistemas discretos, las de orientación al intervalo y las de orientación al evento. En las del primer tipo, cada cierto tiempo t se verifica de alguna forma si ha ocurrido un evento y se realiza el procesamiento asociado a este. Esto lleva a impresiciones y en ocasiones a un gasto innecesesario de cpu. En las técnicas de orientación al evento estos problemas no existen. </p>
+<p>Una de las técnicas más primitivas de orientación al intervalo (no se si se usa en la actualidad) es la de Programación Temporal de Eventos. Básicamente se tiene un reloj que cuenta el tiempo de simulación y una lista de eventos ordenada en el tiempo. Uno debe escribir una función o procedimiento por cada uno de los eventos principales del sistema (por ejemplo la llegada de una pieza a una máquina) y una función principal que contenga el <em>main loop</em> de la simulación. Esta irá tomando eventos de la lista, avanzará el tiempo de simulación según corresponda y los ejecutará. Siempre se toma el primero y se lo ejecuta, si no hay más elementos en la lista termina la siumulación.</p>
+<p>Los eventos son agregados a la lista con una primitiva llamada por ejemplo <strong>PPE</strong> (programar próximo evento), dónde además de indicar <em>cual</em> será el próximo evento, se debe indicar dentro de cuanto tiempo a partir del actual se debe ejecutar.</p>
+<p>Mientras cursaba, estudiaba y rendía pensaba que sería muy fácil implementar en Python un módulo que provea las primitivas necesarias para realizar una simulción por programación temporal de eventos. Poner y sacar funciones de una lista seguro sería sencillo en un lenguaje muy dinámico y donde todo (incluidas las funciones) son objetos. La semana siguiente a rendir estuve escribiendo un poco de código Python. El resultado es un módulo llamado <strong>pte</strong> que cubre las funcionalidades mínimas que yo pretendía.</p>
+<h3>Resultado</h3>
+
+<p>No pretendía realizar un imponente desarrollo ni pienso que alguien use esto alguna vez en serío. Es más bien una prueba de concepto (<em><a href="http://en.wikipedia.org/wiki/Proof_of_concept">Proof of concept</a></em>). Lo había avandonado y ni siquiera funcionaba sin tirar errores. Objetivo: que funcione.</p>
+<p>Este es el módulo: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/pte.py.html">pte.py</a> (versión orginal)</p>
+<p>Una versión con el consejo de Daniel: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/pte-d.py.html">pte-d.py</a> (gracias Daniel!)</p>
+<p>Y este un ejemplo en el que lo uso: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/pte_ej2.py.html">pte_ej2.py</a></p>
+<p>Ejemplo de ejecución:</p>
+<pre lang="bash">
+
+juanjo@sarge:~/python$ ./pte_ej2.py
+
+
+
+500 piezas fueron aceptadas en 1247.55 unidades de tiempo.
+
+
+
+Máximo tamaño de la cola para procesamiento 5.
+
+</pre>
+
+<h3>Qué aprendí</h3>
+
+<h4>Módulos</h4>
+
+<p>Más de lo que pueda decir sobre módulos: <a href="http://docs.python.org/tut/node8.html">http://docs.python.org/tut/node8.html</a></p>
+<h4>reload(modulo)
+
+<blockquote>
+
+Reload a previously imported module. The argument must be a module object, so it must have been successfully imported before. This is useful if you have edited the module source file using an external editor and want to try out the new version without leaving the Python interpreter. The return value is the module object (the same as the module argument).
+
+</blockquote>
+
+
+
+Entonces lo que hay que hacer cuando se está trabajando en la consola de Python[1] es, primer importar el módulo que se quiere probar:
+
+<pre>
+
+&gt;&gt;&gt; import modulo
+
+</pre>
+
+Hacer algunas pruebas:
+
+<pre>
+
+&gt;&gt;&gt; modulo.var1
+
+1
+
+&gt;&gt;&gt; modulo.cuad(3)
+
+9
+
+</pre>
+
+Si luego editamos el texto de <em>modulo</em> y queremos probar la función que agregarmos:
+
+<pre>
+
+&gt;&gt;&gt; modulo = reload(modulo)
+
+</pre>
+
+<h4>Funciones como objetos</h4>
+
+En Python todo es un objeto, incluso las funciones. Sabiendo esto y teniendo en mente lo que quería hacer (en la definición de una función, explicitar que esta se llame en el futuro, es decir almacenarla en una <em>lista de eventos</em>) hice una pequeña prueba en el intérprete:
+
+<pre>
+
+&gt;&gt;&gt; l = []
+
+&gt;&gt;&gt; def f():
+
+    l.append(f)
+
+
+
+
+
+&gt;&gt;&gt; l
+
+[]
+
+&gt;&gt;&gt; f()
+
+&gt;&gt;&gt; l
+
+[&lt;function f at 0x418bce9c&gt;]
+
+&gt;&gt;&gt; l[0]
+
+&lt;function f at 0x418bce9c&gt;
+
+&gt;&gt;&gt; l
+
+[&lt;function f at 0x418bce9c&gt;]
+
+&gt;&gt;&gt; l[0]()
+
+&gt;&gt;&gt; l
+
+[&lt;function f at 0x418bce9c&gt;, &lt;function f at 0x418bce9c&gt;]
+
+</pre>
+
+
+
+Esto es posible justamente gracias a que en Python las funciones son objetos. En ciencias de la computación esto se conoce como Funciones de Primera Clase, es decir que las funciones sean Objetos de Primera Clase, es decir que puedan ser creadas durante la ejecución de un programa, almacenadas en estructuras de datos, recuperadas más tarde para usarlas, pasadas como argumentos y retornadas en otras funciones. <a href="http://en.wikipedia.org/wiki/First-class_function">Más al respecto en wikipedia</a>.
+
+<h4>Ordenar según un criterio propio</h4>
+
+Una lista puede ser ordenada según un criterio propio pasándole al método sort de una lista ese criterio en forma de función:
+
+<pre>
+
+def _comparar_tiempos(a,b):
+
+    """ Función auxiliar usada para ordenar los pares eventos,tiempos
+
+    en la lista de eventos.
+
+    """
+
+    t1 = a[1]
+
+    t2 = b[1]
+
+    if (t1 &gt; t2): return 1
+
+    elif (t1 &lt; t2): return -1
+
+    else: return 0
+
+</pre>
+
+y luego..
+
+<pre>
+
+eventos.sort(_comparar_tiempos)
+
+</pre>
+
+
+
+Espero les haya resultado interesante!
+
+
+
+[1] También conocida como <a href="http://en.wikipedia.org/wiki/Read-eval-print_loop">REPL</a>, algo muy piola cuando uno esta desarrollando.
+
+
+
+
+
+</h4>
+
+<p></p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/facultad.html" rel="tag">Facultad</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../04/gnulinux-en-oro-verde.html" rel="prev" title="GNU/Linux en Oro Verde">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../19/alfabeto-calculadora.html" rel="next" title="Alfabeto Calculadora">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2006/09/11/programacion-temporal-de-eventos-con-python.html",
+        disqus_title="Programaci\u00f3n Temporal de Eventos con Python",
+        disqus_identifier="cache/posts/2006/09/11/programacion-temporal-de-eventos-con-python.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

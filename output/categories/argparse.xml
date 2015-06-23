@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (argparse)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/argparse.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:15 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>argparse - Command line option and argument parsing</title><link>http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy recibí la &lt;a href="http://blog.doughellmann.com/2010/08/pymotw-argparse-command-line-option-and.html" target="_blank"&gt;última edición&lt;/a&gt; de &lt;a href="http://www.doughellmann.com/PyMOTW/" target="_blank"&gt;Python Module of the Week&lt;/a&gt;, un semanal de Doug Hellmann sobre módulos de Python. Leo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;The &lt;code&gt;argparse&lt;/code&gt; module was added to Python 2.7 as a replacement
+&lt;p&gt;for &lt;code&gt;optparse&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nunca había usando &lt;code&gt;optparse&lt;/code&gt; hasta hace un par de meses y estaba contento de haberlo empezado a usar, ordenaba mis programas de línea de comando con bonitos parámetros. ¿Tengo que aprender otro sistema totalmente nuevo? Veamos.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Esta es una parte de mi programa original:&lt;/p&gt;
+&lt;pre&gt;from optparse import OptionParser
+
+parser = OptionParser(usage="rpcping ip [-p port] [-r rep] [-s size]", version="rpcping 1.0")
+
+
+
+parser.add_option("-p", type="int", dest="port", default=PORT)
+
+parser.add_option("-r", type="int", dest="rep", default=REP)
+
+parser.add_option("-s", type="int", dest="size", default=SIZE)
+
+(options, args) = parser.parse_args()
+
+
+
+if not args:
+
+    parser.error("se necesita la direccion ip del servidor como argumento posicional.")
+
+else:
+
+    ip = args[0]
+
+
+
+if not 1024 &amp;lt; options.port &amp;lt; 65535:
+
+    parser.error("el puerto debe ser mayor a 1024 y menor a 65535.")
+
+else:
+
+    port = options.port
+
+
+
+if not 0 &amp;lt; options.rep &amp;lt; 101:
+
+    parser.error("las repeticiones deben ser mayores a 0 y menores a 101.")
+
+else:
+
+    rep = options.rep
+
+
+
+if not 0 &amp;lt; options.size &amp;lt; 10001:
+
+    parser.error("el tamaño deben ser mayores a 0 y menores a 10001.")
+
+else:
+
+    size = options.size
+
+&lt;/pre&gt;
+
+&lt;p&gt;Qué tuve que cambiar para que funcione con &lt;code&gt;argparse&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Cambiar nombres; &lt;code&gt;optparse&lt;/code&gt; por &lt;code&gt;argparse&lt;/code&gt;, &lt;code&gt;OptionParser&lt;/code&gt; por &lt;code&gt;ArgumentParser&lt;/code&gt;,&lt;code&gt; add_option&lt;/code&gt; por &lt;code&gt;add_argument&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Cambiar el valor del agumento &lt;code&gt;type&lt;/code&gt; de string a un tipo de verdad. En mi caso &lt;code&gt;type="int&lt;/code&gt;" por &lt;code&gt;type=int&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Si tratamos de obtener el resultado del parsing así &lt;code&gt;(options, args) = parser.parse_args()&lt;/code&gt;, vamos a tener un error &lt;code&gt;TypeError: 'Namespace' object is not iterable&lt;/code&gt;. El nombre &lt;code&gt;result&lt;/code&gt; en el nuevo código está asociado a un objeto del tipo &lt;code&gt;Namespace&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;&lt;code&gt;optparse&lt;/code&gt; no trabaja con argumentos obligatorios, por lo que para el argumento ip había tenido que escribir código extra por mi cuenta. En &lt;code&gt;argparse&lt;/code&gt; es más simple.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;El resultado es:&lt;/p&gt;
+&lt;pre&gt;from argparse import ArgumentParser
+
+parser = ArgumentParser(description="Realiza ping via RPC contra un servidor", version="rpcping 1.0")
+
+
+
+parser.add_argument("ip")
+
+parser.add_argument("-p", type=int, dest="port", default=PORT)
+
+parser.add_argument("-r", type=int, dest="rep", default=REP)
+
+parser.add_argument("-s", type=int, dest="size", default=SIZE)
+
+result = parser.parse_args()
+
+
+
+ip = result.ip
+
+
+
+if not 1024 &amp;lt; result.port &amp;lt; 65535:
+
+    parser.error("el puerto debe ser mayor a 1024 y menor a 65535.")
+
+else:
+
+    port = result.port
+
+
+
+if not 0 &amp;lt; result.rep &amp;lt; 101:
+
+    result.error("las repeticiones deben ser mayores a 0 y menores a 101.")
+
+else:
+
+    rep = result.rep
+
+
+
+if not 0 &amp;lt; result.size &amp;lt; 10001:
+
+    parser.error("el tamaño deben ser mayores a 0 y menores a 10001.")
+
+else:
+
+    size = result.size
+
+&lt;/pre&gt;
+
+&lt;p&gt;Parece que con poco esfuerzo se puede migrar de &lt;code&gt;optparse&lt;/code&gt; a &lt;code&gt;argparse&lt;/code&gt; y luego empezar a estudiar las nuevas funcionalidades que incorpora.&lt;/p&gt;
+&lt;blockquote&gt;The implementation of &lt;code&gt;argparse&lt;/code&gt; supports features that would not have been easy to add to &lt;code&gt;optparse&lt;/code&gt;, and that would have required backwards-incompatible API changes, so a new module was brought into the library instead. &lt;code&gt;optparse&lt;/code&gt; is still supported, but is not likely to receive new features.&lt;/blockquote&gt;
+
+&lt;p&gt;Más en: &lt;a href="http://www.doughellmann.com/PyMOTW/argparse/" target="_blank"&gt;PyMOTW: argparse - Command line option and argument parsing&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>argparse</category><category>optparse</category><category>Python</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html</guid><pubDate>Sun, 08 Aug 2010 12:30:03 GMT</pubDate></item></channel></rss>

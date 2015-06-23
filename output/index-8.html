@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 8) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-8.html">
+
+
+
+        <link rel="prev" href="index-9.html" type="text/html">
+        <link rel="next" href="index-7.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/15/wp-print-en-espanol.html" class="u-url">wp-print en español</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/15/wp-print-en-espanol.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-15T14:18:44+00:00" title="2006-11-15 14:18">2006-11-15 14:18</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/15/wp-print-en-espanol.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/15/wp-print-en-espanol.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Acabo de instalar el plug-in <a href="http://dev.wp-plugins.org/wiki/wp-print">wp-print</a> para wordpress. Permite presentar una versión <em>imprimible</em> (sin colores, sin estrafalarios encabezados, pies o barras) de los artículos que uno tiene en el blog.</p>
+<p>Le hice algunos pequeños cambios para que se vea en español. <strong>Contra:</strong> el plug-in no está preparado para ser traducido, hay que cambiar varias archivos y el texto en inglés aparece de heterogéneas formas :). <strong>Pro:</strong> yo ya hice algo de esto, así que se los dejo por si les sirve: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/wp-print-es-2.06.tgz">wp-print-es-2.06</a>.</p>
+<p>Para instalarlo, además de descomprimirlo en la carpeta <code>plugins</code> y habilitarlo, hay que llamar a print_link() o print_link_image() o ambas desde el código del template del blog, yo agregué:</p>
+<p><code></code></p>
+<p>&lt;?php if(function_exists('wp_print')) {</p>
+<p>echo "&lt;div align='right'&gt;"; print_link_image(); echo " "; print_link(); echo "&lt;/div&gt;"; } ?&gt;</p>
+<p></p>
+<p>en <code>index.php</code>, <code>page.php</code>, <code>single.php</code> y <code>archive.php</code>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/14/java-ahora-libre.html" class="u-url">Java, ahora libre</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/14/java-ahora-libre.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-14T00:25:50+00:00" title="2006-11-14 00:25">2006-11-14 00:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/14/java-ahora-libre.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/14/java-ahora-libre.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Una buena noticia! Con la misma licencia que el kernel Linux fué liberada la implemenación de Java de Sun Microsystems. Acabo de leer en la web de Sun:</p>
+<p><a href="http://www.sun.com/software/opensource/java/">http://www.sun.com/software/opensource/java/</a></p>
+<p></p>
+<blockquote>Sun started a revolution with Java technology 10 years ago. With a free (N del R: gratis) runtime, an open specification, and a platform-independent promise of compatibility, Java technology became a gold standard in embedded devices, mobile phones, on the desktop and within the enterprise. Now, in 2006, Sun is open sourcing its implementations of Java technology as <strong>Free/Libre software.</strong>
+</blockquote>
+<p>y..</p>
+<p><a href="http://www.sun.com/2006-1113/feature/index.jsp">http://www.sun.com/2006-1113/feature/index.jsp</a></p>
+<blockquote>
+
+13.November.2006—Sun believes deeply in creating communities and sharing innovations and technologies to foster more participation. Today in a historic move, Sun is opening the door to greater innovation by open sourcing key Java implementations—Java Platform Standard Edition (<strong>Java SE</strong>), Java Platform Micro Edition (<strong>Java ME</strong>), and Java Platform Enterprise Edition (<strong>Java EE</strong>)—under the GNU General Public License version 2 (<strong>GPLv2</strong>), the same license as GNU/Linux.</blockquote>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/10/saliendo-para-capital-federal.html" class="u-url">Saliendo para Capital Federal</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/10/saliendo-para-capital-federal.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-10T00:51:05+00:00" title="2006-11-10 00:51">2006-11-10 00:51</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/10/saliendo-para-capital-federal.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/10/saliendo-para-capital-federal.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Estamos por salir desde la terminal de colectivos de Santa Fe, nos espera un viaje largo. Espero todo salga bien y la pasemos lindo.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/11/07/el-paquete-de-galletitas.html" class="u-url">El paquete de galletitas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/11/07/el-paquete-de-galletitas.html" rel="bookmark"><time class="published dt-published" datetime="2006-11-07T00:55:51+00:00" title="2006-11-07 00:55">2006-11-07 00:55</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/11/07/el-paquete-de-galletitas.html#disqus_thread" data-disqus-identifier="cache/posts/2006/11/07/el-paquete-de-galletitas.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Ayer me desperté en Santa Fe y me acosté en Carlos Pellegrini, hoy me levanté en Pellegrini y me voy a acostar en Santa Fe. En el medio comí un asado, vi a un primo que no veía hacía mucho, miré una película y vendí diarios.</p>
+<p>En uno de los diarios leí esta historia, ya la había leido, sin embargo volvió a causarme la misma gracia que la primer vez. Además de ser risueña deja una enseñanza, asi que la comparto con Uds.</p>
+<!--more-->
+
+<p></p>
+<h3>El paquete de galletitas</h3>
+<p>Una noche estaba una chica en un aeropuerto esperando antes de que partiera su próximo vuelo. Como tenía que esperar varias horas compró un libro y un paquete de galletitas para pasar el tiempo.</p>
+<p>Buscó un asiento y se sentó a esperar. Estaba muy absorta leyendo su libro, cuando de repente notó que el joven que se había sentado frente a ella estiraba la mano, con mucha frescura agarraba despreocupadamente del paquete de galletas que estaba entre ellos y comenzaba a comérselas, una a una. No queriendo hacer una escena ella trató de ignorarlo.</p>
+<p>Un poco molesta la chica comía las glletitas y miraba el reloj, mientras que el joven ladrón de galletitas, sin vergüenza casi también se las estaba acabando.</p>
+<p>La chica se empezó a irritar más y pensó para sí misma:</p>
+<p>"Si no fuese yo tan buena y educada, ya le hubiera dejado un moretón en el ojo a este atrevido"</p>
+<p>Cada vez que ella comía una galleta, él también comía otra. El diálogo de sus miradas continuó y cuando sólo quedaba una, se preguntó que haría él.</p>
+<p>Con suavidad y con una sonrisa nerviosa, el joven alargó la mano, tomó la última galleta, la partió en dos y le ofreció una mitad a la chica mientras él comía la otra.</p>
+<p>Ella tomó la media galleta bruscamente de su mano y pensó:</p>
+<p>¡Qué hombre más insolente! ¡Qué mal educado! ¡Ni siquiera me dió las gracias!</p>
+<p>Suspiró con ansias cuando su vuelo fue anunciado. Tomó sus maletas y se dirigió a la puerta de embarque rehusándose a mirar en dirección donde estaba sentado aquel ladrón ingrato.</p>
+<p>Después de haber abordado el avión y estar sentada confortablemente, buscó otra vez su libro que ya casi había terminado de leer.</p>
+<p>Al buscar su libro dentro su bolsa se quedó totalmente sorprendida cuando encontró su paquete de galletas casi intacto.</p>
+<p><strong>La reflexión queda a cargo del lector.</strong></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/10/20/5tas-conferencias-abiertas-de-gnulinux-y-software-libre-cafeconf.html" class="u-url">5tas. Conferencias Abiertas de GNU/Linux y Software Libre (CaFeCONF)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/10/20/5tas-conferencias-abiertas-de-gnulinux-y-software-libre-cafeconf.html" rel="bookmark"><time class="published dt-published" datetime="2006-10-20T09:47:33+00:00" title="2006-10-20 09:47">2006-10-20 09:47</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/10/20/5tas-conferencias-abiertas-de-gnulinux-y-software-libre-cafeconf.html#disqus_thread" data-disqus-identifier="cache/posts/2006/10/20/5tas-conferencias-abiertas-de-gnulinux-y-software-libre-cafeconf.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Los dí­as 10 y 11 de noviembre de 2006, en las instalaciones de la</p>
+<p>Universidad Argentina de la Empresa (UADE) Lima 717, se realizarán las</p>
+<p>5tas. Conferencias Abiertas de GNU/Linux y Software Libre (CaFeCONF),</p>
+<p>Organizada anualmente por el Grupo de Usuarios de Software Libre de</p>
+<p>Capital Federal (CaFeLUG).</p>
+<p>CaFeCONF es un evento de difusión y capacitación, donde expertos,</p>
+<p>entusiastas y usuarios, exponen, difunden, debaten y se capacitan en una</p>
+<p>amplia gama temática relacionada al uso y desarrollo del software libre.</p>
+<p>El presente año, el tópico principal será la educación, sin abandonar la</p>
+<p>temática habitual. La Asociación Civil Gleducar, es especialista en</p>
+<p>educación y software libre y junto a CaFeLUG, está organizando</p>
+<p>activamente CaFeCONF.</p>
+<p><strong>Programa para CaFeCONF</strong></p>
+<p>Se realizarán más de 70 conferencias, talleres y tutoriales.</p>
+<p>Dentro del ámbito de CaFeCONF se realizará el 1er Congreso Nacional de</p>
+<p>Responsables de Aulas Informáticas con Software Libre (1er Congreso de</p>
+<p>Aulas Libres). Un espacio dónde técnicos informáticos y profesores de</p>
+<p>informática difunden las experiencias y soluciones logradas con software</p>
+<p>libre en las escuelas. Para los docentes no técnicos Gleducar preparó</p>
+<p>una Jornada de Capacitación.</p>
+<p><strong>Algunas de las personas que participarán este año</strong></p>
+<p></p>
+<ol>
+<pre class="code literal-block">&lt;li&gt;
+</pre>
+
+
+<p>Anna Ravenscroft y Alex Martinelli, de la Python Software Foundation.</p>
+<pre class="code literal-block">&lt;li&gt;
+</pre>
+
+
+<p>Martín Langhoff, del Proyecto Moodle.</p>
+</ol>
+
+<blockquote>Queremos invitarte a que participes y descubras este fascinante mundo
+
+del software libre. Te aseguramos que no vas a arrepentirte.</blockquote>
+
+<p>Más <strong>información</strong> e inscripciones en <a href="http://www.cafeconf.org">http://www.cafeconf.org</a></p>
+<p>En la facu estamos organizando la ida en un mini bus para 23 personas. Nos vemos allá!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/10/07/all-you-need-is-love.html" class="u-url">All you need is love!</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/10/07/all-you-need-is-love.html" rel="bookmark"><time class="published dt-published" datetime="2006-10-07T13:54:32+00:00" title="2006-10-07 13:54">2006-10-07 13:54</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/10/07/all-you-need-is-love.html#disqus_thread" data-disqus-identifier="cache/posts/2006/10/07/all-you-need-is-love.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Desde el etorno gráfico de tu GNU/Linux abrí una terminal (gnome-terminal, Konsole, Eterm u otra). Con tu editor preferido (vi, emacs, gedit u otro) creá el archivo <code>love</code> con este contenido:</p>
+<p></p>
+<pre>plot a*(1-sin(t))
+<p>a = a - 2</p>
+<p>pause 1</p>
+<p>if(a == 0) a = 16</p>
+<p>reread</p>
+</pre>
+
+<p>Desde la terminal ejecutá el comando <code>gnuplot</code> y allí:</p>
+<pre>gnuplot&gt; set polar
+
+        dummy variable is t for curves
+
+gnuplot&gt; set xrange[-25:25]; set yrange[-35:5]
+
+gnuplot&gt; a = 16
+
+gnuplot&gt; set title "All you need is love"
+
+gnuplot&gt; load 'love'
+
+</pre>
+
+<p>Done! All you need is love!.. and gnuplot! :)</p>
+<!--more-->
+
+<p><a href="http://www.gnuplot.info">Gnuplot</a> es un potente <a href="http://www.gnu.org/philosophy/free-sw.es.html">Software Libre</a> que permite graficar funciones matemáticas tanto en 2 como en 3 dimenciones.</p>
+<p>a*(1-sin(t)) es una función matemática en coordenadas polares que se denomina cardioide por su forma de corazón.</p>
+<p>Este pequeño ejemplo ilustra como utilizar esta herramienta para crear animaciones en base a la parametrización de funciones matemáticas que nos permitan observar comportamientos según cambian los valores de los parámetros.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/26/beta-11-de-radiofrecuencia.html" class="u-url">Beta 1.1 de RadioFrecuencia</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/26/beta-11-de-radiofrecuencia.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-26T13:01:57+00:00" title="2006-09-26 13:01">2006-09-26 13:01</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/26/beta-11-de-radiofrecuencia.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/26/beta-11-de-radiofrecuencia.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>RadioFrecuencia es una herramienta que estoy haciendo para la <a href="http://capas1y2news.blogspot.com/">cátedra de Comunicaciones</a> la cual permite, dados los datos de una instalación de dos antenas calcular si existe línea de vista, si es factible la comunicación (sensibilidad de recepción) y realiza un diagrama de vano.</p>
+<!--more-->
+
+<p>El 7 de septiembre le mandé un mail a avarios amigos con la dirección web de la primera versión beta que la prueben y me avisen de errores que encuentraban (muchas gracias a todos los que la probaron!). Estuve haciendo algunas correcciones y dejé en <s>http://firebirds.com.ar/~juanjo/rf/</s> <strong>[UPDATE]</strong> <a href="http://comunicaciones.firebirds.com.ar/rf/">http://comunicaciones.firebirds.com.ar/rf/</a> una versión un poco más refinada. Sin enbargo todavía faltan algunas cosas como permitir seleccionar un tipo de antena y a partir de este seleccionar alguna característica particular del tipo como diámetro o sectorización y a partir de estos datos la herramienta solo obtendría la ganacia de la antena. Actualmente la ganancia es introducida directamente por el usuario (alumno).</p>
+<p></p>
+<h3>Qué falta?</h3>
+<ul>
+
+    <li>
+<strong>Una mejor forma de selección del tipo de antena</strong> (lo que mencioné antes)  <span style="color: rgb(255, 0, 0);"><strong>[REQUERIRÁ SU TIEMPO]</strong></span>
+</li>
+
+    <li>
+<strong>Permitir poner obstáculos entre las antenas:</strong> esto ya es soportado por el módulo que se encarga de generar el diagrama de vano pero todavía tengo que hacer una buena interfaz que permite cargar fácilmente para cada obstáculo la distancia que lo separa de la primer antena y su alura. <span style="color: rgb(255, 0, 0);"><strong>[REQUERIRÁ SU TIEMPO]</strong></span>
+</li>
+
+    <li>Permitir la carga manual de algunos valores. <span style="color: rgb(255, 204, 51);"><strong>[MEDIO]</strong></span>
+</li>
+
+    <li>Brindar otros datos de interés en la salida. <span style="color: rgb(0, 153, 0);"><strong>[TRIVIAL]</strong></span>
+</li>
+
+</ul>
+
+<h3>Ejemplos de salida</h3>
+
+<p></p>
+<center>
+<p><a href="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf3.png"><img id="image165" width="400" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf3.png" alt="rf3"></a></p>
+<p><a href="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf1.png"></a></p>
+<p><img id="image163" width="400" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf1.png" alt="rf1"></p>
+<p><a href="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf2.png"><img id="image164" width="400" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf2.png" alt="rf2"></a></p>
+<p></p>
+</center>
+<h3>Una nota de color (gris)</h3>
+
+<p>Cuando lo probé desde Internet Explorer, el navegador de Microsoft me di cuenta de que no se veía tan bien como yo lo venía en mi máquina (con Firefox de la fundación Mozilla), el problema es que IE no soporta imagenes en formato PNG con transparencia. Abajo unos ejemplos de las imágenes con las que tuve problemas:</p>
+<p></p>
+<center>
+<p><a href="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf4.png"><img id="image166" width="400" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf4.png" alt="rf4"></a></p>
+<p></p>
+<p><a href="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf5.png"></a></p>
+<p><img id="image167" width="400" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/rf5.png" alt="rf5"></p>
+<p></p>
+</center>
+<p>Querés leer maś sobre esto? Hay mucho <a href="http://www.google.com.ar/search?hl=es&amp;hs=PP9&amp;client=firefox&amp;rls=org.mozilla:en-US:unofficial&amp;sa=X&amp;oi=spell&amp;resnum=0&amp;ct=result&amp;cd=1&amp;q=Internet+Explorer+png+transparency&amp;spell=1">allá afuera</a>. Realmente este tema (y las diferencias entre los navegadores en general) es una molestia para las personas que desarrollan para la web. La mentablemente los navegadores que no se preocupan por cumplir con los estándares no ayudan a resolver el problema. Por mi parte.. me uno al grito: <a href="http://www.spreadfirefox.com/">Spread FireFox!</a></p>
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/22/tener-una-menta-abierta.html" class="u-url">Tener una mente abierta</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/22/tener-una-menta-abierta.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-22T10:00:20+00:00" title="2006-09-22 10:00">2006-09-22 10:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/22/tener-una-menta-abierta.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/22/tener-una-menta-abierta.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Siempre escuchamos de la importancia de tener una mente abierta. Este pequeño desafío que les presento apunta a eso, a no circunscribirse a las formas conocidas y estar abierto para poder encontrar la respuesta.</p>
+<p>La primer vez que me encontré con este acertijo estaba en un campamento en Manucho (Santa Fe) y era una de las formas que los distintos equipos tenían de sumar puntos, no recuerdo que nos haya ido muy bien. De hecho nuestro equipo no fue el que resolvió el arcertijo.</p>
+<p>Hay nueve puntos dispuestos como se ve en la figura:</p>
+<p></p>
+<center>
+<p><img id="image156" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/puntos1.jpg" alt="1"></p>
+<p></p>
+</center>
+<p>Se deben realizar 4 trazos (líneas rectas) sin levantar el <em>marcador</em> y conseguir pasar por todos los puntos. No te apueres a seguir. Tomate un rato para pensarlo. Terminá de leer esta entrada sólo si:</p>
+<ol>
+
+    <li>Ya conocías el acertijo.</li>
+
+    <li>Te diste por vencido.</li>
+
+    <li>Encontraste la solución!</li>
+
+</ol>
+
+<!--more-->
+
+<p>Si encontraste la solución: Felicitaciones!! Si no y te diste por vencido, ahora tomo mi <em>cyber-marcador-azúl</em> y trazo la respuesta:</p>
+<p></p>
+<center>
+<p><img id="image157" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/puntos2.jpg" alt="2"></p>
+<p><img id="image158" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/puntos3.jpg" alt="3"></p>
+<p><img id="image159" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/puntos4.jpg" alt="4"></p>
+<p><img id="image160" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/09/puntos5.jpg" alt="5"></p>
+</center>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/22/el-abandonador-de-libros.html" class="u-url">El Abandonador de Libros</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/22/el-abandonador-de-libros.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-22T08:58:58+00:00" title="2006-09-22 08:58">2006-09-22 08:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/22/el-abandonador-de-libros.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/22/el-abandonador-de-libros.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hace más de 5 meses un amigo me prestó un libro de Isaac Asimov, El Fin de la Eternidad. Vaya uno a saber porqué pero el libro encontró como acogedor lugar de depósito un rincón en mi mesita de luz. Los meses pasaron en el calendario y otros libros ocuparon mis manos en los minutos antes de irme a dormir.</p>
+<p>En los meses siguientes me embarqué en leer una saga de siete libros de los cuales ya leí dos y el último aún no fue publicado. Hace unos días, cuando terminé de leer el segundo, faltando unos una semana para que reciba el tercero y sin nada que leer, encontré en el mismo rincón de la mesita de luz, rodeado de un halo de pelusa (del mismo tipo que se encuentra bajo la cama) al mismísimo libro.</p>
+<!--more-->
+
+<p>El ocasional señalador, una de esas tarjetitas que te venden en el cole y que te hacen quedar bien con tu novia, marcaba dónde me había quedado. La historia era atractiva, mucho más de lo que yo recordaba.</p>
+<p></p>
+<h3>El Fin de la Eternidad</h3>
+<p>Algunos siglos más adelante que el nuestro un científico descubre los Campos Temporales que más adelante permitieron a las personas viajar en el tiempo. Existe una sociedad para-temporal llamada La Eternidad, donde trabajan Los Eternos, personas retiradas de <em>su realidad</em> a los 15 años para estudiar ingeniería del tiempo, matemáticas temporales, y otras cosas.  Si bien los temporales (los humanos que no son eternos) creen que ellos sólo se encargan del comercio inter-siglo, en realidad tienen otro fin: mejorar la existencia en todos los siglos, en todas las realidades.</p>
+<p>Para, por ejemplo, evitar una guerra en el siglo 234 ellos atascan un acelerador en el siglo 233. Están los observadores, que son los encargados de registrar lo que pasa en todas las realidades, los analistas, los programadores, los ejecutores, que son los que llevan a cabo los CMN (Cambios Mínimos Necesarios), cómo atascar el acelerador, y la historia sigue.</p>
+<p>Si te atrajo la historia, no te preocupes: si fuese una película, lo que conté hasta ahora sería lo que estaría en la parte de atrás de la cajita :)</p>
+<p>No es la primera vez que esto me pasa, me refiero al hecho de abandonar un libro y reencontrarme con él mucho tiempo después, casi habiéndolo olvidado y volviéndome a enamorar de él. También me pasó algo así en las vacaciones de invierno, y en esa ocasión escribí una cortita <em>reflexión-novelada</em> al respecto. La llamé El placer de leer.</p>
+<h3>El placer de leer</h3>
+
+<p>Hace un par de días, casi sin opción, en mis pseudo-vacaciones de invierno redescubrí a medio leer un libro que me prestaron hace 4 meses (o a lo mejor un poco menos). El lujoso señalador estaba a menos de 1/3 del principio, un pedazo de papel blanco y cuadrado: de esos que uno manotea en la penumbra de la noche, a tientas, con sueño y contento ya que al haber alcanzado el final del capítulo puede irse a dormir con la conciencia tranquila y la satisfacción del deber cumplido.</p>
+<p>El título del libro en cuestión no importa mucho y aunque recordaba que la historia parecía prometedora había estado estancado en mi mesita de luz junto a por lo menos 2 libros más en la misma condición hasta que un día de julio en el apuro por dejar el departamento y la ciudad, los cacé de un manotazo, cual acto reflejo vacacionístico, y los metí en mi mochila junto con la lapicera y el cuaderno que estoy usando ahora. Todos juntos: los libros, la lapicera, el cuaderno y yo partimos hacia Carlos Pellegrini, mi pueblo natal.</p>
+<p>En la primer noche en la casa del campo, después de un día largo: la llegada al campo y no tener la llave, de descargar nuestros bolsos, nuestra ropa, nuestras frasadas, de improvisar una cena, me acosté en mi cama designada, en mi pieza designada y busqué el libro en la mochila intentando una reconciliación.</p>
+<p>Me sumergí en sus páginas y una por una las fui pasando, la historia se me hacía familiar, me cautivaba, y yo me dejaba cautivar, España, la post-guerra, Sempere, Penélope, Bea, Aguilar, Tomás, Daniel, su Padre, Fumero, los personajes danzaban ante mis ojos cual ritual de antaño y el relato avanzaba y avanzaba por las calles de Barcelona, yendo al pasado y volviendo, tomando el metro y caminando, pasando el día leyendo o trabajando en a librería, la Bernarda, Nuria, el Padre Fernando y la Jacinta internada en el Santa Lucía, todos los personajes y lugares entraban y salían, llegaban y se iban, se pintaban y se borraban como un rayo de luz.</p>
+<p>¿Habré tenido suerte con este libro o cualquiera hubiese sido el que reinaugurara mi imaginación luego de meses de paro me habría traído la misma entusiasta satisfacción? El placer de leer era algo que no recordaba bien pero si dudas sentí esa noche. Ojalá que los libros puedan seguirse prestando entre amigos.</p>
+<h3>Saludo final</h3>
+
+<p>Si bien en algunos momentos me transformo en El Abandonador de Libros, cuánto más bueno es transformarse en El Encontrador de Libros. ¿Qué me dicen Uds? ¿Tiene libros abandonados? ¿Qué esperan para volver a darles una oportunidad?</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/21/feliz-dia-del-estudiante.html" class="u-url">Felíz día del estudiante!</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/21/feliz-dia-del-estudiante.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-21T09:02:36+00:00" title="2006-09-21 09:02">2006-09-21 09:02</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/21/feliz-dia-del-estudiante.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/21/feliz-dia-del-estudiante.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy celebramos en Argentina el día del estudiante junto con el día de la  Primavera.</p>
+<p><img src="http://www.educared.org.ar/CAL_EDU/IMAGENES/09/primavera.jpg" style="float: right" alt="Bienvenida primavera!"></p>
+<p>Cuando estaba en la secundaria, en Carlos Pellegrini, el festejo siepre era un pic-nic que duraba desde el medio día hasta entrada la noche y se hacía en uno de los clubes del pueblo o en la Socidad Rural. En los dos lugares hay un predio bastante grande dónde los alumnos de los distintos años se estacoinaban y las señales de humo de los asadores hacían oficial el inicio del a nueva estación.</p>
+<p>En esa época se ponían de manifiesto las palabras del poeta cuando decía:</p>
+<p></p>
+<blockquote> Qué más quisiera que pasar la vida entera, como estudiante el día de la primavera.</blockquote>
+<p>A propósito del tema les dejo un cuadro que me pareció re intenresante:</p>
+<!--more-->
+
+<h3>Imagen de primavera</h3>
+
+<p>Tal vez a primera vista no respresente la alegría de un estudiante, ni pueda parecer la cara de la primavera, pero.. miren con atención! Este cuadro es del pintor italiano <a href="http://es.wikipedia.org/wiki/Giuseppe_Arcimboldo">Giuseppe Arcimboldo</a> y se llama <em>Spring</em>. TIene <a href="http://commons.wikimedia.org/wiki/Giuseppe_Arcimboldo">otras pinturas</a> dedicadas a las otras estaciones.</p>
+<p></p>
+<center>
+<p><a href="http://upload.wikimedia.org/wikipedia/commons/a/a5/Giuseppe_Arcimboldo_-_Spring%2C_1573.jpg"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Giuseppe_Arcimboldo_-_Spring%2C_1573.jpg/495px-Giuseppe_Arcimboldo_-_Spring%2C_1573.jpg" alt="Primavera"></a></p>
+<p></p>
+</center>Un saludo a todos los estudiantes en su día, en especial a mis compañeros de la facu y  los de la escuela secundaria!</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-9.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-7.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

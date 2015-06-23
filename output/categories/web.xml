@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Web)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/web.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:22 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Limpiar Wordpress infectado</title><link>http://www.juanjoconti.com.ar/posts/2012/04/26/limpiar-wordpress-infectado.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Si tenés un blog con Wordpress y te atrasás con las actualizaciones (o no) tarde o temprano te embocan (no es la primera vez que me pasa). Alguna herramienta automática detecta que estás corriendo una versión vulnerable a cierto fallo de seguridad reciente y otra inserta código malicioso en todos los archivos de tu sistema de blogging en los que pueda escribir.&lt;/p&gt;
+&lt;p&gt;Las consecuencias son que cuando tus visitantes intenta entrar al blog son redirigidos a un sitio porno o de venta de Viagra. Si se accede con Chrome a uno de estos sitios infectados, un enorme cartel rojo de avisa que el sitio incluye contenido de una web rumana reportada como distribuidora de malware.&lt;/p&gt;
+&lt;p&gt;Tu hosting te manda un mail diciéndote que no te sientas solo por que no lo estás, pero en realidad si lo estás. Te recomiendan cosas poco prácticas como actualizar, cambiar claves o restaurar un back-up previo a la infección. Tengo casi 1000 archivos .php llenos de código malicioso y me decís que cambié mis claves (?). Necesito una forma de arreglar esto.&lt;/p&gt;
+&lt;p&gt;Dejo aquí unos tips en base a mi experiencia personal, con la certeza de que en cualquier momento voy a volver a buscarlos por necesidad.&lt;/p&gt;
+&lt;p&gt;Muchas de las herramientas que agregan código malicioso (las más simples) agregan una línea al principio de todos los .php en los que pueden escribir. En mi caso esta línea tenía esta forma:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt; &amp;lt;?php /**/ eval(base64_decode("aWYoZnVuY3...oZnVu"));?&amp;gt;&amp;lt;?php&lt;/pre&gt;
+&lt;p&gt;(código codificado que es decodificado y evaluado al ejecutar el archivo).&lt;/p&gt;
+&lt;p&gt;¿Qué archivos están infectados?&lt;/p&gt;
+&lt;pre lang="bash"&gt;grep -l eval\(base64_decode -R *&lt;/pre&gt;
+
+&lt;p&gt;¿Cuantos archivos hay infectados? (aprox.)&lt;/p&gt;
+&lt;pre lang="bash"&gt;grep -l eval\(base64_decode -R * | wc -l&lt;/pre&gt;
+
+&lt;p&gt;Limpiar todos los archivos:&lt;/p&gt;
+&lt;pre lang="bash"&gt;for x in `grep -l eval\(base64_decode -R * | grep -v .back`; do sed -i.back '1d' $x ; sed -i '1 i &lt;?php ' $x; done&lt;/pre&gt;
+
+&lt;p&gt;El anterior comando busca todos los archivos infectados (excepto los que tienen extensión .back), les borra la primer línea y luego les agrega una primer línea "&lt;/p&gt;
+&lt;p&gt;Mejoras, sugerencias y correcciones bienvenidas!&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>General</category><category>GNU/Linux</category><category>hack</category><category>PHP</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2012/04/26/limpiar-wordpress-infectado.html</guid><pubDate>Thu, 26 Apr 2012 02:17:59 GMT</pubDate></item><item><title>Ya podés comprar mi nuevo libro de cuentos!</title><link>http://www.juanjoconti.com.ar/posts/2012/04/12/ya-podes-comprar-mi-nuevo-libro-de-cuentos.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2012/04/tapa-2.jpg"&gt;&lt;img class="size-medium wp-image-3858" title="Los caballeros de la Rosa" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/04/tapa-2-211x300.jpg" alt="Los caballeros de la Rosa" width="211" height="300"&gt;&lt;/a&gt;
+&lt;p&gt;Bueno, en realidad el título del post es algo engañoso. No podés comprarlo &lt;em&gt;ya&lt;/em&gt;, por que todavía no está impreso, pero podés financiar su edición e impresión, convertirte en un productor y en el medio obtener tu copia.&lt;/p&gt;
+&lt;p&gt;¿Cómo? Cargué mi proyecto en el sitio idea.me, un sitio de financiamiento colectivo. El funcionamiento es simple: las personas pueden participar con distintas sumas de dinero y para cada aporte hay una recompensa. Mi objetivo monetario es llegar a 1000 u$s. &lt;strong&gt;Si llego al 10%, el proyecto se hace público&lt;/strong&gt; y la gente de idea.me me ayuda a difundirlo (es importante llegar a este hito lo antes posible, así que no dejes para mañana lo que puedes hacer hoy). &lt;strong&gt;El total tengo 55 días. Si luego de ese periodo no llegué al 100%, el proyecto es cancelado&lt;/strong&gt; y a los productores les devuelven su dinero.&lt;/p&gt;
+&lt;p&gt;El sitio de mi proyecto es: &lt;a href="http://idea.me/proyecto/144/loscaballerosdelarosa" target="_blank"&gt;http://idea.me/proyecto/144/loscaballerosdelarosa&lt;/a&gt; (pueden ayudarme difundiendo la url en Facebook o Twitter) y allí hay un video promocional, fotos y una sección de novedades donde voy a ir contando cosas sobre el libro y los avances (&lt;em&gt;if any&lt;/em&gt;) que hayan en la recaudación.&lt;/p&gt;
+&lt;p&gt;Las recompensas son:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Una copia de la &lt;strong&gt;edición digital&lt;/strong&gt; del libro antes de que esté online: 5 &lt;strong&gt;u$s&lt;/strong&gt;.&lt;/li&gt;
+
+    &lt;li&gt;La copia digital y &lt;strong&gt;una copia impresa&lt;/strong&gt; tan pronto esté lista: &lt;strong&gt;10 u$s&lt;/strong&gt;.&lt;/li&gt;
+
+    &lt;li&gt;La copia digital, la impresa y &lt;strong&gt;tu nombre en la sección Productores del libro&lt;/strong&gt;: &lt;strong&gt;25 u$s&lt;/strong&gt;.&lt;/li&gt;
+
+    &lt;li&gt;La copia digital, la impresa y tu nombre en la sección Productores del libro &lt;strong&gt;+ una copia de mi anterior libro&lt;/strong&gt;: &lt;strong&gt;35 u$s&lt;/strong&gt;.&lt;/li&gt;
+
+    &lt;li&gt;La copia digital, la impresa, tu nombre en el libro y &lt;strong&gt;un asado en la casa del autor&lt;/strong&gt; si alguna vez estás en Santa Fe: &lt;strong&gt;100 u$s&lt;/strong&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Todo lo anterior y le ponemos &lt;strong&gt;tu nombre a uno de los personajes&lt;/strong&gt; del libro: &lt;strong&gt;250 u$s&lt;/strong&gt;.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Una vez listo el libro podrá descargarse gratuitamente de Internet y tendrá una licencia Creative Commons.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Una aclaración&lt;/strong&gt;, en el sitio figura que el gasto de envío de las recompensas dentro del país es de unos $ 30 (30 pesos argentinos o 7 dolares) pero en realidad son solo 7 pesos. Lo mismo para el envío internacional, son 26 pesos. Estoy gestionando que lo cambien.&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>CreativeCommons</category><category>ideame</category><category>Los caballeros de la Rosa</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2012/04/12/ya-podes-comprar-mi-nuevo-libro-de-cuentos.html</guid><pubDate>Thu, 12 Apr 2012 21:49:08 GMT</pubDate></item><item><title>Cambiar foto de perfil en Twitter, cuando la cambio en Facebook</title><link>http://www.juanjoconti.com.ar/posts/2012/01/25/cambiar-foto-de-perfil-en-twitter-cuando-la-cambio-en-facebook.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://ifttt.com" target="_blank"&gt;Ifttt&lt;/a&gt;, &lt;em&gt;If this then that&lt;/em&gt;, es un sitio web que permite utilizar está &lt;a href="http://en.wikipedia.org/wiki/Conditional_%28programming%29" target="_blank"&gt;clásica sentencia de control de programación&lt;/a&gt; en la web.
+&lt;p&gt;Uno tiene a su disposición una serie de &lt;strong&gt;canales&lt;/strong&gt;. Estos disparan &lt;strong&gt;eventos&lt;/strong&gt; y realizan &lt;strong&gt;acciones&lt;/strong&gt;.  La combinación de un evento y una acción es una &lt;strong&gt;tarea&lt;/strong&gt;. Y cuando uno publica una tarea, se la llama &lt;strong&gt;receta&lt;/strong&gt;. Existe un &lt;a href="http://ifttt.com/recipes" target="_blank"&gt;repositorio de recetas&lt;/a&gt; publicadas por los usuarios en donde se pueden encontrar algunas muy útiles. La mejor que estoy usando es:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://ifttt.com/recipes/8981" target="_blank"&gt;&lt;img class="aligncenter size-full wp-image-3644" title="ifttt" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/01/iffbthentwitter.png" alt="" width="663" height="226"&gt;&lt;/a&gt;Otras recetas que estoy usando son:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Cuando posteo en el blog, comunicarlo en Facebook.&lt;/li&gt;
+
+    &lt;li&gt;xkcd comic emailed to me whenever it updates&lt;/li&gt;
+
+    &lt;li&gt;Tweet if I upload a video to youtube.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Facebook</category><category>ifttt</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2012/01/25/cambiar-foto-de-perfil-en-twitter-cuando-la-cambio-en-facebook.html</guid><pubDate>Wed, 25 Jan 2012 03:22:26 GMT</pubDate></item><item><title>Lo que me llegó de China</title><link>http://www.juanjoconti.com.ar/posts/2010/12/21/lo-que-me-llego-de-china.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace unos días me enteré que unos amigos, de esos que uno tiene en &lt;strong&gt;"La Internet"(tm)&lt;/strong&gt;, empezaron un blog llamado &lt;a href="http://loquemellegodechina.blogspot.com/" target="_blank"&gt;Lo que me llegó de China&lt;/a&gt;. La idea es comentar artículos que uno puede comprar en el lejano oriente por pocos dolares y recibirlos en la puerta de su casa, consiguiendo productos que nunca encontraremos por estos lados o que si, pero con una diferencia de precio importante.&lt;/p&gt;
+&lt;p&gt;Me sumé y me di cuenta de que aún no habían publicado nada! Así que &lt;a href="http://loquemellegodechina.blogspot.com/2010/12/cucara.html" target="_blank"&gt;lo inauguro con mi primer compra&lt;/a&gt;, mientras espero que me lleguen los otros pedidos, antes de que se haga Navidad :)&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>Cosas que escribo</category><category>DealExtreme</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/12/21/lo-que-me-llego-de-china.html</guid><pubDate>Tue, 21 Dec 2010 18:00:15 GMT</pubDate></item><item><title>Twitter updates desde Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;em&gt;Este artículo es una re-edición del publicado el 24/08/2010 ya que cuando lo publiqué, Twitter estaba terminando su proceso apagar el sistema de autenticación básica para pasar al &lt;a href="http://dev.twitter.com/pages/auth_overview" target="_blank"&gt;más complejo sistema de la danza oAuth;&lt;/a&gt; lo cual convirtió al artículo en inservible. El artículo anterior no está más disponible. Gracias a &lt;a href="http://www.pupeno.com" target="_blank"&gt;Pupeno&lt;/a&gt; por revisar esta versión.
+&lt;p&gt;&lt;/p&gt;&lt;/em&gt;
+&lt;p&gt;¿Tenés un servidor escrito en &lt;a href="http://twistedmatrix.com" target="_blank"&gt;Twisted&lt;/a&gt;? ¿Tenés eventos críticos o importantes que mandás por mail o a celulares? ¿Qué tal publicarlos en &lt;a href="http://www.twitter.com" target="_blank"&gt;Twitter&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;La versión original de este artículo utilizaba la biblioteca &lt;a href="http://github.com/dustin/twitty-twister" target="_blank"&gt;Twitty Twister&lt;/a&gt;, la única pensada para usar Twitter desde Twisted. Lamentablemente no funciona bien con el nuevo sistema de autenticación de Twitter por lo que voy a usar &lt;a href="http://github.com/joshthecoder/tweepy" target="_blank"&gt;Tweepy&lt;/a&gt;, una librería con la cual hacer la danza de oAuth es muy sencillo.&lt;/p&gt;
+&lt;p&gt;1) &lt;a href="https://twitter.com/signup" target="_blank"&gt;Registrar&lt;/a&gt; un usuario dónde publicar las notificaciones.&lt;/p&gt;
+&lt;p&gt;2) Con ese usuario, &lt;a href="http://dev.twitter.com/apps/new" target="_blank"&gt;registrar una aplicación&lt;/a&gt;. Es muy importante usar el mismo usuario para ahorrarnos algunos pasos en la danza oAuth.&lt;/p&gt;
+&lt;p&gt;3) De la página de la aplicación creada, tomar la siguiente información: consumer key, consumer secret (desde la home de la aplicación), access token y access token secret (de la página My Access Token).&lt;/p&gt;
+&lt;p&gt;4) Código:&lt;/p&gt;
+&lt;p&gt;Con los datos del punto 3, creamos el módulo &lt;strong&gt;twitterupdates.py&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;import tweepy
+
+
+
+TWITTER_KEY = 'xxxxxxxxxxxxxxxx'
+
+TWITTER_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+
+
+auth = tweepy.OAuthHandler(TWITTER_KEY, TWITTER_SECRET)
+
+auth.set_access_token(MY_KEY, MY_SECRET)
+
+twitter = tweepy.API(auth)&lt;/pre&gt;
+
+&lt;p&gt;y desde nuestra aplicación Twisted lo importamos:&lt;/p&gt;
+&lt;pre&gt;from twitterupdates import twitter&lt;/pre&gt;
+
+&lt;p&gt;Postear una actualización en Twitter o cualquier otra petición a un servidor externo tiene una naturaleza bloqueante y en un framework de concurrencia colaborativa, como es Twisted, no podemos darnos ese lujo. Para solucionar esto, utilizamos &lt;a href="http://twistedmatrix.com/documents/10.1.0/api/twisted.internet.threads.deferToThread.html" target="_blank"&gt;deferToThread&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;deferToThread(twitter.update_status, "Mensaje a postear en Twitter")&lt;/pre&gt;
+
+&lt;p&gt;Esta llamada retorna un objeto &lt;a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank"&gt;Deferred&lt;/a&gt; al cual se le pueden añadir callbacks o errbacks. La llamada bloqueante es corrida en un hilo aparte.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Twisted</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</guid><pubDate>Sun, 26 Sep 2010 16:00:47 GMT</pubDate></item><item><title>Reflotando MyTwitGroup</title><link>http://www.juanjoconti.com.ar/posts/2010/09/23/reflotando-mytwitgroup.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;MyTwitGroup o &lt;a href="http://www.mytwitgroup.com/" target="_blank"&gt;www.mytwitgroup.com&lt;/a&gt; es un servicio que implementamos con dos compañeras hace unos 6 meses. Uno de los objetivos del proyecto era ver como funcionábamos como equipo, si podíamos construir y entregar software en tiempo y forma. Nos fue bastante bien.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;El servicio&lt;/h3&gt;
+&lt;p&gt;La idea del servicio surgió de una necesidad real. En la cátedra de Comunicaciones somo 4 personas que usamos Twitter y queríamos usar esa herramienta para comunicarnos con los alumnos, pero no queríamos obligarlos a que nos sigan a cada uno.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MyTwitGroup revisa periódicamente el timeline de cada uno de los miembros y si encuentra un tweet con el hashtag &lt;/strong&gt;&lt;strong&gt;#com lo publica utilizando la cuenta de la cátedra.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;El servicio lo pueden usar desde empresas hasta bandas de rock. Yo creo que es útil, pero para entenderlo realmente tenés que usarlo. Si tenés una "cuenta grupal" probalo, no te cuesta nada.&lt;/p&gt;
+&lt;h3&gt;Fallas&lt;/h3&gt;
+
+&lt;p&gt;Cuando implementamos la primera versión del sistema, utilizamos la forma básica de autenticación de Twitter: era fácil de implementar y funcionaba. Tenía un problema, el grupo que creaba una cuenta en el sitio debía dejar la contraseña de la cuenta del grupo para que luego se puedan hacer las publicaciones automáticas. Tuvimos resistencia de usuarios por esto. Intentamos solucionarlo obteniendo un certificado que podamos usar para enviar la información por HTTPS. Los certificados son caros. Usamos uno gratuito unos meses, pero luego caducó. Esta fue la falla 1.&lt;/p&gt;
+&lt;p&gt;Falla 2. Hace menos de un mes Twitter decidió apagar su sistema de autenticación básico y nuestro servicio dejó de andar. Algo corto de tiempo por otros proyectos y obligaciones, con la ayuda de &lt;a href="http://fisadev.blogspot.com/" target="_blank"&gt;fisa&lt;/a&gt; migramos a la nueva forma de autenticación: OAuth.&lt;/p&gt;
+&lt;p&gt;OAuth en Twitter &lt;a href="http://arstechnica.com/security/guides/2010/09/twitter-a-case-study-on-how-to-do-oauth-wrong.ars/" target="_blank"&gt;está mal implementado&lt;/a&gt; e hizo renegar a muchas personas; por semanas, populares clientes no funcionaron y a los paranoicos de la seguridad no les termina de cerrar la implementación OAuth de Twitter. Pero a nosotros nos vino bien! &lt;strong&gt;Usando OAuth dejamos de pedirle  la password al usuario y muchos que no hubiesen probado el servicio, tal vez lo hagan.&lt;/strong&gt; También dejamos de necesitar un costoso certificado.&lt;/p&gt;
+&lt;h3&gt;Bugs fixing&lt;/h3&gt;
+
+&lt;p&gt;Cambiamos de hosting y salió a la cancha, pero con algunos temitas que fui corrigiendo &lt;em&gt;on demand&lt;/em&gt;. Cambié la BD de SQLite a PostgreSQL. Cambié el máximo tamaño para el hashtag de 10 a 20 (gracias walteralini por probarlo). No funcionaba la página "contact us" por que arrastré la configuración del viejo hosting.&lt;/p&gt;
+&lt;p&gt;Tengo que arreglar algunas cosas de usabildad todavía, el workflow logearse/editar puede ser engorroso, pero ya son detalles sutiles.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.mytwitgroup.com/" target="_blank"&gt;El sitio queda on line&lt;/a&gt; y ya tenemos algunos felices usuarios de esta nueva era. ¿Ideas o sugerencias? Dejalas en los comentarios!&lt;/p&gt;&lt;/div&gt;</description><category>General</category><category>MyTwitGroup</category><category>proyectos</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/23/reflotando-mytwitgroup.html</guid><pubDate>Thu, 23 Sep 2010 15:36:56 GMT</pubDate></item><item><title>Fotografiando desde el camino (segunda edición)</title><link>http://www.juanjoconti.com.ar/posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace 2 años había empezado a publicar fotos &lt;strong&gt;instantáneas&lt;/strong&gt; en mi blog. Las sacaba con el celular (un Nokia 6131) y en segundos estaban on line mostrando la última en la sidebar. En ese entonces no tenía el celular que tengo ahora, y tuve que arreglarmelas con &lt;a href="http://www.juanjoconti.com.ar/2008/08/18/fotografiando-desde-el-camino/" target="_blank"&gt;tremento hack&lt;/a&gt; para lograr la funcionalidad que buscaba.&lt;/p&gt;
+&lt;p&gt;Hoy con un Motorolla Milestone que tiene más capacidad de procesamiento que las computadoras que llevaron al hombre a la luna y más conectividad muchos países, el tema es más sencillo.&lt;/p&gt;
+&lt;p&gt;Publico fotos através de &lt;a href="http://twitpic.com/photos/jjconti" target="_blank"&gt;Twitpic&lt;/a&gt; con mi cliente de Twitter &lt;a href="http://seesmic.com/" target="_blank"&gt;Seesmic&lt;/a&gt; y las muestro usando el plugín &lt;a href="http://wordpress.org/extend/plugins/my-twitpics/screenshots/" target="_blank"&gt;My Pictures Widget&lt;/a&gt; para Wordpress. &lt;em&gt;Nice.&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>Fotos</category><category>Seesmic</category><category>Twitpic</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html</guid><pubDate>Wed, 08 Sep 2010 21:40:21 GMT</pubDate></item><item><title>El hosting para Django más barato</title><link>http://www.juanjoconti.com.ar/posts/2010/08/20/el-hosting-para-django-mas-barato.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un tiempo &lt;a href="http://www.juanjoconti.com.ar/2008/11/24/el-mejor-hosting-para-django/" target="_blank"&gt;recomendé Webfaction&lt;/a&gt; como el mejor hosting para Django (debe aún serlo). Pero algunas veces no queremos el mejor, con el más barato nos alcanza :D&lt;/p&gt;
+&lt;p&gt;Tal vez son un adolecente aprendiendo a programar, o simplemente rata. Para un programador PHP es bastante fácil encontrar un hosting en Internet que le de un servicio gratuito, subir sus cosas y mostrarlas al mundo. Cuando programás en Django... es más difícil.&lt;/p&gt;
+&lt;p&gt;Hasta hoy; les paso el dato: &lt;a href="http://www.alwaysdata.com/" target="_blank"&gt;AlwaysData.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Hosting Django gratuito. &lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Tengo 2 cuentas funcionando muy bien. Y no se asusten por que está en francés (eso me detuvo la primer vez que lo vi); luego de sacar la cuenta tenés acceso al panel de administración que está en muchos idiomas; incluyendo español. Tenés para elegir distintas versiones de Python y Djando, MySQL o PosgreSQL, acceso SHELL, FTP y WebDAV. Qué más querés?&lt;/p&gt;
+&lt;p&gt;También podés tener PHP o Ruby on Rails.&lt;/p&gt;
+&lt;p&gt;Espero les sirva.&lt;/p&gt;&lt;/div&gt;</description><category>AlwaysData.com</category><category>Aprendiendo Python</category><category>Django</category><category>hosting</category><category>Ruby on Rails</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/20/el-hosting-para-django-mas-barato.html</guid><pubDate>Fri, 20 Aug 2010 13:40:23 GMT</pubDate></item><item><title>Coloreando código fuente en WordPress</title><link>http://www.juanjoconti.com.ar/posts/2010/08/05/coloreando-codigo-fuente-en-wordpress.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Tengo este blog hace unos 5 años y en él tengo muchos posts con código fuente, pero nunca usé un plug-in para hacer &lt;strong&gt;syntax highlight&lt;/strong&gt; o resaltado de sintáxis, es decir que las distintas partes del código fuente se pinten de distintos colores según su significado. Mi idea es solucionarlo.&lt;/p&gt;
+&lt;p&gt;El escenario es bastante complicado. Hay bloques de código en los que uso la etiqueta HTML &amp;lt;pre&amp;gt; y otros en los que uso la etiqueda &amp;lt;code&amp;gt;. También tengo código in-line (es decir líeas de código que forman parte de una oración) arcadas con la etiqueta &amp;lt;code&amp;gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;¿Qué busco?&lt;/h3&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;No quiero posts con código coloreado de ahora en adelante y que los anteriores
+
+sigan en blanco y negro.&lt;/li&gt;
+
+    &lt;li&gt;No quiero tener que editar cada posts para agregar algún atributo en las
+
+etiquetas pre o code. Por ejemplo, muchos plug-ins te piden que marques el código
+
+con algo como &amp;lt;pre lang="python"&amp;gt; o similar.&lt;/li&gt;
+
+    &lt;li&gt;Quiero que los bloques de código &amp;lt;pre&amp;gt; y &amp;lt;code&amp;gt; se vean igual.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Luego de buscar un poco, decidí instalar y probar estos plug-ins:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/wp-synhighlight/" target="_blank"&gt;WP-SynHighlight&lt;/a&gt; (lo descarté enseguida, tiene una GUI pesada con muchas opciones y las marcas que introduce en el post son bastante poco estándar e intrusivas)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/wp-syntax/" target="_self"&gt;WP-Syntax&lt;/a&gt; (usa &lt;a href="http://qbnz.com/highlighter/" target="_blank"&gt;GeSHI&lt;/a&gt;, por lo que el coloreado se realiza en el lado del servidor)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/jquery-syntax/" target="_blank"&gt;JQuery.Syntax&lt;/a&gt; (hecho con la popular librería de JavaScript)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://wordpress.org/extend/plugins/google-code-prettify-for-wordpress/" target="_self"&gt;Google Code Prettify&lt;/a&gt; (está basado en tecnología de Google y posiblemente lo hayan visto en acción en &lt;a href="http://stackoverflow.com/" target="_blank"&gt;StackOverflow&lt;/a&gt;. Su principal ventaja es que &lt;strong&gt;no requiere decirle en qué lenguaje está escrita la porción de código&lt;/strong&gt;, sino que este lo adivina)&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Intentar empezar a usar uno de estos plug-ins ahora, me genera un gran problema&lt;/p&gt;
+&lt;p&gt;de compatibilidad hacia atrás :)&lt;/p&gt;
+&lt;p&gt;Veamos... &lt;strong&gt;WP-SynHighlight&lt;/strong&gt; no me gustó de arranque. Modifica la GUI del editor WYSIWYG the WordPress, uno selecciona una porción de código, aprieta el botón y te da unas 10 opciones para elegir (desde lenguaje hasta el número de espacios para los tabs). Puede funcionar para algún tipo de usuario, pero no para un programador. Además agrega bastante código sucio al HTML del post. Paso.&lt;/p&gt;
+&lt;p&gt;El segundo que probé fue &lt;strong&gt;WP-Syntax&lt;/strong&gt;. Me gustó mucho, entre otras cosas:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt; Usa CSS in-line para que el código coloreado se mantenga incluso si el posts no es leído en el blog; por ejemplo en un planeta o por RSS.&lt;/li&gt;
+
+    &lt;li&gt;Si el texto es más ancho que la página, agrega una barra de desplazamiento en la cajita de código.&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/wpsyntax.jpg"&gt;&lt;img class="aligncenter size-full wp-image-2581" title="wpsyntax" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/wpsyntax.jpg" alt="" width="235" height="250"&gt;&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Luego probé JQuery.Syntax y Google Code Prettify. Estos funcionan de la siguiente forma: luego de que se carga el HTML del sitio, corre código JavaScript que se encarga del coloreado. Esto hace que la carga de la página sea más lenta.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/jquery.jpg"&gt;&lt;img class="aligncenter size-full wp-image-2582" title="jquery" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/jquery.jpg" alt="" width="244" height="230"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;¿Qué hice?&lt;/h3&gt;
+
+&lt;p&gt;Me decidí a usar WP-Syntax y para no editar todos los bloques de código, creé un pequeño plug-in para WordPress que cambia todos los &amp;lt;pre&amp;gt; por &amp;lt;pre lang="python" escaped="true"&amp;gt;, cambié a mano los pocos bloques code que tenía por bloques pre y agregué a mano la especificación para los bloques de código que no son Python (no eran muchos).&lt;/p&gt;
+&lt;p&gt;Tampoco tengo coloreado del código in-line. De las opciones que probé solo el plug-in que usa tecnología de Google, tenía esta característica.&lt;/p&gt;
+&lt;p&gt;Si ven algún post en el que algo no quedó del todo bien, avisen!&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>syntax highlight</category><category>Web</category><category>WordPress</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/05/coloreando-codigo-fuente-en-wordpress.html</guid><pubDate>Thu, 05 Aug 2010 00:54:15 GMT</pubDate></item><item><title>El mejor hosting para Django</title><link>http://www.juanjoconti.com.ar/posts/2008/11/24/el-mejor-hosting-para-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Según &lt;a href="http://djangofriendly.com/"&gt;DjangoFriendly&lt;/a&gt;, el mejor hosting para Django es &lt;a href="http://www.webfaction.com?affiliate=zafiro"&gt;Webfaction&lt;/a&gt;. Yo lo vengo probando por un mes y estoy muy satisfecho.&lt;/p&gt;&lt;/div&gt;</description><category>Django</category><category>hosting</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2008/11/24/el-mejor-hosting-para-django.html</guid><pubDate>Mon, 24 Nov 2008 18:25:51 GMT</pubDate></item></channel></rss>

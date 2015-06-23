@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (XP)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/xp.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:25 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>1ª experiencia XP</title><link>http://www.juanjoconti.com.ar/posts/2006/11/28/1aa-experiencia-xp.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Métodos Ágiles&lt;/h3&gt;
+&lt;p&gt;Métodos Ágiles para el Desarrollo de Software es una materia electiva del segundo cuatrimestre de 4º año de Ingeniería en Sistemas de Información en la la facultad dónde estudio (&lt;a href="http://www.frsf.utn.edu.ar"&gt;UTN-FRSF&lt;/a&gt;). Yendo al grano: estudia los llamados &lt;a href="http://www.agile-spain.com/agilev2/manifiesto_agil"&gt;Métodos Ágiles&lt;/a&gt;, en particular &lt;a href="http://www.extremeprogramming.org/"&gt;eXtreme Programming&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;La idea de estas metodologías, a diferencia de las tradicionales es evitar la tortuosa y burocrática documentación, a la vez que se enfocan en las personas y en los resultados.&lt;/p&gt;
+&lt;h3&gt;XP: Programación eXtrema&lt;/h3&gt;
+
+&lt;p&gt;Dentro de este contexto, la Programación eXtrema (una de las metodologías más exitosas del rubro) se presenta como una diciplina de desarrollo de software basada en valores como &lt;em&gt;simplicidad&lt;/em&gt;, &lt;em&gt;comunicación&lt;/em&gt;, &lt;em&gt;retroalimentación&lt;/em&gt; y &lt;em&gt;valor.&lt;/em&gt; Trabaja poniendo a todo el equipo ante práctica simples, con suficiente retroalimentación para permitirle ver dónde está y cómo encarar un problema particular.&lt;/p&gt;
+&lt;p&gt;En XP, cada contribuidor al proyecto es una parte integral del &lt;em&gt;Equipo.&lt;/em&gt; El equipo se forma al rededor de un representante del negocio, llamado &lt;em&gt;El Cliente&lt;/em&gt;, el cual se sienta y trabaja con el equipo diariamente (cliente &lt;em&gt;in-situ&lt;/em&gt;).&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Nuestro trabajo práctico consistía en desarrollar la primer versión de un sistema de gestión de socios de un club en base a una lista de &lt;em&gt;historias&lt;/em&gt; provistas por la prfesora. Las &lt;a href="http://www.extremeprogramming.org/rules/userstories.html"&gt;historias&lt;/a&gt; son la forma en la que XP define los requisitos para el sistema.&lt;/p&gt;
+&lt;p&gt;Para realizarlo llevamos a cabo algunas de las prácticas que XP propone (las escribo sin un orden específico), &lt;strong&gt;bold&lt;/strong&gt; significa que aplicamos conscientemente la práctica:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Cliente in-situ&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Juego de la planificación&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;Metáfora&lt;/li&gt;
+
+    &lt;li&gt;40 hs semanales&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Diseño sencillo&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Recodificación&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Programación en parejas&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Pruebas&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;Versiones cortas&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Propiedad colectiva&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Estándares de codificación&lt;/strong&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;strong&gt;Integración continua&lt;/strong&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;Puede ser que el listado de prácticas no sea novedoso para algunos, de hecho son todas prácticas existentes. XP lleva su nombre por llevar todas estas prácticas al extremo. Si hacer  pruebas es bueno, se escribirán pruebas para todos los métodos que lo ameriten y luego se escribirá el código que pase esas pruebas. Si integrar es bueno, se integrará continuamente. Si la retroalimentación del cliente es buena, se sumará este al equipo de desarrollo.&lt;/p&gt;
+&lt;p&gt;Se puede leer más sobre XP en:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://www.xprogramming.com"&gt;xprogramming.com&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://www.extremeprogramming.org"&gt;www.extremeprogramming.org&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h3&gt;Programación en parejas&lt;/h3&gt;
+
+&lt;p&gt;Una de las prácticas que conscientemente llevamos a cabo fue la de programar en parejas. En el grupo eramos 4 y tuvimos la suerte de trabajar siempre en una casa con dos computadoras, por lo que las parejas podían ir rotando y hacerse consultas entre ellas. A mi parecer es una de las prácticas más importantes de XP, y es un tema tan amplio que hasta tiene su &lt;a href="http://www.pairprogramming.com/"&gt;propio sitio web&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img id="image183" src="http://www.juanjoconti.com.ar/wp-content/uploads/2006/11/parproglogo.gif" alt="pair programming"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img id="image184" src="http://www.juanjoconti.com.ar/wp-content/uploads/2006/11/pairprogrammers.gif" alt="pair programmers"&gt;&lt;/p&gt;
+&lt;h3&gt;Pruebas (de unidad)&lt;/h3&gt;
+
+&lt;p&gt;El lenguaje de programación utilizado fue &lt;a href="http://java.sun.com"&gt;Java&lt;/a&gt;. También usamos un framework para mapear objetos en memoria a una base de datos relacional (&lt;a href="http://www.hibernate.org/"&gt;Hibernate&lt;/a&gt;) y uno para generar reportes (&lt;a href="http://jasperreports.sourceforge.net/"&gt;JasperReports&lt;/a&gt;). Elegimos estas herramientas por que ya las habíamos usado para un trabajo práctico previo, lo que nos permitió poner foco en la metodología y no en la herramienta.&lt;/p&gt;
+&lt;p&gt;Para trabajar con pruebas, también utilizamos un framework (&lt;a href="http://www.junit.org/"&gt;JUnit&lt;/a&gt;), desarrollado originalmente por Erich Gamma y Kent Beck (creador de XP). Trabajar de esta forma nos gustó muchos a todos los miembros de grupo, saber que luego de ese cambio el software sigue pasando las pruebas es alentador y refuerza uno de los valores de XP, la valentía.&lt;/p&gt;
+&lt;p&gt;Básicamente lo que hacíamos era:&lt;/p&gt;
+&lt;p&gt;1) Pensar en un método que se necesitaba.&lt;/p&gt;
+&lt;p&gt;2) Crear una prueba para ese método.&lt;/p&gt;
+&lt;p&gt;3) Correr la prueba. Fallaba.&lt;/p&gt;
+&lt;p&gt;4) Escribir código que haga pasar la prueba.&lt;/p&gt;
+&lt;p&gt;5) Correr la prueba. Si fallaba volvíamos al punto 4.&lt;/p&gt;
+&lt;p&gt;JUnit te provee de métodos parecidos a:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;assertEquals(valorEsperado, valorCalculado);&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Esa última línea puede fallar o puede pasar. A la vez se crea un árbol de pruebas con todas las que hallamos escrito y cuando lo ejecutamos, a medida que las pruebas van pasando una barra verde se va completando.  Si la barra se completa de color verde significa que todas las pruebas pasaron. Si alguna prueba falla, la barra se vuelve roja.&lt;/p&gt;
+&lt;p&gt;Una de las prácticas es la &lt;strong&gt;recodificación&lt;/strong&gt; (esta nos ayuda a mantener un &lt;strong&gt;diseño simple&lt;/strong&gt;), pero.. como recodificar y saber que no hemos cometidos errores? Luego de realizar un cambio corremos nuevamente las pruebas. Si obtenemos una barra verde estamos listos para el siguiente cambio. Rigurosamente la barra verde nos indica que el sistema sigue pasando las pruebas que antes pasaba, no que no tenga errores, pero en la práctica parece ser una buena aproximación.&lt;/p&gt;
+&lt;p&gt;&lt;img id="image185" src="http://www.juanjoconti.com.ar/wp-content/uploads/2006/11/junitlogo.gif" alt="JUnit"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img id="image186" src="http://www.juanjoconti.com.ar/wp-content/uploads/2006/11/keep.gif" alt="keep de bar green"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img id="image187" src="http://www.juanjoconti.com.ar/wp-content/uploads/2006/11/frogmov.gif" alt="Frog"&gt;&lt;/p&gt;
+&lt;h3&gt;ClubXP&lt;/h3&gt;
+
+&lt;p&gt;Además, como refuerzo para la &lt;strong&gt;Integración continua&lt;/strong&gt; utilizamos &lt;a href="http://subversion.tigris.org/"&gt;Subversion&lt;/a&gt; para mantener ordenas las revisiones que ibamos haciendo del código: &lt;a href="http://code.google.com/p/clubxp/"&gt;clubxp en code.Google&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Saludo&lt;/h3&gt;
+
+&lt;p&gt;Bueno, fue algo de lo que quería contar. En estas fechas de finalización de cursado no escribo casi nada en el blog, así que les dejo un saludo y &lt;strong&gt;Hasta la próxima!&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Facultad</category><category>FRSF</category><category>XP</category><guid>http://www.juanjoconti.com.ar/posts/2006/11/28/1aa-experiencia-xp.html</guid><pubDate>Tue, 28 Nov 2006 00:49:11 GMT</pubDate></item></channel></rss>

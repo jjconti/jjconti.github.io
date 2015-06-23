@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (decoradores)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/decoradores.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Charla: Entendiendo Decoradores en Python [actualizada]</title><link>http://www.juanjoconti.com.ar/posts/2011/05/06/charla-entendiendo-decoradores-en-python-actualizada.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La primer vez que di esta charla fue en el &lt;a href="http://www.juanjoconti.com.ar/2010/05/09/charla-entendiendo-decoradores-en-python/" target="_blank"&gt;PyDay de Rafala en 2010&lt;/a&gt;. De las charlas que tengo en la gatera, es la que más me gusta de momento. Está bien armada y es muy útil para quienes empiezan con Python. Por eso cuando me invitaron a dar una charla en el &lt;a href="http://www.pyday.com.ar/cordoba2011/" target="_blank"&gt;PyDay de Córdoba&lt;/a&gt;, no dude en presentarla.&lt;/p&gt;
+&lt;p&gt;Dejo on line la &lt;a href="http://www.juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti-2.pdf" target="_blank"&gt;versión actualizada&lt;/a&gt; (y &lt;a href="http://www.juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti.txt" target="_blank"&gt;sus fuentes&lt;/a&gt;) ya que los estuve buscando antes de dar la charla y me costó encontrarlos en mi computadora. Subiéndolas a Internet aumento su disponibilidad.&lt;/p&gt;
+&lt;p&gt;Esta charla también fue dada en PyCon Argentina 2010.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img class="aligncenter" title="Entendiendo decoradores en Python - Córdoba 2011" src="http://juanjoconti.com.ar/wp-content/uploads/2011/05/juanjoEnPyDayCba2011.jpg" alt="" width="640" height="480"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>pyday</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2011/05/06/charla-entendiendo-decoradores-en-python-actualizada.html</guid><pubDate>Fri, 06 May 2011 20:59:08 GMT</pubDate></item><item><title>Video de la charla Entendiendo decoradores en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/11/22/video-de-la-charla-entendiendo-decoradores-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://twitter.com/Orfx" target="_blank"&gt;Orfi&lt;/a&gt; se tomó el trabajo de editar una filmación de mi charla en el &lt;a href="http://www.juanjoconti.com.ar/2010/05/09/charla-entendiendo-decoradores-en-python/" target="_blank"&gt;PyDay de Rafaela&lt;/a&gt; con mis slides para armar este video. Muchas gracias!
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;iframe src="http://player.vimeo.com/video/16976108" width="400" height="300" frameborder="0"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="http://vimeo.com/16976108"&gt;entendiendo decoradores&lt;/a&gt; from &lt;a href="http://vimeo.com/user5262473"&gt;Orfx Sch&lt;/a&gt; on &lt;a href="http://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;Al final, durante las preguntas, escribo algo de código Python en la terminal. Lo siguiente es una reproducción:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(a, b):
+
+...     print a, b
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2)
+
+1 2
+
+&amp;gt;&amp;gt;&amp;gt; def f(*a, **kw):
+
+...     print a
+
+...     print kw
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1)
+
+(1,)
+
+{}
+
+&amp;gt;&amp;gt;&amp;gt; f(1, parametro=2)
+
+(1,)
+
+{'parametro': 2}
+
+&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(p1, *a, **kw):
+
+...     print kw['param']
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f()
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() takes at least 1 argument (0 given)
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2, 3, param=0)
+
+0
+
+&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):
+
+...     def _deco(*a, **kw):
+
+...             if kw.get('p'):
+
+...                     return f(*a, **kw)
+
+...             else:
+
+...                     print "No ejecuto."
+
+...     return _deco
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; @deco
+
+... def saludo(*a, **kw):
+
+...     print "hola"
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; saludo()
+
+No ejecuto.
+
+&amp;gt;&amp;gt;&amp;gt; saludo(p=0)
+
+No ejecuto.
+
+&amp;gt;&amp;gt;&amp;gt; saludo(p=1)
+
+hola
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Eventos</category><category>pyday</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/22/video-de-la-charla-entendiendo-decoradores-en-python.html</guid><pubDate>Mon, 22 Nov 2010 03:59:30 GMT</pubDate></item><item><title>Decorando decoradores</title><link>http://www.juanjoconti.com.ar/posts/2010/11/12/decorando-decoradores.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Una de las preguntas que aveces me hacen luego de hablar sobre &lt;a href="http://www.juanjoconti.com.ar/taint/" target="_blank"&gt;Taint Mode&lt;/a&gt; es: una vez que la aplicación pasa de desarrollo a producción, &lt;strong&gt;¿hay alguna forma de deshabilitar los decoradores?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;La biblioteca usa decoradores para marcar entradas no confiables, sumideros sensibles y funciones limpiadoras con la idea de encontrar posibles vulnerabilidades en tiempo de desarrollo. Si en producción no los requerimos más, esos decoradores producen overhead.&lt;/p&gt;
+&lt;p&gt;Entonces... qué se puede hacer? &lt;strong&gt;Editar el código comentando los decoradores no escala&lt;/strong&gt;[0]. Una alternativa es utilizar un nuevo decorador: llamemoslo @apply_decorator y vamos a utilizarlo para controlar mediante alguna condición (por ejemplo una variable en el archivo de configuración) si se debe usar o no el decorador.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;
+&lt;p&gt;COND = True&lt;/p&gt;
+&lt;p&gt;def apply_decorator(d):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;if COND:
+
+    return d
+
+else:
+
+    return lambda f: f
+&lt;/pre&gt;
+
+
+&lt;/pre&gt;
+
+&lt;p&gt;Si la condición es verdadera, se retorna el decorador original, sino una función &lt;em&gt;fake&lt;/em&gt; (implementada utilizando &lt;code&gt;lambda&lt;/code&gt;) que recibe una función y retorna la misma función: un decorador que no hace nada.&lt;/p&gt;
+&lt;p&gt;Un ejemplo de su uso en el REPL de Python:&lt;/p&gt;
+&lt;pre&gt;
+
+&amp;gt;&amp;gt;&amp;gt; @apply_decorator
+
+... def mydeco(f):
+
+...     def inner(*a, **kw):
+
+...             print "decorado"
+
+...             return f(*a, **kw)
+
+...     return inner
+
+... 
+
+&amp;gt;&amp;gt;&amp;gt; mydeco
+
+&lt;function mydeco at&gt;
+
+&amp;gt;&amp;gt;&amp;gt; COND = False
+
+&amp;gt;&amp;gt;&amp;gt; @apply_decorator
+
+... def mydeco(f):
+
+...     def inner(*a, **kw):
+
+...             print "decorado"
+
+...             return f(*a, **kw)
+
+...     return inner
+
+... 
+
+&amp;gt;&amp;gt;&amp;gt; mydeco
+
+&lt;function&gt; at 0xb7753dbc&amp;gt;
+
+&lt;/function&gt;&lt;/function&gt;&lt;/pre&gt;
+
+&lt;p&gt;Podemos aplicarlo directamente a la definición de nuestros decoradores &lt;/p&gt;
+&lt;pre&gt;
+
+@apply_decorator
+
+def mi_decorador(f):
+
+    ...
+
+&lt;/pre&gt;
+
+&lt;p&gt;o al principio de nuestro programa.&lt;/p&gt;
+&lt;pre&gt;
+
+mi_decorador = apply_decorator(mi_decorador)
+
+&lt;/pre&gt;
+
+&lt;p&gt;[0] nessita trademark.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>taint mode</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/12/decorando-decoradores.html</guid><pubDate>Fri, 12 Nov 2010 20:47:38 GMT</pubDate></item><item><title>functools.update_wrapper</title><link>http://www.juanjoconti.com.ar/posts/2010/08/07/functools-update_wrapper.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Este post se alinea con la serie Decoradores en Python (&lt;a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank"&gt;I&lt;/a&gt;, &lt;a href="http://www.juanjoconti.com.ar/2009/07/16/decoradores-en-python-ii/" target="_blank"&gt;II&lt;/a&gt;, &lt;a href="http://www.juanjoconti.com.ar/2009/12/30/decoradores-en-python-iii/" target="_blank"&gt;III&lt;/a&gt;) pero no es tan elaborado como para ser Decoradores en Python (IV) :)&lt;/p&gt;
+&lt;p&gt;Desde Python 2.5, al crear un decorador, se puede utilizar &lt;a href="http://docs.python.org/library/functools.html" target="_blank"&gt;functools.update_wrapper&lt;/a&gt; para quela versión decorada de la función, tenga los atributos  &lt;strong&gt;name&lt;/strong&gt;, &lt;strong&gt;doc&lt;/strong&gt;, &lt;strong&gt;module&lt;/strong&gt; y &lt;strong&gt;dict&lt;/strong&gt; de la función original.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; import functools
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):&lt;/p&gt;
+&lt;p&gt;...     def inner(&lt;em&gt;a, &lt;/em&gt;*kw):&lt;/p&gt;
+&lt;p&gt;...             print "Este decorador no hace nada"&lt;/p&gt;
+&lt;p&gt;...             return f(&lt;em&gt;a, &lt;/em&gt;*kw)&lt;/p&gt;
+&lt;p&gt;...     return inner&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; def saludo():&lt;/p&gt;
+&lt;p&gt;...     print "hola"&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo2 = deco(saludo)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo2()&lt;/p&gt;
+&lt;p&gt;Este decorador no hace nada&lt;/p&gt;
+&lt;p&gt;hola&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo2.&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;'inner'&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):&lt;/p&gt;
+&lt;p&gt;...     def inner(&lt;em&gt;a, &lt;/em&gt;*kw):&lt;/p&gt;
+&lt;p&gt;...             print "Este decorador no hace nada"&lt;/p&gt;
+&lt;p&gt;...             return f(&lt;em&gt;a, &lt;/em&gt;*kw)&lt;/p&gt;
+&lt;p&gt;...     return functools.update_wrapper(inner, f)&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo3 = deco(saludo)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo3()&lt;/p&gt;
+&lt;p&gt;Este decorador no hace nada&lt;/p&gt;
+&lt;p&gt;hola&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo3.&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;'saludo'&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; saludo = saludo3&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Python</category><category>stdlib</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/07/functools-update_wrapper.html</guid><pubDate>Sat, 07 Aug 2010 15:17:30 GMT</pubDate></item><item><title>Charla: Entendiendo Decoradores en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/05/09/charla-entendiendo-decoradores-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Ayer di esta charla en el &lt;a href="http://www.pyday.com.ar/rafaela2010" target="_blank"&gt;primer PyDay en Rafaela&lt;/a&gt;. Estuvo muy bueno, la organización se pasó y tuvieron muy buena asistencia de estudiantes de la universidad y programadores de la ciudad.&lt;/p&gt;
+&lt;p&gt;Les dejo el &lt;a title="Entendiendo Decoradores en Python" href="http://juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti.pdf" target="_blank"&gt;pdf de la charla&lt;/a&gt; y una foto grupal del final del día:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: left;"&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/05/023.jpg"&gt;&lt;img class="aligncenter size-medium wp-image-2233" title="023" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/05/023-300x200.jpg" alt="023" width="300" height="200"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>Eventos</category><category>PyAr</category><category>Python</category><category>rafalea</category><guid>http://www.juanjoconti.com.ar/posts/2010/05/09/charla-entendiendo-decoradores-en-python.html</guid><pubDate>Sun, 09 May 2010 14:19:03 GMT</pubDate></item><item><title>8 de mayo: Python Day en Rafaela</title><link>http://www.juanjoconti.com.ar/posts/2010/05/02/8-de-mayo-python-day-en-rafaela.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El próximo sábado se va a desarrollar en la ciudad de Rafaela un Python Day, un día de charlas para que quienes no conozcan Python puedan acercarse al lenguaje. Vamos a tener muchas charlas introductorias y esperamos pueda aprovechar este evento tanto la comunidad universitaria como la ciudad en general.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;strong&gt;&lt;a href="http://www.pyday.com.ar/rafaela2010/" target="_blank"&gt;http://www.pyday.com.ar/rafaela2010/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Por mi parte voy a estar colaborando con una charla nueva: Entendiendo Decoradores en Python. Esperemos salga bien :)&lt;/p&gt;
+&lt;blockquote&gt;El Python Day es un evento organizado por &lt;a href="http://python.com.ar/"&gt;PyAr&lt;/a&gt; con el apoyo de la &lt;a href="http://ucse.edu.ar/rafaela/sede_rafaela.htm"&gt;Universidad Católica  de Santiago del Estero, Departamento Académico Rafaela&lt;/a&gt;.
+
+
+
+El evento dura un día donde se darán pequeños cursos y charlas  relacionadas a este lenguaje que de a poco va a haciendo su lugar entre  los desarrolladores. Tenemos como intención hacer un espacio en donde  cualquier persona interesada pueda acercarse para preguntar, aprender y  experimentar con estas herramientas.
+
+
+
+El evento se llevará a cabo &lt;a href="http://www.pyday.com.ar/rafaela2010/conference/venue"&gt;acá&lt;/a&gt; a  partir de las 9:00 de la mañana.
+
+
+
+&lt;strong&gt;¿Qué es Python?&lt;/strong&gt;
+
+
+
+&lt;strong&gt;Python&lt;/strong&gt; es un &lt;a href="http://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n"&gt;lenguaje  de programación&lt;/a&gt; &lt;a href="http://es.wikipedia.org/wiki/Lenguaje_interpretado"&gt;interpretado&lt;/a&gt; creado por &lt;a href="http://es.wikipedia.org/wiki/Guido_van_Rossum"&gt;Guido  van Rossum&lt;/a&gt; en el año 1990.
+
+
+
+En la actualidad Python se desarrolla como un proyecto de &lt;a href="http://es.wikipedia.org/wiki/C%C3%B3digo_abierto"&gt;código abierto&lt;/a&gt;,  administrado por la &lt;a href="http://es.wikipedia.org/wiki/Python_Software_Foundation"&gt;Python  Software Foundation&lt;/a&gt;. La última versión estable del lenguaje es la  2.6 (01 de octubre de 2008).
+
+
+
+Fuente: &lt;a href="http://es.wikipedia.org/wiki/Python"&gt;Wikipedia&lt;/a&gt;
+
+
+
+&lt;strong&gt;Quiero participar… ¿Qué Hago?&lt;/strong&gt;
+
+Si lo que querés es asistir a las charlas, solo aparecete por la  universidad el 8 de mayo a partir de las 09:00 y listo (por favor, si es  posible, &lt;a href="http://www.pyday.com.ar/rafaela2010/default/register"&gt;registrate  previamente por web&lt;/a&gt;)&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>Eventos</category><category>PyAr</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/05/02/8-de-mayo-python-day-en-rafaela.html</guid><pubDate>Sun, 02 May 2010 00:29:54 GMT</pubDate></item><item><title>Aplicar un decorador a todas las funciones de un módulo en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En la lista de PyAr &lt;a href="http://www.grulic.org.ar/lurker/message/20100204.020622.c24e333b.en.html" target="_blank"&gt;preguntaron&lt;/a&gt; si había alguna forma de aplicar un decorador a todos las funciones de un módulo. Envié una solución sin probarla, que al verla unos días más tarde parece bastante buena :)&lt;/p&gt;
+&lt;p&gt;La comento aquí con un ejemplo. modulo.py contiene definiciones de funciones:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;def a():
+&lt;pre class="code literal-block"&gt;pass
+&lt;/pre&gt;
+
+
+&lt;p&gt;def b():&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;print 42
+&lt;/pre&gt;
+
+
+&lt;p&gt;def c():&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;a()
+
+b()&amp;lt;/pre&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;y decoradores.py un decorador que imprime el nombre de la función llamada:&lt;/p&gt;
+&lt;pre&gt;def nombrador(f):
+
+    def inner(*a, **kw):
+
+        print "Ejecutando %s" % f.__name__
+
+        return f(*a, **kw)
+
+    return inner&lt;/pre&gt;
+
+&lt;p&gt;(Si no sabés lo que es un decorador, podés leer mi post &lt;a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank"&gt;Decoradores en Python I: Introducción&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;En lugar de modificar las definiciones de funciones en modulo.py para aplicar el decorador a cada una de las funciones, ya sea usando el azúcar sintáctica de Python:&lt;/p&gt;
+&lt;pre&gt;@nombrador
+
+def a():
+
+    ...&lt;/pre&gt;
+
+&lt;p&gt;o mediante una llamada a la función:&lt;/p&gt;
+&lt;pre&gt;a = nombrador(a)&lt;/pre&gt;
+
+&lt;p&gt;podemos agregar el siguiente código al final de modulo.py:&lt;/p&gt;
+&lt;pre&gt;for n,v in locals().items():
+
+   if inspect.isfunction(v) and n != 'nombrador':
+
+       locals()[n] = nombrador(v)&lt;/pre&gt;
+
+&lt;p&gt;Vamos a explicarlo:&lt;/p&gt;
+&lt;p&gt;la llamada a la función built-in locals retorna un diccionario representando el espacio de nombres local: cada clave es un string representando el nombre de un objeto y cada valor es el objeto en si. Iteramos sobre la lista de pares (key, value) del mencionado dict y por cada uno verificamos si:&lt;/p&gt;
+&lt;p&gt;a) es una función (inspect.isfunction es apropiado para esto)&lt;/p&gt;
+&lt;p&gt;b) el nombre no es el del decorador que queremos aplicar (para no aplicar el decorador sobre si mismo!)&lt;/p&gt;
+&lt;p&gt;Si las condiciones a y b se cumplen, podemos guardar en el diccionario del espacio de nombres, bajo el nombre de la función que cumplió las condiciones, una versión decorada de la misma.&lt;/p&gt;
+&lt;p&gt;Agregamos algo más de código a modulo.py para que se llame a las funciones cuando lo ejecutemos:&lt;/p&gt;
+&lt;pre&gt;if __name__ == '__main__':
+
+    a()
+
+    b()
+
+    c()&lt;/pre&gt;
+
+&lt;p&gt;Esta es la salida obtenida:&lt;/p&gt;
+&lt;pre lang="bash"&gt;juanjo@fenix:~/python/muchosdecos$ python modulo.py
+
+Ejecutando a
+
+Ejecutando b
+
+42
+
+Ejecutando c
+
+Ejecutando a
+
+Ejecutando b
+
+42&lt;/pre&gt;
+
+&lt;p&gt;¿Querés probarlo? Bajá &lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/02/muchos.zip"&gt;muchos.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; para acceder a locals() no se puede utilizar iteritems por que el diccionario cambia durante la ejecución.&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>PyAr</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html</guid><pubDate>Sat, 06 Feb 2010 12:35:28 GMT</pubDate></item><item><title>Decoradores en Python (III) - Clases decoradoras</title><link>http://www.juanjoconti.com.ar/posts/2009/12/30/decoradores-en-python-iii.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Siguiendo con la serie de posts sobre decoradores en Python, y fiel al espíritu que los originó (ir mostrando lo que voy aprendido a medida que necesito resolver problemas específicos o descubro aplicaciones concretas) hoy les traigo un nuevo uso para los decoradores en Python: &lt;strong&gt;funciones caché&lt;/strong&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Anteriormente: &lt;a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank"&gt;Decoradores I&lt;/a&gt;, &lt;a href="http://www.juanjoconti.com.ar/2009/07/16/decoradores-en-python-ii/" target="_blank"&gt;Decoradores II&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Funciones caché&lt;/h3&gt;
+&lt;p&gt;Una función caché[0], es aquella que siempre que se le pide que compute un resultado para un grupo de parámetros dado, primero se fija en una memoria interna si no realizó ya el cálculo. Si ya lo hizo, retorna el valor computado anteriormente. Si aún no lo hizo, computa el valor, lo guarda en una memoria interna y luego lo retorna.&lt;/p&gt;
+&lt;p&gt;Esta técnica es muy útil en funciones que requieren un cómputo intensivo y obtener un resultado lleva mucho tiempo. Permita acelerar sustancialmente los tiempos de ejecución a cambio de utilizar más memoria.&lt;/p&gt;
+&lt;p&gt;La siguiente es una forma de implementarlo en Python para un computo en particular:&lt;/p&gt;
+&lt;pre&gt;cache = {}
+
+def fmem(arg):
+
+    if arg in cache:
+
+        print "Recuperando valor de la memoria"
+
+        return cache[arg]
+
+    else:
+
+        r = (arg ** 10) * (arg ** -5)
+
+        cache[arg] = r
+
+        return r&lt;/pre&gt;
+
+&lt;p&gt;Como memoria se utiliza un diccionario y el argumento de la función fmem es la clave del diccionario[1].&lt;/p&gt;
+&lt;p&gt;Este es el resultado de utilizarla en el intérprete interactivo:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; fmem(1)
+
+1.0
+
+&amp;gt;&amp;gt;&amp;gt; fmem(2)
+
+32.0
+
+&amp;gt;&amp;gt;&amp;gt; fmem(2)
+
+Recuperando valor de la memoria
+
+32.0&lt;/pre&gt;
+
+&lt;h3&gt;Decoradores con estado&lt;/h3&gt;
+
+&lt;p&gt;En esta implementación, la técnica de memorización se mezcla con el cálculo que era el objetivo original de la función. Si queremos aplicar la técnica sobre distintas funciones vamos a tener que entrometer la implementación de la caché en todas las funciones. Peor aún, si en el futuro se quiere realizar un cambio en la forma de almacenar y recuperar los valores almacenados, ¡tendríamos que modificar todas las funciones! La forma de resolver estos problemas es implementando un decorador que agregue esta funcionalidad a las funciones decoradas: resolvemos ambos problemas, el de intrución y el de mantenibilidad. Todo el código que provee esta funcionalidad extra es encapsulado en el decorador.&lt;/p&gt;
+&lt;p&gt;Las funciones decoradoras, como las que vimos en los anteriores artículos, no nos sirven para esta tarea. Necesitamos un decorador que pueda almacenar un estado. Ya que cualquier &lt;em&gt;callable&lt;/em&gt; puede ser un decorador, &lt;strong&gt;implementaremos el decorador mediante una clase&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Funciones caché con clases decoradoras&lt;/h3&gt;
+
+&lt;p&gt;La definición de la clase decoradora consiste en dos métodos:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt; un método de inicialización, dónde se inicializa el atributo cache con un diccionario vacío y se guarda una referencia a la función decorada.&lt;/li&gt;
+
+    &lt;li&gt;un método __call__ que será ejecutado cuando se llame a la función decorada.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;pre&gt;class mem(object):
+
+
+
+    def __init__(self, g):
+
+        self.cache = {}
+
+        self.g = g
+
+
+
+    def __call__(self, arg):
+
+        if arg in self.cache:
+
+            print "Recuperando valor de la memoria"
+
+            return self.cache[arg]
+
+        else:
+
+            r = self.g(arg)
+
+            self.cache[arg] = r
+
+            return r&lt;/pre&gt;
+
+&lt;p&gt;Luego, lo único que resta es decorar todas las funciones que querramos "dotar de memoria" para obtener mejoras de performance en su ejecución:&lt;/p&gt;
+&lt;pre&gt;@mem
+
+def f(arg):
+
+    return (arg ** 10) * (arg ** -5)&lt;/pre&gt;
+
+&lt;p&gt;La salida obtenida al ejecutar la función decorada en el intérprete interactivo es la misma qué en el ejemplo anterior:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; fmem(1)
+
+1.0
+
+&amp;gt;&amp;gt;&amp;gt; fmem(2)
+
+32.0
+
+&amp;gt;&amp;gt;&amp;gt; fmem(2)
+
+Recuperando valor de la memoria
+
+32.0&lt;/pre&gt;
+
+&lt;h3&gt;Más&lt;/h3&gt;
+
+&lt;p&gt;La implementación del decorador mem solo sirve para decorar funciones que reciben un único argumento. Podemos mejorar su definición para que pueda decorar funciones con cualquier número de argumentos:&lt;/p&gt;
+&lt;pre&gt;class mem2(object):
+
+
+
+    def __init__(self, g):
+
+        self.cache = {}
+
+        self.g = g
+
+
+
+    def __call__(self, *args):
+
+        if args in self.cache:
+
+            print "Recuperando valor de la memoria"
+
+            return self.cache[args]
+
+        else:
+
+            r = self.g(*args)
+
+            self.cache[args] = r
+
+            return r&lt;/pre&gt;
+
+&lt;pre&gt;@mem2
+
+def f2(arg1, arg2):
+
+    return (arg1 ** 10) * (arg2 ** -5)&lt;/pre&gt;
+
+&lt;h3&gt;Notas&lt;/h3&gt;
+
+&lt;p&gt;[0] Se puede leer más sobre este concepto en Caching Function Results:Faster Arithmetic by Avoiding Unnecessary Computation de Stephen E. Richardson [SMLI TR-92-1]&lt;/p&gt;
+&lt;p&gt;[1] Esta implementación tiene la limitación de que si el argumento de la función es un objeto mutable, no podrá ser usado como clave de un diccionario y se lanzará una excepción.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/12/30/decoradores-en-python-iii.html</guid><pubDate>Wed, 30 Dec 2009 23:23:55 GMT</pubDate></item><item><title>Decoradores en Python (II) - Decoradores con parámetros</title><link>http://www.juanjoconti.com.ar/posts/2009/07/16/decoradores-en-python-ii.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Un año después del primer artículo, llega el segundo. ¿Por qué tardó tanto? Por lo general mis artículos técnicos surgen de algún problema que se me presenta y para el cual necesito investigar antes de poder solucionarlo. El artículo anterior cubría todo lo que necesité hacer con decoradores en Python hasta el mes pasado, cuando necesité decoradores con parámetros.&lt;/p&gt;
+&lt;p&gt;Si no leíste el artículo anterior, te recomiendo que lo hagas antes de seguir: &lt;a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank"&gt;Decoradores en Python (I)&lt;/a&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Decoradores con Parámetros&lt;/h3&gt;
+&lt;p&gt;Cuando quise escribir un decorador con un parámetro me encontré con errores que ni siquiera entendía. No solo que los estaba escribiendo mal, sino que también los estaba usando mal. Te voy a evitar el sufrimiento.&lt;/p&gt;
+&lt;p&gt;Un decorador con parámetro se aplica así (siendo deco un decorador y 1 el argumento utilizado):&lt;/p&gt;
+&lt;pre&gt;@deco(1)
+
+def funcion_a_decorar(a, b, c):
+
+    pass&lt;/pre&gt;
+
+&lt;p&gt;Creo que la raíz de mi confusión fue el azúcar sintáctica (si, el @). Así que vamos a sacarlo y ver cómo se usaría este decorador en una versión de Python más vieja:&lt;/p&gt;
+&lt;pre&gt;def funcion_a_decorar(a, b, c):
+
+    pass&lt;/pre&gt;
+
+&lt;pre&gt;funcion_a_decorar = deco(1)(funcion_a_decorar)&lt;/pre&gt;
+
+&lt;p&gt;Esto luce más claro para mi: deco es llamado con un argumento y el resultado tiene que ser algún objeto que pueda ser llamado con una función como parámetro para... decorarla. ¿Se entiende la idea? Vamos a definir deco, va a recibir un parámetro y utilizarlo para crear un decorador como los del artículo anterior. Finalmente retorna este decorador interno.&lt;/p&gt;
+&lt;p&gt;Agreguemos semántica al ejemplo. Mi decorador con parámetro recibirá un número, este número se usará para indicar cuantas veces queremos ejecutar la función decorada.&lt;/p&gt;
+&lt;pre&gt;def deco(i):
+
+    def _deco(f):
+
+        def inner(*args, **kwargs):
+
+            for n in range(i):
+
+                r = f(*args, **kwargs)
+
+            return r
+
+        return inner
+
+    return _deco&lt;/pre&gt;
+
+&lt;p&gt;Como una convención personal, uso para el nombre de la segunda función _{nombre de la primer funcion}. Notemos entonces que _deco es un decorador dinámico, dependiendo del parámetro i, la función inner se compilará de una forma o de otra. Apliquemos el decorador:&lt;/p&gt;
+&lt;pre&gt;@deco(2)
+
+def saluda(nombre):
+
+    print "hola", nombre&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saluda("juanjo")
+
+hola juanjo
+
+hola juanjo&lt;/pre&gt;
+
+&lt;pre&gt;@deco(3)
+
+def suma1():
+
+    global n
+
+    n += 1&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; n = 0
+
+&amp;gt;&amp;gt;&amp;gt; suma1()
+
+&amp;gt;&amp;gt;&amp;gt; n
+
+3&lt;/pre&gt;
+
+&lt;p&gt;Cuando aplicamos deco, se ejecuta deco, se compila _deco, se aplica _deco a la función que definimos y se compila inner utilizando un valor dado para i. Cuando llamamos a nuestra función (saluda, o suma1, en los ejemplos) se ejecuta inner.&lt;/p&gt;
+&lt;p&gt;¡Espero que se haya entendido!&lt;/p&gt;
+&lt;h3&gt;Si no...&lt;/h3&gt;
+
+&lt;p&gt;Si en lo anterior no fui lo suficientemente claro (por favor quejate en un comentario), no todo está perdido. Te puedo entregar un decorador para decoradores que convierte a tu decorador en un decorador con parámetros. ¿Qué tal?&lt;/p&gt;
+&lt;pre&gt;def decorador_con_parametros(d):
+
+    def decorador(*args, **kwargs):
+
+        def inner(func):
+
+            return d(func, *args, **kwargs)
+
+        return inner
+
+    return decorador&lt;/pre&gt;
+
+&lt;p&gt;Original usando lambda en &lt;a href="http://pre.activestate.com/recipes/465427/" target="_blank"&gt;http://pre.activestate.com/recipes/465427/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Se usa así:&lt;/p&gt;
+&lt;pre&gt;@decorador_con_parametros
+
+def deco(func, i):
+
+    def inner(*args, **kwargs):
+
+        for n in range(i):
+
+           r = func(*args, **kwargs)
+
+        return r
+
+    return inner&lt;/pre&gt;
+
+&lt;pre&gt;@deco(2)
+
+def saludar(nombre):
+
+    print "chau", nombre&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludar("juanjo")
+
+chau juanjo
+
+chau juanjo&lt;/pre&gt;
+
+&lt;h3&gt;Para la próxima&lt;/h3&gt;
+
+&lt;p&gt;Para el próximo artículo voy a explorar utilizar clases decoradoras en lugar de funciones decoradoras. Si bien todavía no lo terminé de investigar, me parece un enfoque que permite escribir código más organizado. Veremos! &lt;strong&gt;update:&lt;/strong&gt; &lt;a href="http://www.juanjoconti.com.ar/2009/12/30/decoradores-en-python-iii/" target="_blank"&gt;aquí está&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/07/16/decoradores-en-python-ii.html</guid><pubDate>Thu, 16 Jul 2009 16:50:46 GMT</pubDate></item><item><title>Decoradores en Python (I) - Introducción</title><link>http://www.juanjoconti.com.ar/posts/2008/07/11/decoradores-en-python-i.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Este artículo es el primero de un plan de 3 artículos. Empezamos con una introducción a los decoradores en Python.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Funciones&lt;/h3&gt;
+&lt;p&gt;Cómo todo en Python, las funciones son objetos. La forma más común de crear un objeto de tipo &amp;lt;function&amp;gt;  es mediante el keyword def:&lt;/p&gt;
+&lt;pre&gt;def saludo():
+
+    print "Hola"&lt;/pre&gt;
+
+&lt;p&gt;Al realizar esta definición, el cuerpo de la función es compilado pero no ejecutado y el objeto de tipo &amp;lt;function&amp;gt;  es asociado al nombre 'saludo'. Mediante este nombre podemos referirnos al objeto:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo
+
+&amp;lt;function saludo at 0xb7d82fb4&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;y utilizando la notación de paréntesis podemos llamar a (ejecutar) la función.&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo()
+
+Hola&lt;/pre&gt;
+
+&lt;p&gt;Una función puede tener parámetros (los parámetros son nombres a los que podemos referirnos en el cuerpo de la función):&lt;/p&gt;
+&lt;pre&gt;def saludo2(nombre):
+
+    print "Hola %s" % nombre&lt;/pre&gt;
+
+&lt;pre&gt;def saludo3(nombre, apellido):
+
+    print "Hola %s %s" % (nombre, apellido)&lt;/pre&gt;
+
+&lt;p&gt;Cuando llamamos a la función con argumentos (los argumentos son valores que en principio se asocian uno a uno a los parámetros de la función):&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo2("Ceci")
+
+Hola Ceci&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo3("Ceci", "Pucci")
+
+Hola Ceci Pucci&lt;/pre&gt;
+
+&lt;p&gt;Los últimos n parámetros pueden tener valores por defecto, entonces estas definiciones y sus consiguientes ejecuciones son válidas:&lt;/p&gt;
+&lt;pre&gt;def saludo4(nombre, apellido="Conti"):
+
+    print "Hola %s %s" % (nombre, apellido)&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo4("Juanjo")
+
+Hola Juanjo Conti&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo4("Juanjo", "Garau")
+
+Hola Juanjo Garau&lt;/pre&gt;
+
+&lt;pre&gt;def saludo5(nombre="Juanjo", apellido="Conti"):
+
+    print "Hola %s %s" % (nombre, apellido)&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo5()
+
+Hola Juanjo Conti&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo5("Mary")
+
+Hola Mary Conti&lt;/pre&gt;
+
+&lt;p&gt;Los últimos n argumentos pueden ser argumentos nombrados, es decir utilizando el nombre de los parámetros con los que el argumento se debe asociar. En las siguientes ejecuciones se pueden ver ejemplos de esto:&lt;/p&gt;
+&lt;pre&gt;def saludo6(tratamiento, nombre, apellido):
+
+    print "Hola %s %s %s" % (tratamiento, nombre, apellido)&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo6("Sr.", apellido="Conti", nombre="Juanjo")
+
+Hola Sr. Juanjo Conti&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo6("Sr.", "Juanjo", apellido="Conti")
+
+Hola Sr. Juanjo Conti&lt;/pre&gt;
+
+&lt;p&gt;Los parámetros de una función pueden terminar con &lt;em&gt;&amp;lt;nombre&amp;gt;  (una tupla con los últimos argumentos posicionales) y/o &lt;/em&gt;*&amp;lt;nombre&amp;gt;  (un diccionario con los últimos argumentos nombrados).&lt;/p&gt;
+&lt;pre&gt;def saludo7(tratamiento, *args):
+
+    print "Hola %s %s" % (tratamiento, " ".join(args))&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo7("Sr.", "Juanjo", "Conti")
+
+Hola Sr. Juanjo Conti&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; saludo7("Sr.", "Juanjo", "Conti", "Garau")
+
+Hola Sr. Juanjo Conti Garau&lt;/pre&gt;
+
+&lt;p&gt;Notemos que esta forma de definir una función es bastante útil cuando no sabemos el número de argumentos que se recibirán.&lt;/p&gt;
+&lt;p&gt;La siguiente es la forma más genérica de definir una función:&lt;/p&gt;
+&lt;pre&gt;def saludo8(*args, **kwargs):
+
+    pass&lt;/pre&gt;
+
+&lt;h3&gt;Decoradores&lt;/h3&gt;
+
+&lt;p&gt;Un decorador es una función 'd' que recibe como argumento otra función 'a' y retorna una nueva función 'b'. La nueva función 'b' es la función 'a' decorada con 'd'.&lt;/p&gt;
+&lt;p&gt;Supongamos que queremos avisarle a un sistema de seguridad cada vez que se ejecutan las funciones abrir_puerta y cerrar_puerta. Para hacer una simplificación, el aviso simplemente será imprimir por un mensaje en la pantalla. Podemos escribir el siguiente 'decorador':&lt;/p&gt;
+&lt;pre&gt;def avisar(f):
+
+    def inner(*args, **kwargs):
+
+        f(*args, **kwargs)
+
+        print "Se ha ejecutado %s" % f.__name__
+
+    return inner&lt;/pre&gt;
+
+&lt;p&gt;Las siguientes son las funciones a decorar:&lt;/p&gt;
+&lt;pre&gt;def abrir_puerta():
+
+    print "Abrir puerta"
+
+
+
+def cerrar_puerta():
+
+    print "Cerrar puerta"&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; abrir_puerta()
+
+Abrir puerta
+
+&amp;gt;&amp;gt;&amp;gt; cerrar_puerta()
+
+Cerrar puerta&lt;/pre&gt;
+
+&lt;p&gt;Y ahora solo nos limitamos a seguir la definción que di al principio de un decorador:&lt;/p&gt;
+&lt;pre&gt;abrir_puerta = avisar(abrir_puerta)
+
+cerrar_puerta = avisar(cerrar_puerta)&lt;/pre&gt;
+
+&lt;p&gt;Listo!, ambas funciones han sido decoradas:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; abrir_puerta()
+
+Abrir puerta
+
+Se ha ejecutado abrir_puerta
+
+&amp;gt;&amp;gt;&amp;gt; cerrar_puerta()
+
+Cerrar puerta
+
+Se ha ejecutado cerrar_puerta&lt;/pre&gt;
+
+&lt;h3&gt;Azúca sintáctica&lt;/h3&gt;
+
+&lt;p&gt;En Python 2.3, la anterior era la forma de decorar una función. A partir de Python 2.4 se a añadido azúcar sintáctica al lenguaje que nos permite hacer lo mismo de esta forma:&lt;/p&gt;
+&lt;pre&gt;@avisar
+
+def abrir_puerta():
+
+    print "Abrir puerta"
+
+
+
+@avisar
+
+def cerrar_puerta():
+
+    print "Cerrar puerta"&lt;/pre&gt;
+
+&lt;p&gt;Esta es una forma mucho más visual de hacerlo.&lt;/p&gt;
+&lt;h3&gt;Encadenando decoradores&lt;/h3&gt;
+
+&lt;p&gt;La decoración de funciones puede encadenarse. Para ejemplificarlo vamos a suponer ahora que solo usuarios autenticados en el sistema pueden ejecutar las funciones abrir_puerta y cerrar puerta.&lt;/p&gt;
+&lt;p&gt;Nuevamente hacemos una simplificación. Existe la variable AUTHENTICATED que indica el estado del usuario actual. Si el usuario no está autenticado y se intente ejecutar alguna de las funciones, una excepción es lanzada.&lt;/p&gt;
+&lt;pre&gt;def autenticado(f):
+
+    def inner(*args, **kwargs):
+
+        if AUTHENTICATED:
+
+            f(*args, **kwargs)
+
+       else:
+
+           raise Exception
+
+    return inner&lt;/pre&gt;
+
+&lt;p&gt;Luego, la definición de abrir_puerta y cerrar_puerta debería ser:&lt;/p&gt;
+&lt;pre&gt;@autenticado
+
+@avisar
+
+def abrir_puerta():
+
+    print "Abrir puerta"
+
+
+
+@autenticado
+
+@avisar
+
+def cerrar_puerta():
+
+    print "Cerrar puerta"&lt;/pre&gt;
+
+&lt;p&gt;Con AUTHENTICATED = True:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; cerrar_puerta()
+
+Cerrar puerta&lt;/pre&gt;
+
+&lt;p&gt;Se ha ejecutado cerrar_puerta&lt;/p&gt;
+&lt;p&gt;Pero si AUTHENTICATED = False:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; cerrar_puerta()
+
+Traceback (most recent call last):
+
+File "&amp;lt;stdin&amp;gt; ", line 1, in &amp;lt;module&amp;gt;
+
+File "&amp;lt;stdin&amp;gt; ", line 6, in inner
+
+Exception&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;update:&lt;/strong&gt; &lt;a href="http://www.juanjoconti.com.ar/2009/07/16/decoradores-en-python-ii/" target="_blank"&gt;2° entrega&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2008/07/11/decoradores-en-python-i.html</guid><pubDate>Fri, 11 Jul 2008 01:30:14 GMT</pubDate></item></channel></rss>

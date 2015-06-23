@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 14) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-14.html">
+
+
+
+        <link rel="prev" href="index-15.html" type="text/html">
+        <link rel="next" href="index-13.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/10/09/viendo-a-los-conectores-logicos-como-relaciones-entre-conjuntos.html" class="u-url">Viendo a los conectores lógicos como relaciones entre conjuntos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/10/09/viendo-a-los-conectores-logicos-como-relaciones-entre-conjuntos.html" rel="bookmark"><time class="published dt-published" datetime="2007-10-09T00:46:30+00:00" title="2007-10-09 00:46">2007-10-09 00:46</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/10/09/viendo-a-los-conectores-logicos-como-relaciones-entre-conjuntos.html#disqus_thread" data-disqus-identifier="cache/posts/2007/10/09/viendo-a-los-conectores-logicos-como-relaciones-entre-conjuntos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Mi amigo Joel estudia Filosofía en <a title="UNR" href="http://www.unr.edu.ar" target="_blank">Rosario</a> y este fin de semana estuvimos charlando sobre <strong>lógica</strong>. Durante la charla me  enseño que los conectores lógicos se pueden pensar como relaciones entre conjuntos. Yo nunca los había visto así.</p>
+<p>Esta forma de pensarlos es a veces muy útil y sirve para darnos cuenta cual es el conector indicado para representar cierto conocimiento. Por ejemplo, muchas veces me encontré queriendo representar conocimiento del tipo <em>"Los conejos son blancos"</em> y errónea e instintivamente escribía:</p>
+<p><code></code></p>
+<p>B(x): x es blanco</p>
+<p>C(x): x es conejo</p>
+<p><code></code></p>
+<p>C(x) ^ B(x)</p>
+<p></p>
+<p>Lo cual es un error. La forma correcta de representar ese conocimiento es:</p>
+<p><code></code></p>
+<p>C(x) -&gt; B(x)</p>
+<p></p>
+<p>La implicación entre C(x) y B(x) puede entenderse una forma muy simple:</p>
+<p>C es el conjunto de todos los conejos y B es el conjunto de todas las cosas blancas.</p>
+<p>Recordemos que la información que queremos representar es <em>"Los conejos son blancos"</em>, enfatisando: <em>Todos</em> los conejos son blancos. No hay conejos grises o negros, todos son blancos.</p>
+<p>El ejemplo en cuestión no era este, sino otro, pero lo importante es que Joel me explicó que la implicación es equivalente a la relación entre conjuntos de inclusión e hizo un dibujo parecido a este:</p>
+<p></p>
+<p style="text-align: center;"><img src="wp-content/uploads/2007/10/conejos_blancos.png" alt="Conejos blancos"></p>
+<p>En el dibujo se ve claramente el exacto conocimiento que queríamos representar: si algo es conejo, entonces es blanco. Si pertenece al conjunto C entonces pertenece al conjunto B. Porque el conjunto B incluye al conjunto C. El conjunto de las cosas blancas incluye al conjunto de los conejos.</p>
+<p>El resto de los conectores lógicos también pueden verse como relaciones entre conjuntos.</p>
+<!--more-->
+
+<p><strong>AND : intersección</strong></p>
+<p>AND o conjunción, muchas veces simbolizado con ^, es verdadero cuando los dos predicados que conecta lo son. Así pues  <code>B(x) ^ A(x)</code> será verdadero cuando x pertenezca tanto a B como a A.</p>
+<p><img src="wp-content/uploads/2007/10/and1.png" alt="AND sin corchetes"></p>
+<p><strong>OR: unión</strong></p>
+<p>OR o disyunción  es una relación menos estricta ya que para ser verdadera solo necesita que uno de sus predicados sea verdadero. En el ejemplo anterior, que x pertenezca a B o a A. Eventualmente podría pertenecer a ambos conjuntos.</p>
+<p><img src="wp-content/uploads/2007/10/or1.png" alt="OR sin corchetes"></p>
+<p><strong>XOR: unión - intersección</strong></p>
+<p>Unión MENOS intersección. La disyunción exclusiva es verdadera cuando x pertenece exclusivamente a uno de los conjuntos, pero es falsa cuando pertenece a ambos.</p>
+<p><img src="wp-content/uploads/2007/10/xor.png" alt="XOR"></p>
+<p><strong>-&gt; : inclusión</strong></p>
+<p>Es el caso del ejemplo de los conejos con el que empezó este post.</p>
+<p><img src="wp-content/uploads/2007/10/imp1.png" alt="IMP sin corchetes"></p>
+<p><strong>&lt;-&gt; : mutua inclusión</strong></p>
+<p>La doble implicación es un caso especial de la implicación ya que se define como <code>A -&gt; B AND B -&gt; A</code>. Así mismo su representación en forma de conjuntos es un caso especial de la inclusión. En el dibujo puede verse claramente que cuando decimos <code>A(x) &lt;-&gt; B(x)</code> estamos diciendo que cualquier elemento x que pertenezca a A también pertenece a B.</p>
+<p><img src="wp-content/uploads/2007/10/bimp.png" alt="bimp"></p>
+<p><strong>NOT : no pertenencia</strong></p>
+<p>Todos los conectores pueden pensarse como conjuntos: <code>NOT A(x)</code> significa que el elemento x no pertenece a A.</p>
+<p style="text-align: center;"><img src="wp-content/uploads/2007/10/not.png" alt="NOT"></p>
+
+<p>Para finalizar: todos los conectores lógicos pueden pensarse como relaciones entre conjuntos. Si se crean conectores a partir de algunos de los listados anteriormente, también se podrán definir las relaciones entre conjuntos correspondientes.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/10/01/3-razones-fundamentales-por-las-cuales-el-estado-debe-usar-software-libre.html" class="u-url">3 razones fundamentales por las cuales el Estado debe usar Software Libre</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/10/01/3-razones-fundamentales-por-las-cuales-el-estado-debe-usar-software-libre.html" rel="bookmark"><time class="published dt-published" datetime="2007-10-01T14:26:24+00:00" title="2007-10-01 14:26">2007-10-01 14:26</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/10/01/3-razones-fundamentales-por-las-cuales-el-estado-debe-usar-software-libre.html#disqus_thread" data-disqus-identifier="cache/posts/2007/10/01/3-razones-fundamentales-por-las-cuales-el-estado-debe-usar-software-libre.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Plasmo en el blog esta idea por que me parece importante compartirla.</p>
+<p>Primero repacemos dos conceptos:</p>
+<p></p>
+<h3>Software Libre</h3>
+<p>Cuando hablamos de <em>Software Libre</em> nos referimos a software que da a sus usuarios una suma de libertades. La libertad de ejecutar, copiar, distribuir, estudiar, cambiar y mejorar. De un modo más preciso, un software es considerado libre cuando le da a todos sus usuarios estas 4 libertades:</p>
+<ul>
+
+    <li>La libertad de usar el programa, con cualquier propósito (libertad 0).</li>
+
+    <li>La libertad de estudiar el funcionamiento del programa, y adaptarlo a las necesidades (libertad 1).</li>
+
+    <li>La libertad de distribuir copias, con lo que puede ayudar a otros (libertad 2).</li>
+
+    <li>La libertad de mejorar el programa y hacer públicas las mejoras, de modo que toda la comunidad se beneficie (libertad 3)</li>
+
+</ul>
+
+<h3>Software Privativo</h3>
+
+<p>En oposición al tipo de software que da libertades a sus usuarios, se considera <em>Software Privativo</em> a aquel que limite su copia, ejecución, distribución, estudio o modificación.</p>
+<p>Recibir un software y tener prohibido darle copias de ese software a nuestros compañeros es un claro ejemplo de <em>Software Privativo</em>. También lo es software que no podemos modificar, ya sea porque su código fuente es inaccesible (no nos fue proporcionado y solo disponemos de una versión ejecutable del software) o porque (a pesar de disponer del código fuente, como es común en los programas escritos en lenguajes interpretados) su licencia de uso nos lo impide.</p>
+<p>Para más información sobre Software Libre y Privativo, así como definiciones más exhaustivas, se puede visitar el sitio web del proyecto GNU: <a href="http://www.gnu.org/philosophy/philosophy.es.html" title="Filosofía GNU" target="_blank">http://www.gnu.org/philosophy/philosophy.es.html</a></p>
+<p>Dadas las dos definiciones previas enunciamos:</p>
+<p><strong>El estado no puede usar Software Privativo para cumplir sur rol, si lo hace está traicionando la confianza del pueblo.</strong></p>
+<p>En el resto del post se justifica esta afirmación. <!--more--></p>
+<h3>¿Por qué?</h3>
+
+<p>Hoy vivismo en la llamada <em>Sociedad de la Información</em>. Muchas de las actividades que realizamos (como pagar impuestos o estudiar en la universidad) son replicadas en datos procesados por computadoras y archivados en soportes digitales. Muchas veces estamos en contacto con estas computadoras sin siquiera darnos cuenta o pensar en ello: cuando sacamos dinero del banco, pagamos por combustible o recibimos un <em>ticket</em> luego de comprar alimentos.</p>
+<p>Entidades públicas y privadas hacen uso de este tipo de nuevas tecnologías para llevar a cabo de forma más eficiente sus actividades. El Estado imprimiendo impuestos para su cobro es un ejemplo de esto, pero por supuesto no el único.</p>
+<p>En esta Sociedad de la Información el estado <em>necesita</em> utilizar Tecnologías de la Información para llevar a cabo una de sus funciones: mantener los registros públicos. Registros que indican quienes somos, que poseemos o que hacemos. Estos datos no <em>pertenecen</em> al estado, sino que son de los ciudadanos, pertenecen a la nación.</p>
+<p>Cuando digo que <em>necesita</em> hacerlo trato de expresar que <em>imperiosamente necesita hacerlo</em>. No tiene otra alternativa, ya que no hacerlo así (no utilizar Tecnologías de Información para realizar las tareas que lo demanden) implicaría llevar un ritmo imposible de emparejar con el resto del mundo y se auto aislaría.</p>
+<p><strong>Cuando la administración pública maneja los datos de los ciudadanos con Tecnologías de la Información debe asegurarse de respetar 3 principios.</strong></p>
+<h4>(1) Seguridad</h4>
+
+<p>Debe asegurarse de que nadie que no tenga el derecho de hacerlo acceda o altere los datos. También debe asegurarse de que nadie pueda evitar que los ciudadanos tengan acceso a esos datos.</p>
+<h4>(2) Persistencia</h4>
+
+<p>Debe tener en cuenta la persistencia de la información. Hay información que debe guardarse por 15, 50 o incluso 100 años. Tal vez no existe información que <em>debamos</em> guardar por tanto tiempo, pero de todas formas tenemos que poder hacerlo si así lo queremos, para utilizarla por ejemplo con fines estadísticos.</p>
+<p>Tengamos en cuenta que estamos hablando de guardar información por más tiempo que el que la computación lleva existiendo.</p>
+<h4>(3) Transparencia</h4>
+
+<p>Cuando la administración pública usa software, lo está haciendo para implementar mandatos de la Ley. Y debe implementarla de una forma que pueda ser verificada por los ciudadanos. Ellos deben poder asegurarse de que la la ley se está siguiendo correctamente. Esto es fácil de hacer cuando se usas procedimientos manuales, pero cuando estos procedimientos son implementados parcial o totalmente en software, se necesita saber <em>que</em> hace el software. Si no se sabe, puede suceder que el software esté haciendo cosas en contra de la ley sin que nos enteremos. Si de alguna forma nos damos cuenta de que algo se está haciendo en contra de la ley, tampoco podríamos cambiarlo!</p>
+<h3>Justificación</h3>
+
+<p>De los 3 principios <strong>Persistencia</strong> es el único que podría cumplirse usando Software Privativo. Podría cumplirse solo si quien produce el software se compromete a adherirse a estándares libres, almacenando los datos que manejan exclusivamente con formatos considerados estándares libres y comunicándolos exclusivamente con protocolos considerados estándares libres. Solo en este caso el uso de Software Privativo podría no objetarse (para el cumplimiento de este principio), pero.. ¿hay algún Software Privativo que haga esto? ¿Algún productor de Software Privativo nunca cayó en la tentación de imponer su propio estándar?</p>
+<p>Si bien sería teóricamente posible utilizar Software Privativo y cumplir con este principio, todavía existen otros 2 principios que se deben respetar.</p>
+<p>Con Software Libre siempre se conoce la forma en que los datos son almacenados y comunicados.</p>
+<p><strong>Seguridad</strong>. Si bien el Software Libre no es naturalmente más seguro que el Software Privativo (ambos pueden tener <em>bugs</em>, los errores de programación simplemente suceden) insertar vulnerabilidades en forma intencional es mucho más difícil hacerlo en el primero.</p>
+<p>En el Software Libre el código fuente está disponible para ser examinado por cualquiera que quiera hacerlo y esto es justamente lo que hace que sea en extremo difícil, sino imposible, esconder en él instrucciones maliciosas como sería una puerta trasera. En la práctica esta dificultad aumenta a medida que el software en cuestión tiene más usuarios y desarrolladores. La <a href="http://es.wikipedia.org/wiki/Ley_de_Linus" title="Ley de Linus" target="_blank">Ley de Linus</a> enuncia que <em>Dados muchos ojos, todos los errores serán obvios.</em></p>
+<p>El tercer principio, <strong>Transparencia</strong>,  SI es inherente al Software Libre y está relacionado con el principio anterior. La segunda libertad consiste en poder estudiar cómo el software está hecho. Esto permite a los usuarios del software, a los responsables de su funcionamiento (en este caso el Estado) o a quienes son afectados por este (los ciudadanos) auditar cómo se esta implementando la ley. Si alguien detecta un error puede corregirlo y verificar que el error ha desaparecido (si no posee las habilidades necesarias para corregirlo puede contratar a alguien que lo haga por él, pero no esta limitado de otra forma). Eventualmente la mejora podrá ser incorporada al software original.</p>
+<p>Otras razones pueden darse para justificar el uso de Software Libre en el Estado y estas mismas pueden desarrollarse con más profundidad. Mucha documentación al respeto está disponible en Internet. Pero creo que estos 3 puntos son claves y es importante que los tengamos presente.</p>
+<h3>Una cuarta razón</h3>
+
+<p>No todos los países son monoculturales, y esto es especialmente cierto en América Latina. Hay países que se han comprometido en mantener la cultura de sus pueblos originarios. Una forma de hacer esto es manteniendo los registros públicos en las lenguas nativas del país (lenguas sin importancia comercial, pero muy importantes para el país). No hay esperanza de que las empresas de Software Privativo den soporte a estas lenguas, pero si se usa Software Libre los propios países pueden soportarlas.</p>
+<h3>Fuente e ideas</h3>
+
+<p>Este artículo está basado en un <a href="http://ia300115.us.archive.org/2/items/3_do_t1_20h_3-Silveira/3_do_t1_20h_3-Silveira_hi.mp4" title="Video Federico Heiz" target="_blank">video en el que habla Federico Heinz</a>. El video es referenciado desde <a href="http://en.wikipedia.org/wiki/Federico_Heinz" title="Federico heinz" target="_blank">wikipedia en inglés</a>.</p>
+<p>En el video se mencionan los 3 principios pero no le dieron tiempo a Fede para justificar los 3. Para completar la información utilicé partes de <a href="http://www.proposicion.org.ar/doc/razones.html" title="Razones" target="_blank">este artículo</a>.</p>
+<p>Más información al respecto puede encontrarse en el <a href="http://www.vialibre.org.ar/category/activismo/software-libre-en-administracion-publica/" title="FVL" target="_blank">sitio web de Fundación Vía Libre</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/09/30/robos-cerca-de-la-facultad.html" class="u-url">Robos cerca de la facultad</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/09/30/robos-cerca-de-la-facultad.html" rel="bookmark"><time class="published dt-published" datetime="2007-09-30T10:59:23+00:00" title="2007-09-30 10:59">2007-09-30 10:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/09/30/robos-cerca-de-la-facultad.html#disqus_thread" data-disqus-identifier="cache/posts/2007/09/30/robos-cerca-de-la-facultad.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>replico <a href="http://www.ellitoral.com/index.php/diarios/2007/09/26/metropolitanas/AREA-01.html">esta nota</a> de El Litoral por si sale de línea.</p>
+<p><em>Estudiantes y personal de la casa de estudios son víctimas de robos</em></p>
+<p></p>
+<h3>Preocupan los asaltos en la zona de la Universidad Tecnológica</h3>
+<p>Les arrebatan celulares y los intimidan -a veces a mano armada- para apropiarse de dinero, aparatos electrónicos y zapatillas. Los ladrones son jóvenes, en su mayoría menores. Algunos estudiantes y trabajadores de la facultad cambiaron su rutina y salen en grupo o se vuelven a sus casas en taxi.</p>
+<p>Con armas blancas, revólveres o bajo intimidación son asaltados los alumnos, docentes y no docentes en las inmediaciones de la Facultad Regional Santa Fe de la Universidad Tecnológica Nacional.</p>
+<p>Los hechos suceden principalmente de noche y son perpetrados por jóvenes, en su mayoría menores, a pocas cuadras de la casa de estudio. Los ladrones andan a pie o en bicicleta, merodean la zona y transitan por las calles que conducen a las paradas de colectivo. Exigen celulares, plata y zapatillas y no se amedrentan al toparse con grupos.</p>
+<p>Las historias se comentan como pan caliente en las aulas y oficinas de la Universidad Tecnológica. Y aunque los asaltos en la vía pública los sufren desde febrero, los testigos sostienen que se incrementaron en los últimos meses.</p>
+<p>"Desde que empezaron las clases no hay noche que no haya un alumno afectado. Incluso, al hijo de un empleado de la UTN le gatillaron el arma pero la bala no salió. El jueves o viernes pasado, a tres chicos que esperaban el colectivo juntos les robaron con armas", comenta Sonia, una docente de la casa de estudios, cuyo hijo, Eduardo, fue intimidado por ladrones hace tres semanas.</p>
+<p>Sonia, al igual que otras personas, nota que a partir del asesinato de la vecina de Guadalupe hay más policías "de mañana y de tarde; pero de noche no hay".</p>
+<p>Esta docente está "preocupada porque no ve presencia policial desde las 7 de la tarde y hasta las 12 de la noche que es cuando los estudiantes salen de la facultad". "Me preocupa como trabajadora de esta facultad, como mamá de un estudiante pero además como miembro de la sociedad porque estamos viendo que hay varios asaltos cometidos por rateritos, no son ladrones que se mueven en auto, son chicos de la calle. Se soluciona poniendo uno o dos patrulleros que se vayan moviendo desde la facultad a las paradas de colectivo".</p>
+<!--more-->
+
+<h4>Solos o en grupos</h4>
+
+<p>Eduardo tiene 22 años y estudia ingeniería civil. Le robaron hace tres semanas, cerca de las 11 de la noche, en el camino de la facultad a su casa. Dos chicos que parecían estar alcoholizados lo siguieron unas cuadras por Patricio Cullen. Eduardo simuló atarse los cordones para dejarlos pasar, pero no logró desviar de su objetivo a los malvivientes.</p>
+<p>Uno lo frenó y le dijo que se quedara quieto."Pensé en pegarle porque lo vi solo pero apareció el otro por atrás. Cuando me dijo: `Dame todo porque si no te mato o algo así, porque ya no me acuerdo bien, le di el celular que tenía a mano. Pero cuando escucho que el que venía atrás monta una pistola, le di todo", relata Eduardo.</p>
+<p>Sonia, su mamá, sostiene que cuando le robaron a su hijo le llamó la atención que la zona parecía "liberada". "Salieron con mi esposo a recorrer el barrio, desde La Lona hasta la Iglesia de San Cayetano, por la costanera y por Guadalupe, lo recorrieron durante dos horas y no encontraron un solo móvil de policía".</p>
+<p>Silvina trabaja en la Dirección Académica de la UTN y fue otra víctima de los ladrones, en las inmediaciones de la facultad. El 10 de agosto, luego de pasar la plaza Chaplin, dos personas la interceptaron. "Una me amenazó con un cuchillo y me pidió la cartera. Le decía que no pero cuando me acercó más el cuchillo me asusté. Terminó de tironear la cartera, me rompió el saco que llevaba puesto y se la llevó", relató.</p>
+<p>A Valeria, una joven de 19 años, y a sus cuatro amigas le salieron al cruce hace dos semanas, también a la altura de la plaza Chaplin. Terminaron de practicar fútbol en el estadio de la UTN y las sorprendieron para robarles. "Eran dos, tenían más o menos nuestra misma edad y estaban bien vestidos. Nos pidieron primero los celulares, cuando le dije que no tenía me pidieron lo que tuviera". Las chicas escaparon corriendo y a los gritos, y los rateros se fugaron por la ciclovía.</p>
+<h4>La UTN se ocupa</h4>
+
+<p>Las autoridades de la Facultad Regional Santa Fe de la Universidad Tecnológica Nacional (FRSF-UTN) están preocupadas por los robos que sufren alumnos, docentes y no docentes.</p>
+<p>El Ing. Jorge Caminos, secretario General de la casa de estudios, dijo que cada vez son "más frecuentes" los asaltos y que "la inseguridad es bastante importante en la zona". "No es en la facultad misma sino cuando la gente termina sus actividades y se va a tomar un colectivo o a otro lado".</p>
+<p>Si bien la situación se registra desde hace algún tiempo, Caminos sostiene que "en el último mes, pasó a ser extremadamente preocupante. Convivimos diariamente con gente que se está drogando con pegamento y continuamente hay muchachos dando vueltas por acá. Hemos hecho todas las denuncias correspondientes a todos los lugares posibles, pero vienen, se los llevan y al rato están nuevamente acá. Y esta gente también está causando algunos problemas", comentó Caminos.</p>
+<p>"La mayor preocupación es que cuando uno hace la denuncia o habla con la gente te dicen que son menores, que los detienen pero al rato salen. Y con los drogadictos que hay dando vueltas pasa lo mismo. Y uno ve que es así. Viene un patrullero, los cargan y a las cuatro horas están instalados otra vez acá", sostiene el secretario de la facultad.</p>
+<p>Los asaltos no son todos iguales. "Hay de todo un poco: manoteos, acciones con violencia; todo depende de cómo reaccione la gente que está siendo asaltada. Han agredido a algunos docentes y hay otros casos que los paran, les dan algo y no pasan a una agresión física", comentó Caminos, tras indicar que están preocupados de que la situación pase a mayores.</p>
+<p>Para evitar eso, desde la UTN se comunicaron con autoridades de la comisaría 5°, con personal de gobierno y de la Jefatura de la Policía Provincial.</p>
+<p>La respuesta que recibieron es que "toman acciones pero no lo vemos en los hechos", dice Caminos. "Hay un patrullero dando vueltas y por ahí algunos policías, pero nada más que eso. Los asaltos siguen sucediendo", remata la autoridad universitaria, quien dice que hablan en forma permanente "con todos los actores que puedan ayudar" a solucionar el tema.</p>
+<h4>Cambio de hábitos</h4>
+
+<p>Los que fueron protagonistas de robos ahora se cuidan u optan por cambiar la rutina. Quienes viven cerca de la facultad utilizan taxis y remises, los demás salen en grupo para tomar el colectivo o esperan que alguien los pase a buscar en auto. Pero más allá de las precauciones que toman, no se sienten seguros. Queda el miedo, la incertidumbre de que vuelva a pasar.</p>
+<p>"Antes salías tranquila, ahora tenés que tomar todos los recaudos del caso: no andar con bolsos grandes, el celular te lo tenés que meter dentro del vaquero, no podés llevar billetera y tenés que andar con la plata justa porque corrés el riesgo de que te desvalijen", sostiene Gladys, una empleada de la Universidad que trabaja en el Departamento de Concursos de la Dirección de Recursos Humanos y que se salvó de ser asaltada gracias a que pidió auxilio a un vecino.</p>
+<p>"Hace cuatro años que vivo en esta zona. Siempre alquilo por acá para ir caminando hasta la facultad. Ahora tengo que arreglar con mi novio para que me vaya a buscar o molestar a alguien en la facultad para que me traiga. No es como antes que vos salías tranquila y en 5 minutos estabas en tu casa", agregó Gladys.</p>
+<p>Similares medidas toma Valeria, que a partir de las 20 horas vuelve en taxi hasta su casa. Eduardo comenzó a utilizar la bicicleta, porque así se siente más seguro y Sonia se compró un auto para unir el camino de su casa a la facultad, o si va sin móvil espera a que alguien la acerque o acompañe a su casa.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/09/28/harry-potter-y-los-lenguajes-de-programacion.html" class="u-url">Harry Potter y los Lenguajes de Programación</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/09/28/harry-potter-y-los-lenguajes-de-programacion.html" rel="bookmark"><time class="published dt-published" datetime="2007-09-28T12:38:39+00:00" title="2007-09-28 12:38">2007-09-28 12:38</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/09/28/harry-potter-y-los-lenguajes-de-programacion.html#disqus_thread" data-disqus-identifier="cache/posts/2007/09/28/harry-potter-y-los-lenguajes-de-programacion.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Buscando información sobre diseño de lenguajes de programación (<em>just for fun</em>) me topé con un artículo que relaciona este tópico con los libros de Harry Potter (de los que soy un <a title="Lecturas de verano" href="http://www.juanjoconti.com.ar/2007/03/21/lecturas-de-verano/" target="_blank">feliz lector</a>). Para darle más fuerza a la casualidad, el autor del artículo es la misma persona que creó <a title="Aprendiendo Python" href="http://www.juanjoconti.com.ar/category/aprendiendo-python/" target="_blank">el lenguaje de programación que más me gusta</a>.</p>
+<p>Me tomo la libertad de traducir <a title="HP Theory" href="http://www.artima.com/weblogs/viewpost.jsp?thread=123234" target="_blank">este artículo</a> de Guido Van Rossum, creador del lenguaje de programación <a title="Python" href="http://www.python.org/">Python</a>.</p>
+<p></p>
+<h3>La Teoría de Harry Potter para el Diseño de Lenguajes de Programación</h3>
+<p><em>por Guido van Rossum</em></p>
+<p>14 de Agosto de 2005</p>
+<h4>Resumen</h4>
+
+<p>Una comparación alegre de como exitosos autores de ficción y diseñadores de lenguajes de programación pueden por accidente encontrar en su primer trabajo las pistas de sus éxitos futuros.</p>
+<!--more-->
+
+<h4>La teoría</h4>
+
+<p>Me encanta leer los libros de Harry Potter, y recientemente se me ocurrió una analogía interesante entre escribir series de libros de ficción y diseñar lenguajes de programación.</p>
+<p>Estoy seguro de esto: cuando J.K. Rowling escribió el primer libro de Harry Potter (como el primero de una serie de siete) había desarrollado una buena idea de las cosas que eventualmente iban a pasar en la serie pero no tenía la idea exacta de lo que iba a pasar en los restantes libros, tampoco todos los detalles de cómo funcionaría la magia en el mundo que estaba creando.</p>
+<p>También estoy asumiendo que a medida que iba escribiendo los volúmenes sucesivos, volvía a los primeros libros para rescatar detalles que habían sido introducidos solo para darle color a la historia y darles un nuevo significado. Por ejemplo, dudo que cuando inventó el nombre Voldemort ya haya pensado que "I am Lord Voldemort" (Yo soy el Señor Voldemort) sería un anagrama de "Tom Marvolo Riddle" (Tom Riddle no es un nombre muy convincente para quien terminaría siendo la persona más mala del mundo, pero aparentemente no pudo encontrar un buen anagrama para Voldemort solo). Tampoco pienso que haya pensado que la patética rata de Ron, Scrabbers, sería un animago (el hecho de que le falte un dedo, al menos en lo que yo se, no aparece en ninguno de los dos primeros libros). Creo que ya captaron mi idea.</p>
+<p>De forma similar, no había pensado en  iteradores o generadores cuando  se me ocurrió por primera vez el for-loop de Python o  usar % como un operador para el formateo de <em>strings</em>, y de hecho, usar 'def' para definir tanto funciones como métodos tampoco fue parte del plan inicial.</p>
+<p>De la misma forma en que los sucesivos libros de Harry Potter requieren tener continuidad (el gusto de Dumblendor por los dulces no puede cambiar drásticamente en el tercer libro), las versiones sucesivas de Python están limitadas por serios requerimientos de compatibilidad hacia atrás.</p>
+<p>A veces es fácil volver y generalizar una característica, por ejemplo, trasnformar las funciones de conversión int(), str() y list() en clases. Por otro lado, una reciente discusión en python-dev sobre la jerarquía de las excepciones (<a title="PEP 348" href="http://www.python.org/dev/peps/pep-0348/" target="_blank">PEP 348</a>) ha mostrado que deciciones anteriores pueden ser menos que ideales. Las inconsistencias en la convención de nombres y la calidad del API son otro ejemplo.</p>
+<p><strong>Comentarios</strong> al artículo original: <a title="Comments on HP Theory" href="http://www.artima.com/forums/flat.jsp?forum=106&amp;thread=123234" target="_blank">http://www.artima.com/forums/flat.jsp?forum=106&amp;thread=123234</a></p>
+<p><strong>Correcciones:</strong> por desconocer cuestiones internas del lenguaje o de mi traducción en sí son bienvenidas.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/09/22/nos-subimos-al-podio-de-pyweek-5.html" class="u-url">Nos subimos al podio de PyWeek 5!!</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/09/22/nos-subimos-al-podio-de-pyweek-5.html" rel="bookmark"><time class="published dt-published" datetime="2007-09-22T23:15:46+00:00" title="2007-09-22 23:15">2007-09-22 23:15</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/09/22/nos-subimos-al-podio-de-pyweek-5.html#disqus_thread" data-disqus-identifier="cache/posts/2007/09/22/nos-subimos-al-podio-de-pyweek-5.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En vísperas de un examen final y esperando encontrar a mi mamá en el departamento (pasó de visita luego de un curso todo el día en Paraná) llegué a mi casa esta noche a las 20:55. Mientras subía las escaleras recibí un mensajito:</p>
+<p></p>
+<blockquote>Avisen los resultados, estoy en un casorio.
+<p>Diego Levental</p>
+</blockquote>
+<p>Y ahí lo recordé: hoy sábado a las 21 hs (Argentina) estaban los resultados de la competencia <a href="http://media.pyweek.org/5/" title="5" target="_blank">PyWeek 5</a>.</p>
+<!--more-->
+
+<p>Entonces encendí mi computadora y entré al canal de chat de #pyweek, anunciaban que faltaba 1 minuto para que estén los resultados. Apunté mi navegador a la página del evento y me quedé unos momento apretando el botón de recargar.</p>
+<p>Luego aparecieron los resultados. Estábamos en tercer lugar (Yupiii!!). Los resultados puede verse <a href="http://media.pyweek.org/static/pyweek5_ratings.html">aquí</a>. Y <a href="http://www.pyweek.org/e/santa_fe/ratings/" title="TZ rate" target="_blank">estos</a> son los resultados de nuestro Twisted Zombie.</p>
+<p>Si el viernes anterior a que empieza la competencia, cuando me anotaba para participar y empezaba a convocar a mis amigos para formar un equipo, me hubiesen dicho que lograríamos ese resultado no lo habría creído de seguro. Pero la semana de trabajo paso, fue productiva, nos divertimos, aprendimos y el sábado que entregamos nuestro juego estuvimos satisfechos con el trabajo realizado.</p>
+<p>Creo que no me equivoco al decir que superamos nuestro objetivo.</p>
+<p>Muchas gracias a todo el equipo:</p>
+<ul>
+
+    <li>Manu</li>
+
+    <li>Mariano</li>
+
+    <li>César</li>
+
+    <li>Diego</li>
+
+    <li>David</li>
+
+    <li> y Seba</li>
+
+</ul>
+
+<p>Muchas gracias también a todos los que probaron el juego y nos dieron sus comentarios.</p>
+<p>Felicitaciones a todos (más de 50) los otros equipos e individuales que participaron del concurso. Son los que le dan sentido al mismo. En especial, felicitaciones a los equipos argentinos que siempre dejan huella. Y gracias por incentivarlos a participar!</p>
+<p>PS: Ho!  llegaste a este blog por alguna misteriosa razón y no sabés de que estoy hablando? No dejes de jugar <a href="http://zombie.firebirds.com.ar" title="TZ" target="_blank">Twisted Zombie</a>!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/09/20/una-historia-de-emoticons.html" class="u-url">Una historia de emoticons</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/09/20/una-historia-de-emoticons.html" rel="bookmark"><time class="published dt-published" datetime="2007-09-20T10:11:14+00:00" title="2007-09-20 10:11">2007-09-20 10:11</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/09/20/una-historia-de-emoticons.html#disqus_thread" data-disqus-identifier="cache/posts/2007/09/20/una-historia-de-emoticons.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El 19 de septiembre de 1982 a las 11:44, hora de la costa este de los Estados Unidos, <a href="http://www.cs.cmu.edu/%7Esef/" title="Scott Fahlman" target="_blank">Scott Fahlman</a> proponía en medio de una serie de mensajes medio en serio y medio en broma el uso de la secuencia de caracteres <span class="moz-smiley-s1"><span> :-) </span></span> para denotar que algo se estaba escribiendo en broma en un mensaje que decía:</p>
+<p></p>
+<blockquote>19-Sep-82, 11:44
+<p>From: Scott E Fahlman &lt;Fahlman at Cmu-20c&gt;</p>
+<p>I propose that the following character sequence for joke markers:</p>
+<p><span class="moz-smiley-s1"><span> :-) </span></span></p>
+<p>Read it sideways. Actually, it is probably more economical to mark things</p>
+<p>that are NOT jokes, given current trends. For this, use</p>
+<p><span class="moz-smiley-s2"><span> :-( </span></span></p>
+</blockquote>
+<!--more-->
+
+<p>Que traducido quiere decir:</p>
+<blockquote>19-Sep-82 11:44<span class="moz-smiley-s1"><span></span></span>
+
+From: Scott E Fahlman
+
+
+
+Propongo que se utilice la siguiente secuencia de caracteres para marcar lo
+
+que sean chistes:
+
+
+
+<span class="moz-smiley-s1"><span> :-) </span></span>
+
+
+
+Se lee girando la cabeza. De hecho, probablemente sería más práctico marcar
+
+las cosas que NO sean chistes, dado como está el patio. Para eso, se podría
+
+usar
+
+
+
+<span class="moz-smiley-s2"><span> :-( </span></span>
+</blockquote>
+
+<p>La propuesta cayó bien, fue ganando apoyo en la CMU y luego en otras universidades y empresas, se fue difundiendo por Internet, y el resto, como se suele decir, es historia y ahora hay montones y montones de <a href="http://es.wikipedia.org/wiki/Emoticono" title="emoticonos" target="_blank">emoticonos</a> distintos para indicar otras tantas cosas <a href="http://es.wikipedia.org/wiki/Emoticono#Estilo_occidental" class="moz-txt-link-rfc2396E">(http://es.wikipedia.org/wiki/Emoticono#Estilo_occidental)</a>.</p>
+<p>El propio Scott Fahlman reconoce en la página <a href="http://www.cs.cmu.edu/%7Esef/sefSmiley.htm" title="Smiley Lore :-)" target="_blank">Smiley Lore :-)</a> que es perfectamente posible que se le hubiera podido ocurrir utilizar estos mismos caracteres antes a alguien, pero dice que nunca ha conocido a nadie que diga tal cosa y que nunca ha visto ninguna prueba de que esto hubiera sucedido.</p>
+<p>Pero casi más curiosa que la del origen del <strong class="moz-txt-star"><span class="moz-txt-tag"></span>smiley<span class="moz-txt-tag"></span></strong> en sí es la de como se recuperó el mensaje original de Fahlman, que durante mucho tiempo se consideró perdido pues ni él ni nadie lo habían guardado porque en su momento nadie pensó que pudiera llegar a tener una relevancia tan especial; desde luego es como para pensar otra vez más si no formamos parte de una civilización virtual.</p>
+<p>Así, después de varios intentos fallidos anteriores para localizarlo Mike Jones se propuso encontrar el mensaje en cuestión y en febrero de 2002 se puso a repasar el código fuente de los programas bajo los que corría el sistema de mensajes en los que fue publicado el de Fahlman para averiguar qué nombre podía tener el archivo en el que se guardaban los mensajes.</p>
+<p>Con esta información se puso en contacto con Howard Wactlar, el antiguo director de los servicios de informática de la CMU, para ver si se podrían recuperar esos ficheros. Watclar y Bob Cosgrove, quien en ese momento dirigía los servicios de informática de la universidad, descubrieron que aún había almacenadas cintas con copias de seguridad de la época en la que</p>
+<p>Fahlman más o menos recordaba haber escrito el mensaje… el problema era localizar un lector y un ordenador que fueran capaces de leerlas, además de localizar las cintas en sí.</p>
+<p>Dave Livingston encontró una unidad de cinta de 9 pistas que aún funcionaba, que conectada a un ordenador con FreeBSD instalado permitió leer las cintas que Kirk Berthold y Michael Riley finalmente localizaron almacenadas en otro lugar, y, finalmente, Jef Baird se encargó de ir leyendo cinta tras cinta de las que aún funcionaban hasta que el 10 de septiembre de 2002 por finlocalizó el mensaje en cuestión, poniendo fin a un interesante ejercicio de arqueología informática al que el propio Fahlman llamaba el «Proyecto Celacanto Digital».</p>
+<p>El hilo de discusión en el que fue publicada la propuesta de Fahlman, junto con una descripción más detallada del proceso de recuperación de este se puede leer en el hilo original <span class="moz-smiley-s1"><span> :-) </span></span><a href="http://www.cs.cmu.edu/%7Esef/Orig-Smiley.htm" class="moz-txt-link-rfc2396E">(http://www.cs.cmu.edu/%7Esef/Orig-Smiley.htm).</a></p>
+<p>Fuente: <a href="http://www.microsiervos.com/archivo/internet/cuarto-siglo-emoticonos.html" class="moz-txt-link-freetext">http://www.microsiervos.com/archivo/internet/cuarto-siglo-emoticonos.html</a></p>
+<p>Gracias <a href="http://www.flickr.com/photos/trekman" title="Gustavo" target="_blank">Gustavo</a> por pasarme este artículo por mail.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/09/13/twisted-zombie-para-windows.html" class="u-url">Twisted Zombie para Windows</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/09/13/twisted-zombie-para-windows.html" rel="bookmark"><time class="published dt-published" datetime="2007-09-13T12:28:40+00:00" title="2007-09-13 12:28">2007-09-13 12:28</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/09/13/twisted-zombie-para-windows.html#disqus_thread" data-disqus-identifier="cache/posts/2007/09/13/twisted-zombie-para-windows.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="http://zombie.firebirds.com.ar" title="TZ en googlecode" target="_blank">Twisted Zombie</a>, el juego que desarrollamos en una semana para la <a href="http://www.pyweek.org/5" title="PyWeek 5" target="_blank">quinta edición del concurso PyWeek</a> ya funciona en Windows. Está escrito en <a href="http://www.python.org" title="Python" target="_blank">Python</a>, un lenguaje multiplataforma, y hemos tenido en cuenta <a href="http://www.juanjoconti.com.ar/2007/01/31/python-multiplataforma-ospathjoin/" title="os.path.join" target="_blank">algunas consideraciones</a> para que funcione sin problemas en distintos sistemas operativos. Incluso lo hemos probado en un par.
+<p>Pero para usarlo en Windows necesitás tener instalado <a href="http://www.python.org/ftp/python/2.5.1/python-2.5.1.msi" title="Python 2.5 para Windows" target="_blank">Python</a> y <a href="http://pygame.org/ftp/pygame-1.7.1release.win32-py2.5.exe" title="PyGame 1.7.1 para Windows" target="_blank">Pygame</a>.</p>
+<p>El siguiente es un paquete con todo lo necesario para correr el juego si necesidad de instalar nada más: <a href="http://twistedmold.googlecode.com/files/Twisted-Zombie-1-Win.zip" title="Windows self contained package" target="_blank">Twisted-Zombie-1-Win.zip</a></p>
+<!--more-->
+
+<p>Este es el código fuente del archivo setup.py que utilicé para crear el paquete:</p>
+<pre># setup.py es usado para generar un paquete autocontenido
+
+# para Windows. Incluye el interprete de Python, PyGame
+
+# y otros modulos utilizados en el juego.
+
+# Uso: C:Python25python.exe stup.py py2exe
+
+# Version de py2exe: 0.66
+
+# Nota: en run_game.pyw cambiar os.path.dirname(__file__)
+
+# por la ruta al directorio donde esten los fuentes del
+
+# juego. Ej: 'C:tz'
+
+
+
+from distutils.core import setup
+
+import py2exe
+
+import os
+
+
+
+options = {
+
+    "py2exe": {
+
+        #"compressed": 1,
+
+        #"optimize": 2,
+
+        #"excludes": excludes,
+
+        "includes": ["pygame", "pygame.locals", "random", "pickle"],
+
+    }
+
+}
+
+
+
+data_files = [ (x, [os.path.join(x, e) for e in z]) for d in ("lib", "data")
+
+               for x,y,z in os.walk(d) if not ".svn" in x ] + [ "README.txt"]
+
+
+
+setup( console=["run_game.pyw"], data_files=data_files, options=options)</pre>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/08/29/irc2htmlpy.html" class="u-url">irc2html.py</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/08/29/irc2htmlpy.html" rel="bookmark"><time class="published dt-published" datetime="2007-08-29T00:33:58+00:00" title="2007-08-29 00:33">2007-08-29 00:33</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/08/29/irc2htmlpy.html#disqus_thread" data-disqus-identifier="cache/posts/2007/08/29/irc2htmlpy.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Ayer colgué del blog el <a href="http://www.juanjoconti.com.ar/2007/08/28/log-de-tutorial-sobre-empaquetado-para-debianubuntu/" title="Paquetes para Debian">log de un tutorial</a> dictado a través del <a href="http://es.wikipedia.org/wiki/IRC" title="IRC" target="_blank">IRC</a>. Cuando <a href="http://www.google.com.ar/search?hl=es&amp;client=firefox-a&amp;rls=com.ubuntu%3Aen-US%3Aofficial&amp;hs=KTs&amp;q=irc2html&amp;btnG=Buscar&amp;meta=" title="Goooooooogling" target="_blank">busqué en Google</a> un <em>formateador de logs de irc</em> no encontré lo que buscaba. El principal <em>feature</em> que me interesaba era que se distinga a los diferentes usuarios con diferentes colores. Probablemente podría haber buscado con un poco más de empeño y habría encontrado lo que buscada, al fin de cuentas ya había usado un programa así hace unos años, pero me hubiera perdido de una hora entretenida programando y aprendiendo <a href="http://www.python.org" title="Python" target="_blank">Python</a>.</p>
+<!--more-->
+
+<p></p>
+<h3>Script irc2html.py</h3>
+<p>Primero lo primero. Tal vez llegaste a este blog buscando lo mismo que yo pero más adelante en el tiempo. <em>Good news</em>: <a href="http://www.juanjoconti.com.ar/files/python/irc2html.py.html" title="Source Code">irc2html.py</a>. <strong>UPDATE:</strong> <a href="http://www.juanjoconti.com.ar/files/python/irc2html-f.py.html" title="Source Code">irc2html-f.py</a> es una versión mejorada tras recibir un comentario en este post.</p>
+<p>Uso:</p>
+<p><code></code></p>
+<p>./irc2html.py charla.log</p>
+<p></p>
+<p>escribe en la salida estándar código html listo para embeber. También podés hacer:</p>
+<p><code></code></p>
+<p>./irc2html.py charla.log &gt; charla.html</p>
+<p></p>
+<p>(prometo que tu <em>browser</em> no se va a quejar)</p>
+<h3>Un color para cada uno</h3>
+
+<p>Como decía más arriba, lo que más me interesaba era que se distinga, mediante colores, lo que los distintos usuarios dicen. Esto se hace más difícil a medida que aumenta el número de usuarios. La dificultad radica en encontrar colores lo suficientemente diferentes como para distinguir a los usuarios. Lo primero en lo que pensé fue en hacer una función que reciba un color inicial y que luego vaya saltando por la paleta de colores a medida que iba necesitando más colores.</p>
+<p align="center"><img src="wp-content/uploads/2007/08/paletacolores.png" alt="Paleta de Colores"></p>
+
+<p align="left">Hice algunas pruebas pero no prosperaron. Por suerte esto me sirvió como escusa para practicar <a href="http://docs.python.org/ref/yield.html" title="yield statement" target="_blank">yield</a> y <a href="http://www.python.org/dev/peps/pep-0255/" title="generators" target="_blank">generadores</a> y Python. Terminé con una implementación mucho menos ambiciosa que la original:</p>
+
+<pre lang="python">
+
+# Generador de colores:
+
+#
+
+# Para ayudar a distingir lo que dice un usuario de lo que dice otro,
+
+# se utilizan distintos colores para cada uno.
+
+#
+
+# La idea original del generador de colores era que vaya saltando por
+
+# la paleta de colores según un patrón matemático.
+
+# La actual implementación es más simple y etática.
+
+
+
+color_list = ['ff0000', 'fff200', '00ff00', '00fff2', '0000ff', 'aa18ff',
+
+              'ff00fb', 'fbb636', 'b1466b', '3d3166',  'bfbf2e', '377972']
+
+
+
+# Lighter colors:
+
+#color_list = ['fff1df', 'feffdf', 'e3ffce', 'ffe4df', 'fcdfff', 'e7dfff',
+
+#              'e7f1ff', 'e7fff9', 'f3ffe7', 'e9e9e9', 'ffedb9', 'f0e9d5']
+
+
+
+def color_gen(l):
+
+    colors = l[:]
+
+    colors.reverse()
+
+    while True:
+
+        if colors:
+
+            yield colors.pop()
+
+        else:
+
+            colors = l[:]</pre>
+
+<h3>Expresiones regulares</h3>
+
+<p>En el script hago uso de <a href="http://docs.python.org/lib/module-re.html" title="Python regex " target="_blank">expresiones regulares</a> para <em>parsear</em>  las líneas del archivo de log. El archivo sobre el que trabajé tenía dos tipos de líneas. Con mensajes de usuarios, como:</p>
+<p>'&lt;pablo_!~pablo@r190-64-130-143.dialup.adsl.anteldata.net.uy&gt; [17:00] comprendido marga :)\n'</p>
+<p>o de información como:</p>
+<p>'-charm.oftc.net- [17:00] garaguas (~garaguas@host193.200-82-125.telecom.net.ar) joined the channel\n'</p>
+<p>Me interesan la primeras, a las segundas las puedo ignorar. La expresión regular que usé fue:</p>
+<p>'\&lt;(?P&lt;nombre&gt;.+)!.*\&gt;(?P&lt;dicho&gt;.+)$'</p>
+<p>y se lee:</p>
+<p>1) el carácter '&lt;'.</p>
+<p>2) de 1 a n caracteres de cualquier tipo (excepto '\n') y a las cadenas que <em>matchen</em> en esta parte de la expresión voy a referenciarlas luego como 'nombre'.</p>
+<p>3) el carácter '!'.</p>
+<p>4) de 0 a n  caracteres de cualquier tipo (excepto '\n').</p>
+<p>5) el carácter '&gt;'</p>
+<p>6) de 1 a n caracteres de cualquier tipo (excepto '\n') y a las cadenas que <em>matchen</em> en esta parte de la expresión voy a referenciarlas luego como 'dicho'.</p>
+<p>7) final de línea ($).</p>
+<p>Un ejemplo en el REPL de Python:</p>
+<pre>&gt;&gt;&gt; import re
+
+&gt;&gt;&gt; a = '&lt;pablo_!~pablo@r190-64-130-143....&gt; [17:00] comprendido marga :)n'
+
+&gt;&gt;&gt; b = '-charm.oftc.net- [17:00] garaguas (~garaguas@host...) joined the channeln'
+
+&gt;&gt;&gt; rex = &lt;(?P&lt;nombre&gt;.+)!.*&gt;(?P&lt;dicho&gt;.+)$'
+
+&gt;&gt;&gt; pat = re.compile(rex)
+
+&gt;&gt;&gt; m = pat.match(b)
+
+&gt;&gt;&gt; m
+
+&gt;&gt;&gt; m == None
+
+True
+
+&gt;&gt;&gt; m = pat.match(a)
+
+&gt;&gt;&gt; m
+
+&lt;_sre.SRE_Match object at 0x8707698&gt;
+
+&gt;&gt;&gt; m.group('nombre')
+
+'pablo_'
+
+&gt;&gt;&gt; m.group('dicho')
+
+' [17:00] comprendido marga :)'</pre>
+
+<h3>Resultado final</h3>
+
+<p>Comentando y descomentando las líneas:</p>
+<pre>#line_format = "&lt;span style='color:#%s'&gt;%s:&lt;/span&gt;%s&lt;br/&gt;"
+
+line_format = "&lt;div style='background-color:#%s'&gt;&lt;b&gt;%s:&lt;/b&gt; %s&lt;/div&gt;"</pre>
+
+<p>se pueden obtener dos resultados distintos:</p>
+<h4>Formato 1:</h4>
+
+<p align="center"><img src="wp-content/uploads/2007/08/chat1.png" alt="Chat1"></p>
+
+<h4>Formato 2:</h4>
+
+<p align="center"> <img src="wp-content/uploads/2007/08/chat21.png" alt="Chat2"></p>
+
+<h3>Notas finales</h3>
+
+<ul>
+
+    <li>Espero este <em>script</em> les haya sido útil, ya sea para formatear logs de irc como para seguir aprendiendo Python (yo en particular casi no había usado <em>yield</em> y con <em>re</em> solo había hecho pruebas).</li>
+
+    <li>La primer imagen del post es una composición de una captura de pantalla y esta <a href="http://www.iconfinder.net/index.php?q=color&amp;iconid=9953&amp;size=128&amp;q=color&amp;s12=on&amp;s16=on&amp;s22=on&amp;s32=on&amp;s48=on&amp;s64=on&amp;s128=on" title="colorpicker" target="_blank">linda imagen lgpl de un gotero</a>.</li>
+
+</ul>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/08/28/log-de-tutorial-sobre-empaquetado-para-debianubuntu.html" class="u-url">Log de tutorial sobre empaquetado para Debian/Ubuntu</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/08/28/log-de-tutorial-sobre-empaquetado-para-debianubuntu.html" rel="bookmark"><time class="published dt-published" datetime="2007-08-28T02:07:02+00:00" title="2007-08-28 02:07">2007-08-28 02:07</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/08/28/log-de-tutorial-sobre-empaquetado-para-debianubuntu.html#disqus_thread" data-disqus-identifier="cache/posts/2007/08/28/log-de-tutorial-sobre-empaquetado-para-debianubuntu.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El domingo 26 de agosto, a las 17:00, <a href="http://www.marga.com.ar/blog/">Margarita Manterola</a> dió un tutorial por IRC sobre cómo hacer paquetes para Debian o Ubuntu. Se realizó en el canal #debian-ar de irc.oftc.net y hubo más de 80 asistentes. Este es el log de la charla:</p>
+<p>Log original: <a href="http://www.juanjoconti.com.ar/files/paquetes-debian.log">paquetes-debian.log</a> (26 Ago 2007).</p>
+<p>Log coloreado: <a href="http://www.juanjoconti.com.ar/files/paquetes-debian.html">paquetes-debian.html</a> (ver con codificación UTF 8).</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2007/08/14/de-regreso-de-las-7mas-jornadas-regionales-de-software-libre.html" class="u-url">De regreso de las 7mas Jornadas Regionales de Software Libre</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2007/08/14/de-regreso-de-las-7mas-jornadas-regionales-de-software-libre.html" rel="bookmark"><time class="published dt-published" datetime="2007-08-14T14:52:08+00:00" title="2007-08-14 14:52">2007-08-14 14:52</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2007/08/14/de-regreso-de-las-7mas-jornadas-regionales-de-software-libre.html#disqus_thread" data-disqus-identifier="cache/posts/2007/08/14/de-regreso-de-las-7mas-jornadas-regionales-de-software-libre.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>20:01 del sábado 11 de agosto (tengo que mirar la parte derecha superior de mi pantalla para corroborar en que mes vivo, soy tremendo..). Estoy dejando la ciudad de Córdoba en colectivo. Un guiño graciosos: me acaban de golpear la ventanilla, Maxi y Gastón (otros santafecinos que también vinieron a participar de las 7mas Jornadas Regionales de Software Libre acaban de llegar también a la terminal). Más tarde o más temprano todos vamos empezando nuestro viaje de vuelta a casa.</p>
+<p>En mi caso particular la expresión <em>vuelta a casa</em> es más que una frase armada. Estoy viajando a  mi pueblo <a href="http://es.wikipedia.org/wiki/Carlos_Pellegrini_(Santa_Fe)" title="Carlos Pellegrini en la Wiki.." target="_blank">Carlos Pellegrini</a>. La mayor parte del tiempo estoy en Santa Fe, dónde estudio.</p>
+<p>Tuvo la intención de contar, escribir, durante los días que participe del evento, las cosas interesantes que iba aprendiendo y conociendo. Lamentablemente no soy un blogger tan prolífero como el <a href="http://criadoindomable.wordpress.com/tag/7jrsl/" title="7JRSL by SC" target="_blank">Seba Criado</a> :)</p>
+<p>Sin embargo, algunso temas sobre los que me gustaría bloggear:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>LUGLi presente (Aikido y la GPL)<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Música Libre (en la máquina quemadora)<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Enseñanza de programación (un ejemplo de la charla de <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://dicosmo.org/"</span> <span class="na">title=</span><span class="s">"Roberto di Cosmo"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Roberto di Cosmo<span class="nt">&lt;/a&gt;</span>)<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Cómo ser un Freelance (vocación Hacker, de la charla de Marcelo Desimone)<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Bs As Libre y redes inalámbricas de alta velocidad<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Software Libre en Venezuela<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Lo que tus Clientes Quieren (una charla de ifPeople)<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Tal vez algo más que no recuerde ahora..<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+<p></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-15.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-13.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (mencoder)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/mencoder.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Generar un video a partir de miles de fotos</title><link>http://www.juanjoconti.com.ar/posts/2012/04/15/generar-un-video-a-partir-de-miles-de-fotos.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Un par de noches atrás nos juntamos con los excompañeros de la facu en casa. Mi amigo &lt;a href="http://nicocesar.com/" target="_blank"&gt;Nico&lt;/a&gt; trajo su nuevo chiche, una camarita de alta resistencia que está haciendo furor por estos días: &lt;a href="http://gopro.com/" target="_blank"&gt;GoPro&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Una de las cosas que se puede hacer con la cámara es dejarla en algún lugar sacando fotos cada, por ejemplo, dos segundos. Luego, con un comando en Linux, puede generar un video. El resultado es muy bueno; muy acorde a lo acelerado que se vive en estos días y una forma de que los nerds avancemos varios casilleros en la escala social mostrando el artilugio.&lt;/p&gt;
+&lt;p&gt;Le pedí el pace mágico para tenerlo a mano si alguna vez me compro uno de estos aparatitos:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="bash"&gt;
+&lt;p&gt;for a in $( seq -w 65 141); &lt;/p&gt;
+&lt;p&gt;do ls /media/3837-3763/DCIM/100GOPRO/GOPR0$a.JPG &amp;gt;&amp;gt; lista.txt; done&lt;/p&gt;
+&lt;p&gt;mencoder mf://@lista.txt -mf fps=25:type=jpg  -lavcopts vcodec=mpeg4:vbitrate=3200000:mbd=2:mv0:trell:v4mv:cbp:last_pred=3:predia=2:dia=2:vmax_b_frames=2:vb_strategy=1:precmp=2:cmp=2:subcmp=2:preme=2:vme=5:naq:qns=2 -vf scale=1280:1024 -oac copy -audiofile soundtrack.mp3 -o video-1024.avi&lt;/p&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;iframe width="420" height="315" src="http://www.youtube.com/embed/ZKsxxhmeBqg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;&lt;/div&gt;</description><category>Fotos</category><category>GNU/Linux</category><category>gopro</category><category>mencoder</category><category>Tecnología</category><guid>http://www.juanjoconti.com.ar/posts/2012/04/15/generar-un-video-a-partir-de-miles-de-fotos.html</guid><pubDate>Sun, 15 Apr 2012 20:49:28 GMT</pubDate></item></channel></rss>

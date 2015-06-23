@@ -1,0 +1,29 @@
+<p><html><body><p>Este es un ejemplo minimalista (pero de alguna utilidad) en el que un script php devuelve una imagen.</p>
+<!--more-->
+
+<p></p><h2>Antes que nada</h2></p>
+<p>Para que funcione hay que tener instalado el paquete php4-gd, descomentar la línea <code>extension=gd.so</code> en el archivo <code>/etc/php4/apache2/php.ini</code> y reiniciar el servidor web (apache).</p>
+<h2>Barra de progreso</h2>
+
+<p>Este script recibe como parámetro un pocentaje (10, 20, 50 o 90, qué tan completa está una tarea) y genera la barra de progreso correspondiente.</p>
+<p>Ver archivo: <a href="../../../../files/progreso.php.html">progreso.php</a></p>
+<p>Si accedemos a este script desde un navegador y le damos un valor al parámetro <code>porcentaje</code> obtendremos imágenes como estas:</p>
+<p>(suponiendo que el archivo está en <code>/home/juanjo/public_html/</code>)</p>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=10</strong></p>
+<p><center><img id="image139" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/10.png" alt="10"></center></p>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=20</strong></p>
+<p><center><img id="image140" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/20.png" alt="20"></center></p>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=60</strong></p>
+<p><center><img id="image141" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/60.png" alt="60"></center></p>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=90</strong></p>
+<p><center><img id="image142" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/90.png" alt="90"></center></p>
+<p>Más interesante que acceder directamente a este script es utilizarlo como fuente para una etiqueta <code>img</code> en html.  Podemos tener un template donde haya algo como esto:</p>
+<p><code></p>
+<p>&lt;img src="progreso.php?porcentaje={P}"/&gt;</p>
+<p></code> </p>
+<p>y a P se le da un valor calculado dinámicamente cada vez que se solicita la página.</p>
+<h2>Recursos</h2>
+
+<p>Un ejemplo más completo en: <a href="http://www.zend.com/zend/tut/dynamic.php">http://www.zend.com/zend/tut/dynamic.php</a> (fué el hola-mundo con el que empecé a probar GD)</p>
+<p>GD en php.net: <a href="http://www.php.net/gd">http://www.php.net/gd</a></p>
+<p></body></html></p>

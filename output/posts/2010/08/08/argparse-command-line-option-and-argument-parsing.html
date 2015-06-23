@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>argparse - Command line option and argument parsing | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../07/functools-update_wrapper.html" title="functools.update_wrapper" type="text/html">
+        <link rel="next" href="../13/salio-la-revista-de-pyar.html" title="Salió la revista de PyAr" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="argparse - Command line option and argument parsing">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html">
+    <meta property="og:description" content="Hoy recibí la última edición de Python Module of the Week, un semanal de Doug Hellmann sobre módulos de Python. Leo:
+The argparse module was added to Python 2.7 as a replacement
+for optparse.
+Nunca ha">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-08-08T12:30:03+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="argparse">
+           <meta property="article:tag" content="optparse">
+           <meta property="article:tag" content="Python">
+           <meta property="article:tag" content="stdlib">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="argparse-command-line-option-and-argument-parsing.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">argparse - Command line option and argument parsing</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-08-08T12:30:03+00:00" itemprop="datePublished" title="2010-08-08 12:30">2010-08-08 12:30</time></a></p>
+                <p class="commentline">
+        
+    <a href="argparse-command-line-option-and-argument-parsing.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="argparse-command-line-option-and-argument-parsing.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Hoy recibí la <a href="http://blog.doughellmann.com/2010/08/pymotw-argparse-command-line-option-and.html" target="_blank">última edición</a> de <a href="http://www.doughellmann.com/PyMOTW/" target="_blank">Python Module of the Week</a>, un semanal de Doug Hellmann sobre módulos de Python. Leo:</p>
+<p></p>
+<blockquote>The <code>argparse</code> module was added to Python 2.7 as a replacement
+<p>for <code>optparse</code>.</p>
+</blockquote>
+<p>Nunca había usando <code>optparse</code> hasta hace un par de meses y estaba contento de haberlo empezado a usar, ordenaba mis programas de línea de comando con bonitos parámetros. ¿Tengo que aprender otro sistema totalmente nuevo? Veamos.<!--more--></p>
+<p>Esta es una parte de mi programa original:</p>
+<pre>from optparse import OptionParser
+
+parser = OptionParser(usage="rpcping ip [-p port] [-r rep] [-s size]", version="rpcping 1.0")
+
+
+
+parser.add_option("-p", type="int", dest="port", default=PORT)
+
+parser.add_option("-r", type="int", dest="rep", default=REP)
+
+parser.add_option("-s", type="int", dest="size", default=SIZE)
+
+(options, args) = parser.parse_args()
+
+
+
+if not args:
+
+    parser.error("se necesita la direccion ip del servidor como argumento posicional.")
+
+else:
+
+    ip = args[0]
+
+
+
+if not 1024 &lt; options.port &lt; 65535:
+
+    parser.error("el puerto debe ser mayor a 1024 y menor a 65535.")
+
+else:
+
+    port = options.port
+
+
+
+if not 0 &lt; options.rep &lt; 101:
+
+    parser.error("las repeticiones deben ser mayores a 0 y menores a 101.")
+
+else:
+
+    rep = options.rep
+
+
+
+if not 0 &lt; options.size &lt; 10001:
+
+    parser.error("el tamaño deben ser mayores a 0 y menores a 10001.")
+
+else:
+
+    size = options.size
+
+</pre>
+
+<p>Qué tuve que cambiar para que funcione con <code>argparse</code>:</p>
+<ul>
+
+    <li>Cambiar nombres; <code>optparse</code> por <code>argparse</code>, <code>OptionParser</code> por <code>ArgumentParser</code>,<code> add_option</code> por <code>add_argument</code>.</li>
+
+    <li>Cambiar el valor del agumento <code>type</code> de string a un tipo de verdad. En mi caso <code>type="int</code>" por <code>type=int</code>.</li>
+
+    <li>Si tratamos de obtener el resultado del parsing así <code>(options, args) = parser.parse_args()</code>, vamos a tener un error <code>TypeError: 'Namespace' object is not iterable</code>. El nombre <code>result</code> en el nuevo código está asociado a un objeto del tipo <code>Namespace</code>.</li>
+
+    <li>
+<code>optparse</code> no trabaja con argumentos obligatorios, por lo que para el argumento ip había tenido que escribir código extra por mi cuenta. En <code>argparse</code> es más simple.</li>
+
+</ul>
+
+<p>El resultado es:</p>
+<pre>from argparse import ArgumentParser
+
+parser = ArgumentParser(description="Realiza ping via RPC contra un servidor", version="rpcping 1.0")
+
+
+
+parser.add_argument("ip")
+
+parser.add_argument("-p", type=int, dest="port", default=PORT)
+
+parser.add_argument("-r", type=int, dest="rep", default=REP)
+
+parser.add_argument("-s", type=int, dest="size", default=SIZE)
+
+result = parser.parse_args()
+
+
+
+ip = result.ip
+
+
+
+if not 1024 &lt; result.port &lt; 65535:
+
+    parser.error("el puerto debe ser mayor a 1024 y menor a 65535.")
+
+else:
+
+    port = result.port
+
+
+
+if not 0 &lt; result.rep &lt; 101:
+
+    result.error("las repeticiones deben ser mayores a 0 y menores a 101.")
+
+else:
+
+    rep = result.rep
+
+
+
+if not 0 &lt; result.size &lt; 10001:
+
+    parser.error("el tamaño deben ser mayores a 0 y menores a 10001.")
+
+else:
+
+    size = result.size
+
+</pre>
+
+<p>Parece que con poco esfuerzo se puede migrar de <code>optparse</code> a <code>argparse</code> y luego empezar a estudiar las nuevas funcionalidades que incorpora.</p>
+<blockquote>The implementation of <code>argparse</code> supports features that would not have been easy to add to <code>optparse</code>, and that would have required backwards-incompatible API changes, so a new module was brought into the library instead. <code>optparse</code> is still supported, but is not likely to receive new features.</blockquote>
+
+<p>Más en: <a href="http://www.doughellmann.com/PyMOTW/argparse/" target="_blank">PyMOTW: argparse - Command line option and argument parsing</a>.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/argparse.html" rel="tag">argparse</a></li>
+           <li><a class="tag p-category" href="../../../../categories/optparse.html" rel="tag">optparse</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/stdlib.html" rel="tag">stdlib</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../07/functools-update_wrapper.html" rel="prev" title="functools.update_wrapper">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../13/salio-la-revista-de-pyar.html" rel="next" title="Salió la revista de PyAr">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html",
+        disqus_title="argparse - Command line option and argument parsing",
+        disqus_identifier="cache/posts/2010/08/08/argparse-command-line-option-and-argument-parsing.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

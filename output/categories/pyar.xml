@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (PyAr)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/pyar.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:24 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>PyDay en Córdoba</title><link>http://www.juanjoconti.com.ar/posts/2011/04/11/pyday-en-cordoba.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El próximo sábado 30 de abril, en la ciudad de Córdoba, se desarrollará &lt;a href="http://www.pyday.com.ar/cordoba2011/" target="_blank"&gt;un nuevo PyDay&lt;/a&gt; del &lt;a href="http://www.python.org.ar/" target="_blank"&gt;Grupo de Usuarios de Python de Argentina&lt;/a&gt;. Un &lt;a href="http://www.pyday.com.ar/cordoba2011/conference/schedule" target="_blank"&gt;día entero de charlas&lt;/a&gt; sobre el lenguaje de programación Python.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2011/04/AfichePyDayCordoba.png"&gt;&lt;img class="aligncenter size-full wp-image-3187" title="30 de abril, PyDay en Córdoba" src="http://www.juanjoconti.com.ar/wp-content/uploads/2011/04/AfichePyDayCordoba.png" alt="30 de abril, PyDay en Córdoba" width="352" height="498"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>PyAr</category><category>pyday</category><guid>http://www.juanjoconti.com.ar/posts/2011/04/11/pyday-en-cordoba.html</guid><pubDate>Mon, 11 Apr 2011 21:26:25 GMT</pubDate></item><item><title>Charla: Desarrollando aplicaciones de red con Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy di en &lt;a href="http://jornadassl.agora.unnoba.edu.ar/" target="_blank"&gt;Junín&lt;/a&gt; una charla introductoria &lt;a href="http://twistedmatrix.com/" target="_blank"&gt;Twisted&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando los organizadores me contactaron hace un para de meses para invitarme a venir, me preguntaron sobre qué podía hablar. Mi primera idea era una charla titulada algo así como &lt;strong&gt;Python para diversión, trabajo y estudio&lt;/strong&gt;. Mandé un guión con los temas que incluiría, en en el track trabajo mensioné Twisted, el framework que venía usando hacía un tiempo ya. La respuesta que recibí fue.&lt;/p&gt;
+&lt;p&gt;"Dale, date una charla de Twisted"&lt;/p&gt;
+&lt;p&gt;:)&lt;/p&gt;
+&lt;p&gt;Si bien venía usándolo hacía casi dos años, mi forma de aprenderlo no fue la más pedagógica, sino que fue la forma dura. Empecé a desarrollar y fui conociendo lo puntudo de sus aristas a medida que iba necesitando agregar nuevas funcionalidades.&lt;/p&gt;
+&lt;p&gt;Preparar la charla mi vino muy bien para organizar lo que sabía y aprender algunas que había venido evitando. Hoy &lt;a href="http://twitpic.com/34efyo" target="_blank"&gt;di la charla en Junín&lt;/a&gt; y creo que salió bastante bien.&lt;/p&gt;
+&lt;p&gt;Introducción a Twisted, un framework escrito en Python que permite&lt;/p&gt;
+&lt;p&gt;crear aplicaciones de red (clientes y servidores) asincrónicas.&lt;/p&gt;
+&lt;p&gt;Veremos sus conceptos principales y ejemplos que permitirán al&lt;/p&gt;
+&lt;p&gt;auditorio volver a su casa con las herramientas básicas para empezar a programar utilizándolo.&lt;/p&gt;
+&lt;p&gt;Dejo el material de la charla:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/files/charlas/aplicaciones_de_red.pdf" target="_blank"&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/files/charlas/ejemplos_intro_twisted.zip" target="_blank"&gt;Ejemplos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Y una propaganda que fue mi última slide. PyAr, el grupo de usuarios de Python de Argentina está dando charlas abiertas (de 2hs c/u) en La Tribu todos los sábados. El próximo sábado tenemos justamenet una clase de Twisted!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://python.org.ar/pyar/CharlasAbiertas2010#Twisted" target="_blank"&gt;http://python.org.ar/pyar/CharlasAbiertas2010#Twisted&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sábado 13 de Noviembre - Charlas Abiertas de Python en La Tribu (Lambaré 873, Capital Federal)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Twisted&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Vamos a ver porque el modelo de twisted es necesario, como se programa en modo asyncronico usando deferreds y conocer el api de red de twisted para hacer servicios.&lt;/blockquote&gt;
+&lt;p&gt;Disertante: Lucio Torre&lt;/p&gt;
+&lt;p&gt;13 a 15 horas&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>General</category><category>PyAr</category><category>Python</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted.html</guid><pubDate>Sat, 06 Nov 2010 11:49:33 GMT</pubDate></item><item><title>Mis charlas en PyConAr2010</title><link>http://www.juanjoconti.com.ar/posts/2010/10/16/mis-charlas-en-pyconar2010.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy, en el primer día de &lt;a href="http://ar.pycon.org/2010/about/" target="_blank"&gt;PyCon Argentina, en Córdoba&lt;/a&gt;, me tocó dar 2 charlas programadas y de yapa una charla relámpago. Les dejo mis slides:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.juanjoconti.com.ar/files/charlas/TaintModePyConAr2010.pdf"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Taint Mode en Python&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;: Taint Mode es un modo de ejecución de algunos lenguajes de programación que permiten advertirle al programador sobre potenciales problemas de seguridad en su código. La charla: repaso de conceptos, discusiones sobre implementaciones, como funciona nuestra biblioteca y su API.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.juanjoconti.com.ar/files/charlas/DecoradoresPyConAr2010.pdf"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Entendiendo decoradores en Python&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;: los decoradores son una herramienta muy potente que viene con el lenguaje y permiten introducir cambios en código ya escrito de una forma poco intrusiva; sirven por ejemplo para hacer programación orientada a aspectos en Python. La charla: objetos, funciones, decoradores, decoradores con parámetros, clases decoradoras, decorando clases.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://svn.juanjoconti.com.ar/dyntaint/trunk/webdemo/"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Demo en Taint Mode en Python&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;: mostré  2 slides de la primer charla más una aplicación demo que sirve de prueba de concepto para mostrar que todo lo que dije antes funciona.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;&lt;strong&gt;update:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://picasaweb.google.com/copybin/Pycon2010Dia1" target="_blank"&gt;Fotos del primer día.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/10/DSCF7073.jpg"&gt;&lt;img class="aligncenter size-large wp-image-2886" title="DSCF7073" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/10/DSCF7073-1024x768.jpg" alt="" width="640" height="480"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>charlas</category><category>Eventos</category><category>PyAr</category><category>pycon</category><category>PyConAr2010</category><guid>http://www.juanjoconti.com.ar/posts/2010/10/16/mis-charlas-en-pyconar2010.html</guid><pubDate>Sat, 16 Oct 2010 02:22:17 GMT</pubDate></item><item><title>Salió la revista de PyAr</title><link>http://www.juanjoconti.com.ar/posts/2010/08/13/salio-la-revista-de-pyar.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy salió a la calle (del cyberespacio) el &lt;a href="http://revista.python.org.ar/1/html/" target="_blank"&gt;número 1&lt;/a&gt; de &lt;a href="http://revista.python.org.ar" target="_blank"&gt;PET, Python Entre Todos&lt;/a&gt;, la revista de la comunidad Python Argentina.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/tapa-nro1.jpg"&gt;&lt;img class="aligncenter size-large wp-image-2673" title="tapa-nro1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/08/tapa-nro1-1024x724.jpg" alt="" width="640" height="452"&gt;&lt;/a&gt;Cuando empezaron a organizarla no tenía tiempo para prestarle mucha atención, pero un par de semanas antes de que esté lista pude colaborar un poco más y mandé un artículo sobre &lt;a href="http://revista.python.org.ar/1/html/taint.html" target="_blank"&gt;Taint Mode&lt;/a&gt;, &lt;a href="http://revista.python.org.ar/1/html/desafio.html" target="_blank"&gt;un desafío&lt;/a&gt; y e hice un poquito de revisor. Espero en la próxima edición colaborar un poco más; en esta primera vuelta todo el trabajo de edición recayó sobre Roberto Alsina y Emiliano Dalla Verde Marcozzi.&lt;/p&gt;
+&lt;p&gt;Destaco hasta ahora de los que leí, un &lt;a href="http://revista.python.org.ar/1/html/genesispyar.html" target="_blank"&gt;artículo sobre la historia del grupo&lt;/a&gt;, pero tengo muchos más en la cola de lectura!&lt;/p&gt;
+&lt;p&gt;¿Qué hacés que todavía no fuiste a leer? &lt;a href="http://revista.python.org.ar/1/html/" target="_blank"&gt;Está disponible en varios formatos&lt;/a&gt;!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Cosas que escribo</category><category>Cosas que leo</category><category>PET</category><category>PyAr</category><category>taint</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/13/salio-la-revista-de-pyar.html</guid><pubDate>Fri, 13 Aug 2010 10:33:32 GMT</pubDate></item><item><title>Asimov sobre Inteligencia Artificial</title><link>http://www.juanjoconti.com.ar/posts/2010/07/16/asimov-sobre-inteligencia-artificial.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En El monstruo subatómico, un libro de difusión, Isaac Asimov habla sobre Iteligencia Artificial. Hace más o menos dos años que lo leí y tenía la intención de transcribir el artículo para que esté disponible en Internet. Casi lo olvidé, hasta que hoy alguien lo mandó en la lista de PyAr. &lt;del datetime="2010-07-19T00:56:01+00:00"&gt;Copio y pego a continuación.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Capítulo 11&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Más pensamientos acerca del pensamiento&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Podés leerlo en &lt;a href="http://www.librosmaravillosos.com/elmonstruosubatomico/capitulo11.html" target="_blank"&gt;http://www.librosmaravillosos.com/elmonstruosubatomico/capitulo11.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Gracias a Diego Avendaño, Patricio Barros y Antonio Bravo.&lt;/p&gt;&lt;/div&gt;</description><category>AI</category><category>Asimov</category><category>Cosas que leo</category><category>IA</category><category>PyAr</category><guid>http://www.juanjoconti.com.ar/posts/2010/07/16/asimov-sobre-inteligencia-artificial.html</guid><pubDate>Fri, 16 Jul 2010 13:53:29 GMT</pubDate></item><item><title>Charla: Entendiendo Decoradores en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/05/09/charla-entendiendo-decoradores-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Ayer di esta charla en el &lt;a href="http://www.pyday.com.ar/rafaela2010" target="_blank"&gt;primer PyDay en Rafaela&lt;/a&gt;. Estuvo muy bueno, la organización se pasó y tuvieron muy buena asistencia de estudiantes de la universidad y programadores de la ciudad.&lt;/p&gt;
+&lt;p&gt;Les dejo el &lt;a title="Entendiendo Decoradores en Python" href="http://juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti.pdf" target="_blank"&gt;pdf de la charla&lt;/a&gt; y una foto grupal del final del día:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: left;"&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/05/023.jpg"&gt;&lt;img class="aligncenter size-medium wp-image-2233" title="023" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/05/023-300x200.jpg" alt="023" width="300" height="200"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>Eventos</category><category>PyAr</category><category>Python</category><category>rafalea</category><guid>http://www.juanjoconti.com.ar/posts/2010/05/09/charla-entendiendo-decoradores-en-python.html</guid><pubDate>Sun, 09 May 2010 14:19:03 GMT</pubDate></item><item><title>8 de mayo: Python Day en Rafaela</title><link>http://www.juanjoconti.com.ar/posts/2010/05/02/8-de-mayo-python-day-en-rafaela.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El próximo sábado se va a desarrollar en la ciudad de Rafaela un Python Day, un día de charlas para que quienes no conozcan Python puedan acercarse al lenguaje. Vamos a tener muchas charlas introductorias y esperamos pueda aprovechar este evento tanto la comunidad universitaria como la ciudad en general.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;strong&gt;&lt;a href="http://www.pyday.com.ar/rafaela2010/" target="_blank"&gt;http://www.pyday.com.ar/rafaela2010/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Por mi parte voy a estar colaborando con una charla nueva: Entendiendo Decoradores en Python. Esperemos salga bien :)&lt;/p&gt;
+&lt;blockquote&gt;El Python Day es un evento organizado por &lt;a href="http://python.com.ar/"&gt;PyAr&lt;/a&gt; con el apoyo de la &lt;a href="http://ucse.edu.ar/rafaela/sede_rafaela.htm"&gt;Universidad Católica  de Santiago del Estero, Departamento Académico Rafaela&lt;/a&gt;.
+
+
+
+El evento dura un día donde se darán pequeños cursos y charlas  relacionadas a este lenguaje que de a poco va a haciendo su lugar entre  los desarrolladores. Tenemos como intención hacer un espacio en donde  cualquier persona interesada pueda acercarse para preguntar, aprender y  experimentar con estas herramientas.
+
+
+
+El evento se llevará a cabo &lt;a href="http://www.pyday.com.ar/rafaela2010/conference/venue"&gt;acá&lt;/a&gt; a  partir de las 9:00 de la mañana.
+
+
+
+&lt;strong&gt;¿Qué es Python?&lt;/strong&gt;
+
+
+
+&lt;strong&gt;Python&lt;/strong&gt; es un &lt;a href="http://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n"&gt;lenguaje  de programación&lt;/a&gt; &lt;a href="http://es.wikipedia.org/wiki/Lenguaje_interpretado"&gt;interpretado&lt;/a&gt; creado por &lt;a href="http://es.wikipedia.org/wiki/Guido_van_Rossum"&gt;Guido  van Rossum&lt;/a&gt; en el año 1990.
+
+
+
+En la actualidad Python se desarrolla como un proyecto de &lt;a href="http://es.wikipedia.org/wiki/C%C3%B3digo_abierto"&gt;código abierto&lt;/a&gt;,  administrado por la &lt;a href="http://es.wikipedia.org/wiki/Python_Software_Foundation"&gt;Python  Software Foundation&lt;/a&gt;. La última versión estable del lenguaje es la  2.6 (01 de octubre de 2008).
+
+
+
+Fuente: &lt;a href="http://es.wikipedia.org/wiki/Python"&gt;Wikipedia&lt;/a&gt;
+
+
+
+&lt;strong&gt;Quiero participar… ¿Qué Hago?&lt;/strong&gt;
+
+Si lo que querés es asistir a las charlas, solo aparecete por la  universidad el 8 de mayo a partir de las 09:00 y listo (por favor, si es  posible, &lt;a href="http://www.pyday.com.ar/rafaela2010/default/register"&gt;registrate  previamente por web&lt;/a&gt;)&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>Eventos</category><category>PyAr</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/05/02/8-de-mayo-python-day-en-rafaela.html</guid><pubDate>Sun, 02 May 2010 00:29:54 GMT</pubDate></item><item><title>Aplicar un decorador a todas las funciones de un módulo en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En la lista de PyAr &lt;a href="http://www.grulic.org.ar/lurker/message/20100204.020622.c24e333b.en.html" target="_blank"&gt;preguntaron&lt;/a&gt; si había alguna forma de aplicar un decorador a todos las funciones de un módulo. Envié una solución sin probarla, que al verla unos días más tarde parece bastante buena :)&lt;/p&gt;
+&lt;p&gt;La comento aquí con un ejemplo. modulo.py contiene definiciones de funciones:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;def a():
+&lt;pre class="code literal-block"&gt;pass
+&lt;/pre&gt;
+
+
+&lt;p&gt;def b():&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;print 42
+&lt;/pre&gt;
+
+
+&lt;p&gt;def c():&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;a()
+
+b()&amp;lt;/pre&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;y decoradores.py un decorador que imprime el nombre de la función llamada:&lt;/p&gt;
+&lt;pre&gt;def nombrador(f):
+
+    def inner(*a, **kw):
+
+        print "Ejecutando %s" % f.__name__
+
+        return f(*a, **kw)
+
+    return inner&lt;/pre&gt;
+
+&lt;p&gt;(Si no sabés lo que es un decorador, podés leer mi post &lt;a href="http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/" target="_blank"&gt;Decoradores en Python I: Introducción&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;En lugar de modificar las definiciones de funciones en modulo.py para aplicar el decorador a cada una de las funciones, ya sea usando el azúcar sintáctica de Python:&lt;/p&gt;
+&lt;pre&gt;@nombrador
+
+def a():
+
+    ...&lt;/pre&gt;
+
+&lt;p&gt;o mediante una llamada a la función:&lt;/p&gt;
+&lt;pre&gt;a = nombrador(a)&lt;/pre&gt;
+
+&lt;p&gt;podemos agregar el siguiente código al final de modulo.py:&lt;/p&gt;
+&lt;pre&gt;for n,v in locals().items():
+
+   if inspect.isfunction(v) and n != 'nombrador':
+
+       locals()[n] = nombrador(v)&lt;/pre&gt;
+
+&lt;p&gt;Vamos a explicarlo:&lt;/p&gt;
+&lt;p&gt;la llamada a la función built-in locals retorna un diccionario representando el espacio de nombres local: cada clave es un string representando el nombre de un objeto y cada valor es el objeto en si. Iteramos sobre la lista de pares (key, value) del mencionado dict y por cada uno verificamos si:&lt;/p&gt;
+&lt;p&gt;a) es una función (inspect.isfunction es apropiado para esto)&lt;/p&gt;
+&lt;p&gt;b) el nombre no es el del decorador que queremos aplicar (para no aplicar el decorador sobre si mismo!)&lt;/p&gt;
+&lt;p&gt;Si las condiciones a y b se cumplen, podemos guardar en el diccionario del espacio de nombres, bajo el nombre de la función que cumplió las condiciones, una versión decorada de la misma.&lt;/p&gt;
+&lt;p&gt;Agregamos algo más de código a modulo.py para que se llame a las funciones cuando lo ejecutemos:&lt;/p&gt;
+&lt;pre&gt;if __name__ == '__main__':
+
+    a()
+
+    b()
+
+    c()&lt;/pre&gt;
+
+&lt;p&gt;Esta es la salida obtenida:&lt;/p&gt;
+&lt;pre lang="bash"&gt;juanjo@fenix:~/python/muchosdecos$ python modulo.py
+
+Ejecutando a
+
+Ejecutando b
+
+42
+
+Ejecutando c
+
+Ejecutando a
+
+Ejecutando b
+
+42&lt;/pre&gt;
+
+&lt;p&gt;¿Querés probarlo? Bajá &lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/02/muchos.zip"&gt;muchos.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; para acceder a locals() no se puede utilizar iteritems por que el diccionario cambia durante la ejecución.&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>PyAr</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/02/06/aplicar-un-decorador-a-todas-las-funciones-de-un-modulo-en-python.html</guid><pubDate>Sat, 06 Feb 2010 12:35:28 GMT</pubDate></item><item><title>El Tutorial de Python en Español</title><link>http://www.juanjoconti.com.ar/posts/2009/08/30/el-tutorial-de-python-en-espanol.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy se ha publicado la versión &lt;a href="http://docs.python.org.ar/tutorial/contenido.html" target="_blank"&gt;HTML&lt;/a&gt; y &lt;a href="http://python.org.ar/pyar/Tutorial?action=AttachFile&amp;amp;do=view&amp;amp;target=TutorialPython.pdf" target="_blank"&gt;PDF&lt;/a&gt; del tutoril oficial de Python en español. La traducción la hemos realizado varios voluntarios del grupo de usuarios de Python de Argentina.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;a href="http://python.org.ar/pyar/Tutorial" target="_blank"&gt;&lt;strong&gt;http://python.org.ar/pyar/Tutorial&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="size-medium wp-image-1751 aligncenter" title="python-logo-master-v3-TM" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/08/python-logo-master-v3-TM-300x101.png" alt="python-logo-master-v3-TM" width="300" height="101"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>PyAr</category><category>Python</category><category>tutorial</category><guid>http://www.juanjoconti.com.ar/posts/2009/08/30/el-tutorial-de-python-en-espanol.html</guid><pubDate>Sun, 30 Aug 2009 14:05:48 GMT</pubDate></item><item><title>4 de Octubre - 3ra Jornada Python en Santa Fe</title><link>http://www.juanjoconti.com.ar/posts/2008/09/23/4-de-octubre-3ra-jornada-python-en-santa-fe.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El próximo &lt;strong&gt;4 de Octubre&lt;/strong&gt; se llevará a cabo en instalaciones de la Universidad Tecnológica Nacional, Facultad Regional Santa Fe, la &lt;span style="color: #cc3333;"&gt;&lt;strong&gt;3ra Jornada Python en Santa Fe&lt;/strong&gt;&lt;/span&gt; [&lt;a href="http://www.pythonsantafe.com.ar/" target="_blank"&gt;1&lt;/a&gt;]. Orientadas a programadores y profesionales de sistemas, estudiantes y público en general interesado en la programación, los invitamos a participar registrándose en nuestra web [&lt;a href="http://www.pythonsantafe.com.ar/registracion" target="_blank"&gt;2&lt;/a&gt;]. La asistencia es libre y gratuita.&lt;/p&gt;
+&lt;p&gt;Esta jornada consiste en una serie de charlas relacionadas con el lenguaje de programación Python. Ya está disponible el programa del evento [&lt;a href="http://www.pythonsantafe.com.ar/programacion" target="_blank"&gt;3&lt;/a&gt;].&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;¿Qué es Python?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Python es un lenguaje de programación interpretado, dinámico y orientado a objetos que puede ser utilizado en diferentes desarrollos de software y en múltiples plataformas. La característica de ser multiplataforma es algo muy interesante para los desarrolladores. El lenguaje se encuentra soportado en Unix, GNU/Linux, Widows/DOS, Macintosh… y la lista sigue. Desde grandes mainframes a pequeñas Palm. En la web oficial [&lt;a href="http://www.python.org/" target="_blank"&gt;4&lt;/a&gt;] del lenguaje encontrará mayor información y mucha documentación.&lt;/p&gt;
+&lt;p&gt;Y en el país existe una comunidad de desarrolladores muy fuerte, agrupada en &lt;strong&gt;PyAR&lt;/strong&gt;, Python Argentina [&lt;a href="http://www.python.com.ar/" target="_blank"&gt;5&lt;/a&gt;].&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;¿Quién utiliza Python?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;La NASA, Google, Yahoo, Walt Disney y Red Hat son algunas de las grandes organizaciones que trabajan con este lenguaje. Google contrató a su creador, Guido van Rossum. En la mayoría de las distribuciones GNU/Linux encontramos Python ya instalado (se usa mucho como lenguaje de script para automatizar tareas). Y en el país también hay numerosas empresas que trabajan con Python: Lunix, Except, Lambda Sistemas, etc.&lt;/p&gt;
+&lt;p&gt;Recuerden registrarse [&lt;a href="http://www.pythonsantafe.com.ar/registracion" target="_blank"&gt;2&lt;/a&gt;] y los esperamos el &lt;strong&gt;4 de Octubre&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;[1] Web de la jornada: &lt;a href="http://www.pythonsantafe.com.ar/" target="_blank"&gt;www.pythonsantafe.com.ar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2] Registración: &lt;a href="http://www.pythonsantafe.com.ar/registracion" target="_blank"&gt;www.pythonsantafe.com.ar/registracion&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3] Programa: &lt;a href="http://www.pythonsantafe.com.ar/programacion" target="_blank"&gt;www.pythonsantafe.com.ar/programacion&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[4] Web del lenguaje: &lt;a href="http://www.python.org/" target="_blank"&gt;www.python.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[5] PyAR: &lt;a href="http://www.python.com.ar/" target="_blank"&gt;www.python.com.ar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>FRSF</category><category>General</category><category>PyAr</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2008/09/23/4-de-octubre-3ra-jornada-python-en-santa-fe.html</guid><pubDate>Tue, 23 Sep 2008 13:59:17 GMT</pubDate></item></channel></rss>

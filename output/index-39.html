@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 39) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-39.html">
+
+
+
+        <link rel="prev" href="index-40.html" type="text/html">
+        <link rel="next" href="index-38.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/09/23/reflotando-mytwitgroup.html" class="u-url">Reflotando MyTwitGroup</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/09/23/reflotando-mytwitgroup.html" rel="bookmark"><time class="published dt-published" datetime="2010-09-23T15:36:56+00:00" title="2010-09-23 15:36">2010-09-23 15:36</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/09/23/reflotando-mytwitgroup.html#disqus_thread" data-disqus-identifier="cache/posts/2010/09/23/reflotando-mytwitgroup.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>MyTwitGroup o <a href="http://www.mytwitgroup.com/" target="_blank">www.mytwitgroup.com</a> es un servicio que implementamos con dos compañeras hace unos 6 meses. Uno de los objetivos del proyecto era ver como funcionábamos como equipo, si podíamos construir y entregar software en tiempo y forma. Nos fue bastante bien.</p>
+<p></p>
+<h3>El servicio</h3>
+<p>La idea del servicio surgió de una necesidad real. En la cátedra de Comunicaciones somo 4 personas que usamos Twitter y queríamos usar esa herramienta para comunicarnos con los alumnos, pero no queríamos obligarlos a que nos sigan a cada uno.</p>
+<p><strong>MyTwitGroup revisa periódicamente el timeline de cada uno de los miembros y si encuentra un tweet con el hashtag </strong><strong>#com lo publica utilizando la cuenta de la cátedra.</strong></p>
+<p>El servicio lo pueden usar desde empresas hasta bandas de rock. Yo creo que es útil, pero para entenderlo realmente tenés que usarlo. Si tenés una "cuenta grupal" probalo, no te cuesta nada.</p>
+<h3>Fallas</h3>
+
+<p>Cuando implementamos la primera versión del sistema, utilizamos la forma básica de autenticación de Twitter: era fácil de implementar y funcionaba. Tenía un problema, el grupo que creaba una cuenta en el sitio debía dejar la contraseña de la cuenta del grupo para que luego se puedan hacer las publicaciones automáticas. Tuvimos resistencia de usuarios por esto. Intentamos solucionarlo obteniendo un certificado que podamos usar para enviar la información por HTTPS. Los certificados son caros. Usamos uno gratuito unos meses, pero luego caducó. Esta fue la falla 1.</p>
+<p>Falla 2. Hace menos de un mes Twitter decidió apagar su sistema de autenticación básico y nuestro servicio dejó de andar. Algo corto de tiempo por otros proyectos y obligaciones, con la ayuda de <a href="http://fisadev.blogspot.com/" target="_blank">fisa</a> migramos a la nueva forma de autenticación: OAuth.</p>
+<p>OAuth en Twitter <a href="http://arstechnica.com/security/guides/2010/09/twitter-a-case-study-on-how-to-do-oauth-wrong.ars/" target="_blank">está mal implementado</a> e hizo renegar a muchas personas; por semanas, populares clientes no funcionaron y a los paranoicos de la seguridad no les termina de cerrar la implementación OAuth de Twitter. Pero a nosotros nos vino bien! <strong>Usando OAuth dejamos de pedirle  la password al usuario y muchos que no hubiesen probado el servicio, tal vez lo hagan.</strong> También dejamos de necesitar un costoso certificado.</p>
+<h3>Bugs fixing</h3>
+
+<p>Cambiamos de hosting y salió a la cancha, pero con algunos temitas que fui corrigiendo <em>on demand</em>. Cambié la BD de SQLite a PostgreSQL. Cambié el máximo tamaño para el hashtag de 10 a 20 (gracias walteralini por probarlo). No funcionaba la página "contact us" por que arrastré la configuración del viejo hosting.</p>
+<p>Tengo que arreglar algunas cosas de usabildad todavía, el workflow logearse/editar puede ser engorroso, pero ya son detalles sutiles.</p>
+<p><a href="http://www.mytwitgroup.com/" target="_blank">El sitio queda on line</a> y ya tenemos algunos felices usuarios de esta nueva era. ¿Ideas o sugerencias? Dejalas en los comentarios!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/09/18/torta-de-zanahoria.html" class="u-url">Torta de Zanahoria</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/09/18/torta-de-zanahoria.html" rel="bookmark"><time class="published dt-published" datetime="2010-09-18T19:12:57+00:00" title="2010-09-18 19:12">2010-09-18 19:12</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/09/18/torta-de-zanahoria.html#disqus_thread" data-disqus-identifier="cache/posts/2010/09/18/torta-de-zanahoria.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="http://twitter.com/Orfx/status/24873731756" target="_blank">A pedido del público</a>, esta es la receta de la torta de zanahoria:
+<h3>Ingredientes</h3>
+
+<ul>
+
+    <li>Zanahoria rallada cruda: 400g</li>
+
+    <li>Huevos: 4 unidades</li>
+
+    <li>Aceite: 150 ml</li>
+
+    <li>Azúcar: 240g</li>
+
+    <li>Harina Leudante: 400g</li>
+
+    <li>Esencia de vainilla: 1 tapita</li>
+
+    <li>Azúcar Impalpable: cantidad necesaria</li>
+
+</ul>
+
+<h3>Preparación</h3>
+
+<ol>
+
+    <li>Colocar en la licuadora todos los ingredientes (excepto la harina). Licuar hasta obtener una mezcla homogénea.</li>
+
+    <li>Pasar el licuado a un recipiente e incorporar en 2 partes la harina revolviendo suavemente.</li>
+
+    <li>Volcar en un molde de torta o moldes individuales (muffins), rociado con rocío vegetal.</li>
+
+    <li>Hornear.</li>
+
+    <li>Una vez fríos, espolvorear con azúcar impalpable.</li>
+
+</ol>
+
+<h3>Resultado</h3>
+
+<p><a href="wp-content/uploads/2010/09/muffins_zanahoria.jpg"><img class="aligncenter size-large wp-image-2827" title="muffins_zanahoria" src="wp-content/uploads/2010/09/muffins_zanahoria-1024x768.jpg" alt="" width="640" height="480"></a></p>
+<p><em>La receta la trajo mi hermana de Brasil cuando estuvo de intercambio en el 2008.</em></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html" class="u-url">Cambiando el formato de los logs en Twisted</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html" rel="bookmark"><time class="published dt-published" datetime="2010-09-14T12:25:05+00:00" title="2010-09-14 12:25">2010-09-14 12:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html#disqus_thread" data-disqus-identifier="cache/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En Twisted <a href="http://twistedmatrix.com/documents/current/core/howto/logging.html" target="_blank">se puede tener un log</a> de todo lo que pasa en un programa de forma bastante fácil:</p>
+<p></p>
+<pre lang="python">from twisted.python import log
+<p>from twisted.python.logfile import DailyLogFile</p>
+<p>log.startLogging(DailyLogFile('log.txt', LOGDIR))</p></pre>
+<p>Todos los <strong>prints</strong> que anden dando vuelta ahora son entradas en el log y de yapa estoy usando DailyLogFile en lugar de un archivo común y corriente para que al final del día rote a un nuevo archivo en disco. Hay varias opciones, esta es la que me sirve a mí.</p>
+<p>Por defecto los logs se ven algo así:</p>
+<pre lang="bash">2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Total: 1
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] SITIO SFE
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Total: 2
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SITIO SFE
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51-0500 [TModBus,1,190.136.29.16] Nuevo sitio registrado en MBProxy SFE</pre>
+
+<p>¿Cómo podemos cambiar el formato de salida? Algunos tips.</p>
+<p>Para cambiar el formato de la fecha y hora:</p>
+<pre lang="python">log.FileLogObserver.timeFormat = '%Y-%m-%d %H:%M:%S'</pre>
+
+<p>Para cambiar lo que aparece entre corchetes: utilizar log.msg y el keyword system:</p>
+<pre lang="python">log.msg("Nuevo cliente: %s:%d" % (self.peer.host, self.peer.port), system=' - ')</pre>
+
+<p>Con estos dos cambios se puede tener un log como este:</p>
+<pre lang="bash">2010-05-28 07:41:00 [ - ] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00 [ - ] Total: 1
+
+2010-05-28 07:41:01 [SFE] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01 [SFE] SITIO SFE
+
+2010-05-28 07:41:01 [SFE] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49 [ - ] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49 [ - ] Total: 2
+
+2010-05-28 07:45:49 [ - ] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49 [SFE] SITIO SFE
+
+2010-05-28 07:45:49 [SFE] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51 [SFE] Nuevo sitio registrado en MBProxy SFE</pre>
+
+<p>Para cambiar aún más el formato de la salida, la única forma que encontré es extender <strong>FileLogObserver</strong> y sobreescribir su método <strong>emit</strong>. Discutimos un poco esto <a href="http://stackoverflow.com/questions/3700955/how-to-format-twisted-logs" target="_blank">en StackOverflow.</a></p>
+<p><strong>nota:</strong> En Twisted también podemos usar el <a href="http://docs.python.org/library/logging.html" target="_blank">sistema de logging de Python</a>, esto tiene la ventaja de que podemos trabajar con niveles de log y controlar mejor el formato y la forma en que se generan los logs, pero el problema de que no está preparado para funcionar en forma asincrónica y esto puede traer algunos problemas con Twisted.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html" class="u-url">Fotografiando desde el camino (segunda edición)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html" rel="bookmark"><time class="published dt-published" datetime="2010-09-08T21:40:21+00:00" title="2010-09-08 21:40">2010-09-08 21:40</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html#disqus_thread" data-disqus-identifier="cache/posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hace 2 años había empezado a publicar fotos <strong>instantáneas</strong> en mi blog. Las sacaba con el celular (un Nokia 6131) y en segundos estaban on line mostrando la última en la sidebar. En ese entonces no tenía el celular que tengo ahora, y tuve que arreglarmelas con <a href="http://www.juanjoconti.com.ar/2008/08/18/fotografiando-desde-el-camino/" target="_blank">tremento hack</a> para lograr la funcionalidad que buscaba.</p>
+<p>Hoy con un Motorolla Milestone que tiene más capacidad de procesamiento que las computadoras que llevaron al hombre a la luna y más conectividad muchos países, el tema es más sencillo.</p>
+<p>Publico fotos através de <a href="http://twitpic.com/photos/jjconti" target="_blank">Twitpic</a> con mi cliente de Twitter <a href="http://seesmic.com/" target="_blank">Seesmic</a> y las muestro usando el plugín <a href="http://wordpress.org/extend/plugins/my-twitpics/screenshots/" target="_blank">My Pictures Widget</a> para Wordpress. <em>Nice.</em></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/08/30/fotos-en-el-campo.html" class="u-url">Fotos en el campo</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/08/30/fotos-en-el-campo.html" rel="bookmark"><time class="published dt-published" datetime="2010-08-30T00:11:17+00:00" title="2010-08-30 00:11">2010-08-30 00:11</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/08/30/fotos-en-el-campo.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/30/fotos-en-el-campo.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy a la tarde fuimos con Padre al campo a buscar verdura para la semana. Aproveché para sacar algunas fotos y probar los "efectos" que vienen con la cámara del celular desde que le actualicé el sistema operativo.</p>
+<p><a href="wp-content/uploads/2010/08/2010-08-29_17-05-01_912.jpg"><img class="aligncenter size-large wp-image-2794" title="2010-08-29_17-05-01_912" src="wp-content/uploads/2010/08/2010-08-29_17-05-01_912-1024x575.jpg" alt="" width="640" height="359"></a></p>
+<p>[gallery link="file" orderby="title"]</p>
+<p>Se dieron cuenta que poniendo la cámara en modo sepia, fotos normales se convierte en casi artísticas? Nice.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/08/29/dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html" class="u-url">Dejar de revisionar un archivo sin borrarlo en svn</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/08/29/dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html" rel="bookmark"><time class="published dt-published" datetime="2010-08-29T13:20:24+00:00" title="2010-08-29 13:20">2010-08-29 13:20</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/08/29/dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/29/dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>A veces me pasa que en un proyecto tengo un archivo X que empezó siendo un archivo común, pero en un momento dado, cada desarrollador necesita taner su propia copia y no revisionarlo más.</p>
+<p>Cómo dejar de revisionarlo sin borrarlo?</p>
+<p>La primer vez que me topé con el problema hice:</p>
+<p></p>
+<pre lang="bash">cp X Y
+<p>svn rm X</p>
+<p>svn ci -m "chau X"</p>
+<p>mv Y X</p>
+</pre>
+
+<p>Ugly.</p>
+<p>La forma correcta de hacerlo es:</p>
+<pre lang="bash">svn rm --keep-local X
+
+</pre>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/08/29/como-unir-videos-en-gnulinux.html" class="u-url">Cómo unir videos en GNU/Linux</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/08/29/como-unir-videos-en-gnulinux.html" rel="bookmark"><time class="published dt-published" datetime="2010-08-29T12:45:59+00:00" title="2010-08-29 12:45">2010-08-29 12:45</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/08/29/como-unir-videos-en-gnulinux.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/29/como-unir-videos-en-gnulinux.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Ayer en <a href="http://es.wikipedia.org/wiki/Carlos_Pellegrini_%28Santa_Fe%29" target="_blank">Carlos Pellegrini</a> fue el <a href="http://es.wikipedia.org/wiki/Agust%C3%ADn_de_Hipona" target="_blank">Día del Pueblo</a>. Una de las actividades que hubo fue una <strong>carrera de autos con obstáculos</strong>. Aproveché para filmar un poco y probar <a href="http://es.wikipedia.org/wiki/Motorola_Milestone" target="_blank">mi nuevo celular</a>, por lo que terminé con varios archivos <strong>mp4</strong>. Para subirlos a Internet quería unirlos: ¿cómo hacerlo de forma fácil? Si tenés varios archivos de texto y querés unirlos, o expresándome de forma más correcta, <strong>contactenarlos</strong>, usás el comando <strong>cat</strong>. ¿Se puede hacer lo mismo con videos? Suena algo loco cuando se escucha por primera vez, pero hay algunos formatos que SI lo soportan, como <a href="http://es.wikipedia.org/wiki/MPEG-1" target="_blank">mpeg 1</a> y <a href="http://es.wikipedia.org/wiki/MPEG-2" target="_blank">2</a>.</p>
+<p>Usando <strong>ffmpeg</strong> podemos convertir los archivos mp4 a mpeg. Parados en el directorio donde estén los videos:</p>
+<p></p>
+<pre lang="bash">for i in <code>ls *.mp4</code>; do ffmpeg -i $i -sameq $i.mpeg; done
+</pre>
+
+<p>Ahora simplemente los <strong>concatenamos y redirigimos la salida de cat</strong> a un nuevo archivo:</p>
+<pre lang="bash">cat *.mpeg &gt; video.mpeg
+
+</pre>
+
+<p>Notemos que el orden <em>lexicográfico</em> de los videos coincide con el orden en que fueron tomados; por eso puedo usar el * y obtener un resultado ordenado en el tiempo.</p>
+<p>Listo, <a href="http://www.youtube.com/watch?v=8Txgi8mFy6w" target="_blank">subí el resultado a YouTube</a>.</p>
+<p>Me hubiese gustado una transición más suave entre video y video, pero investigarlo y hacerlo excedía la ecuación costo beneficio. Se escuchan ideas!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/08/24/un-servidor-web-con-pocas-lineas-de-python.html" class="u-url">Un servidor web con pocas líneas de Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/08/24/un-servidor-web-con-pocas-lineas-de-python.html" rel="bookmark"><time class="published dt-published" datetime="2010-08-24T23:00:39+00:00" title="2010-08-24 23:00">2010-08-24 23:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/08/24/un-servidor-web-con-pocas-lineas-de-python.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/24/un-servidor-web-con-pocas-lineas-de-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy un amigo necesitaba un servidor web para engañar a un programa. Cada vez que el programa iniciaba, se conectaba con un servidor web para verificar si había actualizaciones disponibles.</p>
+<p>El nombre del host a dónde se hacía la petición era leído de un archivo de configuración, por lo que lo podíamos cambiar. El resto solo era levantar un servidor web que responda con la información apropiada.</p>
+<p>En la librería estándar de <strong>Python</strong> tenemos todos los elementos necesarios para realizar la tarea. Luego de probar un poco, el resultado final fue algo como esto:</p>
+<p></p>
+<pre>
+<p>PORT = 8090</p>
+<p>from BaseHTTPServer import BaseHTTPRequestHandler</p>
+<p>import SocketServer</p>
+<p>import cgi</p>
+<p>class MyHandler(BaseHTTPRequestHandler):</p>
+<pre class="code literal-block">def do_GET(self):
+
+    self.send_response(200)
+
+    self.end_headers()
+
+        self.wfile.write('1.9.1')
+
+
+
+def do_POST(self):
+
+    form = cgi.FieldStorage(
+
+        fp=self.rfile,
+
+        headers=self.headers,
+
+        environ={'REQUEST_METHOD':'POST',
+
+        'CONTENT_TYPE':self.headers['Content-Type'],
+
+        })
+
+    print form
+
+    self.send_response(200)
+
+    self.end_headers()
+
+    self.wfile.write('1.9.1')
+</pre>
+
+
+<p>httpd = SocketServer.TCPServer(("", PORT), MyHandler)</p>
+<p>print "serving at port", PORT</p>
+<p>httpd.serve_forever()</p>
+</pre>
+
+<p>Levanta en <strong>localhost</strong> y responde la cadena '1.9.1' al ser consultado tanto por <strong>GET</strong> como por <strong>POST</strong> y en el caso de POST, también imprime los valores recibidos.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/08/21/en-borrador-permanente.html" class="u-url">En borrador permanente</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/08/21/en-borrador-permanente.html" rel="bookmark"><time class="published dt-published" datetime="2010-08-21T14:57:00+00:00" title="2010-08-21 14:57">2010-08-21 14:57</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/08/21/en-borrador-permanente.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/21/en-borrador-permanente.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Le acabo de cambiar el nombre a mi blog. Pasó de "Vientos de Libertad" a "En borrador permanente". El nombre original hacía alusión al Software Libre; pensaba escribir principalmente sobre eso. No pasó.</p>
+<p>Este nuevo nombre hace referencia a un sentimiento que me invade cada vez que le doy al botón "publicar": esto es basura. Me cuesta mucho estar conforme con lo que publico; es por eso que siempre está "En borrador permanente". <em>Be my guest</em>.</p>
+<p></p>
+<p style="text-align: right;"><a href="wp-content/uploads/2010/08/460px-Vuilnis.jpg"><img class="aligncenter size-full wp-image-2600" title="460px-Vuilnis" src="wp-content/uploads/2010/08/460px-Vuilnis.jpg" alt="" width="460" height="599"></a>Imagen de <a href="http://commons.wikimedia.org/wiki/File:Vuilnis.JPG" target="_blank">Wikemedia Commons</a>.</p>
+<p style="text-align: left;"><strong>Si esperara a que estén listos, muchos de los posts de este blog nunca hubiesen sido publicados.</strong></p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/08/20/la-ultima-leccion-libro.html" class="u-url">La última lección (libro)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/08/20/la-ultima-leccion-libro.html" rel="bookmark"><time class="published dt-published" datetime="2010-08-20T22:00:51+00:00" title="2010-08-20 22:00">2010-08-20 22:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/08/20/la-ultima-leccion-libro.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/20/la-ultima-leccion-libro.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<img class="alignright size-full wp-image-2474" title="La-ultima-leccion-cover" src="wp-content/uploads/2010/07/La-ultima-leccion-cover.png" alt="" width="244" height="341">Esta semana terminé de leer La última lección. Si bien suelo leer libros técnicos o ficciones, este libro no es ninguno de ambos. No es ficción, pero cuenta una historia; y está escrito por un científico, pero no es un libro técnico.
+<p>El libro te sacude desde el arranque:</p>
+<blockquote>Tengo un problema de ingeniería.
+
+
+
+A pesar de que, en su mayor parte, estoy en excelente condición física, tengo diez tumores en el hígado y me restan unos cuantos meses de vida.</blockquote>
+
+<p>El autor, <a href="http://es.wikipedia.org/wiki/Randy_Pausch" target="_blank">Randy Pausch</a>, profesor de Canegie Mellon, fue un científico de la computación especializado en interacción hombre-máquina, uno de los creadores del lenguaje de programación <a href="http://www.alice.org/" target="_blank">Alice</a>, a quien en el año 2006 le diagnosticaron cáncer de páncreas. A partir de ahí empezó a <em>ordernar sus cosas</em> para irse tranquilo (tenía una mujer y 3 hijos). En eso lo invitan a dar una clase o charla llamada La última lección en su universidad; en esta les plantean a los profesores <strong>qué enseñarían si estuvieran muriendo y podrían dar una última lección.</strong> Para Randy era de verdad.</p>
+<p>Su última lección se llamó algo así como Cumple los sueños de tu infancia, y causó bastante conmoción. Puede <a href="http://www.cmu.edu/uls/journeys/randy-pausch/index.html" target="_blank">verse on line</a>. Uno de los asistentes fue el periodista Jeffrey Zaslow junto con quien escribió el libro basado en La última lección. La forma de escribirlo fue bastante peculiar, Randy tenía que hacer ejercicio todas las mañanas (como un paliativo para su enfermedad) y mientras ejercitaba, se comunicaba con un teléfono celular manos libres con Jeffrey contándole las historias que se convirtieron en los capítulos del libro.</p>
+<p>El libro está muy bueno y vale la pena leerlo; lo recomiendo. Cuando lo compré, no sabía que el autor era informático, por lo que cuando lo leía encontré algunos giros y menciones que me divirtieron de formas que no-informáticos no entendería; como <em>gancho</em> para mis amigos <strong>nerds</strong>: a lo largo de los capítulos se menciona a Wikipedia, Google y <strong>Python</strong>.</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-40.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-38.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

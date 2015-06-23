@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (SQL)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/sql.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:25 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>SQL Debug en Django</title><link>http://www.juanjoconti.com.ar/posts/2008/11/02/sql-debug-en-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;¿Cómo saber en Django &lt;strong&gt;qué&lt;/strong&gt; sentencias SQL se están ejecutando detrás de su ORM? Según la &lt;a href="http://docs.djangoproject.com/en/dev/faq/models/#how-can-i-see-the-raw-sql-queries-django-is-running"&gt;FAQ&lt;/a&gt;, podemos hacerlo de esta forma:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;Make sure your Django DEBUG setting is set to True. Then, just do this:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; from django.db import connection
+
+&amp;gt;&amp;gt;&amp;gt; connection.queries
+
+[{'sql': 'SELECT polls_polls.id,polls_polls.question,polls_polls.pub_date FROM polls_polls',
+
+'time': '0.002'}]&lt;/pre&gt;
+
+&lt;p&gt;connection.queries is only available if DEBUG is True. It's a list of dictionaries in order of query execution. Each dictionary has the following:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sql&lt;/code&gt; -- The raw SQL statement&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;time&lt;/code&gt; -- How long the statement took to execute, in seconds.&lt;/p&gt;
+&lt;p&gt;connection.queries includes all SQL statements -- INSERTs, UPDATES, SELECTs, etc. Each time your app hits the database, the query will be recorded.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cada vez que se realiza una nueva petición, esa variable es sobre escrita con las consultas que se ejecutaron en la vista asociada. La forma de verlas es accediendo a &lt;code&gt;connection.queries&lt;/code&gt; en cada vista de nuestro interés. Para facilitar esta tarea y no tener código intrusivo, escribí un decorador:&lt;/p&gt;
+&lt;pre&gt;
+
+from django.db import connection
+
+def sql_debug(f):
+
+    '''
+
+    Decorador útil para inspeccionar las sentencias SQL que se ejecutan en
+
+    cada request.
+
+    '''
+
+    def inner(*args, **kwargs):
+
+        r = f(*args, **kwargs)
+
+        for d in connection.queries:
+
+            print "time: %s\n sql:%s\n\n" % (d['time'], d['sql'])
+
+        return r
+
+    return inner
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>debug</category><category>Django</category><category>Python</category><category>SQL</category><guid>http://www.juanjoconti.com.ar/posts/2008/11/02/sql-debug-en-django.html</guid><pubDate>Sun, 02 Nov 2008 20:50:50 GMT</pubDate></item><item><title>If you don't... you SHOULD: 3 Lecturas Recomendadas</title><link>http://www.juanjoconti.com.ar/posts/2005/10/03/if-you-dont-you-should-3-lecturas-recomendadas.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;1) Nanni Search: aprenda prolog programando un juego: &lt;a href="http://www.amzi.com/AdventureInProlog/a1start.htm"&gt;http://www.amzi.com/AdventureInProlog/a1start.htm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;2) Beating de Avegarages: la  historia de dos nerds que triunfan en los negocios en internet programando en Lisp, un lenguaje de programación desconocido en la industria pero estrella los laboratorios de IA: &lt;a href="http://www.paulgraham.com/avg.html"&gt;http://www.paulgraham.com/avg.html&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;3) SQL for web nerds: aprenda SQL de la mano del delirante Philip Greenspun del &lt;a href="htp://www.mit.edu"&gt;MIT&lt;/a&gt;: &lt;a href="http://philip.greenspun.com/sql/"&gt;http://philip.greenspun.com/sql/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Facultad</category><category>Paul Graham</category><category>prolog</category><category>SQL</category><category>Tecnología</category><guid>http://www.juanjoconti.com.ar/posts/2005/10/03/if-you-dont-you-should-3-lecturas-recomendadas.html</guid><pubDate>Mon, 03 Oct 2005 08:22:56 GMT</pubDate></item></channel></rss>

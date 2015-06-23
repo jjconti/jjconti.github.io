@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Puedo disfrazar cualquier cosa de Modbus | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../05/coloreando-codigo-fuente-en-wordpress.html" title="Coloreando código fuente en WordPress" type="text/html">
+        <link rel="next" href="../07/functools-update_wrapper.html" title="functools.update_wrapper" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Puedo disfrazar cualquier cosa de Modbus">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html">
+    <meta property="og:description" content="Hace más de un año participo en un proyecto de desarrollo de un sistema SCADA, específicamente en la capa de comunicación. La distribución física es algo como esto:
+En cada edificio hay una red 485 co">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-08-06T00:05:49+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="Modbus">
+           <meta property="article:tag" content="pymodbus">
+           <meta property="article:tag" content="Python">
+           <meta property="article:tag" content="SCADA">
+           <meta property="article:tag" content="Twisted">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="puedo-disfrazar-cualquier-cosa-de-modbus.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Puedo disfrazar cualquier cosa de Modbus</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-08-06T00:05:49+00:00" itemprop="datePublished" title="2010-08-06 00:05">2010-08-06 00:05</time></a></p>
+                <p class="commentline">
+        
+    <a href="puedo-disfrazar-cualquier-cosa-de-modbus.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="puedo-disfrazar-cualquier-cosa-de-modbus.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Hace más de un año participo en un proyecto de desarrollo de un sistema <a href="http://es.wikipedia.org/wiki/SCADA" target="_blank">SCADA</a>, específicamente en la capa de comunicación. La distribución física es algo como esto:</p>
+<p><a href="../../../../wp-content/uploads/2010/08/esquema_kimera.jpg"><img class="aligncenter size-large wp-image-2589" title="esquema_kimera" src="../../../../wp-content/uploads/2010/08/esquema_kimera-1024x595.jpg" alt="" width="640" height="371"></a>En cada edificio hay una <a href="http://es.wikipedia.org/wiki/RS-485" target="_blank">red 485</a> con dispositivos de hardware propio (aka Robot) y un módulo celular (Motorolla G24) con salida a Internet vía GPRS. Esos módulos se registran en un servidor (escrito con <a href="http://twistedmatrix.com/" target="_blank">Twisted</a>) para ser luego sondeados: se registran sus mediciones, hay gráficos en tiempo real, se puede hacer telecomando y encender un equipo a la distancia o cambiar un set point; entre otras cosas.</p>
+<p>Nuestra primera implementación estaba inspirada en el protocolo Modbus ASCII, pero bastante alejada del estándar. Nos sirvió por bastante tiempo y no apegarnos a una especificación nos permitió acelerar el desarrollo; especialmente del hardware.</p>
+<p>Modbus es un protocolo de línea maestro/esclavo en donde el maestro realiza peticiones de lectura o escritura sobre algún o algunos registros en un esclavo. El protocolo define 4 tipos de registros (analógicos o digitales, de solo lectura o lectura-escritura) y fue pensado para funcionar sobre una línea serie; existen dos sabores: RTU, dónde los datos viajan en forma binaria y la ocupación del canal es optimizada y ASCII, menos eficiente pero legible por humanos. Se puedo leer más al respecto en <a href="http://es.wikipedia.org/wiki/Modbus" target="_blank">Wikipedia</a> o en la <a href="http://www.modbus.org/" target="_blank">página oficial del protocolo</a>.</p>
+<p>Hace algunos meses empezamos a utilizar <a href="http://mango.serotoninsoftware.com/" target="_blank">Mango m2m</a>. Mango tiene todos los componentes de interfaz de usuario que se pueden necesitar en un SCADA en adición a la posibilidad de conectarle distintas fuentes de datos (desde Modbus Serie a un motor de base de datos); las más interesante para nosotros es Modbus TCP.</p>
+<p><a href="../../../../wp-content/uploads/2010/08/mango.jpg"></a><a href="../../../../wp-content/uploads/2010/08/mango.jpg"><img class="aligncenter size-full wp-image-2603" title="mango" src="../../../../wp-content/uploads/2010/08/mango.jpg" alt="" width="572" height="413"></a></p>
+<p>Modbus TCP extiende el protocolo original para poder utilizarlo sobre la red de redes en lugar de sobre una línea serie. Por ejemplo, una de las cosas que hace es agregar al paquete enviado un número consecutivo para solucionar el problema de paquetes perdidos o duplicados.</p>
+<p>Teníamos entonces, por un lado Mango que sabe hablar Modbus TCP y por el otro los robotitos hablando un dialecto de Modbus ASCII. En el medio, el servidor de comunicaciones. La pregunta en este punto era cómo unir ambos extremos, de manera de aprovechar esta herramienta que soluciona muchos de nuestros requerimientos.</p>
+<p>Allí es donde entra en acción <a href="http://code.google.com/p/pymodbus/" target="_blank">pymodbus</a>, una implementación en Python del stack Modbus. No solo está escrita en Python, sino que está implementada utilizando el framework Twisted, el mismo que venía usando para el servidor de comunicaciones. Utilizando pymodbus pude engañar a Mango y hacerle creer que hablaba contar dispositivos Modbus TCP cuando en realidad interceptaba sus peticiones, enviaba los comandos necesarios a los robots y contestaba con la respuesta correcta.</p>
+<p>En el camino encontré varios problemas en la librería, los fui reportando y enviando parches para solucionarlos. A lo último eran tanto los cambios que enviaba y empecé a modificar el core de la librería para que funcione con <a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank">deferrers</a> (es decir, siguiendo la filosofía de Twisted) que <a href="http://code.google.com/p/pymodbus/people/list" target="_blank">recibí permiso de commit</a> en la rama <a href="http://code.google.com/p/pymodbus/source/browse/#svn/branches/devel" target="_blank">devel</a>.</p>
+<p><em>Nota: el esquema descripto funcionó bastante tiempo. Actualmente seguimos avanzando y los robots ya hablan Modbus ASCII estándar a la vez que el componente intermedio adelgazó para convertirse en un traductor o gateway.</em></p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/modbus.html" rel="tag">Modbus</a></li>
+           <li><a class="tag p-category" href="../../../../categories/pymodbus.html" rel="tag">pymodbus</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/scada.html" rel="tag">SCADA</a></li>
+           <li><a class="tag p-category" href="../../../../categories/twisted.html" rel="tag">Twisted</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../05/coloreando-codigo-fuente-en-wordpress.html" rel="prev" title="Coloreando código fuente en WordPress">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../07/functools-update_wrapper.html" rel="next" title="functools.update_wrapper">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html",
+        disqus_title="Puedo disfrazar cualquier cosa de Modbus",
+        disqus_identifier="cache/posts/2010/08/06/puedo-disfrazar-cualquier-cosa-de-modbus.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

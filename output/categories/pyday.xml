@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (pyday)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/pyday.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:22 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Charla: Entendiendo Decoradores en Python [actualizada]</title><link>http://www.juanjoconti.com.ar/posts/2011/05/06/charla-entendiendo-decoradores-en-python-actualizada.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La primer vez que di esta charla fue en el &lt;a href="http://www.juanjoconti.com.ar/2010/05/09/charla-entendiendo-decoradores-en-python/" target="_blank"&gt;PyDay de Rafala en 2010&lt;/a&gt;. De las charlas que tengo en la gatera, es la que más me gusta de momento. Está bien armada y es muy útil para quienes empiezan con Python. Por eso cuando me invitaron a dar una charla en el &lt;a href="http://www.pyday.com.ar/cordoba2011/" target="_blank"&gt;PyDay de Córdoba&lt;/a&gt;, no dude en presentarla.&lt;/p&gt;
+&lt;p&gt;Dejo on line la &lt;a href="http://www.juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti-2.pdf" target="_blank"&gt;versión actualizada&lt;/a&gt; (y &lt;a href="http://www.juanjoconti.com.ar/files/charlas/entendiendo_decoradores_python_jjconti.txt" target="_blank"&gt;sus fuentes&lt;/a&gt;) ya que los estuve buscando antes de dar la charla y me costó encontrarlos en mi computadora. Subiéndolas a Internet aumento su disponibilidad.&lt;/p&gt;
+&lt;p&gt;Esta charla también fue dada en PyCon Argentina 2010.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img class="aligncenter" title="Entendiendo decoradores en Python - Córdoba 2011" src="http://juanjoconti.com.ar/wp-content/uploads/2011/05/juanjoEnPyDayCba2011.jpg" alt="" width="640" height="480"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>charlas</category><category>decoradores</category><category>pyday</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2011/05/06/charla-entendiendo-decoradores-en-python-actualizada.html</guid><pubDate>Fri, 06 May 2011 20:59:08 GMT</pubDate></item><item><title>PyDay en Córdoba</title><link>http://www.juanjoconti.com.ar/posts/2011/04/11/pyday-en-cordoba.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El próximo sábado 30 de abril, en la ciudad de Córdoba, se desarrollará &lt;a href="http://www.pyday.com.ar/cordoba2011/" target="_blank"&gt;un nuevo PyDay&lt;/a&gt; del &lt;a href="http://www.python.org.ar/" target="_blank"&gt;Grupo de Usuarios de Python de Argentina&lt;/a&gt;. Un &lt;a href="http://www.pyday.com.ar/cordoba2011/conference/schedule" target="_blank"&gt;día entero de charlas&lt;/a&gt; sobre el lenguaje de programación Python.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2011/04/AfichePyDayCordoba.png"&gt;&lt;img class="aligncenter size-full wp-image-3187" title="30 de abril, PyDay en Córdoba" src="http://www.juanjoconti.com.ar/wp-content/uploads/2011/04/AfichePyDayCordoba.png" alt="30 de abril, PyDay en Córdoba" width="352" height="498"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>PyAr</category><category>pyday</category><guid>http://www.juanjoconti.com.ar/posts/2011/04/11/pyday-en-cordoba.html</guid><pubDate>Mon, 11 Apr 2011 21:26:25 GMT</pubDate></item><item><title>Video de la charla Entendiendo decoradores en Python</title><link>http://www.juanjoconti.com.ar/posts/2010/11/22/video-de-la-charla-entendiendo-decoradores-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://twitter.com/Orfx" target="_blank"&gt;Orfi&lt;/a&gt; se tomó el trabajo de editar una filmación de mi charla en el &lt;a href="http://www.juanjoconti.com.ar/2010/05/09/charla-entendiendo-decoradores-en-python/" target="_blank"&gt;PyDay de Rafaela&lt;/a&gt; con mis slides para armar este video. Muchas gracias!
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;iframe src="http://player.vimeo.com/video/16976108" width="400" height="300" frameborder="0"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="http://vimeo.com/16976108"&gt;entendiendo decoradores&lt;/a&gt; from &lt;a href="http://vimeo.com/user5262473"&gt;Orfx Sch&lt;/a&gt; on &lt;a href="http://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;Al final, durante las preguntas, escribo algo de código Python en la terminal. Lo siguiente es una reproducción:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(a, b):
+
+...     print a, b
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2)
+
+1 2
+
+&amp;gt;&amp;gt;&amp;gt; def f(*a, **kw):
+
+...     print a
+
+...     print kw
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f(1)
+
+(1,)
+
+{}
+
+&amp;gt;&amp;gt;&amp;gt; f(1, parametro=2)
+
+(1,)
+
+{'parametro': 2}
+
+&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def f(p1, *a, **kw):
+
+...     print kw['param']
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; f()
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() takes at least 1 argument (0 given)
+
+&amp;gt;&amp;gt;&amp;gt; f(1, 2, 3, param=0)
+
+0
+
+&lt;/pre&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def deco(f):
+
+...     def _deco(*a, **kw):
+
+...             if kw.get('p'):
+
+...                     return f(*a, **kw)
+
+...             else:
+
+...                     print "No ejecuto."
+
+...     return _deco
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; @deco
+
+... def saludo(*a, **kw):
+
+...     print "hola"
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; saludo()
+
+No ejecuto.
+
+&amp;gt;&amp;gt;&amp;gt; saludo(p=0)
+
+No ejecuto.
+
+&amp;gt;&amp;gt;&amp;gt; saludo(p=1)
+
+hola
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>decoradores</category><category>Eventos</category><category>pyday</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2010/11/22/video-de-la-charla-entendiendo-decoradores-en-python.html</guid><pubDate>Mon, 22 Nov 2010 03:59:30 GMT</pubDate></item></channel></rss>

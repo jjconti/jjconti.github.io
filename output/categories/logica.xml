@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (lógica)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/logica.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:18 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Viendo a los conectores lógicos como relaciones entre conjuntos</title><link>http://www.juanjoconti.com.ar/posts/2007/10/09/viendo-a-los-conectores-logicos-como-relaciones-entre-conjuntos.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Mi amigo Joel estudia Filosofía en &lt;a title="UNR" href="http://www.unr.edu.ar" target="_blank"&gt;Rosario&lt;/a&gt; y este fin de semana estuvimos charlando sobre &lt;strong&gt;lógica&lt;/strong&gt;. Durante la charla me  enseño que los conectores lógicos se pueden pensar como relaciones entre conjuntos. Yo nunca los había visto así.&lt;/p&gt;
+&lt;p&gt;Esta forma de pensarlos es a veces muy útil y sirve para darnos cuenta cual es el conector indicado para representar cierto conocimiento. Por ejemplo, muchas veces me encontré queriendo representar conocimiento del tipo &lt;em&gt;"Los conejos son blancos"&lt;/em&gt; y errónea e instintivamente escribía:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;B(x): x es blanco&lt;/p&gt;
+&lt;p&gt;C(x): x es conejo&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;C(x) ^ B(x)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Lo cual es un error. La forma correcta de representar ese conocimiento es:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;C(x) -&amp;gt; B(x)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;La implicación entre C(x) y B(x) puede entenderse una forma muy simple:&lt;/p&gt;
+&lt;p&gt;C es el conjunto de todos los conejos y B es el conjunto de todas las cosas blancas.&lt;/p&gt;
+&lt;p&gt;Recordemos que la información que queremos representar es &lt;em&gt;"Los conejos son blancos"&lt;/em&gt;, enfatisando: &lt;em&gt;Todos&lt;/em&gt; los conejos son blancos. No hay conejos grises o negros, todos son blancos.&lt;/p&gt;
+&lt;p&gt;El ejemplo en cuestión no era este, sino otro, pero lo importante es que Joel me explicó que la implicación es equivalente a la relación entre conjuntos de inclusión e hizo un dibujo parecido a este:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/conejos_blancos.png" alt="Conejos blancos"&gt;&lt;/p&gt;
+&lt;p&gt;En el dibujo se ve claramente el exacto conocimiento que queríamos representar: si algo es conejo, entonces es blanco. Si pertenece al conjunto C entonces pertenece al conjunto B. Porque el conjunto B incluye al conjunto C. El conjunto de las cosas blancas incluye al conjunto de los conejos.&lt;/p&gt;
+&lt;p&gt;El resto de los conectores lógicos también pueden verse como relaciones entre conjuntos.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;strong&gt;AND : intersección&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;AND o conjunción, muchas veces simbolizado con ^, es verdadero cuando los dos predicados que conecta lo son. Así pues  &lt;code&gt;B(x) ^ A(x)&lt;/code&gt; será verdadero cuando x pertenezca tanto a B como a A.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/and1.png" alt="AND sin corchetes"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OR: unión&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;OR o disyunción  es una relación menos estricta ya que para ser verdadera solo necesita que uno de sus predicados sea verdadero. En el ejemplo anterior, que x pertenezca a B o a A. Eventualmente podría pertenecer a ambos conjuntos.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/or1.png" alt="OR sin corchetes"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;XOR: unión - intersección&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Unión MENOS intersección. La disyunción exclusiva es verdadera cuando x pertenece exclusivamente a uno de los conjuntos, pero es falsa cuando pertenece a ambos.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/xor.png" alt="XOR"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-&amp;gt; : inclusión&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Es el caso del ejemplo de los conejos con el que empezó este post.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/imp1.png" alt="IMP sin corchetes"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;lt;-&amp;gt; : mutua inclusión&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;La doble implicación es un caso especial de la implicación ya que se define como &lt;code&gt;A -&amp;gt; B AND B -&amp;gt; A&lt;/code&gt;. Así mismo su representación en forma de conjuntos es un caso especial de la inclusión. En el dibujo puede verse claramente que cuando decimos &lt;code&gt;A(x) &amp;lt;-&amp;gt; B(x)&lt;/code&gt; estamos diciendo que cualquier elemento x que pertenezca a A también pertenece a B.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/bimp.png" alt="bimp"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOT : no pertenencia&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Todos los conectores pueden pensarse como conjuntos: &lt;code&gt;NOT A(x)&lt;/code&gt; significa que el elemento x no pertenece a A.&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2007/10/not.png" alt="NOT"&gt;&lt;/p&gt;
+
+&lt;p&gt;Para finalizar: todos los conectores lógicos pueden pensarse como relaciones entre conjuntos. Si se crean conectores a partir de algunos de los listados anteriormente, también se podrán definir las relaciones entre conjuntos correspondientes.&lt;/p&gt;&lt;/div&gt;</description><category>General</category><category>lógica</category><guid>http://www.juanjoconti.com.ar/posts/2007/10/09/viendo-a-los-conectores-logicos-como-relaciones-entre-conjuntos.html</guid><pubDate>Tue, 09 Oct 2007 00:46:30 GMT</pubDate></item></channel></rss>

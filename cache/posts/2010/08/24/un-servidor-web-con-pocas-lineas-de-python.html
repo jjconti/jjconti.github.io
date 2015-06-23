@@ -1,0 +1,49 @@
+<p><html><body><p>Hoy un amigo necesitaba un servidor web para engañar a un programa. Cada vez que el programa iniciaba, se conectaba con un servidor web para verificar si había actualizaciones disponibles.</p>
+<p>El nombre del host a dónde se hacía la petición era leído de un archivo de configuración, por lo que lo podíamos cambiar. El resto solo era levantar un servidor web que responda con la información apropiada.</p>
+<p>En la librería estándar de <strong>Python</strong> tenemos todos los elementos necesarios para realizar la tarea. Luego de probar un poco, el resultado final fue algo como esto:</p>
+<p></p><pre></p>
+<p>PORT = 8090</p>
+<p>from BaseHTTPServer import BaseHTTPRequestHandler</p>
+<p>import SocketServer</p>
+<p>import cgi</p>
+<p>class MyHandler(BaseHTTPRequestHandler):</p>
+<pre class="code literal-block">def do_GET(self):
+
+    self.send_response(200)
+
+    self.end_headers()
+
+        self.wfile.write(&#39;1.9.1&#39;)
+
+
+
+def do_POST(self):
+
+    form = cgi.FieldStorage(
+
+        fp=self.rfile,
+
+        headers=self.headers,
+
+        environ={&#39;REQUEST_METHOD&#39;:&#39;POST&#39;,
+
+        &#39;CONTENT_TYPE&#39;:self.headers[&#39;Content-Type&#39;],
+
+        })
+
+    print form
+
+    self.send_response(200)
+
+    self.end_headers()
+
+    self.wfile.write(&#39;1.9.1&#39;)
+</pre>
+
+
+<p>httpd = SocketServer.TCPServer(("", PORT), MyHandler)</p>
+<p>print "serving at port", PORT</p>
+<p>httpd.serve_forever()</p>
+</pre>
+
+<p>Levanta en <strong>localhost</strong> y responde la cadena '1.9.1' al ser consultado tanto por <strong>GET</strong> como por <strong>POST</strong> y en el caso de POST, también imprime los valores recibidos.</body></html></p>

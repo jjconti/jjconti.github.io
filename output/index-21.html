@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 21) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-21.html">
+
+
+
+        <link rel="prev" href="index-22.html" type="text/html">
+        <link rel="next" href="index-20.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/10/controles-de-acceso-biometricos.html" class="u-url">Controles de acceso biométricos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/10/controles-de-acceso-biometricos.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-10T22:37:27+00:00" title="2008-10-10 22:37">2008-10-10 22:37</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/10/controles-de-acceso-biometricos.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/10/controles-de-acceso-biometricos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p style="text-align: left;">Hoy, mientras estudiaba para rendir el curso de Seguridad en Redes que estoy haciendo, se me ocurrió este chiste:</p>
+<p style="text-align: center;"><img class="aligncenter size-full wp-image-672" title="200810102229341_3426132759" src="wp-content/uploads/2008/10/200810102229341_3426132759.jpg" alt="" width="360" height="480"></p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/07/un-ejemplo-de-busqueda-a.html" class="u-url">Un ejemplo de búsqueda A*</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/07/un-ejemplo-de-busqueda-a.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-07T21:16:01+00:00" title="2008-10-07 21:16">2008-10-07 21:16</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/07/un-ejemplo-de-busqueda-a.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/07/un-ejemplo-de-busqueda-a.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El ejemplo consiste en un plano de 800x600 puntos con el punto (0,0)  en la esquina superior izquierda. En el plano hay puntos y figuras (formadas por puntos). Uno de los puntos es el origen y otro el destino. El problema a resolver es encontrar el camino más corto desde el origen al destino moviéndose de punto a punto y sin pasar sobre una figura.</p>
+<p>La heurística utilizada es la distancia en línea recta desde la posición actual a la posición del objetivo. <!--more--></p>
+<p></p>
+<h3>Instalación y uso</h3>
+<p>Teniendo Python y <a title="PyGame" href="http://www.pygame.org" target="_blank">PyGame</a> instalados, obtener el código fuente:</p>
+<p><code>svn co http://svn.juanjoconti.com.ar/astar/tags/astar-only/ astar</code></p>
+<p>y dentro de la carpeta <code>astar</code> ejecutar gui.py:</p>
+<p><code>cd astar</code></p>
+<p>python gui.py</p>
+<p>El primer click que se haga marcará el punto origen (verde) y el segundo el punto destino (rojo).</p>
+<p style="text-align: center;"><a href="wp-content/uploads/2008/10/apasp1.png"><img class="aligncenter size-medium wp-image-617" title="paso 1" src="wp-content/uploads/2008/10/apasp1-300x232.png" alt="" width="300" height="232"></a></p>
+
+<p>Luego se pueden agregar tantos puntos sueltos o figuras como se quieran. Si se hace uno o dos clicks y luego se aprieta la barra espaciado, uno o dos puntos son añadidos al planto. Si se hacen más de dos clicks antes de apretar la barra espaciadora, entonces una figura formada por los puntos marcados es añadida.</p>
+<p><a href="wp-content/uploads/2008/10/apaso2.png"><img class="aligncenter size-medium wp-image-620" title="paso2" src="wp-content/uploads/2008/10/apaso2-300x232.png" alt="" width="300" height="232"></a></p>
+<p><a href="wp-content/uploads/2008/10/apaso3.png"><img class="aligncenter size-medium wp-image-619" title="paso3" src="wp-content/uploads/2008/10/apaso3-300x232.png" alt="" width="300" height="232"></a></p>
+<p>Se siguen cargando tantos puntos y figuras como se quiera. Finalmente, al aprender Enter se ejecuta el algoritmo de búsqueda y si se encuentra un camino-solución, este es graficado.</p>
+<p><a href="wp-content/uploads/2008/10/apaso5.png"><img class="aligncenter size-medium wp-image-618" title="resultado1" src="wp-content/uploads/2008/10/apaso5-300x232.png" alt="" width="300" height="232"></a></p>
+<p align="center"></p>
+
+<p>Otros casos de prueba:</p>
+<p><a href="wp-content/uploads/2008/10/a2.png"><img class="aligncenter size-medium wp-image-614" title="resultado2" src="wp-content/uploads/2008/10/a2-300x232.png" alt="" width="300" height="232"></a></p>
+<p><a href="wp-content/uploads/2008/10/a3.png"><img class="aligncenter size-medium wp-image-615" title="resultado3" src="wp-content/uploads/2008/10/a3-300x232.png" alt="" width="300" height="232"></a></p>
+<p><a href="wp-content/uploads/2008/10/a6.png"><img class="aligncenter size-medium wp-image-616" title="resultado4" src="wp-content/uploads/2008/10/a6-300x232.png" alt="" width="300" height="232"></a></p>
+<p><a href="wp-content/uploads/2008/10/a1.png"><img class="aligncenter size-medium wp-image-613" title="resultado5" src="wp-content/uploads/2008/10/a1-300x232.png" alt="" width="300" height="232"></a></p>
+<h3>Teoría relacionada</h3>
+
+<ul>
+
+    <li><a href="http://es.wikipedia.org/wiki/Algoritmo_de_b%C3%BAsqueda_A*" target="_self">Estrategia de búsqueda A*</a></li>
+
+    <li><a title="AIMA" href="http://aima.cs.berkeley.edu/" target="_self">Inteligencia artificial, un enfoque moderno</a></li>
+
+</ul>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/06/streaming-de-dato-en-django.html" class="u-url">Streaming de datos en Django</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/06/streaming-de-dato-en-django.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-06T21:22:58+00:00" title="2008-10-06 21:22">2008-10-06 21:22</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/06/streaming-de-dato-en-django.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/06/streaming-de-dato-en-django.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En PHP uno pude ir mandando datos al cliente (navegador) a medida que los va procesando en el servidor. En Django siempre creé el texto de la respuesta para luego pasársela al objeto HttpResponse. A pesar de que había preguntado varias veces en el canal de chat de Django si podía hacer algo así y me habían respondido que <strong>no</strong>, tenía la intuición de que algo se podría hacer y pensé en iteradores.</p>
+<p></p>
+<p></p>
+<p>Por suerte este fin de semana tuvimos <a title="Python en Santa Fe" href="http://www.pythonsantafe.com.ar/" target="_blank">un gran evento de Python</a> y alojé en mi casa a <a title="John Lenton" href="http://john.lenton.com.ar/" target="_blank">John</a>, quien me explicó en 5 minutos cómo hacerlo. Aquí una recreación de su ejemplo (<strong>views.py</strong>):</p>
+
+
+<pre>
+
+<code>
+
+from django.http import HttpResponse
+
+from time import sleep
+
+
+
+def gen():
+
+    for x in range(80):
+
+        sleep(1)
+
+        yield '*' * x + '&lt;br/&gt;'
+
+
+
+def test(request):
+
+    return HttpResponse(gen(), mimetype='text/html')
+
+</code>
+
+</pre>
+
+<p>
+
+Queda para el lector ver la salida en su navegador.
+
+<code>gen</code> es una función que al llamarla devuelve un generador. El primer parámetro de <a href="http://code.djangoproject.com/wiki/HttpResponse">HttpResponse </a>puede ser un generador o cualquier objeto con el método <code>__iter__</code>.
+
+</p>
+
+<p>
+
+En la misma jornada Nubis, <a title="Hacking Django" href="http://woobiz.com.ar/es/articles/hacking-django" target="_blank">estuvo explorando</a> esto mismo desde distintos ángulos.</p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/04/terminando-pythone-en-santa-fe-2008.html" class="u-url">Terminando Python en Santa Fe 2008</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/04/terminando-pythone-en-santa-fe-2008.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-04T18:19:32+00:00" title="2008-10-04 18:19">2008-10-04 18:19</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/04/terminando-pythone-en-santa-fe-2008.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/04/terminando-pythone-en-santa-fe-2008.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Auditorio de la UTN FRSF, Lighting Talks desarrollándose (5 minutos por disertante para explicar ALGO).</p>
+<p>Tuvismos:</p>
+<p></p>
+<ol>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>Haciendo plata con Software Libre - John Lenton<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Python LEX <span class="ni">&amp;amp;</span> YACC - Yo<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>KSS -  Silvestre Huens<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>svn +Track en USLA - David Casco<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Decoradores en Python -  Facundo Batista<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Fabián Ezequiel Gallina - Python-mode para Emacs<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Procesando Imágenes con Python - Esteban Peiro<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Reply (aprendizaje por refuerzo) - Lucio Torre y Ricardo Kirkner<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Defendiendo al Software Libre - Calos Miranda Bonina<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Creación colaborativa de empresas -  Leandro Monk<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>PyWars - <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"text-decoration: line-through;"</span><span class="nt">&gt;</span>Arturo Díaz Santor<span class="nt">&lt;/span&gt;</span> Arturo Elias Antón<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Historia de conferencias de Python / PyCON Ar - Facundo Batista<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+</ol>
+
+<p>(Si le escribí mal el nombre a alguno, avise!)</p>
+<p>Fin del post, el resto del día incluye: sorteos, entega de certificados y luego un sprint gastronómico.</p>
+<p>Saludos!</p>
+<p>Bonus Track: <a href="http://galeria.juanjoconti.com.ar/cache/fotos-desde-el-camino/200810041327011_3426132759.jpg_100.jpg">Una fotito del mediodía</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/01/cosas-y-humanos.html" class="u-url">Cosas y humanos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/01/cosas-y-humanos.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-01T23:15:35+00:00" title="2008-10-01 23:15">2008-10-01 23:15</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/01/cosas-y-humanos.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/01/cosas-y-humanos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"La desvalorización del mundo humano crece en razón directa de la valorización del mundo de las cosas."
+<p>MARX, Karl (Filósofo alemán.)</p>
+</blockquote>
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/09/28/acomodar-imagenes-con-gqview.html" class="u-url">Acomodar imágenes con GQView</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/09/28/acomodar-imagenes-con-gqview.html" rel="bookmark"><time class="published dt-published" datetime="2008-09-28T04:13:06+00:00" title="2008-09-28 04:13">2008-09-28 04:13</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/09/28/acomodar-imagenes-con-gqview.html#disqus_thread" data-disqus-identifier="cache/posts/2008/09/28/acomodar-imagenes-con-gqview.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Algunas cámaras de fotos tienen un dispositivo que detecta su posición, entonces si sacamos una foto con la cámara posicionada verticalmente, la imagen resultante es más alta que ancha. Lo mismo sucede en el caso contrario, si se saca una foto con la cámara en forma horizontal, la imagen resultante será más ancha que alta.</p>
+<p>Esto parece bastante bueno. Lamentablemente muchos dispositivos (cómo los celulares) no vienen equipados con este dispositivo y todas las fotos terminan siendo, por ejemplo, más altas que anchas. Otra cosa a tener en cuenta es que la mencionada funcionalidad no funciona del todo bien en todas las cámaras. Si bien en el siguiente caso es algo apropiado:</p>
+<p><a href="wp-content/uploads/2008/09/imagen599.jpg"><img src="wp-content/uploads/2008/09/imagen599-225x300.jpg" alt="" title="imagen599" width="225" height="300" class="aligncenter size-medium wp-image-576"></a></p>
+<p>En este no lo es:</p>
+<p><a href="wp-content/uploads/2008/09/imagen558.jpg"><img src="wp-content/uploads/2008/09/imagen558-225x300.jpg" alt="" title="imagen558" width="225" height="300" class="aligncenter size-medium wp-image-574"></a> Y nos interesa convertirla en:</p>
+<p><a href="wp-content/uploads/2008/09/imagen5581.jpg"><img src="wp-content/uploads/2008/09/imagen5581-300x225.jpg" alt="" title="imagen5581" width="300" height="225" class="aligncenter size-medium wp-image-575"></a></p>
+<p>El problema crece cuando sacamos muchas fotos[0]. Ya sea para compartirlas en Internet o para guardarlas en nuestra computadora queremos que estén posicionadas correctamente. En GNU/Linux es fácil rotar una imagen, el comando convert de ImageMagic, por ejemplo, lo hace en un instante. Si tenemos muchas imágenes a retocar, podemos hacer un script que recorra una lista de archivos y sobre todos realice el proceso. Pero en la mayoría de los casos no será tan simple. Querremos modificar algunas imágenes, pero querremos que otras se mantengan en su posición original.<!--more--> Lo ideal es utilizar un visualizador de imágenes y cada vez que encontramos una cuya posición queremos rotar, indicarle esto a visualizador para que la imagen sea rotada definitivamente.</p>
+<p><a href="http://gqview.sourceforge.net/">GQview</a> viene preparado para hacer esto, utilizando el comando <code>jpegtrans</code>. No tenía instalado este programa en mi computadora, pero pude editar la configuración del software para que ejecute mis comandos personalizados.</p>
+<p><a href="wp-content/uploads/2008/09/gqview.png"><img src="wp-content/uploads/2008/09/gqview-300x177.png" alt="" title="gqview" width="300" height="177" class="aligncenter size-medium wp-image-586"></a></p>
+<p>En Editar/Preferencias... solapa Editores podemos especificar una secuencia de comandos para ser ejecutados al elegir una opción del menú:</p>
+<p><a href="wp-content/uploads/2008/09/gqview_preferencias.png"><img src="wp-content/uploads/2008/09/gqview_preferencias-300x267.png" alt="" title="gqview_preferencias" width="300" height="267" class="aligncenter size-medium wp-image-587"></a></p>
+<p>Completé las filas 7 y 8 con los siguientes valores:</p>
+<p>Rotar imagen (sentido horario) - <strong>convert -rotate 270 %p %p</strong></p>
+<p>Rotar imagen (antihorario) - c<strong>onvert -rotate 90 %p %p</strong></p>
+<p>Ahora cuando estoy visualizando imágenes y encuentro alguna mal orientada, simplemente tengo que apretar Ctrl-7 u Ctrl-8 para ajustarla.</p>
+<p><a href="wp-content/uploads/2008/09/gqview2.png"><img src="wp-content/uploads/2008/09/gqview2-300x177.png" alt="" title="gqview2" width="300" height="177" class="aligncenter size-medium wp-image-588"></a></p>
+<p>[0] en mi caso unas 1000, en mi viaje a Brasil.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/09/28/el-juego-mas-votado-de-pyweek-7.html" class="u-url">El juego más votado de PyWeek 7!</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/09/28/el-juego-mas-votado-de-pyweek-7.html" rel="bookmark"><time class="published dt-published" datetime="2008-09-28T03:41:55+00:00" title="2008-09-28 03:41">2008-09-28 03:41</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/09/28/el-juego-mas-votado-de-pyweek-7.html#disqus_thread" data-disqus-identifier="cache/posts/2008/09/28/el-juego-mas-votado-de-pyweek-7.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Así como lo leyeron, mi humilde <a href="http://www.juanjoconti.com.ar/2008/09/17/cecilia-music-game/">participación</a> (de diez horas de código) en <a href="http://pyweek.org/7">esta competencia</a> fue el juego más votado (incluyendo a los juegos presentados por equipos). No me subí al podio, ni estuve en el top ten como me hubiese gustado, pero tengo el agrado de que 48 de mis pares se hayan tomado el trabajo de bajar mi juego, probarlo y votarlo.</p>
+<p>En PyWeek solo aquellos que presentan juegos pueden votar. Básicamente se votan 3 características: <strong>Diversión</strong>, <strong>Producción</strong> e <strong>Innovación</strong>. Adicionalmente, al votar se puede dejar un comentario. Dejo aquí alguno de los comentarios que <a href="http://pyweek.org/e/SeaBoy/ratings/">recibí</a>:</p>
+<p>Fun: 3 Prod: 3 Inno: 4</p>
+<p></p>
+<blockquote>That was quite fun. It was a nice touch to put photographs of writings in paper and photos from your trip (probably took less time, even :)). The idea is fairly simple, but it is fun and it is a nice way to use the theme. The number of levels was just right to enjoy the concept well and the challenge was good for a person who doesn't have a music-oriented ear. The photos are nice to look at, too. Well done.</blockquote>
+<p>Fun: 2 Prod: 3 Inno: 4</p>
+<blockquote>Found it quite difficult and a little boring, although a novel idea, I liked the hand drawn(on paper) stuff... and it's particularly impressive for 10 hours :)</blockquote>
+
+<p>Fun: 3 Prod: 5 Inno: 4</p>
+<blockquote>Hilarious game -- the menus were hard to read, but the way you did them was fantastic. Comprehensive help, I never really got lost trying to play the game. It was a lot of fun to play around with, and I was able to beat the whole thing. Nice job on the game -- especially for one done so quickly! You set a small scope and did fantastically with what you had -- well done!</blockquote>
+
+<p>Fun: 3 Prod: 3 Inno: 4</p>
+<blockquote>For such a simple game it works pretty well. Randomly generating some tunes could have created some replayability. As it is, it does challenge the brain!</blockquote>
+
+<p>Gracias!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/09/26/preguntas-y-respuestas.html" class="u-url">Preguntas y respuestas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/09/26/preguntas-y-respuestas.html" rel="bookmark"><time class="published dt-published" datetime="2008-09-26T22:04:15+00:00" title="2008-09-26 22:04">2008-09-26 22:04</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/09/26/preguntas-y-respuestas.html#disqus_thread" data-disqus-identifier="cache/posts/2008/09/26/preguntas-y-respuestas.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>Contesto cualquier pregunta siempre y cuando 'no lo sé' sea una respuesta válida.
+<p>Isaac Asimov</p>
+</blockquote>
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/09/23/4-de-octubre-3ra-jornada-python-en-santa-fe.html" class="u-url">4 de Octubre - 3ra Jornada Python en Santa Fe</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/09/23/4-de-octubre-3ra-jornada-python-en-santa-fe.html" rel="bookmark"><time class="published dt-published" datetime="2008-09-23T13:59:17+00:00" title="2008-09-23 13:59">2008-09-23 13:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/09/23/4-de-octubre-3ra-jornada-python-en-santa-fe.html#disqus_thread" data-disqus-identifier="cache/posts/2008/09/23/4-de-octubre-3ra-jornada-python-en-santa-fe.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El próximo <strong>4 de Octubre</strong> se llevará a cabo en instalaciones de la Universidad Tecnológica Nacional, Facultad Regional Santa Fe, la <span style="color: #cc3333;"><strong>3ra Jornada Python en Santa Fe</strong></span> [<a href="http://www.pythonsantafe.com.ar/" target="_blank">1</a>]. Orientadas a programadores y profesionales de sistemas, estudiantes y público en general interesado en la programación, los invitamos a participar registrándose en nuestra web [<a href="http://www.pythonsantafe.com.ar/registracion" target="_blank">2</a>]. La asistencia es libre y gratuita.</p>
+<p>Esta jornada consiste en una serie de charlas relacionadas con el lenguaje de programación Python. Ya está disponible el programa del evento [<a href="http://www.pythonsantafe.com.ar/programacion" target="_blank">3</a>].</p>
+<p><strong>¿Qué es Python?</strong></p>
+<p>Python es un lenguaje de programación interpretado, dinámico y orientado a objetos que puede ser utilizado en diferentes desarrollos de software y en múltiples plataformas. La característica de ser multiplataforma es algo muy interesante para los desarrolladores. El lenguaje se encuentra soportado en Unix, GNU/Linux, Widows/DOS, Macintosh… y la lista sigue. Desde grandes mainframes a pequeñas Palm. En la web oficial [<a href="http://www.python.org/" target="_blank">4</a>] del lenguaje encontrará mayor información y mucha documentación.</p>
+<p>Y en el país existe una comunidad de desarrolladores muy fuerte, agrupada en <strong>PyAR</strong>, Python Argentina [<a href="http://www.python.com.ar/" target="_blank">5</a>].</p>
+<p><strong>¿Quién utiliza Python?</strong></p>
+<p>La NASA, Google, Yahoo, Walt Disney y Red Hat son algunas de las grandes organizaciones que trabajan con este lenguaje. Google contrató a su creador, Guido van Rossum. En la mayoría de las distribuciones GNU/Linux encontramos Python ya instalado (se usa mucho como lenguaje de script para automatizar tareas). Y en el país también hay numerosas empresas que trabajan con Python: Lunix, Except, Lambda Sistemas, etc.</p>
+<p>Recuerden registrarse [<a href="http://www.pythonsantafe.com.ar/registracion" target="_blank">2</a>] y los esperamos el <strong>4 de Octubre</strong>!</p>
+<p>[1] Web de la jornada: <a href="http://www.pythonsantafe.com.ar/" target="_blank">www.pythonsantafe.com.ar</a></p>
+<p>[2] Registración: <a href="http://www.pythonsantafe.com.ar/registracion" target="_blank">www.pythonsantafe.com.ar/registracion</a></p>
+<p>[3] Programa: <a href="http://www.pythonsantafe.com.ar/programacion" target="_blank">www.pythonsantafe.com.ar/programacion</a></p>
+<p>[4] Web del lenguaje: <a href="http://www.python.org/" target="_blank">www.python.org</a></p>
+<p>[5] PyAR: <a href="http://www.python.com.ar/" target="_blank">www.python.com.ar</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/09/22/futbol-y-letras-3-para-crear.html" class="u-url">Fútbol y letras: 3 para crear</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/09/22/futbol-y-letras-3-para-crear.html" rel="bookmark"><time class="published dt-published" datetime="2008-09-22T22:48:03+00:00" title="2008-09-22 22:48">2008-09-22 22:48</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/09/22/futbol-y-letras-3-para-crear.html#disqus_thread" data-disqus-identifier="cache/posts/2008/09/22/futbol-y-letras-3-para-crear.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Mi amigo Leandro Rojas empezó un blog dónde escribe sobre su gran pasión, el fútbol. Bienvenido a la blogósfera!</p>
+<p><a title="3" href="http://3paracrear.wordpress.com/" target="_blank">http://3paracrear.wordpress.com/</a></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-22.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-20.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

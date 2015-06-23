@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hunt the Wumpus! | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../02/cuentos-cortos-pero-muy-cortos.html" title="Cuentos cortos.. pero muy cortos!" type="text/html">
+        <link rel="next" href="../07/260.html" title="Más que una historia de amor" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Hunt the Wumpus!">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html">
+    <meta property="og:description" content="Mientras cursamos este cuatrimestre Intelegencia Artificial en la facu uno de los ejemplos que aparecía era el del Wumpus, un monstruo que vive en una cueva muy parecida a una grilla. El Wumpus ocupa ">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2007-07-04T16:16:43+00:00">
+           <meta property="article:tag" content="Facultad">
+           <meta property="article:tag" content="humor">
+           <meta property="article:tag" content="IA">
+           <meta property="article:tag" content="Wumpus">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="hunt-the-wumpus.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Hunt the Wumpus!</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2007-07-04T16:16:43+00:00" itemprop="datePublished" title="2007-07-04 16:16">2007-07-04 16:16</time></a></p>
+                <p class="commentline">
+        
+    <a href="hunt-the-wumpus.html#disqus_thread" data-disqus-identifier="cache/posts/2007/07/04/hunt-the-wumpus.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="hunt-the-wumpus.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Mientras cursamos este cuatrimestre <a href="http://www.frsf.utn.edu.ar/matero/visitante/index.php?id_catedra=142" title="Web de IA en FRSF" target="_blank">Intelegencia Artificial</a> en la facu uno de los ejemplos que aparecía era el del Wumpus, un monstruo que vive en una cueva muy parecida a una grilla. El Wumpus ocupa una casilla de la grilla (dónde inicialmente está dormido) y en las otras puede haber pozos, viento de un pozo cercano, olor a Wumpus o un lingote de oro. Y por supuesto nosotros (el cazador).</p>
+<p>Este escenario constituye un juego en el cual el cazador (que solo puede percibir lo que hay en las celdas adyacentes a las que ocupa) debe realizar movimientos (Arriba, Abajo, Derecha, Izquierda) o acciones como lanzar una flecha o tomar el lingote para cumplir su objetivo: <strong>salir de la cueva con el oro y sin ser comido por el Wumpus</strong>.</p>
+<!--more-->
+
+<p>Hasta aquí nada nuevo para contarles. Lo curioso del asunto es que yo pensaba que el juego era solo una herramienta didáctica, que agradable sorpresa encontrarlo mientras navegaba la web: <a href="http://www.catb.org/~esr/wumpus/" title="Wumpus by ESR" target="_blank">http://www.catb.org/~esr/wumpus/</a>.</p>
+<p></p>
+<blockquote>
+<pre>           WUMPUS and SUPERHACK
+
+
+
+WUMPUS is a bit of retrocomputing nostalgia.  It is an *exact* clone, even
+
+down to the godawful user interface, of an ancient classic game.  This version
+
+fixes two minor bugs in my original 1992 USENET posting of the source.  An
+
+article describing the history of the game is at
+
+
+
+    http://www.atariarchives.org/bcc1/showpage.php?page=247
+
+
+
+SUPERHACK is a satire, structurally quite similar to WUMPUS.
+
+
+
+For updates and related resources, see &lt;http://www.catb.org/~esr/wumpus/&gt;</pre>
+
+</blockquote>
+
+<p>Intrigado bajé el código fuente y sin problemas lo compilé en mi computadora, cuando lo ejecuté esto fue lo que vi en la pantalla:</p>
+<blockquote>WELCOME TO 'HUNT THE WUMPUS'</blockquote>
+
+<blockquote></blockquote>
+
+<blockquote> THE WUMPUS LIVES IN A CAVE OF 20 ROOMS. EACH ROOM
+
+HAS 3 TUNNELS LEADING TO OTHER ROOMS. (LOOK AT A
+
+DODECAHEDRON TO SEE HOW THIS WORKS-IF YOU DON'T KNOW
+
+WHAT A DODECAHEDRON IS, ASK SOMEONE)
+
+
+
+HAZARDS:
+
+BOTTOMLESS PITS - TWO ROOMS HAVE BOTTOMLESS PITS IN THEM
+
+IF YOU GO THERE, YOU FALL INTO THE PIT (&amp; LOSE!)
+
+SUPER BATS - TWO OTHER ROOMS HAVE SUPER BATS. IF YOU
+
+GO THERE, A BAT GRABS YOU AND TAKES YOU TO SOME OTHER
+
+ROOM AT RANDOM. (WHICH MAY BE TROUBLESOME)
+
+TYPE AN E THEN RETURN</blockquote>
+
+<p>Hay una <a href="http://www.flyingtitans.com/products/wumpus/index.psp" title="Wumpus.py" target="_blank">versión en Python</a> que funciona<em> out-of-the-box </em>(aka doble click for win slang)  que nos permite disfrutar del juego sin siquiera la necesidad de compilarlo. Demasiado perezosos como para bajar un archivo? Ok, les dejo esta <a href="http://bnewtz.cannet.com/wumpus/" title="Wumpus on line" target="_blank">versión on-line</a> (aunque la interfaz no es como la original).</p>
+<p>Cómo para casi todos los temas importantes, más información <a href="http://en.wikipedia.org/wiki/Hunt_the_Wumpus" title="Wumpus en Wikipedia" target="_blank">en la Wikipedia</a>.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/facultad.html" rel="tag">Facultad</a></li>
+           <li><a class="tag p-category" href="../../../../categories/humor.html" rel="tag">humor</a></li>
+           <li><a class="tag p-category" href="../../../../categories/ia.html" rel="tag">IA</a></li>
+           <li><a class="tag p-category" href="../../../../categories/wumpus.html" rel="tag">Wumpus</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../02/cuentos-cortos-pero-muy-cortos.html" rel="prev" title="Cuentos cortos.. pero muy cortos!">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../07/260.html" rel="next" title="Más que una historia de amor">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html",
+        disqus_title="Hunt the Wumpus!",
+        disqus_identifier="cache/posts/2007/07/04/hunt-the-wumpus.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

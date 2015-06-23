@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (gnuplot)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/gnuplot.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:24 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>All you need is love!</title><link>http://www.juanjoconti.com.ar/posts/2006/10/07/all-you-need-is-love.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Desde el etorno gráfico de tu GNU/Linux abrí una terminal (gnome-terminal, Konsole, Eterm u otra). Con tu editor preferido (vi, emacs, gedit u otro) creá el archivo &lt;code&gt;love&lt;/code&gt; con este contenido:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;plot a*(1-sin(t))
+&lt;p&gt;a = a - 2&lt;/p&gt;
+&lt;p&gt;pause 1&lt;/p&gt;
+&lt;p&gt;if(a == 0) a = 16&lt;/p&gt;
+&lt;p&gt;reread&lt;/p&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Desde la terminal ejecutá el comando &lt;code&gt;gnuplot&lt;/code&gt; y allí:&lt;/p&gt;
+&lt;pre&gt;gnuplot&amp;gt; set polar
+
+        dummy variable is t for curves
+
+gnuplot&amp;gt; set xrange[-25:25]; set yrange[-35:5]
+
+gnuplot&amp;gt; a = 16
+
+gnuplot&amp;gt; set title "All you need is love"
+
+gnuplot&amp;gt; load 'love'
+
+&lt;/pre&gt;
+
+&lt;p&gt;Done! All you need is love!.. and gnuplot! :)&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;a href="http://www.gnuplot.info"&gt;Gnuplot&lt;/a&gt; es un potente &lt;a href="http://www.gnu.org/philosophy/free-sw.es.html"&gt;Software Libre&lt;/a&gt; que permite graficar funciones matemáticas tanto en 2 como en 3 dimenciones.&lt;/p&gt;
+&lt;p&gt;a*(1-sin(t)) es una función matemática en coordenadas polares que se denomina cardioide por su forma de corazón.&lt;/p&gt;
+&lt;p&gt;Este pequeño ejemplo ilustra como utilizar esta herramienta para crear animaciones en base a la parametrización de funciones matemáticas que nos permitan observar comportamientos según cambian los valores de los parámetros.&lt;/p&gt;&lt;/div&gt;</description><category>General</category><category>gnuplot</category><category>matemática</category><guid>http://www.juanjoconti.com.ar/posts/2006/10/07/all-you-need-is-love.html</guid><pubDate>Sat, 07 Oct 2006 13:54:32 GMT</pubDate></item><item><title>gnuplot</title><link>http://www.juanjoconti.com.ar/posts/2006/01/10/gnuplot.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El año pasado escribí una guía sobre este programa para el proyecto &lt;a href="http://www.gleducar.org.ar"&gt;Gleducar&lt;/a&gt;, en la introducción decía algo que cuando lo leí reien me gustó:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Los autores iniciales de &lt;a href="http://www.gnuplot.info"&gt;gnuplot &lt;/a&gt;son Thomas Williams y Colin Kelly, quienes decidieron crear un programa que les permitiera visualizar las ecuaciones matemáticas de las clases de electromagnetismo y ecuaciones diferenciales. Ellos eran estudiantes igual que ustedes, se encontraron con un problema (ya que no contaban con una herramienta como esta) y le dieron una solución. Gracias a su generosidad, hoy está disponible para todos.&lt;/blockquote&gt;
+&lt;p&gt;Lo encontré en la web con el formato de media wiki (el sistema que usan en &lt;a href="http://www.wikipedia.org"&gt;Wikipedia&lt;/a&gt;) -- muy lindo, gracias a quien lo haya pasado!! les dejo el link por si quieren leerlo &lt;a href="http://wiki.gleducar.org.ar/wiki/index.php/Manual_GNUPlot"&gt;http://wiki.gleducar.org.ar/wiki/index.php/Manual_GNUPlot&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>gnuplot</category><category>matemática</category><category>Software Libre</category><guid>http://www.juanjoconti.com.ar/posts/2006/01/10/gnuplot.html</guid><pubDate>Tue, 10 Jan 2006 15:41:18 GMT</pubDate></item></channel></rss>

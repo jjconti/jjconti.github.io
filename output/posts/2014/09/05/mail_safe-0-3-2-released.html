@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mail_safe 0.3.2 released | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2014/09/05/mail_safe-0-3-2-released.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../../08/18/como-un-programador-escribe-una-novela.html" title="Cómo un programador escribe una novela" type="text/html">
+        <link rel="next" href="../08/cuentos-ilustrados-por-ceruleo.html" title="Cuentos ilustrados por Cerúleo" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="mail_safe 0.3.2 released">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2014/09/05/mail_safe-0-3-2-released.html">
+    <meta property="og:description" content="At Watu, we have just released a new version of mail_safe gem (originally developed by Myron Marston).
+Mail safe provides a safety net while you're developing an application that uses ActionMailer. It">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2014-09-05T22:18:56+00:00">
+           <meta property="article:tag" content="Aprendiendo Ruby">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="mail_safe-0-3-2-released.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">mail_safe 0.3.2 released</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2014-09-05T22:18:56+00:00" itemprop="datePublished" title="2014-09-05 22:18">2014-09-05 22:18</time></a></p>
+                <p class="commentline">
+        
+    <a href="mail_safe-0-3-2-released.html#disqus_thread" data-disqus-identifier="cache/posts/2014/09/05/mail_safe-0-3-2-released.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="mail_safe-0-3-2-released.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>At <a href="https://watuapp.com/" target="_blank">Watu</a>, we have just released a new version of <a href="https://rubygems.org/gems/mail_safe" target="_blank">mail_safe gem</a> (originally developed by <a href="http://myronmars.to/" target="_blank">Myron Marston</a>).</p>
+<p></p>
+<blockquote>Mail safe provides a safety net while you're developing an application that uses ActionMailer. It keeps emails from escaping into the wild. Once you've installed and configured this gem, you can rest assure that your app won"t send emails to external email addresses. Instead, emails that would normally be delivered to external addresses will be sent to an address of your choosing, and the body of the email will be appended with a note stating where the email was originally intended to go.</blockquote>
+<h3>Changelog for 0.3.2 version</h3>
+
+<ul>
+
+    <li>Updated to manage the gem using bundler.</li>
+
+    <li>Updated to run tests with RSpec 3.</li>
+
+    <li>Updated to support actionmailer &gt;= 3.2 (support for older versions was removed to simplify code).</li>
+
+    <li>Changed ginger in favor of <a href="https://github.com/thoughtbot/appraisal" target="_blank">appraisal</a> to test the gem against different versions of actionmailer.</li>
+
+    <li>Added support for continuous integrations with <a href="https://travis-ci.org/watu/mail_safe" target="_blank">Travis</a> (can be locally emulated with <a href="https://github.com/grosser/wwtd" target="_blank">wwtd</a>).</li>
+
+    <li>Fixed <a href="https://github.com/myronmarston/mail_safe/issues/7" target="_blank">https://github.com/myronmarston/mail_safe/issues/7</a>
+</li>
+
+    <li>Fixed <a href="https://github.com/myronmarston/mail_safe/issues/3" target="_blank">https://github.com/myronmarston/mail_safe/issues/3</a>
+</li>
+
+    <li>Updated <a href="https://github.com/myronmarston/mail_safe" target="_blank">source code page</a> with some fancy badges.</li>
+
+</ul>
+
+<h3>Thanks</h3>
+
+<p>Thanks <a href="https://watuapp.com/" target="_blank">Watu</a> for funding this release and <a href="http://myronmars.to/" target="_blank">Myron</a> for the support!</p>
+<h3>Update</h3>
+
+<p>0.3.3 has just been released (17th of september) to make coveralls a development dependency instead of a deployment one.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-ruby.html" rel="tag">Aprendiendo Ruby</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../../08/18/como-un-programador-escribe-una-novela.html" rel="prev" title="Cómo un programador escribe una novela">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../08/cuentos-ilustrados-por-ceruleo.html" rel="next" title="Cuentos ilustrados por Cerúleo">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2014/09/05/mail_safe-0-3-2-released.html",
+        disqus_title="mail_safe 0.3.2 released",
+        disqus_identifier="cache/posts/2014/09/05/mail_safe-0-3-2-released.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

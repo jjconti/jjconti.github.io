@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 7) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-7.html">
+
+
+
+        <link rel="prev" href="index-8.html" type="text/html">
+        <link rel="next" href="index-6.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/19/alfabeto-calculadora.html" class="u-url">Alfabeto Calculadora</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/19/alfabeto-calculadora.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-19T02:21:30+00:00" title="2006-09-19 02:21">2006-09-19 02:21</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/19/alfabeto-calculadora.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/19/alfabeto-calculadora.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Todo empezó con <a href="http://www.gleducar.org.ar/pipermail/gleducar/2006-September/003388.html">este mail en la lista del Gleducar</a>.</p>
+<!--more-->
+
+<p>La entrada: una lista de palabras representables en una calculadora normal simplemente girando el display. </p>
+<p>Esto parece algo sin mucha utilidad, pero esta técnica es utilizada en muchos dispositivos con capacidades gráficas reducidas para mostrar mensajes de error u otra informaición adicional a la salida numérica.</p>
+<p>En este archivo están las palabras a procesar enviadas a la lista de correos (en la selección original de palabras no se incluyeron aquellas con la letra 'z', pero también podrían haber sido elejidas para representar en Alfabeto Calculadora): <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/palabras.txt">palabras.txt</a></p>
+<p></p>
+<h3>El programa</h3>
+<p>Almuerzo de por medio escribí este código y lo mandé a la lista del Gleducar como respuesta al reto: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/alfabeto_calc.py.html">alfabeto_calc.py</a> (<strong>update:</strong> tiene la corrección que me sugirió Alecu)</p>
+<p>La forma de representación que elejí es esta: tomar todas las letras y conviértalas a mayúsculas excepto a la 'h' ('h' puede representarse con un '4' de calculadora invertido, pero 'H' no se puede representar con ningún número). Podemos representar la 'l' en minúsculas o en mayúscula ('L'), al usar la mayúscula y representarla con el '7', nos guardamos el '1' para la 'I'. Una vez que se tiene la palabra en formato <em>upper_except_h</em> cambiar cada letra por el número correspondiente e invertir el orden de los números.</p>
+<h3>Links para leer un poco más</h3>
+
+<ul>
+
+    <li><a href="http://en.wikipedia.org/wiki/List_of_calculator_words">http://en.wikipedia.org/wiki/List_of_calculator_words</a></li>
+
+    <li><a href="http://en.wikipedia.org/wiki/Calculator_spelling">http://en.wikipedia.org/wiki/Calculator_spelling</a></li>
+
+</ul>
+
+<h3>Resultado</h3>
+
+<p>Esta es la salida que se obtiene al correr el programa en una terminal con el archivo <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/palabras.txt">palabras.txt</a> en el mismo directorio:</p>
+<p>be = BE = 38</p>
+<p>bebe = BEBE = 3838</p>
+<p>bebible = BEBIBLE = 3781838</p>
+<p>beisbol = BEISBOL = 7085138</p>
+<p>belio = BELIO = 01738</p>
+<p>bello = BELLO = 07738</p>
+<p>beso = BESO = 0538</p>
+<p>bielgo = BIELGO = 097318</p>
+<p>bilioso = BILIOSO = 0501718</p>
+<p>bilis = BILIS = 51718</p>
+<p>biologo = BIOLOGO = 0907018</p>
+<p>bis = BIS = 518</p>
+<p>bisbiseo = BISBISEO = 03518518</p>
+<p>bisel = BISEL = 73518</p>
+<p>biso = BISO = 0518</p>
+<p>bobilis = BOBILIS = 5171808</p>
+<p>bobillo = BOBILLO = 0771808</p>
+<p>bobo = BOBO = 0808</p>
+<p>bohio = BOhIO = 01408</p>
+<p>boi = BOI = 108</p>
+<p>bolillo = BOLILLO = 0771708</p>
+<p>bollo = BOLLO = 07708</p>
+<p>bolo = BOLO = 0708</p>
+<p>bolsillo = BOLSILLO = 07715708</p>
+<p>bolso = BOLSO = 05708</p>
+<p>e = E = 3</p>
+<p>eh = Eh = 43</p>
+<p>el = EL = 73</p>
+<p>ele = ELE = 373</p>
+<p>elegible = ELEGIBLE = 37819373</p>
+<p>eliseo = ELISEO = 035173</p>
+<p>elisio = ELISIO = 015173</p>
+<p>elle = ELLE = 3773</p>
+<p>ello = ELLO = 0773</p>
+<p>elogio = ELOGIO = 019073</p>
+<p>elogioso = ELOGIOSO = 05019073</p>
+<p>eolio = EOLIO = 01703</p>
+<p>es = ES = 53</p>
+<p>ese = ESE = 353</p>
+<p>eso = ESO = 053</p>
+<p>gel = GEL = 739</p>
+<p>geologo = GEOLOGO = 0907039</p>
+<p>giboso = GIBOSO = 050819</p>
+<p>gil = GIL = 719</p>
+<p>gili = GILI = 1719</p>
+<p>gis = GIS = 519</p>
+<p>globo = GLOBO = 08079</p>
+<p>globoso = GLOBOSO = 0508079</p>
+<p>gobio = GOBIO = 01809</p>
+<p>gol = GOL = 709</p>
+<p>goloso = GOLOSO = 050709</p>
+<p>he = hE = 34</p>
+<p>helio = hELIO = 01734</p>
+<p>heliosis = hELIOSIS = 51501734</p>
+<p>hibleo = hIBLEO = 037814</p>
+<p>hiel = hIEL = 7314</p>
+<p>hielo = hIELO = 07314</p>
+<p>higo = hIGO = 0914</p>
+<p>hilo = hILO = 0714</p>
+<p>hiogloso = hIOGLOSO = 05079014</p>
+<p>hobo = hOBO = 0804</p>
+<p>ibis = IBIS = 5181</p>
+<p>ilegible = ILEGIBLE = 37819371</p>
+<p>ileo = ILEO = 0371</p>
+<p>ileso = ILESO = 05371</p>
+<p>le = LE = 37</p>
+<p>legible = LEGIBLE = 3781937</p>
+<p>lego = LEGO = 0937</p>
+<p>leible = LEIBLE = 378137</p>
+<p>lelili = LELILI = 171737</p>
+<p>lelo = LELO = 0737</p>
+<p>leo = LEO = 037</p>
+<p>les = LES = 537</p>
+<p>lesbio = LESBIO = 018537</p>
+<p>leso = LESO = 0537</p>
+<p>libelo = LIBELO = 073817</p>
+<p>libio = LIBIO = 01817</p>
+<p>liego = LIEGO = 09317</p>
+<p>ligio = LIGIO = 01917</p>
+<p>lilili = LILILI = 171717</p>
+<p>lio = LIO = 017</p>
+<p>lioso = LIOSO = 05017</p>
+<p>lis = LIS = 517</p>
+<p>lisis = LISIS = 51517</p>
+<p>liso = LISO = 0517</p>
+<p>lo = LO = 07</p>
+<p>lobo = LOBO = 0807</p>
+<p>loboso = LOBOSO = 050807</p>
+<p>logis = LOGIS = 51907</p>
+<p>o = O = 0</p>
+<p>obelo = OBELO = 07380</p>
+<p>obeso = OBESO = 05380</p>
+<p>oboe = OBOE = 3080</p>
+<p>obolo = OBOLO = 07080</p>
+<p>obseso = OBSESO = 053580</p>
+<p>oh = Oh = 40</p>
+<p>oible = OIBLE = 37810</p>
+<p>oislo = OISLO = 07510</p>
+<p>ole = OLE = 370</p>
+<p>oleo = OLEO = 0370</p>
+<p>oleoso = OLEOSO = 050370</p>
+<p>os = OS = 50</p>
+<p>oseo = OSEO = 0350</p>
+<p>oso = OSO = 050</p>
+<p>se = SE = 35</p>
+<p>sebe = SEBE = 3835</p>
+<p>sebillo = SEBILLO = 0771835</p>
+<p>sebo = SEBO = 0835</p>
+<p>seboso = SEBOSO = 050835</p>
+<p>seis = SEIS = 5135</p>
+<p>seise = SEISE = 35135</p>
+<p>sello = SELLO = 07735</p>
+<p>seo = SEO = 035</p>
+<p>ses = SES = 535</p>
+<p>seseo = SESEO = 03535</p>
+<p>sesgo = SESGO = 09535</p>
+<p>seso = SESO = 0535</p>
+<p>si = SI = 15</p>
+<p>sibil = SIBIL = 71815</p>
+<p>sieso = SIESO = 05315</p>
+<p>sigilo = SIGILO = 071915</p>
+<p>sigiloso = SIGILOSO = 05071915</p>
+<p>siglo = SIGLO = 07915</p>
+<p>silbo = SILBO = 08715</p>
+<p>silboso = SILBOSO = 0508715</p>
+<p>silesio = SILESIO = 0153715</p>
+<p>silo = SILO = 0715</p>
+<p>siseo = SISEO = 03515</p>
+<p>so = SO = 05</p>
+<p>sobeo = SOBEO = 03805</p>
+<p>sobo = SOBO = 0805</p>
+<p>sois = SOIS = 5105</p>
+<p>sol = SOL = 705</p>
+<p>soleo = SOLEO = 03705</p>
+<p>solio = SOLIO = 01705</p>
+<p>solo = SOLO = 0705</p>
+<p>sos = SOS = 505</p>
+<p>sosiego = SOSIEGO = 0931505</p>
+<p>soso = SOSO = 0505 </p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/11/programacion-temporal-de-eventos-con-python.html" class="u-url">Programación Temporal de Eventos con Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/11/programacion-temporal-de-eventos-con-python.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-11T01:13:54+00:00" title="2006-09-11 01:13">2006-09-11 01:13</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/11/programacion-temporal-de-eventos-con-python.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/11/programacion-temporal-de-eventos-con-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Este artículo estuvo en mi lista de borradores (<em>draft posts</em>) por mucho tiempo ya. Evidente mente no cumplí con la consigna <em><a href="http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html">release early</a></em> del desarrollo tipo bazar. <em>Enough!</em></p>
+<p>Este artículo va a hablar un poco de simulación de sistemas discretos, va a presentar un módulo que escribí como prueba de que se podía hacer y me va a servir para contarles algunas cosas uq e aprendí en el camino.</p>
+<p>Sigo <a href="http://firebirds.com.ar/~juanjo/wordpress/category/aprendiendo-python/">Aprendiendo Python</a> y esta es una clase más.</p>
+<!--more-->
+
+<p></p>
+<h3>Programación temporal de eventos</h3>
+<p>En el primer cuatrimestre de este año cursé una materia llamada <a href="http://www.frsf.utn.edu.ar/matero/visitante/index.php?id_catedra=150">Simulación</a>. Estudiamos principalmente como simular sistemas discretos (como un grupo de pasajeros subiendo a un avión. Suben de a uno, en un momento hay 7 pasajeros a bordo y en otro momento hay 8, nunca hay 7.5) en contraposición a los sistemas continuos (como el tanque de nafta del avión dónde su nivel baja instante a instante cuando el avión está volando).</p>
+<p>Básicamente existen dos tipos de técnicas que se pueden utilizar para simular sistemas discretos, las de orientación al intervalo y las de orientación al evento. En las del primer tipo, cada cierto tiempo t se verifica de alguna forma si ha ocurrido un evento y se realiza el procesamiento asociado a este. Esto lleva a impresiciones y en ocasiones a un gasto innecesesario de cpu. En las técnicas de orientación al evento estos problemas no existen. </p>
+<p>Una de las técnicas más primitivas de orientación al intervalo (no se si se usa en la actualidad) es la de Programación Temporal de Eventos. Básicamente se tiene un reloj que cuenta el tiempo de simulación y una lista de eventos ordenada en el tiempo. Uno debe escribir una función o procedimiento por cada uno de los eventos principales del sistema (por ejemplo la llegada de una pieza a una máquina) y una función principal que contenga el <em>main loop</em> de la simulación. Esta irá tomando eventos de la lista, avanzará el tiempo de simulación según corresponda y los ejecutará. Siempre se toma el primero y se lo ejecuta, si no hay más elementos en la lista termina la siumulación.</p>
+<p>Los eventos son agregados a la lista con una primitiva llamada por ejemplo <strong>PPE</strong> (programar próximo evento), dónde además de indicar <em>cual</em> será el próximo evento, se debe indicar dentro de cuanto tiempo a partir del actual se debe ejecutar.</p>
+<p>Mientras cursaba, estudiaba y rendía pensaba que sería muy fácil implementar en Python un módulo que provea las primitivas necesarias para realizar una simulción por programación temporal de eventos. Poner y sacar funciones de una lista seguro sería sencillo en un lenguaje muy dinámico y donde todo (incluidas las funciones) son objetos. La semana siguiente a rendir estuve escribiendo un poco de código Python. El resultado es un módulo llamado <strong>pte</strong> que cubre las funcionalidades mínimas que yo pretendía.</p>
+<h3>Resultado</h3>
+
+<p>No pretendía realizar un imponente desarrollo ni pienso que alguien use esto alguna vez en serío. Es más bien una prueba de concepto (<em><a href="http://en.wikipedia.org/wiki/Proof_of_concept">Proof of concept</a></em>). Lo había avandonado y ni siquiera funcionaba sin tirar errores. Objetivo: que funcione.</p>
+<p>Este es el módulo: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/pte.py.html">pte.py</a> (versión orginal)</p>
+<p>Una versión con el consejo de Daniel: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/pte-d.py.html">pte-d.py</a> (gracias Daniel!)</p>
+<p>Y este un ejemplo en el que lo uso: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/pte_ej2.py.html">pte_ej2.py</a></p>
+<p>Ejemplo de ejecución:</p>
+<pre lang="bash">
+
+juanjo@sarge:~/python$ ./pte_ej2.py
+
+
+
+500 piezas fueron aceptadas en 1247.55 unidades de tiempo.
+
+
+
+Máximo tamaño de la cola para procesamiento 5.
+
+</pre>
+
+<h3>Qué aprendí</h3>
+
+<h4>Módulos</h4>
+
+<p>Más de lo que pueda decir sobre módulos: <a href="http://docs.python.org/tut/node8.html">http://docs.python.org/tut/node8.html</a></p>
+<h4>reload(modulo)
+
+<blockquote>
+
+Reload a previously imported module. The argument must be a module object, so it must have been successfully imported before. This is useful if you have edited the module source file using an external editor and want to try out the new version without leaving the Python interpreter. The return value is the module object (the same as the module argument).
+
+</blockquote>
+
+
+
+Entonces lo que hay que hacer cuando se está trabajando en la consola de Python[1] es, primer importar el módulo que se quiere probar:
+
+<pre>
+
+&gt;&gt;&gt; import modulo
+
+</pre>
+
+Hacer algunas pruebas:
+
+<pre>
+
+&gt;&gt;&gt; modulo.var1
+
+1
+
+&gt;&gt;&gt; modulo.cuad(3)
+
+9
+
+</pre>
+
+Si luego editamos el texto de <em>modulo</em> y queremos probar la función que agregarmos:
+
+<pre>
+
+&gt;&gt;&gt; modulo = reload(modulo)
+
+</pre>
+
+<h4>Funciones como objetos</h4>
+
+En Python todo es un objeto, incluso las funciones. Sabiendo esto y teniendo en mente lo que quería hacer (en la definición de una función, explicitar que esta se llame en el futuro, es decir almacenarla en una <em>lista de eventos</em>) hice una pequeña prueba en el intérprete:
+
+<pre>
+
+&gt;&gt;&gt; l = []
+
+&gt;&gt;&gt; def f():
+
+    l.append(f)
+
+
+
+
+
+&gt;&gt;&gt; l
+
+[]
+
+&gt;&gt;&gt; f()
+
+&gt;&gt;&gt; l
+
+[&lt;function f at 0x418bce9c&gt;]
+
+&gt;&gt;&gt; l[0]
+
+&lt;function f at 0x418bce9c&gt;
+
+&gt;&gt;&gt; l
+
+[&lt;function f at 0x418bce9c&gt;]
+
+&gt;&gt;&gt; l[0]()
+
+&gt;&gt;&gt; l
+
+[&lt;function f at 0x418bce9c&gt;, &lt;function f at 0x418bce9c&gt;]
+
+</pre>
+
+
+
+Esto es posible justamente gracias a que en Python las funciones son objetos. En ciencias de la computación esto se conoce como Funciones de Primera Clase, es decir que las funciones sean Objetos de Primera Clase, es decir que puedan ser creadas durante la ejecución de un programa, almacenadas en estructuras de datos, recuperadas más tarde para usarlas, pasadas como argumentos y retornadas en otras funciones. <a href="http://en.wikipedia.org/wiki/First-class_function">Más al respecto en wikipedia</a>.
+
+<h4>Ordenar según un criterio propio</h4>
+
+Una lista puede ser ordenada según un criterio propio pasándole al método sort de una lista ese criterio en forma de función:
+
+<pre>
+
+def _comparar_tiempos(a,b):
+
+    """ Función auxiliar usada para ordenar los pares eventos,tiempos
+
+    en la lista de eventos.
+
+    """
+
+    t1 = a[1]
+
+    t2 = b[1]
+
+    if (t1 &gt; t2): return 1
+
+    elif (t1 &lt; t2): return -1
+
+    else: return 0
+
+</pre>
+
+y luego..
+
+<pre>
+
+eventos.sort(_comparar_tiempos)
+
+</pre>
+
+
+
+Espero les haya resultado interesante!
+
+
+
+[1] También conocida como <a href="http://en.wikipedia.org/wiki/Read-eval-print_loop">REPL</a>, algo muy piola cuando uno esta desarrollando.
+
+
+
+
+
+</h4>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/09/04/gnulinux-en-oro-verde.html" class="u-url">GNU/Linux en Oro Verde</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/09/04/gnulinux-en-oro-verde.html" rel="bookmark"><time class="published dt-published" datetime="2006-09-04T13:58:38+00:00" title="2006-09-04 13:58">2006-09-04 13:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/09/04/gnulinux-en-oro-verde.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/04/gnulinux-en-oro-verde.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En Software Libre antes de reinventra la rueda uno puede ver si alguien ya resolvió el mismo problema, estos son links a los relatos del <em>siempre bien ponderado</em> César Emilio Portela y el <em>archienemigo de persianas, jarrones y otroas cosas delicadas</em> Bruno Vicente Gnoato:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.ceportela.com.ar/2006/09/03/jornada-gnulinux-del-lug-oro-verde/"</span><span class="nt">&gt;</span>Jornada GNU/Linux del Lug Oro Verde<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</pre>
+
+
+<li><a href="http://centebvg.awardspace.com/wordpress/?p=10">Viaje a Oro Verde, Part 2</a></li>
+
+
+
+<p><strong>Bonus track:</strong> <a href="http://www.lugoroverde.com.ar/nuevositio/node/430">http://www.lugoroverde.com.ar/nuevositio/node/430</a></p>
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/08/30/fito-paez-ayo-cuando-tenia-15-anos-compraba-un-disco-y-grababa-10a.html" class="u-url">Fito Páez: “Yo, cuando tenía 15 años, compraba un disco y grababa 10”</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/08/30/fito-paez-ayo-cuando-tenia-15-anos-compraba-un-disco-y-grababa-10a.html" rel="bookmark"><time class="published dt-published" datetime="2006-08-30T14:19:31+00:00" title="2006-08-30 14:19">2006-08-30 14:19</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/08/30/fito-paez-ayo-cuando-tenia-15-anos-compraba-un-disco-y-grababa-10a.html#disqus_thread" data-disqus-identifier="cache/posts/2006/08/30/fito-paez-ayo-cuando-tenia-15-anos-compraba-un-disco-y-grababa-10a.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Interesante declaración, no? Estoy seguro de que a Fito no le molesta que en el cajón del escritorio donde estoy trabajando tenga dos CDs suyos que me copió un amigo o que en mi reproductor de mp3 tenga otro album suyo.</p>
+<p>Andrés Calamaro piensa algo parecido:</p>
+<p></p>
+<blockquote>"Si los conciertos están llenos, la piratería no me importa".</blockquote>
+<!--more-->
+
+<p>Por cierto.. escucharon <em><a href="http://www.10musica.com/interior/noticia.php?idx=2516">Calamaro querido!</a></em>? Está muy bueno! Mi hermana trajo una copia al departamente hace un par de días y no dejamos de escucharlo. El apretado bolsillo de estudiante universitario no nos hubiera dejado comprarlo, además: ¿por qué alguien compraría un CD si puede obtenerlo gratis? ¿para ayudar a su artista favorito? Te tengo noticias: los artistas no reciben casi nada por la ventan de sus discos.</p>
+<p>El artículo que me hizo pensar estas cosas se titula: <a href="http://www.lanacion.cl/prontus_noticias/site/artic/20060826/pags/20060826182729.html">Mi cultura pirata</a> (de La Nación de Chile). Si bien no me gustó mucho el título (robar barcos en alta mar poco tiene que ver con compartir música con amigos[1]) el contenido lo compensa.</p>
+<p>Esta es la sección del artículo de donde recojí las citas:</p>
+<blockquote>
+<strong>“LA PIRATERÍA ES GENIAL”</strong>
+
+La megaestrella Robbie Williams, que ha vendido más de 41 millones de discos en el mundo, se atrevió a decir en una feria de música en Cannes: “La piratería es genial. Y nadie puede hacer nada para pararlo. Ya sé que mi compañía, mi jefe y mis contables me van a odiar por decir esto”. Algo parecido piensa el artista argentino Andrés Calamaro, y añade: “Si los conciertos están llenos, la piratería no me importa”. Y Fito Páez: “Yo, cuando tenía 15 años, compraba un disco y grababa 10”. O Manu Chao, quien junto a la precandidata a la Presidencia de Francia, Sègoléne Royal, y otras 70 personalidades, lanzaron el año pasado un manifiesto en contra de la persecución criminal de los que piratean música en Internet. Pero la poderosa industria del disco puede llegar a ser feroz. Cuando Alaska, la cantante símbolo de la “movida madrileña”, declaró que “como artista y autora soy la menos perjudicada por la piratería, porque soy la que menos gana por disco vendido”, retiraron todos sus CD de las tiendas porque no quiso retractarse. Ella, magnífica, con su desafiante melena roja, les contestó: “Estupendo, ahora mis discos serán aún más codiciados en los top manta” (como se llama a los “éxitos” de cuneta en ese país).</blockquote>
+
+<p>El artículo no sólo habla de música, hay más cosas interesantes para leer:</p>
+<blockquote>Pero la reina del top pirata es J.K. Rowling, autora de “Harry Potter”, que es la mujer más rica de Inglaterra, por encima de la Reina Isabel, a pesar de los desalmados que copian sus libros y sus millones de lectores ilegales.</blockquote>
+
+<p>Así que no te lo pierdás: <strong><a href="http://www.lanacion.cl/prontus_noticias/site/artic/20060826/pags/20060826182729.html">Mi cultura pirata</a> </strong></p>
+<p>Y vos.. ¿Qué pensás de la copia ilegal?</p>
+<p>[1] Si alguna vez te preguntaste por que se usa la palabra piratería, seguí este link: <a href="http://www.gnu.org/philosophy/words-to-avoid.es.html#Piracy">http://www.gnu.org/philosophy/words-to-avoid.es.html#Piracy</a> (es solo un párrafo).</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/08/27/generacion-de-imagenes-con-gd-desde-php.html" class="u-url">Generación de imágenes con GD desde PHP</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/08/27/generacion-de-imagenes-con-gd-desde-php.html" rel="bookmark"><time class="published dt-published" datetime="2006-08-27T02:25:22+00:00" title="2006-08-27 02:25">2006-08-27 02:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/08/27/generacion-de-imagenes-con-gd-desde-php.html#disqus_thread" data-disqus-identifier="cache/posts/2006/08/27/generacion-de-imagenes-con-gd-desde-php.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Este es un ejemplo minimalista (pero de alguna utilidad) en el que un script php devuelve una imagen.</p>
+<!--more-->
+
+<p></p>
+<h3>Antes que nada</h3>
+<p>Para que funcione hay que tener instalado el paquete php4-gd, descomentar la línea <code>extension=gd.so</code> en el archivo <code>/etc/php4/apache2/php.ini</code> y reiniciar el servidor web (apache).</p>
+<h3>Barra de progreso</h3>
+
+<p>Este script recibe como parámetro un pocentaje (10, 20, 50 o 90, qué tan completa está una tarea) y genera la barra de progreso correspondiente.</p>
+<p>Ver archivo: <a href="files/progreso.php.html">progreso.php</a></p>
+<p>Si accedemos a este script desde un navegador y le damos un valor al parámetro <code>porcentaje</code> obtendremos imágenes como estas:</p>
+<p>(suponiendo que el archivo está en <code>/home/juanjo/public_html/</code>)</p>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=10</strong></p>
+<p></p>
+<center><img id="image139" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/10.png" alt="10"></center>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=20</strong></p>
+<p></p>
+<center><img id="image140" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/20.png" alt="20"></center>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=60</strong></p>
+<p></p>
+<center><img id="image141" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/60.png" alt="60"></center>
+<p><strong>http://localhost/~juanjo/progreso.php?porcentaje=90</strong></p>
+<p></p>
+<center><img id="image142" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/90.png" alt="90"></center>
+<p>Más interesante que acceder directamente a este script es utilizarlo como fuente para una etiqueta <code>img</code> en html.  Podemos tener un template donde haya algo como esto:</p>
+<p><code></code></p>
+<p>&lt;img src="progreso.php?porcentaje={P}"/&gt;</p>
+<p> </p>
+<p>y a P se le da un valor calculado dinámicamente cada vez que se solicita la página.</p>
+<h3>Recursos</h3>
+
+<p>Un ejemplo más completo en: <a href="http://www.zend.com/zend/tut/dynamic.php">http://www.zend.com/zend/tut/dynamic.php</a> (fué el hola-mundo con el que empecé a probar GD)</p>
+<p>GD en php.net: <a href="http://www.php.net/gd">http://www.php.net/gd</a></p>
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/08/23/fin-de-semana-en-cordoba-mi-seleccion-de-fotos.html" class="u-url">Fin de semana en Córdoba (mi selección de fotos)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/08/23/fin-de-semana-en-cordoba-mi-seleccion-de-fotos.html" rel="bookmark"><time class="published dt-published" datetime="2006-08-23T01:07:26+00:00" title="2006-08-23 01:07">2006-08-23 01:07</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/08/23/fin-de-semana-en-cordoba-mi-seleccion-de-fotos.html#disqus_thread" data-disqus-identifier="cache/posts/2006/08/23/fin-de-semana-en-cordoba-mi-seleccion-de-fotos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Esta es mi selección de fotos del viaje a Córdoba (con comentarios y todo!), que las disfruten!</p>
+<!--more-->
+
+<p></p>
+<center>Pablito revisando el mapa en una parada para cargar gas.
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8190006.JPG" id="image126" alt="Pablito mirando el mapa"></p>
+<p>En la misma estación, recién venidos del baño nos totamos esta foto con Mariano.. yo estaba re dormido!</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8190007.JPG" id="image127" alt="Con Mariano"></p>
+<p>Una leidita de repaso al material de la charla.</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8190009.JPG" id="image128" alt="Repasando la charla"></p>
+<p>l final.. no había por que ponerse nerviso! Me gustó la experiencia.</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8190029.JPG" id="image129" alt="Exponiendo"></p>
+<p>El decálogo del expositor dice: <em>No mostrará código en vivo. No funcionará</em>. Por suerte la regla no se cumplió!</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8190031.JPG" id="image130" alt="Mostrando código en vivo"></p>
+<p>El sueño todavía dejaba marcas en los cabellos de algunos de los miembros de la comunidad.. marcas que perdurarían todo el día :D</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8200047.JPG" id="image135" alt="Despeinado"></p>
+<p>Señor.. nos saca una foto? El equipo completo de personas que viajamos a Córdoba: Bruno (Gorrito negro), César (Buso Negro), Juanjo (Campera gris), Pablito (Rubio), Mariano (Abajo).</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8200092.JPG" id="image132" alt="En la peatonal"></p>
+<p>Un saludo luego de cruzar la avenida para los que se quedaron del otro lado.</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8200098.JPG" id="image133" alt="Saludo"></p>
+<p>Pablo desde el cole que lo llevaba a Carlos Paz sacó la última foto el viaje.</p>
+<p><img src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/08/resized-p8200099.JPG" id="image134" alt="Tomada por Pablo desde el cole"></p>
+<p>Un relato del viajé aquí: <a href="http://www.ceportela.com.ar/pythonday-cordobes/">http://www.ceportela.com.ar/pythonday-cordobes/</a></p>
+<p></p>
+</center>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/08/22/creando-plug-ins-para-gimp-con-python-charla.html" class="u-url">Creando plug-ins para GIMP con Python (charla)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/08/22/creando-plug-ins-para-gimp-con-python-charla.html" rel="bookmark"><time class="published dt-published" datetime="2006-08-22T23:24:16+00:00" title="2006-08-22 23:24">2006-08-22 23:24</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/08/22/creando-plug-ins-para-gimp-con-python-charla.html#disqus_thread" data-disqus-identifier="cache/posts/2006/08/22/creando-plug-ins-para-gimp-con-python-charla.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Este es el material de la charla que dí el sábado pasado (19 de agosto) en el <a href="http://www.grulic.org.ar/eventos/pythonday1/">1º Python Day del Grulic</a>:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.juanjoconti.com.ar/files/python/fu/charla-cordoba/index.html"</span><span class="nt">&gt;</span>Presentación (navegable y link al formato original)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Código fuente<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+<ul>
+
+
+
+    <li><a href="http://www.juanjoconti.com.ar/files/python/fu/colorFrame.py.html">colorFrame.py</a></li>
+
+    <li><a href="http://www.juanjoconti.com.ar/files/python/fu/sky.py.html">sky.py</a></li>
+
+</ul>
+
+
+
+<p>También tengo un texto que escribí para ordenar mis ideas, pero está muy desprolijo como para publicarlo. SI alguien lo quiere (es buena ayuda para seguir la presentación) pídamelo por mail y se lo mando.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/08/14/pythonday-en-cordoba.html" class="u-url">PythonDay en Córdoba</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/08/14/pythonday-en-cordoba.html" rel="bookmark"><time class="published dt-published" datetime="2006-08-14T23:25:58+00:00" title="2006-08-14 23:25">2006-08-14 23:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/08/14/pythonday-en-cordoba.html#disqus_thread" data-disqus-identifier="cache/posts/2006/08/14/pythonday-en-cordoba.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El próximo sábado 19 se va a llevar a cabo en la <a href="http://www.frc.utn.edu.ar/">Facultad Regional del Córdoba de la UTN</a> <a href="http://www.grulic.org.ar/eventos/pythonday1/">el primer PythonDay del Grulic</a>. Con unos amigos de la facu (César, Mariano y Pablito<strong> y Bruno!</strong>*) vamos a viajar para participar. </p>
+<p>Yo preparé una pequeña <a href="http://www.grulic.org.ar/eventos/pythonday1/#pyfu">charla sobre Python-Fu</a>. Espero que salga bien :)</p>
+<p>Nos vemos en Córdoba!</p>
+<ul>
+<li>Actualización a pedido del público :)</li>
+</ul>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/07/29/2-nuevos-plug-ins-en-mi-wp.html" class="u-url">2 nuevos plug-ins en mi WP!</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/07/29/2-nuevos-plug-ins-en-mi-wp.html" rel="bookmark"><time class="published dt-published" datetime="2006-07-29T15:33:48+00:00" title="2006-07-29 15:33">2006-07-29 15:33</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/07/29/2-nuevos-plug-ins-en-mi-wp.html#disqus_thread" data-disqus-identifier="cache/posts/2006/07/29/2-nuevos-plug-ins-en-mi-wp.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy agregé dos plug-ins en mi instación de <a href="http://www.wordpress.org">WordPress</a> (el sistema que uso como blog).</p>
+<p></p>
+<h4>Estadísticas de visitantes</h4>
+<p>Hace un tiempo tenía instalado un sistema de estadísticas llamado.. bueno no recuerdo como se llamaba, pero no importa por que era bastante malo. Hoy leyendo en el <a href="http://www.cesarsandrigo.com.ar/">blog de César M. Sandrigo</a> descubrí otro y tal vez mi búsqueda (casi abandonada) de una buena forma de conocer sobre mis visitantes haya llegado por fin a Ítaca. El plug-in se llama <a href="http://www.deltablog.com/2005/10/05/wordpress-plugin-popstats/">PopStats</a>.</p>
+<h4>Votar los artículos</h4>
+
+<p>Desde hoy, abajo de cada artículo, hay 5 estrellitas con las que los visitantes pueden rankear los <em>posts</em> publicados. La verdad, está muy lindo: <a href="http://blog.abusemagazine.com/index.php/2006/01/28/wordpress-plugin-post-star-rating/">Post Star Rating</a>.</p>
+<p>Cuando dejé mi primer voto me pareció gracioso leer "1 votos" :) Luego pensé que no debería ser difícil de corregir, acá está la receta:</p>
+<p>Hay que hacer un pequeño cambio en dos métodos de la clase PSR (<a href="http://dev.wp-plugins.org/file/post-star-rating/trunk/psr.class.php">psr.class.php</a>). Tanto en <code>_drawStars($votes, $points)</code> como en <code>_drawVotingStars($votes, $points)</code> cambiar <code><strong>('votos')</strong></code> por <code>($votes == 1 ? 'voto' : 'votos')</code>.</p>
+<p>En la misma clase también se puede cambir el texto que se muestra.</p>
+<p>Otro detallecito que encontré fué que el texto que acompaña a las estrellitas, por ejemplo "2 votos" se veía cortado abajo, revisando el código fuente de la clase anterior encontré el método <code>css()</code> que le da el estilo; en una parte decía:</p>
+<pre class="code literal-block">           <span class="nt">&lt;code&gt;&lt;pre&gt;</span> .PSR_stars {
+
+              height: 15px;
+
+              overflow: hidden;
+
+              padding: 0;
+
+              margin: 0;
+
+            }<span class="nt">&lt;/pre&gt;&lt;/code&gt;</span>
+</pre>
+
+
+<p>PSR_starts es la clase del div que contiene a las estrellitas y el texto. Simplemente comenté el límite impuesto a la altura:</p>
+<pre class="code literal-block">           <span class="nt">&lt;code&gt;&lt;pre&gt;</span> .PSR_stars {
+
+              /*height: 15px;*/
+
+              overflow: hidden;
+
+              padding: 0;
+
+              margin: 0;
+
+            }<span class="nt">&lt;/pre&gt;&lt;/code&gt;</span>
+</pre>
+
+
+<p>Seguro que a más de uno le sirve!</p>
+<p>Saludos!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/07/23/olpc-en-argentina.html" class="u-url">OLPC en Argentina (audio con las últimas novedades)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/07/23/olpc-en-argentina.html" rel="bookmark"><time class="published dt-published" datetime="2006-07-23T21:42:22+00:00" title="2006-07-23 21:42">2006-07-23 21:42</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/07/23/olpc-en-argentina.html#disqus_thread" data-disqus-identifier="cache/posts/2006/07/23/olpc-en-argentina.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Acabo de mandar este mail a la lista de Gleducar:</p>
+<p>Franco Iacomella wrote:</p>
+<p></p>
+<blockquote>Hola gente,
+<p>esta disponible el audio grabado en la sala de conferencia</p>
+<p>directamente desde los micrófonos. Pueden descargarlo desde Educ.ar:</p>
+<p><a href="http://media.educ.ar/podcast/conferencias/OLPC/educar-charlaOLPC.mp3">http://media.educ.ar/podcast/conferencias/OLPC/educar-charlaOLPC.mp3</a></p>
+</blockquote>
+
+<p>Me pidió Franco que lo pase a ogg y lo ponga en internet. Unos minutos</p>
+<p>para bajarlo, algunos menos para convertirlo[1] y toda la tarde para</p>
+<p>subirlo!!</p>
+<p>En formato ogg: <a href="http://firebirds.com.ar/~juanjo/educar-charlaOLPC.ogg">http://firebirds.com.ar/~juanjo/educar-charlaOLPC.ogg</a></p>
+<p>Pasar un archivo de un formato lossy a otro formato lossy (como lo son</p>
+<p>mp3 y ogg, ya que comprimen a costa de perder caldiad <strong>información</strong>)</p>
+<p>no es recomendado: <a href="http://www.vorbis.com/faq/#transcode">http://www.vorbis.com/faq/#transcode</a></p>
+<p>Quines prefieran usar un formato libre a pesar de perder un poco de</p>
+<p>calidad (yo no lo noté en este caso en particular) pueden hacerlo</p>
+<p>bajando el archivo desde la dirección que pasé.</p>
+<p>Además la versión ogg es más liviana:</p>
+<p>juanjo@sarge:~/Desktop$ ls -lh educar-charlaOLPC.*</p>
+<p>-rw-r--r--  1 juanjo juanjo 148M 2006-07-23 15:03 educar-charlaOLPC.mp3</p>
+<p>-rw-r--r--  1 juanjo juanjo  74M 2006-07-23 16:07 educar-charlaOLPC.ogg</p>
+<p>Saludos!</p>
+<p>Juanjo</p>
+<p>[1] Usé mp32ogg</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-8.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-6.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

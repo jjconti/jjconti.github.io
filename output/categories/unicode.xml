@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (unicode)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/unicode.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Unicode en el código fuente</title><link>http://www.juanjoconti.com.ar/posts/2011/02/08/unicode-en-el-codigo-fuente.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy &lt;a href="http://twitter.com/pedroprez/status/34967078767169536" target="_blank"&gt;Pedro preguntó en Twitter&lt;/a&gt; "Que lenguajes de programación permiten a día de hoy soporte full unicode para codear?". Algunos contestaron que Java o C#. No los conozco, &lt;span style="text-decoration: line-through;"&gt;pero creo que no&lt;/span&gt;. Creo que respondieron que el lenguaje puede trabajar con strings unicode, lo cual es bastante común hoy en día. Mi respuesta fue: Python 3. Con Python 3 podemos tener caracteres unicode en el código fuente, en el nombre de las variables por ejemplo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; á = 1
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; print(á)&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; 大家好 = range(10)&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; for ä in 大家好:&lt;/p&gt;
+&lt;p&gt;...     print(ä)&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;7&lt;/p&gt;
+&lt;p&gt;8&lt;/p&gt;
+&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; año = 2027&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; año += 1&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; print(año)&lt;/p&gt;
+&lt;p&gt;2028&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Python3</category><category>unicode</category><guid>http://www.juanjoconti.com.ar/posts/2011/02/08/unicode-en-el-codigo-fuente.html</guid><pubDate>Tue, 08 Feb 2011 11:46:45 GMT</pubDate></item><item><title>Lo que todo programdor debería saber sobre...</title><link>http://www.juanjoconti.com.ar/posts/2010/08/15/lo-que-todo-programdor-deberia-saber-sobre.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un par de días hablábamos con una compañera sobre NO USAR el tipo de datos float para manejar dinero:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; 0.1 + 0.3
+&lt;p&gt;0.40000000000000002&lt;/p&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;A no alarmarse, lo anterior sucede en todos los lenguajes de programación; aunque algunos lo ocultan más que otros. La charla terminó con la recomendación de revisar un sitio web que explica el tema de forma muy consisa:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://floating-point-gui.de/" target="_blank"&gt;&lt;strong&gt;What Every Programmer Should Know About Floating-Point Arithmetic&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Además de explicar &lt;a href="http://floating-point-gui.de/formats/fp/" target="_blank"&gt;cómo funciona el tipo de datos float&lt;/a&gt; y &lt;a href="http://floating-point-gui.de/formats/exact/" target="_blank"&gt;cómo solucionar el problema&lt;/a&gt;, da machetes para varios lenguajes de programación (C#, Java, JavaScript, PHP y SQL).&lt;/p&gt;
+&lt;p&gt;Me sorprendió que no haya una para Python, por lo que seguí el mandato del autor del sitio web, &lt;a href="http://github.com/brazzy/floating-point-gui.de" target="_blank"&gt;fork me on github&lt;/a&gt;, y envié mis cambios. &lt;strong&gt;update:&lt;/strong&gt; &lt;a href="http://floating-point-gui.de/languages/python/" target="_blank"&gt;ya está disponible&lt;/a&gt; en el sitio web.&lt;/p&gt;
+&lt;p&gt;Siguiendo con el título del posts, me puse a buscar otros artículos con el formato: &lt;em&gt;Lo que todo programador debería saber sobre...&lt;/em&gt; y encontré estos:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://www.joelonsoftware.com/articles/Unicode.html" target="_blank"&gt;The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://lwn.net/Articles/250967/" target="_blank"&gt;What every programmer should know about memory&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://www.skorks.com/2010/05/what-every-developer-should-know-about-urls/" target="_blank"&gt;What Every Developer Should Know About URLs&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que leo</category><category>decimal</category><category>float</category><category>links</category><category>memory</category><category>programación</category><category>unicode</category><category>URLs</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/15/lo-que-todo-programdor-deberia-saber-sobre.html</guid><pubDate>Sun, 15 Aug 2010 21:46:54 GMT</pubDate></item><item><title>Soporte Unicode para pyrtf-ng</title><link>http://www.juanjoconti.com.ar/posts/2008/06/12/soporte-unicode-para-pyrtf-ng.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="http://code.google.com/p/pyrtf-ng" title="code" target="_blank"&gt;pyrtf-ng&lt;/a&gt; es un módulo para Python que permite generar archivos en formato &lt;a href="http://en.wikipedia.org/wiki/Rich_Text_Format" title="RTF" target="_blank"&gt;RTF&lt;/a&gt; en forma dinámica. Esta semana empecé a probarlo con la idea de usarlo para generar documentos de texto con formato (&lt;a href="http://es.wikipedia.org/wiki/DOC" title=".doc?" target="_blank"&gt;Word&lt;/a&gt;-like) en forma dinámica.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Al intentar instalarlo tuve algunos problemas , se los comenté al autor y le sugerí soluciones. Rápidamente estas modificaciones estuvieron hechas en el repositorio del proyecto.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Una vez que tuve la librería instalada y los ejemplos corriendo, empecé a modificar algunos para experimentar un poco. Cuando quise generar un documento que contenga una palabra con tilde (cómo &lt;code&gt;canción&lt;/code&gt;), el programa tiró una horrible excepción. Esto hacía que desechara totalmente la idea de usar este software.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Leí sobre la codificación utilizada por el formato RTF y descubrí que &lt;a href="http://en.wikipedia.org/wiki/Rich_Text_Format#Character_encoding" title="RTF Encoding" target="_blank"&gt;no soporta Unicode&lt;/a&gt; en forma nativa, pero si mediante una secuencia de escape de la forma: &lt;code&gt;\uxxxx?&lt;/code&gt; en dónde &lt;code&gt;xxxx&lt;/code&gt; es un entero con signo de 16 bits correspondiente al caracter que se quiere representar. Ejemplo: &lt;a href="http://www.fileformat.info/info/unicode/char/00e1/index.htm" title="LATIN SMALL LETTER A WITH ACUTE" target="_blank"&gt;á&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Pedí instrucciones al autor de la librería, quien me indicó que partes del código tendría que revisar par incluir la funcionalidad de soportar Unicode. Luego de algunas horas empapándome en la arquitectura de clases de pyrtf, tenía un parche listo para ser aplicado e incorporar la funcionalidad. Hoy &lt;a href="http://code.google.com/p/pyrtf-ng/source/detail?r=69" title="Parche para Unicode" target="_blank"&gt;fue incluido&lt;/a&gt; en la versión en desarrollo de la librería.&lt;/p&gt;
+&lt;h3&gt;Código&lt;/h3&gt;
+
+&lt;p&gt;Un pequeño snippet que muestra el algoritmo básico para pasar de un string Unicode a su representación codificada en RTF:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;encoded = ''.join(['\u%s?' % str(ord(b)) for b in base])&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Datos&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;pyrtf-ng es mantenido por &lt;a href="http://oubiwann.blogspot.com/" title="Duncan's blog" target="_blank"&gt;Duncan Mc Greggor&lt;/a&gt; y está basado en &lt;a href="http://pyrtf.sourceforge.net/" title="PyRTF" target="_blank"&gt;PyRTF,&lt;/a&gt; un proyecto que ya no es mantenido.&lt;/li&gt;
+
+    &lt;li&gt;Se encuentra en activo desarrollo: modificación del &lt;a href="http://www.python.org/dev/peps/pep-0008/" title="PEP8" target="_blank"&gt;estilo&lt;/a&gt; del código y &lt;em&gt;refactoring&lt;/em&gt;.&lt;/li&gt;
+
+    &lt;li&gt;También puede ser modificado mediante bazaar en &lt;a href="https://launchpad.net/pyrtf" title="Launchpad" target="_blank"&gt;lauchpad&lt;/a&gt;.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>rtf</category><category>unicode</category><guid>http://www.juanjoconti.com.ar/posts/2008/06/12/soporte-unicode-para-pyrtf-ng.html</guid><pubDate>Thu, 12 Jun 2008 00:04:28 GMT</pubDate></item></channel></rss>

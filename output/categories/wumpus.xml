@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Wumpus)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/wumpus.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:23 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Hunt the Wumpus!</title><link>http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Mientras cursamos este cuatrimestre &lt;a href="http://www.frsf.utn.edu.ar/matero/visitante/index.php?id_catedra=142" title="Web de IA en FRSF" target="_blank"&gt;Intelegencia Artificial&lt;/a&gt; en la facu uno de los ejemplos que aparecía era el del Wumpus, un monstruo que vive en una cueva muy parecida a una grilla. El Wumpus ocupa una casilla de la grilla (dónde inicialmente está dormido) y en las otras puede haber pozos, viento de un pozo cercano, olor a Wumpus o un lingote de oro. Y por supuesto nosotros (el cazador).&lt;/p&gt;
+&lt;p&gt;Este escenario constituye un juego en el cual el cazador (que solo puede percibir lo que hay en las celdas adyacentes a las que ocupa) debe realizar movimientos (Arriba, Abajo, Derecha, Izquierda) o acciones como lanzar una flecha o tomar el lingote para cumplir su objetivo: &lt;strong&gt;salir de la cueva con el oro y sin ser comido por el Wumpus&lt;/strong&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Hasta aquí nada nuevo para contarles. Lo curioso del asunto es que yo pensaba que el juego era solo una herramienta didáctica, que agradable sorpresa encontrarlo mientras navegaba la web: &lt;a href="http://www.catb.org/~esr/wumpus/" title="Wumpus by ESR" target="_blank"&gt;http://www.catb.org/~esr/wumpus/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;pre&gt;           WUMPUS and SUPERHACK
+
+
+
+WUMPUS is a bit of retrocomputing nostalgia.  It is an *exact* clone, even
+
+down to the godawful user interface, of an ancient classic game.  This version
+
+fixes two minor bugs in my original 1992 USENET posting of the source.  An
+
+article describing the history of the game is at
+
+
+
+    http://www.atariarchives.org/bcc1/showpage.php?page=247
+
+
+
+SUPERHACK is a satire, structurally quite similar to WUMPUS.
+
+
+
+For updates and related resources, see &amp;lt;http://www.catb.org/~esr/wumpus/&amp;gt;&lt;/pre&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Intrigado bajé el código fuente y sin problemas lo compilé en mi computadora, cuando lo ejecuté esto fue lo que vi en la pantalla:&lt;/p&gt;
+&lt;blockquote&gt;WELCOME TO 'HUNT THE WUMPUS'&lt;/blockquote&gt;
+
+&lt;blockquote&gt;&lt;/blockquote&gt;
+
+&lt;blockquote&gt; THE WUMPUS LIVES IN A CAVE OF 20 ROOMS. EACH ROOM
+
+HAS 3 TUNNELS LEADING TO OTHER ROOMS. (LOOK AT A
+
+DODECAHEDRON TO SEE HOW THIS WORKS-IF YOU DON'T KNOW
+
+WHAT A DODECAHEDRON IS, ASK SOMEONE)
+
+
+
+HAZARDS:
+
+BOTTOMLESS PITS - TWO ROOMS HAVE BOTTOMLESS PITS IN THEM
+
+IF YOU GO THERE, YOU FALL INTO THE PIT (&amp;amp; LOSE!)
+
+SUPER BATS - TWO OTHER ROOMS HAVE SUPER BATS. IF YOU
+
+GO THERE, A BAT GRABS YOU AND TAKES YOU TO SOME OTHER
+
+ROOM AT RANDOM. (WHICH MAY BE TROUBLESOME)
+
+TYPE AN E THEN RETURN&lt;/blockquote&gt;
+
+&lt;p&gt;Hay una &lt;a href="http://www.flyingtitans.com/products/wumpus/index.psp" title="Wumpus.py" target="_blank"&gt;versión en Python&lt;/a&gt; que funciona&lt;em&gt; out-of-the-box &lt;/em&gt;(aka doble click for win slang)  que nos permite disfrutar del juego sin siquiera la necesidad de compilarlo. Demasiado perezosos como para bajar un archivo? Ok, les dejo esta &lt;a href="http://bnewtz.cannet.com/wumpus/" title="Wumpus on line" target="_blank"&gt;versión on-line&lt;/a&gt; (aunque la interfaz no es como la original).&lt;/p&gt;
+&lt;p&gt;Cómo para casi todos los temas importantes, más información &lt;a href="http://en.wikipedia.org/wiki/Hunt_the_Wumpus" title="Wumpus en Wikipedia" target="_blank"&gt;en la Wikipedia&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Facultad</category><category>humor</category><category>IA</category><category>Wumpus</category><guid>http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html</guid><pubDate>Wed, 04 Jul 2007 16:16:43 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,10 @@
+<p><html><body><p>Estoy usando <a href="http://www.gnu.org/software/emacs/">emacs</a> para practicar <a href="http://www.python.org">python</a>. </p>
+<p>En ~/.emacs.d/ guardé <a href="http://sourceforge.net/projects/python-mode/">python-mode.el</a> y en ~/.emacs tengo estas líenas:</p>
+<p></p><pre lang="lisp"></p>
+<p>(setq load-path (cons (expand-file-name "~/.emacs.d") load-path ))</p>
+<p>(require 'python-mode)</p>
+<p>(nconc auto-mode-alist '(("\.py\'" . python-mode)))</p>
+</pre>
+
+<p>Cuando abro un archivo llamado *.py puedo tipear M-x font-lock-fontify-buffer[enter] y tener la sintaxis coloreada.</p>
+<p></body></html></p>

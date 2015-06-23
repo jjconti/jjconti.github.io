@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recomendaciones al programar en Python | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2008/10/28/recomendaciones-al-programar-en-python.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../24/python-en-santa-fe-declarado-de-interes-educativo-provincial.html" title="Python en Santa Fe declarado de interés educativo provincial" type="text/html">
+        <link rel="next" href="../30/diagrama-de-capas-de-django.html" title="Diagrama de capas de Django" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Recomendaciones al programar en Python">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2008/10/28/recomendaciones-al-programar-en-python.html">
+    <meta property="og:description" content="Esta es una traducción de la última sección del PEP 8 de Python, Recomendaciones al programar:
+
+
+Programming Recommendations
+El código debe ser escrito de forma que no tenga desventajas en otras imple">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2008-10-28T22:08:12+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="programación">
+           <meta property="article:tag" content="Python">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="recomendaciones-al-programar-en-python.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Recomendaciones al programar en Python</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2008-10-28T22:08:12+00:00" itemprop="datePublished" title="2008-10-28 22:08">2008-10-28 22:08</time></a></p>
+                <p class="commentline">
+        
+    <a href="recomendaciones-al-programar-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/28/recomendaciones-al-programar-en-python.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="recomendaciones-al-programar-en-python.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Esta es una traducción de la última sección del <a href="http://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8 de Python</a>,<strong> Recomendaciones al programar</strong>:</p>
+<!--more-->
+
+<p></p>
+<h3>Programming Recommendations</h3>
+<p><strong>El código</strong> debe ser escrito de forma que no tenga desventajas en otras implementaciones de Python aparte de CPython (PyPy, Jython, IronPython, Pyrex, Psyco).</p>
+<p>Por ejemplo, no te bases en la implementación eficiente que tiene CPython de concatenación <em>in-place</em> de strings en sentencias de la forma <code>a+=b</code> o <code>a=a+b</code>. Esas sentencias corren más despacio en Jython. En su lugar la forma <code>''.join()</code> debe ser usada en bibliotecas, en las partes dónde la performance sea importante. Esto asegura que la concatenación ocurra en tiempo lineal en todas las implementaciones.</p>
+<p><strong>La comparación con <em>singletons</em></strong> como <code>None</code> siempre debe hacerse con <code>is</code> o <code>is not</code>, nunca con los operadores de igualdad.</p>
+<p>También tené cuidado al escribir <code>if x</code> cuando realmente querés decir <code>if x is not None</code>, por ejemplo al testear si a una variable o argumento que por defecto es <code>None</code> le fue asignado a otro valor. El otro valor puede tener un tipo (por ejemplo, un contenedor) que puede ser falso en un contexto booleado! (NdT: por ejemplo [] o {}).</p>
+<p><strong>Usá excepciones basadas en clases</strong></p>
+<p>Las excepciones basadas en strings en código nuevo deben desaparecer ya que esta característica del lenguaje fue eliminada en Python 2.6.</p>
+<p>Los módulos o paquetes deben definir su propia clase base para exepciones específica de su dominio, la cual debe extender la clase <em>built-in</em> <code>Exception</code>. Siempre incluí un <em>docstring</em> a la clase, por ejemplo:</p>
+<pre>
+
+class MessageError(Exception):
+
+"""Clase base para errores en el paquete mail."""
+
+</pre>
+
+<p>La convención para el nombramiento de clases se aplica aquí, aunque deberías agregar el sufijo 'Error' a tus clases de excepciones, si la excepción es un error. Las excepciones que no sean errores no necesitan un sufijo especial.</p>
+<p><strong>Al lanzar una excepción</strong>, usá <code>raise ValueError('mensaje')</code> en lugar de <code>raise ValueError, 'message'</code>.</p>
+<p>La forma usando paréntesis es preferida porque cuando los argumentos de la excepción son largos o incluyen formateo de strings, no necesitás usar el carácter de continuación de línea () gracias al paréntesis. La forma vieja será quitada en Python 3000.</p>
+<p>Al atrapar excepciones, mencioná la excepción específica cuando puedas, en lugar de usar la clausula <code>except:</code>.</p>
+<p>Por ejemplo, usá:</p>
+<pre>
+
+try:
+
+    import platform_specific_module
+
+except ImportError:
+
+    platform_specific_module = None
+
+</pre>
+
+<p>Una clausula <code>except:</code> atrapará las excepciones <code>SystemExit</code> y <code>KeyboardInterrupt</code>, haciendo que sea más difícil interrumpir al programa con Control-C, y puede traer otros problemas.  Si querés atrapar todas las excepciones que señalan errores en el programa, usar <code>except Exception:</code>.</p>
+<p>Una buena regla es limitar el uso de la clausula <code>except:</code> a dos casos:</p>
+<ol>
+
+    <li>Si el manejador de excepción estará imprimiendo o logeando el <em>traceback</em>; al menos el usuario se dará cuenta de que ocurrió un error.</li>
+
+    <li>Si el código necesita hacer algún trabajo de limpieza, pero después deja que la excepción se propague hacia arriba con <code>raise</code>.
+
+<code>try...finally</code> es la mejor forma de manejar este caso.</li>
+
+</ol>
+
+<p><strong>Adicionalmente</strong>, para todas las clausulas try/except, limitá la clausula <code>try</code> a la absolutamente mínima cantidad de código necesario. De nuevo, esto evita esconder bugs.</p>
+<p>Si:</p>
+<pre>
+
+try:
+
+    value = collection[key]
+
+except KeyError:
+
+    return key_not_found(key)
+
+else:
+
+    return handle_value(value)
+
+</pre>
+
+<p>No:</p>
+<pre>
+
+try:
+
+    # Too broad!
+
+    return handle_value(collection[key])
+
+except KeyError:
+
+    # Will also catch KeyError raised by handle_value()
+
+    return key_not_found(key)
+
+</pre>
+
+<p><strong>Usar los métodos de string</strong> en lugar del módulo string.</p>
+<p>Los métodos de string son siempre más rápidos y comparten la misma API con los strings unicode. Sobreescribí esta regla si necesitás compatibilidad hacia atrás con versiones de Python menores a 2.0.</p>
+<p><strong>Usá <code>''.startswith()</code> y <code>''.endswith()</code></strong> en lugar de rebanamiento de strings (<em>string slicing</em>) para checkear prefijos y sufijos.</p>
+<p><code>startswith()</code> y <code>endswith()</code> son más limpios y menos propensos a errores. Por ejemplo:</p>
+<p>Si: <code>if foo.startswith('bar'):</code></p>
+<p>No:  <code>if foo[:3] == 'bar':</code></p>
+<p>La excepción es sin tu código debe funcionar con Python 1.5.2 (pero esperemos que no!).</p>
+<p><strong>La comparación entre tipos</strong> de objetos debe usar siempre isinstance() en lugar de comparar tipos directamente.</p>
+<p>Si: <code>if isinstance(obj, int):</code></p>
+<p>No:  <code>if type(obj) is type(1):</code></p>
+<p>Al chequear si un objeto es un string, recordá que hay strings Unicode también! En Python 2.3, str y unicode tienen una clase base común, basestring, así que podés hacer:</p>
+<p><code>if isinstance(obj, basestring):</code></p>
+<p>En Python 2.2, el módulo types tiene el tipo StringTypes definido para ese propósito, por ejemplo:</p>
+<pre>
+
+from types import StringTypes
+
+if isinstance(obj, StringTypes):
+
+</pre>
+
+<p>En Python 2.0 y 2.1, tenés que hcaer:</p>
+<pre>from types import StringType, UnicodeType
+
+if isinstance(obj, StringType)
+
+</pre>
+
+<p>o</p>
+<pre>
+
+isinstance(obj, UnicodeType) :
+
+</pre>
+
+<p><strong>Para secuencias</strong>, (strings, listas, tuplas), hacé uso del hecho de que las secuencias vacías tienen valor de verdad falso:</p>
+<p>Si:</p>
+<pre>
+
+if not seq:
+
+if seq:
+
+</pre>
+
+<p>No:</p>
+<pre>
+
+if len(seq):
+
+if not len(seq):
+
+</pre>
+
+<p><strong>No escribas</strong> strings literales que hagan uso de espacios en blanco al final de una línea. Esos espacios en blanco son visualmente indistingibles y algunos editores (o más recientemente, <a href="http://svn.python.org/projects/python/trunk/Tools/scripts/reindent.py">reindent.py</a>) los eliminan.</p>
+<p><strong>No compares</strong> valores booleanso con <code>True</code> o <code>False</code> usando <code>==</code>.</p>
+<p>Si: </p>
+<pre>if greeting:</pre>
+<p>No: </p>
+<pre>if greeting == True:</pre>
+<p>Peor: </p>
+<pre>if greeting is True:</pre>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/programacion.html" rel="tag">programación</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../24/python-en-santa-fe-declarado-de-interes-educativo-provincial.html" rel="prev" title="Python en Santa Fe declarado de interés educativo provincial">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../30/diagrama-de-capas-de-django.html" rel="next" title="Diagrama de capas de Django">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2008/10/28/recomendaciones-al-programar-en-python.html",
+        disqus_title="Recomendaciones al programar en Python",
+        disqus_identifier="cache/posts/2008/10/28/recomendaciones-al-programar-en-python.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

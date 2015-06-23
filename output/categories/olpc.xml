@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (OLPC)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/olpc.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:18 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>OLPC en Argentina (audio con las últimas novedades)</title><link>http://www.juanjoconti.com.ar/posts/2006/07/23/olpc-en-argentina.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Acabo de mandar este mail a la lista de Gleducar:&lt;/p&gt;
+&lt;p&gt;Franco Iacomella wrote:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Hola gente,
+&lt;p&gt;esta disponible el audio grabado en la sala de conferencia&lt;/p&gt;
+&lt;p&gt;directamente desde los micrófonos. Pueden descargarlo desde Educ.ar:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://media.educ.ar/podcast/conferencias/OLPC/educar-charlaOLPC.mp3"&gt;http://media.educ.ar/podcast/conferencias/OLPC/educar-charlaOLPC.mp3&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Me pidió Franco que lo pase a ogg y lo ponga en internet. Unos minutos&lt;/p&gt;
+&lt;p&gt;para bajarlo, algunos menos para convertirlo[1] y toda la tarde para&lt;/p&gt;
+&lt;p&gt;subirlo!!&lt;/p&gt;
+&lt;p&gt;En formato ogg: &lt;a href="http://firebirds.com.ar/~juanjo/educar-charlaOLPC.ogg"&gt;http://firebirds.com.ar/~juanjo/educar-charlaOLPC.ogg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pasar un archivo de un formato lossy a otro formato lossy (como lo son&lt;/p&gt;
+&lt;p&gt;mp3 y ogg, ya que comprimen a costa de perder caldiad &lt;strong&gt;información&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;no es recomendado: &lt;a href="http://www.vorbis.com/faq/#transcode"&gt;http://www.vorbis.com/faq/#transcode&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Quines prefieran usar un formato libre a pesar de perder un poco de&lt;/p&gt;
+&lt;p&gt;calidad (yo no lo noté en este caso en particular) pueden hacerlo&lt;/p&gt;
+&lt;p&gt;bajando el archivo desde la dirección que pasé.&lt;/p&gt;
+&lt;p&gt;Además la versión ogg es más liviana:&lt;/p&gt;
+&lt;p&gt;juanjo@sarge:~/Desktop$ ls -lh educar-charlaOLPC.*&lt;/p&gt;
+&lt;p&gt;-rw-r--r--  1 juanjo juanjo 148M 2006-07-23 15:03 educar-charlaOLPC.mp3&lt;/p&gt;
+&lt;p&gt;-rw-r--r--  1 juanjo juanjo  74M 2006-07-23 16:07 educar-charlaOLPC.ogg&lt;/p&gt;
+&lt;p&gt;Saludos!&lt;/p&gt;
+&lt;p&gt;Juanjo&lt;/p&gt;
+&lt;p&gt;[1] Usé mp32ogg&lt;/p&gt;&lt;/div&gt;</description><category>OLPC</category><category>Tecnología</category><guid>http://www.juanjoconti.com.ar/posts/2006/07/23/olpc-en-argentina.html</guid><pubDate>Sun, 23 Jul 2006 21:42:22 GMT</pubDate></item></channel></rss>

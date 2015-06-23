@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (ssh)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/ssh.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:21 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Cómo cambiar el puerto de salida por defecto de ssh</title><link>http://www.juanjoconti.com.ar/posts/2010/07/11/como-cambiar-el-puerto-de-salida-por-defecto-de-ssh.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Si en una terminal tipeamos:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;ssh user@domain.com&lt;/pre&gt;
+&lt;p&gt;el cliente ssh intentará contactarse al puerto 22 de domain.com. Cómo cambiamos ese puerto?&lt;/p&gt;
+&lt;pre&gt;ssh -p 2222 user@domain.com&lt;/pre&gt;
+
+&lt;p&gt;Pero qué pasa si no tenemos acceso a cambiar ese parámetro? Puede pasarnos esto? Sí, por ejemplo si accedemos a un repositorio cvs por ssh; cuando ejecutamos uno de los comandos cvs, el tunel ssh se hace sin que nos demos cuenta. Si el servidor al que nos queremos conectar escucha en un puerto distinto al por defecto, tenemos un problema.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hoy no me acordaba cómo se configuraba esto y resultó bastante tedioso buscarlo en Internet &lt;/strong&gt;(todas las respuestas a la búsqueda era sobre como cambiar el puerto en el que un servidor ssh &lt;em&gt;escucha&lt;/em&gt;). Lo dejo aquí para futuras referencias.&lt;/p&gt;
+&lt;p&gt;La forma de configurar un puerto por defecto para un cliente ssh en GNU/Linux es editando el archivo &lt;code&gt;.ssh/config&lt;/code&gt; y añadiendo la línea:&lt;/p&gt;
+&lt;pre&gt;Port NNNN&lt;/pre&gt;
+
+&lt;p&gt;dónde NNNN es el número de puerto.&lt;/p&gt;&lt;/div&gt;</description><category>GNU/Linux</category><category>ssh</category><guid>http://www.juanjoconti.com.ar/posts/2010/07/11/como-cambiar-el-puerto-de-salida-por-defecto-de-ssh.html</guid><pubDate>Sun, 11 Jul 2010 13:24:08 GMT</pubDate></item><item><title>Shell Python administrativo sobre SSH para tu servidor Twisted en 10 líneas</title><link>http://www.juanjoconti.com.ar/posts/2009/04/09/shell-python-administrativo-sobre-ssh-para-tu-servidor-twisted-en-10-lineas.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;entre tu reactor.listeTCP(puerto, factory) y reactor.run():&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;from twisted.conch import manhole, manhole_ssh
+&lt;p&gt;from twisted.cred import portal, checkers &lt;/p&gt;
+&lt;p&gt;def getManholeFactory(namespace, **passwords):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;realm = manhole_ssh.TerminalRealm()
+
+def getManhole(_): return manhole.Manhole(namespace)
+
+realm.chainedProtocolFactory.protocolFactory = getManhole
+
+p = portal.Portal(realm)
+
+p.registerChecker(
+
+checkers.InMemoryUsernamePasswordDatabaseDontUse(**passwords))
+
+f = manhole_ssh.ConchFactory(p)
+
+return f
+&lt;/pre&gt;
+
+
+&lt;p&gt;reactor.listenTCP(2222, getManholeFactory(globals(), admin='aaa'))&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;Los aplausos para &lt;a href="http://www.devshed.com/c/a/Python/SSH-with-Twisted/3/" target="_blank"&gt;este tutorial&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>ssh</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2009/04/09/shell-python-administrativo-sobre-ssh-para-tu-servidor-twisted-en-10-lineas.html</guid><pubDate>Thu, 09 Apr 2009 03:30:10 GMT</pubDate></item><item><title>Servidor SSH con Twisted</title><link>http://www.juanjoconti.com.ar/posts/2009/04/08/servidor-ssh-con-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Actualicé &lt;a href="http://www.devshed.com/c/a/Python/SSH-with-Twisted/" target="_blank"&gt;este ejemplo&lt;/a&gt;, tamibién incluido en el &lt;a href="http://books.google.com/books?id=Fm5kw3lZ7zEC&amp;amp;printsec=frontcover&amp;amp;hl=es&amp;amp;source=gbs_summary_r&amp;amp;cad=0" target="_blank"&gt;libro de Twisted&lt;/a&gt; para que no tire Deprecation Warnings:&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;from twisted.cred import portal, checkers, credentials
+&lt;p&gt;from twisted.conch import error, avatar, recvline, interfaces as conchinterfaces&lt;/p&gt;
+&lt;p&gt;from twisted.conch.ssh import factory, userauth, connection, keys, session, common&lt;/p&gt;
+&lt;p&gt;from twisted.conch.insults import insults&lt;/p&gt;
+&lt;p&gt;from twisted.application import service, internet&lt;/p&gt;
+&lt;p&gt;from zope.interface import implements&lt;/p&gt;
+&lt;p&gt;import os&lt;/p&gt;
+&lt;p&gt;class SSHDemoProtocol(recvline.HistoricRecvLine):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;def __init__(self, user):
+
+    self.user = user
+
+
+
+def connectionMade(self) :
+
+    recvline.HistoricRecvLine.connectionMade(self)
+
+    self.terminal.write("Welcome to my test SSH server.")
+
+    self.terminal.nextLine()
+
+    self.do_help()
+
+    self.showPrompt()
+
+
+
+def showPrompt(self):
+
+    self.terminal.write("$ ")
+
+
+
+def getCommandFunc(self, cmd):
+
+    return getattr(self, 'do_' + cmd, None)
+
+
+
+def lineReceived(self, line):
+
+    line = line.strip()
+
+    if line:
+
+        cmdAndArgs = line.split()
+
+        cmd = cmdAndArgs[0]
+
+        args = cmdAndArgs[1:]
+
+        func = self.getCommandFunc(cmd)
+
+        if func:
+
+           try:
+
+               func(*args)
+
+           except Exception, e:
+
+               self.terminal.write("Error: %s" % e)
+
+               self.terminal.nextLine()
+
+        else:
+
+           self.terminal.write("No such command.")
+
+           self.terminal.nextLine()
+
+    self.showPrompt()
+
+
+
+def do_help(self, cmd=''):
+
+    "Get help on a command. Usage: help command"
+
+    if cmd:
+
+        func = self.getCommandFunc(cmd)
+
+        if func:
+
+            self.terminal.write(func.__doc__)
+
+            self.terminal.nextLine()
+
+            return
+
+
+
+    publicMethods = filter(
+
+        lambda funcname: funcname.startswith('do_'), dir(self))
+
+    commands = [cmd.replace('do_', '', 1) for cmd in publicMethods]
+
+    self.terminal.write("Commands: " + " ".join(commands))
+
+    self.terminal.nextLine()
+
+
+
+def do_echo(self, *args):
+
+    "Echo a string. Usage: echo my line of text"
+
+    self.terminal.write(" ".join(args))
+
+    self.terminal.nextLine()
+
+
+
+def do_whoami(self):
+
+    "Prints your user name. Usage: whoami"
+
+    self.terminal.write(self.user.username)
+
+    self.terminal.nextLine()
+
+
+
+def do_quit(self):
+
+    "Ends your session. Usage: quit"
+
+    self.terminal.write("Thanks for playing!")
+
+    self.terminal.nextLine()
+
+    self.terminal.loseConnection()
+
+
+
+def do_clear(self):
+
+    "Clears the screen. Usage: clear"
+
+    self.terminal.reset()
+&lt;/pre&gt;
+
+
+&lt;p&gt;class SSHDemoAvatar(avatar.ConchUser):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;implements(conchinterfaces.ISession)
+
+
+
+def __init__(self, username):
+
+    avatar.ConchUser.__init__(self)
+
+    self.username = username
+
+    self.channelLookup.update({'session':session.SSHSession})
+
+
+
+def openShell(self, protocol):
+
+    serverProtocol = insults.ServerProtocol(SSHDemoProtocol, self)
+
+    serverProtocol.makeConnection(protocol)
+
+    protocol.makeConnection(session.wrapProtocol(serverProtocol))
+
+
+
+def getPty(self, terminal, windowSize, attrs):
+
+    return None
+
+
+
+def execCommand(self, protocol, cmd):
+
+    raise NotImplementedError
+
+
+
+def closed(self):
+
+    pass
+&lt;/pre&gt;
+
+
+&lt;p&gt;class SSHDemoRealm:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;implements(portal.IRealm)
+
+
+
+def requestAvatar(self, avatarId, mind, *interfaces):
+
+    if conchinterfaces.IConchUser in interfaces:
+
+        return interfaces[0], SSHDemoAvatar(avatarId), lambda: None
+
+    else:
+
+        raise Exception, "No supported interfaces found."
+&lt;/pre&gt;
+
+
+&lt;p&gt;def getRSAKeys():&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'public.key'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'private.key'&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+
+    &lt;span class="c"&gt;# generate a RSA keypair&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"Generating RSA keypair..."&lt;/span&gt;
+
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Crypto.PublicKey&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RSA&lt;/span&gt;
+
+    &lt;span class="n"&gt;KEY_LENGTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;
+
+    &lt;span class="n"&gt;rsaKey&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RSA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;KEY_LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;entropy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_bytes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;publicKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rsaKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="n"&gt;privateKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;makePrivateKeyString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rsaKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# save keys for next time&lt;/span&gt;
+
+    &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'public.key'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'w+b'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;publicKeyString&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'private.key'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'w+b'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;privateKeyString&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"done."&lt;/span&gt;
+
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;publicKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'public.key'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="n"&gt;privateKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'private.key'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;publicKeyString&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;privateKeyString&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;if &lt;strong&gt;name&lt;/strong&gt; == "&lt;strong&gt;main&lt;/strong&gt;":&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;sshFactory = factory.SSHFactory()
+
+sshFactory.portal = portal.Portal(SSHDemoRealm())
+
+users = {'admin': 'aaa', 'guest': 'bbb'}
+
+sshFactory.portal.registerChecker(
+&lt;/pre&gt;
+
+
+&lt;p&gt;checkers.InMemoryUsernamePasswordDatabaseDontUse(**users))&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;pubKeyString&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;privKeyString&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getRSAKeys&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;sshFactory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;publicKeys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="s"&gt;'ssh-rsa'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pubKeyString&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+
+&lt;span class="n"&gt;sshFactory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;privateKeys&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="s"&gt;'ssh-rsa'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;privKeyString&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+
+
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reactor&lt;/span&gt;
+
+&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listenTCP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2222&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sshFactory&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;pre&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>ssh</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2009/04/08/servidor-ssh-con-twisted.html</guid><pubDate>Wed, 08 Apr 2009 19:54:35 GMT</pubDate></item></channel></rss>

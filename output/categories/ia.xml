@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (IA)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/ia.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:18 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Visión robótica</title><link>http://www.juanjoconti.com.ar/posts/2012/05/24/vision-robotica.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un par de noches me escribió mi amigo &lt;a href="http://www.jjlorenzatti.com.ar/" target="_blank"&gt;Joel&lt;/a&gt;. Es licenciado en Filosofía y está haciendo un doctorado. Me cuenta que está leyendo un libro llamado &lt;a href="http://pinker.wjh.harvard.edu/books/htmw/" target="_blank"&gt;How the Mind Works&lt;/a&gt;, de &lt;a href="http://en.wikipedia.org/wiki/Steven_Pinker" target="_blank"&gt;Steven Pinker&lt;/a&gt;, quien actualmente se desempeña en la cátedra de psicología del MIT y es uno de los principales referentes de la psicología evolucionista.&lt;/p&gt;
+&lt;p&gt;En el libro, contrastando con lo que muestran los directores de cine en las películas, Steven dice:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Si pudiéramos ver el mundo con los ojos de un robot, su aspecto no se parecería al fotograma de una película a base de crucecillas, sino que se asemejaría más a esto:
+&lt;p&gt;225 221 216 219 219 214 207 218 219 220 207 155 136 135&lt;/p&gt;
+&lt;p&gt;213 206 213 223 208 217 223 221 223 216 195 156 141 130&lt;/p&gt;
+&lt;p&gt;206 217 210 216 224 223 228 230 234 216 207 157 136 132&lt;/p&gt;
+&lt;p&gt;211 213 221 223 220 222 237 216 219 220 176 149 137 132&lt;/p&gt;
+&lt;p&gt;221 229 218 230 228 214 213 209 198 224 161 140 133 127&lt;/p&gt;
+&lt;p&gt;220 219 224 220 219 215 215 206 206 221 159 143 133 131&lt;/p&gt;
+&lt;p&gt;221 215 211 214 220 218 221 212 218 204 148 141 131 130&lt;/p&gt;
+&lt;p&gt;214 211 211 214 220 218 221 212 218 204 148 141 131 130&lt;/p&gt;
+&lt;p&gt;211 208 223 213 216 226 231 230 241 199 153 141 136 125&lt;/p&gt;
+&lt;p&gt;200 224 219 215 217 224 232 241 240 211 150 139 128 132&lt;/p&gt;
+&lt;p&gt;204 206 208 205 233 241 241 252 242 192 151 141 133 130&lt;/p&gt;
+&lt;p&gt;200 205 201 216 232 248 255 246 231 210 149 141 132 126&lt;/p&gt;
+&lt;p&gt;191 194 209 238 245 255 249 235 238 197 146 139 130 132&lt;/p&gt;
+&lt;p&gt;189 199 200 227 239 237 235 236 247 192 145 142 124 133&lt;/p&gt;
+&lt;p&gt;198 196 209 211 210 215 236 240 232 177 142 137 135 124&lt;/p&gt;
+&lt;p&gt;198 203 205 208 211 224 226 240 210 160 139 132 129 130&lt;/p&gt;
+&lt;p&gt;216 209 214 220 210 231 245 219 169 143 148 129 128 136&lt;/p&gt;
+&lt;p&gt;211 210 217 218 214 227 244 221 162 140 139 129 133 131&lt;/p&gt;
+&lt;p&gt;215 210 217 218 214 227 244 221 162 140 139 129 133 131&lt;/p&gt;
+&lt;p&gt;219 220 211 208 205 209 240 217 154 141 127 130 124 142&lt;/p&gt;
+&lt;p&gt;229 224 212 214 220 229 234 208 151 145 128 128 142 122&lt;/p&gt;
+&lt;p&gt;252 224 222 224 233 244 228 213 143 141 135 128 131 129&lt;/p&gt;
+&lt;p&gt;255 235 230 249 253 240 228 193 147 139 132 128 136 125&lt;/p&gt;
+&lt;p&gt;250 245 238 245 246 235 235 190 139 136 134 135 126 130&lt;/p&gt;
+&lt;p&gt;240 238 233 232 235 255 246 168 156 144 129 127 136 134&lt;/p&gt;
+&lt;p&gt;Cada número representa la luminosidad de una de las millones de manchas que forman el campo visual. Los números menores corresponden a las manchas más oscuras, y los mayores, a las más claras.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Joel me preguntaba si se me ocurría una forma sencilla de convertir estos números en una imagen. El ejercicio es válido y un buen ejemplo de la biblioteca &lt;a href="http://www.pythonware.com/products/pil/" target="_blank"&gt;PIL&lt;/a&gt;.&lt;/p&gt;
+&lt;pre lang="python"&gt;from PIL import Image
+
+image = Image.new('L', (14,25))
+
+imageMap = image.load()
+
+f = open('vision1.txt')
+
+lines = f.readlines()
+
+
+
+for i, l in enumerate(lines):
+
+    for j, v in enumerate(l.split()):
+
+        n = int(v)
+
+        imageMap[j, i] = n
+
+
+
+image.save('vision1.gif')
+
+image.show()&lt;/pre&gt;
+
+&lt;p&gt;Y esto es (ampliado) lo que está mirando el robot de Steven:&lt;/p&gt;
+&lt;p&gt;&lt;img class="size-full wp-image-4054" title="Visión robótica con PIL (ampliada)" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/05/Screenshot-vision1.gif.png" alt="Visión robótica con PIL (ampliada)" width="440" height="454"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;update: &lt;/strong&gt;la versión de Milton usando Octave:&lt;/p&gt;
+&lt;pre lang="octave"&gt;matriz = dlmread('vision1.txt');
+
+matrizNormalizada = matriz ./ max(max(matriz));
+
+imshow(matrizNormalizada);&lt;/pre&gt;
+
+&lt;p&gt;&lt;img class="size-full wp-image-4050" title="Visión robótica generado con Octave" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/05/Pantallazo-de-2012-05-25-11_44_24.png" alt="Visión robótica generado con Octave" width="562" height="467"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;update 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Joel &lt;a href="http://www.jjlorenzatti.com.ar/2012/05/26/vision-de-robot/" target="_blank"&gt;implementó una solución&lt;/a&gt; muy ingeniosa utilizando una planilla de cálculos:&lt;/p&gt;
+&lt;p&gt;&lt;img class="size-full wp-image-4052" title="Visión Robótica con planilla de cálculo" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/05/Robot-View-Excel.png" alt="Visión Robótica con planilla de cálculo" width="291" height="520"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>How the Mind works</category><category>IA</category><category>PIL</category><category>Steven Pinker</category><guid>http://www.juanjoconti.com.ar/posts/2012/05/24/vision-robotica.html</guid><pubDate>Thu, 24 May 2012 00:37:53 GMT</pubDate></item><item><title>Asimov sobre Inteligencia Artificial</title><link>http://www.juanjoconti.com.ar/posts/2010/07/16/asimov-sobre-inteligencia-artificial.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En El monstruo subatómico, un libro de difusión, Isaac Asimov habla sobre Iteligencia Artificial. Hace más o menos dos años que lo leí y tenía la intención de transcribir el artículo para que esté disponible en Internet. Casi lo olvidé, hasta que hoy alguien lo mandó en la lista de PyAr. &lt;del datetime="2010-07-19T00:56:01+00:00"&gt;Copio y pego a continuación.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Capítulo 11&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Más pensamientos acerca del pensamiento&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Podés leerlo en &lt;a href="http://www.librosmaravillosos.com/elmonstruosubatomico/capitulo11.html" target="_blank"&gt;http://www.librosmaravillosos.com/elmonstruosubatomico/capitulo11.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Gracias a Diego Avendaño, Patricio Barros y Antonio Bravo.&lt;/p&gt;&lt;/div&gt;</description><category>AI</category><category>Asimov</category><category>Cosas que leo</category><category>IA</category><category>PyAr</category><guid>http://www.juanjoconti.com.ar/posts/2010/07/16/asimov-sobre-inteligencia-artificial.html</guid><pubDate>Fri, 16 Jul 2010 13:53:29 GMT</pubDate></item><item><title>A* vs Avara</title><link>http://www.juanjoconti.com.ar/posts/2008/10/15/a-vs-avara.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Extendí &lt;a title="Un ejemplo de A*" href="http://www.juanjoconti.com.ar/2008/10/07/un-ejemplo-de-busqueda-a/" target="_blank"&gt;mi ejercicio de A*&lt;/a&gt; para que además busque la solución utilizando Avara y las compare gráficamente.&lt;/p&gt;
+&lt;p&gt;Avara es otro algoritmo de búsqueda, pero a diferencia de A* no es ni óptimo ni completo. Ambos utilizan una heurística para estimar el costo de un estado n al estado objetivo y por esto se dice que son &lt;strong&gt;métodos informados&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;La diferencia  radica en cómo seleccionan nodos para su expansión: mientras que A* siempre elije  el nodo que minimice la función &lt;strong&gt;camino recorrido + estimación al objetivo&lt;/strong&gt;, Avara simplemente elije el nodo con menor &lt;strong&gt;estimación al objetivo&lt;/strong&gt; (no tiene en cuenta el camino previo).&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Hay escenarios en los que ambas estrategias encontrarán el mismo camino:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara-iguales.png"&gt;&lt;img class="aligncenter size-full wp-image-679" title="avsavara-iguales" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara-iguales.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pero hay otros en los que no:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara5.png"&gt;&lt;img class="aligncenter size-full wp-image-678" title="avsavara5" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara5.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara4.png"&gt;&lt;img class="aligncenter size-full wp-image-677" title="avsavara4" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara4.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara3.png"&gt;&lt;img class="aligncenter size-full wp-image-676" title="avsavara3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara3.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara2.png"&gt;&lt;img class="aligncenter size-full wp-image-675" title="avsavara2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara2.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara.png"&gt;&lt;img class="aligncenter size-full wp-image-674" title="avsavara" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Instalación y uso&lt;/h3&gt;
+&lt;p&gt;Similar al ejemplo anterior. Teniendo Python y &lt;a title="PyGame" href="http://www.pygame.org/" target="_blank"&gt;PyGame&lt;/a&gt; instalados, obtener el código fuente:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/astar/tags/astar-vs-avara/ astar-vs-avara&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y dentro de la carpeta &lt;code&gt;astar&lt;/code&gt;-vs-avara ejecutar gui.py:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd astar-vs-avara&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python gui.py&lt;/p&gt;&lt;/div&gt;</description><category>a*</category><category>AI</category><category>IA</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/15/a-vs-avara.html</guid><pubDate>Wed, 15 Oct 2008 14:52:25 GMT</pubDate></item><item><title>Un ejemplo de búsqueda A*</title><link>http://www.juanjoconti.com.ar/posts/2008/10/07/un-ejemplo-de-busqueda-a.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El ejemplo consiste en un plano de 800x600 puntos con el punto (0,0)  en la esquina superior izquierda. En el plano hay puntos y figuras (formadas por puntos). Uno de los puntos es el origen y otro el destino. El problema a resolver es encontrar el camino más corto desde el origen al destino moviéndose de punto a punto y sin pasar sobre una figura.&lt;/p&gt;
+&lt;p&gt;La heurística utilizada es la distancia en línea recta desde la posición actual a la posición del objetivo. &lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Instalación y uso&lt;/h3&gt;
+&lt;p&gt;Teniendo Python y &lt;a title="PyGame" href="http://www.pygame.org" target="_blank"&gt;PyGame&lt;/a&gt; instalados, obtener el código fuente:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/astar/tags/astar-only/ astar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y dentro de la carpeta &lt;code&gt;astar&lt;/code&gt; ejecutar gui.py:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd astar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python gui.py&lt;/p&gt;
+&lt;p&gt;El primer click que se haga marcará el punto origen (verde) y el segundo el punto destino (rojo).&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apasp1.png"&gt;&lt;img class="aligncenter size-medium wp-image-617" title="paso 1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apasp1-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Luego se pueden agregar tantos puntos sueltos o figuras como se quieran. Si se hace uno o dos clicks y luego se aprieta la barra espaciado, uno o dos puntos son añadidos al planto. Si se hacen más de dos clicks antes de apretar la barra espaciadora, entonces una figura formada por los puntos marcados es añadida.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso2.png"&gt;&lt;img class="aligncenter size-medium wp-image-620" title="paso2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso2-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso3.png"&gt;&lt;img class="aligncenter size-medium wp-image-619" title="paso3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso3-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Se siguen cargando tantos puntos y figuras como se quiera. Finalmente, al aprender Enter se ejecuta el algoritmo de búsqueda y si se encuentra un camino-solución, este es graficado.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso5.png"&gt;&lt;img class="aligncenter size-medium wp-image-618" title="resultado1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso5-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p align="center"&gt;&lt;/p&gt;
+
+&lt;p&gt;Otros casos de prueba:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a2.png"&gt;&lt;img class="aligncenter size-medium wp-image-614" title="resultado2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a2-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a3.png"&gt;&lt;img class="aligncenter size-medium wp-image-615" title="resultado3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a3-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a6.png"&gt;&lt;img class="aligncenter size-medium wp-image-616" title="resultado4" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a6-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a1.png"&gt;&lt;img class="aligncenter size-medium wp-image-613" title="resultado5" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a1-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Teoría relacionada&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://es.wikipedia.org/wiki/Algoritmo_de_b%C3%BAsqueda_A*" target="_self"&gt;Estrategia de búsqueda A*&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a title="AIMA" href="http://aima.cs.berkeley.edu/" target="_self"&gt;Inteligencia artificial, un enfoque moderno&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>a*</category><category>AI</category><category>IA</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/07/un-ejemplo-de-busqueda-a.html</guid><pubDate>Tue, 07 Oct 2008 21:16:01 GMT</pubDate></item><item><title>AIMA en Python</title><link>http://www.juanjoconti.com.ar/posts/2008/09/20/aima-en-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://aima.cs.berkeley.edu/"&gt;Inteligencia Artificial -un enfoque moderno-&lt;/a&gt;, el libro del que estoy estudiando tiene muchos de los algorítmos que explica en pseudo código &lt;a href="http://aima.cs.berkeley.edu/python/readme.html"&gt;implementados en Python&lt;/a&gt;.
+&lt;p&gt;&lt;a href="http://www.norvig.com"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Uno de los autores cuenta que originalmente estaban &lt;a href="http://www.cs.berkeley.edu/~russell/code/doc/overview.html"&gt;escritos en Lisp&lt;/a&gt;, pero muchos estudiantes tenían problemas con este lenguaje. En especial, saltar del pseudo código del libro a una implementación que corra en sus computadoras. El primer intento fue usar Java, pero no tuvieron éxito:&lt;/p&gt;
+&lt;blockquote&gt;
+
+However, one attempt at getting Java code up and running was largely unsuccesful. Then I discovered Python and Jython, and thought this might be a better way to go than Java.
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href="http://www.norvig.com/python-lisp.html"&gt;cita&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Cosas que leo</category><category>Facultad</category><category>IA</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2008/09/20/aima-en-python.html</guid><pubDate>Sat, 20 Sep 2008 18:28:20 GMT</pubDate></item><item><title>Lógica de Primer Orden</title><link>http://www.juanjoconti.com.ar/posts/2008/08/22/logica-de-primer-orden.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;En este capítulo ampliaremos estos temas para conseguir algoritmos que pueden responder a preguntas expresadas en lógica de primer orden. Esto es muy significativo, porque si se trabaja duro, más o menos cualquier cosa se puede representar en lógica de primer orden.&lt;/blockquote&gt;
+&lt;p&gt;Inferencia lógica de primer orden - Cap. 9 de Inteligencia Artificial, un enfoque moderno 2° ed - Stuart Russell &amp;amp; Peter Norvig&lt;/p&gt;&lt;/div&gt;</description><category>citas</category><category>IA</category><guid>http://www.juanjoconti.com.ar/posts/2008/08/22/logica-de-primer-orden.html</guid><pubDate>Fri, 22 Aug 2008 11:41:33 GMT</pubDate></item><item><title>Hunt the Wumpus!</title><link>http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Mientras cursamos este cuatrimestre &lt;a href="http://www.frsf.utn.edu.ar/matero/visitante/index.php?id_catedra=142" title="Web de IA en FRSF" target="_blank"&gt;Intelegencia Artificial&lt;/a&gt; en la facu uno de los ejemplos que aparecía era el del Wumpus, un monstruo que vive en una cueva muy parecida a una grilla. El Wumpus ocupa una casilla de la grilla (dónde inicialmente está dormido) y en las otras puede haber pozos, viento de un pozo cercano, olor a Wumpus o un lingote de oro. Y por supuesto nosotros (el cazador).&lt;/p&gt;
+&lt;p&gt;Este escenario constituye un juego en el cual el cazador (que solo puede percibir lo que hay en las celdas adyacentes a las que ocupa) debe realizar movimientos (Arriba, Abajo, Derecha, Izquierda) o acciones como lanzar una flecha o tomar el lingote para cumplir su objetivo: &lt;strong&gt;salir de la cueva con el oro y sin ser comido por el Wumpus&lt;/strong&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Hasta aquí nada nuevo para contarles. Lo curioso del asunto es que yo pensaba que el juego era solo una herramienta didáctica, que agradable sorpresa encontrarlo mientras navegaba la web: &lt;a href="http://www.catb.org/~esr/wumpus/" title="Wumpus by ESR" target="_blank"&gt;http://www.catb.org/~esr/wumpus/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;pre&gt;           WUMPUS and SUPERHACK
+
+
+
+WUMPUS is a bit of retrocomputing nostalgia.  It is an *exact* clone, even
+
+down to the godawful user interface, of an ancient classic game.  This version
+
+fixes two minor bugs in my original 1992 USENET posting of the source.  An
+
+article describing the history of the game is at
+
+
+
+    http://www.atariarchives.org/bcc1/showpage.php?page=247
+
+
+
+SUPERHACK is a satire, structurally quite similar to WUMPUS.
+
+
+
+For updates and related resources, see &amp;lt;http://www.catb.org/~esr/wumpus/&amp;gt;&lt;/pre&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Intrigado bajé el código fuente y sin problemas lo compilé en mi computadora, cuando lo ejecuté esto fue lo que vi en la pantalla:&lt;/p&gt;
+&lt;blockquote&gt;WELCOME TO 'HUNT THE WUMPUS'&lt;/blockquote&gt;
+
+&lt;blockquote&gt;&lt;/blockquote&gt;
+
+&lt;blockquote&gt; THE WUMPUS LIVES IN A CAVE OF 20 ROOMS. EACH ROOM
+
+HAS 3 TUNNELS LEADING TO OTHER ROOMS. (LOOK AT A
+
+DODECAHEDRON TO SEE HOW THIS WORKS-IF YOU DON'T KNOW
+
+WHAT A DODECAHEDRON IS, ASK SOMEONE)
+
+
+
+HAZARDS:
+
+BOTTOMLESS PITS - TWO ROOMS HAVE BOTTOMLESS PITS IN THEM
+
+IF YOU GO THERE, YOU FALL INTO THE PIT (&amp;amp; LOSE!)
+
+SUPER BATS - TWO OTHER ROOMS HAVE SUPER BATS. IF YOU
+
+GO THERE, A BAT GRABS YOU AND TAKES YOU TO SOME OTHER
+
+ROOM AT RANDOM. (WHICH MAY BE TROUBLESOME)
+
+TYPE AN E THEN RETURN&lt;/blockquote&gt;
+
+&lt;p&gt;Hay una &lt;a href="http://www.flyingtitans.com/products/wumpus/index.psp" title="Wumpus.py" target="_blank"&gt;versión en Python&lt;/a&gt; que funciona&lt;em&gt; out-of-the-box &lt;/em&gt;(aka doble click for win slang)  que nos permite disfrutar del juego sin siquiera la necesidad de compilarlo. Demasiado perezosos como para bajar un archivo? Ok, les dejo esta &lt;a href="http://bnewtz.cannet.com/wumpus/" title="Wumpus on line" target="_blank"&gt;versión on-line&lt;/a&gt; (aunque la interfaz no es como la original).&lt;/p&gt;
+&lt;p&gt;Cómo para casi todos los temas importantes, más información &lt;a href="http://en.wikipedia.org/wiki/Hunt_the_Wumpus" title="Wumpus en Wikipedia" target="_blank"&gt;en la Wikipedia&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Facultad</category><category>humor</category><category>IA</category><category>Wumpus</category><guid>http://www.juanjoconti.com.ar/posts/2007/07/04/hunt-the-wumpus.html</guid><pubDate>Wed, 04 Jul 2007 16:16:43 GMT</pubDate></item></channel></rss>

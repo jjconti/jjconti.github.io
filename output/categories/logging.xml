@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (logging)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/logging.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Cambiando el formato de los logs en Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En Twisted &lt;a href="http://twistedmatrix.com/documents/current/core/howto/logging.html" target="_blank"&gt;se puede tener un log&lt;/a&gt; de todo lo que pasa en un programa de forma bastante fácil:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="python"&gt;from twisted.python import log
+&lt;p&gt;from twisted.python.logfile import DailyLogFile&lt;/p&gt;
+&lt;p&gt;log.startLogging(DailyLogFile('log.txt', LOGDIR))&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;Todos los &lt;strong&gt;prints&lt;/strong&gt; que anden dando vuelta ahora son entradas en el log y de yapa estoy usando DailyLogFile en lugar de un archivo común y corriente para que al final del día rote a un nuevo archivo en disco. Hay varias opciones, esta es la que me sirve a mí.&lt;/p&gt;
+&lt;p&gt;Por defecto los logs se ven algo así:&lt;/p&gt;
+&lt;pre lang="bash"&gt;2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Total: 1
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] SITIO SFE
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Total: 2
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SITIO SFE
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51-0500 [TModBus,1,190.136.29.16] Nuevo sitio registrado en MBProxy SFE&lt;/pre&gt;
+
+&lt;p&gt;¿Cómo podemos cambiar el formato de salida? Algunos tips.&lt;/p&gt;
+&lt;p&gt;Para cambiar el formato de la fecha y hora:&lt;/p&gt;
+&lt;pre lang="python"&gt;log.FileLogObserver.timeFormat = '%Y-%m-%d %H:%M:%S'&lt;/pre&gt;
+
+&lt;p&gt;Para cambiar lo que aparece entre corchetes: utilizar log.msg y el keyword system:&lt;/p&gt;
+&lt;pre lang="python"&gt;log.msg("Nuevo cliente: %s:%d" % (self.peer.host, self.peer.port), system=' - ')&lt;/pre&gt;
+
+&lt;p&gt;Con estos dos cambios se puede tener un log como este:&lt;/p&gt;
+&lt;pre lang="bash"&gt;2010-05-28 07:41:00 [ - ] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00 [ - ] Total: 1
+
+2010-05-28 07:41:01 [SFE] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01 [SFE] SITIO SFE
+
+2010-05-28 07:41:01 [SFE] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49 [ - ] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49 [ - ] Total: 2
+
+2010-05-28 07:45:49 [ - ] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49 [SFE] SITIO SFE
+
+2010-05-28 07:45:49 [SFE] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51 [SFE] Nuevo sitio registrado en MBProxy SFE&lt;/pre&gt;
+
+&lt;p&gt;Para cambiar aún más el formato de la salida, la única forma que encontré es extender &lt;strong&gt;FileLogObserver&lt;/strong&gt; y sobreescribir su método &lt;strong&gt;emit&lt;/strong&gt;. Discutimos un poco esto &lt;a href="http://stackoverflow.com/questions/3700955/how-to-format-twisted-logs" target="_blank"&gt;en StackOverflow.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;nota:&lt;/strong&gt; En Twisted también podemos usar el &lt;a href="http://docs.python.org/library/logging.html" target="_blank"&gt;sistema de logging de Python&lt;/a&gt;, esto tiene la ventaja de que podemos trabajar con niveles de log y controlar mejor el formato y la forma en que se generan los logs, pero el problema de que no está preparado para funcionar en forma asincrónica y esto puede traer algunos problemas con Twisted.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>logging</category><category>Twisted</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html</guid><pubDate>Tue, 14 Sep 2010 12:25:05 GMT</pubDate></item></channel></rss>

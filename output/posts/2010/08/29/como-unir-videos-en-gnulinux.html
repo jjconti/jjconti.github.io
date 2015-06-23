@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cómo unir videos en GNU/Linux | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/08/29/como-unir-videos-en-gnulinux.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../24/un-servidor-web-con-pocas-lineas-de-python.html" title="Un servidor web con pocas líneas de Python" type="text/html">
+        <link rel="next" href="dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html" title="Dejar de revisionar un archivo sin borrarlo en svn" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Cómo unir videos en GNU/Linux">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/08/29/como-unir-videos-en-gnulinux.html">
+    <meta property="og:description" content="Ayer en Carlos Pellegrini fue el Día del Pueblo. Una de las actividades que hubo fue una carrera de autos con obstáculos. Aproveché para filmar un poco y probar mi nuevo celular, por lo que terminé co">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-08-29T12:45:59+00:00">
+           <meta property="article:tag" content="GNU/Linux">
+           <meta property="article:tag" content="mp4 mpeg ffmpeg">
+           <meta property="article:tag" content="Siempre se aprende algo">
+           <meta property="article:tag" content="videos">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="como-unir-videos-en-gnulinux.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Cómo unir videos en GNU/Linux</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-08-29T12:45:59+00:00" itemprop="datePublished" title="2010-08-29 12:45">2010-08-29 12:45</time></a></p>
+                <p class="commentline">
+        
+    <a href="como-unir-videos-en-gnulinux.html#disqus_thread" data-disqus-identifier="cache/posts/2010/08/29/como-unir-videos-en-gnulinux.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="como-unir-videos-en-gnulinux.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Ayer en <a href="http://es.wikipedia.org/wiki/Carlos_Pellegrini_%28Santa_Fe%29" target="_blank">Carlos Pellegrini</a> fue el <a href="http://es.wikipedia.org/wiki/Agust%C3%ADn_de_Hipona" target="_blank">Día del Pueblo</a>. Una de las actividades que hubo fue una <strong>carrera de autos con obstáculos</strong>. Aproveché para filmar un poco y probar <a href="http://es.wikipedia.org/wiki/Motorola_Milestone" target="_blank">mi nuevo celular</a>, por lo que terminé con varios archivos <strong>mp4</strong>. Para subirlos a Internet quería unirlos: ¿cómo hacerlo de forma fácil? Si tenés varios archivos de texto y querés unirlos, o expresándome de forma más correcta, <strong>contactenarlos</strong>, usás el comando <strong>cat</strong>. ¿Se puede hacer lo mismo con videos? Suena algo loco cuando se escucha por primera vez, pero hay algunos formatos que SI lo soportan, como <a href="http://es.wikipedia.org/wiki/MPEG-1" target="_blank">mpeg 1</a> y <a href="http://es.wikipedia.org/wiki/MPEG-2" target="_blank">2</a>.</p>
+<p>Usando <strong>ffmpeg</strong> podemos convertir los archivos mp4 a mpeg. Parados en el directorio donde estén los videos:</p>
+<p></p>
+<pre lang="bash">for i in <code>ls *.mp4</code>; do ffmpeg -i $i -sameq $i.mpeg; done
+</pre>
+
+<p>Ahora simplemente los <strong>concatenamos y redirigimos la salida de cat</strong> a un nuevo archivo:</p>
+<pre lang="bash">cat *.mpeg &gt; video.mpeg
+
+</pre>
+
+<p>Notemos que el orden <em>lexicográfico</em> de los videos coincide con el orden en que fueron tomados; por eso puedo usar el * y obtener un resultado ordenado en el tiempo.</p>
+<p>Listo, <a href="http://www.youtube.com/watch?v=8Txgi8mFy6w" target="_blank">subí el resultado a YouTube</a>.</p>
+<p>Me hubiese gustado una transición más suave entre video y video, pero investigarlo y hacerlo excedía la ecuación costo beneficio. Se escuchan ideas!</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/gnulinux.html" rel="tag">GNU/Linux</a></li>
+           <li><a class="tag p-category" href="../../../../categories/mp4-mpeg-ffmpeg.html" rel="tag">mp4 mpeg ffmpeg</a></li>
+           <li><a class="tag p-category" href="../../../../categories/siempre-se-aprende-algo.html" rel="tag">Siempre se aprende algo</a></li>
+           <li><a class="tag p-category" href="../../../../categories/videos.html" rel="tag">videos</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../24/un-servidor-web-con-pocas-lineas-de-python.html" rel="prev" title="Un servidor web con pocas líneas de Python">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html" rel="next" title="Dejar de revisionar un archivo sin borrarlo en svn">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/08/29/como-unir-videos-en-gnulinux.html",
+        disqus_title="C\u00f3mo unir videos en GNU/Linux",
+        disqus_identifier="cache/posts/2010/08/29/como-unir-videos-en-gnulinux.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Django)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/django.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Algunos problemas y soluciones al levantar bases de datos legacy con Django</title><link>http://www.juanjoconti.com.ar/posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://docs.djangoproject.com/en/dev/howto/legacy-databases/" target="_blank"&gt;Con Django&lt;/a&gt; podemos levantar una &lt;a href="http://stackoverflow.com/questions/939465/what-does-the-term-legacy-database-mean" target="_blank"&gt;base de datos &lt;em&gt;legacy&lt;/em&gt;&lt;/a&gt; en lugar de definir nuestro modelo de datos y arrancar una aplicación desde cero. No es necesariamente una base de datos vieja, sino una base de datos heredada de otro sistema; puede ser de un sistema anterior que se está reemplazando o incluso de otro sistema que queremos usar de forma paralela.
+&lt;p&gt;Luego de configurar nuestra base de datos y ejecutar:&lt;/p&gt;
+&lt;pre&gt;python manage.py inspectdb &amp;gt; models.py&lt;/pre&gt;
+
+&lt;p&gt;obtenemos una definición de modelos basada en en las tablas de la base de datos. Lo siguiente es ver si anda.&lt;/p&gt;
+&lt;p&gt;Lo más probable es que obtengamos un &lt;a href="http://docs.python.org/library/exceptions.html#exceptions.NameError" target="_blank"&gt;NameError&lt;/a&gt;. Esto pasa cuando en la definición de alguno de los modelos se hace referencia a otro modelo aún no definido! La solución indicada es empezar a reordernar los modelos, pero una forma más fácil es cambiar los nombres por strings. Un ejemplo:&lt;/p&gt;
+&lt;pre&gt;jefe = models.ForeingKey(Empleado)
+
+&lt;/pre&gt;
+
+&lt;p&gt;por&lt;/p&gt;
+&lt;pre&gt;jefe = models.ForeingKey('Empleado')
+
+&lt;/pre&gt;
+
+&lt;p&gt;Otra queja que nos puede hacer Django es que tengamos atributos llamados &lt;strong&gt;id&lt;/strong&gt; que no sean &lt;em&gt;primary key&lt;/em&gt;. Solución: les cambiamos el nombre.&lt;/p&gt;
+&lt;p&gt;Eventualmente vamos a necesitar habilitar la aplicación &lt;a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/" target="_blank"&gt;&lt;strong&gt;admin&lt;/strong&gt;&lt;/a&gt; (ya que estamos usando Django para levantar datos, nada mejor que usar su ABM estrella para ahorrarnos mucho trbajo). Los pasos para hacer con éxito son:&lt;/p&gt;
+&lt;ol&gt;
+
+    &lt;li&gt;Habilitar la aplicaccion admin en &lt;code&gt;settings.py&lt;/code&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Ejecutar &lt;code&gt;syncdb&lt;/code&gt; para que se creen las tablas de esta aplicación.&lt;/li&gt;
+
+    &lt;li&gt;Agregar los modelos de la base de datos heredada al archivo &lt;code&gt;admin.py&lt;/code&gt; de la aplicación.&lt;/li&gt;
+
+&lt;/ol&gt;
+
+&lt;p&gt;Por supuesto, si los nuevos modelos son cientos, es bastante engorroso hacer esto a mano. Les paso un hack; así luce mi &lt;code&gt;admin.py&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;from django.contrib import admin
+
+from django.db.models import base
+
+from my_app.models import *
+
+
+
+for k,v in locals().items():
+
+    if isinstance(v, base.ModelBase):
+
+        admin.site.register(v)&lt;/pre&gt;
+
+&lt;p&gt;Tip final. Si obtenemos un error de este tipo:&lt;/p&gt;
+&lt;pre lang="bash"&gt;OperationalError at /admin/mango/datapointusers/
+
+(1054, "Unknown column 'dataPointUsers.id' in 'field list'")
+
+&lt;/pre&gt;
+
+&lt;p&gt;es por que alguna de las tablas levantadas no tenía una columna que sea clave primaria. Django necesita esto para poder distinguir los objetos entre si. Para cada tabla dónde tengamos este problema, podemos ejecutar el siguiente comando SQL para agregarle una columna llamada id; clave primaria y auto numérico.&lt;/p&gt;
+&lt;pre lang="sql"&gt;ALTER TABLE `dataPointUsers` ADD `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Django</category><category>legacy db</category><guid>http://www.juanjoconti.com.ar/posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html</guid><pubDate>Wed, 27 Oct 2010 00:28:54 GMT</pubDate></item><item><title>El hosting para Django más barato</title><link>http://www.juanjoconti.com.ar/posts/2010/08/20/el-hosting-para-django-mas-barato.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un tiempo &lt;a href="http://www.juanjoconti.com.ar/2008/11/24/el-mejor-hosting-para-django/" target="_blank"&gt;recomendé Webfaction&lt;/a&gt; como el mejor hosting para Django (debe aún serlo). Pero algunas veces no queremos el mejor, con el más barato nos alcanza :D&lt;/p&gt;
+&lt;p&gt;Tal vez son un adolecente aprendiendo a programar, o simplemente rata. Para un programador PHP es bastante fácil encontrar un hosting en Internet que le de un servicio gratuito, subir sus cosas y mostrarlas al mundo. Cuando programás en Django... es más difícil.&lt;/p&gt;
+&lt;p&gt;Hasta hoy; les paso el dato: &lt;a href="http://www.alwaysdata.com/" target="_blank"&gt;AlwaysData.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Hosting Django gratuito. &lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Tengo 2 cuentas funcionando muy bien. Y no se asusten por que está en francés (eso me detuvo la primer vez que lo vi); luego de sacar la cuenta tenés acceso al panel de administración que está en muchos idiomas; incluyendo español. Tenés para elegir distintas versiones de Python y Djando, MySQL o PosgreSQL, acceso SHELL, FTP y WebDAV. Qué más querés?&lt;/p&gt;
+&lt;p&gt;También podés tener PHP o Ruby on Rails.&lt;/p&gt;
+&lt;p&gt;Espero les sirva.&lt;/p&gt;&lt;/div&gt;</description><category>AlwaysData.com</category><category>Aprendiendo Python</category><category>Django</category><category>hosting</category><category>Ruby on Rails</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/20/el-hosting-para-django-mas-barato.html</guid><pubDate>Fri, 20 Aug 2010 13:40:23 GMT</pubDate></item><item><title>os.path en el settings.py de Django para mayor comodidad</title><link>http://www.juanjoconti.com.ar/posts/2010/03/03/os-path-en-el-settings-py-de-django-para-mayor-comodidad.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En el archivo de configuración &lt;code&gt;settings.py&lt;/code&gt; de un proyecto Django, por lo general tenemos que setear variables como &lt;code&gt;MEDIA_ROOT&lt;/code&gt; o &lt;code&gt;STATIC_DOC_ROOT.&lt;/code&gt; Su contenido en una instalación Windows suele ser algo como: &lt;code&gt;'C:\Windows\camino\hasta\mi\projecto'&lt;/code&gt;. Y en Linux:&lt;code&gt; '/home/usuario/camino/a/mi/proyecto'&lt;/code&gt;. El problema surge cuando el proyecto es desarrollado en varias máquinas a la vez, y con distintos sistemas operativos. Más aún, si hacemos lo anterior, seguramente versionaremos el proyecto y con él, al archivo de configuración. No sería raro que tras una actualización, el archivo se actualice con los valores que puso algún compañero de trabajo.&lt;/p&gt;
+&lt;p&gt;Mi solución es definir primero una variable para el proyecto:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;PROJECT_PATH = os.path.abspath(os.path.dirname(&lt;strong&gt;file&lt;/strong&gt;))&lt;/pre&gt;
+&lt;p&gt;Luego podemos usarla para definir el path absoluto a la carpeta con archivos de media:&lt;/p&gt;
+&lt;pre&gt;MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')&lt;/pre&gt;
+
+&lt;p&gt;nuestros templates:&lt;/p&gt;
+&lt;pre&gt;TEMPLATE_DIRS = (
+
+# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+
+# Always use forward slashes, even on Windows.
+
+# Don't forget to use absolute paths, not relative paths.
+
+os.path.join(PROJECT_PATH, 'templates')
+
+)&lt;/pre&gt;
+
+&lt;p&gt;o cualquier otra variable de configuración que requiere una ruta de directorios.&lt;/p&gt;
+&lt;p&gt;Con esta solución podemos cambiar el proyecto de carpeta, disco o computadora y seguirá funcionando.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Django</category><category>Python</category><category>Siempre se aprende algo</category><guid>http://www.juanjoconti.com.ar/posts/2010/03/03/os-path-en-el-settings-py-de-django-para-mayor-comodidad.html</guid><pubDate>Wed, 03 Mar 2010 02:45:16 GMT</pubDate></item><item><title>Django Middleware</title><link>http://www.juanjoconti.com.ar/posts/2009/08/15/django-middleware.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Mientras estudié el tema para hacer un experimento, traduje el 80% de la &lt;a href="http://docs.djangoproject.com/en/dev/topics/http/middleware/" target="_blank"&gt;documentación oficial&lt;/a&gt;. La dejo aquí más algunos condimentos personales.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Middleware&lt;/h3&gt;
+&lt;p&gt;Es un sub framework que permite modificaciones al sistema de procesamiento de request/response de Django. Es un sistema de plugins liviano y de bajo nivel que permite alterar globalmente las entradas y salidas de Django.&lt;/p&gt;
+&lt;p&gt;Cada componente middleware es responsable de hacer alguna función específica.&lt;/p&gt;
+&lt;h4&gt;Activar componentes middleware&lt;/h4&gt;
+
+&lt;p&gt;Para hacerlo, añadirlo a la lista MIDDLEWARE_CLASSES en la configuración de Django (settings.py). En esta lista, cada componente se representa por un string: el camino completo al nombre de la clase. Por ejemplo:&lt;/p&gt;
+&lt;pre&gt;MIDDLEWARE_CLASSES = (
+
+'django.middleware.common.CommonMiddleware',
+
+'django.contrib.sessions.middleware.SessionMiddleware',
+
+'django.contrib.auth.middleware.AuthenticationMiddleware',
+
+)&lt;/pre&gt;
+
+&lt;p&gt;En el tratamiento de requests y la generación de responses, existen dos faces:&lt;/p&gt;
+&lt;p&gt;1) Fase Request (se llama a los métodos process_request() y process_view())&lt;/p&gt;
+&lt;p&gt;2) Fase Response (se llama a los métodos process_response() y process_exception())&lt;/p&gt;
+&lt;p&gt;En la primera, las clases son aplicadas desde la primera a la última, según el orden de la lista mencionada. En la segunda fase, se aplican en orden inverso; podemos pensarlo como una cebolla:&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img class="aligncenter size-full wp-image-1740" title="middleware" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/08/middleware.png" alt="middleware" width="502" height="417"&gt;&lt;/p&gt;
+
+&lt;p&gt;Una instalación de Django puede funcionar sin ningún middleware, pero esto no es recomendado.&lt;/p&gt;
+&lt;h4&gt;Para escribir middleware propios&lt;/h4&gt;
+
+&lt;p&gt;Cada componente es una clase Python, que no tiene que extender a ninguna clase en particular y debe definir uno o más de los siguientes métodos.&lt;/p&gt;
+&lt;pre&gt;process_request(self, request)&lt;/pre&gt;
+
+&lt;p&gt;request es un objeto HttpRequest. El método es llamada por cada request, antes de que Django decida que vista ejecutar.&lt;/p&gt;
+&lt;p&gt;Debe retornar None o un objeto HttpResponse. Si retorna None, Django seguirá procesando el request, ejecutando los otros middlewares y luego la vista apropiada. Si retorna un objeto HttpResponse, Django no hará nada más, solo retornar ese objeto.&lt;/p&gt;
+&lt;pre&gt;process_view(self, request, view_func, view_args, view_kwargs)&lt;/pre&gt;
+
+&lt;p&gt;request es un objeto HttpRequest. view_func es la función Python que Django está por usar. (Es el objeto function, no el nombre de la función en un string). view_args es un alista de argumentos posicionales que serán pasados a la vista. Y view_kwargs es un diccionario de argumentos de palagra clave que serán pasados a la vista. Ni view_args ni view_kwargs incluye al primer argumento de la vista (request).&lt;/p&gt;
+&lt;p&gt;process_view() es llamado antes de que Django ejecute la vista. Debe retornar None o un objeto HttpResponse. Si retorna None, Django seguirá procesando el request, ejecutando otros process_view() y luego la vista apropiada. Si retorna un objeto HttpResponse, Django no hará nada más, solo retornar ese objeto.&lt;/p&gt;
+&lt;pre&gt;process_response(self, request, response)&lt;/pre&gt;
+
+&lt;p&gt;request es un objeto HttpRequest. response es un objeto HttpResponse retornado por una vista de Django.&lt;/p&gt;
+&lt;p&gt;process_response() debe retornar un objeto HttpResponse. Puede altener el objeto response dado o puede crear uno nuevo.&lt;/p&gt;
+&lt;p&gt;A diferencia de proces_request() y process_view(), este siempre es ejecutado.&lt;/p&gt;
+&lt;pre&gt;process_exception(self, request, exception)&lt;/pre&gt;
+
+&lt;p&gt;request es un objeto HttpRequest. exception es un objeto Exception lanzado por la vista.&lt;/p&gt;
+&lt;p&gt;Django llama a process_exception() cuando la vista lanza una excepción. process_exception() debe retornar None o un objeto HttpResponse. Si retorna un objeto HttpResponse, la respuesta es devuelta al navegador. De lo contrario, el sistema por defecto para manejo de excepciones entra en acción.&lt;/p&gt;
+&lt;pre&gt;__init__&lt;/pre&gt;
+
+&lt;p&gt;Por lo general estas clases no tienen estado; simplemente contienen a los anteriores métodos. Se puede usar el método &lt;strong&gt;init&lt;/strong&gt; pero se debe tener en cuenta que Django inicializa estas clases sin argumentos y que el método &lt;strong&gt;init&lt;/strong&gt; es llamado solo una vez, cuando el servidor web arranca.&lt;/p&gt;
+&lt;h3&gt;Experimento&lt;/h3&gt;
+
+&lt;p&gt;Con lo anterior en mente, me quedaron algunas dudas al respecto:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;si modifico los argumentos de view_func en process_view y retorno None, ¿estos son pasados modificados a la vista?&lt;/li&gt;
+
+    &lt;li&gt;si lo anterior es falso, puedo lograr el mismo efecto haciendo:
+
+
+
+&lt;pre&gt;def process_view(self,request, view_func, view_args, view_kwargs):
+
+    # modificar request, view_args y view_kwargs
+
+    return view_func(request, view_args, view_kwargs)&lt;/pre&gt;
+
+?&lt;/li&gt;
+
+    &lt;li&gt;¿puedo definir process_response de tal forma que examine response?&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Django</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/08/15/django-middleware.html</guid><pubDate>Sat, 15 Aug 2009 12:37:06 GMT</pubDate></item><item><title>URLs elegantes con Django</title><link>http://www.juanjoconti.com.ar/posts/2009/05/04/urls-elegantes-con-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;em&gt;Este texto es parte del informe de nuestro  proyecto final de carrera, lo publico en forma separada aquí por que tiene valor propio y puede convencer a más de un programador PHP de probar Django. Las URLs elegantes son la forma natural de las URL en Django.&lt;/em&gt;
+&lt;h4&gt;Manejo de URLs&lt;/h4&gt;
+
+&lt;p&gt;Tener URLs elegantes y limpias es un requisito común para aplicaciones web modernas. Django provee un mecanismo de manejo de URLs basado en expresiones regulares que asocia una expresión regular a una vista.&lt;/p&gt;
+
+&lt;p&gt;Para diseñar las URLs de una aplicación Django, se construye una especie de tabla que mapea patrones de URL a funciones Python a ejecutar (vistas). Con esto se logra que las URLs estén desacopladas del resto de la aplicación.&lt;/p&gt;
+
+&lt;p&gt;El siguiente es un ejemplo de una entrada de esa tabla:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;(r'^index/$', index)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Suponiendo que la aplicación web está corriendo en el servidor con nombre localhost, cuando alguien acceda a http://localhost/index/ se ejecutará la vista ‘index’.&lt;/p&gt;
+
+&lt;p&gt;El siguiente es un ejemplo un poco más complejo:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;(r'^cliente/datos/(\d+)/$', cliente_datos)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;En el patrón de la URL se utilizan paréntesis para capturar una parte de la misma y poder accederla luego como parámetros en la vista. La expresión encerrada entre paréntesis se denomina grupo y son propias de las expresiones regulares en Python. Así, siempre que se acceda a, por ejemplo, http://localhost/cliente/datos/1/ o http://localhost/cliente/datos/100/ se ejecutará la vista cliente_datos y recibirá como parámetro el número correspondiente.&lt;/p&gt;
+
+&lt;p&gt;Algo similar sucede en el siguiente ejemplo:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;(r'^inmueble/fotos/(\d+)/eliminar/(\d+)/$', eliminar_foto)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Con la diferencia de que ahora la vista recibe dos parámetros, en este caso particular el primero corresponde a un identificador de inmueble y el segundo a un identificador de foto.&lt;/p&gt;
+
+&lt;p&gt;Las expresiones regulares en Python soportan también lo que se denomina grupos nombrados. Esto permite obtener un grupo por su nombre. Si escribimos una especificación de URL como la siguiente:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;(r'^inmueble/fotos/(?P&amp;lt;inmueble&amp;gt;\d+)/eliminar/(?P&amp;lt;foto&amp;gt;\d+)/$', eliminar_foto)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;la vista será llamada utilizando parámetros nombrados. Esto tiene la ventaja de que si cambia el orden de los parámetros en la URL, la vista seguirá funcionando sin que se necesite redefinirla.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Django</category><guid>http://www.juanjoconti.com.ar/posts/2009/05/04/urls-elegantes-con-django.html</guid><pubDate>Mon, 04 May 2009 08:00:17 GMT</pubDate></item><item><title>FPDF en Django</title><link>http://www.juanjoconti.com.ar/posts/2009/03/27/fpdf-en-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Si intentás usar FPDF en Django hay algunas cosas que necesitás saber:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;(ya sabés qué) &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.fpdf.org/"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;FPDF&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; está originalmente escrita en PHP y permite generar documentos PDF sin usar PDFLib (C).&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;(ya sabés qué) hay más de un port de esta librería a Python. Todos son incompletos.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Usá este &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.nsis.com.ar/svn/pyfpdf/"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://www.nsis.com.ar/svn/pyfpdf/&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; (parcheado en Argentina para utilizar unicode).&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;FPDF &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.fpdf.org/en/FAQ.php#q7"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;trabaja con la codificación ISO-8859-1&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Mi código fuente Django usa la cotificación UTF-8 y en los documentos resultantes aparecían caracteres raros en lugar de vocales con tilde o eñes.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Lo soluciné haciendo una modificacicón en el método Output:&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;&lt;code&gt;self.buffer = buffer.encode('iso-8859-1')&lt;/code&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Django</category><category>fpdf</category><guid>http://www.juanjoconti.com.ar/posts/2009/03/27/fpdf-en-django.html</guid><pubDate>Fri, 27 Mar 2009 16:53:01 GMT</pubDate></item><item><title>El mejor hosting para Django</title><link>http://www.juanjoconti.com.ar/posts/2008/11/24/el-mejor-hosting-para-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Según &lt;a href="http://djangofriendly.com/"&gt;DjangoFriendly&lt;/a&gt;, el mejor hosting para Django es &lt;a href="http://www.webfaction.com?affiliate=zafiro"&gt;Webfaction&lt;/a&gt;. Yo lo vengo probando por un mes y estoy muy satisfecho.&lt;/p&gt;&lt;/div&gt;</description><category>Django</category><category>hosting</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2008/11/24/el-mejor-hosting-para-django.html</guid><pubDate>Mon, 24 Nov 2008 18:25:51 GMT</pubDate></item><item><title>SQL Debug en Django</title><link>http://www.juanjoconti.com.ar/posts/2008/11/02/sql-debug-en-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;¿Cómo saber en Django &lt;strong&gt;qué&lt;/strong&gt; sentencias SQL se están ejecutando detrás de su ORM? Según la &lt;a href="http://docs.djangoproject.com/en/dev/faq/models/#how-can-i-see-the-raw-sql-queries-django-is-running"&gt;FAQ&lt;/a&gt;, podemos hacerlo de esta forma:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;Make sure your Django DEBUG setting is set to True. Then, just do this:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; from django.db import connection
+
+&amp;gt;&amp;gt;&amp;gt; connection.queries
+
+[{'sql': 'SELECT polls_polls.id,polls_polls.question,polls_polls.pub_date FROM polls_polls',
+
+'time': '0.002'}]&lt;/pre&gt;
+
+&lt;p&gt;connection.queries is only available if DEBUG is True. It's a list of dictionaries in order of query execution. Each dictionary has the following:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sql&lt;/code&gt; -- The raw SQL statement&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;time&lt;/code&gt; -- How long the statement took to execute, in seconds.&lt;/p&gt;
+&lt;p&gt;connection.queries includes all SQL statements -- INSERTs, UPDATES, SELECTs, etc. Each time your app hits the database, the query will be recorded.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cada vez que se realiza una nueva petición, esa variable es sobre escrita con las consultas que se ejecutaron en la vista asociada. La forma de verlas es accediendo a &lt;code&gt;connection.queries&lt;/code&gt; en cada vista de nuestro interés. Para facilitar esta tarea y no tener código intrusivo, escribí un decorador:&lt;/p&gt;
+&lt;pre&gt;
+
+from django.db import connection
+
+def sql_debug(f):
+
+    '''
+
+    Decorador útil para inspeccionar las sentencias SQL que se ejecutan en
+
+    cada request.
+
+    '''
+
+    def inner(*args, **kwargs):
+
+        r = f(*args, **kwargs)
+
+        for d in connection.queries:
+
+            print "time: %s\n sql:%s\n\n" % (d['time'], d['sql'])
+
+        return r
+
+    return inner
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>debug</category><category>Django</category><category>Python</category><category>SQL</category><guid>http://www.juanjoconti.com.ar/posts/2008/11/02/sql-debug-en-django.html</guid><pubDate>Sun, 02 Nov 2008 20:50:50 GMT</pubDate></item><item><title>Diagrama de capas de Django</title><link>http://www.juanjoconti.com.ar/posts/2008/10/30/diagrama-de-capas-de-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;¿Cuál sería un diagrama de capas correcto para representar una instalación de Django? Ensayé el siguiente gráfico; es para una instalación en particular, pero se puede cambiar GNU/Linux por Sistema Operativo, PostgreSQL por Base de Datos y Apache por Servidor Web para hacerlo más genérico:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/g2210.png"&gt;&lt;img class="aligncenter size-medium wp-image-812" title="g2210" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/g2210.png" alt=""&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;La idea detrás de un diagrama de capas es expresar que los componentes de una capa le brindan servicios a los de la capa superior mediante alguna interfaz.&lt;/p&gt;
+&lt;p&gt;¿Mejores ideas? ¿Conviene otro tipo de diagrama?&lt;/p&gt;&lt;/div&gt;</description><category>Django</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/30/diagrama-de-capas-de-django.html</guid><pubDate>Thu, 30 Oct 2008 12:50:42 GMT</pubDate></item><item><title>Generar diagramas de clases a partir de modelos de Django</title><link>http://www.juanjoconti.com.ar/posts/2008/10/23/generar-diagramas-de-clases-a-partir-de-modelos-de-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La siguiente es la mejor forma que encontré de tomar todos los archivos models.py de las aplicaciones que componen un proyecto Django y generar un diagrama de clases completo, listo para exportar cómo imagen. Utilizo un comando incluido en &lt;a href="http://code.google.com/p/django-command-extensions/"&gt;django-command-extensions&lt;/a&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Obtener e instalar django-extensions&lt;/h3&gt;
+&lt;p&gt;Para Django 1.0 hay que bajar la última versión del svn:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;svn checkout http://django-command-extensions.googlecode.com/svn/trunk/ django-command-extensions&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;E instalarlo ejecutando el script de instalación:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;cd django-command-extensions&lt;/p&gt;
+&lt;p&gt;sudo python setup.py install&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Podemos probar si se instaló correctamente abriendo una consola Python y ejecutando:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; import django_extensions&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Para que este disponible en nuestro proyecto debemos agregar la aplicación a &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;INSTALLED_APPS = (&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;'django_extensions'&lt;/p&gt;
+&lt;p&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Cuando ejecutemos:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python manage.py help&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;veremos una lista de los nuevos comandos disponibles.&lt;/p&gt;
+&lt;h3&gt;Generar archivo .dot&lt;/h3&gt;
+
+&lt;p&gt;Uno de ellos es graph_models el cual nos permitirá generar un archivo en formato .dot:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python manage.py graph_models -a &amp;gt; mi_proyecto.dot&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;Generar archivo .png&lt;/h3&gt;
+
+&lt;p&gt;O una imagen png:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python manage.py graph_models -a -g -o mi_proyecto.png&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Para que el anterior comando funcione, necesitamos tener instalado &lt;a href="https://networkx.lanl.gov/wiki/pygraphviz/"&gt;pygraphviz&lt;/a&gt;. En mi Ubuntu no tenía el paquete python-pygraphviz por lo que tuve que bajarlo desde su página web. Para instalarlo requiere tener instalados los paquetes graphviz y graphviz-dev.&lt;/p&gt;
+&lt;h3&gt;Ejemplo&lt;/h3&gt;
+
+&lt;p&gt;El siguiente comando genera el diagrama de clases para auth, la popular aplicación que viene con Django y sirve como ejemplo de cómo generar el diagrama para solo una aplicación del proyecto:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python manage.py graph_models auth -g -o mi_proyecto_auth.png&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/mi_proyecto_auth.png"&gt;&lt;img class="aligncenter size-full wp-image-766" title="mi_proyecto_auth" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/mi_proyecto_auth.png" alt="" width="475" height="880"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Nota&lt;/h3&gt;
+
+&lt;p&gt;Les recomiendo bajar la versión de pygraphviz empaquetada de Cheeseshop en lugar de la del svn, ya que con esta el comando de django-extensions lanza una excepción. Correguí el programa, &lt;a href="http://code.google.com/p/django-command-extensions/issues/detail?id=66"&gt;abrí un ticket y envié un parche&lt;/a&gt;. Para cuando leas esto probablemente ya se haya incorporado a trunk.&lt;/p&gt;&lt;/div&gt;</description><category>Django</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/23/generar-diagramas-de-clases-a-partir-de-modelos-de-django.html</guid><pubDate>Thu, 23 Oct 2008 23:33:56 GMT</pubDate></item></channel></rss>

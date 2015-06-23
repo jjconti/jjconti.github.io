@@ -1,0 +1,41 @@
+<p><html><body><p>Mi amigo Joel estudia Filosofía en <a title="UNR" href="http://www.unr.edu.ar" target="_blank">Rosario</a> y este fin de semana estuvimos charlando sobre <strong>lógica</strong>. Durante la charla me  enseño que los conectores lógicos se pueden pensar como relaciones entre conjuntos. Yo nunca los había visto así.</p>
+<p>Esta forma de pensarlos es a veces muy útil y sirve para darnos cuenta cual es el conector indicado para representar cierto conocimiento. Por ejemplo, muchas veces me encontré queriendo representar conocimiento del tipo <em>"Los conejos son blancos"</em> y errónea e instintivamente escribía:</p>
+<p><code></p>
+<p>B(x): x es blanco</p>
+<p>C(x): x es conejo</code></p>
+<p><code></p>
+<p>C(x) ^ B(x)</p>
+<p></code></p>
+<p>Lo cual es un error. La forma correcta de representar ese conocimiento es:</p>
+<p><code></p>
+<p>C(x) -&gt; B(x)</p>
+<p></code></p>
+<p>La implicación entre C(x) y B(x) puede entenderse una forma muy simple:</p>
+<p>C es el conjunto de todos los conejos y B es el conjunto de todas las cosas blancas.</p>
+<p>Recordemos que la información que queremos representar es <em>"Los conejos son blancos"</em>, enfatisando: <em>Todos</em> los conejos son blancos. No hay conejos grises o negros, todos son blancos.</p>
+<p>El ejemplo en cuestión no era este, sino otro, pero lo importante es que Joel me explicó que la implicación es equivalente a la relación entre conjuntos de inclusión e hizo un dibujo parecido a este:</p>
+<p></p><p style="text-align: center;"><img src="/wp-content/uploads/2007/10/conejos_blancos.png" alt="Conejos blancos"></p></p>
+<p>En el dibujo se ve claramente el exacto conocimiento que queríamos representar: si algo es conejo, entonces es blanco. Si pertenece al conjunto C entonces pertenece al conjunto B. Porque el conjunto B incluye al conjunto C. El conjunto de las cosas blancas incluye al conjunto de los conejos.</p>
+<p>El resto de los conectores lógicos también pueden verse como relaciones entre conjuntos.</p>
+<!--more-->
+
+<p><strong>AND : intersección</strong></p>
+<p>AND o conjunción, muchas veces simbolizado con ^, es verdadero cuando los dos predicados que conecta lo son. Así pues  <code>B(x) ^ A(x)</code> será verdadero cuando x pertenezca tanto a B como a A.</p>
+<p><img src="/wp-content/uploads/2007/10/and1.png" alt="AND sin corchetes"></p>
+<p><strong>OR: unión</strong></p>
+<p>OR o disyunción  es una relación menos estricta ya que para ser verdadera solo necesita que uno de sus predicados sea verdadero. En el ejemplo anterior, que x pertenezca a B o a A. Eventualmente podría pertenecer a ambos conjuntos.</p>
+<p><img src="/wp-content/uploads/2007/10/or1.png" alt="OR sin corchetes"></p>
+<p><strong>XOR: unión - intersección</strong></p>
+<p>Unión MENOS intersección. La disyunción exclusiva es verdadera cuando x pertenece exclusivamente a uno de los conjuntos, pero es falsa cuando pertenece a ambos.</p>
+<p><img src="/wp-content/uploads/2007/10/xor.png" alt="XOR"></p>
+<p><strong>-&gt; : inclusión</strong></p>
+<p>Es el caso del ejemplo de los conejos con el que empezó este post.</p>
+<p><img src="/wp-content/uploads/2007/10/imp1.png" alt="IMP sin corchetes"></p>
+<p><strong>&lt;-&gt; : mutua inclusión</strong></p>
+<p>La doble implicación es un caso especial de la implicación ya que se define como <code>A -&gt; B AND B -&gt; A</code>. Así mismo su representación en forma de conjuntos es un caso especial de la inclusión. En el dibujo puede verse claramente que cuando decimos <code>A(x) &lt;-&gt; B(x)</code> estamos diciendo que cualquier elemento x que pertenezca a A también pertenece a B.</p>
+<p><img src="/wp-content/uploads/2007/10/bimp.png" alt="bimp"></p>
+<p><strong>NOT : no pertenencia</strong></p>
+<p>Todos los conectores pueden pensarse como conjuntos: <code>NOT A(x)</code> significa que el elemento x no pertenece a A.</p>
+<p style="text-align: center;"><img src="/wp-content/uploads/2007/10/not.png" alt="NOT"></p>
+
+<p>Para finalizar: todos los conectores lógicos pueden pensarse como relaciones entre conjuntos. Si se crean conectores a partir de algunos de los listados anteriormente, también se podrán definir las relaciones entre conjuntos correspondientes.</body></html></p>

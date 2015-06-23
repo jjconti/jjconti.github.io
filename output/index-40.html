@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 40) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-40.html">
+
+
+
+        <link rel="prev" href="index-41.html" type="text/html">
+        <link rel="next" href="index-39.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html" class="u-url">Algunos problemas y soluciones al levantar bases de datos legacy con Django</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-27T00:28:54+00:00" title="2010-10-27 00:28">2010-10-27 00:28</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/27/algunos-problemas-y-soluciones-al-levantar-bases-de-datos-legacy-con-django.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="http://docs.djangoproject.com/en/dev/howto/legacy-databases/" target="_blank">Con Django</a> podemos levantar una <a href="http://stackoverflow.com/questions/939465/what-does-the-term-legacy-database-mean" target="_blank">base de datos <em>legacy</em></a> en lugar de definir nuestro modelo de datos y arrancar una aplicación desde cero. No es necesariamente una base de datos vieja, sino una base de datos heredada de otro sistema; puede ser de un sistema anterior que se está reemplazando o incluso de otro sistema que queremos usar de forma paralela.
+<p>Luego de configurar nuestra base de datos y ejecutar:</p>
+<pre>python manage.py inspectdb &gt; models.py</pre>
+
+<p>obtenemos una definición de modelos basada en en las tablas de la base de datos. Lo siguiente es ver si anda.</p>
+<p>Lo más probable es que obtengamos un <a href="http://docs.python.org/library/exceptions.html#exceptions.NameError" target="_blank">NameError</a>. Esto pasa cuando en la definición de alguno de los modelos se hace referencia a otro modelo aún no definido! La solución indicada es empezar a reordernar los modelos, pero una forma más fácil es cambiar los nombres por strings. Un ejemplo:</p>
+<pre>jefe = models.ForeingKey(Empleado)
+
+</pre>
+
+<p>por</p>
+<pre>jefe = models.ForeingKey('Empleado')
+
+</pre>
+
+<p>Otra queja que nos puede hacer Django es que tengamos atributos llamados <strong>id</strong> que no sean <em>primary key</em>. Solución: les cambiamos el nombre.</p>
+<p>Eventualmente vamos a necesitar habilitar la aplicación <a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/" target="_blank"><strong>admin</strong></a> (ya que estamos usando Django para levantar datos, nada mejor que usar su ABM estrella para ahorrarnos mucho trbajo). Los pasos para hacer con éxito son:</p>
+<ol>
+
+    <li>Habilitar la aplicaccion admin en <code>settings.py</code>.</li>
+
+    <li>Ejecutar <code>syncdb</code> para que se creen las tablas de esta aplicación.</li>
+
+    <li>Agregar los modelos de la base de datos heredada al archivo <code>admin.py</code> de la aplicación.</li>
+
+</ol>
+
+<p>Por supuesto, si los nuevos modelos son cientos, es bastante engorroso hacer esto a mano. Les paso un hack; así luce mi <code>admin.py</code>:</p>
+<pre>from django.contrib import admin
+
+from django.db.models import base
+
+from my_app.models import *
+
+
+
+for k,v in locals().items():
+
+    if isinstance(v, base.ModelBase):
+
+        admin.site.register(v)</pre>
+
+<p>Tip final. Si obtenemos un error de este tipo:</p>
+<pre lang="bash">OperationalError at /admin/mango/datapointusers/
+
+(1054, "Unknown column 'dataPointUsers.id' in 'field list'")
+
+</pre>
+
+<p>es por que alguna de las tablas levantadas no tenía una columna que sea clave primaria. Django necesita esto para poder distinguir los objetos entre si. Para cada tabla dónde tengamos este problema, podemos ejecutar el siguiente comando SQL para agregarle una columna llamada id; clave primaria y auto numérico.</p>
+<pre lang="sql">ALTER TABLE `dataPointUsers` ADD `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+</pre>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/24/seminario-ala-seguridad-en-el-proceso-de-desarrollo-de-softwarea.html" class="u-url">Seminario: “La seguridad en el proceso de desarrollo de software”</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/24/seminario-ala-seguridad-en-el-proceso-de-desarrollo-de-softwarea.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-24T00:03:58+00:00" title="2010-10-24 00:03">2010-10-24 00:03</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/24/seminario-ala-seguridad-en-el-proceso-de-desarrollo-de-softwarea.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/24/seminario-ala-seguridad-en-el-proceso-de-desarrollo-de-softwarea.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El grupo del que participo en la facu va a estar dando un seminario a modo de comunicar lo que estuvimos haciendo en los 2 años de trabajo. Salió en <strong>el emilio</strong>:</p>
+<p></p>
+<blockquote>Tendrá lugar en nuestra Facultad el seminario gratuito: “La seguridad en el proceso de desarrollo de software”. Expositores: Marta Castellaro, Pablo Pessonali, Juan Carlos Ramos, Susana Romaniz, Carlos Feck y Juan José Conti.
+<ul>
+
+    <li> Fecha y hora de realización: jueves 28 de octubre, a las 17:00.</li>
+
+    <li> Duración: 2 horas.</li>
+
+    <li> Lugar: Aula Multimedios 1</li>
+
+</ul>
+
+<p>Sin requisitos. Cupo limitado.</p>
+<p>Certificado: de asistencia otorgado por la Facultad -sin evaluación.</p>
+<p>Departamento Sistemas - UTN Santa Fe.</p>
+</blockquote>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/16/mis-charlas-en-pyconar2010.html" class="u-url">Mis charlas en PyConAr2010</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/16/mis-charlas-en-pyconar2010.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-16T02:22:17+00:00" title="2010-10-16 02:22">2010-10-16 02:22</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/16/mis-charlas-en-pyconar2010.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/16/mis-charlas-en-pyconar2010.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy, en el primer día de <a href="http://ar.pycon.org/2010/about/" target="_blank">PyCon Argentina, en Córdoba</a>, me tocó dar 2 charlas programadas y de yapa una charla relámpago. Les dejo mis slides:</p>
+<p></p>
+<ul>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.juanjoconti.com.ar/files/charlas/TaintModePyConAr2010.pdf"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Taint Mode en Python<span class="nt">&lt;/a&gt;</span>: Taint Mode es un modo de ejecución de algunos lenguajes de programación que permiten advertirle al programador sobre potenciales problemas de seguridad en su código. La charla: repaso de conceptos, discusiones sobre implementaciones, como funciona nuestra biblioteca y su API.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.juanjoconti.com.ar/files/charlas/DecoradoresPyConAr2010.pdf"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Entendiendo decoradores en Python<span class="nt">&lt;/a&gt;</span>: los decoradores son una herramienta muy potente que viene con el lenguaje y permiten introducir cambios en código ya escrito de una forma poco intrusiva; sirven por ejemplo para hacer programación orientada a aspectos en Python. La charla: objetos, funciones, decoradores, decoradores con parámetros, clases decoradoras, decorando clases.<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://svn.juanjoconti.com.ar/dyntaint/trunk/webdemo/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Demo en Taint Mode en Python<span class="nt">&lt;/a&gt;</span>: mostré  2 slides de la primer charla más una aplicación demo que sirve de prueba de concepto para mostrar que todo lo que dije antes funciona.<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+
+
+<p><strong>update:</strong></p>
+<p><a href="http://picasaweb.google.com/copybin/Pycon2010Dia1" target="_blank">Fotos del primer día.</a></p>
+<p><a href="wp-content/uploads/2010/10/DSCF7073.jpg"><img class="aligncenter size-large wp-image-2886" title="DSCF7073" src="wp-content/uploads/2010/10/DSCF7073-1024x768.jpg" alt="" width="640" height="480"></a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/13/entendiendo-args-y-kwargs-en-python.html" class="u-url">Entendiendo *args y **kwargs en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/13/entendiendo-args-y-kwargs-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-13T16:59:11+00:00" title="2010-10-13 16:59">2010-10-13 16:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/13/entendiendo-args-y-kwargs-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/13/entendiendo-args-y-kwargs-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Me llegó un mail consultando sobre <code><em>args</em></code> y <code>*kwargs</code> en Python. ¿Qué es eso? Vamos por partes.</p>
+<p>En Python existen varias formas de llamar a una función. Por ejemplo, en su definición <a href="http://docs.python.org.ar/tutorial/controlflow.html#argumentos-con-valores-por-omision" target="_blank">puede tener valores por defecto</a>, entonces no es necesario utilizarlos todos al llamarla:</p>
+<p></p>
+<pre>&gt;&gt;&gt; def f(a, b, c=3):
+<p>...     print a, b, c</p>
+<p>...</p>
+<p>&gt;&gt;&gt; f(1,2)</p>
+<p>1 2 3</p></pre>
+<p><a href="http://docs.python.org.ar/tutorial/controlflow.html#palabras-claves-como-argumentos" target="_blank">Se pueden utilizar palabras claves como argumento</a>, por supuesto, respetando algunas reglas:</p>
+<pre>&gt;&gt;&gt; def f(a, b, c):
+
+...     print a, b, c
+
+...
+
+&gt;&gt;&gt; f(a=1, b=2, c=3)
+
+1 2 3
+
+&gt;&gt;&gt; f(a=1, 2, 3)
+
+  File "", line 1
+
+SyntaxError: non-keyword arg after keyword arg
+
+&gt;&gt;&gt; f(1, 2, b=3)
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() got multiple values for keyword argument 'b'
+
+&gt;&gt;&gt; f(1, b=2, c=3)
+
+1 2 3</pre>
+
+<p>Y finalmente, <a href="http://docs.python.org.ar/tutorial/controlflow.html#listas-de-argumentos-arbitrarios" target="_blank">se puede llamar con listas arbitrarias de argumentos</a>. Como en los casos anteriores, poder hacerlo depende de cómo hayamos definido la función:</p>
+<pre>&gt;&gt;&gt; def f(*args, **kwargs):
+
+...     print "args:", args
+
+...     print "kwargs:", kwargs
+
+...</pre>
+
+<p>Con <code><em>args</em></code> se indica, mapear todos los argumentos posicionales a una tupla llamada <code>args</code>. Y con <code>*kwargs</code> se indica, mapear todos los argumentos de palabra clave a un diccionario llamado <code>kwargs</code>.</p>
+<pre>&gt;&gt;&gt; f(1,2,3)
+
+args: (1, 2, 3)
+
+kwargs: {}
+
+&gt;&gt;&gt; f(1,2,3, cuatro=4)
+
+args: (1, 2, 3)
+
+kwargs: {'cuatro': 4}
+
+&gt;&gt;&gt; f(cuatro=4)
+
+args: ()
+
+kwargs: {'cuatro': 4}</pre>
+
+<p>Notemos que se pueden definir argumentos con nombre propio antes de los argumentos <em>agrupados</em> y que no es necesario usar exactamente los nombres <code>args</code> y <code>kwargs</code>. También puede usarse solo uno de los dos:</p>
+<pre>&gt;&gt;&gt; def f(p, *a, **kw):
+
+...     print "p:", p
+
+...     print "a:", a
+
+...     print "kw:", kw
+
+...
+
+&gt;&gt;&gt; f(1,2,3)
+
+p: 1
+
+a: (2, 3)
+
+kw: {}
+
+&gt;&gt;&gt; f(1,2,3, cuatro=4)
+
+p: 1
+
+a: (2, 3)
+
+kw: {'cuatro': 4}
+
+&gt;&gt;&gt; f(cuatro=4)
+
+Traceback (most recent call last):
+
+  File "", line 1, in
+
+TypeError: f() takes at least 1 non-keyword argument (0 given)</pre>
+
+<p>Espero que los ejemplos sirvan. Para más detalle, se pueden consultar las secciones del <a href="http://tutorial.python.org.ar/" target="_blank">Tutorial de Python</a> que enlacé.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/12/el-hack-del-dia-como-usar-citrix-desde-ubuntu.html" class="u-url">El hack del día: cómo usar Citrix desde Ubuntu</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/12/el-hack-del-dia-como-usar-citrix-desde-ubuntu.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-12T23:59:42+00:00" title="2010-10-12 23:59">2010-10-12 23:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/12/el-hack-del-dia-como-usar-citrix-desde-ubuntu.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/12/el-hack-del-dia-como-usar-citrix-desde-ubuntu.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Con el nombre genérico de Citrix, se suele conocer dentro de muchas empresas a una solución de virtualización de aplicaciones (<a href="http://en.wikipedia.org/wiki/Citrix_XenApp" target="_blank">XenApp</a>) muy utilizada en corporaciones que permite a los usuarios conectarse con su PC a un servidor remoto y ejecutar las aplicaciones que allí se encuentran. Con esto se logra por ejemplo: reducir el gasto en licencias y centralizar actualizaciones.</p>
+<p>En la empresa donde trabajo (una multinacional del rubro de las telecomunicaciones) lo usa. Además de aplicaciones de gestión de equipos, dentro de "Citrix", se puede correr un escritorio remoto. Esto permite, desde una PC con Internet, acceder a tu puesto de trabajo respetando las políticas de seguridad que haya dispuesto la empresa.</p>
+<p>Ok, quiero acceder desde GNU/Linux. En particular Ubuntu, el SO que uso en mi notebook. El la mayoría de los casos, no vamos a tener soporte para esto. Escribo las siguientes instrucciones con la esperanza de que a alguien le sirva dentro de su organización.</p>
+<p>Lo primero que necesitamos es un software cliente. Es la parte fácil. Podemos <a href="http://www.citrix.com/English/SS/downloads/details.asp?downloadID=3323" target="_blank">bajar el cliente e instalarlo</a>. El ejecutable queda en:</p>
+<p></p>
+<pre lang="bash">/usr/lib/ICAClient/wfcmgr
+</pre>
+
+<p>Al intenatr ejecutarlo puede ser que obtengamos un error diciendo que falta la bibiloteca libXm.so.4. en Ubuntu 10.04 no viene la versión 4 de esta biblioteca, sino la 3.</p>
+<p>Podemos instalar la versión 3:</p>
+<pre lang="bash">sudo apt-get install libmotif3
+
+</pre>
+
+<p>y engañarlo; parece funcionar sin problemas:</p>
+<pre lang="bash">sudo ln -s /usr/lib/libXm.so.3.0.2 /usr/lib/libXm.so.4
+
+</pre>
+
+<p>Lo siguiente que falta es un certificado, de lo contrario al intentar conectarnos obtendremos un error diciendo que no hemos especificado que confiamos en el host que nos servirá las aplicaciones.</p>
+<p>A los usuarios de Windows les dan un archivo binario de extesión <code>.p7b</code> al que le hacen click derecho y eligen la opción "Instalar certificado". En GNU/Linux no es tan fácil y luego de buscar bastante en Internet, no encontré la forma de instalarlo, pero la solución me llegó casi Inspiración Divina o por Instinto Animal.</p>
+<p>Utilicé el comando <code>strings</code> para leer cadenas de texto dentro del archivo <code>.p7b</code> y con <code>grep</code> busqué <code>.crt</code>, la extensión de los certificados:</p>
+<pre lang="bash">strings XXXX.p7b | grep .crt
+
+</pre>
+
+<p>Encontré una url dentro de la empresa, me bajé el certificado y lo guardé en <code>/usr/lib/ICAClient/keystore/cacerts</code>, que es donde Citrix Xen App guarda los certificados.</p>
+<p>Voilá! Estaba adentro.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/12/historias-en-internet-el-busto-de-carlos-pellegrini.html" class="u-url">Historias en Internet: el busto de Carlos Pellegrini</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/12/historias-en-internet-el-busto-de-carlos-pellegrini.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-12T19:59:53+00:00" title="2010-10-12 19:59">2010-10-12 19:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/12/historias-en-internet-el-busto-de-carlos-pellegrini.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/12/historias-en-internet-el-busto-de-carlos-pellegrini.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El domingo a la tarde completé una misión que se me había asignado en el año 2006.</p>
+<p><a href="http://commons.wikimedia.org/wiki/Main_Page" target="_blank">Wikimedia Commons</a> es el sitio web que sirve de repositorio de imágenes, videos, canciones y otras para Wikipedia (la enciclopedia libre) y sus proyectos hermanos.</p>
+<p>En el año 2006 subí varias fotos de mi pueblo, Carlos Pellegrini, entre ellas la de un busto de vice presidente del que tomó el nombre mi localidad (antes se llamaba Los Algarrobos). Estas es la imagen original:</p>
+<p><a href="http://commons.wikimedia.org/wiki/File:Cparg_Busto_Carlos_Pellegrini.JPG"><img class="aligncenter size-large wp-image-2863" src="wp-content/uploads/2010/10/Cparg_Busto_Carlos_Pellegrini-1024x768.jpg" alt="" width="640" height="480"></a></p>
+<p>Luego de eso no volví a logearme en Commons. Años más tarde, en el 2009, entré para subir otras fotos y allí enocntré un mensaje de uno de los usuarios. <a href="http://commons.wikimedia.org/wiki/User:Rosarinagazo" target="_blank">Rosarinagazo</a> decía:</p>
+<p></p>
+<blockquote>He visto que subiste la imagen del busto de Pellegrini que está en la localidad de Carlos Pellegrini. ¿Podrías hacerme un inmenso favor?, si estás allí, fijarte si está la firma del escultor. Estamos haciendo el Catálogo del escultor rosarino <strong>Erminio Blotta</strong>, y ¡podría ser de él!. Gracias de todas maneras Rosarinagazo 13:58, 7 September 2006 (UTC)</blockquote>
+<p>¡Habían pasado más de 3 años! Un montón para la velocidad a la que se mueve Internet. Ante la duda, le dejé un mensaje:</p>
+<blockquote>Hace 3 años me preguntaste por el Busto de Carlos Pellegrini en la  localidad de Carlos Pellegrini. Si todavía te interesa puedo verlo.</blockquote>
+
+<p>Por esas cosas de la vida, me olvidé totalmente de este mensaje que había dejado en su página personal. Hace una semana volví a entrar:</p>
+<blockquote>¡¡¡Sí!!!, me interesa te fijes en el busto. Gracias Rosarinagazo 12:29, 10 August 2009 (UTC)</blockquote>
+
+<p>Así que este domingo, aprovechando la visita a mi casa y luego del asado del domingo, me llegué hasta el centro de la plaza, que está en el centro del pueblo a cumplir con el encargue. Ceci me acompañó. No dejaba de ser divertido.</p>
+<p>Llegamos y miramos un poco, rapidamente al costado vimos una firma. Me trepé y con los dedos limpié un poco de la tierra que se había metido en la caligrafía del artista. No se leía.</p>
+<p>No supimos si era Mario o María, seguido por un apellido largo que empieza en C o L. Pero no era Erminio Blotta. Una lástima. Si bien parecía que no se veía nada, le sacamos un par de fotos para verlas luego con la computadora. Y aquí está la prueba:</p>
+<p><a href="wp-content/uploads/2010/10/2010-10-10_18-01-20_423.jpg"><img class="aligncenter size-large wp-image-2864" title="2010-10-10_18-01-20_423" src="wp-content/uploads/2010/10/2010-10-10_18-01-20_423-1024x575.jpg" alt="" width="640" height="359"></a><a href="wp-content/uploads/2010/10/2010-10-10_18-00-51_251.jpg"><img class="aligncenter size-large wp-image-2865" title="2010-10-10_18-00-51_251" src="wp-content/uploads/2010/10/2010-10-10_18-00-51_251-1024x575.jpg" alt="" width="640" height="359"></a>Misión cumplida. Tarde. Y fallida.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/08/atelevolucion.html" class="u-url">¿Televolución?</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/08/atelevolucion.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-08T01:29:11+00:00" title="2010-10-08 01:29">2010-10-08 01:29</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/08/atelevolucion.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/08/atelevolucion.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Vi este chiste hace unos días en la 9° Bienal de arte joven en Santa Fe:</p>
+<p></p>
+<p style="text-align: right;"><a href="wp-content/uploads/2010/10/2010-10-03_19-09-36_271.jpg"><img class="aligncenter size-large wp-image-2858" title="2010-10-03_19-09-36_271" src="wp-content/uploads/2010/10/2010-10-03_19-09-36_271-1024x575.jpg" alt="" width="640" height="359"></a>Autor: DÍAZ, Baltazar</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/05/nadie-leyo-biografia-de-un-superheroe.html" class="u-url">Nadie leyó Biografía de un superhéroe</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/05/nadie-leyo-biografia-de-un-superheroe.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-05T02:40:27+00:00" title="2010-10-05 02:40">2010-10-05 02:40</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/05/nadie-leyo-biografia-de-un-superheroe.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/05/nadie-leyo-biografia-de-un-superheroe.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="wp-content/uploads/2010/10/zambalibro.jpg"><img class="alignright size-medium wp-image-2853" title="zambalibro" src="wp-content/uploads/2010/10/zambalibro-188x300.jpg" alt="" width="188" height="300"></a>Hace aproximadamente un mes, leyendo en la web, me encontré con la noticia de que el músico <a href="http://www.zambayonny.com.ar/" target="_blank">Zambayonny</a> había sacado una novela llamada Biografía de un superhéroe. Puede ser interesante, pensé. Buscando un poquito más, llegué a encontrar comentarios que decían que podía ser <a href="http://zambayonny.files.wordpress.com/2010/06/perfil2.jpg" target="_blank">la mejor novela de la década</a>. ¿Será para tanto? La compré y la leí. No era para tanto.
+<p>Algo que verdaderamente me llamó la atención es la reseña que aparecía <a href="http://www.editorialmarea.com.ar/biografia.html" target="_blank">en todos lado</a>s:</p>
+<blockquote>Karmelo Restelli es un hombre sencillo que esconde, sin saberlo, un asombroso don.
+
+<strong> La noche que la mujer de su vida se casa con otro  hombre</strong>, se escapa durante la fiesta de casamiento y emprende un viaje  iniciático sin fronteras claras entre la vigilia y la realidad.
+
+Exactamente  en la vuelta opuesta a su punto de partida conoce a Morresi, un  uruguayo alcohólico en recuperación que vive exiliado en Inglaterra  desde hace muchos años y que sólo lamenta haber perdido los poderes  sobrenaturales que alguna vez lo hicieron popular.
+
+<strong>Juntos</strong> enfrentan a extraterrestres,  narcotraficantes, paisanos de a caballo, fantasmas, hombres mono,  hombres rata, marineros japoneses y hasta vecinos enojados.
+
+Una historia de antihéroes que promete convertirse  en la primera entrega de una saga en la que el cantautor y escritor  ofrece su particular visión de lo que es un superhéroe.</blockquote>
+
+<ol>
+
+    <li>¿La mujer de su vida? Ni aparece.</li>
+
+    <li>De lo que cuenta que hacen juntos, la mitad lo hace el personaje principal antes de conocer al "superheroe".</li>
+
+    <li>De lo que cuenta que hacen juntos, la mitad está tergiversado, exagerado o sobre-destacado.</li>
+
+</ol>
+
+<p>Yendo a la novela en si, no es mala, es entretenida, por momentos te saca una carcajada, pero no es lo que dice Piro, que de su reseña dudo que la haya leído entera. Yo la leí entera y me hago cargo. Se presenta  como una historia entre la vigilia y el sueño, así son algunos pasajes, y así la leí yo, por que la estuve leyendo todas las noches antes de dormirme :)</p>
+<p>Me gustó que los capítulos sean cortos y me gustó el ritmo que tenían.</p>
+<p>La segunda mitad del libro (luego de que conoce a Morresi y se escapan de los Azules) está mucho mejor escrita que la primer mitad. Y es más entretenida. Algunas partes parecen estar ahí solo por estar, no se le alcanza a encontrar la relación con la historia como un todo. Y es que la historia como un todo casi no existe, más allá de un intento por cerrar un círculo (que es más bien un cuadrado) en el mismísimo último capítulo.</p>
+<p>Del 1 al 10 es un 7.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/10/02/correccion-ortografica-en-vim.html" class="u-url">Corrección ortográfica en Vim</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/10/02/correccion-ortografica-en-vim.html" rel="bookmark"><time class="published dt-published" datetime="2010-10-02T22:18:08+00:00" title="2010-10-02 22:18">2010-10-02 22:18</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/10/02/correccion-ortografica-en-vim.html#disqus_thread" data-disqus-identifier="cache/posts/2010/10/02/correccion-ortografica-en-vim.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Esta porción de comandos para vi/vim me vino muy cómodo más de una vez y siempre vuelvo a buscarlo:</p>
+<p></p>
+<pre lang="vim">
+<p>:setlocal spell spelllang=es_AR</p>
+<p>]s //avanza a la próxima palabra</p>
+<p>z= //muestra la lista de sugerencias</p>
+<p>zg //agrega la palabra como <em>buena</em></p>
+<p>:help spell //listado completo</p>
+<p></p></pre>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2010/09/26/twitter-updates-desde-twisted.html" class="u-url">Twitter updates desde Twisted</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2010/09/26/twitter-updates-desde-twisted.html" rel="bookmark"><time class="published dt-published" datetime="2010-09-26T16:00:47+00:00" title="2010-09-26 16:00">2010-09-26 16:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2010/09/26/twitter-updates-desde-twisted.html#disqus_thread" data-disqus-identifier="cache/posts/2010/09/26/twitter-updates-desde-twisted.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>Este artículo es una re-edición del publicado el 24/08/2010 ya que cuando lo publiqué, Twitter estaba terminando su proceso apagar el sistema de autenticación básica para pasar al <a href="http://dev.twitter.com/pages/auth_overview" target="_blank">más complejo sistema de la danza oAuth;</a> lo cual convirtió al artículo en inservible. El artículo anterior no está más disponible. Gracias a <a href="http://www.pupeno.com" target="_blank">Pupeno</a> por revisar esta versión.
+<p></p></em>
+<p>¿Tenés un servidor escrito en <a href="http://twistedmatrix.com" target="_blank">Twisted</a>? ¿Tenés eventos críticos o importantes que mandás por mail o a celulares? ¿Qué tal publicarlos en <a href="http://www.twitter.com" target="_blank">Twitter</a>?</p>
+<p>La versión original de este artículo utilizaba la biblioteca <a href="http://github.com/dustin/twitty-twister" target="_blank">Twitty Twister</a>, la única pensada para usar Twitter desde Twisted. Lamentablemente no funciona bien con el nuevo sistema de autenticación de Twitter por lo que voy a usar <a href="http://github.com/joshthecoder/tweepy" target="_blank">Tweepy</a>, una librería con la cual hacer la danza de oAuth es muy sencillo.</p>
+<p>1) <a href="https://twitter.com/signup" target="_blank">Registrar</a> un usuario dónde publicar las notificaciones.</p>
+<p>2) Con ese usuario, <a href="http://dev.twitter.com/apps/new" target="_blank">registrar una aplicación</a>. Es muy importante usar el mismo usuario para ahorrarnos algunos pasos en la danza oAuth.</p>
+<p>3) De la página de la aplicación creada, tomar la siguiente información: consumer key, consumer secret (desde la home de la aplicación), access token y access token secret (de la página My Access Token).</p>
+<p>4) Código:</p>
+<p>Con los datos del punto 3, creamos el módulo <strong>twitterupdates.py</strong>:</p>
+<pre>import tweepy
+
+
+
+TWITTER_KEY = 'xxxxxxxxxxxxxxxx'
+
+TWITTER_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+
+
+auth = tweepy.OAuthHandler(TWITTER_KEY, TWITTER_SECRET)
+
+auth.set_access_token(MY_KEY, MY_SECRET)
+
+twitter = tweepy.API(auth)</pre>
+
+<p>y desde nuestra aplicación Twisted lo importamos:</p>
+<pre>from twitterupdates import twitter</pre>
+
+<p>Postear una actualización en Twitter o cualquier otra petición a un servidor externo tiene una naturaleza bloqueante y en un framework de concurrencia colaborativa, como es Twisted, no podemos darnos ese lujo. Para solucionar esto, utilizamos <a href="http://twistedmatrix.com/documents/10.1.0/api/twisted.internet.threads.deferToThread.html" target="_blank">deferToThread</a>:</p>
+<pre>deferToThread(twitter.update_status, "Mensaje a postear en Twitter")</pre>
+
+<p>Esta llamada retorna un objeto <a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank">Deferred</a> al cual se le pueden añadir callbacks o errbacks. La llamada bloqueante es corrida en un hilo aparte.</p>
+<p>Enjoy!</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-41.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-39.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Aprendiendo Prolog)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/aprendiendo-prolog.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:15 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Videos de las charlas en Junín</title><link>http://www.juanjoconti.com.ar/posts/2010/12/01/videos-de-las-charlas-en-junin.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Los amigos del LugJU han publicado los videos de todas las charlas realizadas en su último evento de Software Libre. Se pasaron!&lt;/p&gt;
+&lt;p&gt;Este es el video de mi charla &lt;a href="http://www.juanjoconti.com.ar/2010/11/06/charla-desarrollando-aplicaciones-de-red-con-twisted/" target="_blank"&gt;Desarrollando aplicaciones de red con Twisted&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;p&gt;&lt;embed src="http://blip.tv/play/AYKQ%2BksC" type="application/x-shockwave-flash" width="480" height="414" allowscriptaccess="always" allowfullscreen="true"&gt;&lt;/embed&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;Y también están &lt;a href="http://unnoba.blip.tv/posts?view=archive&amp;amp;nsfw=dc" target="_blank"&gt;el resto de las charlas&lt;/a&gt;!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>Aprendiendo Python</category><category>Eventos</category><category>Twisted</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2010/12/01/videos-de-las-charlas-en-junin.html</guid><pubDate>Wed, 01 Dec 2010 21:07:49 GMT</pubDate></item><item><title>Mis charlas en PyConAr2010</title><link>http://www.juanjoconti.com.ar/posts/2010/10/16/mis-charlas-en-pyconar2010.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy, en el primer día de &lt;a href="http://ar.pycon.org/2010/about/" target="_blank"&gt;PyCon Argentina, en Córdoba&lt;/a&gt;, me tocó dar 2 charlas programadas y de yapa una charla relámpago. Les dejo mis slides:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.juanjoconti.com.ar/files/charlas/TaintModePyConAr2010.pdf"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Taint Mode en Python&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;: Taint Mode es un modo de ejecución de algunos lenguajes de programación que permiten advertirle al programador sobre potenciales problemas de seguridad en su código. La charla: repaso de conceptos, discusiones sobre implementaciones, como funciona nuestra biblioteca y su API.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.juanjoconti.com.ar/files/charlas/DecoradoresPyConAr2010.pdf"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Entendiendo decoradores en Python&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;: los decoradores son una herramienta muy potente que viene con el lenguaje y permiten introducir cambios en código ya escrito de una forma poco intrusiva; sirven por ejemplo para hacer programación orientada a aspectos en Python. La charla: objetos, funciones, decoradores, decoradores con parámetros, clases decoradoras, decorando clases.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://svn.juanjoconti.com.ar/dyntaint/trunk/webdemo/"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Demo en Taint Mode en Python&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;: mostré  2 slides de la primer charla más una aplicación demo que sirve de prueba de concepto para mostrar que todo lo que dije antes funciona.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;&lt;strong&gt;update:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://picasaweb.google.com/copybin/Pycon2010Dia1" target="_blank"&gt;Fotos del primer día.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2010/10/DSCF7073.jpg"&gt;&lt;img class="aligncenter size-large wp-image-2886" title="DSCF7073" src="http://www.juanjoconti.com.ar/wp-content/uploads/2010/10/DSCF7073-1024x768.jpg" alt="" width="640" height="480"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>charlas</category><category>Eventos</category><category>PyAr</category><category>pycon</category><category>PyConAr2010</category><guid>http://www.juanjoconti.com.ar/posts/2010/10/16/mis-charlas-en-pyconar2010.html</guid><pubDate>Sat, 16 Oct 2010 02:22:17 GMT</pubDate></item><item><title>Entorno de desarrollo SWI-Prolog</title><link>http://www.juanjoconti.com.ar/posts/2009/12/01/entorno-de-desarrollo-swi-prolog.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Uso &lt;a href="http://www.swi-prolog.org/" target="_blank"&gt;SWI-Prolog&lt;/a&gt;, una de las implementaciones más potentes y populares del lenguaje. Para Windows, está disponible un &lt;a href="http://lakk.bildung.hessen.de/netzwerk/faecher/informatik/swiprolog/indexe.html" target="_blank"&gt;entorno de desarrollo&lt;/a&gt; compuesto básicamente por:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Un panel dónde escribir código con resaltado de sintáxis.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Botones para hacer cosas como consultar el archivo que estamos editando (esto es compilarlo y cargarlo en memoria para poder hacer consultas sobre él).&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Un panel dónde realizar consultas.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;En los sistemas operativos basados en Linux (como Ubuntu) no existe un entorno similar. Los programadores full-time Prolog &lt;a href="http://lakk.bildung.hessen.de/netzwerk/faecher/informatik/swiprolog/indexe.html" target="_blank"&gt;deben tener su forma de solucionarlo&lt;/a&gt;. Yo encontré la mía. Puede no ser la mejor, pero es más cómoda que tipear por un lado, tener el intérprete abierto por otro e ir consultando luego de cada modificación.&lt;/p&gt;
+&lt;p&gt;De hecho, la misma implementación trae algunas primitivas útiles que se pueden usar desde el lenguaje. Por ejemplo:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- consult('cats.pdb').
+
+% cats.pdb compiled 0.01 sec, 1,664 bytes
+
+true.&lt;/pre&gt;
+
+&lt;p&gt;compilará el archivo cats.pdb y los hechos y reglas definidos en él estarán disponibles para nuestras consultas. Si modificamos el archivo fuente, luego debemos hacer:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- reconsult('cats.pdb').
+
+% cats.pdb compiled 0.00 sec, 0 bytes
+
+true.&lt;/pre&gt;
+
+&lt;p&gt;para que las modificaciones tengan efecto. Encontré otro predicamo muy útil:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- edit('cats.pdb').
+
+% Waiting for editor ...
+
+% Running make to reload modified files
+
+% /home/juanjo/prolog/cats.pdb compiled 0.00 sec, 124 bytes
+
+% Scanning references for 1 possibly undefined predicates
+
+true.&lt;/pre&gt;
+
+&lt;p&gt;Abrirá el editor por defecto configurado en la computadora, nos permitirá editar el archivo y cuando lo guardemos retorna true al intérprete. Ahora lo que antes hacíamos a mano, podemos hacerlo desde el intérprete. Un avance, pero se pone mejor: podemos usar estos predicados Prolog para escribir una regla que haga todo por nosotros. Yo uso:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;myedit(File) :-
+
+edit(File), reconsult(File).
+
+myedit(File) :-
+
+edit(file(File)), reconsult(File).&lt;/pre&gt;
+
+&lt;p&gt;¿Cómo funciona? Primero notemos que son dos reglas. La primera recibe un nombre de archivo e intenta editarlo, si el archivo existe se abre el editor, editamos, cuando lo guardamos edit(File) evalúa true y se pasa al siguiente hecho que reconsulta el archivo y listo.&lt;/p&gt;
+&lt;p&gt;Si el archivo no existe, la primer regla no termina y se pasa a la segunda. file(File) se encarga de crearlo y edit podrá editarlo, trabajamos y todo termina como en el caso anterior.&lt;/p&gt;
+&lt;p&gt;Podemos escribir este código en el archivo .plrc de nuestra home para que sea cargado al iniciar el intérprete. Finalmente si utilizamos la extensión .pdb, vim se encarga de cargar el resaltado correspondiente a la sintácis de Prolog.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>programación</category><category>prolog</category><guid>http://www.juanjoconti.com.ar/posts/2009/12/01/entorno-de-desarrollo-swi-prolog.html</guid><pubDate>Tue, 01 Dec 2009 22:35:26 GMT</pubDate></item><item><title>Prolog, un lenguaje realmente diferente</title><link>http://www.juanjoconti.com.ar/posts/2009/11/27/prolog-un-lenguaje-realmente-diferente.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace unos años escuché una charla de &lt;a href="http://pupeno.com/" target="_blank"&gt;Pupeno&lt;/a&gt; titulada "Lips, un lenguaje diferente". Fue una charla muy interesante y realmente logró sorprender a muchos de la audiencia con distintas características de Lisp.&lt;/p&gt;
+&lt;p&gt;Sin embargo, creo que &lt;a href="http://www.lisp.org" target="_blank"&gt;Lisp&lt;/a&gt; no es &lt;em&gt;tan&lt;/em&gt; diferente a otros lenguajes. Ok, se basa en un paradigma (el &lt;a href="http://en.wikipedia.org/wiki/Functional_programming" target="_blank"&gt;funcional&lt;/a&gt;) distinto al que se basa la mayoría (lideran los rankings el &lt;a href="http://en.wikipedia.org/wiki/Procedural_programming" target="_blank"&gt;paradigma procedural&lt;/a&gt; y el &lt;a href="http://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank"&gt;paradigma orientado a objetos&lt;/a&gt;). Pero aún así, no está tan lejos. De hecho, muchos lenguajes de programación &lt;a title="ver sección What Made Lisp Different" href="http://www.paulgraham.com/icad.html" target="_blank"&gt;tienden a Lisp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Prolog es el lenguaje más conocido, y otros prácticamente no se mencionan, del &lt;a href="http://en.wikipedia.org/wiki/Logic_programming" target="_blank"&gt;paradigma lógico&lt;/a&gt;. No es un paradigma imperativo (como los anteriormente mencionados) en el cual debemos decirle a la computadora &lt;em&gt;cómo&lt;/em&gt; resolver un problema (poné en esta variable este valor multiplicado por dos, iterá hasta que n sea igual a 10, etc...) sino que es un paradigma declarativo: simplemente se plantean afirmaciones sobre los objetos y sus relaciones.&lt;/p&gt;
+&lt;p&gt;Un programa Prolog está compuesto de dos partes: una base de conocimiento + consultas contra esta. Ambas partes se escriben utilizando la misma sintaxis. Una vez que se tiene escrita la base de conocimientos, esta es compilada o interpretada y ya está lista para qué se realicen consultas contra ella.&lt;/p&gt;
+&lt;p&gt;Los siguientes son 3 ejemplos básicos de programas Prolog.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h4&gt;Base de conocimiento familiar&lt;/h4&gt;
+&lt;p&gt;Vamos a utilizar Prolog para armar una base de conocimiento con relaciones familiares. Empezamos con hechos; se expresan las relaciones &lt;code&gt;padre&lt;/code&gt; y &lt;code&gt;madre&lt;/code&gt;:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;padre(raul, juanjo).
+
+padre(raul, marisu).
+
+madre(susana, juanjo).
+
+madre(susana, marisu).
+
+madre(nieve, raul).&lt;/pre&gt;
+
+&lt;p&gt;Y una regla, que se lee: X es abuela de Y si X es madre de Z y Z es madre de Y ó X es padre de Y.&lt;/p&gt;
+&lt;pre lang="prolog"&gt;abuela(X, Y) :- madre(X, Z), madre(Z, Y).
+
+abuela(X, Y) :- madre(X, Z), padre(Z, Y).&lt;/pre&gt;
+
+&lt;p&gt;Con esta base definida, podemos compilarla y hacerle consultas. ¿De quiénes es padre raul?&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- padre(raul, X).
+
+X = juanjo ;
+
+X = marisu.&lt;/pre&gt;
+
+&lt;p&gt;¿Quién es abuela de quién?&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- abuela(X,Y).
+
+X = nieve,
+
+Y = juanjo ;
+
+X = nieve,
+
+Y = marisu.&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;nota: por lo general, la interfaz de Prolog nos da la primer respuesta que encuentra y con &lt;code&gt;;&lt;/code&gt; le pedimos la siguiente.&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Factorial&lt;/h4&gt;
+
+&lt;p&gt;Definir un predicado que calcule el factorial de un número es bastante directo en Prolog. Si tenés que explicar la función factorial a alguien le decís: el factorial de 0 es 1. El factorial de N es N por el factorial de N - 1. Escribimos eso en Prolog:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;factorial(0, 1) :- !.
+
+factorial(N, F) :- N1 is N - 1, factorial(N1, F1), F is N*F1.&lt;/pre&gt;
+
+&lt;p&gt;Con este programa compilado, podemos hacer las siguientes consultas:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- factorial(0, N).
+
+N = 1.
+
+?- factorial(6, N).
+
+N = 720.
+
+?- factorial(6, 555).
+
+false.&lt;/pre&gt;
+
+&lt;p&gt;Podemos pedir el factorial de un número e indicar la variable dónde obtener la respuesta o consultar con un predicado sin variables (ground) y obtener como respuesta el valor de verdad de la misma.&lt;/p&gt;
+&lt;h4&gt;Concatenar listas&lt;/h4&gt;
+
+&lt;p&gt;Un tipo de dato poderoso que incorpora Prolog son las listas. Podemos definir un predicado que concatene listas. Lo vamos a llamar concatenar y tendrá 3 argumentos: las dos listas a concatenar y el resultado de la operación. Luego podremos usar el predicado de esta forma:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;?- concatenar([1,2], [4,5,6], L).
+
+L = [1, 2, 4, 5, 6].
+
+
+
+?- concatenar(X, Y, [4,5,6]).
+
+X = [],
+
+Y = [4, 5, 6] ;
+
+X = [4],
+
+Y = [5, 6] ;
+
+X = [4, 5],
+
+Y = [6] ;
+
+X = [4, 5, 6],
+
+Y = [] ;
+
+false.&lt;/pre&gt;
+
+&lt;p&gt;Definir este predicado en Prolog es muy sencillo:&lt;/p&gt;
+&lt;pre lang="prolog"&gt;concatenar([],L,L).
+
+concatenar([X|L1],L2,[X|L3]):-concatenar(L1,L2,L3).&lt;/pre&gt;
+
+&lt;p&gt;Tiene dos partes y se lee así:&lt;/p&gt;
+&lt;p&gt;Concatenar la lista vacía con L, da como resultado L.&lt;/p&gt;
+&lt;p&gt;Concatenar una lista cuya cabeza es X y cola L1 con L2, da como resultado la lista de cabeza X y cola L3 SI el resultado de concatenar L1 con L2 es L3.&lt;/p&gt;
+&lt;h4&gt;Fin del tour&lt;/h4&gt;
+
+&lt;p&gt;Este fue un tour acelerado por Prolog, tuvo como objetivo mostrárselo a quienes no lo conocen, dejarles el gusto en la boca y ganas de mas. ¿Lo logré? ¿No conocías Prolog? ¿Qué pensás ahora?&lt;/p&gt;
+&lt;h4&gt;Tutoriales y otros enlaces&lt;/h4&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://www.cse.unsw.edu.au/~billw/prologdict.html"&gt;Prolog Dictionary&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://www.amzi.com/AdventureInProlog/a1start.htm" target="_blank"&gt;Aprendé Prolog programando un juego!&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/" target="_blank"&gt;Un gran tutorial&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h4&gt;Notas&lt;/h4&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;Conocí Prolog cursando Paradigmas de Programación, una materia de segundo año de Ingeniería en Sistemas de Información&lt;/li&gt;
+
+    &lt;li&gt;Este no es mi primer post exclusivo sobre Prolog, de hecho &lt;a href="http://www.juanjoconti.com.ar/2005/09/24/el-capitan-julio-cesar/" target="_blank"&gt;es el segundo&lt;/a&gt;.&lt;/li&gt;
+
+    &lt;li&gt;Podés conocer más sobre Prolog &lt;a href="http://stackoverflow.com/questions/tagged/prolog" target="_blank"&gt;leyendo preguntas y respuestas en StackOverflow.com&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>prolog</category><guid>http://www.juanjoconti.com.ar/posts/2009/11/27/prolog-un-lenguaje-realmente-diferente.html</guid><pubDate>Fri, 27 Nov 2009 00:03:37 GMT</pubDate></item><item><title>El Capitán Julio César</title><link>http://www.juanjoconti.com.ar/posts/2005/09/24/el-capitan-julio-cesar.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Estos días me estuvo visitando mi amigo Joel Lorenzatti, estudia filosofía en la &lt;a href="http://www.unr.edu.ar"&gt;Universidad Nacional de Rosario&lt;/a&gt; y vino a exponer un trabajo en unas jornadas que ser realizaron aca en Santa Fe.&lt;/p&gt;
+&lt;p&gt;Le interesa la lógica, así que le estuve mostrando el lenguaje de programación Prolog, y escarbando entre algunos códigos que escribí, encontré uno muy lindo llamado El Capitán Julio César y es un ejercicio del tipo de encontrar múltiples caminos dadas algunas condiciones. &lt;/p&gt;
+&lt;p&gt;Dejo el &lt;a href="http://firebirds.com.ar/~juanjo/wordpress/files/julio.prolog"&gt;código fuente&lt;/a&gt; para que quien quiera lo pruebe.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Prolog</category><category>Facultad</category><category>prolog</category><guid>http://www.juanjoconti.com.ar/posts/2005/09/24/el-capitan-julio-cesar.html</guid><pubDate>Sat, 24 Sep 2005 18:15:34 GMT</pubDate></item></channel></rss>

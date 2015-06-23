@@ -1,0 +1,31 @@
+<p><html><body><p>Otra cosa que leí es el apéndice A de <a href="http://gnosis.cx/TPiP">TPiP </a>: <a href="http://gnosis.cx/TPiP/appendix_a.txt">A Selective and Impressionistic Short Review of Python</a>. Encontré muchas cosas interesantes que no conocía y encontré algunas cosas sobre programación funcional que estaba buscando: funciones anónimas, lambda, map, filter y reduce... siga leyendo!</p>
+<!--more-->
+
+<p><strong>Funciones anónimas:</strong></p>
+<p>Python toma de la programación funcional la posibilidad de definir funciones anónimas,</p>
+<p>la desventaja de estas es que solo las podremos usar una vez, no podemos invocarlas por su nombre, no tienen :-)</p>
+<p>Pero justamente esta es la idea, no tener que definir funciones (simples) que solo se usaran una vez, para usar por </p>
+<p>ejemplo (aquí es donde las estoy usando) en funciones que esperan funciones como algunos de sus argumentos (ej: map, filter)</p>
+<p>Estas fucniones no pueden (de forma natural) ejecutar más de una sentencia.</p>
+<p>Ejemplos para probar en el intérprete:</p>
+<p>Ejemplo 1:</p>
+<p></p><pre></p>
+<p>&gt;&gt;&gt; lambda x: x+1 # x es el argumento de la función anónima</p>
+<p><em>function _lambda</em> at 0x40219e2c_</pre></p>
+<p>Si bien la función fue definida, ya no podemos usarla, no tenemos como referenciarla.</p>
+<p>Ejemplo 2:</p>
+<pre>&gt;&gt;&gt; map(lambda x: x+1, [0, 1, 2, 3])
+
+[1, 2, 3, 4]</pre>
+
+<p>Ejemplo 3: una forma de darle un nombre a una función definida mediante 'lambda'</p>
+<pre>&gt;&gt;&gt; nombre = lambda x: x+1
+
+&gt;&gt;&gt; nombre(5)
+
+6
+
+</pre>
+
+<p><strong>map, filter y reduce:</strong></p>
+<p>Escribí un script con ejemplos sobre estas funciones: <a href="../../../../files/python/funcionesPF.py.html">funcionesPF.py</a></body></html></p>

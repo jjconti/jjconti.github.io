@@ -1,0 +1,161 @@
+<p><html><body><p>Todo empezó con <a href="http://www.gleducar.org.ar/pipermail/gleducar/2006-September/003388.html">este mail en la lista del Gleducar</a>.</p>
+<!--more-->
+
+<p>La entrada: una lista de palabras representables en una calculadora normal simplemente girando el display. </p>
+<p>Esto parece algo sin mucha utilidad, pero esta técnica es utilizada en muchos dispositivos con capacidades gráficas reducidas para mostrar mensajes de error u otra informaición adicional a la salida numérica.</p>
+<p>En este archivo están las palabras a procesar enviadas a la lista de correos (en la selección original de palabras no se incluyeron aquellas con la letra 'z', pero también podrían haber sido elejidas para representar en Alfabeto Calculadora): <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/palabras.txt">palabras.txt</a></p>
+<p></p><h2>El programa</h2></p>
+<p>Almuerzo de por medio escribí este código y lo mandé a la lista del Gleducar como respuesta al reto: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/alfabeto_calc.py.html">alfabeto_calc.py</a> (<strong>update:</strong> tiene la corrección que me sugirió Alecu)</p>
+<p>La forma de representación que elejí es esta: tomar todas las letras y conviértalas a mayúsculas excepto a la 'h' ('h' puede representarse con un '4' de calculadora invertido, pero 'H' no se puede representar con ningún número). Podemos representar la 'l' en minúsculas o en mayúscula ('L'), al usar la mayúscula y representarla con el '7', nos guardamos el '1' para la 'I'. Una vez que se tiene la palabra en formato <em>upper_except_h</em> cambiar cada letra por el número correspondiente e invertir el orden de los números.</p>
+<h2>Links para leer un poco más</h2>
+
+<ul>
+
+    <li><a href="http://en.wikipedia.org/wiki/List_of_calculator_words">http://en.wikipedia.org/wiki/List_of_calculator_words</a></li>
+
+    <li><a href="http://en.wikipedia.org/wiki/Calculator_spelling">http://en.wikipedia.org/wiki/Calculator_spelling</a></li>
+
+</ul>
+
+<h2>Resultado</h2>
+
+<p>Esta es la salida que se obtiene al correr el programa en una terminal con el archivo <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/palabras.txt">palabras.txt</a> en el mismo directorio:</p>
+<p>be = BE = 38</p>
+<p>bebe = BEBE = 3838</p>
+<p>bebible = BEBIBLE = 3781838</p>
+<p>beisbol = BEISBOL = 7085138</p>
+<p>belio = BELIO = 01738</p>
+<p>bello = BELLO = 07738</p>
+<p>beso = BESO = 0538</p>
+<p>bielgo = BIELGO = 097318</p>
+<p>bilioso = BILIOSO = 0501718</p>
+<p>bilis = BILIS = 51718</p>
+<p>biologo = BIOLOGO = 0907018</p>
+<p>bis = BIS = 518</p>
+<p>bisbiseo = BISBISEO = 03518518</p>
+<p>bisel = BISEL = 73518</p>
+<p>biso = BISO = 0518</p>
+<p>bobilis = BOBILIS = 5171808</p>
+<p>bobillo = BOBILLO = 0771808</p>
+<p>bobo = BOBO = 0808</p>
+<p>bohio = BOhIO = 01408</p>
+<p>boi = BOI = 108</p>
+<p>bolillo = BOLILLO = 0771708</p>
+<p>bollo = BOLLO = 07708</p>
+<p>bolo = BOLO = 0708</p>
+<p>bolsillo = BOLSILLO = 07715708</p>
+<p>bolso = BOLSO = 05708</p>
+<p>e = E = 3</p>
+<p>eh = Eh = 43</p>
+<p>el = EL = 73</p>
+<p>ele = ELE = 373</p>
+<p>elegible = ELEGIBLE = 37819373</p>
+<p>eliseo = ELISEO = 035173</p>
+<p>elisio = ELISIO = 015173</p>
+<p>elle = ELLE = 3773</p>
+<p>ello = ELLO = 0773</p>
+<p>elogio = ELOGIO = 019073</p>
+<p>elogioso = ELOGIOSO = 05019073</p>
+<p>eolio = EOLIO = 01703</p>
+<p>es = ES = 53</p>
+<p>ese = ESE = 353</p>
+<p>eso = ESO = 053</p>
+<p>gel = GEL = 739</p>
+<p>geologo = GEOLOGO = 0907039</p>
+<p>giboso = GIBOSO = 050819</p>
+<p>gil = GIL = 719</p>
+<p>gili = GILI = 1719</p>
+<p>gis = GIS = 519</p>
+<p>globo = GLOBO = 08079</p>
+<p>globoso = GLOBOSO = 0508079</p>
+<p>gobio = GOBIO = 01809</p>
+<p>gol = GOL = 709</p>
+<p>goloso = GOLOSO = 050709</p>
+<p>he = hE = 34</p>
+<p>helio = hELIO = 01734</p>
+<p>heliosis = hELIOSIS = 51501734</p>
+<p>hibleo = hIBLEO = 037814</p>
+<p>hiel = hIEL = 7314</p>
+<p>hielo = hIELO = 07314</p>
+<p>higo = hIGO = 0914</p>
+<p>hilo = hILO = 0714</p>
+<p>hiogloso = hIOGLOSO = 05079014</p>
+<p>hobo = hOBO = 0804</p>
+<p>ibis = IBIS = 5181</p>
+<p>ilegible = ILEGIBLE = 37819371</p>
+<p>ileo = ILEO = 0371</p>
+<p>ileso = ILESO = 05371</p>
+<p>le = LE = 37</p>
+<p>legible = LEGIBLE = 3781937</p>
+<p>lego = LEGO = 0937</p>
+<p>leible = LEIBLE = 378137</p>
+<p>lelili = LELILI = 171737</p>
+<p>lelo = LELO = 0737</p>
+<p>leo = LEO = 037</p>
+<p>les = LES = 537</p>
+<p>lesbio = LESBIO = 018537</p>
+<p>leso = LESO = 0537</p>
+<p>libelo = LIBELO = 073817</p>
+<p>libio = LIBIO = 01817</p>
+<p>liego = LIEGO = 09317</p>
+<p>ligio = LIGIO = 01917</p>
+<p>lilili = LILILI = 171717</p>
+<p>lio = LIO = 017</p>
+<p>lioso = LIOSO = 05017</p>
+<p>lis = LIS = 517</p>
+<p>lisis = LISIS = 51517</p>
+<p>liso = LISO = 0517</p>
+<p>lo = LO = 07</p>
+<p>lobo = LOBO = 0807</p>
+<p>loboso = LOBOSO = 050807</p>
+<p>logis = LOGIS = 51907</p>
+<p>o = O = 0</p>
+<p>obelo = OBELO = 07380</p>
+<p>obeso = OBESO = 05380</p>
+<p>oboe = OBOE = 3080</p>
+<p>obolo = OBOLO = 07080</p>
+<p>obseso = OBSESO = 053580</p>
+<p>oh = Oh = 40</p>
+<p>oible = OIBLE = 37810</p>
+<p>oislo = OISLO = 07510</p>
+<p>ole = OLE = 370</p>
+<p>oleo = OLEO = 0370</p>
+<p>oleoso = OLEOSO = 050370</p>
+<p>os = OS = 50</p>
+<p>oseo = OSEO = 0350</p>
+<p>oso = OSO = 050</p>
+<p>se = SE = 35</p>
+<p>sebe = SEBE = 3835</p>
+<p>sebillo = SEBILLO = 0771835</p>
+<p>sebo = SEBO = 0835</p>
+<p>seboso = SEBOSO = 050835</p>
+<p>seis = SEIS = 5135</p>
+<p>seise = SEISE = 35135</p>
+<p>sello = SELLO = 07735</p>
+<p>seo = SEO = 035</p>
+<p>ses = SES = 535</p>
+<p>seseo = SESEO = 03535</p>
+<p>sesgo = SESGO = 09535</p>
+<p>seso = SESO = 0535</p>
+<p>si = SI = 15</p>
+<p>sibil = SIBIL = 71815</p>
+<p>sieso = SIESO = 05315</p>
+<p>sigilo = SIGILO = 071915</p>
+<p>sigiloso = SIGILOSO = 05071915</p>
+<p>siglo = SIGLO = 07915</p>
+<p>silbo = SILBO = 08715</p>
+<p>silboso = SILBOSO = 0508715</p>
+<p>silesio = SILESIO = 0153715</p>
+<p>silo = SILO = 0715</p>
+<p>siseo = SISEO = 03515</p>
+<p>so = SO = 05</p>
+<p>sobeo = SOBEO = 03805</p>
+<p>sobo = SOBO = 0805</p>
+<p>sois = SOIS = 5105</p>
+<p>sol = SOL = 705</p>
+<p>soleo = SOLEO = 03705</p>
+<p>solio = SOLIO = 01705</p>
+<p>solo = SOLO = 0705</p>
+<p>sos = SOS = 505</p>
+<p>sosiego = SOSIEGO = 0931505</p>
+<p>soso = SOSO = 0505 </body></html></p>

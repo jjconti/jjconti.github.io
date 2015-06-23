@@ -1,0 +1,45 @@
+<p><html><body><p>&gt;&gt;&gt; def typer(t):</p>
+<p>...     def _typer(f):</p>
+<p>...             def inner(<em>args, </em>*kwargs):</p>
+<p>...                     r = f(<em>args, </em>*kwargs)</p>
+<p>...                     return t(r)</p>
+<p>...             return inner</p>
+<p>...     return _typer</p>
+<p>... </p>
+<p>&gt;&gt;&gt; @typer(str):</p>
+<p>File "<stdin>", line 1</p>
+<pre class="code literal-block">@typer(str):
+
+           ^
+</pre>
+
+
+<p>SyntaxError: invalid syntax</p>
+<p>&gt;&gt;&gt; @typer(str)</p>
+<p>... def count():</p>
+<p>...     return 42</p>
+<p>... </p>
+<p>&gt;&gt;&gt; count()</p>
+<p>'42'</p>
+<p>&gt;&gt;&gt; k = lambda f: lambda *a, <strong>kw: str(f(*a, </strong>kw))</p>
+<p>&gt;&gt;&gt; @k</p>
+<p>... def count():</p>
+<p>...     return 34</p>
+<p>... </p>
+<p>&gt;&gt;&gt; count()</p>
+<p>'34'</p>
+<p>&gt;&gt;&gt; k = lambda t: lambda f: lambda *a, <strong>kw: t(f(*a, </strong>kw))</p>
+<p>&gt;&gt;&gt; @k(str)</p>
+<p>... def count():</p>
+<p>...     return 55</p>
+<p>... </p>
+<p>&gt;&gt;&gt; count()</p>
+<p>'55'</p>
+<p>&gt;&gt;&gt; @k(list)</p>
+<p>... def nombre():</p>
+<p>...     return "Juanjo"</p>
+<p>... </p>
+<p>&gt;&gt;&gt; nombre()</p>
+<p>['J', 'u', 'a', 'n', 'j', 'o']</p>
+<p>&gt;&gt;&gt; </p>
+<p></stdin></p></body></html></p>

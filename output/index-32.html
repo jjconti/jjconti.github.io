@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 32) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-32.html">
+
+
+
+        <link rel="prev" href="index-33.html" type="text/html">
+        <link rel="next" href="index-31.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/11/02/conjuntos-en-python.html" class="u-url">Conjuntos en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/11/02/conjuntos-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-11-02T00:58:30+00:00" title="2009-11-02 00:58">2009-11-02 00:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/11/02/conjuntos-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/11/02/conjuntos-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Cuando estaba preparando mi <a href="http://www.juanjoconti.com.ar/2009/10/21/charla-bienvenido-a-python-en-instituto-libre-09" target="_blank">charla introductoria a Python</a>, le pasé mis slides a un amigo para que me diga su opinión y una de las cosas que me dijo fue</p>
+<p></p>
+<blockquote>Nunca senti que set sea algo nativo de python, le daria mas importancia a los diccionarios, aunque tal vez tu publico este mas interesado en sets, no lo se.</blockquote>
+<p>Me sorprendió el comentario. Para mi, set es un tipo de dato muy útil y poderoso. En este post voy a intentar hacer una apología de set, el tipo de dato que incorpora Python para representar la noción matemática de conjunto.</p>
+<!--more-->
+
+<h3>Presentación</h3>
+
+<p>Un objeto set es una colección sin orden de objetos <a href="http://docs.python.org/glossary.html#term-hashable" target="_blank"><em>hasheables</em></a>. Puede contener objetos de todos los tipos inmutables de Python, pero no los contenedores mutables como listas. También puede contener objetos de clases definidas por el usuario (Los objetos instancias de clases definidas por el usuario son por defecto hasheables.).</p>
+<p>Los conjuntos se pueden crear, por ejemplo, a partir de una lista. Podemos quitar elementos (al azar o uno en concreto) o agregarlos:</p>
+<pre>&gt;&gt;&gt; heladera = ['huevo', 'huevo', 'queso', 'leche', 'pera', 'pera', 'pera']
+
+&gt;&gt;&gt; alimentos = set(heladera)
+
+&gt;&gt;&gt; alimentos
+
+set(['queso', 'leche', 'huevo', 'pera'])
+
+&gt;&gt;&gt; alimentos.pop()
+
+'queso'
+
+&gt;&gt;&gt; alimentos.remove('leche')
+
+&gt;&gt;&gt; alimentos
+
+set(['huevo', 'pera'])
+
+&gt;&gt;&gt; alimentos.add('empanada')
+
+&gt;&gt;&gt; alimentos
+
+set(['empanada', 'huevo', 'pera'])</pre>
+
+<h3>Prueba de pertenencia</h3>
+
+<p>Otra función muy común y útil es probar la pertenencia de objetos al conjunto:</p>
+<pre>&gt;&gt;&gt; 'empanada' in alimentos
+
+True
+
+&gt;&gt;&gt; 'leche' in alimentos
+
+False
+
+&gt;&gt;&gt; 'leche' not in alimentos
+
+True
+
+</pre>
+
+<h3>Iterar sobre conjuntos</h3>
+
+<p>Podemos interar sobre conjuntos de la misma forma que lo hacemos sobre listas:</p>
+<pre>&gt;&gt;&gt; for a in alimentos:
+
+...     "Debo comer " + a
+
+...
+
+'Debo comer empanada'
+
+'Debo comer huevo'
+
+'Debo comer pera'
+
+</pre>
+
+<h3>Operaciones sobre conjuntos</h3>
+
+<p>Los conjuntos en Python soportan las operaciones típicas de conjuntos: restas, intersección, unión y diferencia simétrica (los elementos que están en uno de los conjuntos, pero no en ambos). <a href="http://es.wikipedia.org/wiki/Teor%C3%ADa_de_conjuntos#Operaciones_con_conjuntos">Repasar operaciones con conjuntos.</a></p>
+<pre>&gt;&gt;&gt; frutas = set(['banana', 'naranja', 'pera'])
+
+&gt;&gt;&gt; frutas - alimentos
+
+set(['banana', 'naranja'])
+
+&gt;&gt;&gt; alimentos - frutas
+
+set(['huevo', 'empanada'])
+
+&gt;&gt;&gt; frutas &amp; alimentos
+
+set(['pera'])
+
+&gt;&gt;&gt; frutas | alimentos
+
+set(['huevo', 'empanada', 'pera', 'banana', 'naranja'])
+
+&gt;&gt;&gt; frutas ^ alimentos
+
+set(['huevo', 'empanada', 'banana', 'naranja'])</pre>
+
+<p>También podemos preguntar sin un conjunto es subconjunto de otro. En los ejemplos se utiliza <code>set()</code>, el conjunto vacío:</p>
+<pre>&gt;&gt;&gt; alimentos &lt; set()
+
+False
+
+&gt;&gt;&gt; set() &lt; alimentos
+
+True
+
+&gt;&gt;&gt; set() &gt; alimentos
+
+False
+
+&gt;&gt;&gt; alimentos &lt;= alimentos
+
+True
+
+</pre>
+
+<h3>El problema de las dos comisiones</h3>
+
+<p>Este problema está basado en un caso real y lo escuché en la charla <a href="http://ar.pycon.org/2009/conference/proposals/24/" target="_blank">Escribí menos código, pensá como un (buen) matemático</a> de Gustavo Carmona (FCEYN - UBA) <sup><a title="bio" href="http://ar.pycon.org/2009/profile/1d73/">bio</a></sup> y Matías A Graña (FCEyN - UBA) <sup><a title="bio" href="http://ar.pycon.org/2009/profile/015c/">bio</a></sup>.</p>
+<p>Se tienen dos archivos de textos con una lista de e-mails en cada uno. Cada archivo tiene los mails de los funcionarios de una comisión; los archivos no están bien depurados, por lo que pueden contener direcciones repetidas; hay funcionarios trabajando en las dos comisiones. Luego de una reunión en la que trabajaron ambas comisiones, se generó un material que se necesita enviar a todos los participantes. ¿Cómo obtener la lista de destinatarios?</p>
+<pre>archivo1
+
+dir1@mail.com
+
+dir2@mail.com
+
+dir3@mail.com
+
+dir1@mail.com</pre>
+
+<pre>archivo2
+
+dir21@mail.com
+
+dir23@mail.com
+
+dir3@mail.com
+
+dir1@mail.com</pre>
+
+<p>Queremos una tercera lista que tenga la primera más la segunda, pero que no estén repetidos.</p>
+<p>El enfoque tradicional que utilizaría un programador para resolver este problema mediante bucles es:</p>
+<pre>def unionlarga(l1, l2):
+
+    l3 = []
+
+    for x in l1:
+
+        if not x in l3:
+
+            l3.append(x)
+
+    for x in l2:
+
+        if not x in l3:
+
+            l3.append(x)
+
+    return l3</pre>
+
+<p>Supongamos que ya tenemos los archivos leídos y almacenamos el contenidos en listas:</p>
+<pre>&gt;&gt;&gt; unionlarga(archivo1, archivo2)
+
+['dir1@mail.com', 'dir2@mail.com', 'dir3@mail.com',
+
+'dir21@mail.com', 'dir23@mail.com']</pre>
+
+<p>La solución es genérica para cualquier lenguaje. Sin embargo, puede lograr una mejor solución utilizando sets en Python:</p>
+<pre>&gt;&gt;&gt; list(set(archivo1) | set(archivo2))
+
+['dir21@mail.com', 'dir3@mail.com', 'dir2@mail.com',
+
+'dir1@mail.com', 'dir23@mail.com']</pre>
+
+<p>Convertimos ambas listas a conjuntos (con lo que se eliminan los repetidos dentro de las listas), realizamos la unión de ambos conjuntos (con lo que se eliminan los repetidos entre listas y finalmente se convierte el resultado en una nueva lista.</p>
+<p><a href="http://docs.python.org/library/stdtypes.html#set-types-set-frozenset" target="_blank">Más sobre conjuntos en la referencia del lenguaje.</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/11/01/fierita-sobre-ubuntu.html" class="u-url">Fierita sobre Ubuntu</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/11/01/fierita-sobre-ubuntu.html" rel="bookmark"><time class="published dt-published" datetime="2009-11-01T14:36:20+00:00" title="2009-11-01 14:36">2009-11-01 14:36</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/11/01/fierita-sobre-ubuntu.html#disqus_thread" data-disqus-identifier="cache/posts/2009/11/01/fierita-sobre-ubuntu.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Con la salida de Ubuntu 9.10 (Karmic Koala) TELEFE emitió una nota al respecto: <a href="http://www.youtube.com/watch?v=UXlKd9beoys">Fierita sobre Ubuntu</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/10/27/5tas-jornadas-de-software-libre-de-junin.html" class="u-url">5tas Jornadas de Software Libre de Junín</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/10/27/5tas-jornadas-de-software-libre-de-junin.html" rel="bookmark"><time class="published dt-published" datetime="2009-10-27T09:44:54+00:00" title="2009-10-27 09:44">2009-10-27 09:44</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/10/27/5tas-jornadas-de-software-libre-de-junin.html#disqus_thread" data-disqus-identifier="cache/posts/2009/10/27/5tas-jornadas-de-software-libre-de-junin.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Este viernes y sábado se llevarán a cabo las 5tas Jornadas de Software Libre de Junín. Habrá <a href="http://www.lugju.com.ar/cronograma.html">charlas muy interesantes!</a> No se la pierdan:</p>
+<p><a href="http://www.lugju.com.ar/"><img src="wp-content/uploads/2009/10/junin-300x150.png" alt="junin" title="junin" width="300" height="150" class="aligncenter size-medium wp-image-1859"></a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/10/21/charla-bienvenido-a-python-en-instituto-libre-09.html" class="u-url">Charla Bienvenido a Python en Instituto Libre 09</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/10/21/charla-bienvenido-a-python-en-instituto-libre-09.html" rel="bookmark"><time class="published dt-published" datetime="2009-10-21T01:28:03+00:00" title="2009-10-21 01:28">2009-10-21 01:28</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/10/21/charla-bienvenido-a-python-en-instituto-libre-09.html#disqus_thread" data-disqus-identifier="cache/posts/2009/10/21/charla-bienvenido-a-python-en-instituto-libre-09.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="wp-content/uploads/2009/10/flying.jpg"><img class="size-medium wp-image-1856 alignright" title="flying" src="wp-content/uploads/2009/10/flying-300x198.jpg" alt="flying" width="300" height="198"></a>El viernes por la tarde se llevó a cabo el evento Instituto Libre 09 en la ciudad de Coronda, más precisamente en el <a title="ISP6" href="http://www.institutocoronda.edu.ar/" target="_blank">Instituto Superior de Profesorado Nº 6 Dr. Leopoldo Chizzini Melo</a>.
+<p>Presenté una charla llamada <strong>Bienvenido a Python</strong>. Es una introducción al lenguaje de programación Python bastante práctica y con muchos ejemplos. Los slides están disponibles en <a href="http://juanjoconti.com.ar/files/charlas/bienvenido-a-python/bienvenido-a-python.pdf" target="_blank">formato pdf</a> bajo una <a title="Atribución-No Comercial-Compartir Obras Derivadas Igual 2.5 Argentina" href="http://juanjoconti.com.ar/files/charlas/bienvenido-a-python/LICENCIA.txt" target="_blank">licencia CC</a>. El documento fue generado a partir de un archivo de texto utilizando <a title="rst2pdf" href="http://code.google.com/p/rst2pdf" target="_blank">rst2pdf</a>.</p>
+<p style="text-align: center;"></p>
+
+<p style="text-align: center;"></p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/10/17/cuadro-de-honor.html" class="u-url">Cuadro de Honor</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/10/17/cuadro-de-honor.html" rel="bookmark"><time class="published dt-published" datetime="2009-10-17T22:49:30+00:00" title="2009-10-17 22:49">2009-10-17 22:49</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/10/17/cuadro-de-honor.html#disqus_thread" data-disqus-identifier="cache/posts/2009/10/17/cuadro-de-honor.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El Jueves viajamos con Ceci a Rosario para participar del evento Cuadro de Honor organizado por la revista <a title="PB" href="http://www.puntobiz.com.ar/" target="_blank">PuntBiz</a>, la fundación del Banco Municipal de Rosario y la consultora Sesa Select. Desde hace 4 años organizan una jornada con los mejores promedios de las universidades de la provincia. Eramos muchos chicos, uno 150 jóvenes profesionales de las más diversas carreras.</p>
+<p>El agasajo se llevó a cabo en el Salón Auditorio de la Bolsa de Comercio de Rosario, hablaron varias personas a las que me gustó escuchar (Gabriel González, director periodístico de PuntoBiz, la Prof. Ana Navarro de Gimbatti y Alejandro Ferrazzuolo, gerente de Select Executives) y terminó con la entrega de diplomas.</p>
+<p><img class="aligncenter size-full wp-image-1833" title="juanjoyceci" src="wp-content/uploads/2009/10/juanjoyceci.jpg" alt="juanjoyceci" width="369" height="662"></p>
+<p><a title="Cuadro de Honor, egresados 2008" href="http://www.puntobiz.com.ar/noticia/articulo/24966.html" target="_blank">Un detalle en la misma revista</a>.</p>
+<p>En la <a href="http://www.aliciaciciliani.com/?p=656" target="_blank">página de la vice ministra Alicia Ciciliani</a> hay varias fotos del evento y asomamos entre la multitud :)</p>
+<p><strong>update: </strong>otra foto linda de ese día.</p>
+<p><img class="aligncenter size-full wp-image-1848" title="3rafila-s" src="wp-content/uploads/2009/10/3rafila-s.jpg" alt="3rafila-s" width="400" height="355"></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/09/18/euler-16.html" class="u-url">Ejercicio 16 - proyecto Euler</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/09/18/euler-16.html" rel="bookmark"><time class="published dt-published" datetime="2009-09-18T00:31:35+00:00" title="2009-09-18 00:31">2009-09-18 00:31</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/09/18/euler-16.html#disqus_thread" data-disqus-identifier="cache/posts/2009/09/18/euler-16.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>De vez en cuando se me da por hacer saries de posts en el blog. Sagas. Una de las últimas fue la saga sobre <a href="http://www.juanjoconti.com.ar/etiqueta/euler/" target="_blank">resoluciones a problemas del proyecto Euler</a>. Lo que intentaba era resolverlos con alguna característica interesante de Python y luego explicarla. Luego de los primeros, los ejercisios se volvieron más matemáticos y encontraba menos cosas interesantes de Python que comentar, así que dejé de postear mis soluciones. Acabo de encontrar esta entre mis archivos y creo que tiene algo de originalidad como para merecer ser publicada:</p>
+<p><em><a href="http://projecteuler.net/index.php?section=problems&amp;id=16" target="_blank">¿Cuál es la suma de los dígitos del número 2^(1000)?</a></em></p>
+<p></p>
+<pre>&gt;&gt;&gt; 2**1000
+<p>107150860718626732094842504906000[algunos números fueron intencionalmente borrados]</p>
+<p>&gt;&gt;&gt; a = 2**1000</p>
+<p>&gt;&gt;&gt; sum((int(x) for x in list(str(a))))</p>
+<p>1366</p></pre>
+<p>¿A alguien se le ocurre otra forma?</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/09/09/software-freedom-day-en-rosario.html" class="u-url">Software Freedom Day en Rosario</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/09/09/software-freedom-day-en-rosario.html" rel="bookmark"><time class="published dt-published" datetime="2009-09-09T23:03:59+00:00" title="2009-09-09 23:03">2009-09-09 23:03</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/09/09/software-freedom-day-en-rosario.html#disqus_thread" data-disqus-identifier="cache/posts/2009/09/09/software-freedom-day-en-rosario.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<img class="aligncenter size-full wp-image-1815" title="sfdflyer" src="wp-content/uploads/2009/09/sfdflyer.jpg" alt="sfdflyer" width="500" height="311">Probablemente asista a este evento. Más información <a href="http://criadoindomable.wordpress.com/2009/09/09/software-freedom-day-2009-rosario/" target="_blank">en el blog de Seba</a>.</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/09/07/charla-taint-mode-en-python.html" class="u-url">Charla: Taint Mode en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/09/07/charla-taint-mode-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-09-07T23:58:38+00:00" title="2009-09-07 23:58">2009-09-07 23:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/09/07/charla-taint-mode-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/09/07/charla-taint-mode-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Estas son los slides (más texto con el grueso de lo que dije) de mi charla en <a href="http://ar.pycon.org/2009/about/" target="_blank">PyCon Argentina 2009</a>. La misma se anunciaba como:</p>
+<p></p>
+<blockquote>Taint Mode es una característica implementada en algunos lenguajes con el objetivo de prevenir que usuarios malintencionados alteren entradas al sistema para lograr la ejecución de comandos no permitidos u otros tipos de ataques.
+<p>En esta charla se introducen los conceptos básicos de Taint Mode y se discute la forma de implementarlo en Python mediante el uso de decoradores. Se muestra una implementación concreta y se analizan sus resultados.</p>
+</blockquote>
+<p><img class="aligncenter size-full wp-image-1769" title="img0" src="wp-content/uploads/2009/09/img0.jpg" alt="img0" width="512" height="384"></p>
+<!--more-->
+
+<p><img class="aligncenter size-full wp-image-1770" title="img1" src="wp-content/uploads/2009/09/img1.jpg" alt="img1" width="512" height="384"></p>
+<p>Cómo digo ahí, no soy un experto en seguridad aunque es un área que me interesa, sino me considero un desarrollador.</p>
+<p>Cómo desarrollador, muchas veces me encuentro dejando de lado la seguridad por cuestiones más apremiantes.</p>
+<p><strong>Por hacer lo urgente, no hacemos lo importante.</strong></p>
+<p>Entonces las fechas límite para entregas, las presiones por incorporar nuevas características, el pago <em>solo</em> por lo que se ve, hace que mucho software salga a la calle sin los más mínimos recaudos de seguridad.</p>
+<p>Esto trae consecuencias graves para muchas organizaciones y personas, como:</p>
+<ul>
+
+    <li>Robo o alteración de información</li>
+
+    <li> Bloqueos en la disponibilidad de un recurso</li>
+
+    <li> Suplantación de identidad</li>
+
+</ul>
+
+<p style="text-align: left;">Formas de mitigar este problema sin duda hay muchas. Una puede ser contar con herramientas que en tiempo de desarrollo permitan verificar la existencia de vulnerabilidades en el código escrito. ¿Qué vulnerabilidades? ¿Todas? Eso sería seguramente imposible. Pero existen herramientas que se especializan en distintos nichos: buffer overflow en C, XSS en PHP.</p>
+
+<p>Empecé a prestarle atención a este tipo de cosas cuestiones cuando empecé a participar de un grupo de investigación sobre seguridad en mi facultad. Yo me estaba postulando para obtener una beca de maestría y una de las condiciones era participar de un grupo de investigación.</p>
+<p>Así que empecé a buscar en Internet papers que relacionen cuestiones de  seguridad con Python, como una forma de encontrar algún tema que me interese y pueda profundizar.</p>
+<p>Encontré algunos papers de 2 investigadores de la Universidad Estatal de Moscú, Andrew Petukhov y Dimitry Kozlov en los que discutían cómo implementar Taint Mode en Python. Si bien su enfoque consistía en modificar el intérprete en C de Python para lograrlo, de su trabajo incorporé la mayoría de los conceptos que voy a mencionar en la primer parte de la charla. A diferencia de ellos, mi implementación de Taint Mode para Python está escrita totalmente en Python.</p>
+<p><img class="aligncenter size-full wp-image-1771" title="img2" src="wp-content/uploads/2009/09/img2.jpg" alt="img2" width="512" height="384"></p>
+<p><img class="aligncenter size-full wp-image-1772" title="img3" src="wp-content/uploads/2009/09/img3.jpg" alt="img3" width="512" height="384"></p>
+<p>El modelo de las manchas intenta describir cómo se comportan los valores que ingresan a un sistema desde el exterior y tiene 3 componentes fundamentales.</p>
+<p><strong>FUENTES NO CONFIABLES, FUNCIONES LIMPIADORAS Y SUMIDEROS SENSIBLES.</strong></p>
+<p>Todo valor que ingresa a un programa desde el exterior, es considerado por defecto como un valor manchado, ya que no sabemos de su procedencia. Decimos que viene de una fuente no confiable. Los valores recibidos desde el exterior pueden haber sido deliberadamente modificados para causar daño o simplemente por error causar un un problema dentro del sistema.Estas manchas se propagan por el programa mediante operaciones como la asignación o la concatenación.</p>
+<p>Las funciones limpiadoras representan los mecanismos que se pueden utilizar dentro de un programa para convertir un valor manchado en un limpio: escapando, codificando o incluso eliminando caracteres sospechosos.</p>
+<p>Los valores manchados no deben ser utilizados para: generar respuestas hacia los clientes o construir comandos a ser utilizados contra servicios externos, como los provistos por el sistema operativo, motores de bases de datos o el mismo intérprete. A estos componentes a los que no queremos que lleguen valores manchados, los denominamos "sumidero sensible".</p>
+<p><img class="aligncenter size-full wp-image-1773" title="img4" src="wp-content/uploads/2009/09/img4.jpg" alt="img4" width="512" height="384"></p>
+<p>Si un valor manchado alcanza un sumidero sensible, entonces existe una vulnerabilidad en el programa.</p>
+<p>De esto se deduce que los valores manchados deben ser limpiados antes de que el flujo del programa los lleve hacia un sumidero sensible.</p>
+<p>Esto es correcto, pero debemos preguntarnos: ¿son todas las manchas iguales? ¿Una función limpiadora puede quitar todas las manchas de un valor? ¿Son todos los sumideros sensibles al mismo tipo de mancha? NO.</p>
+<ul>
+
+    <li> Un valor puede tener más de un tipo de mancha.</li>
+
+    <li>Una función limpiadora, por lo general, limpia un solo tipo de mancha.</li>
+
+    <li>Un sumidero es sensible a un solo tipo de mancha.</li>
+
+</ul>
+
+<p>Cuando un valor ingresa al programa, no sabemos que manchas tiene ¿Debe un desarrollador aplicar todas las funciones limpiadoras a cada valor que procede de una fuente no confiable? No toda función limpiadora es apropiada para procesar todos los valores manchados e incluso hacerlo consumiría recursos en forma innecesaria.</p>
+<p>Una mejor estrategia es, dado un tipo de mancha determinado, aplicar una función limpiadora de esta mancha solo a aquellos valores que alcanzarán un sumidero sensible a la mancha en cuestión.</p>
+<p><img class="aligncenter size-full wp-image-1774" title="img5" src="wp-content/uploads/2009/09/img5.jpg" alt="img5" width="512" height="384"></p>
+<p>En concreto. Este valor está manchado con SQL Injection y no deberíamos dejar que forme parte de una sentencia que se va a ejecutar contra una base de datos. Pero, en principio, no habría problemas en que se use para renderizar una página que será devuelta al usuario.</p>
+<p>Algo similar sucede con este valor. Si bien está manchado para XSS. En principio no habría problemas en que se utilice para generar un comando a ejecutar contra el sistema operativo.</p>
+<p><img class="aligncenter size-full wp-image-1776" title="img7" src="wp-content/uploads/2009/09/img7.jpg" alt="img7" width="512" height="384"></p>
+<p><img class="aligncenter size-full wp-image-1777" title="img8" src="wp-content/uploads/2009/09/img8.jpg" alt="img8" width="512" height="384"></p>
+<p>Tres menciones sobre la implementación antes de ver ejemplos de uso.</p>
+<p>1) Existen 2 formas generales de implementar este tipo de análisis. De forma estática o de forma dinámica. Una implementación estática realiza la detección analizando el texto de un programa, sin ejecutarlo. Mientras que una implementación dinámica, analiza el coportamiento del programa. Esta es una implementación dinámica, por lo que va a requerir que el programa a evaluar sea ejecutado y utilizado: ejecutando manualmente casos de uso o corriendo tests automatizados.</p>
+<p>2) El uso de módulo requiere que sea importado dentro del programa a evaluar y hacer algunas modificaciones en el código fuente. Es intrusivo.</p>
+<p>3) La implementación se basa en el uso de decoradores. Existen decoradores para marcar dentro del programa los 3 tipos de elementos del modelo de las manchas: FUENTES NO CONFIABLES, FUNCIONES LIMPIADORAS Y SUMIDEROS SENSIBLES.</p>
+<p><img class="aligncenter size-full wp-image-1778" title="img9" src="wp-content/uploads/2009/09/img9.jpg" alt="img9" width="512" height="384"></p>
+<p><img class="aligncenter size-full wp-image-1779" title="img10" src="wp-content/uploads/2009/09/img10.jpg" alt="img10" width="512" height="384"></p>
+<p>Cada tipo de mancha con la que va a trabajar el módulo es identificada por un entero. En la lista KEYS que se ve en la pantalla, XSS es identificada con el 0, SQLI con el 1 y así. Esta lista de valores debe ser modificada si se quiere agregar nuevas vulnerabilidades para que sean reconocidas por la herramienta.</p>
+<p>TAINTED es la la estrucutura de datos dónde se lleva el registro de qué variables están manchadas. Es un diccionario dónde las claves son los enteros de la lista KEYS sus valores conjuntos, sets, inicialmente vacíos. Cuando se recibe un valor manchado del exterior, este es almacenado en todos los conjuntos, ya que por defecto tiene todas las manchas y a medida que se va limpiando, es eliminado del conjunto correspondiente.</p>
+<p>STR, en mayúsuculas, es una clase que envuelve a la clase str, en minúsculas, provista por Python. Ya que en Python los strings son inmutables, siempre que se procesa un string, por ejemplo cuando se obtiene un substring, se crea un nuevo objeto. Esta clase es necesaria para sobreescribir los métodos que generan un nuevo string y así hacer que la mancha perdure a lo largo del flujo del programa. Por ejemplo:</p>
+<p><img class="aligncenter size-full wp-image-1780" title="img11" src="wp-content/uploads/2009/09/img11.jpg" alt="img11" width="512" height="384"></p>
+<p>Si a está manchada, y b está limpia. El string que se obtiene de concatenarlos, también está manchado. Lo mismo sucede con otras operaciones sobre strings: multiplicación, rebanada, formateo, métodos como upper que convierten el string a mayúsculas, o split que devuelve una lista de strings. Por ejemplo, si en este último caso 'a' sería un string de palabras separadas por coma, esta llamada al método split devolvería una lista de palabras y cada una estaría manchada.</p>
+<p>Los siguientes elementos a mostrar son los decoradores necesarios para que los elementos del programa manchen variables, las limpien o se alarmen.</p>
+<p><img class="aligncenter size-full wp-image-1781" title="img12" src="wp-content/uploads/2009/09/img12.jpg" alt="img12" width="512" height="384">untrusted es un decorador utilizado para indicar que los valores retornados por una función o método no son confiables. Como los valores no confiables pueden contener potencialmente cualquier tipo de mancha, estos valores son marcados como manchados por todos los tipos de machas.</p>
+<p>Si se tiene acceso a la definición de la función o método, se puede utilizar la sintáxis provista por Python para aplicar el decorador.</p>
+<p>Al usar módulos de terceros, podemos aplicar de todas formas el decorador. Este ejemplo es de un programa que utiliza el framework web.py.</p>
+<p><img class="aligncenter size-full wp-image-1782" title="img13" src="wp-content/uploads/2009/09/img13.jpg" alt="img13" width="512" height="384"></p>
+<p>Algunos frameworks funcionan de una forma diferente: le piden al programador que escriba cierta función o método de forma tal que luego el framework las utiliza para pasarle como parámetro al programa de usuario los valores recibidos desde el exterior. El framework para hacer aplicaciones de red, Twisted, provee un claro ejemplo  cuando se extiende la clase LineOnlyReceiver. Nos pide sobreescribir el método lineReceived, el cual se ejecutará cada vez que se recibe una cadena desde el exterior.</p>
+<p>En estos casos, utilizar el decorador untrusted es engorroso o incluso imposible. En su lugar se debe utilizar el decorador untrusted_args, que recibe 2 argumentos opcionales: una lista de posiciones de argumentos no confiables y una lista de argumentos de palabra clave.</p>
+<p>En el ejemplo se indica que el argumento de posición 1 no es confiable, y debe ser mancado como tal. Entonces cuando se ejecute el método, el valor recibido será manchado.</p>
+<p>Tanto para el decorador untrusted como untrusted_args, se utiliza la siguiente regla para marcar valores:</p>
+<ol>
+
+    <li>Si el valor a manchar es un string, se utiliza para crear una instancia de STR y este objeto es guardado en TAINTED.</li>
+
+    <li>Si el valor es una lista. Se aplica este algoritmo a todos los elementos de la lista y se retorna una nueva lista con el resultado de cada aplicación.</li>
+
+    <li>Si el valor es un diccionario. Se aplica este algoritmo a todos los valores del diccionario y se retorna un nuevo diccionario con las claves originales y los resultados de cada aplicaicón como valores.</li>
+
+</ol>
+
+<p><img class="aligncenter size-full wp-image-1784" title="img14" src="wp-content/uploads/2009/09/img141.jpg" alt="img14" width="512" height="384"></p>
+<p>Una vez que los valores manchados ingresan en el programa, fluirán a lo largo del mismo y en algún momento, puede ser que se encuentren con una función limpiadora como esta. texto_plano elimina las marcas html de un string.</p>
+<p>cleaner es un decorador utilizado para indicar que un método o función tiene la habilidad de limpiar manchas en un valor. Se debe indicar mediante un parámetro el tipo de mancha que la función es capás de limpiar. Como con los otros decoradores, tenemos dos formas de aplicarlo: dependiendo de si tenemos acceso o no a la definición de la función limpiadora.</p>
+<p>Funciona de la siguiente forma: si la función texto_plano decorada se aplica al primer ejemplo, nada cambia. Como el valor retornado es distinto al argumento, un proceso de limpieza fue llevado acabo. El valor argumento sigue en la estructura de datos TAINTED.</p>
+<p>En cambio, si es aplicada al segundo ejemplo, el valor argumento es igual al retornado, no se limpió nada por que no se requería limpiar nada. El valor original, presumido manchado, en realidad no estaba manchado (para XSS) y por eso es removido del conjunto correspondiente.</p>
+<p><img class="aligncenter size-full wp-image-1785" title="img15" src="wp-content/uploads/2009/09/img15.jpg" alt="img15" width="512" height="384"></p>
+<p>Los últimos elementos a marcar en el programa son los sumideros sensibles.</p>
+<p>Se utiliza el decorador ssink para marcar aquellas funciones o métodos que no queremos sean alcanzadas por valores manchados.</p>
+<p>La función eval de Python es un típico ej. de sumidero sensible a ataques de Interpreter Injection, ya que interpreta ciegamente el string que recibe como  argumento.</p>
+<p>Supongamos q nuestro programa es una calculadora e implementamos la funcionalidad de sumar 2 números evaluando el string formado por: un primer valor recibido del exterior, el signo más y un segundo valor recibido desde el exterior. Si los valores no son apropiadamente validados, un atacante, utilizando nuestra calculadora, podría leer el contenido de archivos locales, borrarlos, colgar el programa o cualquier otra cosa que se pueda hacer desde el intérprete de Python.</p>
+<p>Aplicando el decorador a eval podemos detectar cuando esta función es utilizada con un valor no confiable como parámetro. Otra forma de lograr el mismo efecto en el ejemplo sería aplicando el decorador a la función suma en lugar de a eval.</p>
+<p><img class="aligncenter size-full wp-image-1786" title="img16" src="wp-content/uploads/2009/09/img16.jpg" alt="img16" width="512" height="384"></p>
+<p>El segundo ejemplo también es tomado del framework web.py y marca como sumideros sensibles a SQL Injection los métodos delete, select e insert del objeto que accede a la base de datos.</p>
+<p><img class="aligncenter size-full wp-image-1787" title="img17" src="wp-content/uploads/2009/09/img17.jpg" alt="img17" width="512" height="384"></p>
+<p>Con las fuentes inseguras, las funciones limpiadoras y los sumideros sensibles marcados en el programa, podemos ejecutarlo y utilizarlo para ir obteniendo las advertencias sobre posibles problemas de seguridad. Se pueden obtener mensajes de este tipo por la salida estándar, escribir en un archivo o daler cualquier otro destino.</p>
+<p><img class="aligncenter size-full wp-image-1788" title="img18" src="wp-content/uploads/2009/09/img18.jpg" alt="img18" width="512" height="384"></p>
+<p>Algunas otras cosas que podemos encontrar con/en el módulo:</p>
+<ul>
+
+    <li>una batería de más de 80 tests que prueban su funcionalidad</li>
+
+    <li>la posibilidad de definir la función que se ejecutará cuando una variable manchada con X alcanza un sumidero sensible a X</li>
+
+    <li>la posibilidad de establecer una bandera que indique si la ejecución se debe cortar o no cuando una variable manchada con X alcanza un sumidero sensible a X</li>
+
+    <li>un nuevo decorador, validator, para marcar funciones que retornan un valor booleano indicando si una variable puede usarse o no</li>
+
+    <li>funciones auxiliares para manchar un valor o para testear si un valor está manchado</li>
+
+</ul>
+
+<p><img class="aligncenter size-full wp-image-1789" title="img19" src="wp-content/uploads/2009/09/img19.jpg" alt="img19" width="512" height="384"></p>
+<p>Último slide de la charla. Todo lo que mostré hasta ahora es un experimento. Puede haber errores u omisiones, de hecho mientras lo fui desarrollando, al probarlo con aplicaciones reales encontraba errores en la implementación o situaciones en los que no podía aplicarlo, lo que me obligaba a darle una vuelta más de rosca a la implementación: así surgió por ejemplo el decorador untrusted_args.</p>
+<p>La pregunta ahora es cómo seguimos, y el objetivo de la charla era justamente presentar esta idea entre desarrolladores Python para continuarla en conjunto. Hay  muchas que podemos pensar, desde detalles de implementación hasta casos de uso que se pueden lograr, integración con frameworks de desarrollo para que alguien que se sienta a codificar un sistema tenga facilitada la aplicación de esta herramienta.</p>
+<p>Por ejemplo, para web.py sería relativamente sencillo crear un parche para que por defecto los valores recibidos estén manchados. En Django hice el ejercicio de escribir un middleware que haga ese trabajo. Y así, es necesario ir probando cómo se puede adaptar el módulo a herramientas de desarrollo ya conocidas.</p>
+<p>Hace poco cree una <a href="http://groups.google.com/group/python-taint" target="_blank">lista de correos en Google Groups</a> para charlar estos temas, así que los que estén interesados en discutir al respecto y desarrollar esta herramienta, pueden suscribirse.</p>
+<p><img class="aligncenter size-full wp-image-1790" title="img20" src="wp-content/uploads/2009/09/img20.jpg" alt="img20" width="512" height="384"></p>
+<p><img class="aligncenter size-full wp-image-1794" title="img21" src="wp-content/uploads/2009/09/img21.jpg" alt="img21" width="512" height="384"></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/09/06/charla-relampago-comet-en-twisted.html" class="u-url">Charla relámpago: Comet en Twisted</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/09/06/charla-relampago-comet-en-twisted.html" rel="bookmark"><time class="published dt-published" datetime="2009-09-06T00:16:39+00:00" title="2009-09-06 00:16">2009-09-06 00:16</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/09/06/charla-relampago-comet-en-twisted.html#disqus_thread" data-disqus-identifier="cache/posts/2009/09/06/charla-relampago-comet-en-twisted.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Ayer en las <a href="http://ar.pycon.org/2009/conference/lightning/" target="_blank">charlas relámpago</a> de <a href="http://ar.pycon.org/2009/about/" target="_self">PyCon Argentina 2009</a> mostré cómo utilizar <a href="http://es.wikipedia.org/wiki/Comet" target="_blank">Comet</a> desde <a href="http://twistedmatrix.com/" target="_blank">Twisted</a>. Tenía <em>un</em> slide disparador que no pude mostrar por que OpenOffice no se abrió y como las charlas relámpago duran 5 minutos, no podía darme el lujo de investigar que pasaba.</p>
+<p>"No importa", dije, "de todas formas el slide tenía solo cuatro palabras". Y para hacer justicia sobre las <a href="http://es.wikipedia.org/wiki/Ley_de_Murphy" target="_blank">Leyes de Murphy</a> publico aquí ese slide:</p>
+<p><img class="aligncenter size-medium wp-image-1764" title="comet" src="wp-content/uploads/2009/09/comet-300x225.jpg" alt="comet" width="300" height="225"><a href="http://www.divmod.org/trac/browser/trunk/Nevow/doc/howto/chattutorial/part01" target="_blank">El ejemplo que mostré en vivo puede bajarse del sitio web de Nevow/Athena.</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/08/30/el-tutorial-de-python-en-espanol.html" class="u-url">El Tutorial de Python en Español</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/08/30/el-tutorial-de-python-en-espanol.html" rel="bookmark"><time class="published dt-published" datetime="2009-08-30T14:05:48+00:00" title="2009-08-30 14:05">2009-08-30 14:05</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/08/30/el-tutorial-de-python-en-espanol.html#disqus_thread" data-disqus-identifier="cache/posts/2009/08/30/el-tutorial-de-python-en-espanol.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy se ha publicado la versión <a href="http://docs.python.org.ar/tutorial/contenido.html" target="_blank">HTML</a> y <a href="http://python.org.ar/pyar/Tutorial?action=AttachFile&amp;do=view&amp;target=TutorialPython.pdf" target="_blank">PDF</a> del tutoril oficial de Python en español. La traducción la hemos realizado varios voluntarios del grupo de usuarios de Python de Argentina.</p>
+<p></p>
+<p style="text-align: center;"><a href="http://python.org.ar/pyar/Tutorial" target="_blank"><strong>http://python.org.ar/pyar/Tutorial</strong></a></p>
+<p><img class="size-medium wp-image-1751 aligncenter" title="python-logo-master-v3-TM" src="wp-content/uploads/2009/08/python-logo-master-v3-TM-300x101.png" alt="python-logo-master-v3-TM" width="300" height="101"></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-33.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-31.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

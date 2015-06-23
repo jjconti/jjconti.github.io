@@ -1,0 +1,24 @@
+<p><html><body><p>entre tu reactor.listeTCP(puerto, factory) y reactor.run():</p>
+<p></p><pre>from twisted.conch import manhole, manhole_ssh</p>
+<p>from twisted.cred import portal, checkers </p>
+<p>def getManholeFactory(namespace, **passwords):</p>
+<pre class="code literal-block">realm = manhole_ssh.TerminalRealm()
+
+def getManhole(_): return manhole.Manhole(namespace)
+
+realm.chainedProtocolFactory.protocolFactory = getManhole
+
+p = portal.Portal(realm)
+
+p.registerChecker(
+
+checkers.InMemoryUsernamePasswordDatabaseDontUse(**passwords))
+
+f = manhole_ssh.ConchFactory(p)
+
+return f
+</pre>
+
+
+<p>reactor.listenTCP(2222, getManholeFactory(globals(), admin='aaa'))</pre></p>
+<p>Los aplausos para <a href="http://www.devshed.com/c/a/Python/SSH-with-Twisted/3/" target="_blank">este tutorial</a>.</body></html></p>

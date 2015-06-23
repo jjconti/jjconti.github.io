@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (PyGame)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/pygame.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:21 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>A* vs Avara</title><link>http://www.juanjoconti.com.ar/posts/2008/10/15/a-vs-avara.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Extendí &lt;a title="Un ejemplo de A*" href="http://www.juanjoconti.com.ar/2008/10/07/un-ejemplo-de-busqueda-a/" target="_blank"&gt;mi ejercicio de A*&lt;/a&gt; para que además busque la solución utilizando Avara y las compare gráficamente.&lt;/p&gt;
+&lt;p&gt;Avara es otro algoritmo de búsqueda, pero a diferencia de A* no es ni óptimo ni completo. Ambos utilizan una heurística para estimar el costo de un estado n al estado objetivo y por esto se dice que son &lt;strong&gt;métodos informados&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;La diferencia  radica en cómo seleccionan nodos para su expansión: mientras que A* siempre elije  el nodo que minimice la función &lt;strong&gt;camino recorrido + estimación al objetivo&lt;/strong&gt;, Avara simplemente elije el nodo con menor &lt;strong&gt;estimación al objetivo&lt;/strong&gt; (no tiene en cuenta el camino previo).&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Hay escenarios en los que ambas estrategias encontrarán el mismo camino:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara-iguales.png"&gt;&lt;img class="aligncenter size-full wp-image-679" title="avsavara-iguales" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara-iguales.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pero hay otros en los que no:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara5.png"&gt;&lt;img class="aligncenter size-full wp-image-678" title="avsavara5" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara5.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara4.png"&gt;&lt;img class="aligncenter size-full wp-image-677" title="avsavara4" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara4.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara3.png"&gt;&lt;img class="aligncenter size-full wp-image-676" title="avsavara3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara3.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara2.png"&gt;&lt;img class="aligncenter size-full wp-image-675" title="avsavara2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara2.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara.png"&gt;&lt;img class="aligncenter size-full wp-image-674" title="avsavara" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Instalación y uso&lt;/h3&gt;
+&lt;p&gt;Similar al ejemplo anterior. Teniendo Python y &lt;a title="PyGame" href="http://www.pygame.org/" target="_blank"&gt;PyGame&lt;/a&gt; instalados, obtener el código fuente:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/astar/tags/astar-vs-avara/ astar-vs-avara&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y dentro de la carpeta &lt;code&gt;astar&lt;/code&gt;-vs-avara ejecutar gui.py:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd astar-vs-avara&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python gui.py&lt;/p&gt;&lt;/div&gt;</description><category>a*</category><category>AI</category><category>IA</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/15/a-vs-avara.html</guid><pubDate>Wed, 15 Oct 2008 14:52:25 GMT</pubDate></item><item><title>Un ejemplo de búsqueda A*</title><link>http://www.juanjoconti.com.ar/posts/2008/10/07/un-ejemplo-de-busqueda-a.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El ejemplo consiste en un plano de 800x600 puntos con el punto (0,0)  en la esquina superior izquierda. En el plano hay puntos y figuras (formadas por puntos). Uno de los puntos es el origen y otro el destino. El problema a resolver es encontrar el camino más corto desde el origen al destino moviéndose de punto a punto y sin pasar sobre una figura.&lt;/p&gt;
+&lt;p&gt;La heurística utilizada es la distancia en línea recta desde la posición actual a la posición del objetivo. &lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Instalación y uso&lt;/h3&gt;
+&lt;p&gt;Teniendo Python y &lt;a title="PyGame" href="http://www.pygame.org" target="_blank"&gt;PyGame&lt;/a&gt; instalados, obtener el código fuente:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/astar/tags/astar-only/ astar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y dentro de la carpeta &lt;code&gt;astar&lt;/code&gt; ejecutar gui.py:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd astar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python gui.py&lt;/p&gt;
+&lt;p&gt;El primer click que se haga marcará el punto origen (verde) y el segundo el punto destino (rojo).&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apasp1.png"&gt;&lt;img class="aligncenter size-medium wp-image-617" title="paso 1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apasp1-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Luego se pueden agregar tantos puntos sueltos o figuras como se quieran. Si se hace uno o dos clicks y luego se aprieta la barra espaciado, uno o dos puntos son añadidos al planto. Si se hacen más de dos clicks antes de apretar la barra espaciadora, entonces una figura formada por los puntos marcados es añadida.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso2.png"&gt;&lt;img class="aligncenter size-medium wp-image-620" title="paso2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso2-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso3.png"&gt;&lt;img class="aligncenter size-medium wp-image-619" title="paso3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso3-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Se siguen cargando tantos puntos y figuras como se quiera. Finalmente, al aprender Enter se ejecuta el algoritmo de búsqueda y si se encuentra un camino-solución, este es graficado.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso5.png"&gt;&lt;img class="aligncenter size-medium wp-image-618" title="resultado1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso5-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p align="center"&gt;&lt;/p&gt;
+
+&lt;p&gt;Otros casos de prueba:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a2.png"&gt;&lt;img class="aligncenter size-medium wp-image-614" title="resultado2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a2-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a3.png"&gt;&lt;img class="aligncenter size-medium wp-image-615" title="resultado3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a3-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a6.png"&gt;&lt;img class="aligncenter size-medium wp-image-616" title="resultado4" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a6-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a1.png"&gt;&lt;img class="aligncenter size-medium wp-image-613" title="resultado5" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a1-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Teoría relacionada&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://es.wikipedia.org/wiki/Algoritmo_de_b%C3%BAsqueda_A*" target="_self"&gt;Estrategia de búsqueda A*&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a title="AIMA" href="http://aima.cs.berkeley.edu/" target="_self"&gt;Inteligencia artificial, un enfoque moderno&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>a*</category><category>AI</category><category>IA</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/07/un-ejemplo-de-busqueda-a.html</guid><pubDate>Tue, 07 Oct 2008 21:16:01 GMT</pubDate></item><item><title>El juego más votado de PyWeek 7!</title><link>http://www.juanjoconti.com.ar/posts/2008/09/28/el-juego-mas-votado-de-pyweek-7.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Así como lo leyeron, mi humilde &lt;a href="http://www.juanjoconti.com.ar/2008/09/17/cecilia-music-game/"&gt;participación&lt;/a&gt; (de diez horas de código) en &lt;a href="http://pyweek.org/7"&gt;esta competencia&lt;/a&gt; fue el juego más votado (incluyendo a los juegos presentados por equipos). No me subí al podio, ni estuve en el top ten como me hubiese gustado, pero tengo el agrado de que 48 de mis pares se hayan tomado el trabajo de bajar mi juego, probarlo y votarlo.&lt;/p&gt;
+&lt;p&gt;En PyWeek solo aquellos que presentan juegos pueden votar. Básicamente se votan 3 características: &lt;strong&gt;Diversión&lt;/strong&gt;, &lt;strong&gt;Producción&lt;/strong&gt; e &lt;strong&gt;Innovación&lt;/strong&gt;. Adicionalmente, al votar se puede dejar un comentario. Dejo aquí alguno de los comentarios que &lt;a href="http://pyweek.org/e/SeaBoy/ratings/"&gt;recibí&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Fun: 3 Prod: 3 Inno: 4&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;That was quite fun. It was a nice touch to put photographs of writings in paper and photos from your trip (probably took less time, even :)). The idea is fairly simple, but it is fun and it is a nice way to use the theme. The number of levels was just right to enjoy the concept well and the challenge was good for a person who doesn't have a music-oriented ear. The photos are nice to look at, too. Well done.&lt;/blockquote&gt;
+&lt;p&gt;Fun: 2 Prod: 3 Inno: 4&lt;/p&gt;
+&lt;blockquote&gt;Found it quite difficult and a little boring, although a novel idea, I liked the hand drawn(on paper) stuff... and it's particularly impressive for 10 hours :)&lt;/blockquote&gt;
+
+&lt;p&gt;Fun: 3 Prod: 5 Inno: 4&lt;/p&gt;
+&lt;blockquote&gt;Hilarious game -- the menus were hard to read, but the way you did them was fantastic. Comprehensive help, I never really got lost trying to play the game. It was a lot of fun to play around with, and I was able to beat the whole thing. Nice job on the game -- especially for one done so quickly! You set a small scope and did fantastically with what you had -- well done!&lt;/blockquote&gt;
+
+&lt;p&gt;Fun: 3 Prod: 3 Inno: 4&lt;/p&gt;
+&lt;blockquote&gt;For such a simple game it works pretty well. Randomly generating some tunes could have created some replayability. As it is, it does challenge the brain!&lt;/blockquote&gt;
+
+&lt;p&gt;Gracias!&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>PyGame</category><category>PyWeek</category><guid>http://www.juanjoconti.com.ar/posts/2008/09/28/el-juego-mas-votado-de-pyweek-7.html</guid><pubDate>Sun, 28 Sep 2008 03:41:55 GMT</pubDate></item><item><title>Cecilia Music Game</title><link>http://www.juanjoconti.com.ar/posts/2008/09/17/cecilia-music-game.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La semana pasada se desarrolló &lt;a title="7" href="http://pyweek.org/7" target="_blank"&gt;PyWeek 7&lt;/a&gt;. Este año participé con una entrada solo (se puede participar solo o en equipo) e hice un pequeño juego en las 10 horas que tuve para dedicarle a la competencia: Cecilia Music Game. Un juego en el que escuchamos una canción y luego tenemos que intentar reproducir eligiendo cuerdas de distinto largo (el tema de la competencia era &lt;span&gt;"&lt;em&gt;The length of a piece of string&lt;/em&gt;").&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/09/pantallazo-cecilia-music-game.png"&gt;&lt;img class="aligncenter size-full wp-image-553" title="pantallazo-cecilia-music-game" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/09/pantallazo-cecilia-music-game.png" alt="" width="500" height="391"&gt;&lt;/a&gt;&lt;strong&gt;Download: &lt;/strong&gt;&lt;a title="Download" href="http://media.pyweek.org/dl/7/SeaBoy/cecilia_music_game-1.0.zip" target="_self"&gt;cecilia_music_game-1.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video: &lt;/strong&gt;&lt;a href="http://www.youtube.com/watch?v=Z5P0GB00RpY" target="_blank"&gt;http://www.youtube.com/watch?v=Z5P0GB00RpY&lt;/a&gt; (gracias, Ema)&lt;/p&gt;&lt;/div&gt;</description><category>General</category><category>PyGame</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2008/09/17/cecilia-music-game.html</guid><pubDate>Wed, 17 Sep 2008 23:45:35 GMT</pubDate></item><item><title>Qué aprendí este PyWeek</title><link>http://www.juanjoconti.com.ar/posts/2008/04/19/que-aprendi-este-pyweek.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Acaba de terminar la sexta edición de &lt;a href="http://www.pyweek.org/6/" title="PyWeek 6" target="_blank"&gt;PyWeek&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Algo que me gusta mucho de esta competencia es que además de ser votado por tus pares, podés recibir comentarios de ellos. De los 48 comentarios que nos dejaron (el juego más votado tuvo 49 votos) resumo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Hard to play:&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; casi todos se quejaban o al menos comentaban que les resultó difícil de jugar el juego, al menos al principio. Nos recomendaban que el primer nivel nivel sea más fácil, esto ayuda al jugador a no frustrarse.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Volver a empezar:&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; muchos también se quejaron de que una vez que perdías tenías que volver a empezar. Otro punto para evitar la frustración de nuestros queridos jugadores.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Consistencia:&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; si todo el juego es basado en mouse, el menú también podría haberlo sido :)&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Otras críticas menores:&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; pocos niveles, más robots.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Excelente artwork:&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; tanto los gráficos como la música fueron muy aclamados. Gracias César, David y Pablo por hacernos ver como estrellas de rock ;-)&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;Espero que en la próxima tengamos estas cosas presentas para nuestro plan de acción :D ...y que tengamos plan de acción ;-)&lt;/p&gt;
+&lt;p&gt;PS: en otro orden de noticias, salimos 6tos.&lt;/p&gt;&lt;/div&gt;</description><category>PyGame</category><category>Python</category><category>PyWeek</category><guid>http://www.juanjoconti.com.ar/posts/2008/04/19/que-aprendi-este-pyweek.html</guid><pubDate>Sat, 19 Apr 2008 22:29:54 GMT</pubDate></item><item><title>PyWeek 6</title><link>http://www.juanjoconti.com.ar/posts/2008/04/09/pyweek-6.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El sábado pasado entregamos nuestro juego para la sexta competencia de programación de juegos en Python PyWeek. El nombre se debe a que el juego debe ser desarrollado integramente en una semana :)&lt;/p&gt;
+&lt;p&gt;Ya participamos el año pasado con un juego llamado Twisted Zombie. Una particularidad del certamen es que los juegos deben respetar un tema. El tema de cada concurso es votado por los participantes de entre una lista de 5 temas posibles y es rebelado la misma noche que comienza la competencia (9 pm en Argentina).&lt;/p&gt;
+&lt;p&gt;El tema de este año fue&lt;strong&gt; robot&lt;/strong&gt; y, como el año pasado, no habíamos pensado ninguna buena idea para este :( Pero a no desesperar, siempre tenemos un as bajo la manga!&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h2&gt;&lt;a id="Pedro's_Robot_Factory"&gt;Pedro's Robot Factory&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;a id="The_Story"&gt;La Historia
+
+&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a id="The_Story"&gt;Pedro es un hombre modesto. Un día, leyó un libro escrito por Isaac Asimov y empezó a soñar con robots (Robot Dreams). Tiempo más tarde, Pedro invirtió su dinero en una fábrica de robots llamada &lt;strong&gt;Pedro's Robot Factory&lt;/strong&gt; (por su puesto) y vos sos su robotcista (Sorry). Pedro desarrrolló el modelo "Cabeza de embudo" (Funnelhead)... y vos debés construirlo. Pedro es un jefe demandante y nivel tras nivel, mientras la empresa progresa, deberás ser más rápido. &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a id="The_Story"&gt;&lt;em&gt;Qué lo disfrutes!&lt;/em&gt; &lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a id="How_to_Play"&gt;Cómo jugar&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a id="How_to_Play"&gt;&lt;em&gt;Ayudá a Pedro a construir sus robots!&lt;/em&gt; &lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt;click izquierdo para agarrar o soltar piezas. &lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt;Scrol para arriba y para abajo o las teclas A/D para rotar la pieza agarrada. &lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt; Tecla P para pausar el juego. &lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt; Tecla F para pasar a modo &lt;em&gt;fullscreen&lt;/em&gt;. &lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt;Las piezas especiales te dan puntos extra!&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a id="How_to_Play"&gt;&lt;strong&gt;Trivia: &lt;/strong&gt; &lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt;También podés usar las teclas A y Z para rotar la pieza agarrada, o la barra espaciadora. &lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt;Hay un huevo de pascua en el nivel 2.&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a id="How_to_Play"&gt;Si completás los tres niveles podrás ver el &lt;em&gt;Happy Dance&lt;/em&gt; :) &lt;/a&gt;&lt;/li&gt;
+
+&lt;/ol&gt;
+
+&lt;h3&gt;&lt;a id="Screenshots"&gt;Paquetes&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;En &lt;strong&gt;GNU/Linux&lt;/strong&gt; simplemente bajá &lt;a href="http://media.pyweek.org/dl/6/pysfe/robotfactory-1.zip" title="Source code" target="_blank"&gt;http://media.pyweek.org/dl/6/pysfe/robotfactory-1.zip&lt;/a&gt; y con Python y PyGame instalado ejecutá run_game.py&lt;/p&gt;
+&lt;p&gt;En &lt;strong&gt;Windows &lt;/strong&gt;podés hacer lo mismo que en GNU/Linux o bajar un paquete autocontenido con el juego, Python y las librerías necesarias: &lt;a href="http://pyweek6.googlecode.com/files/robotfactory-sc-win.zip" title="Windows" target="_blank"&gt;http://pyweek6.googlecode.com/files/robotfactory-sc-win.zip&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a id="Screenshots"&gt;Screenshots&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/robot-level2-vista.jpg" title="Level 2"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/robot-level2-vista.thumbnail.jpg" alt="Level 2"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nivel 2 del juego en Windows Vista. Ejecutado desde el paquete autocontenido.&lt;/p&gt;&lt;/center&gt;&lt;center&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/robot-help-vista.jpg" title="Pedro’s Robot Factory Help at Windows Vista"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/robot-help-vista.thumbnail.jpg" alt="Pedro’s Robot Factory Help at Windows Vista"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mi rostro adornando el menú del juego.&lt;/p&gt;&lt;/center&gt;&lt;center&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/pantallazo-robot-factory.png" title="Level 1"&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/pantallazo-robot-factory.thumbnail.png" alt="Level 1"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;En el nivel 1 vemos a un pedro engrasado y desaliñeado. Ubuntu.&lt;/p&gt;&lt;/center&gt;&lt;center&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/pantallazo-robot-factory-1.png" title="Otro nivel.."&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/04/pantallazo-robot-factory-1.thumbnail.png" alt="Otro nivel.."&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;En el segundo nivel Pedro empieza a vestirse mejor. Para ver el tercer nivel vas a tener que jugar un rato :)&lt;/p&gt;&lt;/center&gt;&lt;center&gt; &lt;/center&gt;&lt;/div&gt;</description><category>PyGame</category><category>PyWeek</category><guid>http://www.juanjoconti.com.ar/posts/2008/04/09/pyweek-6.html</guid><pubDate>Wed, 09 Apr 2008 23:58:57 GMT</pubDate></item><item><title>Twisted Zombie en UpToDown</title><link>http://www.juanjoconti.com.ar/posts/2008/03/12/twisted-zombie-en-uptodown.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Ayer recibí por email:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p align="justify"&gt;Nos alegra comunicarle que &lt;strong&gt;Twisted Zombie&lt;/strong&gt; ha sido incluido en el listado de programas de uptodown.com.&lt;/p&gt;
+
+&lt;p align="justify"&gt;Nuestros editores prueban y redactan un detallado análisis de cada aplicación, publicando aquellas que consideramos relevantes y a las que procuramos una adecuada visibilidad con un tráfico segmentado de más de 300.000 usuarios únicos día.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p align="justify"&gt;&lt;!--more--&gt;Si entran a &lt;a href="http://twisted-zombie.uptodown.com/ubuntu/:" title="UD" target="_blank"&gt;este sitio web&lt;/a&gt; se puede leer:&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+&lt;p align="justify"&gt;Eras un muerto feliz, pero un mago oscuro te sacó de tu letargo y te convirtió en zombie para pasar a engrosar su ejército de muertos vivientes. Sin embargo, uno de sus aprendices decidió devolverte a tu tumba para no ser utilizado con fines malignos. Ésto ha generado un conflicto entre ellos, y ahora tú intentarás sacar partido de todo esto para volver a la vida.
+
+
+
+Ésta es la historia de &lt;strong&gt;Twisted Zombie&lt;/strong&gt;, un juego arcade donde tendremos una curiosa manera de avanzar entre niveles. Nuestra misión es &lt;em&gt;acoplarnos&lt;/em&gt; a los moldes que nos encontremos a lo largo del nivel.
+
+
+
+Nos encontraremos también varias pociones según avancemos. Las rojas nos quitarán vida. El resto... tendrás que descubrirlo tú mismo.
+
+
+
+Si quieres pasar un buen rato con un juego como los de antes, te gustará probar &lt;strong&gt;Twisted Zombie&lt;/strong&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p align="justify"&gt;Un aplauso para el Zombie!&lt;/p&gt;
+
+&lt;p align="justify"&gt; &lt;/p&gt;
+
+&lt;blockquote&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>PyGame</category><category>PyWeek</category><guid>http://www.juanjoconti.com.ar/posts/2008/03/12/twisted-zombie-en-uptodown.html</guid><pubDate>Wed, 12 Mar 2008 23:06:24 GMT</pubDate></item><item><title>Código Secreto (juego)</title><link>http://www.juanjoconti.com.ar/posts/2008/02/07/codigo-secreto-juego.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Una tarde estábamos jugando a este juego en su tablero y me dieron ganas de jugarlo en la compu también. Una búsqueda rápida no nos arrojó resultados y decidí programarlo para practicar mi &lt;a title="PyGame" href="http://www.pygame.org" target="_blank"&gt;PyGame&lt;/a&gt;. La idea fue no terminar con algo muy complejo, sino más bien simple que pueda programarlo rápido y que sirva también como ejemplo de uso de esta librería.&lt;/p&gt;
+&lt;p&gt;El juego es un juego lógico: hay que pensar para poder ganar ;-).&lt;/p&gt;
+&lt;p&gt;Para jugarlo pueden obtener la última versión desde el svn:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/code/ SecretCode&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A pedido de Lucio de PyAr dejo unas capturas de pantalla, espero que alcancen para entender el juego. Si no se entiende, podemos usar los comentarios de este post para aclarar dudas :).&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Menú&lt;/h3&gt;
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/01/pantallazo-secret-code-menu.png" alt="Secret Code-Menu"&gt;&lt;/p&gt;
+&lt;h3&gt;Las reglas&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/01/pantallazo-secret-code-reglas.png" alt="Pantallazo-Secret Code-Reglas"&gt;&lt;/p&gt;
+&lt;h3&gt;Jugando&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/01/pantallazo-secret-code-jugando.png" alt="Secret Code-Jugando"&gt;&lt;/p&gt;
+&lt;h3&gt;Una jugada ganadora&lt;/h3&gt;
+
+&lt;p&gt;&lt;img title="Secret Code-Ganando" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/01/pantallazo-secret-code-ganando.png" alt="Secret Code-Ganando"&gt;&lt;/p&gt;
+&lt;h3&gt;Créditos&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/01/pantallazo-secret-code-creditos.png" alt="Secret Code-Creditos"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>PyAr</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/02/07/codigo-secreto-juego.html</guid><pubDate>Thu, 07 Feb 2008 20:08:10 GMT</pubDate></item><item><title>Twisted Zombie para Windows</title><link>http://www.juanjoconti.com.ar/posts/2007/09/13/twisted-zombie-para-windows.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://zombie.firebirds.com.ar" title="TZ en googlecode" target="_blank"&gt;Twisted Zombie&lt;/a&gt;, el juego que desarrollamos en una semana para la &lt;a href="http://www.pyweek.org/5" title="PyWeek 5" target="_blank"&gt;quinta edición del concurso PyWeek&lt;/a&gt; ya funciona en Windows. Está escrito en &lt;a href="http://www.python.org" title="Python" target="_blank"&gt;Python&lt;/a&gt;, un lenguaje multiplataforma, y hemos tenido en cuenta &lt;a href="http://www.juanjoconti.com.ar/2007/01/31/python-multiplataforma-ospathjoin/" title="os.path.join" target="_blank"&gt;algunas consideraciones&lt;/a&gt; para que funcione sin problemas en distintos sistemas operativos. Incluso lo hemos probado en un par.
+&lt;p&gt;Pero para usarlo en Windows necesitás tener instalado &lt;a href="http://www.python.org/ftp/python/2.5.1/python-2.5.1.msi" title="Python 2.5 para Windows" target="_blank"&gt;Python&lt;/a&gt; y &lt;a href="http://pygame.org/ftp/pygame-1.7.1release.win32-py2.5.exe" title="PyGame 1.7.1 para Windows" target="_blank"&gt;Pygame&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;El siguiente es un paquete con todo lo necesario para correr el juego si necesidad de instalar nada más: &lt;a href="http://twistedmold.googlecode.com/files/Twisted-Zombie-1-Win.zip" title="Windows self contained package" target="_blank"&gt;Twisted-Zombie-1-Win.zip&lt;/a&gt;&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Este es el código fuente del archivo setup.py que utilicé para crear el paquete:&lt;/p&gt;
+&lt;pre&gt;# setup.py es usado para generar un paquete autocontenido
+
+# para Windows. Incluye el interprete de Python, PyGame
+
+# y otros modulos utilizados en el juego.
+
+# Uso: C:Python25python.exe stup.py py2exe
+
+# Version de py2exe: 0.66
+
+# Nota: en run_game.pyw cambiar os.path.dirname(__file__)
+
+# por la ruta al directorio donde esten los fuentes del
+
+# juego. Ej: 'C:tz'
+
+
+
+from distutils.core import setup
+
+import py2exe
+
+import os
+
+
+
+options = {
+
+    "py2exe": {
+
+        #"compressed": 1,
+
+        #"optimize": 2,
+
+        #"excludes": excludes,
+
+        "includes": ["pygame", "pygame.locals", "random", "pickle"],
+
+    }
+
+}
+
+
+
+data_files = [ (x, [os.path.join(x, e) for e in z]) for d in ("lib", "data")
+
+               for x,y,z in os.walk(d) if not ".svn" in x ] + [ "README.txt"]
+
+
+
+setup( console=["run_game.pyw"], data_files=data_files, options=options)&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>PyGame</category><category>PyWeek</category><guid>http://www.juanjoconti.com.ar/posts/2007/09/13/twisted-zombie-para-windows.html</guid><pubDate>Thu, 13 Sep 2007 12:28:40 GMT</pubDate></item><item><title>Smarter N-Puzzle</title><link>http://www.juanjoconti.com.ar/posts/2007/05/01/smarter-n-puzzle.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;N-Puzzle sigue sin tener una real inteligencia, pero hice una modificación que lo hace verse un poco más inteligente:&lt;/p&gt;
+&lt;p&gt;Si un jugador o el desordenador aleatorio hace movimientos que se cancelan entre sí&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Izquierda - Derecha&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Izquierda - Izquierda - Derecha - Derecha&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Izquierda - Izquierda - Arriba - Arriba - Derecha - Izquierda - Abajo - Abajo - Derecha - Derecha&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;el siguiente algoritmo es capás de eliminarlos de la lista de acciones y así lograr una resolución en menos movimientos y que parezca menos tonta.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;El método que encapsula al algoritmo en cuestión es llamado cada vez que se entra al modo Auto Solve:&lt;/p&gt;
+&lt;pre&gt;
+
+    def _reduce_actions(self):
+
+        '''This method try to reduce the actions' log
+
+        removing repeted moves.'''
+
+
+
+        log = self.actions_log
+
+        stack = []
+
+
+
+        while log:
+
+
+
+            a = log.pop()
+
+            ia = self._inverse_action(a)
+
+
+
+            if stack:
+
+                s = stack.pop()
+
+                if ia != s:
+
+                    stack += [s, a]
+
+            else:
+
+                stack += [a]
+
+
+
+            print "Stack: ", len(stack)
+
+            print "Log: ", len(log)
+
+
+
+        stack.reverse()
+
+        self.actions_log = stack&lt;/pre&gt;
+
+&lt;p&gt;Download last version: &lt;a href="http://www.juanjoconti.com.ar/files/python/n-puzzle-0.1-2.tgz"&gt;n-puzzle-0.1-2&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>puzzles</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2007/05/01/smarter-n-puzzle.html</guid><pubDate>Tue, 01 May 2007 12:51:44 GMT</pubDate></item></channel></rss>

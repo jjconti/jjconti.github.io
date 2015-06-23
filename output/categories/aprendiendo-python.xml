@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Aprendiendo Python)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/aprendiendo-python.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:17 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Audio de la entrevista en Recreo Diario sobre mi artículo sobre el escrutinio en las elecciones Santa Fe 2015</title><link>http://www.juanjoconti.com.ar/posts/2015/06/20/audio-de-la-entrevista-en-recreo-diario-sobre-mi-articulo-sobre-el-escrutinio-en-las-elecciones-santa-fe-2015.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Luego de publicar el post &lt;a href="http://www.juanjoconti.com.ar/2015/06/18/jugando-con-los-datos-del-escrutinio-provisorio/"&gt;Jugando con los datos del escrutinio&lt;/a&gt; provisorio me contactaron de radio Continental Santa Fe para participar del programa Recreo Diario contando lo que hice.&lt;/p&gt;
+&lt;p&gt;Luego de mi entrevista siguió una con Pepito Cybrian y Cecilia Milone. Me saqué una foto con ellos y la usé para ilustrar el audio.&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=axwJ-_mXtQc&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Elecciones</category><category>santa fe</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2015/06/20/audio-de-la-entrevista-en-recreo-diario-sobre-mi-articulo-sobre-el-escrutinio-en-las-elecciones-santa-fe-2015.html</guid><pubDate>Sat, 20 Jun 2015 12:30:47 GMT</pubDate></item><item><title>Jugando con los datos del escrutinio provisorio</title><link>http://www.juanjoconti.com.ar/posts/2015/06/18/jugando-con-los-datos-del-escrutinio-provisorio.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Anoche estuve jugando un poco con los datos (publicados) del escrutinio provisorio de las elecciones a gobernador en la provincia de Santa Fe.&lt;/p&gt;
+&lt;p&gt;La misma noche de las elecciones, cuando los resultados provisorios no lo favorecieron, Miguel del Sel y los partidarios del PRO en general empezaron a &lt;a href="http://www.ellitoral.com/index.php/id_um/114934-del-sel-vamos-a-contar-voto-por-voto-porque-queremos-saber-la-verdad" target="_blank"&gt;instalar una sospecha de fraude&lt;/a&gt;. No tardaron en hacerse eco en las redes sociales distinto tipo de usuarios: obsecuentes, tira bombas, paranoicos, ingenuos.&lt;/p&gt;
+&lt;p&gt;En distintos medios, Del Sel mostró como "prueba" del fraude errores producidos al realizar la carga manual de datos durante el escrutinio provisorio, es decir durante el proceso humano de mirar una planilla completada a mano e ingresar (tipeando) los valores en el sistema.&lt;/p&gt;
+&lt;p&gt;De los tipos de errores, voy a tomar uno, el primero que mostró (&lt;a href="http://www.lanacion.com.ar/1802244-miguel-del-sel-pasan-cosas-extranas-hay-mesas-en-las-que-figuro-con-cero-votos-y-tengo-73" target="_blank"&gt;1&lt;/a&gt;, &lt;a href="https://youtu.be/vsmUzNNMahw" target="_blank"&gt;2&lt;/a&gt;): &lt;strong&gt;el candidato figura con 0 votos en el sitio web, pero en la planilla tiene X votos.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Mi objetivo es ver cuantas veces se da este error y como afecta a los distintos candidatos.&lt;/p&gt;
+&lt;p&gt;Programé un &lt;a href="https://github.com/jjconti/escrutinio/blob/master/escrutinio.py" target="_blank"&gt;pequeño script&lt;/a&gt; que hace lo siguiente:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ol&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Baja el archivo XML con los datos de la categoría Gobernador correspondiente a cada mesa.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Lee los archivos XML para obtener, para cada mesa, la cantidad de votos de los 3 partidos dominantes.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Encuentra las mesas en las que cada partido tiene 0 votos.
+&lt;/pre&gt;
+
+
+&lt;ol&gt;
+
+    &lt;li&gt;Si en una mesa los 3 candidatos tienen 0 votos, se asume que se trata de una mesa con telegrama desestimado.&lt;/li&gt;
+
+&lt;/ol&gt;
+
+
+
+&lt;/ol&gt;
+
+&lt;p&gt;Luego revisé los archivos PDF de los telegramas de estas mesas. Arribé a lo siguiente:&lt;/p&gt;
+&lt;table dir="ltr" border="1" cellspacing="0" cellpadding="0"&gt;&lt;colgroup&gt; &lt;col width="100"&gt; &lt;col width="100"&gt; &lt;col width="136"&gt; &lt;col width="100"&gt;&lt;/colgroup&gt;
+
+&lt;tbody&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"Partido"]'&gt;Partido&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"N\u00ba de mesa"]'&gt;Nº de mesa&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"Votos en el telegrama"]'&gt;Votos&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"PRO"]'&gt;PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1725]"&gt;1725&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"PRO"]'&gt;PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,270]"&gt;270&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,73]"&gt;73&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"PRO"]'&gt;PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,5351]"&gt;5351&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"*"]'&gt;*&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="2" rowspan="1" data-sheets-value='[null,2,"Total votos faltantes PRO"]'&gt;Total votos faltantes PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,73]" data-sheets-numberformat="[null,0]" data-sheets-formula="=sum(R[-3]C[0]:R[-1]C[0])"&gt;&lt;span style="color: #ff0000;"&gt;&lt;span style="color: #000000;"&gt;&lt;b&gt;73&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1478]"&gt;1478&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,7591]"&gt;7591&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,5545]"&gt;5545&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4912]"&gt;4912&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,7601]"&gt;7601&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1845]"&gt;1845&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4950]"&gt;4950&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4729]"&gt;4729&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,85]"&gt;85&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6555]"&gt;6555&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6333]"&gt;6333&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"*"]'&gt;*&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="2" rowspan="1" data-sheets-value='[null,2,"Total votos faltantes FPV"]'&gt;Total votos faltantes FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,85]" data-sheets-numberformat="[null,0]" data-sheets-formula="=sum(R[-10]C[0]:R[-1]C[0])"&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;85&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6852]"&gt;6852&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"*"]'&gt;*&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1478]"&gt;1478&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,134]"&gt;134&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,7591]"&gt;7591&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,5485]"&gt;5485&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,82]"&gt;82&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4501]"&gt;4501&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,75]"&gt;75&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6555]"&gt;6555&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1845]"&gt;1845&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="2" rowspan="1" data-sheets-value='[null,2,"Total votos faltantes FPCS"]'&gt;Total votos faltantes FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,157]" data-sheets-numberformat="[null,0]" data-sheets-formula="=sum(R[-8]C[0]:R[-1]C[0])"&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;157&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="3" rowspan="1" data-sheets-value='[null,2,"* la casilla estaba en blanco en el telegrama"]'&gt;* la casilla estaba en blanco en el telegrama&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;/tbody&gt;
+
+&lt;/table&gt;
+
+&lt;p&gt;Se pueden analizar otros tipos de errores en la carga, pero con uno me alcanza para demostrar mi punto: esto no es prueba ni de fraude ni del accionar de un cracker, solo errores humanos distribuidos uniformemente.&lt;/p&gt;
+&lt;p&gt;Es decir, &lt;strong&gt;este tipo de error ocurrió una vez para el PRO (a quien se le deben contabilizar 73 votos más), una vez para el FPV (a quien se le deben contabilizar 85 votos más) y 2 veces para el FPCS (a quien se le deben contabilizar 157 votos más).&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Los datos y las herramientas están disponibles para periodistas y entusiastas que quieran seguir explorando el espectro de los votos mientras el tribunal &lt;a href="http://www.ellitoral.com/index.php/id_um/115067-se-escrutaron-1500-urnas-y-se-abrieron-unas-45" target="_blank"&gt;sigue contando&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finalmente, como esto se puso muy serio, cierro con un poco de humor, uno de los mejores &lt;a href="https://twitter.com/eameook" target="_blank"&gt;Eameos&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2015/06/migueles.jpg"&gt;&lt;img class="aligncenter size-full wp-image-5327" src="http://www.juanjoconti.com.ar/wp-content/uploads/2015/06/migueles.jpg" alt="MI-DA-CHI" width="599" height="395"&gt;&lt;/a&gt;&lt;strong&gt;Actualización:&lt;/strong&gt; &lt;a href="http://www.juanjoconti.com.ar/2015/06/20/audio-de-la-entrevista-en-recreo-diario-sobre-mi-articulo-sobre-el-escrutinio-en-las-elecciones-santa-fe-2015/"&gt;audio disponible&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Elecciones</category><category>santa fe</category><guid>http://www.juanjoconti.com.ar/posts/2015/06/18/jugando-con-los-datos-del-escrutinio-provisorio.html</guid><pubDate>Thu, 18 Jun 2015 00:46:21 GMT</pubDate></item><item><title>Video de mi charla Ruby para programadores Python</title><link>http://www.juanjoconti.com.ar/posts/2015/05/25/video-de-mi-charla-ruby-para-programadores-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hoy encontré que los organizadores de &lt;a href="https://twitter.com/pyconar" target="_blank"&gt;PyConAr&lt;/a&gt; 2014 habían subido el video de mi charla Ruby para programadores Python. Se que subir todos los videos de una conferencia lleva tiempo y es mucho trabajo. Muchas gracias!&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=NdvTsh_eYe8&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Aprendiendo Ruby</category><category>Eventos</category><category>Python</category><category>ruby</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2015/05/25/video-de-mi-charla-ruby-para-programadores-python.html</guid><pubDate>Mon, 25 May 2015 19:40:51 GMT</pubDate></item><item><title>Reactivé el bot @jjsaer</title><link>http://www.juanjoconti.com.ar/posts/2014/12/19/reactive-el-bot-jjsaer.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2014/12/Captura-de-pantalla-2014-12-19-a-las-21.55.35.png"&gt;&lt;img class=" wp-image-5259 size-large aligncenter" src="http://www.juanjoconti.com.ar/wp-content/uploads/2014/12/Captura-de-pantalla-2014-12-19-a-las-21.55.35-1024x502.png" alt="Saer en Twitter" width="640" height="314"&gt;&lt;/a&gt;
+&lt;p&gt;Desde hace algunos años mantengo un &lt;a href="https://twitter.com/jjsaer" target="_blank"&gt;bot en Twitter&lt;/a&gt; que cita a &lt;a href="http://es.wikipedia.org/wiki/Juan_Jos%C3%A9_Saer" target="_blank"&gt;Juan José Saer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hace algunas semanas, cuando la notebook que servía de servidor para esta aplicación se rompió, Saer dejó de twittear.&lt;/p&gt;
+&lt;p&gt;Hoy aproveché el día para acomodar un poco su &lt;a href="https://github.com/jjconti/saer-tweets/" target="_blank"&gt;código fuente&lt;/a&gt; y moverlo a un servidor de verdad.&lt;/p&gt;
+&lt;p&gt;La lista completa de las citas que va posteando está en &lt;a href="https://github.com/jjconti/saer-tweets/blob/master/saertweets.txt" target="_blank"&gt;saertweets.txt&lt;/a&gt;. ¡Se aceptan nuevas citas para agregar! Incluso, cualquiera puede usar este pequeño programa para crear un bot de cualquier escritor o de cualquier cosa. Si no son programadores y necesitan ayuda para hacerlo funcionar, me avisan.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Juan José Saer</category><category>twitter</category><guid>http://www.juanjoconti.com.ar/posts/2014/12/19/reactive-el-bot-jjsaer.html</guid><pubDate>Fri, 19 Dec 2014 21:59:42 GMT</pubDate></item><item><title>Se viene la PyConAr 2014</title><link>http://www.juanjoconti.com.ar/posts/2014/10/31/se-viene-la-pyconar-2014.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La &lt;a href="http://pycon.com.ar/pyconar2014" target="_blank"&gt;conferencia de Python&lt;/a&gt; más grande del país se va a llevar a cabo en un par de semanas en Rafaela. Imperdible para la gente de Santa Fe y zona que quiera conocer o profundizar en este lenguaje.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2014/10/pyconar2014.png"&gt;&lt;img class="aligncenter size-large wp-image-5174" src="http://www.juanjoconti.com.ar/wp-content/uploads/2014/10/pyconar2014-724x1024.png" alt="pyconar2014" width="640" height="905"&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><guid>http://www.juanjoconti.com.ar/posts/2014/10/31/se-viene-la-pyconar-2014.html</guid><pubDate>Fri, 31 Oct 2014 18:29:42 GMT</pubDate></item><item><title>Twitter: Dejar de seguir a los que no me siguen</title><link>http://www.juanjoconti.com.ar/posts/2014/01/26/twitter-dejar-de-seguir-a-los-que-no-me-siguen.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Para cierta cuenta de Twitter que administro, necesitaba dejar de seguir a todos los usuarios que no me seguían.&lt;/p&gt;
+&lt;p&gt;Busqué si había alguna web que diera el servicio y las que encontré (NotFollow y JustUnfollow) solo se limitaban a listar a quienes no te seguían y permitirte ir eliminándolos de a uno. Un chiste. (JustUnfollow te deja eliminar solo 50 usuarios por día si no te pasás a la cuenta premium, paga, o twitteas haciéndoles propaganda).&lt;/p&gt;
+&lt;p&gt;Tenía que eliminar a casi 2000 usuarios y no tenía ganas de que me diera tendinitis en el dedo índice derecho de tanto hacer click.&lt;/p&gt;
+&lt;p&gt;Como siempre, &lt;strong&gt;dada la herramienta correcta, un trabajo a primera vista tedioso o complicado puede resultar extremadamente fácil&lt;/strong&gt;. Utilizando la librería &lt;a title="PTT" href="https://pypi.python.org/pypi/twitter" target="_blank"&gt;Python Twitter Tools&lt;/a&gt; hice este &lt;em&gt;script&lt;/em&gt; que, luego de la &lt;a href="https://dev.twitter.com/docs/auth" target="_blank"&gt;danza de OAuth&lt;/a&gt; para autenticarse en Twitter, consta de 7 líneas. Tomen &lt;em&gt;community managers&lt;/em&gt;, se los regalo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;following = twitter.friends.ids()
+&lt;p&gt;followingIds = following['ids']&lt;/p&gt;
+&lt;p&gt;followers = twitter.followers.ids()&lt;/p&gt;
+&lt;p&gt;followersIds = followers['ids']&lt;/p&gt;
+&lt;p&gt;for id in followingIds:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;if id not in followersIds:
+
+    twitter.friendships.destroy(user_id=id)&amp;lt;/pre&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;PS: para los amantes del &lt;a href="http://en.wikipedia.org/wiki/Code_golf" target="_blank"&gt;code golfing&lt;/a&gt;, ahí va la versión en una línea:&lt;/p&gt;
+&lt;pre&gt;[twitter.friendships.destroy(user_id=id) for id in twitter.friends.ids()['ids'] if id not in twitter.followers.ids()['ids']]&lt;/pre&gt;
+
+&lt;p&gt;Nota: para dejar de seguir unos 1900 usuarios tardo una media hora en mi notebook.&lt;/p&gt;
+&lt;p&gt;Tarea para el lector: escribir un &lt;em&gt;script&lt;/em&gt; para seguir a todos los seguidores que no estamos siguiendo.&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>twitter</category><guid>http://www.juanjoconti.com.ar/posts/2014/01/26/twitter-dejar-de-seguir-a-los-que-no-me-siguen.html</guid><pubDate>Sun, 26 Jan 2014 12:16:13 GMT</pubDate></item><item><title>Visión robótica</title><link>http://www.juanjoconti.com.ar/posts/2012/05/24/vision-robotica.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace un par de noches me escribió mi amigo &lt;a href="http://www.jjlorenzatti.com.ar/" target="_blank"&gt;Joel&lt;/a&gt;. Es licenciado en Filosofía y está haciendo un doctorado. Me cuenta que está leyendo un libro llamado &lt;a href="http://pinker.wjh.harvard.edu/books/htmw/" target="_blank"&gt;How the Mind Works&lt;/a&gt;, de &lt;a href="http://en.wikipedia.org/wiki/Steven_Pinker" target="_blank"&gt;Steven Pinker&lt;/a&gt;, quien actualmente se desempeña en la cátedra de psicología del MIT y es uno de los principales referentes de la psicología evolucionista.&lt;/p&gt;
+&lt;p&gt;En el libro, contrastando con lo que muestran los directores de cine en las películas, Steven dice:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Si pudiéramos ver el mundo con los ojos de un robot, su aspecto no se parecería al fotograma de una película a base de crucecillas, sino que se asemejaría más a esto:
+&lt;p&gt;225 221 216 219 219 214 207 218 219 220 207 155 136 135&lt;/p&gt;
+&lt;p&gt;213 206 213 223 208 217 223 221 223 216 195 156 141 130&lt;/p&gt;
+&lt;p&gt;206 217 210 216 224 223 228 230 234 216 207 157 136 132&lt;/p&gt;
+&lt;p&gt;211 213 221 223 220 222 237 216 219 220 176 149 137 132&lt;/p&gt;
+&lt;p&gt;221 229 218 230 228 214 213 209 198 224 161 140 133 127&lt;/p&gt;
+&lt;p&gt;220 219 224 220 219 215 215 206 206 221 159 143 133 131&lt;/p&gt;
+&lt;p&gt;221 215 211 214 220 218 221 212 218 204 148 141 131 130&lt;/p&gt;
+&lt;p&gt;214 211 211 214 220 218 221 212 218 204 148 141 131 130&lt;/p&gt;
+&lt;p&gt;211 208 223 213 216 226 231 230 241 199 153 141 136 125&lt;/p&gt;
+&lt;p&gt;200 224 219 215 217 224 232 241 240 211 150 139 128 132&lt;/p&gt;
+&lt;p&gt;204 206 208 205 233 241 241 252 242 192 151 141 133 130&lt;/p&gt;
+&lt;p&gt;200 205 201 216 232 248 255 246 231 210 149 141 132 126&lt;/p&gt;
+&lt;p&gt;191 194 209 238 245 255 249 235 238 197 146 139 130 132&lt;/p&gt;
+&lt;p&gt;189 199 200 227 239 237 235 236 247 192 145 142 124 133&lt;/p&gt;
+&lt;p&gt;198 196 209 211 210 215 236 240 232 177 142 137 135 124&lt;/p&gt;
+&lt;p&gt;198 203 205 208 211 224 226 240 210 160 139 132 129 130&lt;/p&gt;
+&lt;p&gt;216 209 214 220 210 231 245 219 169 143 148 129 128 136&lt;/p&gt;
+&lt;p&gt;211 210 217 218 214 227 244 221 162 140 139 129 133 131&lt;/p&gt;
+&lt;p&gt;215 210 217 218 214 227 244 221 162 140 139 129 133 131&lt;/p&gt;
+&lt;p&gt;219 220 211 208 205 209 240 217 154 141 127 130 124 142&lt;/p&gt;
+&lt;p&gt;229 224 212 214 220 229 234 208 151 145 128 128 142 122&lt;/p&gt;
+&lt;p&gt;252 224 222 224 233 244 228 213 143 141 135 128 131 129&lt;/p&gt;
+&lt;p&gt;255 235 230 249 253 240 228 193 147 139 132 128 136 125&lt;/p&gt;
+&lt;p&gt;250 245 238 245 246 235 235 190 139 136 134 135 126 130&lt;/p&gt;
+&lt;p&gt;240 238 233 232 235 255 246 168 156 144 129 127 136 134&lt;/p&gt;
+&lt;p&gt;Cada número representa la luminosidad de una de las millones de manchas que forman el campo visual. Los números menores corresponden a las manchas más oscuras, y los mayores, a las más claras.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Joel me preguntaba si se me ocurría una forma sencilla de convertir estos números en una imagen. El ejercicio es válido y un buen ejemplo de la biblioteca &lt;a href="http://www.pythonware.com/products/pil/" target="_blank"&gt;PIL&lt;/a&gt;.&lt;/p&gt;
+&lt;pre lang="python"&gt;from PIL import Image
+
+image = Image.new('L', (14,25))
+
+imageMap = image.load()
+
+f = open('vision1.txt')
+
+lines = f.readlines()
+
+
+
+for i, l in enumerate(lines):
+
+    for j, v in enumerate(l.split()):
+
+        n = int(v)
+
+        imageMap[j, i] = n
+
+
+
+image.save('vision1.gif')
+
+image.show()&lt;/pre&gt;
+
+&lt;p&gt;Y esto es (ampliado) lo que está mirando el robot de Steven:&lt;/p&gt;
+&lt;p&gt;&lt;img class="size-full wp-image-4054" title="Visión robótica con PIL (ampliada)" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/05/Screenshot-vision1.gif.png" alt="Visión robótica con PIL (ampliada)" width="440" height="454"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;update: &lt;/strong&gt;la versión de Milton usando Octave:&lt;/p&gt;
+&lt;pre lang="octave"&gt;matriz = dlmread('vision1.txt');
+
+matrizNormalizada = matriz ./ max(max(matriz));
+
+imshow(matrizNormalizada);&lt;/pre&gt;
+
+&lt;p&gt;&lt;img class="size-full wp-image-4050" title="Visión robótica generado con Octave" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/05/Pantallazo-de-2012-05-25-11_44_24.png" alt="Visión robótica generado con Octave" width="562" height="467"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;update 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Joel &lt;a href="http://www.jjlorenzatti.com.ar/2012/05/26/vision-de-robot/" target="_blank"&gt;implementó una solución&lt;/a&gt; muy ingeniosa utilizando una planilla de cálculos:&lt;/p&gt;
+&lt;p&gt;&lt;img class="size-full wp-image-4052" title="Visión Robótica con planilla de cálculo" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/05/Robot-View-Excel.png" alt="Visión Robótica con planilla de cálculo" width="291" height="520"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>How the Mind works</category><category>IA</category><category>PIL</category><category>Steven Pinker</category><guid>http://www.juanjoconti.com.ar/posts/2012/05/24/vision-robotica.html</guid><pubDate>Thu, 24 May 2012 00:37:53 GMT</pubDate></item><item><title>Lighting talks en PyConAr 2011 - día 2</title><link>http://www.juanjoconti.com.ar/posts/2011/09/24/lighting-talks-en-pyconar-2011-dia-2.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Ayer publiqué el &lt;a href="http://www.juanjoconti.com.ar/2011/09/23/lighting-talks-en-pyconar-2011/" target="_blank"&gt;resumen de las lighting talks del primer día&lt;/a&gt;. Estas son las del segundo.&lt;/p&gt;
+&lt;p&gt;24 de septiembre de 2011&lt;/p&gt;
+&lt;!--        @page { margin: 2cm }       P { margin-bottom: 0.21cm }         A:link { so-language: zxx } --&gt;
+
+&lt;p&gt;&lt;strong&gt;Mariano Reingart – gui2py&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://code.google.com/p/gui2py/" target="_blank"&gt; http://code.google.com/p/gui2py/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Una idea: usar web2py para hacer aplicaciones de escritorio usando wx.html.HtmlWindow.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gabriel – Tornado y Hadoop, integración en el mundo real – Mercadolibre&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Tornado: servidor web Python asincrónico&lt;/p&gt;
+&lt;p&gt;Redis: sort of memcache&lt;/p&gt;
+&lt;p&gt;Apache Hadoop&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gonzalo – SugarLabs Argentina&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://ar.sugarlabs.org/"&gt;http://ar.sugarlabs.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sugar es un entorno de actividades que corren en las OLPC. 95% Python. Mañana y pasado se juntan a programar y a enseñar en Junín.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Alan Etkin – math2py&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://sourceforge.net/projects/math2py/" target="_blank"&gt;http://sourceforge.net/projects/math2py/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Aplicación web para matemáticas sobre web2py. Entre las herramientas incluye: resolver sistemas lineales, funciones matemáticas, gráficos con resultados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TeMiro?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://temiro.tv/"&gt;http://temiro.tv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hagamos un Cuevana que no necesite ni flash ni extensiones. Usan videoJS, que permite que los navegadores sin soporte para HTML 5 puedan ver videos igualmente. &lt;a href="mailto:info@devecoop"&gt;info@devecoop&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nico César – El futuro de Python&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Nos contó sobre la biblioteca mindread. (un poco de humor, si no vinieron a verlo, se lo perdieron).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sorteo&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Se sorteó un un Cuchillo de PyConAr entre las personas que viajaron más de 1000 kms para participar. Adolfo de Santiago de Chile, Manuel de España, uno de Rusia, Ezequiel de Tucumán, Guillermo de La Rioja, Pablo de Montevideo (casi 1000), y otros mas...&lt;/p&gt;
+&lt;p&gt;random.choice(lista_con_los_nombre)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Damián Avila – Tradeo de pares con Python&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Python para resolver problemas de finanzas. Modelos matemáticos con base probabilística. 2 series financieras y cointegración.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Diego Mascialino&lt;/strong&gt;&lt;strong&gt; – &lt;/strong&gt;&lt;strong&gt;CDPedia&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://python.org.ar/pyar/Proyectos/CDPedia"&gt;http://python.org.ar/pyar/Proyectos/CDPedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Un proyecto que busca que Wikipedia pueda ser visto en lugardes sin acceso a Internet. Este año se resolvió el problema de tener dumps actualizados de la enciclopedia. Salió la versión 0.7 que es distribuida por Educ.ar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Guillermo Narvaja – ISO 9001 menos burocrática&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Implementaron ISO 9001 en la empresa Fierro. En lugar de documentos impresos usaron documentos de texto, rst, con revisión de versiones y otras herramientas de Software Libre.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Juan Pablo y Pedro – Onapsis Bizploit&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.onapsis.com/"&gt;http://www.onapsis.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Una startup orientada a la seguridad en aplicaciones críticas de negocios. Fork de sapyto, primer framework para hacer penetration tests de SAP. Está desarrollado como prueba de concepto para demostrar la existencia de riesgos.&lt;/p&gt;
+&lt;p&gt;La arquitectura consiste en un core con plugins: discoveres, exploiters.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ricardo Kirkner – ConfigGlue&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://launchpad.net/configglue"&gt;https://launchpad.net/configglue&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Es una librería para mantener la configuración de un programa. Código Python, por lo que permite validar tipos, heredar, standares xdg. Integra ConfigParser y OptionParser.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Manuel Quiñones -  Fork de MyPaint&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Le agrega a MyPaint la posibilidad de editar animación.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fotos por &lt;a href="http://www.ceportela.com.ar/" target="_blank"&gt;César Portela&lt;/a&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[gallery link="file" orderby="title"]&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>Junín</category><category>Lighting Talks</category><category>PyConAr</category><category>PyConAr2011</category><guid>http://www.juanjoconti.com.ar/posts/2011/09/24/lighting-talks-en-pyconar-2011-dia-2.html</guid><pubDate>Sat, 24 Sep 2011 19:45:36 GMT</pubDate></item><item><title>Lighting talks en PyConAr 2011 - día 1</title><link>http://www.juanjoconti.com.ar/posts/2011/09/23/lighting-talks-en-pyconar-2011.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Las lighting talks, ya clásica en las conferencias de Python, son charlas de 5 minutos. Los disertantes se anotan en un papal fuera del aula unos minutos antes del comienzo. Lo bueno de la modalidad es lo siguiente: en 5 minutos podés enterarte de algo muy interesante, ¿y que pasa si que el que habla es un plomo? No importa, en menos de 5 minutos se va.&lt;/p&gt;
+&lt;p&gt;Estas son notas rápidas tomadas mientras los disertantes hablaban.&lt;/p&gt;
+&lt;p&gt;23 de septiembre de 2011&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Natalia Bidart – Ubuntu One en el desktop&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://launchpad.net/ubuntuone" target="_blank"&gt;https://launchpad.net/ubuntuone&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu one tiene UI en GTK (la distribuida hoy en los Cds de Ubuntu) y en QT (reemplazará a la versión actual). En el código fuente se puede ver como tener en el mismo repositorio el soporte para ambos toolkits.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Diego Sarmentero – Ninja IDE&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://ninja-ide.org/" target="_blank"&gt;http://ninja-ide.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A partir del 22 de octubre estará abierto el primer concurso de plug-ins para Ninja IDE. Primer premio 250 u$s.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Facundo Batista – Cómo generar un ejecutable con sistema Python&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Tenemos un paquete con un módulo con una función. 3 líneas de código sirven como prueba de concepto, es lo mismo si tuviésemos un sistema muy grande. Se necesita un &lt;strong&gt;main&lt;/strong&gt;.py que ejecute el sistema. Hacemos un zip con todo.&lt;/p&gt;
+&lt;p&gt;( echo '#!/usr/bin/env python' ; cat foo.zip) &amp;gt; saludo&lt;/p&gt;
+&lt;p&gt;chmod +x saludo&lt;/p&gt;
+&lt;p&gt;Y listo! Podemos ejecutarlo con:&lt;/p&gt;
+&lt;p&gt;./foo&lt;/p&gt;
+&lt;p&gt;Idea original de John Lenton.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Joaquin Sorelliano – Cooperativismo&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hay varias cooperativas que producen Software Libre en el país: Elvex, Devecoop, Unixono, Gcoop y otras.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Juan Bautista Cabral – Revista PET&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://revista.python.org.ar/" target="_blank"&gt;http://revista.python.org.ar/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;La revista pretende documentar los eventos La revista tiene ISSN, lo cual la hace &lt;em&gt;citable&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Margarita Manterola – Por qué no usar OpenERP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Es un ERP o un framework para desarrollar sistemas de gestión. Se presenta como una tentación, multi todo, muchos módulos, usado por muchas empresas, hecho en Python y es Software Libre.&lt;/p&gt;
+&lt;p&gt;La verdad: es chico, usa un ORM horrible, no se pueden hacer búsquedas por JOIN, los objetos no se actualizan y hay que releerlos de la BD, la herencia está mal implementada. Muchos dolores de cabeza. El cliente GTK tiene que estar todo el tiempo conectado al servidor para redibujarse. La interfaz de usuario está mal diseñada. El equipo de desarrollo elimina características de una versión a otra, con documentación desactualizada, “comunidad” poco amigable (no acepta parches) y el código es lo peor.&lt;/p&gt;
+&lt;p&gt;Tryton, fork de OpenERP. No segura de que sea una alternativa. Empezar uno desde cero? Si, pero no cada uno el propio, juntémosnos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Manuel Quiñones - Animación Quebracho&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://animacionquebracho.org.ar/" target="_blank"&gt;http://animacionquebracho.org.ar/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Un dibujo animado que se está desarrollando con financiamiento de la provincia de Santa Fe. Cuenta la historia de la provincia, será CC y está hecho con Software Libre.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Evgeny Fadeev (from Russia) – Python @ StartupChile&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.startupchile.org" target="_blank"&gt;http://www.startupchile.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Programa del gobierno chileno. Le da a cada equipo 40000 u$s. Le da Visa a extranjeros. Les presenta empresarios chilenos y otros beneficios. Les dan oficinas gratis en Santiago.&lt;/p&gt;
+&lt;p&gt;Primero hubo 110 proyectos. Luego 154 nuevos proyectos de 33 países. Muchos de los proyectos están hechos en Python. Hay empresas contratando.&lt;/p&gt;
+&lt;p&gt;El proyecto de Evgeny es AskBot, un sitio de Q&amp;amp;A.&lt;/p&gt;
+&lt;p&gt;Apply. La próxima ronda empieza en octubre.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Martín Gaitán – PyQuery&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://pypi.python.org/pypi/pyquery" target="_blank"&gt;http://pypi.python.org/pypi/pyquery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;jquery-like library. Más simple y potente que BeautifulSoup para scrappear la web.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Martín y Juan Catalano – Streema&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://streema.com/" target="_blank"&gt;http://streema.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Es una startup, un sitio web, una red social para escuchar radios de todo el mundo. Hecho con Django y Eventlet. La empresa tiene 4 años y hace poquito se hizo rentable.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kragen Javier Sitager&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Presentación de la charla del día siguiente: Utilizando PyGame para instalaciones artísticas interactivas. No se pudo hacer por problemas técnicos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ale Cura – PyCamp&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://python.org.ar/pyar/PyCamp/" target="_blank"&gt;http://python.org.ar/pyar/PyCamp/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Un “campamento" en dónde los Pythonistas argentinos se juntan a trabajar en el medio de la naturaleza.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fotos por &lt;a href="http://www.ceportela.com.ar/" target="_blank"&gt;César Portela&lt;/a&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[gallery link="file" orderby="title"]&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>Junín</category><category>Lighting Talks</category><category>PyConAr</category><category>PyConAr2011</category><guid>http://www.juanjoconti.com.ar/posts/2011/09/23/lighting-talks-en-pyconar-2011.html</guid><pubDate>Fri, 23 Sep 2011 19:51:45 GMT</pubDate></item><item><title>Razones para ir a PyConAr 2011</title><link>http://www.juanjoconti.com.ar/posts/2011/09/18/razones-para-ir-a-pyconar-2011.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://ar.pycon.org/" target="_blank"&gt;PyConAr&lt;/a&gt; es la conferencia de Python en habla hispana más grande del mundo y la edición 2011 se va a llevar a cabo en Junín, Buenos Aires, el próximo viernes y sábado. Vas?
+&lt;p&gt;&lt;a href="http://ar.pycon.org/2011/"&gt;&lt;img class="aligncenter size-full wp-image-3373" title="pyconar2011" src="http://www.juanjoconti.com.ar/wp-content/uploads/2011/09/pyconar2011.png" alt="" width="760" height="134"&gt;&lt;/a&gt;Para convencerse a ir, además de mirar en el sitio oficial el &lt;a href="http://ar.pycon.org/2011/activity/accepted" target="_blank"&gt;listado de charlas&lt;/a&gt; (que incluye 5 &lt;em&gt;speakers&lt;/em&gt; internacionales) y el &lt;a href="http://ar.pycon.org/2011/stats/maps" target="_blank"&gt;mapa donde se ve de todos los lugares que vamos&lt;/a&gt;, no dejes de pasar por el &lt;a href="http://pyconar.blogspot.com/" target="_blank"&gt;blog oficial de la organización&lt;/a&gt;: en especial los posts en los que cada verso del &lt;a href="http://www.juanjoconti.com.ar/2006/06/04/el-zen-de-python/" target="_blank"&gt;Zen de Python&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;En este detalle se refleja todo lo que han trabajado para organizar este evento. No dudo que va a estar muy bueno.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Eventos</category><category>PyConAr</category><category>PyConAr2011</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2011/09/18/razones-para-ir-a-pyconar-2011.html</guid><pubDate>Sun, 18 Sep 2011 10:09:45 GMT</pubDate></item></channel></rss>

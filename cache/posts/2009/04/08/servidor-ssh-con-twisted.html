@@ -1,0 +1,274 @@
+<p><html><body><p>Actualicé <a href="http://www.devshed.com/c/a/Python/SSH-with-Twisted/" target="_blank">este ejemplo</a>, tamibién incluido en el <a href="http://books.google.com/books?id=Fm5kw3lZ7zEC&amp;printsec=frontcover&amp;hl=es&amp;source=gbs_summary_r&amp;cad=0" target="_blank">libro de Twisted</a> para que no tire Deprecation Warnings:</p>
+<!--more-->
+
+<p></p><pre>from twisted.cred import portal, checkers, credentials</p>
+<p>from twisted.conch import error, avatar, recvline, interfaces as conchinterfaces</p>
+<p>from twisted.conch.ssh import factory, userauth, connection, keys, session, common</p>
+<p>from twisted.conch.insults import insults</p>
+<p>from twisted.application import service, internet</p>
+<p>from zope.interface import implements</p>
+<p>import os</p>
+<p>class SSHDemoProtocol(recvline.HistoricRecvLine):</p>
+<pre class="code literal-block">def __init__(self, user):
+
+    self.user = user
+
+
+
+def connectionMade(self) :
+
+    recvline.HistoricRecvLine.connectionMade(self)
+
+    self.terminal.write(&quot;Welcome to my test SSH server.&quot;)
+
+    self.terminal.nextLine()
+
+    self.do_help()
+
+    self.showPrompt()
+
+
+
+def showPrompt(self):
+
+    self.terminal.write(&quot;$ &quot;)
+
+
+
+def getCommandFunc(self, cmd):
+
+    return getattr(self, &#39;do_&#39; + cmd, None)
+
+
+
+def lineReceived(self, line):
+
+    line = line.strip()
+
+    if line:
+
+        cmdAndArgs = line.split()
+
+        cmd = cmdAndArgs[0]
+
+        args = cmdAndArgs[1:]
+
+        func = self.getCommandFunc(cmd)
+
+        if func:
+
+           try:
+
+               func(*args)
+
+           except Exception, e:
+
+               self.terminal.write(&quot;Error: %s&quot; % e)
+
+               self.terminal.nextLine()
+
+        else:
+
+           self.terminal.write(&quot;No such command.&quot;)
+
+           self.terminal.nextLine()
+
+    self.showPrompt()
+
+
+
+def do_help(self, cmd=&#39;&#39;):
+
+    &quot;Get help on a command. Usage: help command&quot;
+
+    if cmd:
+
+        func = self.getCommandFunc(cmd)
+
+        if func:
+
+            self.terminal.write(func.__doc__)
+
+            self.terminal.nextLine()
+
+            return
+
+
+
+    publicMethods = filter(
+
+        lambda funcname: funcname.startswith(&#39;do_&#39;), dir(self))
+
+    commands = [cmd.replace(&#39;do_&#39;, &#39;&#39;, 1) for cmd in publicMethods]
+
+    self.terminal.write(&quot;Commands: &quot; + &quot; &quot;.join(commands))
+
+    self.terminal.nextLine()
+
+
+
+def do_echo(self, *args):
+
+    &quot;Echo a string. Usage: echo my line of text&quot;
+
+    self.terminal.write(&quot; &quot;.join(args))
+
+    self.terminal.nextLine()
+
+
+
+def do_whoami(self):
+
+    &quot;Prints your user name. Usage: whoami&quot;
+
+    self.terminal.write(self.user.username)
+
+    self.terminal.nextLine()
+
+
+
+def do_quit(self):
+
+    &quot;Ends your session. Usage: quit&quot;
+
+    self.terminal.write(&quot;Thanks for playing!&quot;)
+
+    self.terminal.nextLine()
+
+    self.terminal.loseConnection()
+
+
+
+def do_clear(self):
+
+    &quot;Clears the screen. Usage: clear&quot;
+
+    self.terminal.reset()
+</pre>
+
+
+<p>class SSHDemoAvatar(avatar.ConchUser):</p>
+<pre class="code literal-block">implements(conchinterfaces.ISession)
+
+
+
+def __init__(self, username):
+
+    avatar.ConchUser.__init__(self)
+
+    self.username = username
+
+    self.channelLookup.update({&#39;session&#39;:session.SSHSession})
+
+
+
+def openShell(self, protocol):
+
+    serverProtocol = insults.ServerProtocol(SSHDemoProtocol, self)
+
+    serverProtocol.makeConnection(protocol)
+
+    protocol.makeConnection(session.wrapProtocol(serverProtocol))
+
+
+
+def getPty(self, terminal, windowSize, attrs):
+
+    return None
+
+
+
+def execCommand(self, protocol, cmd):
+
+    raise NotImplementedError
+
+
+
+def closed(self):
+
+    pass
+</pre>
+
+
+<p>class SSHDemoRealm:</p>
+<pre class="code literal-block">implements(portal.IRealm)
+
+
+
+def requestAvatar(self, avatarId, mind, *interfaces):
+
+    if conchinterfaces.IConchUser in interfaces:
+
+        return interfaces[0], SSHDemoAvatar(avatarId), lambda: None
+
+    else:
+
+        raise Exception, &quot;No supported interfaces found.&quot;
+</pre>
+
+
+<p>def getRSAKeys():</p>
+<pre class="code literal-block"><span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;public.key&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;private.key&#39;</span><span class="p">)):</span>
+
+    <span class="c"># generate a RSA keypair</span>
+
+    <span class="k">print</span> <span class="s">&quot;Generating RSA keypair...&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">Crypto.PublicKey</span> <span class="kn">import</span> <span class="n">RSA</span>
+
+    <span class="n">KEY_LENGTH</span> <span class="o">=</span> <span class="mi">1024</span>
+
+    <span class="n">rsaKey</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">KEY_LENGTH</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">entropy</span><span class="o">.</span><span class="n">get_bytes</span><span class="p">)</span>
+
+    <span class="n">publicKeyString</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">Key</span><span class="p">(</span><span class="n">rsaKey</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+    <span class="n">privateKeyString</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">makePrivateKeyString</span><span class="p">(</span><span class="n">rsaKey</span><span class="p">)</span>
+
+    <span class="c"># save keys for next time</span>
+
+    <span class="nb">file</span><span class="p">(</span><span class="s">&#39;public.key&#39;</span><span class="p">,</span> <span class="s">&#39;w+b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">publicKeyString</span><span class="p">)</span>
+
+    <span class="nb">file</span><span class="p">(</span><span class="s">&#39;private.key&#39;</span><span class="p">,</span> <span class="s">&#39;w+b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">privateKeyString</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s">&quot;done.&quot;</span>
+
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="n">publicKeyString</span> <span class="o">=</span> <span class="nb">file</span><span class="p">(</span><span class="s">&#39;public.key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">privateKeyString</span> <span class="o">=</span> <span class="nb">file</span><span class="p">(</span><span class="s">&#39;private.key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">return</span> <span class="n">publicKeyString</span><span class="p">,</span> <span class="n">privateKeyString</span>
+</pre>
+
+
+<p>if <strong>name</strong> == "<strong>main</strong>":</p>
+<pre class="code literal-block">sshFactory = factory.SSHFactory()
+
+sshFactory.portal = portal.Portal(SSHDemoRealm())
+
+users = {&#39;admin&#39;: &#39;aaa&#39;, &#39;guest&#39;: &#39;bbb&#39;}
+
+sshFactory.portal.registerChecker(
+</pre>
+
+
+<p>checkers.InMemoryUsernamePasswordDatabaseDontUse(**users))</p>
+<pre class="code literal-block"><span class="n">pubKeyString</span><span class="p">,</span> <span class="n">privKeyString</span> <span class="o">=</span> <span class="n">getRSAKeys</span><span class="p">()</span>
+
+<span class="n">sshFactory</span><span class="o">.</span><span class="n">publicKeys</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="s">&#39;ssh-rsa&#39;</span><span class="p">:</span> <span class="n">keys</span><span class="o">.</span><span class="n">Key</span><span class="o">.</span><span class="n">fromString</span><span class="p">(</span><span class="n">pubKeyString</span><span class="p">)}</span>
+
+<span class="n">sshFactory</span><span class="o">.</span><span class="n">privateKeys</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="s">&#39;ssh-rsa&#39;</span><span class="p">:</span> <span class="n">keys</span><span class="o">.</span><span class="n">Key</span><span class="o">.</span><span class="n">fromString</span><span class="p">(</span><span class="n">privKeyString</span><span class="p">)}</span>
+
+
+
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+
+<span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">2222</span><span class="p">,</span> <span class="n">sshFactory</span><span class="p">)</span>
+
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">body</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre>

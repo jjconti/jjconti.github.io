@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (GNU)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/gnu.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:24 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Micro$oft ayuda a las personas a decidirse por GNU/Linux</title><link>http://www.juanjoconti.com.ar/posts/2006/05/07/microoft-insta-ayuda-a-las-personas-a-decidirse-por-gnulinux.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://permalink.gmane.org/gmane.org.user-groups.argentina.rivendel/106"&gt;Leo en Rivendel&lt;/a&gt;:
+&lt;blockquote&gt;
+
+Windows Vista obstruirá ejecución de Linux
+
+La función de seguridad BitLocker, que será incorporada en las versiones más avanzadas de Windows Vista, dificultará sobremanera la ejecución de Linux en la misma computadora. &lt;/blockquote&gt;
+
+&lt;p&gt;y en &lt;a href="http://www.diarioti.com/gate/n.php?id=11299"&gt;Diarioti&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+
+Actualmente, un gran número de usuarios valora la posibilidad de ejecutar Linux y Windows en la misma computadora mediante un sistema de boot dual. Sin embargo, esta posibilidad será obstruida por Windows Vista.&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href="http://www.microsoft.com/technet/windowsvista/library/help/b7931dd8-3152-4d3a-a9b5-84621660c5f5.mspx?mfr=true"&gt;Bitlocker Drive Encryption&lt;/a&gt;, una característica que aparentemente solo estará disponible en las versiones más caras de Windows Vista, evita que un ladrón de computadoras tenga acceso a los datos de su dueño. Según el experto en seguridad &lt;a href="http://www.schneier.com/"&gt;Bruce Schneier&lt;/a&gt; esto tiene el efecto "secundario" de hacer muy dificultosa la ejecución de un sistema GNU/Linux en la misma máquina que Windows Vista.&lt;/p&gt;
+&lt;p&gt;El artículo presenta esto como una mala noticia para la comunidad usuaria de GNU/Linux, en mi  opinión esto no es tan así.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;strong&gt;Buscandole el lado bueno&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Tengo muchos amigos linuxeros que todavía no se animaron a dar el paso, cortar el cordón, romper las cadenas y decidirse a no usar &lt;a href="http://es.wikipedia.org/wiki/Software_privativo"&gt;software privativo&lt;/a&gt; en sus computadoras.&lt;/p&gt;
+&lt;p&gt;Si llega el momento en que las opcines sean: Windows con Bit-locker o GNU/Linux, no dudarán en su elección: &lt;em&gt;Software that let them free instead of lock them&lt;/em&gt;. Bit-locker puede ser el empujon, la tijera o el corta-cadenas que decida a muchas personas, no?&lt;/p&gt;
+&lt;p&gt;¿Que opina la gente que lee este blog y tiene &lt;em&gt;dual-boot&lt;/em&gt; en su computadora? ¿y la gente que solo usa GNU/Linux?..¿Alguien que solo usa Windows?&lt;/p&gt;&lt;/div&gt;</description><category>GNU</category><category>Microsoft</category><category>Tecnología</category><guid>http://www.juanjoconti.com.ar/posts/2006/05/07/microoft-insta-ayuda-a-las-personas-a-decidirse-por-gnulinux.html</guid><pubDate>Sun, 07 May 2006 15:47:30 GMT</pubDate></item><item><title>Lingo en GNU/Linux</title><link>http://www.juanjoconti.com.ar/posts/2006/04/25/lingo-en-gnulinux.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En Investigación Operativa estamos usando el software Lingo, desde su web bajé la versión de evaluación para uso académico para GNU/Linux. La versión disponible es la 9.0, para Windows está ya la 10.0 :(&lt;/p&gt;
+&lt;p&gt;&lt;a title="Lingo9 para Linux" href="http://www.lindo.com/downloads/LINGO-LINUX-IA32-9.0.tar.gz"&gt;http://www.lindo.com/downloads/LINGO-LINUX-IA32-9.0.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Seguí leyendo para obtener algunos tips..&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;strong&gt;Ponerlo a andar&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ tar xvfz LINGO-LINUX-IA32-9.0.tar.gz&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;$ LD_LIBRARY_PATH=$PWD/lingo9/bin&lt;/p&gt;
+&lt;p&gt;$ export LD_LIBRARY_PATH&lt;/p&gt;
+&lt;p&gt;$ LINGO_LICENSE_FILE=$PWD/lingo9/license/lndlng90.lic&lt;/p&gt;
+&lt;p&gt;$ export LINGO_LICENSE_FILE&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Y ejecutarlo..&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;$ cd  cd lingo9/bin/linux32/&lt;/p&gt;
+&lt;p&gt;$ ./lingo9&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Una vez en la matrix:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;: take modelo1.lingo&lt;/p&gt;
+&lt;p&gt;: go&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;El archivo puede crearse con cualquier editor de texto, yo estoy usando Vim y me instalé un &lt;a href="http://www.vim.org/scripts/script.php?script_id=1122"&gt;resaltador de sintaxis para lingo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;En Vim:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;: syntaxis on&lt;/p&gt;
+&lt;p&gt;: colorscheme elflord&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reporte de sensibilidad&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Por defecto esta característica no está habilitada, se puede habilitar ejecutando el siguiente comando antes de obtener la solución del modelo:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;: SET DUALCO 2&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Luego, para guardar esta opción como por defecto:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;: FREEZE&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ejemplo&lt;/strong&gt;: &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/posts/2006/04/25/files/g2ej6.lingo"&gt;g2ej6.lingo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Facultad</category><category>GNU</category><category>Lingo</category><guid>http://www.juanjoconti.com.ar/posts/2006/04/25/lingo-en-gnulinux.html</guid><pubDate>Tue, 25 Apr 2006 17:46:43 GMT</pubDate></item></channel></rss>

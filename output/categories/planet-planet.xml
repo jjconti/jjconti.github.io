@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (planet-planet)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/planet-planet.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:20 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Destapando las cañerías de planet-planet</title><link>http://www.juanjoconti.com.ar/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Palabras claves: planet-planet exception KeyError&lt;/p&gt;
+&lt;p&gt;Antes de venirme para Pellegrini recibí algunos avisos de que los planetas de &lt;a title="PyAr" href="http://pyar.firebirds.com.ar/" target="_blank"&gt;PyAr&lt;/a&gt; y &lt;a title="TecnoFe" href="http://blogs.firebirds.com.ar/" target="_blank"&gt;TecnoFe&lt;/a&gt; no se estaban actualizando. Estos dos sitios corren sobre dos instalacions de &lt;a title="PP" href="http://www.planetplanet.org/" target="_blank"&gt;planet-planet&lt;/a&gt;, un agregador de feeds escrito en Python. El programa consiste en un script que cada vez que se ejecuta genera páginas html, actualizando su contenido entre corrida y corrida si corresponde.&lt;/p&gt;
+&lt;p&gt;Mediante reglas de &lt;a title="Cron" href="http://es.wikipedia.org/wiki/Cron_(unix)" target="_blank"&gt;cron&lt;/a&gt; hago que estos scripts corran cada 15 minutos, buscando novedades en los blogs agregados.&lt;/p&gt;
+&lt;p&gt;Mi primer intento de saber qué estaba pasando fue revisar crontab, pero no encontré nada raro allí. Lo siguiente fue ejecutar a manos los scripts en cuestión. Ambos tiraban exepciones similares:&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;code&gt;Traceback (most recent call last):&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;File "planet.py", line 167, in ?&lt;/p&gt;
+&lt;p&gt;main()&lt;/p&gt;
+&lt;p&gt;File "planet.py", line 160, in main&lt;/p&gt;
+&lt;p&gt;my_planet.run(planet_name, planet_link, template_files, offline)&lt;/p&gt;
+&lt;p&gt;File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/&lt;strong&gt;init&lt;/strong&gt;.py", line 240, in run&lt;/p&gt;
+&lt;p&gt;channel = Channel(self, feed_url)&lt;/p&gt;
+&lt;p&gt;File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/&lt;strong&gt;init&lt;/strong&gt;.py", line 527, in &lt;strong&gt;init&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;self.cache_read_entries()&lt;/p&gt;
+&lt;p&gt;File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/&lt;strong&gt;init&lt;/strong&gt;.py", line 569, in cache_read_entries&lt;/p&gt;
+&lt;p&gt;item = NewsItem(self, key)&lt;/p&gt;
+&lt;p&gt;File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/&lt;strong&gt;init&lt;/strong&gt;.py", line 845, in &lt;strong&gt;init&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;self.cache_read()&lt;/p&gt;
+&lt;p&gt;File "/home/.orithyia/jjconti/pyar.firebirds.com.ar/planet-2.0/planet/cache.py", line 74, in cache_read&lt;/p&gt;
+&lt;p&gt;self._type[key] = self._cache[cache_key + " type"]&lt;/p&gt;
+&lt;p&gt;File "/usr/lib/python2.3/bsddb/&lt;strong&gt;init&lt;/strong&gt;.py", line 116, in &lt;strong&gt;getitem&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;return self.db[key]&lt;/p&gt;
+&lt;p&gt;KeyError: 'tag:www.taniquetil.com.ar,2007-08-31:285 author type'&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Este software tiene un cache de informacion para guardar los feeds que parsea. Basicamente es un directorio llamado cache con un archivo por cada feed agregado.&lt;/p&gt;
+&lt;p&gt;Solucioné el problema -más por instinto que por pericia- borrando, para ambos sitios, el archivo correspondiente al blog con problemas. Les dejo el tip por si les sucede en alguna instalación de planet-planet. Prometo que si me vuelve a pasar voy a investigar un poquito más para descubrir la razón del problema :)&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>planet-planet</category><category>PyAr</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2008/03/17/destapando-las-canerias-de-planet-planet.html</guid><pubDate>Mon, 17 Mar 2008 22:45:26 GMT</pubDate></item></channel></rss>

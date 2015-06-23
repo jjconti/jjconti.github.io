@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (rtf)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/rtf.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:22 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Generar archivos rtf en forma dinámica desde Django</title><link>http://www.juanjoconti.com.ar/posts/2008/06/27/generar-archivos-rtf-en-forma-dinamica-desde-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En mi anterior artículo les conté sobre &lt;a href="http://www.juanjoconti.com.ar/2008/06/12/soporte-unicode-para-pyrtf-ng/" title="pyrtf-ng" target="_blank"&gt;pyrtf-ng&lt;/a&gt;, una librería para generar &lt;a href="http://es.wikipedia.org/wiki/Rich_Text_Format" title="Rich Text Format" target="_blank"&gt;archivos rtf&lt;/a&gt; en forma fácil desde un programa escrito en Python. Fue la primer alternativa que manejamos a la hora de plantearnos el problema de generar archivos rtf en forma dinámica desde &lt;a href="http://www.djangoproject.com" title="Django project" target="_blank"&gt;Django&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;En este artículo les cuento el &lt;em&gt;aproach&lt;/em&gt; que finalmente adoptamos. Si la naturaleza dinámica del documento que queremos generar radica en que ciertas partes del texto tendrán valores dinámicos o ciertas partes pueden estar o no dependiendo de alguna condición, lo que podemos hacer es utilizar un sistema de templates. El formato rtf es un lenguaje de marcas (es texto, no binario!). Por lo que fácilmente podemos usar el &lt;a href="http://www.djangoproject.com/documentation/templates/" target="_blank"&gt;subsistema de templates de Django&lt;/a&gt; para lograr nuestro objetivo.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Un ejemplo de lo que queremos obtener&lt;/h3&gt;
+&lt;p&gt;Simplificando, si en el sistema la variable &lt;code&gt;nombre&lt;/code&gt; vale &lt;code&gt;"Juan"&lt;/code&gt; y la variable &lt;code&gt;tratamiento&lt;/code&gt; es &lt;code&gt;False&lt;/code&gt;, el resultado esperado en el archivo rtf es:&lt;/p&gt;
+&lt;blockquote&gt;Hola Juan&lt;/blockquote&gt;
+
+&lt;p&gt;Si la variable &lt;code&gt;nombre&lt;/code&gt; vale &lt;code&gt;"Raúl"&lt;/code&gt;, la variable &lt;code&gt;tratamiento&lt;/code&gt; es &lt;code&gt;"Sr."&lt;/code&gt; el resultado esperado en el archivo rtf es:&lt;/p&gt;
+&lt;blockquote&gt;Hola Sr. Raúl&lt;/blockquote&gt;
+
+&lt;p&gt;Para lograrlo necesitamos un archivo hola.rtf (puede tener cualquier nombre y cualquier extensión, pero estos parecen apropiados para el ejemplo) ubicado en algún &lt;a href="http://www.djangoproject.com/documentation/settings/#template-dirs" title="Definido en settings.py" target="_blank"&gt;directorio accesible por el subsistema de templates&lt;/a&gt;. Tip: crear un archivo rtf con OpenOffice Writer o WordPad y luego editarlo con un editor de texto para agregar las marcas necesarias para que Django lo procese.&lt;/p&gt;
+&lt;h3&gt;El template&lt;/h3&gt;
+
+&lt;p&gt;Así se ve el template del ejemplo cuando lo abrimos con un editor de texto, luego de agregar las marcas correspondientes:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;{% load filtros %}&lt;/strong&gt;{\rtf1\ansi\deff0\adeflang1025&lt;/p&gt;
+&lt;p&gt;{\fonttbl{\f0\froman\fprq2\fcharset0 Bitstream Vera Sans;}{\f1\froman\fprq2\fcharset0 Bitstream Vera Sans;}{\f2\fswiss\fprq2\fcharset0 Bitstream Vera Sans;}{\f3\fnil\fprq2\fcharset0 Bitstream Vera Sans;}}&lt;/p&gt;
+&lt;p&gt;{\colortbl;\red0\green0\blue0;\red128\green128\blue128;}&lt;/p&gt;
+&lt;p&gt;[....]&lt;/p&gt;
+&lt;p&gt;{\rtlch \ltrch\loch\f0\fs24\lang11274\i0\b0 Hola &lt;strong&gt;{% if tratamiento %}{{ tratamiento }} {% endif %}{{ nombre|rtf }}&lt;/strong&gt;}&lt;/p&gt;
+&lt;p&gt;\par }&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;El encabezado suele ser largo (esto depende del programa utilizado para crear el documento, con WordPad se obtienen los encabezados más cortos). Las partes importantes están resaltadas en &lt;strong&gt;negrita&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;El bloque &lt;code&gt;load&lt;/code&gt; carga el filtro de nombre rtf que luego es usado. Notar que este bloque debe incluirse en la misma línea que la primer línea del documento o en alguna línea siguiente, pero nunca en la primer línea del archivo y solo. Esto provocará una línea en blanco al principio del documento resultante, un error de sintaxis en el formato rtf, y por lo tanto no podrá ser interpretado por los procesadores de palabras.&lt;/p&gt;
+&lt;h3&gt;Un filtro para codificar caracteres Unicode en rtf&lt;/h3&gt;
+
+&lt;p&gt;Como rtf no soporta nativamente caracteres Unicode (tildes y otros caracteres no ascii), estos deben ser codificados para ser correctamente interpretados. El siguiente filtro hace esa tarea, es un &lt;a href="http://www.djangoproject.com/documentation/templates_python/#template-filters-that-expect-strings" target="_blank"&gt;string filter&lt;/a&gt; de Django:&lt;/p&gt;
+&lt;pre&gt;
+
+@register.filter(name='rtf')
+
+@stringfilter
+
+def rtf(value):
+
+    if isinstance(value, UnicodeType):
+
+        return "".join(["u%s?" % str(ord(c)) for c in value])
+
+    return value&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Django</category><category>rtf</category><guid>http://www.juanjoconti.com.ar/posts/2008/06/27/generar-archivos-rtf-en-forma-dinamica-desde-django.html</guid><pubDate>Fri, 27 Jun 2008 15:33:46 GMT</pubDate></item><item><title>Soporte Unicode para pyrtf-ng</title><link>http://www.juanjoconti.com.ar/posts/2008/06/12/soporte-unicode-para-pyrtf-ng.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="http://code.google.com/p/pyrtf-ng" title="code" target="_blank"&gt;pyrtf-ng&lt;/a&gt; es un módulo para Python que permite generar archivos en formato &lt;a href="http://en.wikipedia.org/wiki/Rich_Text_Format" title="RTF" target="_blank"&gt;RTF&lt;/a&gt; en forma dinámica. Esta semana empecé a probarlo con la idea de usarlo para generar documentos de texto con formato (&lt;a href="http://es.wikipedia.org/wiki/DOC" title=".doc?" target="_blank"&gt;Word&lt;/a&gt;-like) en forma dinámica.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Al intentar instalarlo tuve algunos problemas , se los comenté al autor y le sugerí soluciones. Rápidamente estas modificaciones estuvieron hechas en el repositorio del proyecto.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Una vez que tuve la librería instalada y los ejemplos corriendo, empecé a modificar algunos para experimentar un poco. Cuando quise generar un documento que contenga una palabra con tilde (cómo &lt;code&gt;canción&lt;/code&gt;), el programa tiró una horrible excepción. Esto hacía que desechara totalmente la idea de usar este software.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Leí sobre la codificación utilizada por el formato RTF y descubrí que &lt;a href="http://en.wikipedia.org/wiki/Rich_Text_Format#Character_encoding" title="RTF Encoding" target="_blank"&gt;no soporta Unicode&lt;/a&gt; en forma nativa, pero si mediante una secuencia de escape de la forma: &lt;code&gt;\uxxxx?&lt;/code&gt; en dónde &lt;code&gt;xxxx&lt;/code&gt; es un entero con signo de 16 bits correspondiente al caracter que se quiere representar. Ejemplo: &lt;a href="http://www.fileformat.info/info/unicode/char/00e1/index.htm" title="LATIN SMALL LETTER A WITH ACUTE" target="_blank"&gt;á&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Pedí instrucciones al autor de la librería, quien me indicó que partes del código tendría que revisar par incluir la funcionalidad de soportar Unicode. Luego de algunas horas empapándome en la arquitectura de clases de pyrtf, tenía un parche listo para ser aplicado e incorporar la funcionalidad. Hoy &lt;a href="http://code.google.com/p/pyrtf-ng/source/detail?r=69" title="Parche para Unicode" target="_blank"&gt;fue incluido&lt;/a&gt; en la versión en desarrollo de la librería.&lt;/p&gt;
+&lt;h3&gt;Código&lt;/h3&gt;
+
+&lt;p&gt;Un pequeño snippet que muestra el algoritmo básico para pasar de un string Unicode a su representación codificada en RTF:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;encoded = ''.join(['\u%s?' % str(ord(b)) for b in base])&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Datos&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;pyrtf-ng es mantenido por &lt;a href="http://oubiwann.blogspot.com/" title="Duncan's blog" target="_blank"&gt;Duncan Mc Greggor&lt;/a&gt; y está basado en &lt;a href="http://pyrtf.sourceforge.net/" title="PyRTF" target="_blank"&gt;PyRTF,&lt;/a&gt; un proyecto que ya no es mantenido.&lt;/li&gt;
+
+    &lt;li&gt;Se encuentra en activo desarrollo: modificación del &lt;a href="http://www.python.org/dev/peps/pep-0008/" title="PEP8" target="_blank"&gt;estilo&lt;/a&gt; del código y &lt;em&gt;refactoring&lt;/em&gt;.&lt;/li&gt;
+
+    &lt;li&gt;También puede ser modificado mediante bazaar en &lt;a href="https://launchpad.net/pyrtf" title="Launchpad" target="_blank"&gt;lauchpad&lt;/a&gt;.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>rtf</category><category>unicode</category><guid>http://www.juanjoconti.com.ar/posts/2008/06/12/soporte-unicode-para-pyrtf-ng.html</guid><pubDate>Thu, 12 Jun 2008 00:04:28 GMT</pubDate></item></channel></rss>

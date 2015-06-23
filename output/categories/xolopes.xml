@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Xolopes)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/xolopes.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:21 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Cómo un programador escribe una novela (video)</title><link>http://www.juanjoconti.com.ar/posts/2014/09/17/como-un-programador-escribe-una-novela-video.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Capturado el sábado 14 en la Feria del libro de Santa Fe. Versión en video de &lt;a href="http://www.juanjoconti.com.ar/2014/08/18/como-un-programador-escribe-una-novela/"&gt;esta charla&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=hYXnjZJ0ygE&lt;/p&gt;
+&lt;p&gt;Luego de esto hicimos la &lt;a href="http://www.juanjoconti.com.ar/2014/09/16/presentacion-de-la-novela-xolopes-video/"&gt;presentación de la novela Xolopes&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Eventos</category><category>Feria del libro de Santa Fe 2014</category><category>programación</category><category>videos</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/09/17/como-un-programador-escribe-una-novela-video.html</guid><pubDate>Wed, 17 Sep 2014 11:18:54 GMT</pubDate></item><item><title>Presentación de la novela Xolopes (video)</title><link>http://www.juanjoconti.com.ar/posts/2014/09/16/presentacion-de-la-novela-xolopes-video.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Sábado 14 de septiembre de 2014. Feria del Libro de Santa Fe. Presentación de la novela &lt;a href="http://juanjoconti.com.ar/xolopes"&gt;Xolopes&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=0WhzKtr5edE&lt;/p&gt;
+&lt;p&gt;Antes de esto di la charla &lt;a href="http://www.juanjoconti.com.ar/2014/09/17/como-un-programador-escribe-una-novela-video/"&gt;Cómo un programador escribe una novela&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Eventos</category><category>Feria del libro de Santa Fe 2014</category><category>videos</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/09/16/presentacion-de-la-novela-xolopes-video.html</guid><pubDate>Tue, 16 Sep 2014 01:10:28 GMT</pubDate></item><item><title>El sábado al as 18 hs en la Feria del Libro de Santa Fe</title><link>http://www.juanjoconti.com.ar/posts/2014/09/11/el-sabado-al-as-18-hs-en-la-feria-del-libro-de-santa-fe.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Los espero este &lt;strong&gt;sábado 13&lt;/strong&gt; de septiembre a las &lt;strong&gt;18 hs&lt;/strong&gt; en el &lt;strong&gt;auditorio 2&lt;/strong&gt; de la &lt;strong&gt;estación Belgrano (Bv. Gálvez 1150)&lt;/strong&gt;. Voy a dar una nueva versión de mi charla "Cómo un programador escribe una novela" y a continuación se realizará la presentación de mi novela &lt;a href="http://juanjoconti.com.ar/xolopes" target="_blank"&gt;&lt;strong&gt;Xolopes&lt;/strong&gt;&lt;/a&gt; a cargo de Diego E. Suárez.&lt;/p&gt;
+&lt;p&gt;&lt;img class="aligncenter wp-image-5079 size-full" src="http://www.juanjoconti.com.ar/wp-content/uploads/2014/09/feria-libro-2014_flyer-agenda2.jpg" alt="Feria del Libo de Santa Fe" width="648" height="458"&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Feria del libro de Santa Fe 2014</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/09/11/el-sabado-al-as-18-hs-en-la-feria-del-libro-de-santa-fe.html</guid><pubDate>Thu, 11 Sep 2014 11:22:35 GMT</pubDate></item><item><title>Cómo un programador escribe una novela</title><link>http://www.juanjoconti.com.ar/posts/2014/08/18/como-un-programador-escribe-una-novela.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;La semana pasada &lt;a href="http://www.colectivolibre.com.ar/" target="_blank"&gt;Colectivo Libre&lt;/a&gt; organizó una conferencia (llamada &lt;a href="http://crsl.colectivolibre.com.ar/" target="_blank"&gt;Conferencia de Software Libre del Litoral&lt;/a&gt;) y me invitaron a hablar sobre cultura libre o crowdfunding o Creative Commons. En particular, que cuente mi experiencia.&lt;/p&gt;
+&lt;p&gt;Di una charla llamada &lt;strong&gt;Cómo un programador escribe una novela: crowdfunding, herramientas y licencias&lt;/strong&gt; en la que conté mis peripecias financiando la impresión de mis libros (como ese camino fue evolucionando), hablé de las herramientas que desarrollé para imprimir Xolopes y cerré explicando brevemente las distintas licencias Creative Commons disponibles.&lt;/p&gt;
+&lt;p&gt;La presentación la armé con &lt;a href="http://slides.com/" target="_blank"&gt;slides.com&lt;/a&gt;, un sitio que utiliza la librería &lt;a href="http://lab.hakim.se/reveal-js/" target="_blank"&gt;reveal.js&lt;/a&gt;: &lt;a href="http://slides.com/juanjoconti/como-un-programador-escribe-una-novela#/" target="_blank"&gt;http://slides.com/juanjoconti/como-un-programador-escribe-una-novela#/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;center&gt;
+&lt;iframe src="//slides.com/juanjoconti/como-un-programador-escribe-una-novela/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/center&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2014/08/IMG_2037.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="aligncenter size-large wp-image-4966" src="http://www.juanjoconti.com.ar/wp-content/uploads/2014/08/IMG_2037-1024x768.jpg" alt="Cómo un programador escribe una novela" width="640" height="480"&gt;&lt;/p&gt;
+&lt;p&gt;(&lt;a href="https://www.facebook.com/juanjoconti/media_set?set=a.10204341456327390.1073741847.1559082191&amp;amp;type=3" target="_blank"&gt;más fotos&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Luego de la presentación hubieron muchos comentarios y preguntas. Estuvo muy bueno. &lt;strong&gt;¿Te al perdiste? Probablemente vuelta a darla en la Feria del Libro de Santa Fe el sábado 13 de septiembre a las 18 hs&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Lamentablemente no fue grabada y las &lt;em&gt;slides&lt;/em&gt; dicen poco por si solas. Sin embargo, acabo de recuperar el borrador de un post que nunca publiqué. Su contenido coincide con un tercio de la charla, aunque tiene mucho más detalle técnico del que expuse en la conferencia:&lt;/p&gt;
+&lt;h3&gt;Cómo escribí Xolopes&lt;/h3&gt;
+
+&lt;p&gt;Este artículo habla sobre la novela corta &lt;a href="http://www.juanjoconti.com.ar/libros/xolopes/" target="_blank"&gt;Xolopes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Durante mis últimas &lt;a href="http://www.juanjoconti.com.ar/2013/07/12/algunas-fotos-de-las-vacaciones-en-mexico/"&gt;vacaciones&lt;/a&gt; estuve tomando notas rápidas en el celular. Ideas, conversaciones, principios, finales. Al mismo tiempo estuve &lt;a href="http://www.juanjoconti.com.ar/2013/07/12/camaragesell-guillermo-saccomanno/"&gt;leyendo&lt;/a&gt; una novela cuya estructura me gustó mucho y quise imitar. Quise hacer un &lt;a title="La canción que cada uno tiene adentro - Leonardo Oyola" href="http://www.youtube.com/watch?v=DC-OdcjzED0" target="_blank"&gt;&lt;em&gt;cover&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;—¿Y qué escribís? —se interesa el marido de la señora.
+
+—Cuentos.
+
+—Ah... hay que tener imaginación para eso.
+
+—No tanta, me la paso recogiendo voces de otros.
+
+
+
+Xolopes #46&lt;/blockquote&gt;
+
+&lt;p&gt;La novela sería entonces una sucesión de textos, en su mayoría cortos, con un orden propio. El problema era que no conocía ese orden, que nuevas partes irían surgiendo y que otras serían eliminadas. Escribir todo en un único documento, "un Word", no parecía una elección correcta. Como me gusta programar, la solución a mi problema sería un programa.&lt;/p&gt;
+&lt;blockquote&gt;... en lugar de ser una sucesión de pocos capítulos largos, se forma con una multiplicidad de textos cortos, uno a continuación del otro, una multitud de voces que van ingresando al texto para formarlo.
+
+
+
+Xolopes #122&lt;/blockquote&gt;
+
+&lt;p&gt;Pasé cada una de las partes que tenía hasta el momento a archivos de texto. Uno por cada parte. En otro archivo (índice) escribí un orden tentativo para las partes. Finalmente, escribí un &lt;a title="El lenguaje de programación Python" href="http://www.python.org/" target="_blank"&gt;script en Python&lt;/a&gt; (que se fue refinando y extendiendo) capás de leer índice y armar un documento &lt;a href="http://es.wikipedia.org/wiki/LaTeX" target="_blank"&gt;Latex&lt;/a&gt; con las partes y el orden especificado. Ese documento Latex puede compilarse a pdf, generando el archivo que voy a enviar a la imprenta.&lt;/p&gt;
+&lt;p&gt;Con el correr de los meses fui escribiendo el resto de las partes. Algunas historias son recuerdos de otros viajes, otras son el resultado de ejercicios en el taller, otras, anécdotas prestadas y otras, totales inventos. Mientras lo hacía, iba probando distintos ordenes hasta encontrar EL ORDEN definitivo que tendría la obra, ese que tenía desde antes de ser escrita pero que aún no conocía.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Control de cambios&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Me resulta entretenido participar de todo el proceso de la concepción de un libro. Desde tipear sus palabras hasta imprimirlo y voy refinando e incrementando mi participación en todo el proceso lo más que puedo. En este experimento, a diferencia de los dos anteriores (1 y 2), intento&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Además de escribir la novela usando un programa escrito especialmente para escribirla, la misma fue escrita de forma similar a la que se escribe un programa.&lt;/strong&gt; Utilicé un sistema de control de versiones para llevar registro de cada uno de los cambios que iba haciendo.&lt;/p&gt;
+&lt;p&gt;Ejemplo: &lt;a href="https://github.com/jjconti/novela-workflow/commit/47805ecaf6d873363f10220b27113ef53b6f1855#diff-b1d745729a42a8029705f6c847066918" target="_blank"&gt;https://github.com/jjconti/novela-workflow/commit/47805ecaf6d873363f10220b27113ef53b6f1855#diff-b1d745729a42a8029705f6c847066918&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Herramientas&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Otras herramientas fueron escritas a la vez que se escribía la novela pero no quiero irme en detalles. Temo aburrir con muchos tecnicismos a los lectores, autores, editores que lean este post. También temo aburrir con muchas palabras a los hackers, programadores y geeks que lean este post. Por lo tanto voy a cerrarlo ahora mismo :)&lt;/p&gt;
+&lt;p&gt;Este es el set de herramientas propias y archivos utilizado para generar el pdf de la novela al momento de escribir este post. A los ojos de un programador, son herramientas simples que uno puede hacerse en un su casa. Pero tal vez les sean interesantes a autores o editores:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/format.sh" target="_blank"&gt;format.sh&lt;/a&gt; (evita tener archivos muy "anchos" limitando el número de columnas)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/xolopesBase.tex" target="_blank"&gt;xolopesBase.tex&lt;/a&gt; (template del documento Latex utilizado)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/regenerateIndex.py"&gt;regenerateIndex.py&lt;/a&gt; (le agrega al &lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/xolopes.index" target="_blank"&gt;índice&lt;/a&gt; las primeras palabras de cada archivo para tener contexto y ayudarme a no perderme entre los nombres de archivos)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/xolopes.sh" target="_blank"&gt;xolopes.sh&lt;/a&gt; (programa maestro, llama a xolopes.py y compila los documentos Latex a pdf)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/xolopes.py" target="_blank"&gt;xolopes.py&lt;/a&gt; (genera el documento Latex en base a las partes y al índice, en dos versiones, con imágenes y sin imágenes)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/getDot.py" target="_blank"&gt;getDot.py&lt;/a&gt; (genera el archivo .dot que representa el mapa de la novela)&lt;/li&gt;
+
+    &lt;li&gt;&lt;a href="https://github.com/jjconti/novela-workflow/blob/blogpost/xolopes/map.sh" target="_blank"&gt;map.sh&lt;/a&gt; (en base al arcihvo .dot que representa el &lt;a href="http://www.juanjoconti.com.ar/2014/01/05/el-mapa-de-xolopes/"&gt;mapa&lt;/a&gt; de la novela genera el mapa en distintos formatos)&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/08/18/como-un-programador-escribe-una-novela.html</guid><pubDate>Mon, 18 Aug 2014 18:14:05 GMT</pubDate></item><item><title>Reseña de Xolopes en El Litoral</title><link>http://www.juanjoconti.com.ar/posts/2014/06/27/resena-de-xolopes-en-el-litoral.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El Litoral publicó una reseña de sobre novela &lt;a href="http://www.juanjoconti.com.ar/xolopes" target="_blank"&gt;Xolopes&lt;/a&gt;. Salió en el diario de ayer, jueves, así que si lo compraron o lo compró un vecino, seguro que aún no lo tiraron y la pueden leer en papel. Si no:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.ellitoral.com/index.php/diarios/2014/06/26/arteyletras/ARTE-03.html" target="_blank"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;http://www.ellitoral.com/index.php/diarios/2014/06/26/arteyletras/ARTE-03.html&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;strong&gt;Homo ludens, homo narrans&lt;/strong&gt;
+&lt;p&gt;por Diego Suarez&lt;/p&gt;
+&lt;p style="text-align: right;"&gt;"Xolopes", de Juanjo Conti. Automágica. Santa Fe, 2014.&lt;/p&gt;
+
+&lt;p&gt;Muchos escritores conciben el acto de escribir como una prolongación del acto de leer. Quien escribe transfigura sus lecturas no sólo de páginas impresas, sino también de otros signos, sentimientos, suposiciones, recuerdos, acontecimientos azarosos. “Escribir es sondear y reunir briznas o astillas de experiencia y de memoria para armar una imagen”, palabras de Juan J. Saer que aparecen en uno de los capítulos de Xolopes, de Juanjo Conti, y que de alguna manera delinean un plan de composición.&lt;/p&gt;
+&lt;p&gt;Xolopes podría considerarse novela sin narrador, o dicho de otro modo, novela en la que aparecen entretejidas tantas voces que pareciera no haber ninguna, con primeras personas que no se sabe de dónde provienen y terceras personas no menos sospechosas, con el agravante de que la consiguiente multiplicidad de relatos hace estallar la unidad de acción y termina por enloquecer la brújula de la trama. Es posible, sin embargo, establecer un punto por el cual cruzan todas estas rectas: Cancún. El lugar marca el tiempo del relato y todo pasa a ocurrir “antes” y “durante” Cancún, en un instante multifacético en el que confluyen sucesos simultáneos (muertes, conspiraciones, sueños, excursiones, almuerzos) con distintos protagonistas. Vemos actuar y oímos a vendedores ambulantes, empleados de hotel, vacacionistas y lunamieleros, en un entramado de géneros discursivos que van de la poesía a la crónica periodística, pasando por la fotografía, las recetas de cocina y hasta la bitácora de una revolución. La entonación que impregna el relato está signada por una ironía serena que no busca ser hiriente, sino más bien gozosa, carnavalesca.&lt;/p&gt;
+&lt;p&gt;Varios capítulos de la novela podrían considerarse autónomos, debido a sus atributos de microrrelato. El capítulo 69, por ejemplo, dice: “-¿Ese no es el animador de aquaeróbic? ¿Qué hace golpeando la puerta de una de las habitaciones?”. No identificamos quién pronuncia esas palabras, tampoco si se trata del fragmento de un diálogo o de un monólogo interior. Eso es todo, y esa línea alcanza y sobra para que el lector complete a gusto y piacere los intersticios del texto. Esta apertura a la participación del receptor en la creación de sentido es fomentada también por la estructura fractal y lúdica de la novela: 137 capítulos que por ejercicio de un ars combinatoria pueden ser recorridos alternativamente según hechos narrados y voces narradoras.&lt;/p&gt;
+&lt;p&gt;¿Cuántas veces hemos oído exclamar a alguien que acaba de contar una anécdota: “¡Yo tendría que escribir un libro!”? El autor de Xolopes debe ser uno de los pocos mortales que han hecho realidad ese proyecto, empleando la humilde técnica del personaje que en el capítulo 46 le comenta a otro huésped del hotel su afición a escribir cuentos. “Ah... hay que tener imaginación para eso”, dice el huésped, a lo cual el cuentista replica: “No tanta, me la paso recogiendo voces de otros”. A nadie se le escapa que la cosa no es tan simple, que se requiere algo más que eso. Discretamente, Conti sabe qué es y lo emplea con felices resultados.&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>El Litoral</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/06/27/resena-de-xolopes-en-el-litoral.html</guid><pubDate>Fri, 27 Jun 2014 21:46:44 GMT</pubDate></item><item><title>Regalo algunos libros vía Goodreads</title><link>http://www.juanjoconti.com.ar/posts/2014/05/09/regalo-algunos-libros-via-goodreads.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="https://www.goodreads.com" target="_blank"&gt;Goodreads&lt;/a&gt; te sugiere, como una forma de conseguir revisiones para tus libros, que organices una "giveaway". Una suelta de libros.
+&lt;p&gt;El autor se compromete en enviar cierta cantidad de libros, usuarios de la red social se postulan para ganarlos y los elegidos, luego de recibir su ejemplar, pueden (no es una obligación) comentarlos/votarlos.&lt;/p&gt;
+&lt;p&gt;Me pareció una idea piola, así que durante un mes (ya van varios días), los usuarios de Goodreads pueden solicitar un ejemplar gratuito de Xolopes:&lt;/p&gt;
+&lt;!-- Show static html as a placeholder in case js is not enabled --&gt;
+
+&lt;div class="goodreadsGiveawayWidget" style="max-width: 350px; margin: 10px auto; padding: 10px 15px; border: 2px solid #EBE8D5; border-radius: 10px;"&gt;
+
+  &lt;style&gt;
+
+    .goodreadsGiveawayWidget { color: #555; font-family: georgia, serif; font-weight: normal; text-align: left; font-size: 14px;
+
+      font-style: normal; background: white; }
+
+    .goodreadsGiveawayWidget img { padding: 0 !important; margin: 0 !important; }
+
+    .goodreadsGiveawayWidget a { padding: 0 !important; margin: 0; color: #660; text-decoration: none; }
+
+    .goodreadsGiveawayWidget a:visted { color: #660; text-decoration: none; }
+
+    .goodreadsGiveawayWidget a:hover { color: #660; text-decoration: underline !important; }
+
+    .goodreadsGiveawayWidget p { margin: 0 0 .5em !important; padding: 0; }
+
+    .goodreadsGiveawayWidgetEnterLink { display: block; width: 150px; margin: 10px auto 0 !important; padding: 0px 5px !important;
+
+      text-align: center; line-height: 1.8em; color: #222; font-size: 14px; font-weight: bold;
+
+      border: 1px solid #6A6454; border-radius: 5px; font-family:arial,verdana,helvetica,sans-serif;
+
+      background-image:url(https://www.goodreads.com/images/layout/gr_button4.gif); background-repeat: repeat-x; background-color:#BBB596;
+
+      outline: 0; white-space: nowrap;
+
+    }
+
+    .goodreadsGiveawayWidgetEnterLink:hover { background-image:url(https://www.goodreads.com/images/layout/gr_button4_hover.gif);
+
+      color: black; text-decoration: none; cursor: pointer;
+
+    }
+
+  &lt;/style&gt;
+
+  &lt;h3 style="margin: 0 0 10px !important; padding: 0 !important; font-style: italic; font-size: 20px; line-height: 20px; font-weight: normal; text-align: center; color: #555;"&gt;
+
+    &lt;a href="http://www.goodreads.com" target="_new"&gt;Goodreads&lt;/a&gt; Book Giveaway
+
+  &lt;/h3&gt;
+
+
+
+    &lt;div style="margin: 0 0 0 110px !important; padding: 0 0 0 0 !important;"&gt;
+
+      &lt;h4 style="margin: 0; padding: 0; font-size: 16px; line-height: 20px; font-weight: normal; font-style: normal;"&gt;
+
+          &lt;a href="https://www.goodreads.com/book/show/21472550"&gt;Xolopes&lt;/a&gt;
+
+      &lt;/h4&gt;
+
+      &lt;h5 style="margin: 0 0 10px; padding: 0; font-style: normal; font-weight: normal;"&gt;
+
+          by &lt;a href="https://www.goodreads.com/author/show/7544798.Juanjo_Conti" style="text-decoration: none;"&gt;Juanjo Conti&lt;/a&gt;
+
+      &lt;/h5&gt;
+
+
+
+      &lt;div class="giveaway_details"&gt;
+
+          &lt;p&gt;
+
+            Giveaway ends May 21, 2014.
+
+          &lt;/p&gt;
+
+          &lt;p&gt;
+
+            See the &lt;a href="https://www.goodreads.com/giveaway/show/90121" style="text-decoration: none;"&gt;giveaway details&lt;/a&gt;
+
+            at Goodreads.
+
+          &lt;/p&gt;
+
+      &lt;/div&gt;
+
+&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;"clear: both;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+
+
+  &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"https://www.goodreads.com/giveaway/enter_choose_address/90121"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"goodreadsGiveawayWidgetEnterLink"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Enter to win&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>goodreads</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/05/09/regalo-algunos-libros-via-goodreads.html</guid><pubDate>Fri, 09 May 2014 01:12:35 GMT</pubDate></item><item><title>Xolopes impreso y a la venta</title><link>http://www.juanjoconti.com.ar/posts/2014/04/23/xolopes-impreso-y-a-la-venta.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El día que me fui de vacaciones me entregaron los ejemplares impresos de Xolopes. A la vuelta empecé a repartirlos entre quienes lo habían comprando en preventa. Ya casi termino.&lt;/p&gt;
+&lt;p&gt;En la &lt;a href="http://www.juanjoconti.com.ar/libros/xolopes/"&gt;página del libro&lt;/a&gt; se puede comprar y leer más al respecto.&lt;/p&gt;
+&lt;p&gt;[gallery link="file" ids="4725,4726,4727,4728,4729,4730,4731,4732,4733"]&lt;/p&gt;
+&lt;p&gt;Más fotos en el &lt;a href="https://www.facebook.com/juanjoconti/media_set?set=a.10203403910969342.1073741840.1559082191&amp;amp;type=3" target="_blank"&gt;álbum de los lectores&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/04/23/xolopes-impreso-y-a-la-venta.html</guid><pubDate>Wed, 23 Apr 2014 21:54:16 GMT</pubDate></item><item><title>El mapa de Xolopes</title><link>http://www.juanjoconti.com.ar/posts/2014/01/05/el-mapa-de-xolopes.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Este es el mapa de la novela &lt;a href="http://www.juanjoconti.com.ar/libros/xolopes/"&gt;Xolopes&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2014/01/chunks.png"&gt;&lt;img class="aligncenter size-full wp-image-4639" alt="Mapa de Xolopes" src="http://www.juanjoconti.com.ar/wp-content/uploads/2014/01/chunks.png" width="557" height="780"&gt;&lt;/a&gt;Este mapa fue generado automáticamente en base al contenido de la novela y aparece al final del libro.&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2014/01/05/el-mapa-de-xolopes.html</guid><pubDate>Sun, 05 Jan 2014 12:20:54 GMT</pubDate></item><item><title>Xolopes #68</title><link>http://www.juanjoconti.com.ar/posts/2013/12/27/xolopes-68.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;—¿A dónde va, buen hombre? —le habló con una voz dulce y seductora.&lt;/p&gt;
+&lt;p&gt;La mujer se encontraba sentada bajo un frondoso árbol que él no&lt;/p&gt;
+&lt;p&gt;conocía. Tenía cabellos largos y negros y una flor espinosa peinada entre ellos. Sus labios eran gruesos y su tez cobriza. Sus ojos eran negros y profundos y su belleza no tenía igual. Lo miró con firmeza y le extendió la mano.&lt;/p&gt;
+&lt;p&gt;El hombre, dócil, esclavo, falto de voluntad, caminó como hipnotizado hasta los brazos de la hermosa mujer que lo llamaba. Bajo la sombra de ese árbol lo acarició y lo besó. Luego empezó a desvestirlo. Incapaz de oponer cualquier resistencia frente a los favores que la mujer le proporcionaba, el hombre no se dio cuenta que la violencia del ritual iba en aumento. Las caricias se convirtieron en arañazos, pero las uñas clavadas en su carne le daban igual o más placer. Los besos se convirtieron en mordiscos, pero su excitación iba en aumento. Ninguno de los dos se podía contener y los gritos eran como de animales apareándose. La mujer lo mordía, pero él también hacía lo suyo. Podía sentir el sabor a sangre en su boca, transpiración, pelos. Garras, pezuñas, aullidos.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Este texto es parte de la novela &lt;a href="http://www.juanjoconti.com.ar/libros/xolopes/"&gt;Xolopes&lt;/a&gt;. En pre-venta en este blog.&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2013/12/27/xolopes-68.html</guid><pubDate>Fri, 27 Dec 2013 20:00:20 GMT</pubDate></item><item><title>Xolopes #40</title><link>http://www.juanjoconti.com.ar/posts/2013/12/26/xolopes-40.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;—Una mañana vimos un chancho corriendo por la playa, en paralelo a la línea del mar. Bueno, paralelo y línea son formas de decirle a las curvas en movimiento que va describiendo el agua sobre la arena. Es un movimiento oscilatorio, senoidal casi te podría decir. Es que soy profe de matemáticas y siempre estoy buscando nuevos ejemplos para los chicos. Bueno, te decía que una mañana vimos un chancho corriendo. Y atrás, no me lo vas a creer, blandiendo la hoja metálica de su cuchilla, el cocinero del hotel.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Este texto es parte de la novela &lt;a href="http://www.juanjoconti.com.ar/libros/xolopes/"&gt;Xolopes&lt;/a&gt;. En pre-venta en este blog.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Cosas que escribo</category><category>Xolopes</category><guid>http://www.juanjoconti.com.ar/posts/2013/12/26/xolopes-40.html</guid><pubDate>Thu, 26 Dec 2013 07:52:00 GMT</pubDate></item></channel></rss>

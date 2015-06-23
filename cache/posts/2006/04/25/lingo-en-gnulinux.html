@@ -1,0 +1,38 @@
+<p><html><body><p>En Investigación Operativa estamos usando el software Lingo, desde su web bajé la versión de evaluación para uso académico para GNU/Linux. La versión disponible es la 9.0, para Windows está ya la 10.0 :(</p>
+<p><a title="Lingo9 para Linux" href="http://www.lindo.com/downloads/LINGO-LINUX-IA32-9.0.tar.gz">http://www.lindo.com/downloads/LINGO-LINUX-IA32-9.0.tar.gz</a></p>
+<p>Seguí leyendo para obtener algunos tips..</p>
+<!--more-->
+
+<p><strong>Ponerlo a andar</strong></p>
+<p><code>$ tar xvfz LINGO-LINUX-IA32-9.0.tar.gz</p>
+<p>$ LD_LIBRARY_PATH=$PWD/lingo9/bin</p>
+<p>$ export LD_LIBRARY_PATH</p>
+<p>$ LINGO_LICENSE_FILE=$PWD/lingo9/license/lndlng90.lic</p>
+<p>$ export LINGO_LICENSE_FILE</p>
+<p></code></p>
+<p><strong>Y ejecutarlo..</strong></p>
+<p><code></p>
+<p>$ cd  cd lingo9/bin/linux32/</p>
+<p>$ ./lingo9</p>
+<p></code></p>
+<p><strong>Una vez en la matrix:</strong></p>
+<p><code></p>
+<p>: take modelo1.lingo</p>
+<p>: go</p>
+<p></code></p>
+<p>El archivo puede crearse con cualquier editor de texto, yo estoy usando Vim y me instalé un <a href="http://www.vim.org/scripts/script.php?script_id=1122">resaltador de sintaxis para lingo</a>.</p>
+<p><strong>En Vim:</strong></p>
+<p><code></p>
+<p>: syntaxis on</p>
+<p>: colorscheme elflord</p>
+<p></code></p>
+<p><strong>Reporte de sensibilidad</strong></p>
+<p>Por defecto esta característica no está habilitada, se puede habilitar ejecutando el siguiente comando antes de obtener la solución del modelo:</p>
+<p><code></p>
+<p>: SET DUALCO 2</p>
+<p></code></p>
+<p>Luego, para guardar esta opción como por defecto:</p>
+<p><code>: FREEZE</code></p>
+<p><strong>Ejemplo</strong>: </p>
+<p><a href="files/g2ej6.lingo">g2ej6.lingo</a></p>
+<p></p></body></html></p>

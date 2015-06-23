@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alfabeto Calculadora | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2006/09/19/alfabeto-calculadora.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../11/programacion-temporal-de-eventos-con-python.html" title="Programación Temporal de Eventos con Python" type="text/html">
+        <link rel="next" href="../21/feliz-dia-del-estudiante.html" title="Felíz día del estudiante!" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Alfabeto Calculadora">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2006/09/19/alfabeto-calculadora.html">
+    <meta property="og:description" content="Todo empezó con este mail en la lista del Gleducar.
+
+
+La entrada: una lista de palabras representables en una calculadora normal simplemente girando el display. 
+Esto parece algo sin mucha utilidad, p">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2006-09-19T02:21:30+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="Python">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="alfabeto-calculadora.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Alfabeto Calculadora</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2006-09-19T02:21:30+00:00" itemprop="datePublished" title="2006-09-19 02:21">2006-09-19 02:21</time></a></p>
+                <p class="commentline">
+        
+    <a href="alfabeto-calculadora.html#disqus_thread" data-disqus-identifier="cache/posts/2006/09/19/alfabeto-calculadora.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="alfabeto-calculadora.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>Todo empezó con <a href="http://www.gleducar.org.ar/pipermail/gleducar/2006-September/003388.html">este mail en la lista del Gleducar</a>.</p>
+<!--more-->
+
+<p>La entrada: una lista de palabras representables en una calculadora normal simplemente girando el display. </p>
+<p>Esto parece algo sin mucha utilidad, pero esta técnica es utilizada en muchos dispositivos con capacidades gráficas reducidas para mostrar mensajes de error u otra informaición adicional a la salida numérica.</p>
+<p>En este archivo están las palabras a procesar enviadas a la lista de correos (en la selección original de palabras no se incluyeron aquellas con la letra 'z', pero también podrían haber sido elejidas para representar en Alfabeto Calculadora): <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/palabras.txt">palabras.txt</a></p>
+<p></p>
+<h3>El programa</h3>
+<p>Almuerzo de por medio escribí este código y lo mandé a la lista del Gleducar como respuesta al reto: <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/alfabeto_calc.py.html">alfabeto_calc.py</a> (<strong>update:</strong> tiene la corrección que me sugirió Alecu)</p>
+<p>La forma de representación que elejí es esta: tomar todas las letras y conviértalas a mayúsculas excepto a la 'h' ('h' puede representarse con un '4' de calculadora invertido, pero 'H' no se puede representar con ningún número). Podemos representar la 'l' en minúsculas o en mayúscula ('L'), al usar la mayúscula y representarla con el '7', nos guardamos el '1' para la 'I'. Una vez que se tiene la palabra en formato <em>upper_except_h</em> cambiar cada letra por el número correspondiente e invertir el orden de los números.</p>
+<h3>Links para leer un poco más</h3>
+
+<ul>
+
+    <li><a href="http://en.wikipedia.org/wiki/List_of_calculator_words">http://en.wikipedia.org/wiki/List_of_calculator_words</a></li>
+
+    <li><a href="http://en.wikipedia.org/wiki/Calculator_spelling">http://en.wikipedia.org/wiki/Calculator_spelling</a></li>
+
+</ul>
+
+<h3>Resultado</h3>
+
+<p>Esta es la salida que se obtiene al correr el programa en una terminal con el archivo <a href="http://firebirds.com.ar/~juanjo/wordpress/files/python/palabras.txt">palabras.txt</a> en el mismo directorio:</p>
+<p>be = BE = 38</p>
+<p>bebe = BEBE = 3838</p>
+<p>bebible = BEBIBLE = 3781838</p>
+<p>beisbol = BEISBOL = 7085138</p>
+<p>belio = BELIO = 01738</p>
+<p>bello = BELLO = 07738</p>
+<p>beso = BESO = 0538</p>
+<p>bielgo = BIELGO = 097318</p>
+<p>bilioso = BILIOSO = 0501718</p>
+<p>bilis = BILIS = 51718</p>
+<p>biologo = BIOLOGO = 0907018</p>
+<p>bis = BIS = 518</p>
+<p>bisbiseo = BISBISEO = 03518518</p>
+<p>bisel = BISEL = 73518</p>
+<p>biso = BISO = 0518</p>
+<p>bobilis = BOBILIS = 5171808</p>
+<p>bobillo = BOBILLO = 0771808</p>
+<p>bobo = BOBO = 0808</p>
+<p>bohio = BOhIO = 01408</p>
+<p>boi = BOI = 108</p>
+<p>bolillo = BOLILLO = 0771708</p>
+<p>bollo = BOLLO = 07708</p>
+<p>bolo = BOLO = 0708</p>
+<p>bolsillo = BOLSILLO = 07715708</p>
+<p>bolso = BOLSO = 05708</p>
+<p>e = E = 3</p>
+<p>eh = Eh = 43</p>
+<p>el = EL = 73</p>
+<p>ele = ELE = 373</p>
+<p>elegible = ELEGIBLE = 37819373</p>
+<p>eliseo = ELISEO = 035173</p>
+<p>elisio = ELISIO = 015173</p>
+<p>elle = ELLE = 3773</p>
+<p>ello = ELLO = 0773</p>
+<p>elogio = ELOGIO = 019073</p>
+<p>elogioso = ELOGIOSO = 05019073</p>
+<p>eolio = EOLIO = 01703</p>
+<p>es = ES = 53</p>
+<p>ese = ESE = 353</p>
+<p>eso = ESO = 053</p>
+<p>gel = GEL = 739</p>
+<p>geologo = GEOLOGO = 0907039</p>
+<p>giboso = GIBOSO = 050819</p>
+<p>gil = GIL = 719</p>
+<p>gili = GILI = 1719</p>
+<p>gis = GIS = 519</p>
+<p>globo = GLOBO = 08079</p>
+<p>globoso = GLOBOSO = 0508079</p>
+<p>gobio = GOBIO = 01809</p>
+<p>gol = GOL = 709</p>
+<p>goloso = GOLOSO = 050709</p>
+<p>he = hE = 34</p>
+<p>helio = hELIO = 01734</p>
+<p>heliosis = hELIOSIS = 51501734</p>
+<p>hibleo = hIBLEO = 037814</p>
+<p>hiel = hIEL = 7314</p>
+<p>hielo = hIELO = 07314</p>
+<p>higo = hIGO = 0914</p>
+<p>hilo = hILO = 0714</p>
+<p>hiogloso = hIOGLOSO = 05079014</p>
+<p>hobo = hOBO = 0804</p>
+<p>ibis = IBIS = 5181</p>
+<p>ilegible = ILEGIBLE = 37819371</p>
+<p>ileo = ILEO = 0371</p>
+<p>ileso = ILESO = 05371</p>
+<p>le = LE = 37</p>
+<p>legible = LEGIBLE = 3781937</p>
+<p>lego = LEGO = 0937</p>
+<p>leible = LEIBLE = 378137</p>
+<p>lelili = LELILI = 171737</p>
+<p>lelo = LELO = 0737</p>
+<p>leo = LEO = 037</p>
+<p>les = LES = 537</p>
+<p>lesbio = LESBIO = 018537</p>
+<p>leso = LESO = 0537</p>
+<p>libelo = LIBELO = 073817</p>
+<p>libio = LIBIO = 01817</p>
+<p>liego = LIEGO = 09317</p>
+<p>ligio = LIGIO = 01917</p>
+<p>lilili = LILILI = 171717</p>
+<p>lio = LIO = 017</p>
+<p>lioso = LIOSO = 05017</p>
+<p>lis = LIS = 517</p>
+<p>lisis = LISIS = 51517</p>
+<p>liso = LISO = 0517</p>
+<p>lo = LO = 07</p>
+<p>lobo = LOBO = 0807</p>
+<p>loboso = LOBOSO = 050807</p>
+<p>logis = LOGIS = 51907</p>
+<p>o = O = 0</p>
+<p>obelo = OBELO = 07380</p>
+<p>obeso = OBESO = 05380</p>
+<p>oboe = OBOE = 3080</p>
+<p>obolo = OBOLO = 07080</p>
+<p>obseso = OBSESO = 053580</p>
+<p>oh = Oh = 40</p>
+<p>oible = OIBLE = 37810</p>
+<p>oislo = OISLO = 07510</p>
+<p>ole = OLE = 370</p>
+<p>oleo = OLEO = 0370</p>
+<p>oleoso = OLEOSO = 050370</p>
+<p>os = OS = 50</p>
+<p>oseo = OSEO = 0350</p>
+<p>oso = OSO = 050</p>
+<p>se = SE = 35</p>
+<p>sebe = SEBE = 3835</p>
+<p>sebillo = SEBILLO = 0771835</p>
+<p>sebo = SEBO = 0835</p>
+<p>seboso = SEBOSO = 050835</p>
+<p>seis = SEIS = 5135</p>
+<p>seise = SEISE = 35135</p>
+<p>sello = SELLO = 07735</p>
+<p>seo = SEO = 035</p>
+<p>ses = SES = 535</p>
+<p>seseo = SESEO = 03535</p>
+<p>sesgo = SESGO = 09535</p>
+<p>seso = SESO = 0535</p>
+<p>si = SI = 15</p>
+<p>sibil = SIBIL = 71815</p>
+<p>sieso = SIESO = 05315</p>
+<p>sigilo = SIGILO = 071915</p>
+<p>sigiloso = SIGILOSO = 05071915</p>
+<p>siglo = SIGLO = 07915</p>
+<p>silbo = SILBO = 08715</p>
+<p>silboso = SILBOSO = 0508715</p>
+<p>silesio = SILESIO = 0153715</p>
+<p>silo = SILO = 0715</p>
+<p>siseo = SISEO = 03515</p>
+<p>so = SO = 05</p>
+<p>sobeo = SOBEO = 03805</p>
+<p>sobo = SOBO = 0805</p>
+<p>sois = SOIS = 5105</p>
+<p>sol = SOL = 705</p>
+<p>soleo = SOLEO = 03705</p>
+<p>solio = SOLIO = 01705</p>
+<p>solo = SOLO = 0705</p>
+<p>sos = SOS = 505</p>
+<p>sosiego = SOSIEGO = 0931505</p>
+<p>soso = SOSO = 0505 </p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../11/programacion-temporal-de-eventos-con-python.html" rel="prev" title="Programación Temporal de Eventos con Python">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../21/feliz-dia-del-estudiante.html" rel="next" title="Felíz día del estudiante!">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2006/09/19/alfabeto-calculadora.html",
+        disqus_title="Alfabeto Calculadora",
+        disqus_identifier="cache/posts/2006/09/19/alfabeto-calculadora.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La historia de Python: Módulos cargados dinámicamente | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/04/01/la-historia-de-python-modulos-cargados-dinamicamente.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../../03/03/os-path-en-el-settings-py-de-django-para-mayor-comodidad.html" title="os.path en el settings.py de Django para mayor comodidad" type="text/html">
+        <link rel="next" href="../03/servidor-smtp-para-hacer-pruebas.html" title="Servidor SMTP para hacer pruebas" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="La historia de Python: Módulos cargados dinámicamente">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/04/01/la-historia-de-python-modulos-cargados-dinamicamente.html">
+    <meta property="og:description" content="El siguiente texto es una traducción del artículo Dynamically Loaded Modules de Guido van Rossum publicado en http://python-history.blogspot.com/.
+
+
+Módulos cargados dinámicamente
+
+La arquitectura de ">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-04-01T15:53:15+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="Historia">
+           <meta property="article:tag" content="Python">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="la-historia-de-python-modulos-cargados-dinamicamente.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">La historia de Python: Módulos cargados dinámicamente</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-04-01T15:53:15+00:00" itemprop="datePublished" title="2010-04-01 15:53">2010-04-01 15:53</time></a></p>
+                <p class="commentline">
+        
+    <a href="la-historia-de-python-modulos-cargados-dinamicamente.html#disqus_thread" data-disqus-identifier="cache/posts/2010/04/01/la-historia-de-python-modulos-cargados-dinamicamente.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="la-historia-de-python-modulos-cargados-dinamicamente.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo Dynamically Loaded Modules de Guido van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em>
+<!--more-->
+
+<h3>Módulos cargados dinámicamente</h3>
+
+<p>La arquitectura de Python permitió, desde un principio, escribir módulos de extensión escritos en C de una forma sencilla.  Sin embargo, en los primeros días, la tecnología de carga dinámica era tan oscura que las extensiones tenían que ser enlazadas estáticamente en el interprete de Python, en tiempo de compilación. Para hacer esto, lo módulos de extensión tenían que ser agregados a un script de shell  que era usado para generar el Makefile para Python y todos su módulos de extensión.</p>
+<p>Aunque este enfoque funcionaba para pequeños proyectos, la comunidad de Python comenzó a producir nuevos módulos de extensión a un ritmo no esperado, y demandaban que los módulos pudiesen ser compilados y cargados en forma separada. Poco después, las interfaces a las APIs de enlace dinámico, propias de cada plataforma, permitieron que la declaración import busque una biblioteca compartida en disco, de forma similar que un archivo ".py". La primera mención de la carga dinámica en los logs del CVS, data de enero de 1992 y el soporte para la mayoría de las plataformas llego a fines de 1994.</p>
+<p>El soporte de enlace dinámico probó ser muy útil, pero fue una pesadilla de mantener. Cada plataforma usaba una API diferente y algunas plataformas tenían adicionales. En enero de 1995, el soporte para enlace dinámico fue reestructurado, de forma tal que todo el código fue concentrado en un solo archivo fuente. Sin embargo, este enfoque resulto en un largo archivo abarrotado de directivas condicionales de compilación (#ifdef). En diciembre de 1999, fue reestructurado de nuevo, con la ayuda de Greg Stein, para que el código correspondiente a cada plataforma quede ubicado en un archivo específico para cada una (o familia de estas).</p>
+<p>Aunque Python soportaba la carga dinámica de módulos, el procedimiento para construirlos, a menudo seguía siendo un misterio para muchos usuarios. Un número cada vez más grande de usuarios fueron construyendo módulos, especialmente con la introducción de herramientas como SWIG. No obstante, un usuario deseoso de distribuir un modulo de extensión enfrentaba grandes obstáculos para lograr que el modulo compile en todas las combinaciones de plataformas, compiladores y linkers. En el peor escenario posible, un usuario tenía que escribir su propio Makefile y script de configuración para establecer los flags correctos para el compilador y el linker. Además, requería que los usuarios finales tuviesen una distribución de Python con el código fuente.</p>
+<p>Finalmente, se creo una herramienta para construir las extensiones, llamada distutils, que permitió construir e instalar los módulos de extensión en cualquier plataforma. Las opciones necesarias para el linker y el compilador están escritas desde el makefile de Python a un archivo de datos, que es consultado por distutils cuando construye módulos de extensión. Escrito en gran parte por  Greg Ward, las primeras versiones de distutils fueron distribuidas en forma separada, para dar soporte a versiones viejas de Python. Desde Python 1.6 está integrado en las distribuciones, como un modulo de la biblioteca estándar.</p>
+<p>Cabe destacar que distutils hace mucho mas que simplemente construir módulos de extensión desde código fuente en C. Puede también instalar módulos y paquetes de Python puro, crear instaladores ejecutables para Windows y correr herramientas de terceros como SWIG. Desgraciadamente, su complejidad ha causado que sea maldecida por mucha gente y no reciba la atención que se merece a la hora de mantenerla. Como resultado, recientemente, las alternativas de terceros ( especialmente ez_install, también llamada "eggs") se hicieron mas populares, desgraciadamente causando fragmentación en la comunidad de desarrolladores, así como quejas cuando no funcionan. Parece que el problema en toda su generalidad es inherentemente difícil.</p>
+<p><em>Traducido por <a href="http://www.joaclandia.com.ar/" target="_blank">Joaquín Sorianello</a>.</em></p>
+<p>Revisado por Juan José Conti.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="../../../../categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/historia.html" rel="tag">Historia</a></li>
+           <li><a class="tag p-category" href="../../../../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../../03/03/os-path-en-el-settings-py-de-django-para-mayor-comodidad.html" rel="prev" title="os.path en el settings.py de Django para mayor comodidad">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../03/servidor-smtp-para-hacer-pruebas.html" rel="next" title="Servidor SMTP para hacer pruebas">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/04/01/la-historia-de-python-modulos-cargados-dinamicamente.html",
+        disqus_title="La historia de Python: M\u00f3dulos cargados din\u00e1micamente",
+        disqus_identifier="cache/posts/2010/04/01/la-historia-de-python-modulos-cargados-dinamicamente.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 4) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-4.html">
+
+
+
+        <link rel="prev" href="index-5.html" type="text/html">
+        <link rel="next" href="index-3.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/25/lingo-en-gnulinux.html" class="u-url">Lingo en GNU/Linux</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/25/lingo-en-gnulinux.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-25T17:46:43+00:00" title="2006-04-25 17:46">2006-04-25 17:46</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/25/lingo-en-gnulinux.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/25/lingo-en-gnulinux.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En Investigación Operativa estamos usando el software Lingo, desde su web bajé la versión de evaluación para uso académico para GNU/Linux. La versión disponible es la 9.0, para Windows está ya la 10.0 :(</p>
+<p><a title="Lingo9 para Linux" href="http://www.lindo.com/downloads/LINGO-LINUX-IA32-9.0.tar.gz">http://www.lindo.com/downloads/LINGO-LINUX-IA32-9.0.tar.gz</a></p>
+<p>Seguí leyendo para obtener algunos tips..</p>
+<!--more-->
+
+<p><strong>Ponerlo a andar</strong></p>
+<p><code>$ tar xvfz LINGO-LINUX-IA32-9.0.tar.gz</code></p>
+<p>$ LD_LIBRARY_PATH=$PWD/lingo9/bin</p>
+<p>$ export LD_LIBRARY_PATH</p>
+<p>$ LINGO_LICENSE_FILE=$PWD/lingo9/license/lndlng90.lic</p>
+<p>$ export LINGO_LICENSE_FILE</p>
+<p></p>
+<p><strong>Y ejecutarlo..</strong></p>
+<p><code></code></p>
+<p>$ cd  cd lingo9/bin/linux32/</p>
+<p>$ ./lingo9</p>
+<p></p>
+<p><strong>Una vez en la matrix:</strong></p>
+<p><code></code></p>
+<p>: take modelo1.lingo</p>
+<p>: go</p>
+<p></p>
+<p>El archivo puede crearse con cualquier editor de texto, yo estoy usando Vim y me instalé un <a href="http://www.vim.org/scripts/script.php?script_id=1122">resaltador de sintaxis para lingo</a>.</p>
+<p><strong>En Vim:</strong></p>
+<p><code></code></p>
+<p>: syntaxis on</p>
+<p>: colorscheme elflord</p>
+<p></p>
+<p><strong>Reporte de sensibilidad</strong></p>
+<p>Por defecto esta característica no está habilitada, se puede habilitar ejecutando el siguiente comando antes de obtener la solución del modelo:</p>
+<p><code></code></p>
+<p>: SET DUALCO 2</p>
+<p></p>
+<p>Luego, para guardar esta opción como por defecto:</p>
+<p><code>: FREEZE</code></p>
+<p><strong>Ejemplo</strong>: </p>
+<p><a href="posts/2006/04/25/files/g2ej6.lingo">g2ej6.lingo</a></p>
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/24/diagramas-de-constelaciones-qam-y-psk.html" class="u-url">Diagramas de Constelaciones QAM y PSK</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/24/diagramas-de-constelaciones-qam-y-psk.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-24T00:10:06+00:00" title="2006-04-24 00:10">2006-04-24 00:10</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/24/diagramas-de-constelaciones-qam-y-psk.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/24/diagramas-de-constelaciones-qam-y-psk.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hace un tiempo que estoy colaborando con la cátedra de <a target="_blank" title="Comunicaciones" href="http://capas1y2news.blogspot.com">Comunicaciones</a> de la <a title="FRSF UTN" href="http://www.frsf.utn.edu.ar">FRSF UTN</a>, en el marco de esta, hoy se <a target="_blank" title="Constealciones en capas1y2" href="http://capas1y2news.blogspot.com/2006/04/graficador-de-constelaciones.html">pueblicó</a> una herramienta web para graficar diagramas de constelación de distintas m-arias PSK y QAM y para ver el impacto de la relación S/N en la tasa binaria obtenida. Se encuentra en <a href="http://www.firebirds.com.ar/constelaciones">http://www.firebirds.com.ar/constelaciones</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/22/cada-cosa-en-su-lugar.html" class="u-url">Cada cosa en su lugar (HTML y CSS)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/22/cada-cosa-en-su-lugar.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-22T13:55:07+00:00" title="2006-04-22 13:55">2006-04-22 13:55</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/22/cada-cosa-en-su-lugar.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/22/cada-cosa-en-su-lugar.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Acabo de leer <a target="_blank" title="CSS" href="http://friendlybit.com/css/beginners-guide-to-css-and-standards/">Beginners guide to CSS and standards</a> un artículo de <a href="http://friendlybit.com/about/">Emil Stenstr</a><img align="right" alt="ok" id="image68" title="ok" src="http://firebirds.com.ar/%7Ejuanjo/wordpress/wp-content/uploads/2006/04/item_popular.png"><a href="http://friendlybit.com/about/">öm</a> en su sitio web <a title="fb" href="http://friendlybit.com/">Friendly bit</a>. Está <em>muy bueno</em> y se lee en 10 minutos, un pantallazo sobre buenas prácticas de diseño para la web.</p>
+<p>Cito algunas partes:</p>
+<!--more-->
+
+<p><strong>¿Qué es CSS?</strong></p>
+<p></p>
+<blockquote>CSS is a language that adds style (colors, images, borders, margins…) to your site. It’s really that simple. CSS is not used to put any content on your site, it’s just there to take the content you have and make it pretty.</blockquote>
+<p><strong>La idea detrás de CSS</strong></p>
+<blockquote>One of the least followed parts of CSS is the very idea behind it, the idea of separation of content and design. The idea here is that all sites contain two major parts, the content: all your articles, text and photos and the design: rounded corners, colors and effects. Usually those two are made in different parts of a webpage’s lifetime. The design is determined at the beginning and then you start filling it with content and keep the design fixed. So if you just want to add content to your site you don’t want to be forced to mess around with the design, would you? The same thing is true the other way around, if you decide on a redesign, why should you have mess around with the content, making sure it fits in the new layout?</blockquote>
+
+<p><strong>Una forma diferente de pensar</strong></p>
+<blockquote>This is probably a different way of thinking about HTML than you’re used to but trust me, when you’ve worked with it for a while you’ll see the power of it.</blockquote>
+
+<p>Leiste todas las citas? Si llegasta hasta aca.. que esperás para <a target="_blank" title="art" href="http://friendlybit.com/css/beginners-guide-to-css-and-standards/">leer el artículo entero</a>?</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/22/organizando-python-santa-fe-2006.html" class="u-url">Organizando Python Santa Fe 2006</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/22/organizando-python-santa-fe-2006.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-22T11:59:52+00:00" title="2006-04-22 11:59">2006-04-22 11:59</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/22/organizando-python-santa-fe-2006.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/22/organizando-python-santa-fe-2006.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>En el  <a title="LUGLi" target="_blank" href="http://www.lugli.org.ar">LUGLi</a> estamos organizando una jornada de charlas sobre el lenguaje de programación <a title="Python" target="_blank" href="http://www.python.org">Python</a> para el 3 de junio. Nos estamos organizando por medio del <a title="pystafe en el wiki" target="_blank" href="http://www.lugli.org.ar/mediawiki/index.php/1%C2%BA_Jornada_Python_en_Santa_Fe#El_d.C3.ADa_D">wiki del lugli</a> y hasta tenemos un <a title="Python Santa Fe 2006" target="_blank" href="http://www.python-santafe.com.ar">sitio web oficial</a>! ¿Ya te anotaste para venir? Te esperamos!</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/15/opensourceparkingcom.html" class="u-url">OpenSourceParking.com</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/15/opensourceparkingcom.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-15T13:01:21+00:00" title="2006-04-15 13:01">2006-04-15 13:01</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/15/opensourceparkingcom.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/15/opensourceparkingcom.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Microsoft le ha estado pagado a los grandes revendedores de dominios para que muevan sus sitios "estacionados" a Internet Information Server (IIS) en los servidores de Microsoft. El hecho de mover tan solo los clientes estacionados de un solo gran revendedor, <em>GoDaddy.com,</em> <span class="link-external"><a href="http://biz.yahoo.com/prnews/060321/sftu089.html">causo un cambio de 4.5 Millones de nombres de dominio</a></span>, lo que equivale a un 5% de la cuota de mercado de Apache en el reporte de <span class="link-external"><a href="http://news.netcraft.com/archives/2006/04/06/april_2006_web_server_survey.html">Netcraft</a></span>. Este es solo un cambio aparente por que los sitios en cuestion no tienen contenido. Pero quienes toman decisiones creen en los dibujos como los que aparecen en el reporte de Netcraft, y actuan según estos. Es hora de que la comunidad del Software Libre / Código Abierto responda.</p>
+<p><span class="link-external"><a target="_self" href="http://opensourceparking.com/">OpenSourceParking.com</a></span> es un servicio de estacionamiento de dominios que ayuda al Software Libre y de Código Abierto. Los estacionamientos de dominios proveen una página web para dominios no usados. Ahora podes hacer algo bueno con esos dominios que tenés registrados y no usas!</p>
+<!--more-->
+
+<p><a name="more"></a></p>
+<p><a name="more"></a><a name="more"></a>OpenSourceParking.com es un esfuerzo sin fine de lucro para proveer un estacionamiento gratuito usando solo Software Libre o de Código Abierto. Cuando uses OpenSourceParking para estacionar tu dominio sin uso, ayudas de dos maneras:</p>
+<p></p>
+<ul>
+<a name="more"></a>
+</ul>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>Se restaura la cuota de mercado robada al Software Libre o de Cóidgo Abierto: El reporte de Netcraft identificará que los sitios estacionados usan <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"link-external"</span><span class="nt">&gt;&lt;/span&gt;&lt;/li&gt;</span>
+</pre>
+
+
+<p><a href="http://www.lighttpd.net/">Lighttpd</a> en        GNU/Linux.</p>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>Revenue from advertising on the parked domains will help to fund political and promotional efforts on behalf of Open Source / Free Software.<span class="nt">&lt;/li&gt;</span>
+</pre>
+
+
+
+
+<p>El primer uso de los fondos será para proveer facilidades al servicio de estacionamiento: servidores dedicados, ancho de banda administarción 24/7. Estos no son muchos gastos. La programación y el el diseño web son donados. Los fondos restantes se usaran para crear un Comité de Acción Política en favor del Software Libre y de Código Abierto<em>.</em></p>
+<p>Este proyecto está siendo operado por <span class="link-external"><a href="http://perens.com/">Bruce Perens</a></span>, un conocido evangelizador del Código Abierto. Está listo para funcionar hoy. Mientras el proyecto se siga desarrollando, mienbros de la comunidad serán llamados para formar una mesa directiva y una mesa consejera.</p>
+<p>Podés ver un ejemplo de un dominio estacionado en <span class="link-external"><a href="http://coachflier.com/">CoachFlier.com</a></span>. El sitio anuncia Firefox y OpenOffice, como así OpenSourceParking, pronto tambiénhabrá anuncios comerciales.</p>
+<h3>Cómo etacionar su dominio</h3>
+
+<ul>
+
+    <li>Revendedores de dominios: seteen su nombre de estacionamiento a opensourceparking.com</li>
+
+    <li>Dueños de dominios: seteen sus servidores de dominios a ns1.opensourceparking.com y ns2.opensourceparking.com</li>
+
+    <li>Operadores de DNS: seteen sus dominios no usados como un CNAME de opensourceparking.com</li>
+
+</ul>
+
+<p>Para más información contacten a bruce at perens.com, o unanse a la discución en <span class="link-external"><a href="http://technocrat.net/d/2006/4/10/2276">http://technocrat.net/d/2006/4/10/2276</a></span></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/13/el-problema-de-los-formatos-cerrados.html" class="u-url">el problema de los formatos cerrados</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/13/el-problema-de-los-formatos-cerrados.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-13T20:23:39+00:00" title="2006-04-13 20:23">2006-04-13 20:23</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/13/el-problema-de-los-formatos-cerrados.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/13/el-problema-de-los-formatos-cerrados.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>por <font size="-1"><a title="Neal Stephenson" target="_blank" href="http://www.nealstephenson.com/">Neal Stephenson</a>, de <a title="command line" target="_blank" href="http://www.sindominio.net/biblioweb/telematica/command_es/node1.html">Al principio fue la línea de comandos</a></font></p>
+<p>Empecé a usar Microsoft Word en cuanto sacaron la primera versión en torno a 1985. Tras algunos problemas iniciales descubrí que era mejor herramienta que MacWrite, que era su único competidor en aquel momento. Escribí un montón de cosas en versiones tempranas de Word, guardándolo todo en disquetes, y transferí los contenidos de todos mis disquetes a mi primer disco duro, que adquirí en torno a 1987. A medida que salían nuevas versiones de Word yo actualizaba fielmente, razonando que como escritor tenía sentido que me gastara una cierta cantidad de dinero en herramientas.</p>
+<p>En algún momento, a mediados de los ochenta, traté de abrir uno de mis antiguos documentos Word que databa más o menos de 1985 usando la versión entonces vigente de Word: 6.0. No funciono.</p>
+<!--more-->
+
+<p>Word 6.0 no reconocía un documento creado por una versión anterior de sí mismo. Abriéndolo como archivo de texto, pude recuperar las secuencias de letras que constituían el texto del documento. Mis palabras seguían allí. Pero el formato parecía pasado por un colador --las palabras que yo había escrito iban interrumpidas por cuadros rectangulares vacíos y basura.</p>
+<p>Ahora bien, en el contexto de una empresa (el principal mercado de Word) este tipo de cosa sólo es una molestia --uno de los problemas rutinarios que comporta usar ordenadores--. Es fácil comprar programitas de conversión de archivos que se ocupan de este problemas. Pero si eres un escritor, cuyo oficio son las palabras, cuya identidad profesional es un corpus de documentos escritos, este tipo de cosa resulta extremadamente desasosegante. En mi tipo de trabajo hay muy pocos presupuestos establecidos, pero uno de ellos es que una vez escribes una palabra, queda escrita y no puede <em>desescribirse.</em> La tinta mancha el papel, el escoplo corta la piedra, el estilo marca la arcilla y algo ha sucedido irrevocablemente (mi cuñado es un teólogo que lee tablillas en cuneiforme de hace 3250 años --puede reconocer la escritura de algunos escribas individuales, e identificarlos por su nombre--). Pero el software de procesamiento de textos --particularmente el tipo que emplea formatos de archivo especiales y complejos-- tiene el sobrenatural poder de <em>desescribir</em> las cosas. Un pequeño cambio en los formatos de archivo, o unos pocos bits revueltos, y la producción literaria de meses o años puede dejar de existir.</p>
+<p>Esto era técnicamente un fallo de la aplicación (Word 6.0 para Macintosh), no del sistema operativo (MacOS 7 punto algo), así que el blanco inicial de mi enfado fueron los responsables de Word. Por otro lado, yo podía haber elegido la opción <em>guardar como texto</em> en Word y haber guardado todos mis documentos como simples telegramas, y este problema no habría surgido. Por el contrario, me había dejado seducir por todas esas vistosas opciones de formateo que ni siquiera existían hasta que las <small>GUI</small>s aparecieron y las hicieron practicables. Había caído en el hábito de usarlas para que mis documentos tuvieran un bonito aspecto (tal vez más bonito del que merecían; todos esos viejos documentos en los disquetes resultaron ser más o menos una porquería). Ahora estaba pagando el precio de mi autoindulgencia. La tecnología había avanzado y hallado maneras de que mis documentos parecieran aún más bonitos, y la consecuencia de ello era que todos los viejos y feos documentos habían dejado de existir.</p>
+<p>Era --si me disculpan una pequeña y extraña fantasía durante un momento-- como si hubiera ido a alojarme en un hotel exquisitamente diseñado, poniéndome en manos de los antiguos maestros de la <em>interfaz sensorial</em>, me hubiera sentado en mi habitación y hubiese escrito una historia con un bolígrafo en papel amarillo y, al volver de la cena, me hubiese encontrado con que la doncella se había llevado mi trabajo y en su lugar había dejado una pluma y una resma de pergamino --explicando que la habitación tenía mucho mejor aspecto así y era todo parte de una actualización rutinaria--. Pero escritas en aquellas hojas de papel, en impecable ortografía, habría largas secuencias de palabras escogidas al azar del diccionario. Espantoso, cierto, pero legalmente no podría demandar a la dirección, porque al alojarme en ese hotel había dado mi consentimiento para ello. Había entregado mis credenciales de morlock y me había convertido en un eloi.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/05/no-a-la-alianza-por-la-educacion.html" class="u-url">NO a la Alianza por la Educación</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/05/no-a-la-alianza-por-la-educacion.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-05T20:32:06+00:00" title="2006-04-05 20:32">2006-04-05 20:32</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/05/no-a-la-alianza-por-la-educacion.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/05/no-a-la-alianza-por-la-educacion.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<strong>La primera dosis siempre es gratis</strong>
+<p>El software está en todas partes. En los celulares, en los bancos, en las cajas del supermercado, en los hospitales, en las escuelas, en las computadoras de la AFIP, en el living de su casa.</p>
+<p>El software controla nuestras comunicaciones y archiva nuestra memoria social. Quien controla el software, controla el flujo de información y conocimiento dentro de la sociedad.</p>
+<p>Nadie permitiría que Monsanto fije los planes de estudio de agronomía, o que Mc. Donalds les enseñe nutrición a nuestros niños.</p>
+<p>Pero en un área  crítica como la informática, el Ministerio de</p>
+<p>Educación ayuda a Microsoft a entrenar a nuestros maestros y estudiantes para que sean usuarios cautivos de sus productos.</p>
+<p><strong>Dígale NO a la Alianza por la Educación!</strong></p>
+<p>Estudiar y aprender es un derecho. Bajo la tutela de Microsoft, los estudiantes aprenden que el software no se debe compartir, que está prohibido averiguar cómo funcionan los programas, que es ilegal modificarlos.</p>
+<p>Con Software Libre, programas que se puede usar, estudiar,</p>
+<p>copiar, modificar y compartir en libertad, las escuelas enseñan a aprender, alientan la curiosidad de los estudiantes, comparten el saber y los programas con su comunidad.</p>
+<p><strong>Los regalos de Microsoft están envenenados</strong></p>
+<p><strong>Nuestros niños y niñas merecen Software Libre</strong></p>
+<p>Para más información, vea <a target="_blank" href="http://www.gnu.org/">http://www.gnu.org/</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/04/03/kit-de-plug-ins-para-generar-diagramas-de-constelaciones-con-gimp.html" class="u-url">kit de plug-ins para generar diagramas de constelaciones con GIMP</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/04/03/kit-de-plug-ins-para-generar-diagramas-de-constelaciones-con-gimp.html" rel="bookmark"><time class="published dt-published" datetime="2006-04-03T14:04:25+00:00" title="2006-04-03 14:04">2006-04-03 14:04</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/04/03/kit-de-plug-ins-para-generar-diagramas-de-constelaciones-con-gimp.html#disqus_thread" data-disqus-identifier="cache/posts/2006/04/03/kit-de-plug-ins-para-generar-diagramas-de-constelaciones-con-gimp.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Más información sobre este proyecto en la <a href="http://firebirds.com.ar/~juanjo/wordpress/proyectos/kit-de-plug-ins-para-gimp-generador-de-diagramas-de-constelaciones-psk-y-qam/">sección Constelaciones</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/03/31/quiero-obtener-el-minimo-cuadrado-perfecto-mayor-a-n.html" class="u-url">Quiero obtener el mínimo cuadrado perfecto mayor a n</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/03/31/quiero-obtener-el-minimo-cuadrado-perfecto-mayor-a-n.html" rel="bookmark"><time class="published dt-published" datetime="2006-03-31T02:07:36+00:00" title="2006-03-31 02:07">2006-03-31 02:07</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/03/31/quiero-obtener-el-minimo-cuadrado-perfecto-mayor-a-n.html#disqus_thread" data-disqus-identifier="cache/posts/2006/03/31/quiero-obtener-el-minimo-cuadrado-perfecto-mayor-a-n.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Programando mi generador de constelaciones llegué a este problema:</p>
+<p><em>Obtener el mínimo cuadrado perfecto mayor a n (con n </em></p>
+<p>¿Cómo hubiese sido la forma iterativa de hacerlo?</p>
+<pre>
+
+&gt;&gt;&gt; def min_perf_sqrt(n):
+
+...    i = s = 1
+
+...    while (s 
+
+Este es mi one-liner hecho en python con un toque de programación funcional:
+
+<pre>
+
+min(filter(lambda i: i &gt; n, map(lambda j: j*j, range(13))))
+
+</pre>
+
+<p>Mmm probablemente la versión iterativa sea más eficiente.. programadores? comentarios?</p></pre>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2006/03/23/america-latina-en-una-cruzada-por-el-software-libre.html" class="u-url">America Latina en una cruzada por el Software Libre</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2006/03/23/america-latina-en-una-cruzada-por-el-software-libre.html" rel="bookmark"><time class="published dt-published" datetime="2006-03-23T15:49:17+00:00" title="2006-03-23 15:49">2006-03-23 15:49</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2006/03/23/america-latina-en-una-cruzada-por-el-software-libre.html#disqus_thread" data-disqus-identifier="cache/posts/2006/03/23/america-latina-en-una-cruzada-por-el-software-libre.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Este sábado se va a realizar simultaneamente en 12 países de latinoamérica el <a target="_blank" title="FLISOL" href="http://www.installfest.net/FliSol">Flisol</a>, un Festival Latinoamericano de Instalción de Software Libre que ya se realizó el año pasado. En <a target="_blank" title="FLISOL - Argentina" href="http://www.installfest.net/Argentina">Argentina</a> son 17 las ciudades que van a participar del evento, entre ellas <a target="_blank" title="FLISOL - Santa Fe" href="http://www.installfest.net/Argentina/SantaFe">Santa Fe</a>.</p>
+<p>El fin principal del Festival es que usuarios experimentados ayuden a los que recién empieza a instalar Software Libre, en particular GNU/Linux en sus computadoras. Charlas introductorias a distintos tópicos también son muy enriquecedoras para quienes se acercan por primera vez a la comunidad.</p>
+<p>En el <a title="LUGLi" target="_blank" href="http://www.lugli.org.ar/mediawiki/index.php/Portada">lugli</a> <a title="LUGLI - FLISOL" target="_blank" href="http://www.lugli.org.ar/mediawiki/index.php/Flisol_2006">nos estamos preparando</a> desde hace un tiempo a través de nuestra lista de correos, el evento se va a realizar en la <a target="_blank" title="FICH - UNL" href="http://fich.unl.edu.ar/">FICH</a> a partir de las 9 de la mañana y además de la posibilidad de instalar GNU/Linux en tu computadora podrás asistir a distintas charlas .. TE PERAMOS!</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-5.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-3.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cambiando el formato de los logs en Twisted | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../08/fotografiando-desde-el-camino-segunda-edicion.html" title="Fotografiando desde el camino (segunda edición)" type="text/html">
+        <link rel="next" href="../18/torta-de-zanahoria.html" title="Torta de Zanahoria" type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Cambiando el formato de los logs en Twisted">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html">
+    <meta property="og:description" content="En Twisted se puede tener un log de todo lo que pasa en un programa de forma bastante fácil:
+from twisted.python import log
+from twisted.python.logfile import DailyLogFile
+log.startLogging(DailyLogFil">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2010-09-14T12:25:05+00:00">
+           <meta property="article:tag" content="Aprendiendo Python">
+           <meta property="article:tag" content="logging">
+           <meta property="article:tag" content="Twisted">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="cambiando-el-formato-de-los-logs-en-twisted.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Cambiando el formato de los logs en Twisted</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2010-09-14T12:25:05+00:00" itemprop="datePublished" title="2010-09-14 12:25">2010-09-14 12:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="cambiando-el-formato-de-los-logs-en-twisted.html#disqus_thread" data-disqus-identifier="cache/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="cambiando-el-formato-de-los-logs-en-twisted.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>En Twisted <a href="http://twistedmatrix.com/documents/current/core/howto/logging.html" target="_blank">se puede tener un log</a> de todo lo que pasa en un programa de forma bastante fácil:</p>
+<p></p>
+<pre lang="python">from twisted.python import log
+<p>from twisted.python.logfile import DailyLogFile</p>
+<p>log.startLogging(DailyLogFile('log.txt', LOGDIR))</p></pre>
+<p>Todos los <strong>prints</strong> que anden dando vuelta ahora son entradas en el log y de yapa estoy usando DailyLogFile en lugar de un archivo común y corriente para que al final del día rote a un nuevo archivo en disco. Hay varias opciones, esta es la que me sirve a mí.</p>
+<p>Por defecto los logs se ven algo así:</p>
+<pre lang="bash">2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00-0500 [__main__.TModBusFactory] Total: 1
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] SITIO SFE
+
+2010-05-28 07:41:01-0500 [TModBus,0,190.136.29.16] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49-0500 [__main__.TModBusFactory] Total: 2
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SITIO SFE
+
+2010-05-28 07:45:49-0500 [TModBus,1,190.136.29.16] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51-0500 [TModBus,1,190.136.29.16] Nuevo sitio registrado en MBProxy SFE</pre>
+
+<p>¿Cómo podemos cambiar el formato de salida? Algunos tips.</p>
+<p>Para cambiar el formato de la fecha y hora:</p>
+<pre lang="python">log.FileLogObserver.timeFormat = '%Y-%m-%d %H:%M:%S'</pre>
+
+<p>Para cambiar lo que aparece entre corchetes: utilizar log.msg y el keyword system:</p>
+<pre lang="python">log.msg("Nuevo cliente: %s:%d" % (self.peer.host, self.peer.port), system=' - ')</pre>
+
+<p>Con estos dos cambios se puede tener un log como este:</p>
+<pre lang="bash">2010-05-28 07:41:00 [ - ] Nuevo cliente: 190.136.29.16:12101
+
+2010-05-28 07:41:00 [ - ] Total: 1
+
+2010-05-28 07:41:01 [SFE] G24 dice:  :0090SFE00
+
+2010-05-28 07:41:01 [SFE] SITIO SFE
+
+2010-05-28 07:41:01 [SFE] Nuevo sitio registrado en MBProxy SFE
+
+2010-05-28 07:45:49 [ - ] Nuevo cliente: 190.136.29.16:30519
+
+2010-05-28 07:45:49 [ - ] Total: 2
+
+2010-05-28 07:45:49 [ - ] G24 dice:  :0090SFE00
+
+2010-05-28 07:45:49 [SFE] SITIO SFE
+
+2010-05-28 07:45:49 [SFE] SFE ya estaba conectado. Borrando anterior.
+
+2010-05-28 07:45:51 [SFE] Nuevo sitio registrado en MBProxy SFE</pre>
+
+<p>Para cambiar aún más el formato de la salida, la única forma que encontré es extender <strong>FileLogObserver</strong> y sobreescribir su método <strong>emit</strong>. Discutimos un poco esto <a href="http://stackoverflow.com/questions/3700955/how-to-format-twisted-logs" target="_blank">en StackOverflow.</a></p>
+<p><strong>nota:</strong> En Twisted también podemos usar el <a href="http://docs.python.org/library/logging.html" target="_blank">sistema de logging de Python</a>, esto tiene la ventaja de que podemos trabajar con niveles de log y controlar mejor el formato y la forma en que se generan los logs, pero el problema de que no está preparado para funcionar en forma asincrónica y esto puede traer algunos problemas con Twisted.</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/aprendiendo-python.html" rel="tag">Aprendiendo Python</a></li>
+           <li><a class="tag p-category" href="../../../../categories/logging.html" rel="tag">logging</a></li>
+           <li><a class="tag p-category" href="../../../../categories/twisted.html" rel="tag">Twisted</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../08/fotografiando-desde-el-camino-segunda-edicion.html" rel="prev" title="Fotografiando desde el camino (segunda edición)">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../18/torta-de-zanahoria.html" rel="next" title="Torta de Zanahoria">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html",
+        disqus_title="Cambiando el formato de los logs en Twisted",
+        disqus_identifier="cache/posts/2010/09/14/cambiando-el-formato-de-los-logs-en-twisted.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

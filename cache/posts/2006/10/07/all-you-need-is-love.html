@@ -1,0 +1,29 @@
+<p><html><body><p>Desde el etorno gráfico de tu GNU/Linux abrí una terminal (gnome-terminal, Konsole, Eterm u otra). Con tu editor preferido (vi, emacs, gedit u otro) creá el archivo <code>love</code> con este contenido:</p>
+<p></p><pre>plot a*(1-sin(t))</p>
+<p>a = a - 2</p>
+<p>pause 1</p>
+<p>if(a == 0) a = 16</p>
+<p>reread</p>
+</pre>
+
+<p>Desde la terminal ejecutá el comando <code>gnuplot</code> y allí:</p>
+<pre>gnuplot&gt; set polar
+
+        dummy variable is t for curves
+
+gnuplot&gt; set xrange[-25:25]; set yrange[-35:5]
+
+gnuplot&gt; a = 16
+
+gnuplot&gt; set title "All you need is love"
+
+gnuplot&gt; load 'love'
+
+</pre>
+
+<p>Done! All you need is love!.. and gnuplot! :)</p>
+<!--more-->
+
+<p><a href="http://www.gnuplot.info">Gnuplot</a> es un potente <a href="http://www.gnu.org/philosophy/free-sw.es.html">Software Libre</a> que permite graficar funciones matemáticas tanto en 2 como en 3 dimenciones.</p>
+<p>a*(1-sin(t)) es una función matemática en coordenadas polares que se denomina cardioide por su forma de corazón.</p>
+<p>Este pequeño ejemplo ilustra como utilizar esta herramienta para crear animaciones en base a la parametrización de funciones matemáticas que nos permitan observar comportamientos según cambian los valores de los parámetros.</body></html></p>

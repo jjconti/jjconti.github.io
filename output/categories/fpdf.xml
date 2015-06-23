@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (fpdf)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/fpdf.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:16 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>FPDF en Django</title><link>http://www.juanjoconti.com.ar/posts/2009/03/27/fpdf-en-django.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Si intentás usar FPDF en Django hay algunas cosas que necesitás saber:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;(ya sabés qué) &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.fpdf.org/"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;FPDF&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; está originalmente escrita en PHP y permite generar documentos PDF sin usar PDFLib (C).&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;(ya sabés qué) hay más de un port de esta librería a Python. Todos son incompletos.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Usá este &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.nsis.com.ar/svn/pyfpdf/"&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;"_blank"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://www.nsis.com.ar/svn/pyfpdf/&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; (parcheado en Argentina para utilizar unicode).&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;FPDF &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://www.fpdf.org/en/FAQ.php#q7"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;trabaja con la codificación ISO-8859-1&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Mi código fuente Django usa la cotificación UTF-8 y en los documentos resultantes aparecían caracteres raros en lugar de vocales con tilde o eñes.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Lo soluciné haciendo una modificacicón en el método Output:&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+
+
+
+
+&lt;p&gt;&lt;code&gt;self.buffer = buffer.encode('iso-8859-1')&lt;/code&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Django</category><category>fpdf</category><guid>http://www.juanjoconti.com.ar/posts/2009/03/27/fpdf-en-django.html</guid><pubDate>Fri, 27 Mar 2009 16:53:01 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Elecciones)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/elecciones.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:19 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Audio de la entrevista en Recreo Diario sobre mi artículo sobre el escrutinio en las elecciones Santa Fe 2015</title><link>http://www.juanjoconti.com.ar/posts/2015/06/20/audio-de-la-entrevista-en-recreo-diario-sobre-mi-articulo-sobre-el-escrutinio-en-las-elecciones-santa-fe-2015.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Luego de publicar el post &lt;a href="http://www.juanjoconti.com.ar/2015/06/18/jugando-con-los-datos-del-escrutinio-provisorio/"&gt;Jugando con los datos del escrutinio&lt;/a&gt; provisorio me contactaron de radio Continental Santa Fe para participar del programa Recreo Diario contando lo que hice.&lt;/p&gt;
+&lt;p&gt;Luego de mi entrevista siguió una con Pepito Cybrian y Cecilia Milone. Me saqué una foto con ellos y la usé para ilustrar el audio.&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=axwJ-_mXtQc&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Elecciones</category><category>santa fe</category><category>videos</category><guid>http://www.juanjoconti.com.ar/posts/2015/06/20/audio-de-la-entrevista-en-recreo-diario-sobre-mi-articulo-sobre-el-escrutinio-en-las-elecciones-santa-fe-2015.html</guid><pubDate>Sat, 20 Jun 2015 12:30:47 GMT</pubDate></item><item><title>Jugando con los datos del escrutinio provisorio</title><link>http://www.juanjoconti.com.ar/posts/2015/06/18/jugando-con-los-datos-del-escrutinio-provisorio.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Anoche estuve jugando un poco con los datos (publicados) del escrutinio provisorio de las elecciones a gobernador en la provincia de Santa Fe.&lt;/p&gt;
+&lt;p&gt;La misma noche de las elecciones, cuando los resultados provisorios no lo favorecieron, Miguel del Sel y los partidarios del PRO en general empezaron a &lt;a href="http://www.ellitoral.com/index.php/id_um/114934-del-sel-vamos-a-contar-voto-por-voto-porque-queremos-saber-la-verdad" target="_blank"&gt;instalar una sospecha de fraude&lt;/a&gt;. No tardaron en hacerse eco en las redes sociales distinto tipo de usuarios: obsecuentes, tira bombas, paranoicos, ingenuos.&lt;/p&gt;
+&lt;p&gt;En distintos medios, Del Sel mostró como "prueba" del fraude errores producidos al realizar la carga manual de datos durante el escrutinio provisorio, es decir durante el proceso humano de mirar una planilla completada a mano e ingresar (tipeando) los valores en el sistema.&lt;/p&gt;
+&lt;p&gt;De los tipos de errores, voy a tomar uno, el primero que mostró (&lt;a href="http://www.lanacion.com.ar/1802244-miguel-del-sel-pasan-cosas-extranas-hay-mesas-en-las-que-figuro-con-cero-votos-y-tengo-73" target="_blank"&gt;1&lt;/a&gt;, &lt;a href="https://youtu.be/vsmUzNNMahw" target="_blank"&gt;2&lt;/a&gt;): &lt;strong&gt;el candidato figura con 0 votos en el sitio web, pero en la planilla tiene X votos.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Mi objetivo es ver cuantas veces se da este error y como afecta a los distintos candidatos.&lt;/p&gt;
+&lt;p&gt;Programé un &lt;a href="https://github.com/jjconti/escrutinio/blob/master/escrutinio.py" target="_blank"&gt;pequeño script&lt;/a&gt; que hace lo siguiente:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;ol&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Baja el archivo XML con los datos de la categoría Gobernador correspondiente a cada mesa.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Lee los archivos XML para obtener, para cada mesa, la cantidad de votos de los 3 partidos dominantes.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Encuentra las mesas en las que cada partido tiene 0 votos.
+&lt;/pre&gt;
+
+
+&lt;ol&gt;
+
+    &lt;li&gt;Si en una mesa los 3 candidatos tienen 0 votos, se asume que se trata de una mesa con telegrama desestimado.&lt;/li&gt;
+
+&lt;/ol&gt;
+
+
+
+&lt;/ol&gt;
+
+&lt;p&gt;Luego revisé los archivos PDF de los telegramas de estas mesas. Arribé a lo siguiente:&lt;/p&gt;
+&lt;table dir="ltr" border="1" cellspacing="0" cellpadding="0"&gt;&lt;colgroup&gt; &lt;col width="100"&gt; &lt;col width="100"&gt; &lt;col width="136"&gt; &lt;col width="100"&gt;&lt;/colgroup&gt;
+
+&lt;tbody&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"Partido"]'&gt;Partido&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"N\u00ba de mesa"]'&gt;Nº de mesa&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"Votos en el telegrama"]'&gt;Votos&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"PRO"]'&gt;PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1725]"&gt;1725&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"PRO"]'&gt;PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,270]"&gt;270&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,73]"&gt;73&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"PRO"]'&gt;PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,5351]"&gt;5351&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"*"]'&gt;*&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="2" rowspan="1" data-sheets-value='[null,2,"Total votos faltantes PRO"]'&gt;Total votos faltantes PRO&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,73]" data-sheets-numberformat="[null,0]" data-sheets-formula="=sum(R[-3]C[0]:R[-1]C[0])"&gt;&lt;span style="color: #ff0000;"&gt;&lt;span style="color: #000000;"&gt;&lt;b&gt;73&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1478]"&gt;1478&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,7591]"&gt;7591&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,5545]"&gt;5545&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4912]"&gt;4912&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,7601]"&gt;7601&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1845]"&gt;1845&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4950]"&gt;4950&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4729]"&gt;4729&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,85]"&gt;85&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6555]"&gt;6555&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPV"]'&gt;FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6333]"&gt;6333&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"*"]'&gt;*&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="2" rowspan="1" data-sheets-value='[null,2,"Total votos faltantes FPV"]'&gt;Total votos faltantes FPV&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,85]" data-sheets-numberformat="[null,0]" data-sheets-formula="=sum(R[-10]C[0]:R[-1]C[0])"&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;85&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6852]"&gt;6852&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td data-sheets-value='[null,2,"*"]'&gt;*&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1478]"&gt;1478&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,134]"&gt;134&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,7591]"&gt;7591&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,5485]"&gt;5485&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,82]"&gt;82&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,4501]"&gt;4501&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,75]"&gt;75&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,6555]"&gt;6555&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td data-sheets-value='[null,2,"FPCS"]'&gt;FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,1845]"&gt;1845&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,0]"&gt;0&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="2" rowspan="1" data-sheets-value='[null,2,"Total votos faltantes FPCS"]'&gt;Total votos faltantes FPCS&lt;/td&gt;
+
+&lt;td data-sheets-value="[null,3,null,157]" data-sheets-numberformat="[null,0]" data-sheets-formula="=sum(R[-8]C[0]:R[-1]C[0])"&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;157&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td colspan="3" rowspan="1" data-sheets-value='[null,2,"* la casilla estaba en blanco en el telegrama"]'&gt;* la casilla estaba en blanco en el telegrama&lt;/td&gt;
+
+&lt;td&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;/tbody&gt;
+
+&lt;/table&gt;
+
+&lt;p&gt;Se pueden analizar otros tipos de errores en la carga, pero con uno me alcanza para demostrar mi punto: esto no es prueba ni de fraude ni del accionar de un cracker, solo errores humanos distribuidos uniformemente.&lt;/p&gt;
+&lt;p&gt;Es decir, &lt;strong&gt;este tipo de error ocurrió una vez para el PRO (a quien se le deben contabilizar 73 votos más), una vez para el FPV (a quien se le deben contabilizar 85 votos más) y 2 veces para el FPCS (a quien se le deben contabilizar 157 votos más).&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Los datos y las herramientas están disponibles para periodistas y entusiastas que quieran seguir explorando el espectro de los votos mientras el tribunal &lt;a href="http://www.ellitoral.com/index.php/id_um/115067-se-escrutaron-1500-urnas-y-se-abrieron-unas-45" target="_blank"&gt;sigue contando&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finalmente, como esto se puso muy serio, cierro con un poco de humor, uno de los mejores &lt;a href="https://twitter.com/eameook" target="_blank"&gt;Eameos&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2015/06/migueles.jpg"&gt;&lt;img class="aligncenter size-full wp-image-5327" src="http://www.juanjoconti.com.ar/wp-content/uploads/2015/06/migueles.jpg" alt="MI-DA-CHI" width="599" height="395"&gt;&lt;/a&gt;&lt;strong&gt;Actualización:&lt;/strong&gt; &lt;a href="http://www.juanjoconti.com.ar/2015/06/20/audio-de-la-entrevista-en-recreo-diario-sobre-mi-articulo-sobre-el-escrutinio-en-las-elecciones-santa-fe-2015/"&gt;audio disponible&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Elecciones</category><category>santa fe</category><guid>http://www.juanjoconti.com.ar/posts/2015/06/18/jugando-con-los-datos-del-escrutinio-provisorio.html</guid><pubDate>Thu, 18 Jun 2015 00:46:21 GMT</pubDate></item></channel></rss>

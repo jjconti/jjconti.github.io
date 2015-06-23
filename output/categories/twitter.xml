@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (twitter)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/twitter.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:22 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Reactivé el bot @jjsaer</title><link>http://www.juanjoconti.com.ar/posts/2014/12/19/reactive-el-bot-jjsaer.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2014/12/Captura-de-pantalla-2014-12-19-a-las-21.55.35.png"&gt;&lt;img class=" wp-image-5259 size-large aligncenter" src="http://www.juanjoconti.com.ar/wp-content/uploads/2014/12/Captura-de-pantalla-2014-12-19-a-las-21.55.35-1024x502.png" alt="Saer en Twitter" width="640" height="314"&gt;&lt;/a&gt;
+&lt;p&gt;Desde hace algunos años mantengo un &lt;a href="https://twitter.com/jjsaer" target="_blank"&gt;bot en Twitter&lt;/a&gt; que cita a &lt;a href="http://es.wikipedia.org/wiki/Juan_Jos%C3%A9_Saer" target="_blank"&gt;Juan José Saer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hace algunas semanas, cuando la notebook que servía de servidor para esta aplicación se rompió, Saer dejó de twittear.&lt;/p&gt;
+&lt;p&gt;Hoy aproveché el día para acomodar un poco su &lt;a href="https://github.com/jjconti/saer-tweets/" target="_blank"&gt;código fuente&lt;/a&gt; y moverlo a un servidor de verdad.&lt;/p&gt;
+&lt;p&gt;La lista completa de las citas que va posteando está en &lt;a href="https://github.com/jjconti/saer-tweets/blob/master/saertweets.txt" target="_blank"&gt;saertweets.txt&lt;/a&gt;. ¡Se aceptan nuevas citas para agregar! Incluso, cualquiera puede usar este pequeño programa para crear un bot de cualquier escritor o de cualquier cosa. Si no son programadores y necesitan ayuda para hacerlo funcionar, me avisan.&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Juan José Saer</category><category>twitter</category><guid>http://www.juanjoconti.com.ar/posts/2014/12/19/reactive-el-bot-jjsaer.html</guid><pubDate>Fri, 19 Dec 2014 21:59:42 GMT</pubDate></item><item><title>Twitter: Dejar de seguir a los que no me siguen</title><link>http://www.juanjoconti.com.ar/posts/2014/01/26/twitter-dejar-de-seguir-a-los-que-no-me-siguen.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Para cierta cuenta de Twitter que administro, necesitaba dejar de seguir a todos los usuarios que no me seguían.&lt;/p&gt;
+&lt;p&gt;Busqué si había alguna web que diera el servicio y las que encontré (NotFollow y JustUnfollow) solo se limitaban a listar a quienes no te seguían y permitirte ir eliminándolos de a uno. Un chiste. (JustUnfollow te deja eliminar solo 50 usuarios por día si no te pasás a la cuenta premium, paga, o twitteas haciéndoles propaganda).&lt;/p&gt;
+&lt;p&gt;Tenía que eliminar a casi 2000 usuarios y no tenía ganas de que me diera tendinitis en el dedo índice derecho de tanto hacer click.&lt;/p&gt;
+&lt;p&gt;Como siempre, &lt;strong&gt;dada la herramienta correcta, un trabajo a primera vista tedioso o complicado puede resultar extremadamente fácil&lt;/strong&gt;. Utilizando la librería &lt;a title="PTT" href="https://pypi.python.org/pypi/twitter" target="_blank"&gt;Python Twitter Tools&lt;/a&gt; hice este &lt;em&gt;script&lt;/em&gt; que, luego de la &lt;a href="https://dev.twitter.com/docs/auth" target="_blank"&gt;danza de OAuth&lt;/a&gt; para autenticarse en Twitter, consta de 7 líneas. Tomen &lt;em&gt;community managers&lt;/em&gt;, se los regalo:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;following = twitter.friends.ids()
+&lt;p&gt;followingIds = following['ids']&lt;/p&gt;
+&lt;p&gt;followers = twitter.followers.ids()&lt;/p&gt;
+&lt;p&gt;followersIds = followers['ids']&lt;/p&gt;
+&lt;p&gt;for id in followingIds:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;if id not in followersIds:
+
+    twitter.friendships.destroy(user_id=id)&amp;lt;/pre&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;PS: para los amantes del &lt;a href="http://en.wikipedia.org/wiki/Code_golf" target="_blank"&gt;code golfing&lt;/a&gt;, ahí va la versión en una línea:&lt;/p&gt;
+&lt;pre&gt;[twitter.friendships.destroy(user_id=id) for id in twitter.friends.ids()['ids'] if id not in twitter.followers.ids()['ids']]&lt;/pre&gt;
+
+&lt;p&gt;Nota: para dejar de seguir unos 1900 usuarios tardo una media hora en mi notebook.&lt;/p&gt;
+&lt;p&gt;Tarea para el lector: escribir un &lt;em&gt;script&lt;/em&gt; para seguir a todos los seguidores que no estamos siguiendo.&lt;/p&gt;&lt;/pre&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>twitter</category><guid>http://www.juanjoconti.com.ar/posts/2014/01/26/twitter-dejar-de-seguir-a-los-que-no-me-siguen.html</guid><pubDate>Sun, 26 Jan 2014 12:16:13 GMT</pubDate></item><item><title>Cambiar foto de perfil en Twitter, cuando la cambio en Facebook</title><link>http://www.juanjoconti.com.ar/posts/2012/01/25/cambiar-foto-de-perfil-en-twitter-cuando-la-cambio-en-facebook.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://ifttt.com" target="_blank"&gt;Ifttt&lt;/a&gt;, &lt;em&gt;If this then that&lt;/em&gt;, es un sitio web que permite utilizar está &lt;a href="http://en.wikipedia.org/wiki/Conditional_%28programming%29" target="_blank"&gt;clásica sentencia de control de programación&lt;/a&gt; en la web.
+&lt;p&gt;Uno tiene a su disposición una serie de &lt;strong&gt;canales&lt;/strong&gt;. Estos disparan &lt;strong&gt;eventos&lt;/strong&gt; y realizan &lt;strong&gt;acciones&lt;/strong&gt;.  La combinación de un evento y una acción es una &lt;strong&gt;tarea&lt;/strong&gt;. Y cuando uno publica una tarea, se la llama &lt;strong&gt;receta&lt;/strong&gt;. Existe un &lt;a href="http://ifttt.com/recipes" target="_blank"&gt;repositorio de recetas&lt;/a&gt; publicadas por los usuarios en donde se pueden encontrar algunas muy útiles. La mejor que estoy usando es:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://ifttt.com/recipes/8981" target="_blank"&gt;&lt;img class="aligncenter size-full wp-image-3644" title="ifttt" src="http://www.juanjoconti.com.ar/wp-content/uploads/2012/01/iffbthentwitter.png" alt="" width="663" height="226"&gt;&lt;/a&gt;Otras recetas que estoy usando son:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Cuando posteo en el blog, comunicarlo en Facebook.&lt;/li&gt;
+
+    &lt;li&gt;xkcd comic emailed to me whenever it updates&lt;/li&gt;
+
+    &lt;li&gt;Tweet if I upload a video to youtube.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Facebook</category><category>ifttt</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2012/01/25/cambiar-foto-de-perfil-en-twitter-cuando-la-cambio-en-facebook.html</guid><pubDate>Wed, 25 Jan 2012 03:22:26 GMT</pubDate></item><item><title>La Sole Pastorutti twittea sobre Kiko Opertti</title><link>http://www.juanjoconti.com.ar/posts/2011/01/30/la-sole-pastorutti-twittea-sobre-kiko-opertti.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2011/01/tapa_cd_vivo_en_arequito.jpg"&gt;&lt;img class="alignright size-medium wp-image-3111" title="tapa_cd_vivo_en_arequito" src="http://www.juanjoconti.com.ar/wp-content/uploads/2011/01/tapa_cd_vivo_en_arequito-300x298.jpg" alt="" width="300" height="298"&gt;&lt;/a&gt;Hoy leyendo el Twitter de &lt;a href="http://twitter.com/sole_pastorutti" target="_blank"&gt;@sole_pastorutti&lt;/a&gt; me encontré que recordaba a uno s los grandes personajes de mi pueblo, Carlos Pellegrini. Kiko Opertti: profesor de matemática, economista, inventor, político y mucho más.
+&lt;p&gt;Esto decía hace un par de horas La Sole, 140 caracteres a la vez:&lt;/p&gt;
+&lt;ul&gt;
+
+    &lt;li&gt;Estamos viajando a Mendoza, hace mucho calor y no hay aire que alcance! Anoche cantamos con la humedad de Santa Fe!&lt;/li&gt;
+
+    &lt;li&gt;Piamonte volvió a recibirme! Que bueno que parte de mi banda loca estuvo ahí! Paramos en los pagos del gran Kiko Operti!&lt;/li&gt;
+
+    &lt;li&gt;Les cuento: Kiko era un hombre mayor muy fana mio! Tanto que tenia como proyecto ponerle mi nombre a una calle de su pueblo!&lt;/li&gt;
+
+    &lt;li&gt;Un tipo muy inteligente que todo el tiempo me regalaba cosas: desde mermeladas caseras, choclos, bagna cauda, ollas hasta gallinas, ovejas y&lt;/li&gt;
+
+    &lt;li&gt;...gallinas y un burro! Pensaba hacer un recital en la luna y como anécdota una vez en Villa Maria, en conferencia de prensa, se metió entre&lt;/li&gt;
+
+    &lt;li&gt;...Entre el periodismo y le dijo a mi representante que no podía ir a ese show lunático porque estaba gordito. Cuando menos lo imaginaba...&lt;/li&gt;
+
+    &lt;li&gt;Aparecía Kiko! En Arequito, en la casa de mis abuelos, en las conferencias, en todos lados! Hay como lo extraño!Un tipo especial, querible!&lt;/li&gt;
+
+    &lt;li&gt;Bueno, me pareció lindo contarles esto! Ahora voy a tratar de dormir otro poco!Besos&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>La Sole</category><category>Música</category><category>twitter</category><guid>http://www.juanjoconti.com.ar/posts/2011/01/30/la-sole-pastorutti-twittea-sobre-kiko-opertti.html</guid><pubDate>Sun, 30 Jan 2011 15:08:10 GMT</pubDate></item><item><title>Twitter updates desde Twisted</title><link>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;em&gt;Este artículo es una re-edición del publicado el 24/08/2010 ya que cuando lo publiqué, Twitter estaba terminando su proceso apagar el sistema de autenticación básica para pasar al &lt;a href="http://dev.twitter.com/pages/auth_overview" target="_blank"&gt;más complejo sistema de la danza oAuth;&lt;/a&gt; lo cual convirtió al artículo en inservible. El artículo anterior no está más disponible. Gracias a &lt;a href="http://www.pupeno.com" target="_blank"&gt;Pupeno&lt;/a&gt; por revisar esta versión.
+&lt;p&gt;&lt;/p&gt;&lt;/em&gt;
+&lt;p&gt;¿Tenés un servidor escrito en &lt;a href="http://twistedmatrix.com" target="_blank"&gt;Twisted&lt;/a&gt;? ¿Tenés eventos críticos o importantes que mandás por mail o a celulares? ¿Qué tal publicarlos en &lt;a href="http://www.twitter.com" target="_blank"&gt;Twitter&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;La versión original de este artículo utilizaba la biblioteca &lt;a href="http://github.com/dustin/twitty-twister" target="_blank"&gt;Twitty Twister&lt;/a&gt;, la única pensada para usar Twitter desde Twisted. Lamentablemente no funciona bien con el nuevo sistema de autenticación de Twitter por lo que voy a usar &lt;a href="http://github.com/joshthecoder/tweepy" target="_blank"&gt;Tweepy&lt;/a&gt;, una librería con la cual hacer la danza de oAuth es muy sencillo.&lt;/p&gt;
+&lt;p&gt;1) &lt;a href="https://twitter.com/signup" target="_blank"&gt;Registrar&lt;/a&gt; un usuario dónde publicar las notificaciones.&lt;/p&gt;
+&lt;p&gt;2) Con ese usuario, &lt;a href="http://dev.twitter.com/apps/new" target="_blank"&gt;registrar una aplicación&lt;/a&gt;. Es muy importante usar el mismo usuario para ahorrarnos algunos pasos en la danza oAuth.&lt;/p&gt;
+&lt;p&gt;3) De la página de la aplicación creada, tomar la siguiente información: consumer key, consumer secret (desde la home de la aplicación), access token y access token secret (de la página My Access Token).&lt;/p&gt;
+&lt;p&gt;4) Código:&lt;/p&gt;
+&lt;p&gt;Con los datos del punto 3, creamos el módulo &lt;strong&gt;twitterupdates.py&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;import tweepy
+
+
+
+TWITTER_KEY = 'xxxxxxxxxxxxxxxx'
+
+TWITTER_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+
+MY_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+
+
+auth = tweepy.OAuthHandler(TWITTER_KEY, TWITTER_SECRET)
+
+auth.set_access_token(MY_KEY, MY_SECRET)
+
+twitter = tweepy.API(auth)&lt;/pre&gt;
+
+&lt;p&gt;y desde nuestra aplicación Twisted lo importamos:&lt;/p&gt;
+&lt;pre&gt;from twitterupdates import twitter&lt;/pre&gt;
+
+&lt;p&gt;Postear una actualización en Twitter o cualquier otra petición a un servidor externo tiene una naturaleza bloqueante y en un framework de concurrencia colaborativa, como es Twisted, no podemos darnos ese lujo. Para solucionar esto, utilizamos &lt;a href="http://twistedmatrix.com/documents/10.1.0/api/twisted.internet.threads.deferToThread.html" target="_blank"&gt;deferToThread&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;deferToThread(twitter.update_status, "Mensaje a postear en Twitter")&lt;/pre&gt;
+
+&lt;p&gt;Esta llamada retorna un objeto &lt;a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank"&gt;Deferred&lt;/a&gt; al cual se le pueden añadir callbacks o errbacks. La llamada bloqueante es corrida en un hilo aparte.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Python</category><category>Twisted</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/26/twitter-updates-desde-twisted.html</guid><pubDate>Sun, 26 Sep 2010 16:00:47 GMT</pubDate></item><item><title>Reflotando MyTwitGroup</title><link>http://www.juanjoconti.com.ar/posts/2010/09/23/reflotando-mytwitgroup.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;MyTwitGroup o &lt;a href="http://www.mytwitgroup.com/" target="_blank"&gt;www.mytwitgroup.com&lt;/a&gt; es un servicio que implementamos con dos compañeras hace unos 6 meses. Uno de los objetivos del proyecto era ver como funcionábamos como equipo, si podíamos construir y entregar software en tiempo y forma. Nos fue bastante bien.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;El servicio&lt;/h3&gt;
+&lt;p&gt;La idea del servicio surgió de una necesidad real. En la cátedra de Comunicaciones somo 4 personas que usamos Twitter y queríamos usar esa herramienta para comunicarnos con los alumnos, pero no queríamos obligarlos a que nos sigan a cada uno.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MyTwitGroup revisa periódicamente el timeline de cada uno de los miembros y si encuentra un tweet con el hashtag &lt;/strong&gt;&lt;strong&gt;#com lo publica utilizando la cuenta de la cátedra.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;El servicio lo pueden usar desde empresas hasta bandas de rock. Yo creo que es útil, pero para entenderlo realmente tenés que usarlo. Si tenés una "cuenta grupal" probalo, no te cuesta nada.&lt;/p&gt;
+&lt;h3&gt;Fallas&lt;/h3&gt;
+
+&lt;p&gt;Cuando implementamos la primera versión del sistema, utilizamos la forma básica de autenticación de Twitter: era fácil de implementar y funcionaba. Tenía un problema, el grupo que creaba una cuenta en el sitio debía dejar la contraseña de la cuenta del grupo para que luego se puedan hacer las publicaciones automáticas. Tuvimos resistencia de usuarios por esto. Intentamos solucionarlo obteniendo un certificado que podamos usar para enviar la información por HTTPS. Los certificados son caros. Usamos uno gratuito unos meses, pero luego caducó. Esta fue la falla 1.&lt;/p&gt;
+&lt;p&gt;Falla 2. Hace menos de un mes Twitter decidió apagar su sistema de autenticación básico y nuestro servicio dejó de andar. Algo corto de tiempo por otros proyectos y obligaciones, con la ayuda de &lt;a href="http://fisadev.blogspot.com/" target="_blank"&gt;fisa&lt;/a&gt; migramos a la nueva forma de autenticación: OAuth.&lt;/p&gt;
+&lt;p&gt;OAuth en Twitter &lt;a href="http://arstechnica.com/security/guides/2010/09/twitter-a-case-study-on-how-to-do-oauth-wrong.ars/" target="_blank"&gt;está mal implementado&lt;/a&gt; e hizo renegar a muchas personas; por semanas, populares clientes no funcionaron y a los paranoicos de la seguridad no les termina de cerrar la implementación OAuth de Twitter. Pero a nosotros nos vino bien! &lt;strong&gt;Usando OAuth dejamos de pedirle  la password al usuario y muchos que no hubiesen probado el servicio, tal vez lo hagan.&lt;/strong&gt; También dejamos de necesitar un costoso certificado.&lt;/p&gt;
+&lt;h3&gt;Bugs fixing&lt;/h3&gt;
+
+&lt;p&gt;Cambiamos de hosting y salió a la cancha, pero con algunos temitas que fui corrigiendo &lt;em&gt;on demand&lt;/em&gt;. Cambié la BD de SQLite a PostgreSQL. Cambié el máximo tamaño para el hashtag de 10 a 20 (gracias walteralini por probarlo). No funcionaba la página "contact us" por que arrastré la configuración del viejo hosting.&lt;/p&gt;
+&lt;p&gt;Tengo que arreglar algunas cosas de usabildad todavía, el workflow logearse/editar puede ser engorroso, pero ya son detalles sutiles.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.mytwitgroup.com/" target="_blank"&gt;El sitio queda on line&lt;/a&gt; y ya tenemos algunos felices usuarios de esta nueva era. ¿Ideas o sugerencias? Dejalas en los comentarios!&lt;/p&gt;&lt;/div&gt;</description><category>General</category><category>MyTwitGroup</category><category>proyectos</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/23/reflotando-mytwitgroup.html</guid><pubDate>Thu, 23 Sep 2010 15:36:56 GMT</pubDate></item><item><title>Fotografiando desde el camino (segunda edición)</title><link>http://www.juanjoconti.com.ar/posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Hace 2 años había empezado a publicar fotos &lt;strong&gt;instantáneas&lt;/strong&gt; en mi blog. Las sacaba con el celular (un Nokia 6131) y en segundos estaban on line mostrando la última en la sidebar. En ese entonces no tenía el celular que tengo ahora, y tuve que arreglarmelas con &lt;a href="http://www.juanjoconti.com.ar/2008/08/18/fotografiando-desde-el-camino/" target="_blank"&gt;tremento hack&lt;/a&gt; para lograr la funcionalidad que buscaba.&lt;/p&gt;
+&lt;p&gt;Hoy con un Motorolla Milestone que tiene más capacidad de procesamiento que las computadoras que llevaron al hombre a la luna y más conectividad muchos países, el tema es más sencillo.&lt;/p&gt;
+&lt;p&gt;Publico fotos através de &lt;a href="http://twitpic.com/photos/jjconti" target="_blank"&gt;Twitpic&lt;/a&gt; con mi cliente de Twitter &lt;a href="http://seesmic.com/" target="_blank"&gt;Seesmic&lt;/a&gt; y las muestro usando el plugín &lt;a href="http://wordpress.org/extend/plugins/my-twitpics/screenshots/" target="_blank"&gt;My Pictures Widget&lt;/a&gt; para Wordpress. &lt;em&gt;Nice.&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>Fotos</category><category>Seesmic</category><category>Twitpic</category><category>twitter</category><category>Web</category><guid>http://www.juanjoconti.com.ar/posts/2010/09/08/fotografiando-desde-el-camino-segunda-edicion.html</guid><pubDate>Wed, 08 Sep 2010 21:40:21 GMT</pubDate></item><item><title>me on twitter</title><link>http://www.juanjoconti.com.ar/posts/2009/01/31/me-on-twitter.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;img class="alignright size-full wp-image-1210" title="twitter_logo_s" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/01/twitter_logo_s.png" alt="" width="175" height="41"&gt;&lt;a href="http://twitter.com" target="_blank"&gt;twitter&lt;/a&gt; es un servicio gratuito de micro blogging que permite a sus usuarios enviar pequeñas porciones de texto (también denominadas "tweets"), con una longitud máxima de 140 caracteres, donde se responde a la pregunta &lt;em&gt;¿Qué estás haciendo?&lt;/em&gt;. El envío de estos mensajes se puede realizar tanto a través de su sitio web, como vía  SMS, desde programas de mensajería instantánea, o incluso desde cualquier aplicación de terceros.
+&lt;p&gt;&lt;img class="size-full wp-image-1212 alignright" title="twitter_tour_1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/01/twitter_tour_1.gif" alt="" width="300" height="91"&gt;Estas actualizaciones se muestran en la página de perfil del usuario, y son también enviadas de forma inmediata a otros usuarios que han elegido la opción de recibirlas. A estos usuarios se les denomina seguidores (&lt;em&gt;followers&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Después de tener mi cuenta inactiva por más de un año, con este tweet la vuelvo a utilizar:&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2009/01/first_tweet.jpg"&gt;&lt;img class="aligncenter size-full wp-image-1221" title="first_tweet" src="http://www.juanjoconti.com.ar/wp-content/uploads/2009/01/first_tweet.jpg" alt="" width="466" height="56"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Mi idea es postear micro entradas sobre temas técnicos; detalles, problemas, soluciones o ideas en tiempo real. Voy a estar usando el inglés como idioma en las mismas.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://twitter.com/jjconti" target="_blank"&gt;Seguime!&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Blogósfera</category><category>twitter</category><guid>http://www.juanjoconti.com.ar/posts/2009/01/31/me-on-twitter.html</guid><pubDate>Sat, 31 Jan 2009 13:25:22 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (svn)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/svn.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:23 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Dejar de revisionar un archivo sin borrarlo en svn</title><link>http://www.juanjoconti.com.ar/posts/2010/08/29/dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;A veces me pasa que en un proyecto tengo un archivo X que empezó siendo un archivo común, pero en un momento dado, cada desarrollador necesita taner su propia copia y no revisionarlo más.&lt;/p&gt;
+&lt;p&gt;Cómo dejar de revisionarlo sin borrarlo?&lt;/p&gt;
+&lt;p&gt;La primer vez que me topé con el problema hice:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre lang="bash"&gt;cp X Y
+&lt;p&gt;svn rm X&lt;/p&gt;
+&lt;p&gt;svn ci -m "chau X"&lt;/p&gt;
+&lt;p&gt;mv Y X&lt;/p&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Ugly.&lt;/p&gt;
+&lt;p&gt;La forma correcta de hacerlo es:&lt;/p&gt;
+&lt;pre lang="bash"&gt;svn rm --keep-local X
+
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Siempre se aprende algo</category><category>svn</category><guid>http://www.juanjoconti.com.ar/posts/2010/08/29/dejar-de-revisionar-un-archivo-sin-borrarlo-en-svn.html</guid><pubDate>Sun, 29 Aug 2010 13:20:24 GMT</pubDate></item><item><title>Voy a empezar a revisionar mini-lisp</title><link>http://www.juanjoconti.com.ar/posts/2008/10/14/voy-a-empezar-a-revisionar-mini-lisp.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;mini-lisp, una implementación pediátrica de &lt;a title="Lisp" href="http://svn.juanjoconti.com.ar/lisp" target="_blank"&gt;Lisp&lt;/a&gt; que hice &lt;a href="http://www.juanjoconti.com.ar/2007/11/02/minilisp-un-ejemplo-de-ply/" target="_blank"&gt;para practicar ply&lt;/a&gt; tiene a partir de ahora su código revisionado en: &lt;a href="http://svn.juanjoconti.com.ar/lisp" target="_blank"&gt;http://svn.juanjoconti.com.ar/lisp&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>General</category><category>Lisp</category><category>Python</category><category>svn</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/14/voy-a-empezar-a-revisionar-mini-lisp.html</guid><pubDate>Tue, 14 Oct 2008 00:04:52 GMT</pubDate></item></channel></rss>

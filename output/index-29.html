@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 29) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-29.html">
+
+
+
+        <link rel="prev" href="index-30.html" type="text/html">
+        <link rel="next" href="index-28.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/06/06/motorizado.html" class="u-url">Motorizado</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/06/06/motorizado.html" rel="bookmark"><time class="published dt-published" datetime="2009-06-06T20:34:02+00:00" title="2009-06-06 20:34">2009-06-06 20:34</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/06/06/motorizado.html#disqus_thread" data-disqus-identifier="cache/posts/2009/06/06/motorizado.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Hoy lo manejé desde Pellegrini, ya lo tenemos en Santa Fe!</p>
+<p><a href="wp-content/uploads/2009/06/imagen593.jpg"><img class="aligncenter size-medium wp-image-1610" title="imagen593" src="wp-content/uploads/2009/06/imagen593-300x225.jpg" alt="" width="300" height="225"></a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/06/04/euler-2-python.html" class="u-url">Euler 2 (Python)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/06/04/euler-2-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-06-04T21:37:17+00:00" title="2009-06-04 21:37">2009-06-04 21:37</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/06/04/euler-2-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/06/04/euler-2-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<h3>Enunciado 2</h3>
+<p>Cada nuevo item en la secuencia de Fibonacci es generado sumando los dos términos previos. Empezando con 1 y 2, los primeros 10 términos serían:</p>
+<p>1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</p>
+<p>Encontrar la suma de todos los términos pares en la secuencia que no supera los 4 millones.</p>
+<h3>Solución</h3>
+
+<p>La solución fue obtenida en el intérprete interactivo de Python 2.5.2:</p>
+<pre>&gt;&gt;&gt; MAX = 4000000
+
+&gt;&gt;&gt; def evsum(n):
+
+...     s = 0
+
+...     a,b = 1,2
+
+...     while True:
+
+...         if a &gt;= n:
+
+...             break
+
+...         if a % 2 ==0:
+
+...             print a, " ",
+
+...             s += a
+
+...         a,b = b,a+b
+
+...     return s
+
+...
+
+&gt;&gt;&gt; evsum(MAX)
+
+2   8   34   144   610   2584   10946   46368   196418   832040   3524578
+
+4613732</pre>
+
+<h3>Python tips</h3>
+
+<ul>
+
+    <li>La asignación múltiple es un idom muy cómodo: <code>a,b = 1,2</code>
+</li>
+
+    <li>Si agregamos una coma final a la enumeración de objetos a ser impresos con <code>print</code>, se logra el efecto de que no se imprima el salto de línea (<code>\n</code>) final.</li>
+
+</ul>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/05/28/euler-1-python.html" class="u-url">Euler 1 (Python)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/05/28/euler-1-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-05-28T21:26:36+00:00" title="2009-05-28 21:26">2009-05-28 21:26</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/05/28/euler-1-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/05/28/euler-1-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a title="Euler" href="http://projecteuler.net/" target="_blank">Project Euler</a> es un sitio web que reta a los programadores a resolver problemas matemáticos mediante código. Me parece entretenido. Voy a ir resolviendo problemas y posteando mi solución en Python acompañada de comentarios sobre el código que puedan servirles a quienes están empezando a aprender el lenguaje.
+<h3>Enunciado 1</h3>
+
+<p>Si listamos todos los números menores a 10 que son múltiplos de 3 o 5, obtenemos 3, 5, 6 y 9. La suma de esos múltiplos es 23.</p>
+<p>Encontrar la suma de todos los múltiplos de 3 o 5 menores a 1000.</p>
+<h3>Solución</h3>
+
+<p>La solución fue obtenida en el intérprete interactivo de Python 2.5.2:</p>
+<pre>&gt;&gt;&gt; def mults(n=10):
+
+...     r = []
+
+...     for i in range(1, n):
+
+...             if i % 3 == 0:
+
+...                     r.append(i)
+
+...             elif i % 5 == 0:
+
+...                     r.append(i)
+
+...     return r
+
+...
+
+&gt;&gt;&gt; mults()
+
+[3, 5, 6, 9]
+
+&gt;&gt;&gt; sum(mults())
+
+23
+
+&gt;&gt;&gt; sum(mults(n=1000))
+
+233168</pre>
+
+<h3>Python tips</h3>
+
+<ul>
+
+    <li>En la definición de la función <code>mults</code> se incluye un argumento por defecto <code>n</code> con valor <code>10</code>. Cuando más adelante se llama a esta función sin parámetros, <code>n</code> toma el valor por defecto.</li>
+
+    <li>La función <code>range</code>, incluida en el lenguaje devuelve una lista de números sobre la que se puede iterar. Muy útil para usar con la estructura <code>for</code>. Más información haciendo <code>help(range)</code> en el intérprete interactivo.</li>
+
+</ul>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/05/21/budin-de-remolacha-y-nuez.html" class="u-url">Budín de remolacha y nuez</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/05/21/budin-de-remolacha-y-nuez.html" rel="bookmark"><time class="published dt-published" datetime="2009-05-21T20:58:49+00:00" title="2009-05-21 20:58">2009-05-21 20:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/05/21/budin-de-remolacha-y-nuez.html#disqus_thread" data-disqus-identifier="cache/posts/2009/05/21/budin-de-remolacha-y-nuez.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<strong>Ingredientes</strong>
+<p>60 g de manteca.</p>
+<p>150 g de miel.</p>
+<p>2 huevos.</p>
+<p>125 g de remolacha cruda rallada.</p>
+<p>100 g de nueces picadas.</p>
+<p>300 g de harina leudante.</p>
+<p>C/n de leche.</p>
+<p><strong>Preparación</strong></p>
+<p>Batir la manteca con la miel y agregar los huevos de a uno. Incorporar la remolacha y las nueces. Incorporar el harina tamizada y si la preparación queda muy dura, un poco de leche.</p>
+<p>Colocar en molde enmantecado u enharinado o rociado con rocío vegetal. Hornear 18 grados 40 min.</p>
+<p>[gallery]</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/05/11/nuevo-perrito.html" class="u-url">Nuevo perrito</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/05/11/nuevo-perrito.html" rel="bookmark"><time class="published dt-published" datetime="2009-05-11T22:54:54+00:00" title="2009-05-11 22:54">2009-05-11 22:54</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/05/11/nuevo-perrito.html#disqus_thread" data-disqus-identifier="cache/posts/2009/05/11/nuevo-perrito.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="wp-content/uploads/2009/05/camilo.jpg"><img class="aligncenter size-medium wp-image-1555" title="camilo" src="wp-content/uploads/2009/05/camilo-300x225.jpg" alt="" width="300" height="225"></a>
+<p>Se llama Camilo.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/05/04/urls-elegantes-con-django.html" class="u-url">URLs elegantes con Django</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/05/04/urls-elegantes-con-django.html" rel="bookmark"><time class="published dt-published" datetime="2009-05-04T08:00:17+00:00" title="2009-05-04 08:00">2009-05-04 08:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/05/04/urls-elegantes-con-django.html#disqus_thread" data-disqus-identifier="cache/posts/2009/05/04/urls-elegantes-con-django.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>Este texto es parte del informe de nuestro  proyecto final de carrera, lo publico en forma separada aquí por que tiene valor propio y puede convencer a más de un programador PHP de probar Django. Las URLs elegantes son la forma natural de las URL en Django.</em>
+<h4>Manejo de URLs</h4>
+
+<p>Tener URLs elegantes y limpias es un requisito común para aplicaciones web modernas. Django provee un mecanismo de manejo de URLs basado en expresiones regulares que asocia una expresión regular a una vista.</p>
+
+<p>Para diseñar las URLs de una aplicación Django, se construye una especie de tabla que mapea patrones de URL a funciones Python a ejecutar (vistas). Con esto se logra que las URLs estén desacopladas del resto de la aplicación.</p>
+
+<p>El siguiente es un ejemplo de una entrada de esa tabla:</p>
+
+<p><code>(r'^index/$', index)</code></p>
+
+<p>Suponiendo que la aplicación web está corriendo en el servidor con nombre localhost, cuando alguien acceda a http://localhost/index/ se ejecutará la vista ‘index’.</p>
+
+<p>El siguiente es un ejemplo un poco más complejo:</p>
+
+<p><code>(r'^cliente/datos/(\d+)/$', cliente_datos)</code></p>
+
+<p>En el patrón de la URL se utilizan paréntesis para capturar una parte de la misma y poder accederla luego como parámetros en la vista. La expresión encerrada entre paréntesis se denomina grupo y son propias de las expresiones regulares en Python. Así, siempre que se acceda a, por ejemplo, http://localhost/cliente/datos/1/ o http://localhost/cliente/datos/100/ se ejecutará la vista cliente_datos y recibirá como parámetro el número correspondiente.</p>
+
+<p>Algo similar sucede en el siguiente ejemplo:</p>
+
+<p><code>(r'^inmueble/fotos/(\d+)/eliminar/(\d+)/$', eliminar_foto)</code></p>
+
+<p>Con la diferencia de que ahora la vista recibe dos parámetros, en este caso particular el primero corresponde a un identificador de inmueble y el segundo a un identificador de foto.</p>
+
+<p>Las expresiones regulares en Python soportan también lo que se denomina grupos nombrados. Esto permite obtener un grupo por su nombre. Si escribimos una especificación de URL como la siguiente:</p>
+
+<p><code>(r'^inmueble/fotos/(?P&lt;inmueble&gt;\d+)/eliminar/(?P&lt;foto&gt;\d+)/$', eliminar_foto)</code></p>
+
+<p>la vista será llamada utilizando parámetros nombrados. Esto tiene la ventaja de que si cambia el orden de los parámetros en la URL, la vista seguirá funcionando sin que se necesite redefinirla.</p>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/05/04/intercambio-de-valores-rapido-en-python.html" class="u-url">Intercambio de valores rápido en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/05/04/intercambio-de-valores-rapido-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2009-05-04T00:25:39+00:00" title="2009-05-04 00:25">2009-05-04 00:25</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/05/04/intercambio-de-valores-rapido-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2009/05/04/intercambio-de-valores-rapido-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Cuando empecé a cursar Ingeniería en Sistemas en el año 2003, tuvimos una materia llamada Algoritmos y Estructuras de Datos. La semana del curso estaba compuesta por una clase teórica, una clase práctica y una clase "especial" dictada por un docente de apellido Marina que tenía como objetivo hacernos pensar resolviendo problemas; en las primeras clases ni siquiera programábamos.</p>
+<p>El lenguaje de programación de la materia era C y en una de las clases, este docente recordaba risueño que un alumno había querido intercambiar el valor de dos variables</p>
+<p></p>
+<pre lang="c">int a = 1;
+<p>int b = 2;</p></pre>
+<p>haciendo:</p>
+<pre lang="c">a = b;
+
+b = a;</pre>
+
+<p>El error es evidente; en a se copia el valor contenido en b (2) pisando el valor original (1) y al ejecutarse la segunda sentencia, el nuevo valor de a (2) es copiado en b.</p>
+<p style="text-align: left;">La siguiente tabla muestra los valores que van tomando las variables a y b:
+
+<img class="aligncenter size-full wp-image-1547" title="ej1f" src="wp-content/uploads/2009/05/ej1f.jpg" alt="" width="389" height="185">
+
+La forma correcta de intercambiar los valores habría sido utilizando una variable auxiliar en la cual mantener uno de los valores:
+
+</p>
+
+<pre lang="c">int aux;
+
+int a = 1;
+
+int b = 2;
+
+aux = a;
+
+a = b;
+
+b = aux;</pre>
+
+<p>La siguiente tabla muestra los valores que van tomando las variables aux, a y b:</p>
+<p><img class="aligncenter size-full wp-image-1552" title="ej2ff" src="wp-content/uploads/2009/05/ej2ff.jpg" alt="" width="500" height="233"></p>
+<p>Lo gracioso del asunto es que unos años más tarde conocí otro lenguaje de programación, <a href="http://www.python.org/" target="_blank">Python</a>.</p>
+<!--more-->
+
+<p>En Python un tipo de dato que viene con el lenguaje es la tupla. Una tupla es una secuencia (sus elementos tienen orden) inmutable (no se puede cambiar su tamaño o contenido) que puede tener dentro objetos de distinto tipo. Un ejemplo de tupla en Python (contiene tres números y dos cadenas de texto):</p>
+<pre>(1, 2, "tres", 4, "Juan")</pre>
+
+<p>La forma de apuntar a ese objeto desde una variable es simplemente:</p>
+<pre>a = (1, 2, "tres", 4, "Juan")</pre>
+
+<p>Aunque podemos obviar los paréntesis y de todas formas funcionará. Decimos que la tupla es <em>empaquetada</em>:</p>
+<pre>a = 1, 2, "tres", 4, "Juan"</pre>
+
+<p>De forma similar, podemos <em>desempaquetar</em> la tupla en nuevas variables:</p>
+<pre>b, c, d, e, f = a</pre>
+
+<p>La condición es que el número de variables en el lado izquierdo del operador = coincida con el número de elementos en la tupla.</p>
+<p>La siguiente sentencia, empaqueta y desempaqueta:</p>
+<pre>x, y, z = "Juan", 100, 1</pre>
+
+<p>Y es equivalente a:</p>
+<pre>x = "Juan"
+
+y = 100
+
+z = 1</pre>
+
+<p>Finalmente, esta propiedad del lenguaje nos permite intercambiar rápidamente los valores de 2 (o n) variables:</p>
+<pre>a = 1
+
+b = 2
+
+a, b = b, a</pre>
+
+<p><a href="wp-content/uploads/2009/05/ej31.jpg"><img class="aligncenter size-full wp-image-1544" title="ej31" src="wp-content/uploads/2009/05/ej31.jpg" alt="" width="389" height="159"></a></p>
+<p>Así, lo que un alumno despistado quiso hacer en 2 sentencias y Marina mostró que se hacía correctamente en 3, yo lo hago en 1 :)</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/05/03/budin-de-pera.html" class="u-url">Budín de pera</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/05/03/budin-de-pera.html" rel="bookmark"><time class="published dt-published" datetime="2009-05-03T22:36:22+00:00" title="2009-05-03 22:36">2009-05-03 22:36</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/05/03/budin-de-pera.html#disqus_thread" data-disqus-identifier="cache/posts/2009/05/03/budin-de-pera.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Las siguientes son las instrucciones para preparar un budín de pera. Las fotos y las recetas, como en tantas otras, me las proporcionó mi hermana.</p>
+<p></p>
+<h4>Ingredientes</h4>
+<ul>
+
+    <li>Harina leudante 300 g</li>
+
+    <li>Azúcar 200 g</li>
+
+    <li>Manteca 150 g</li>
+
+    <li>Huevos 3</li>
+
+    <li>Peras 2</li>
+
+    <li>Limón 1</li>
+
+</ul>
+
+<h4>Preparación</h4>
+
+<p>Batir la manteca blanda con el azúcar. Agregar los huevos de a uno. Incorporar el jugo de un limón y su ralladura. Colocar una pera cortada en cubos, agregar el harina leudante tamizada.</p>
+<p>Volcar la preparación en un molde de budín (nº 5) enmantecado y enharinado.</p>
+<p>Colocar rodajas de pera, espolvorear con azúcar y hornear.</p>
+<h4>Imágenes</h4>
+
+<p>[gallery]</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/04/30/la-historia-de-python-como-todo-se-convirtio-en-sentencias-ejecutables.html" class="u-url">La historia de Python: Cómo todo se convirtió en sentencias ejecutables</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/04/30/la-historia-de-python-como-todo-se-convirtio-en-sentencias-ejecutables.html" rel="bookmark"><time class="published dt-published" datetime="2009-04-30T09:00:03+00:00" title="2009-04-30 09:00">2009-04-30 09:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/04/30/la-historia-de-python-como-todo-se-convirtio-en-sentencias-ejecutables.html#disqus_thread" data-disqus-identifier="cache/posts/2009/04/30/la-historia-de-python-como-todo-se-convirtio-en-sentencias-ejecutables.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<em>El siguiente texto es una traducción del artículo How Everything Became an Executable Statement de Guido van Rossum publicado en <a href="http://python-history.blogspot.com/" target="_blank">http://python-history.blogspot.com/</a>.</em>
+<!--more-->
+
+<h3>Cómo todo se convirtió en sentencias ejecutables</h3>
+
+<p>Los nuevos usuarios de Python a veces se sorprenden al descubrir que todas las partes del lenguaje son sentencias ejecutables, incluyendo la definición de funciones y clases. Eso significa que cualquier sentencia puede aparecer en cualquier lugar en un programa. Por ejemplo, una definición de una función puede aparecer dentro de una sentencia "if" si así se lo desea.</p>
+<p>En una versión muy temprana de la gramática de Python esto no era así: los elementos de la gramática tenían un "sabor decorativo", las sentencias import y la definición de funciones solo eran permitidas en el nivel superior de un módulo o script (dónde eran ejecutadas para efectivizarse).</p>
+<p>De todas formas, cuando estaba agregando soporte para clases, decidí que esto era muy restrictivo.</p>
+<p>Mi razonamiento fue más o menos como sigue. En lugar de definir el cuerpo de una clase sólo como una serie de declaraciones de funciones, también parecía adecuado permitir asignaciones a variables allí. De todas formas, si iba a permitir eso, ¿por qué no ir un escalón más arriba y permitir código ejecutable arbitrario? O, llevando esto aún más lejos, ¿por qué no permitir declaración de funciones dentro de sentencias "if", por ejemplo? Rápidamente se vio que esto permitía una simplificación de la gramática, ya que ahora todos los usos de sentencias (estén identados o no) podían compartir la misma regla de gramática, y de hecho el compilador podría usar la misma función generadora de byte code para todas ellas.</p>
+<p>A pesar de que este razonamiento me permitía simplificar la gramática y los usuarios podían colocar sentencias Python en cualquier lugar, esta característica no habilitaba necesariamente ciertos estilos de programación. Por ejemplo, la gramática de Python técnicamente permitía a los usuarios escribir cosas como funciones anidadas aunque la semántica subyacente de Python no aceptara ámbitos anidados. Por lo tanto, el código así operaría de formas inesperadas o "rotas" comparadas con lenguajes que realmente estaban diseñados con esa característica en mente. Con el paso del tiempo, muchas de esas características "rotas" se arreglaron. Por ejemplo, la definición de funciones anidadas sólo empezó a funcionar un poco más correcta en Python 2.1.</p>
+<p><em>Traducido por Juan José Conti.</em></p>
+<p>Revisado por César Portela.</p>
+<p>Si encontrás errores en esta traducción, por favor reportalos en un comentario y los corregiremos a la brevedad.</p>
+<p>Todas las traducciones de esta serie pueden encontrarse en <a href="categoria/aprendiendo-python/historia/" target="_self">La historia de Python</a>.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2009/04/26/cookies-de-avena-y-pasas.html" class="u-url">Cookies de avena y pasas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2009/04/26/cookies-de-avena-y-pasas.html" rel="bookmark"><time class="published dt-published" datetime="2009-04-26T08:00:37+00:00" title="2009-04-26 08:00">2009-04-26 08:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2009/04/26/cookies-de-avena-y-pasas.html#disqus_thread" data-disqus-identifier="cache/posts/2009/04/26/cookies-de-avena-y-pasas.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Estas son unas masitas de avena y pasas (también pueden hacerse de avena y miel).</p>
+<!--more-->
+
+<p></p>
+<h3>Ingredientes</h3>
+<ul>
+
+    <li>Manteca 100 g</li>
+
+    <li>Huevo 1</li>
+
+    <li>Azúcar negra 1/4 taza</li>
+
+    <li>Miel 2 cucharadas</li>
+
+    <li>Avena 1 taza</li>
+
+    <li>Harina integral 1 taza</li>
+
+    <li>Esencia de vainilla c/n</li>
+
+</ul>
+
+<h3>Preparación</h3>
+
+<p>Batir la manteca pomada con el huevo y esencia de vainilla. Dividir en dos bols. Al primero agregar azúcar negra, ir revolviendo e incorporar avena y las pasas de uvas y harina integral en cantidad necesaria hasta que tome una consistencia que se puedan formar las masitas.</p>
+<p><a href="wp-content/uploads/2009/04/20-04-09_161314.jpg"><img class="aligncenter size-medium wp-image-1505" title="20-04-09_161314" src="wp-content/uploads/2009/04/20-04-09_161314-300x240.jpg" alt="" width="300" height="240"></a></p>
+<p><a href="wp-content/uploads/2009/04/20-04-09_161659.jpg"><img class="aligncenter size-medium wp-image-1509" title="20-04-09_161659" src="wp-content/uploads/2009/04/20-04-09_161659-300x240.jpg" alt="" width="300" height="240"></a></p>
+<p>En el segundo, agregar miel  luego también avena y harina integral.</p>
+<p><a href="wp-content/uploads/2009/04/20-04-09_161457.jpg"><img class="aligncenter size-medium wp-image-1507" title="20-04-09_161457" src="wp-content/uploads/2009/04/20-04-09_161457-300x240.jpg" alt="" width="300" height="240"></a></p>
+<p><a href="wp-content/uploads/2009/04/20-04-09_161553.jpg"><img class="aligncenter size-medium wp-image-1508" title="20-04-09_161553" src="wp-content/uploads/2009/04/20-04-09_161553-300x240.jpg" alt="" width="300" height="240"></a> Tomar un poco de masa con una cuchara y formar las cookies sobre una placa enmantecada y hornear de 10 a 15 minutos.</p>
+<p><a href="wp-content/uploads/2009/04/20-04-09_162559.jpg"><img class="aligncenter size-medium wp-image-1511" title="20-04-09_162559" src="wp-content/uploads/2009/04/20-04-09_162559-300x240.jpg" alt="" width="300" height="240"></a></p>
+<p><a href="wp-content/uploads/2009/04/20-04-09_172354.jpg"><img class="aligncenter size-medium wp-image-1512" title="20-04-09_172354" src="wp-content/uploads/2009/04/20-04-09_172354-300x240.jpg" alt="" width="300" height="240"></a></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-30.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-28.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

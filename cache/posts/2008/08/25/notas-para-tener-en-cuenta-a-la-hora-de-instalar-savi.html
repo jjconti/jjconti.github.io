@@ -1,0 +1,34 @@
+<p><html><body><p>Este año en una de las clases de Comunicaciones expliqué cómo instalar Savi. <a title="Savi Home" href="http://savi.sourceforge.net/" target="_self">Savi</a> es un visualizador de <a title="Wikipedia en inglés" href="http://en.wikipedia.org/wiki/Satellite_constellation" target="_self">constelaciones de satélites</a>. Permite simular las órbitas y coberturas de satélites en 2 y 3 dimensiones. Puede simular constelaciones como <a title="Iridium" href="http://www.ee.surrey.ac.uk/Personal/L.Wood/constellations/iridium.html" target="_blank">Iridium</a> o <a title="Globalstar" href="http://www.ee.surrey.ac.uk/Personal/L.Wood/constellations/globalstar.html" target="_blank">Globalstar</a> entre muchas otras.<!--more--></p>
+<p>Los pasos que seguí para realizar la instalación en GNU/Linux (Ubuntu) fueron:</p>
+<p></p><ol></p>
+<pre class="code literal-block"><span class="nt">&lt;li&gt;</span>Descargar el paquete de la <span class="nt">&lt;a</span> <span class="na">title=</span><span class="s">&quot;Savi Home&quot;</span> <span class="na">href=</span><span class="s">&quot;http://savi.sourceforge.net/&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span><span class="nt">&gt;</span>página principal<span class="nt">&lt;/a&gt;</span> (1.3.2 en su momento).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Instalar los paquetes tcl8.4-dev y tk8.4-dev (contienen los <span class="nt">&lt;em&gt;</span>headers<span class="nt">&lt;/em&gt;</span> necesarios para la compilación).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Revisar el archivo <span class="nt">&lt;code&gt;</span>src/Makefile<span class="nt">&lt;/code&gt;</span> (para saber cómo se realizará la compilación).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Instalar el paquete motif-client o lesstif (usados en la GUI).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Instalar geomview (software utilizando para la visualización 3D de la simulación, Ubuntu tenía un paquete para el mismo).<span class="nt">&lt;/li&gt;</span>
+
+<span class="nt">&lt;li&gt;</span>Ejecutar el comando <span class="nt">&lt;code&gt;</span>make ARCH=debian<span class="nt">&lt;/code&gt;&lt;/li&gt;</span>
+</pre>
+
+
+</ol>
+
+<p>Eso es todo, luego del proceso (si no hay errores) se obtiene el ejecutable <code>savi</code>.</p>
+<p>En Windows los pasos son similares (también se requiere compilar el software), las principales diferencias en el proceso son:</p>
+<ol>
+
+    <li>Se necesita tener instalado Cygwin (un entorno Unix sobre Windows): <a title="Cygwin" href="http://info.ee.surrey.ac.uk/Personal/L.Wood/software/SaVi/building-under-Windows/" target="_blank">instrucciones</a>.</li>
+
+    <li>El comando make a ejecutar será <code>make ARCH=cygwin</code></li>
+
+</ol>
+
+<p>En ambos casos para ejecutar Savi con Geomview hay que pasarle al ejecutable geomview el ejecutable savi como argumento, por ejemplo:</p>
+<p><code>$ geomview savi </code>desde la línea de comandos.</p>
+<p>Algunos ejemplos visuales:</p>
+<p><a href="/wp-content/uploads/2008/08/iridium.png"><img class="size-medium wp-image-533" title="iridium" src="/wp-content/uploads/2008/08/iridium-300x187.png" alt="Iridium" width="300" height="187"></a></p>
+<p><a href="/wp-content/uploads/2008/08/sirius.png"><img class="size-medium wp-image-534" title="sirius" src="/wp-content/uploads/2008/08/sirius-300x187.png" alt="Sirius" width="300" height="187"></a></body></html></p>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Primera vez con Ruby | En borrador permanente</title>
+
+    
+            <link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/posts/2009/12/06/primera-vez-con-ruby.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../../../../assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Juanjo">
+        <link rel="prev" href="../01/entorno-de-desarrollo-swi-prolog.html" title="Entorno de desarrollo SWI-Prolog" type="text/html">
+        <link rel="next" href="../08/cuando-todo-lo-demas-falle.html" title="Cuando todo lo demás falle..." type="text/html">
+    
+    <meta property="og:site_name" content="En borrador permanente">
+    <meta property="og:title" content="Primera vez con Ruby">
+    <meta property="og:url" content="http://www.juanjoconti.com.ar/posts/2009/12/06/primera-vez-con-ruby.html">
+    <meta property="og:description" content="El viernes por la tarde salí del trabajo y me fuí a escuchar la charla de César Ballardini, El modelo de objetos de Ruby, reflexiones sobre la reflexión. La daba en el marco del evento acts_as_rubylit">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2009-12-06T17:17:38+00:00">
+           <meta property="article:tag" content="Eventos">
+           <meta property="article:tag" content="ruby">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../../../../archive.html">Archives</a>
+                </li>
+<li>
+<a href="../../../../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../../../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="primera-vez-con-ruby.wp" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Primera vez con Ruby</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2009-12-06T17:17:38+00:00" itemprop="datePublished" title="2009-12-06 17:17">2009-12-06 17:17</time></a></p>
+                <p class="commentline">
+        
+    <a href="primera-vez-con-ruby.html#disqus_thread" data-disqus-identifier="cache/posts/2009/12/06/primera-vez-con-ruby.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="primera-vez-con-ruby.wp" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p></p>
+<p>El viernes por la tarde salí del trabajo y me fuí a escuchar la charla de <a href="http://ballardini.com.ar/blog/" target="_blank">César Ballardini</a>, <em>El modelo de objetos de Ruby, reflexiones sobre la reflexión</em>. La daba en el marco del evento <strong>acts_as_rubylit</strong>, el cual se llevó a cabo en la <a title="FICH" href="http://fich.unl.edu.ar/" target="_blank">Facultad de Ingeniería y Ciencias Hídricas, Universidad Nacional del Litoral</a> de la ciudad de Santa Fe.</p>
+<p>Nunca antes vi nada de Ruby. Bueno, <a href="http://www.juanjoconti.com.ar/2008/11/30/primer-experiencia-con-ruby/" target="_blank">casi</a>, pero la última vez no pasé <a href="http://www.holamundo.es/lenguaje/ruby/">del Hola Mundo</a>!<img class="alignright size-medium wp-image-1965" title="juanjo_ruby_800" src="../../../../wp-content/uploads/2009/12/juanjo_ruby_800-300x225.jpg" alt="juanjo_ruby_800" width="300" height="225"></p>
+<p>César empezó su charla explicando la <a href="http://c2.com/cgi/wiki?BlubParadox" target="_blank">Paradoja de Blub</a>, de <a href="http://www.paulgraham.com/avg.html" target="_blank">Paul Graham</a>. Blub es un lenguaje de programación hipotético. No es el lenguaje de programación más poderoso, pero tampoco es Cobol o lenguaje de máquina. Un programador Blub está parado más o menos en el medio de la ladera de una montaña; hacia abajo están los lenguajes menos poderosos que Blub, él se da cuenta de esto, por supuesto, a todos esos lenguajes le faltan distintas características que nuestro programador usa en Blub para resolver sus problemas. En cambio, cuando mira para arriba (y ve lenguajes más poderosos que Blub), en realidad no se da cuenta que está mirando <em>hacia arriba</em>, simplemente piensa que está mirando a unos locos, hippies de pelos parados haciendo cosas raras. Cuando los programadores que están más arriba en la montaña miran hacia Blub se pregunta, ¿cómo puede alguien estar usando Blub? Ni siquiera tiene la funcionalidad X tan útil para resolver Y!</p>
+<p>Por inducción se concluye que solo el programador que esté en la punta de la montaña, es decir el que conoce el lenguaje más poderoso, es capaz de distinguir las distintas posibilidades que se tienen con diferentes lenguajes. El programador Blub no puede verlo, por lo que solo sabe pensar en Blub, no se a enfrentado a problemas que le permitan pensar diferente.</p>
+<p>La moraleja de la historia es que uno debería aprender lenguajes que lo obliguen a cambiar su forma de pensar y de resolver problemas (<a title="Epigram 19" href="http://www-pu.informatik.uni-tuebingen.de/users/klaeren/epigrams.html" target="_blank">Alan J. Perlis</a>).</p>
+<p>Con esto terminó la primera parte de la charla, luego César hizo una explicación de pizarrón sobre qué es la<a href="http://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank"> Programación Orientada a Objetos</a> ( y escribió con su fibrón: un objeto tiene Identidad, encapsula Estado y define Comportamiento). Según César, es un error que en la enseñanza de la POO se empiece por las Clases. ¿En qué parte de "Programación Orientada a Objetos" dice "Clase"? Las clases son <strong>solo una forma</strong> de crear objetos, pero hay muchas otras. Por ejemplo, <a href="http://en.wikipedia.org/wiki/Prototype-based_programming#Languages" target="_blank">existen muchos lenguajes OO basados en prototipos</a>, como JavaScript.</p>
+<p><strong>Después de haber shockeado a la audiencia desarrollando estas dos ideas en un tono casi de declaración de principios, estábamos listos para ver cómo el Modelo de Objetos de Ruby podía cambiar nuestra forma de pensar.</strong></p>
+<p>Lo que sigue no son los ejemplos exactos que desrrolló César con su notebook, solo los que recuerdo. Mezclo los recuerdos de su sesión interactiva de Ruby con mi propio camino de aprendizaje, que arranca ni siquiera teniendo el intérprete instalado :)</p>
+<!--more-->
+
+<p>Para empezar los ejemplos, tipeó en la terminal</p>
+<p></p>
+<pre lang="bash">irb</pre>
+<p>. Hice lo mismo, pero no estaba instalado, por lo que instalé ese paquete y presté atención a sus dependencias:</p>
+<p><code>juanjo@fenix:~$ irb</code></p>
+<p><strong>El programa «irb» no está instalado actualmente</strong>.  Puede instalarlo escribiendo:</p>
+<p>sudo apt-get install irb</p>
+<p>bash: irb: orden no encontrada</p>
+<p>juanjo@fenix:~$ <strong>sudo apt-get install irb</strong></p>
+<p>[sudo] password for juanjo:</p>
+<p>Leyendo lista de paquetes... Hecho</p>
+<p>Creando árbol de dependencias</p>
+<p>Leyendo la información de estado... Hecho</p>
+<p>Se instalarán los siguientes paquetes extras:</p>
+<p>irb1.8 libreadline-ruby1.8 <strong>ruby1.8</strong></p>
+<p>Paquetes sugeridos:</p>
+<p>ruby1.8-examples rdoc1.8 ri1.8</p>
+<p>Se instalarán los siguientes paquetes NUEVOS:</p>
+<p>irb irb1.8 libreadline-ruby1.8 ruby1.8</p>
+<p>0 actualizados, 4 se instalarán, 0 para eliminar y 0 no actualizados.</p>
+<p>Necesito descargar 119kB de archivos.</p>
+<p>Se utilizarán 664kB de espacio de disco adicional después de esta operación.</p>
+<p>¿Desea continuar [S/n]?</p>
+<p>Des:1 http://ar.archive.ubuntu.com jaunty-updates/main ruby1.8 1.8.7.72-3ubuntu0.1 [24,0kB]</p>
+<p>Des:2 http://ar.archive.ubuntu.com jaunty-updates/universe libreadline-ruby1.8 1.8.7.72-3ubuntu0.1 [10,4kB]</p>
+<p>Des:3 http://ar.archive.ubuntu.com jaunty-updates/universe irb1.8 1.8.7.72-3ubuntu0.1 [79,1kB]</p>
+<p>Des:4 http://ar.archive.ubuntu.com jaunty/universe irb 4.2 [5138B]</p>
+<p>Descargados 119kB en 2s (58,0kB/s)</p>
+<p>Seleccionando el paquete ruby1.8 previamente no seleccionado.</p>
+<p>(Leyendo la base de datos ...</p>
+<p>248649 ficheros y directorios instalados actualmente.)</p>
+<p>Desempaquetando ruby1.8 (de .../ruby1.8_1.8.7.72-3ubuntu0.1_i386.deb) ...</p>
+<p>Seleccionando el paquete libreadline-ruby1.8 previamente no seleccionado.</p>
+<p>Desempaquetando libreadline-ruby1.8 (de .../libreadline-ruby1.8_1.8.7.72-3ubuntu0.1_i386.deb) ...</p>
+<p>Seleccionando el paquete irb1.8 previamente no seleccionado.</p>
+<p>Desempaquetando irb1.8 (de .../irb1.8_1.8.7.72-3ubuntu0.1_all.deb) ...</p>
+<p>Seleccionando el paquete irb previamente no seleccionado.</p>
+<p>Desempaquetando irb (de .../apt/archives/irb_4.2_all.deb) ...</p>
+<p>Procesando disparadores para man-db ...</p>
+<p>Procesando disparadores para menu ...</p>
+<p>Configurando ruby1.8 (1.8.7.72-3ubuntu0.1) ...</p>
+<p>Configurando libreadline-ruby1.8 (1.8.7.72-3ubuntu0.1) ...</p>
+<p>Configurando irb1.8 (1.8.7.72-3ubuntu0.1) ...</p>
+<p>Configurando irb (4.2) ...</p>
+<p>Procesando disparadores para menu ...NAME</p>
+<pre class="code literal-block">   irb1.8 - interactive ruby
+</pre>
+
+
+<p>SYNOPSIS</p>
+<pre class="code literal-block">   irb [options]
+</pre>
+
+
+<p>DESCRIPTION</p>
+<p><strong>       irb stands for ‘interactive ruby’. irb is a tool to execute interactively ruby expressions read from stdin.  Use of irb is easy if</strong></p>
+<pre class="code literal-block">   you know ruby.  Executing irb, prompts are displayed as follows. Then, enter expression of ruby. A input is executed  when  it  is
+
+   syntacticaly completed&lt;/strong&gt;.
+</pre>
+
+
+<p>Ahora si puedo empezar!</p>
+<h3>Objetos y mensajes</h3>
+
+<p>Un lenguaje OO consta de objetos y mensajes entre objetos. Algunas veces los mensajes están un poco camuflados, pero siempre están ahí:</p>
+<pre lang="ruby" escaped="true">irb(main):001:0&gt; 1 + 2
+
+=&gt; 3
+
+irb(main):002:0&gt; 1.+ 2
+
+=&gt; 3
+
+irb(main):003:0&gt; 1.+(2) # para los lisperos que extrañan los paréntesis
+
+=&gt; 3</pre>
+
+<h3>Identidad</h3>
+
+<p>Enviando el mensaje</p>
+<pre>object_id</pre>
+
+<p>, podemos preguntarle su identidad a un objeto:</p>
+<pre lang="ruby" escaped="true">irb(main):001:0&gt; 1.object_id
+
+=&gt; 3
+
+irb(main):002:0&gt; "hola".object_id
+
+=&gt; -605926728</pre>
+
+<h3>Clases</h3>
+
+<p>Enviando el mensaje</p>
+<pre lang="ruby" escaped="true">class</pre>
+
+<p>a un objeto, podemos preguntarle quién es su clase:</p>
+<pre lang="ruby" escaped="true">irb(main):005:0&gt; 1.class
+
+=&gt; Fixnum
+
+irb(main):006:0&gt; 1.class.class
+
+=&gt; Class
+
+irb(main):007:0&gt; 1.class.class.class
+
+=&gt; Class</pre>
+
+<p>Podemos ver que la clase Fixnum es una instancia de la clase Class; y la clase Class también es instancia de la clase Class.</p>
+<p>Enviando el mensaje</p>
+<pre lang="ruby" escaped="true">superclass</pre>
+
+<p>a una clase, podemos saber cual es su superclase, es decir, qué clase extiende.</p>
+<pre lang="ruby" escaped="true">irb(main):010:0&gt; 1.class.superclass
+
+=&gt; Integer
+
+irb(main):011:0&gt; 1.class.superclass.superclass
+
+=&gt; Numeric
+
+irb(main):012:0&gt; 1.class.superclass.superclass.superclass
+
+=&gt; Object</pre>
+
+<p>Luego, la clase de Object es obviamente Class, pero... ¿cuál es su superclase?</p>
+<pre lang="ruby" escaped="true">irb(main):019:0&gt; 1.class.superclass.superclass.superclass
+
+=&gt; Object
+
+irb(main):020:0&gt; 1.class.superclass.superclass.superclass.superclass
+
+=&gt; nil</pre>
+
+<p>Creo recordar que en SmallTalk también era así. Parece un chiste de los diseñadores :) nil ni siquiera es una clase:</p>
+<pre lang="ruby" escaped="true">irb(main):021:0&gt; 1.class.superclass.superclass.superclass.superclass.superclass
+
+NoMethodError: undefined method `superclass' for nil:NilClass
+
+    from (irb):21
+
+    from :0
+
+irb(main):022:0&gt; 1.class.superclass.superclass.superclass.superclass.class
+
+=&gt; NilClass
+
+irb(main):023:0&gt; 1.class.superclass.superclass.superclass.superclass.class.superclass
+
+=&gt; Object
+
+irb(main):024:0&gt; 1.class.superclass.superclass.superclass.superclass.class.class
+
+=&gt; Class</pre>
+
+<p>y la jerarquía de clases se cierra. Es para leer tranquilo y pensarlo.</p>
+<p>El resto de la charla abarcó varias cosas más, pero creo que sería demasiado para desarrollarlo en un post y lo que mostré ya es suficiente para abrirle el apetito a los que estén buscando algún lenguaje para aprender y les produzca un cambio en su forma de pensar :). Si César postea sus ejemplos, los voy a estar referenciando desde aquí o voy a intentar hacer uno o dos posts más.</p>
+<p>Gracias al <a href="http://www.rubylit.com.ar" target="_blank">Grupo de Usuarios de Ruby del Litoral</a> por organizar el evento!</p>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../../../../categories/eventos.html" rel="tag">Eventos</a></li>
+           <li><a class="tag p-category" href="../../../../categories/ruby.html" rel="tag">ruby</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="../01/entorno-de-desarrollo-swi-prolog.html" rel="prev" title="Entorno de desarrollo SWI-Prolog">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../08/cuando-todo-lo-demas-falle.html" rel="next" title="Cuando todo lo demás falle...">Siguiente publicación</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comentarios</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="nikolademo",
+            disqus_url="http://www.juanjoconti.com.ar/posts/2009/12/06/primera-vez-con-ruby.html",
+        disqus_title="Primera vez con Ruby",
+        disqus_identifier="cache/posts/2009/12/06/primera-vez-con-ruby.html",
+        disqus_config = function () {
+            this.language = "es_ES";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../../../../assets/js/all-nocdn.js"></script>
+        <script src="../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

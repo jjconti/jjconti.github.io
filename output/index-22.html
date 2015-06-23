@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="el blog de Juanjo Conti - abstracto, lúdico y digital">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>En borrador permanente (publicaciones antiguas, página 22) | En borrador permanente</title>
+
+    
+            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://www.juanjoconti.com.ar/index-22.html">
+
+
+
+        <link rel="prev" href="index-23.html" type="text/html">
+        <link rel="next" href="index-21.html" type="text/html">
+
+    
+        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.juanjoconti.com.ar/">
+
+                <span id="blog-title">En borrador permanente</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="archive.html">Archives</a>
+                </li>
+<li>
+<a href="categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<div class="postindex">
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/24/python-en-santa-fe-declarado-de-interes-educativo-provincial.html" class="u-url">Python en Santa Fe declarado de interés educativo provincial</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/24/python-en-santa-fe-declarado-de-interes-educativo-provincial.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-24T19:35:44+00:00" title="2008-10-24 19:35">2008-10-24 19:35</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/24/python-en-santa-fe-declarado-de-interes-educativo-provincial.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/24/python-en-santa-fe-declarado-de-interes-educativo-provincial.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<a href="wp-content/uploads/2008/10/resolucion1294.png"><img src="wp-content/uploads/2008/10/resolucion1294-217x300.png" alt="" title="resolucion1294" width="217" height="300" class="aligncenter size-medium wp-image-782"></a>
+<p>Fuente: <a href="http://www.pythonsantafe.com.ar/inter-s-educativo-provincial-2008">http://www.pythonsantafe.com.ar/inter-s-educativo-provincial-2008</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/24/listas-por-comprension-en-python.html" class="u-url">Listas por comprensión en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/24/listas-por-comprension-en-python.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-24T12:35:53+00:00" title="2008-10-24 12:35">2008-10-24 12:35</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/24/listas-por-comprension-en-python.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/24/listas-por-comprension-en-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Las listas por comprensión o <a href="http://en.wikipedia.org/wiki/List_comprehension" target="_blank">list comprehension</a> es una característica muy práctica de Python (también incluida en <a href="http://en.wikipedia.org/wiki/Comparison_of_programming_languages_(list_comprehension)#JavaScript" target="_blank">otros lenguajes de programación</a>). Es una herramiente de mucha utilidad y fácil de usar, muchas veces desconocida por quienes vienen de lenguajes como PHP o Java.</p>
+<p>Este artículo tiene como objetivo explorar su uso y plantear ejemplos para que los nuevos usuarios puedan incorporarlas rápidamente a su cajita de herramientas.</p>
+<!--more-->
+
+<p>Cómo lo indica el <a title="202" href="http://www.python.org/dev/peps/pep-0202/" target="_blank">PEP 202</a>, es una construcción sintáctica que permite crear listas en situaciones en las que se usaría map, filter o for anidados; pero de forma mas concisa.</p>
+<p></p>
+<h3>map</h3>
+<p>Al llamar a la función map con argumentos f y l ,dónde f es una función y l una lista, retorna una lista con los resultados de aplicar f a cada elemento de l.</p>
+<p>En el primer ejemplo usamos la función len, que dado un string retorna su longitud:</p>
+<pre>
+
+&gt;&gt;&gt; len('hola')
+
+4
+
+</pre>
+
+<p>Esto es lo que sucede al aplicar map a todos los elementos de una lista de palabras:</p>
+<pre>
+
+&gt;&gt;&gt; palabras = ['uno', 'dos', 'Santa Fe', 'Python', '...', 'Soleado']
+
+&gt;&gt;&gt; map(len, palabras)
+
+[3, 3, 8, 6, 3, 7]
+
+</pre>
+
+<p>La versión equivalente es:</p>
+<pre>
+
+&gt;&gt;&gt; [len(p) for p in palabras]
+
+[3, 3, 8, 6, 3, 7]
+
+</pre>
+
+<p>La sintaxis de la listas por comprensión es más flexible. Si queremos la lista de palabras, pero en mayúsculas hacemos:</p>
+<pre>
+
+&gt;&gt;&gt; [p.upper() for p in palabras]
+
+['UNO', 'DOS', 'SANTA FE', 'PYTHON', '...', 'SOLEADO']
+
+</pre>
+
+<p>Para hacer lo anterior utilizando la función map, antes tendríamos que definir una función que llame al método upper de la clase string:</p>
+<pre>
+
+&gt;&gt;&gt; def upper(s):
+
+    return s.upper()
+
+&gt;&gt;&gt; map(upper, palabras)
+
+['UNO', 'DOS', 'SANTA FE', 'PYTHON', '...', 'SOLEADO']
+
+</pre>
+
+<h3>filter</h3>
+
+<p>La función filter recibe como argumento una función f y una lista l. Al igual que map, aplica f a todos los elementos de l pero retorna una lista con los elementos de l para los cuales la función f retornó True o un objeto con valor de verdad True.</p>
+<pre>
+
+&gt;&gt;&gt; def incluye_n(s):
+
+    return 'N' in s.upper()
+
+&gt;&gt;&gt; incluye_n('Python')
+
+True
+
+&gt;&gt;&gt; incluye_n('Soleado')
+
+False
+
+&gt;&gt;&gt; filter(incluye_n, palabras)
+
+['uno', 'Santa Fe', 'Python']
+
+</pre>
+
+<p>La forma de hacer lo anterior con listas por comprensión es:</p>
+<pre>
+
+&gt;&gt;&gt; [p for p in palabras if incluye_n(p)]
+
+['uno', 'Santa Fe', 'Python']
+
+</pre>
+
+<p>Incluso muchas veces podemos hacerlo sin necesitar de definir una función auxiliar:</p>
+<pre>
+
+&gt;&gt;&gt; [p for p in palabras if 'N' in p.upper()]
+
+['uno', 'Santa Fe', 'Python']
+
+</pre>
+
+<h3>for</h3>
+
+<p>También podemos anidar fors de forma similar a cómo lo haríamos en:</p>
+<pre>
+
+&gt;&gt;&gt; range(6)
+
+[0, 1, 2, 3, 4, 5]
+
+&gt;&gt;&gt; for n in range(6):
+
+for p in palabras:
+
+    if len(p) == n:
+
+        print p,n
+
+uno 3
+
+dos 3
+
+... 3
+
+</pre>
+
+<p>Pero con una sintaxis más cómoda:</p>
+<pre>
+
+&gt;&gt;&gt; [(p,n) for n in range(6) for p in palabras]
+
+[('uno', 0), ('dos', 0), ('Santa Fe', 0), ('Python', 0), ('...', 0), ('Soleado', 0), ('uno', 1), ('dos', 1), ('Santa Fe', 1), ('Python', 1), ('...', 1), ('Soleado', 1), ('uno', 2), ('dos', 2), ('Santa Fe', 2), ('Python', 2), ('...', 2), ('Soleado', 2), ('uno', 3), ('dos', 3), ('Santa Fe', 3), ('Python', 3), ('...', 3), ('Soleado', 3), ('uno', 4), ('dos', 4), ('Santa Fe', 4), ('Python', 4), ('...', 4), ('Soleado', 4), ('uno', 5), ('dos', 5), ('Santa Fe', 5), ('Python', 5), ('...', 5), ('Soleado', 5)]
+
+&gt;&gt;&gt; [(p,n) for n in range(6) for p in palabras if len(p) == n]
+
+[('uno', 3), ('dos', 3), ('...', 3)]
+
+</pre>
+
+<p></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/23/generar-diagramas-de-clases-a-partir-de-modelos-de-django.html" class="u-url">Generar diagramas de clases a partir de modelos de Django</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/23/generar-diagramas-de-clases-a-partir-de-modelos-de-django.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-23T23:33:56+00:00" title="2008-10-23 23:33">2008-10-23 23:33</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/23/generar-diagramas-de-clases-a-partir-de-modelos-de-django.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/23/generar-diagramas-de-clases-a-partir-de-modelos-de-django.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>La siguiente es la mejor forma que encontré de tomar todos los archivos models.py de las aplicaciones que componen un proyecto Django y generar un diagrama de clases completo, listo para exportar cómo imagen. Utilizo un comando incluido en <a href="http://code.google.com/p/django-command-extensions/">django-command-extensions</a>.</p>
+<!--more-->
+
+<p></p>
+<h3>Obtener e instalar django-extensions</h3>
+<p>Para Django 1.0 hay que bajar la última versión del svn:</p>
+<p><code></code></p>
+<p>svn checkout http://django-command-extensions.googlecode.com/svn/trunk/ django-command-extensions</p>
+<p></p>
+<p>E instalarlo ejecutando el script de instalación:</p>
+<p><code></code></p>
+<p>cd django-command-extensions</p>
+<p>sudo python setup.py install</p>
+<p></p>
+<p>Podemos probar si se instaló correctamente abriendo una consola Python y ejecutando:</p>
+<p><code></code></p>
+<p>&gt;&gt;&gt; import django_extensions</p>
+<p></p>
+<p>Para que este disponible en nuestro proyecto debemos agregar la aplicación a <code>settings.py</code>:</p>
+<p><code></code></p>
+<p>INSTALLED_APPS = (</p>
+<p>...</p>
+<p>'django_extensions'</p>
+<p>)</p>
+<p></p>
+<p>Cuando ejecutemos:</p>
+<p><code></code></p>
+<p>python manage.py help</p>
+<p></p>
+<p>veremos una lista de los nuevos comandos disponibles.</p>
+<h3>Generar archivo .dot</h3>
+
+<p>Uno de ellos es graph_models el cual nos permitirá generar un archivo en formato .dot:</p>
+<p><code></code></p>
+<p>python manage.py graph_models -a &gt; mi_proyecto.dot</p>
+<p></p>
+<h3>Generar archivo .png</h3>
+
+<p>O una imagen png:</p>
+<p><code></code></p>
+<p>python manage.py graph_models -a -g -o mi_proyecto.png</p>
+<p></p>
+<p>Para que el anterior comando funcione, necesitamos tener instalado <a href="https://networkx.lanl.gov/wiki/pygraphviz/">pygraphviz</a>. En mi Ubuntu no tenía el paquete python-pygraphviz por lo que tuve que bajarlo desde su página web. Para instalarlo requiere tener instalados los paquetes graphviz y graphviz-dev.</p>
+<h3>Ejemplo</h3>
+
+<p>El siguiente comando genera el diagrama de clases para auth, la popular aplicación que viene con Django y sirve como ejemplo de cómo generar el diagrama para solo una aplicación del proyecto:</p>
+<p><code></code></p>
+<p>python manage.py graph_models auth -g -o mi_proyecto_auth.png</p>
+<p></p>
+<p><a href="wp-content/uploads/2008/10/mi_proyecto_auth.png"><img class="aligncenter size-full wp-image-766" title="mi_proyecto_auth" src="wp-content/uploads/2008/10/mi_proyecto_auth.png" alt="" width="475" height="880"></a></p>
+<h3>Nota</h3>
+
+<p>Les recomiendo bajar la versión de pygraphviz empaquetada de Cheeseshop en lugar de la del svn, ya que con esta el comando de django-extensions lanza una excepción. Correguí el programa, <a href="http://code.google.com/p/django-command-extensions/issues/detail?id=66">abrí un ticket y envié un parche</a>. Para cuando leas esto probablemente ya se haya incorporado a trunk.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/20/747.html" class="u-url">Enamorarse de un libro</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/20/747.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-20T19:53:55+00:00" title="2008-10-20 19:53">2008-10-20 19:53</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/20/747.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/20/747.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"Un libro de cabecera no se escoge, se enamora uno de él."
+<p>VILALLONGA, José Luis de (Aristócrata, escritor y actor español.)</p>
+</blockquote>
+<p>¿Uds. tienen un libro de cabecera? ¿Cuál?</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/19/torta-de-banana-y-chocolate.html" class="u-url">Torta de banana y chocolate</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/19/torta-de-banana-y-chocolate.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-19T18:12:50+00:00" title="2008-10-19 18:12">2008-10-19 18:12</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/19/torta-de-banana-y-chocolate.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/19/torta-de-banana-y-chocolate.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Anoche preparamos con mi mamá 2 tortas de banana y chocolate, un postre tradicional en mi casa. Les dejo la receta para los que quieran probar hacerla (incluye pasos detallados y fotos calidad celular):</p>
+<p></p>
+<h3>Ingredientes</h3>
+<ul>
+
+    <li>250 gramos de crema (un pote chico)</li>
+
+    <li>4 huevos</li>
+
+    <li>2 tazas de azúcar</li>
+
+    <li>3 tazas de harina</li>
+
+    <li>cacao para espolvorear</li>
+
+    <li>2 bananas</li>
+
+</ul>
+
+<!--more-->
+
+<h3>Instrucciones</h3>
+
+<p>En un recipiente como el de la foto, colocar la crema y el azúcar:</p>
+<p><a href="wp-content/uploads/2008/10/imagen602.jpg"><img class="aligncenter size-medium wp-image-707" title="imagen602" src="wp-content/uploads/2008/10/imagen602-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>En el mismo recipiente poner los 4 huevos:</p>
+<p><a href="wp-content/uploads/2008/10/imagen603.jpg"><img class="aligncenter size-medium wp-image-708" title="imagen603" src="wp-content/uploads/2008/10/imagen603-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Y esencia de vainilla (el siempre bien ponderado <em>vainillín</em>), un chorrito:</p>
+<p><a href="wp-content/uploads/2008/10/imagen604.jpg"><img class="aligncenter size-medium wp-image-709" title="imagen604" src="wp-content/uploads/2008/10/imagen604-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Y empezamos a batir hasta que quede de un color uniforme; luego vamos agregando las tazas de harina mientras seguimos batiendo:</p>
+<p><a href="wp-content/uploads/2008/10/imagen605.jpg"><img class="aligncenter size-medium wp-image-710" title="imagen605" src="wp-content/uploads/2008/10/imagen605-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Luego de batir por 10 minutos se obtendrá una mezcla espesa:</p>
+<p><a href="wp-content/uploads/2008/10/imagen606.jpg"><img class="aligncenter size-medium wp-image-711" title="imagen606" src="wp-content/uploads/2008/10/imagen606-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Si notamos que la mezcla esta <em>muy </em>espesa, tanto que no se puede batir, podemos ablandarla echándolo un chorrito de soda:</p>
+<p><a href="wp-content/uploads/2008/10/imagen608.jpg"><img class="aligncenter size-medium wp-image-716" title="imagen608" src="wp-content/uploads/2008/10/imagen608-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Luego hay que tomar un molde para torta y untarlo con manteca o con aceite:</p>
+<p><a href="wp-content/uploads/2008/10/imagen607.jpg"><img class="aligncenter size-medium wp-image-715" title="imagen607" src="wp-content/uploads/2008/10/imagen607-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Volcar la mitad de la mezcla en el molde:</p>
+<p><a href="wp-content/uploads/2008/10/imagen609.jpg"><img class="aligncenter size-medium wp-image-717" title="imagen609" src="wp-content/uploads/2008/10/imagen609-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Y esparcir para ocupar todo el fondo:</p>
+<p><a href="wp-content/uploads/2008/10/imagen610.jpg"><img class="aligncenter size-medium wp-image-718" title="imagen610" src="wp-content/uploads/2008/10/imagen610-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Luego espolvorear cacao:<a href="wp-content/uploads/2008/10/imagen612.jpg"><img class="aligncenter size-medium wp-image-719" title="imagen612" src="wp-content/uploads/2008/10/imagen612-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Yo utilizo cacao El Quillá, el mejor cacao de Santa Fe:</p>
+<p><a href="wp-content/uploads/2008/10/imagen614.jpg"><img class="aligncenter size-medium wp-image-720" title="imagen614" src="wp-content/uploads/2008/10/imagen614-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Luego cortar las bananas en rodajas y cubrir la superficie:</p>
+<p><a href="wp-content/uploads/2008/10/imagen617.jpg"><img class="aligncenter size-medium wp-image-723" title="imagen617" src="wp-content/uploads/2008/10/imagen617-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Y volver a espolvorear cacao:</p>
+<p><a href="wp-content/uploads/2008/10/imagen620.jpg"><img class="aligncenter size-medium wp-image-726" title="imagen620" src="wp-content/uploads/2008/10/imagen620-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Volvemos al recipiente con la mezcla. Le agregamos media taza de soda para ablandarla y volvemos a batir:</p>
+<p><a href="wp-content/uploads/2008/10/imagen621.jpg"><img class="aligncenter size-medium wp-image-727" title="imagen621" src="wp-content/uploads/2008/10/imagen621-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>El objetivo es que quede más blanda para poder esparcirla sobre las bananas con cacao sin desparramarlas:</p>
+<p><a href="wp-content/uploads/2008/10/imagen622.jpg"><img class="aligncenter size-medium wp-image-728" title="imagen622" src="wp-content/uploads/2008/10/imagen622-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Y emparejamos nuevamente con el tenedor:</p>
+<p><a href="wp-content/uploads/2008/10/imagen623.jpg"><img class="aligncenter size-medium wp-image-729" title="imagen623" src="wp-content/uploads/2008/10/imagen623-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Por último, espolvoreamos azúcar:</p>
+<p><a href="wp-content/uploads/2008/10/imagen624.jpg"><img class="aligncenter size-medium wp-image-730" title="imagen624" src="wp-content/uploads/2008/10/imagen624-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Y al horno hasta que el azúcar se dore:</p>
+<p><a href="wp-content/uploads/2008/10/imagen625.jpg"><img class="aligncenter size-medium wp-image-731" title="imagen625" src="wp-content/uploads/2008/10/imagen625-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>El resultado final, para motivar a que preparen esta torta:</p>
+<p><a href="wp-content/uploads/2008/10/imagen635.jpg"><img class="aligncenter size-medium wp-image-732" title="imagen635" src="wp-content/uploads/2008/10/imagen635-225x300.jpg" alt="" width="225" height="300"></a></p>
+<p>Eso fue todo, una receta fácil para convidar a familiares y amigos. Anoche hicimos dos, una la mandamos para Brasil y la otra la comimos hoy a la tarde con mate. Tengo en casa algunas porciones que sobraron, por si pasa alguien de vista esta semana :D</p>
+<p>Y para el navegante anónimo que encuentre esta receta: ¿Seguiste estos pasos? ¿Cómo te salió la torta? Me gustaría mucho saberlo.</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/15/a-vs-avara.html" class="u-url">A* vs Avara</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/15/a-vs-avara.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-15T14:52:25+00:00" title="2008-10-15 14:52">2008-10-15 14:52</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/15/a-vs-avara.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/15/a-vs-avara.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>Extendí <a title="Un ejemplo de A*" href="http://www.juanjoconti.com.ar/2008/10/07/un-ejemplo-de-busqueda-a/" target="_blank">mi ejercicio de A*</a> para que además busque la solución utilizando Avara y las compare gráficamente.</p>
+<p>Avara es otro algoritmo de búsqueda, pero a diferencia de A* no es ni óptimo ni completo. Ambos utilizan una heurística para estimar el costo de un estado n al estado objetivo y por esto se dice que son <strong>métodos informados</strong>.</p>
+<p>La diferencia  radica en cómo seleccionan nodos para su expansión: mientras que A* siempre elije  el nodo que minimice la función <strong>camino recorrido + estimación al objetivo</strong>, Avara simplemente elije el nodo con menor <strong>estimación al objetivo</strong> (no tiene en cuenta el camino previo).<!--more--></p>
+<p>Hay escenarios en los que ambas estrategias encontrarán el mismo camino:</p>
+<p><a href="wp-content/uploads/2008/10/avsavara-iguales.png"><img class="aligncenter size-full wp-image-679" title="avsavara-iguales" src="wp-content/uploads/2008/10/avsavara-iguales.png" alt="" width="500" height="388"></a></p>
+<p>Pero hay otros en los que no:</p>
+<p><a href="wp-content/uploads/2008/10/avsavara5.png"><img class="aligncenter size-full wp-image-678" title="avsavara5" src="wp-content/uploads/2008/10/avsavara5.png" alt="" width="500" height="388"></a></p>
+<p><a href="wp-content/uploads/2008/10/avsavara4.png"><img class="aligncenter size-full wp-image-677" title="avsavara4" src="wp-content/uploads/2008/10/avsavara4.png" alt="" width="500" height="388"></a></p>
+<p><a href="wp-content/uploads/2008/10/avsavara3.png"><img class="aligncenter size-full wp-image-676" title="avsavara3" src="wp-content/uploads/2008/10/avsavara3.png" alt="" width="500" height="388"></a></p>
+<p><a href="wp-content/uploads/2008/10/avsavara2.png"><img class="aligncenter size-full wp-image-675" title="avsavara2" src="wp-content/uploads/2008/10/avsavara2.png" alt="" width="500" height="388"></a></p>
+<p><a href="wp-content/uploads/2008/10/avsavara.png"><img class="aligncenter size-full wp-image-674" title="avsavara" src="wp-content/uploads/2008/10/avsavara.png" alt="" width="500" height="388"></a></p>
+<p></p>
+<h3>Instalación y uso</h3>
+<p>Similar al ejemplo anterior. Teniendo Python y <a title="PyGame" href="http://www.pygame.org/" target="_blank">PyGame</a> instalados, obtener el código fuente:</p>
+<p><code>svn co http://svn.juanjoconti.com.ar/astar/tags/astar-vs-avara/ astar-vs-avara</code></p>
+<p>y dentro de la carpeta <code>astar</code>-vs-avara ejecutar gui.py:</p>
+<p><code>cd astar-vs-avara</code></p>
+<p>python gui.py</p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/14/sentados-bajo-la-lluvia.html" class="u-url">Sentados bajo la lluvia</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/14/sentados-bajo-la-lluvia.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-14T16:15:26+00:00" title="2008-10-14 16:15">2008-10-14 16:15</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/14/sentados-bajo-la-lluvia.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/14/sentados-bajo-la-lluvia.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p style="text-align: left;">Luego de muchos, muchos días sin que llueva en muchos lugares de la provincia, el fin de semana se desató con todo.  <a href="wp-content/uploads/2008/10/imagen504.jpg"><img class="size-full wp-image-686 aligncenter" title="imagen504" src="wp-content/uploads/2008/10/imagen504.jpg" alt="" width="500" height="666"></a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/14/voy-a-empezar-a-revisionar-mini-lisp.html" class="u-url">Voy a empezar a revisionar mini-lisp</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/14/voy-a-empezar-a-revisionar-mini-lisp.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-14T00:04:52+00:00" title="2008-10-14 00:04">2008-10-14 00:04</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/14/voy-a-empezar-a-revisionar-mini-lisp.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/14/voy-a-empezar-a-revisionar-mini-lisp.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>mini-lisp, una implementación pediátrica de <a title="Lisp" href="http://svn.juanjoconti.com.ar/lisp" target="_blank">Lisp</a> que hice <a href="http://www.juanjoconti.com.ar/2007/11/02/minilisp-un-ejemplo-de-ply/" target="_blank">para practicar ply</a> tiene a partir de ahora su código revisionado en: <a href="http://svn.juanjoconti.com.ar/lisp" target="_blank">http://svn.juanjoconti.com.ar/lisp</a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/13/listado-de-herramientas-de-seguridad.html" class="u-url">Listado de herramientas de seguridad</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/13/listado-de-herramientas-de-seguridad.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-13T23:04:14+00:00" title="2008-10-13 23:04">2008-10-13 23:04</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/13/listado-de-herramientas-de-seguridad.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/13/listado-de-herramientas-de-seguridad.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<p>El sábado terminé un curso de <strong>seguridad en redes</strong> en la facultad. Desde la web de <a title="Mauro Graziosi" href="http://mgraziosi.wikispaces.com/" target="_blank">Mauro</a>, quien dictó el curso, se puede acceder a un <a href="http://spreadsheets.google.com/pub?key=paPFZUmGhULH9KNthFxjHag&amp;gid=1" target="_blank">listado de herramientas de seguridad</a>. Todas están probadas y clasificadas según su licencia. Además hay enlaces a listas de correo, sitios web y referencias a libros.</p>
+<p>Foto del último día de curso:</p>
+<p><a href="wp-content/uploads/2008/10/seguridad2008.jpg"><img class="aligncenter size-full wp-image-690" title="seguridad2008" src="wp-content/uploads/2008/10/seguridad2008.jpg" alt="" width="500" height="375"></a></p>
+</div>
+    </div>
+    </article>
+    <article class="h-entry post-text">
+    <header>
+        <h1 class="p-name entry-title"><a href="posts/2008/10/13/filosofos-y-lunas.html" class="u-url">Filósofos y lunas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Juanjo</span></p>
+            <p class="dateline"><a href="posts/2008/10/13/filosofos-y-lunas.html" rel="bookmark"><time class="published dt-published" datetime="2008-10-13T19:31:53+00:00" title="2008-10-13 19:31">2008-10-13 19:31</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2008/10/13/filosofos-y-lunas.html#disqus_thread" data-disqus-identifier="cache/posts/2008/10/13/filosofos-y-lunas.html">Comments</a>
+
+
+        </p>
+</div>
+    </header>
+    <div class="e-content entry-content">
+    <div>
+<p></p>
+<blockquote>"Cuando el filósofo señala la Luna, el tonto mira el dedo."
+<p>Anónimo</p>
+</blockquote>
+<p><a title="La Luna (wikipedia EN)" href="http://en.wikipedia.org/wiki/Moon" target="_blank"><img class="aligncenter size-full wp-image-681" title="280px-full_moon_luc_viatour" src="wp-content/uploads/2008/10/280px-full_moon_luc_viatour.jpg" alt="" width="280" height="283"></a></p>
+<p>La cita de esta semana se la dedicamos a mi amigo <a title="Joel J. Lorenzatti" href="http://www.jjlorenzatti.com.ar" target="_blank">Joel</a> qué está <a title="Foto del día del cumple nro 24" href="http://galeria.juanjoconti.com.ar/index.php?album=fotos-desde-el-camino&amp;image=200810131311301_3426132759.jpg" target="_blank">cumpliendo años</a>.</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager">
+        <ul class="pager">
+            <li class="previous">
+                <a href="index-23.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-21.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul>
+        </nav>
+
+
+        
+       <script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:jjconti@gmail.com">Juanjo</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script>
+        <script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

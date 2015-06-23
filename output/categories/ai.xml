@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (AI)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/ai.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:23 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Asimov sobre Inteligencia Artificial</title><link>http://www.juanjoconti.com.ar/posts/2010/07/16/asimov-sobre-inteligencia-artificial.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;En El monstruo subatómico, un libro de difusión, Isaac Asimov habla sobre Iteligencia Artificial. Hace más o menos dos años que lo leí y tenía la intención de transcribir el artículo para que esté disponible en Internet. Casi lo olvidé, hasta que hoy alguien lo mandó en la lista de PyAr. &lt;del datetime="2010-07-19T00:56:01+00:00"&gt;Copio y pego a continuación.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Capítulo 11&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Más pensamientos acerca del pensamiento&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Podés leerlo en &lt;a href="http://www.librosmaravillosos.com/elmonstruosubatomico/capitulo11.html" target="_blank"&gt;http://www.librosmaravillosos.com/elmonstruosubatomico/capitulo11.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Gracias a Diego Avendaño, Patricio Barros y Antonio Bravo.&lt;/p&gt;&lt;/div&gt;</description><category>AI</category><category>Asimov</category><category>Cosas que leo</category><category>IA</category><category>PyAr</category><guid>http://www.juanjoconti.com.ar/posts/2010/07/16/asimov-sobre-inteligencia-artificial.html</guid><pubDate>Fri, 16 Jul 2010 13:53:29 GMT</pubDate></item><item><title>A* vs Avara</title><link>http://www.juanjoconti.com.ar/posts/2008/10/15/a-vs-avara.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Extendí &lt;a title="Un ejemplo de A*" href="http://www.juanjoconti.com.ar/2008/10/07/un-ejemplo-de-busqueda-a/" target="_blank"&gt;mi ejercicio de A*&lt;/a&gt; para que además busque la solución utilizando Avara y las compare gráficamente.&lt;/p&gt;
+&lt;p&gt;Avara es otro algoritmo de búsqueda, pero a diferencia de A* no es ni óptimo ni completo. Ambos utilizan una heurística para estimar el costo de un estado n al estado objetivo y por esto se dice que son &lt;strong&gt;métodos informados&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;La diferencia  radica en cómo seleccionan nodos para su expansión: mientras que A* siempre elije  el nodo que minimice la función &lt;strong&gt;camino recorrido + estimación al objetivo&lt;/strong&gt;, Avara simplemente elije el nodo con menor &lt;strong&gt;estimación al objetivo&lt;/strong&gt; (no tiene en cuenta el camino previo).&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Hay escenarios en los que ambas estrategias encontrarán el mismo camino:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara-iguales.png"&gt;&lt;img class="aligncenter size-full wp-image-679" title="avsavara-iguales" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara-iguales.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pero hay otros en los que no:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara5.png"&gt;&lt;img class="aligncenter size-full wp-image-678" title="avsavara5" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara5.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara4.png"&gt;&lt;img class="aligncenter size-full wp-image-677" title="avsavara4" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara4.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara3.png"&gt;&lt;img class="aligncenter size-full wp-image-676" title="avsavara3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara3.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara2.png"&gt;&lt;img class="aligncenter size-full wp-image-675" title="avsavara2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara2.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara.png"&gt;&lt;img class="aligncenter size-full wp-image-674" title="avsavara" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/avsavara.png" alt="" width="500" height="388"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Instalación y uso&lt;/h3&gt;
+&lt;p&gt;Similar al ejemplo anterior. Teniendo Python y &lt;a title="PyGame" href="http://www.pygame.org/" target="_blank"&gt;PyGame&lt;/a&gt; instalados, obtener el código fuente:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/astar/tags/astar-vs-avara/ astar-vs-avara&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y dentro de la carpeta &lt;code&gt;astar&lt;/code&gt;-vs-avara ejecutar gui.py:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd astar-vs-avara&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python gui.py&lt;/p&gt;&lt;/div&gt;</description><category>a*</category><category>AI</category><category>IA</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/15/a-vs-avara.html</guid><pubDate>Wed, 15 Oct 2008 14:52:25 GMT</pubDate></item><item><title>Un ejemplo de búsqueda A*</title><link>http://www.juanjoconti.com.ar/posts/2008/10/07/un-ejemplo-de-busqueda-a.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;El ejemplo consiste en un plano de 800x600 puntos con el punto (0,0)  en la esquina superior izquierda. En el plano hay puntos y figuras (formadas por puntos). Uno de los puntos es el origen y otro el destino. El problema a resolver es encontrar el camino más corto desde el origen al destino moviéndose de punto a punto y sin pasar sobre una figura.&lt;/p&gt;
+&lt;p&gt;La heurística utilizada es la distancia en línea recta desde la posición actual a la posición del objetivo. &lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Instalación y uso&lt;/h3&gt;
+&lt;p&gt;Teniendo Python y &lt;a title="PyGame" href="http://www.pygame.org" target="_blank"&gt;PyGame&lt;/a&gt; instalados, obtener el código fuente:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;svn co http://svn.juanjoconti.com.ar/astar/tags/astar-only/ astar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;y dentro de la carpeta &lt;code&gt;astar&lt;/code&gt; ejecutar gui.py:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd astar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python gui.py&lt;/p&gt;
+&lt;p&gt;El primer click que se haga marcará el punto origen (verde) y el segundo el punto destino (rojo).&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apasp1.png"&gt;&lt;img class="aligncenter size-medium wp-image-617" title="paso 1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apasp1-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Luego se pueden agregar tantos puntos sueltos o figuras como se quieran. Si se hace uno o dos clicks y luego se aprieta la barra espaciado, uno o dos puntos son añadidos al planto. Si se hacen más de dos clicks antes de apretar la barra espaciadora, entonces una figura formada por los puntos marcados es añadida.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso2.png"&gt;&lt;img class="aligncenter size-medium wp-image-620" title="paso2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso2-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso3.png"&gt;&lt;img class="aligncenter size-medium wp-image-619" title="paso3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso3-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Se siguen cargando tantos puntos y figuras como se quiera. Finalmente, al aprender Enter se ejecuta el algoritmo de búsqueda y si se encuentra un camino-solución, este es graficado.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso5.png"&gt;&lt;img class="aligncenter size-medium wp-image-618" title="resultado1" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/apaso5-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p align="center"&gt;&lt;/p&gt;
+
+&lt;p&gt;Otros casos de prueba:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a2.png"&gt;&lt;img class="aligncenter size-medium wp-image-614" title="resultado2" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a2-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a3.png"&gt;&lt;img class="aligncenter size-medium wp-image-615" title="resultado3" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a3-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a6.png"&gt;&lt;img class="aligncenter size-medium wp-image-616" title="resultado4" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a6-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a1.png"&gt;&lt;img class="aligncenter size-medium wp-image-613" title="resultado5" src="http://www.juanjoconti.com.ar/wp-content/uploads/2008/10/a1-300x232.png" alt="" width="300" height="232"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Teoría relacionada&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;a href="http://es.wikipedia.org/wiki/Algoritmo_de_b%C3%BAsqueda_A*" target="_self"&gt;Estrategia de búsqueda A*&lt;/a&gt;&lt;/li&gt;
+
+    &lt;li&gt;&lt;a title="AIMA" href="http://aima.cs.berkeley.edu/" target="_self"&gt;Inteligencia artificial, un enfoque moderno&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>a*</category><category>AI</category><category>IA</category><category>PyGame</category><guid>http://www.juanjoconti.com.ar/posts/2008/10/07/un-ejemplo-de-busqueda-a.html</guid><pubDate>Tue, 07 Oct 2008 21:16:01 GMT</pubDate></item></channel></rss>

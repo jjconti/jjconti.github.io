@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>En borrador permanente (Euler)</title><link>http://www.juanjoconti.com.ar/</link><description></description><atom:link href="http://www.juanjoconti.com.ar/categories/euler.xml" type="application/rss+xml" rel="self"></atom:link><language>es</language><lastBuildDate>Tue, 23 Jun 2015 01:31:17 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Ejercicio 16 - proyecto Euler</title><link>http://www.juanjoconti.com.ar/posts/2009/09/18/euler-16.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;De vez en cuando se me da por hacer saries de posts en el blog. Sagas. Una de las últimas fue la saga sobre &lt;a href="http://www.juanjoconti.com.ar/etiqueta/euler/" target="_blank"&gt;resoluciones a problemas del proyecto Euler&lt;/a&gt;. Lo que intentaba era resolverlos con alguna característica interesante de Python y luego explicarla. Luego de los primeros, los ejercisios se volvieron más matemáticos y encontraba menos cosas interesantes de Python que comentar, así que dejé de postear mis soluciones. Acabo de encontrar esta entre mis archivos y creo que tiene algo de originalidad como para merecer ser publicada:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="http://projecteuler.net/index.php?section=problems&amp;amp;id=16" target="_blank"&gt;¿Cuál es la suma de los dígitos del número 2^(1000)?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; 2**1000
+&lt;p&gt;107150860718626732094842504906000[algunos números fueron intencionalmente borrados]&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; a = 2**1000&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; sum((int(x) for x in list(str(a))))&lt;/p&gt;
+&lt;p&gt;1366&lt;/p&gt;&lt;/pre&gt;
+&lt;p&gt;¿A alguien se le ocurre otra forma?&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/09/18/euler-16.html</guid><pubDate>Fri, 18 Sep 2009 00:31:35 GMT</pubDate></item><item><title>Euler 8 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/07/02/euler-8-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 8&lt;/h3&gt;
+&lt;p&gt;Encontrar el mayor producto de cinco dígitos consecutivos en este número de 100 dígitos:&lt;/p&gt;
+&lt;p style="font-family: courier new; font-size: 10pt; text-align: center;"&gt;73167176531330624919225119674426574742355349194934
+
+96983520312774506326239578318016984801869478851843
+
+85861560789112949495459501737958331952853208805511
+
+12540698747158523863050715693290963295227443043557
+
+66896648950445244523161731856403098711121722383113
+
+62229893423380308135336276614282806444486645238749
+
+30358907296290491560440772390713810515859307960866
+
+70172427121883998797908792274921901699720888093776
+
+65727333001053367881220235421809751254540594752243
+
+52584907711670556013604839586446706324415722155397
+
+53697817977846174064955149290862569321978468622482
+
+83972241375657056057490261407972968652414535100474
+
+82166370484403199890008895243450658541227588666881
+
+16427171479924442928230863465674813919123162824586
+
+17866458359124566529476545682848912883142607690042
+
+24219022671055626321111109370544217506941658960408
+
+07198403850962455444362981230987879927244284909188
+
+84580156166097919133875499200524063689912560717606
+
+05886116467109405077541002256983155200055935729725
+
+71636269561882670428252483600823257530420752963450
+
+&lt;/p&gt;
+
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; b = 7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450
+
+&amp;gt;&amp;gt;&amp;gt; s = str(b)
+
+&amp;gt;&amp;gt;&amp;gt; s
+
+'7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450'
+
+&amp;gt;&amp;gt;&amp;gt; l = list(s)
+
+&amp;gt;&amp;gt;&amp;gt; l
+
+['7', '3', '1', '6', '7', '1', '7', '6', '5', '3', '1', '3', '3', '0', '6', '2', '4', '9', '1', '9', '2', '2', '5', '1', '1', '9', '6', '7', '4', '4', '2', '6', '5', '7', '4', '7', '4', '2', '3', '5', '5', '3', '4', '9', '1', '9', '4', '9', '3', '4', '9', '6', '9', '8', '3', '5', '2', '0', '3', '1', '2', '7', '7', '4', '5', '0', '6', '3', '2', '6', '2', '3', '9', '5', '7', '8', '3', '1', '8', '0', '1', '6', '9', '8', '4', '8', '0', '1', '8', '6', '9', '4', '7', '8', '8', '5', '1', '8', '4', '3', '8', '5', '8', '6', '1', '5', '6', '0', '7', '8', '9', '1', '1', '2', '9', '4', '9', '4', '9', '5', '4', '5', '9', '5', '0', '1', '7', '3', '7', '9', '5', '8', '3', '3', '1', '9', '5', '2', '8', '5', '3', '2', '0', '8', '8', '0', '5', '5', '1', '1', '1', '2', '5', '4', '0', '6', '9', '8', '7', '4', '7', '1', '5', '8', '5', '2', '3', '8', '6', '3', '0', '5', '0', '7', '1', '5', '6', '9', '3', '2', '9', '0', '9', '6', '3', '2', '9', '5', '2', '2', '7', '4', '4', '3', '0', '4', '3', '5', '5', '7', '6', '6', '8', '9', '6', '6', '4', '8', '9', '5', '0', '4', '4', '5', '2', '4', '4', '5', '2', '3', '1', '6', '1', '7', '3', '1', '8', '5', '6', '4', '0', '3', '0', '9', '8', '7', '1', '1', '1', '2', '1', '7', '2', '2', '3', '8', '3', '1', '1', '3', '6', '2', '2', '2', '9', '8', '9', '3', '4', '2', '3', '3', '8', '0', '3', '0', '8', '1', '3', '5', '3', '3', '6', '2', '7', '6', '6', '1', '4', '2', '8', '2', '8', '0', '6', '4', '4', '4', '4', '8', '6', '6', '4', '5', '2', '3', '8', '7', '4', '9', '3', '0', '3', '5', '8', '9', '0', '7', '2', '9', '6', '2', '9', '0', '4', '9', '1', '5', '6', '0', '4', '4', '0', '7', '7', '2', '3', '9', '0', '7', '1', '3', '8', '1', '0', '5', '1', '5', '8', '5', '9', '3', '0', '7', '9', '6', '0', '8', '6', '6', '7', '0', '1', '7', '2', '4', '2', '7', '1', '2', '1', '8', '8', '3', '9', '9', '8', '7', '9', '7', '9', '0', '8', '7', '9', '2', '2', '7', '4', '9', '2', '1', '9', '0', '1', '6', '9', '9', '7', '2', '0', '8', '8', '8', '0', '9', '3', '7', '7', '6', '6', '5', '7', '2', '7', '3', '3', '3', '0', '0', '1', '0', '5', '3', '3', '6', '7', '8', '8', '1', '2', '2', '0', '2', '3', '5', '4', '2', '1', '8', '0', '9', '7', '5', '1', '2', '5', '4', '5', '4', '0', '5', '9', '4', '7', '5', '2', '2', '4', '3', '5', '2', '5', '8', '4', '9', '0', '7', '7', '1', '1', '6', '7', '0', '5', '5', '6', '0', '1', '3', '6', '0', '4', '8', '3', '9', '5', '8', '6', '4', '4', '6', '7', '0', '6', '3', '2', '4', '4', '1', '5', '7', '2', '2', '1', '5', '5', '3', '9', '7', '5', '3', '6', '9', '7', '8', '1', '7', '9', '7', '7', '8', '4', '6', '1', '7', '4', '0', '6', '4', '9', '5', '5', '1', '4', '9', '2', '9', '0', '8', '6', '2', '5', '6', '9', '3', '2', '1', '9', '7', '8', '4', '6', '8', '6', '2', '2', '4', '8', '2', '8', '3', '9', '7', '2', '2', '4', '1', '3', '7', '5', '6', '5', '7', '0', '5', '6', '0', '5', '7', '4', '9', '0', '2', '6', '1', '4', '0', '7', '9', '7', '2', '9', '6', '8', '6', '5', '2', '4', '1', '4', '5', '3', '5', '1', '0', '0', '4', '7', '4', '8', '2', '1', '6', '6', '3', '7', '0', '4', '8', '4', '4', '0', '3', '1', '9', '9', '8', '9', '0', '0', '0', '8', '8', '9', '5', '2', '4', '3', '4', '5', '0', '6', '5', '8', '5', '4', '1', '2', '2', '7', '5', '8', '8', '6', '6', '6', '8', '8', '1', '1', '6', '4', '2', '7', '1', '7', '1', '4', '7', '9', '9', '2', '4', '4', '4', '2', '9', '2', '8', '2', '3', '0', '8', '6', '3', '4', '6', '5', '6', '7', '4', '8', '1', '3', '9', '1', '9', '1', '2', '3', '1', '6', '2', '8', '2', '4', '5', '8', '6', '1', '7', '8', '6', '6', '4', '5', '8', '3', '5', '9', '1', '2', '4', '5', '6', '6', '5', '2', '9', '4', '7', '6', '5', '4', '5', '6', '8', '2', '8', '4', '8', '9', '1', '2', '8', '8', '3', '1', '4', '2', '6', '0', '7', '6', '9', '0', '0', '4', '2', '2', '4', '2', '1', '9', '0', '2', '2', '6', '7', '1', '0', '5', '5', '6', '2', '6', '3', '2', '1', '1', '1', '1', '1', '0', '9', '3', '7', '0', '5', '4', '4', '2', '1', '7', '5', '0', '6', '9', '4', '1', '6', '5', '8', '9', '6', '0', '4', '0', '8', '0', '7', '1', '9', '8', '4', '0', '3', '8', '5', '0', '9', '6', '2', '4', '5', '5', '4', '4', '4', '3', '6', '2', '9', '8', '1', '2', '3', '0', '9', '8', '7', '8', '7', '9', '9', '2', '7', '2', '4', '4', '2', '8', '4', '9', '0', '9', '1', '8', '8', '8', '4', '5', '8', '0', '1', '5', '6', '1', '6', '6', '0', '9', '7', '9', '1', '9', '1', '3', '3', '8', '7', '5', '4', '9', '9', '2', '0', '0', '5', '2', '4', '0', '6', '3', '6', '8', '9', '9', '1', '2', '5', '6', '0', '7', '1', '7', '6', '0', '6', '0', '5', '8', '8', '6', '1', '1', '6', '4', '6', '7', '1', '0', '9', '4', '0', '5', '0', '7', '7', '5', '4', '1', '0', '0', '2', '2', '5', '6', '9', '8', '3', '1', '5', '5', '2', '0', '0', '0', '5', '5', '9', '3', '5', '7', '2', '9', '7', '2', '5', '7', '1', '6', '3', '6', '2', '6', '9', '5', '6', '1', '8', '8', '2', '6', '7', '0', '4', '2', '8', '2', '5', '2', '4', '8', '3', '6', '0', '0', '8', '2', '3', '2', '5', '7', '5', '3', '0', '4', '2', '0', '7', '5', '2', '9', '6', '3', '4', '5', '0']
+
+&amp;gt;&amp;gt;&amp;gt; i = [int(x) for x in l]
+
+&amp;gt;&amp;gt;&amp;gt; i
+
+[7, 3, 1, 6, 7, 1, 7, 6, 5, 3, 1, 3, 3, 0, 6, 2, 4, 9, 1, 9, 2, 2, 5, 1, 1, 9, 6, 7, 4, 4, 2, 6, 5, 7, 4, 7, 4, 2, 3, 5, 5, 3, 4, 9, 1, 9, 4, 9, 3, 4, 9, 6, 9, 8, 3, 5, 2, 0, 3, 1, 2, 7, 7, 4, 5, 0, 6, 3, 2, 6, 2, 3, 9, 5, 7, 8, 3, 1, 8, 0, 1, 6, 9, 8, 4, 8, 0, 1, 8, 6, 9, 4, 7, 8, 8, 5, 1, 8, 4, 3, 8, 5, 8, 6, 1, 5, 6, 0, 7, 8, 9, 1, 1, 2, 9, 4, 9, 4, 9, 5, 4, 5, 9, 5, 0, 1, 7, 3, 7, 9, 5, 8, 3, 3, 1, 9, 5, 2, 8, 5, 3, 2, 0, 8, 8, 0, 5, 5, 1, 1, 1, 2, 5, 4, 0, 6, 9, 8, 7, 4, 7, 1, 5, 8, 5, 2, 3, 8, 6, 3, 0, 5, 0, 7, 1, 5, 6, 9, 3, 2, 9, 0, 9, 6, 3, 2, 9, 5, 2, 2, 7, 4, 4, 3, 0, 4, 3, 5, 5, 7, 6, 6, 8, 9, 6, 6, 4, 8, 9, 5, 0, 4, 4, 5, 2, 4, 4, 5, 2, 3, 1, 6, 1, 7, 3, 1, 8, 5, 6, 4, 0, 3, 0, 9, 8, 7, 1, 1, 1, 2, 1, 7, 2, 2, 3, 8, 3, 1, 1, 3, 6, 2, 2, 2, 9, 8, 9, 3, 4, 2, 3, 3, 8, 0, 3, 0, 8, 1, 3, 5, 3, 3, 6, 2, 7, 6, 6, 1, 4, 2, 8, 2, 8, 0, 6, 4, 4, 4, 4, 8, 6, 6, 4, 5, 2, 3, 8, 7, 4, 9, 3, 0, 3, 5, 8, 9, 0, 7, 2, 9, 6, 2, 9, 0, 4, 9, 1, 5, 6, 0, 4, 4, 0, 7, 7, 2, 3, 9, 0, 7, 1, 3, 8, 1, 0, 5, 1, 5, 8, 5, 9, 3, 0, 7, 9, 6, 0, 8, 6, 6, 7, 0, 1, 7, 2, 4, 2, 7, 1, 2, 1, 8, 8, 3, 9, 9, 8, 7, 9, 7, 9, 0, 8, 7, 9, 2, 2, 7, 4, 9, 2, 1, 9, 0, 1, 6, 9, 9, 7, 2, 0, 8, 8, 8, 0, 9, 3, 7, 7, 6, 6, 5, 7, 2, 7, 3, 3, 3, 0, 0, 1, 0, 5, 3, 3, 6, 7, 8, 8, 1, 2, 2, 0, 2, 3, 5, 4, 2, 1, 8, 0, 9, 7, 5, 1, 2, 5, 4, 5, 4, 0, 5, 9, 4, 7, 5, 2, 2, 4, 3, 5, 2, 5, 8, 4, 9, 0, 7, 7, 1, 1, 6, 7, 0, 5, 5, 6, 0, 1, 3, 6, 0, 4, 8, 3, 9, 5, 8, 6, 4, 4, 6, 7, 0, 6, 3, 2, 4, 4, 1, 5, 7, 2, 2, 1, 5, 5, 3, 9, 7, 5, 3, 6, 9, 7, 8, 1, 7, 9, 7, 7, 8, 4, 6, 1, 7, 4, 0, 6, 4, 9, 5, 5, 1, 4, 9, 2, 9, 0, 8, 6, 2, 5, 6, 9, 3, 2, 1, 9, 7, 8, 4, 6, 8, 6, 2, 2, 4, 8, 2, 8, 3, 9, 7, 2, 2, 4, 1, 3, 7, 5, 6, 5, 7, 0, 5, 6, 0, 5, 7, 4, 9, 0, 2, 6, 1, 4, 0, 7, 9, 7, 2, 9, 6, 8, 6, 5, 2, 4, 1, 4, 5, 3, 5, 1, 0, 0, 4, 7, 4, 8, 2, 1, 6, 6, 3, 7, 0, 4, 8, 4, 4, 0, 3, 1, 9, 9, 8, 9, 0, 0, 0, 8, 8, 9, 5, 2, 4, 3, 4, 5, 0, 6, 5, 8, 5, 4, 1, 2, 2, 7, 5, 8, 8, 6, 6, 6, 8, 8, 1, 1, 6, 4, 2, 7, 1, 7, 1, 4, 7, 9, 9, 2, 4, 4, 4, 2, 9, 2, 8, 2, 3, 0, 8, 6, 3, 4, 6, 5, 6, 7, 4, 8, 1, 3, 9, 1, 9, 1, 2, 3, 1, 6, 2, 8, 2, 4, 5, 8, 6, 1, 7, 8, 6, 6, 4, 5, 8, 3, 5, 9, 1, 2, 4, 5, 6, 6, 5, 2, 9, 4, 7, 6, 5, 4, 5, 6, 8, 2, 8, 4, 8, 9, 1, 2, 8, 8, 3, 1, 4, 2, 6, 0, 7, 6, 9, 0, 0, 4, 2, 2, 4, 2, 1, 9, 0, 2, 2, 6, 7, 1, 0, 5, 5, 6, 2, 6, 3, 2, 1, 1, 1, 1, 1, 0, 9, 3, 7, 0, 5, 4, 4, 2, 1, 7, 5, 0, 6, 9, 4, 1, 6, 5, 8, 9, 6, 0, 4, 0, 8, 0, 7, 1, 9, 8, 4, 0, 3, 8, 5, 0, 9, 6, 2, 4, 5, 5, 4, 4, 4, 3, 6, 2, 9, 8, 1, 2, 3, 0, 9, 8, 7, 8, 7, 9, 9, 2, 7, 2, 4, 4, 2, 8, 4, 9, 0, 9, 1, 8, 8, 8, 4, 5, 8, 0, 1, 5, 6, 1, 6, 6, 0, 9, 7, 9, 1, 9, 1, 3, 3, 8, 7, 5, 4, 9, 9, 2, 0, 0, 5, 2, 4, 0, 6, 3, 6, 8, 9, 9, 1, 2, 5, 6, 0, 7, 1, 7, 6, 0, 6, 0, 5, 8, 8, 6, 1, 1, 6, 4, 6, 7, 1, 0, 9, 4, 0, 5, 0, 7, 7, 5, 4, 1, 0, 0, 2, 2, 5, 6, 9, 8, 3, 1, 5, 5, 2, 0, 0, 0, 5, 5, 9, 3, 5, 7, 2, 9, 7, 2, 5, 7, 1, 6, 3, 6, 2, 6, 9, 5, 6, 1, 8, 8, 2, 6, 7, 0, 4, 2, 8, 2, 5, 2, 4, 8, 3, 6, 0, 0, 8, 2, 3, 2, 5, 7, 5, 3, 0, 4, 2, 0, 7, 5, 2, 9, 6, 3, 4, 5, 0]
+
+&amp;gt;&amp;gt;&amp;gt; def mult(lista):
+
+...     return reduce(mul, lista, 1)
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; mult([])
+
+1
+
+&amp;gt;&amp;gt;&amp;gt; mult([1,2,3])
+
+6
+
+&amp;gt;&amp;gt;&amp;gt; for x in range(1001-5):
+
+...     m = mult(i[x:x+5])
+
+...     if m &amp;gt; maxmult:
+
+...             maxmult = m
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; maxmult
+
+40824&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/07/02/euler-8-python.html</guid><pubDate>Thu, 02 Jul 2009 00:39:58 GMT</pubDate></item><item><title>Euler 7 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/06/18/euler-7-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 7&lt;/h3&gt;
+&lt;p&gt;Listando los primeros seis números primos: 2, 3, 5, 7, 11,y 13, podemos ver que el 6° primo es el 13.&lt;/p&gt;
+&lt;p&gt;¿Cuál es el 10001° primo?&lt;/p&gt;
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida en el intérprete interactivo de Python 2.5.2:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; from math import sqrt
+
+&amp;gt;&amp;gt;&amp;gt; def primo(n):
+
+...     for i in xrange(2,int(sqrt(n))+1):
+
+...         if n % i == 0:
+
+...             return False
+
+...     return True
+
+&amp;gt;&amp;gt;&amp;gt; a = 2
+
+&amp;gt;&amp;gt;&amp;gt; i = 1
+
+&amp;gt;&amp;gt;&amp;gt; while i &amp;lt; 10002:
+
+...     if primo(a):
+
+...             i +=1
+
+...     a += 1
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; i
+
+10002
+
+&amp;gt;&amp;gt;&amp;gt; a
+
+104744
+
+&amp;gt;&amp;gt;&amp;gt; a-1
+
+104743&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/06/18/euler-7-python.html</guid><pubDate>Thu, 18 Jun 2009 12:00:51 GMT</pubDate></item><item><title>Euler 6 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/06/16/euler-6-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 6&lt;/h3&gt;
+&lt;p&gt;La suma de los cuadrados de los primeros diez números naturales es:&lt;/p&gt;
+&lt;div style="text-align: center;"&gt;1&lt;sup&gt;2&lt;/sup&gt; + 2&lt;sup&gt;2&lt;/sup&gt; + ... + 10&lt;sup&gt;2&lt;/sup&gt; = 385&lt;/div&gt;
+
+&lt;p&gt;El cuadrado de la suma de los primeros diez números naturales es:&lt;/p&gt;
+&lt;div style="text-align: center;"&gt;(1 + 2 + ... + 10)&lt;sup&gt;2&lt;/sup&gt; = 55&lt;sup&gt;2&lt;/sup&gt; = 3025&lt;/div&gt;
+
+&lt;p&gt;Así que la diferencia entre la suma de los cuadrados de los diez primeros números naturales y el cuadrado de la suma es 3025 − 385 = 2640.&lt;/p&gt;
+&lt;p&gt;Encontrar la diferencia entre la suma de los cuadrados de los primeros cien números naturales y el cuadrado de la suma.&lt;/p&gt;
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida utilizando el intérprete interactivo de Python 2.5.2:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def a(n):
+
+...     s = sum(xrange(1,n+1))
+
+...     a1 = s ** 2
+
+...     a2 = sum([x**2 for x in xrange(1,n+1)])
+
+...     return a1, a2, a1-a2
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; a(10)
+
+(3025, 385, 2640)
+
+&amp;gt;&amp;gt;&amp;gt; a(100)
+
+(25502500, 338350, 25164150)&lt;/pre&gt;
+
+&lt;h3&gt;Python tips&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;Con ** podemos elevar un número a cualquier potencia sin necesidad de importar ningún módulo.&lt;/li&gt;
+
+    &lt;li&gt;Para denotar una tupla solo hacen falta las comas (,), no los paréntesis al principio y al final.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/06/16/euler-6-python.html</guid><pubDate>Tue, 16 Jun 2009 08:00:21 GMT</pubDate></item><item><title>Euler 5 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/06/15/euler-5-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 5&lt;/h3&gt;
+&lt;div class="problem_content"&gt;
+
+
+
+2520 es el menor número que puede ser dividido sin resto por todos los números de 1 a 10.
+
+
+
+¿Cuál es el menor número que que puede dividirse sin resto por todos los números de 1 a 20?&lt;/div&gt;
+
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida ejecutando el siguiente programa Python 2.5.2:&lt;/p&gt;
+&lt;pre&gt;from math import sqrt
+
+from operator import mul, add
+
+
+
+def primo(n):
+
+    for i in xrange(2,int(sqrt(n))+1):
+
+        if n % i == 0:
+
+            return False
+
+    return True
+
+
+
+def factorizar(n):
+
+    primos = [x for x in xrange(2,n+1) if primo(x)]
+
+    factores = []
+
+    if n == 1:
+
+        return [1]
+
+    for p in primos:
+
+        if n == p:
+
+                factores.append(p)
+
+                return factores
+
+        if n % p == 0:
+
+                n /= p
+
+                factores.append(p)
+
+                while n % p == 0:
+
+                    n /= p
+
+                    factores.append(p)
+
+    return factores
+
+
+
+def mcm(l):
+
+    '''Maximo comun multiplo'''
+
+    ff = [factorizar(i) for i in l]
+
+    singles = list(set(reduce(add,ff)))
+
+    temp = []
+
+    for s in singles:
+
+        temp.extend([s] * max([f.count(s) for f in ff]))
+
+    return reduce(mul,temp,1)
+
+
+
+if __name__ == '__main__':
+
+    #print mcm(range(1,11))
+
+    print mcm(range(1,21))&lt;/pre&gt;
+
+&lt;h3&gt;Python tips&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;El módulo &lt;code&gt;operator&lt;/code&gt; tiene varias funciones útiles equivalentes a operadores como * y + que pueden utilizarse con funciones como &lt;code&gt;reduce&lt;/code&gt;, cuyo primer parámetro es una función.&lt;/li&gt;
+
+    &lt;li&gt;&lt;code&gt;reduce&lt;/code&gt; toma una función f de dos argumentos y una lista l. Aplica f a los dos primeros elementos de la lista y obtiene un resultado, luego aplica la función f al resultado con el tercer elemento de la lista, y así sucesivamente hasta consumir toda la lista y retornar el resultado final. Opcionalmente se le puede pasar un tercer parámetro para que la primer llamada a la función f sea aplicada sobre este y el primer elemento de la lista.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/06/15/euler-5-python.html</guid><pubDate>Mon, 15 Jun 2009 21:12:27 GMT</pubDate></item><item><title>Euler 4 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/06/12/euler-4-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 4&lt;/h3&gt;
+&lt;p&gt;Un número palíndromo se lee igual en ambos sentidos. El mayor palíndromo construido a partir del producto de dos números de dos dígitos es 9009 = 91 × 99.&lt;/p&gt;
+&lt;p&gt;Encontrar el mayor palíndromo que se puede construir como el producto de dos números de tres dígitos.&lt;/p&gt;
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida en el intérprete interactivo de Python 3.0rc1+. Necesitaba Python 3 para utilizar itertools.combinations:&lt;/p&gt;
+&lt;pre&gt;
+
+juanjo@fenix:~$ python3
+
+Python 3.0rc1+ (py3k, Oct 28 2008, 09:23:29) 
+
+[GCC 4.3.2] on linux2
+
+Type "help", "copyright", "credits" or "license" for more information.
+
+&amp;gt;&amp;gt;&amp;gt; from itertools import combinations
+
+&amp;gt;&amp;gt;&amp;gt; tri = range(999, 99, -1)
+
+&amp;gt;&amp;gt;&amp;gt; mults = []
+
+&amp;gt;&amp;gt;&amp;gt; for a,b in combinations(tri, 2):
+
+...     s = str(a*b)
+
+...     if s == s[::-1]:
+
+...             mults.append(int(s))
+
+... 
+
+&amp;gt;&amp;gt;&amp;gt; max(mults)
+
+906609
+
+&lt;/pre&gt;
+
+&lt;h3&gt;Python tips&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;code&gt;combinations&lt;/code&gt; genera la combinación con los elementos de la lista argumento tomados de a n, si se especifica el parámetro n.&lt;/li&gt;
+
+    &lt;li&gt;En Python 3 &lt;code&gt;print&lt;/code&gt; deja de ser una sentencia para convertirse en una función, por lo que siempre debe ser llamado con parámetros.&lt;/li&gt;
+
+    &lt;li&gt;&lt;code&gt;unString[::-1]&lt;/code&gt; es un &lt;em&gt;idiom&lt;/em&gt; usado para invertir una cadena de texto (en el ejemplo, &lt;code&gt;unString&lt;/code&gt;). Se lee: los elementos de unString, desde el principio al final, con paso -1.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/06/12/euler-4-python.html</guid><pubDate>Fri, 12 Jun 2009 09:20:27 GMT</pubDate></item><item><title>Euler 3 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/06/07/euler-3-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 3&lt;/h3&gt;
+&lt;p&gt;Los factores primos de 13195 son 5, 7, 13 y 29.&lt;/p&gt;
+&lt;p&gt;¿Cual es el mayor factor primo del número 600851475143?&lt;/p&gt;
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida en el intérprete interactivo de Python 2.5.2:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; from math import sqrt
+
+&amp;gt;&amp;gt;&amp;gt; the_number = 600851475143
+
+&amp;gt;&amp;gt;&amp;gt; my_number = sqrt(the_number)
+
+&amp;gt;&amp;gt;&amp;gt; my_number
+
+775146.09922452678
+
+&amp;gt;&amp;gt;&amp;gt; my_number = int(my_number)
+
+&amp;gt;&amp;gt;&amp;gt; my_number
+
+775146
+
+&amp;gt;&amp;gt;&amp;gt; def esprimo(n):
+
+...     for i in xrange(2,int(sqrt(n))+1):
+
+...             if n % i == 0:
+
+...                     return False
+
+...     return True
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; esprimo(8)
+
+False
+
+&amp;gt;&amp;gt;&amp;gt; esprimo(3)
+
+True
+
+&amp;gt;&amp;gt;&amp;gt; esprimo(6823)
+
+True
+
+&amp;gt;&amp;gt;&amp;gt; esprimo(100109)
+
+True
+
+&amp;gt;&amp;gt;&amp;gt; esprimo(100110)
+
+False
+
+&amp;gt;&amp;gt;&amp;gt; for i in xrange(1, my_number+1):
+
+...      if the_number % i == 0 and esprimo(i):
+
+...             print i
+
+...
+
+1
+
+71
+
+839
+
+1471
+
+6857&lt;/pre&gt;
+
+&lt;h3&gt;Python tips&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;&lt;code&gt;xrange&lt;/code&gt;, en lugar de crear una lista entera de números como hace &lt;code&gt;range&lt;/code&gt; devuelve un generador que va entregando números a medida que los necesitamos.&lt;/li&gt;
+
+    &lt;li&gt;La clase &lt;code&gt;int&lt;/code&gt; se instancia para obtener enteros. Si la llamamos con un float como parámetro, podemos usarla para forzar un entero.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/06/07/euler-3-python.html</guid><pubDate>Sun, 07 Jun 2009 08:00:43 GMT</pubDate></item><item><title>Euler 2 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/06/04/euler-2-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Enunciado 2&lt;/h3&gt;
+&lt;p&gt;Cada nuevo item en la secuencia de Fibonacci es generado sumando los dos términos previos. Empezando con 1 y 2, los primeros 10 términos serían:&lt;/p&gt;
+&lt;p&gt;1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...&lt;/p&gt;
+&lt;p&gt;Encontrar la suma de todos los términos pares en la secuencia que no supera los 4 millones.&lt;/p&gt;
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida en el intérprete interactivo de Python 2.5.2:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; MAX = 4000000
+
+&amp;gt;&amp;gt;&amp;gt; def evsum(n):
+
+...     s = 0
+
+...     a,b = 1,2
+
+...     while True:
+
+...         if a &amp;gt;= n:
+
+...             break
+
+...         if a % 2 ==0:
+
+...             print a, " ",
+
+...             s += a
+
+...         a,b = b,a+b
+
+...     return s
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; evsum(MAX)
+
+2   8   34   144   610   2584   10946   46368   196418   832040   3524578
+
+4613732&lt;/pre&gt;
+
+&lt;h3&gt;Python tips&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;La asignación múltiple es un idom muy cómodo: &lt;code&gt;a,b = 1,2&lt;/code&gt;&lt;/li&gt;
+
+    &lt;li&gt;Si agregamos una coma final a la enumeración de objetos a ser impresos con &lt;code&gt;print&lt;/code&gt;, se logra el efecto de que no se imprima el salto de línea (&lt;code&gt;\n&lt;/code&gt;) final.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/06/04/euler-2-python.html</guid><pubDate>Thu, 04 Jun 2009 21:37:17 GMT</pubDate></item><item><title>Euler 1 (Python)</title><link>http://www.juanjoconti.com.ar/posts/2009/05/28/euler-1-python.html</link><dc:creator>Juanjo</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a title="Euler" href="http://projecteuler.net/" target="_blank"&gt;Project Euler&lt;/a&gt; es un sitio web que reta a los programadores a resolver problemas matemáticos mediante código. Me parece entretenido. Voy a ir resolviendo problemas y posteando mi solución en Python acompañada de comentarios sobre el código que puedan servirles a quienes están empezando a aprender el lenguaje.
+&lt;h3&gt;Enunciado 1&lt;/h3&gt;
+
+&lt;p&gt;Si listamos todos los números menores a 10 que son múltiplos de 3 o 5, obtenemos 3, 5, 6 y 9. La suma de esos múltiplos es 23.&lt;/p&gt;
+&lt;p&gt;Encontrar la suma de todos los múltiplos de 3 o 5 menores a 1000.&lt;/p&gt;
+&lt;h3&gt;Solución&lt;/h3&gt;
+
+&lt;p&gt;La solución fue obtenida en el intérprete interactivo de Python 2.5.2:&lt;/p&gt;
+&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; def mults(n=10):
+
+...     r = []
+
+...     for i in range(1, n):
+
+...             if i % 3 == 0:
+
+...                     r.append(i)
+
+...             elif i % 5 == 0:
+
+...                     r.append(i)
+
+...     return r
+
+...
+
+&amp;gt;&amp;gt;&amp;gt; mults()
+
+[3, 5, 6, 9]
+
+&amp;gt;&amp;gt;&amp;gt; sum(mults())
+
+23
+
+&amp;gt;&amp;gt;&amp;gt; sum(mults(n=1000))
+
+233168&lt;/pre&gt;
+
+&lt;h3&gt;Python tips&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;En la definición de la función &lt;code&gt;mults&lt;/code&gt; se incluye un argumento por defecto &lt;code&gt;n&lt;/code&gt; con valor &lt;code&gt;10&lt;/code&gt;. Cuando más adelante se llama a esta función sin parámetros, &lt;code&gt;n&lt;/code&gt; toma el valor por defecto.&lt;/li&gt;
+
+    &lt;li&gt;La función &lt;code&gt;range&lt;/code&gt;, incluida en el lenguaje devuelve una lista de números sobre la que se puede iterar. Muy útil para usar con la estructura &lt;code&gt;for&lt;/code&gt;. Más información haciendo &lt;code&gt;help(range)&lt;/code&gt; en el intérprete interactivo.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</description><category>Aprendiendo Python</category><category>Euler</category><category>Problemas</category><category>Python</category><guid>http://www.juanjoconti.com.ar/posts/2009/05/28/euler-1-python.html</guid><pubDate>Thu, 28 May 2009 21:26:36 GMT</pubDate></item></channel></rss>
